@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<script src="//leaverou.github.io/conic-gradient/conic-gradient.js"></script>
+	<style>
+		 section{
+			margin: 40px auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+			
+		.a{
+			background:conic-gradient(#000, #fff);
+			width: 200px;
+			height: 200px;
+		}
+		.b{
+			/* 标准的语法 */
+			background:linear-gradient(to top right ,red 0,yellow 50%,transparent 50%,transparent 100%);
+			/* 兼容性写法 */
+			/* Safari 5.1 - 6.0 */			
+			background: -webkit-linear-gradient(to top right ,red 0,yellow 50%,transparent 50%,transparent 100%);		
+			/* Firefox 3.6 - 15 */			
+			background: -moz-linear-gradient(to top right ,red 0,yellow 50%,transparent 50%,transparent 100%);
+			/* Opera 11.1 - 12.0 */			
+			background: -o-linear-gradient(to top right ,red 0,yellow 50%,transparent 50%,transparent 100%);
+			width: 200px;
+			height: 200px;
+		}
+		.c{
+			background:repeating-linear-gradient(45deg,#55aa7f,#55ff7f,5px ,#ffaaff 0,#ff55ff  20px);
+			width: 200px;
+			height: 200px;
+		}
+		.d{
+			background-image:radial-gradient(transparent 0,transparent 49%,#ffaaff 50%,#3eff8b 100%);
+			width: 200px;
+			height: 200px;
+		}
+		.e{
+			background-image:radial-gradient(#ffaaff ,#3eff8b,#000);
+			width: 300px;
+			height: 200px;
+		}
+		.f{
+			background-image:radial-gradient(circle,#ffaaff ,#3eff8b,#000);
+			width: 300px;
+			height: 200px;
+		}
+		.g{
+			width: 300px;
+			height: 200px;
+			background-image: repeating-radial-gradient(#ffaaff 10% ,#3eff8b 20%,#000 10%);
+		}
+		/* 颜色表盘 */
+		.h{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background: radial-gradient(closest-side, gray, transparent),
+						conic-gradient(red, orange, yellow, green, teal, blue, purple,red);
+		}
+		.i{
+			background:conic-gradient(red, orange, yellow, green, teal, blue, purple);
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+		}
+		/* 起始处与结尾处衔接不够自然 添加第一个元素在末尾 */
+		.j{
+			background:conic-gradient(red, orange, yellow, green, teal, blue, purple,red);
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+		}
+		.k{
+			width: 400px;
+			height: 200px;
+			background: conic-gradient(#eee 25%, white 0deg 50%, #eee 0deg 75%, white 0deg) 0 / 20px 20px;
+		}
+		.l{
+		    width: 200px;
+		    height: 200px;
+		    border-radius: 50%;
+		    background: conic-gradient(#ffaaff, 30%, white);
+		    animation: loading 1s linear infinite reverse;
+		}
+		@keyframes loading {
+		    0% { 
+				transform: rotate(0deg); 
+			}
+		    100% {
+				transform: rotate(360deg); 
+			}
+		}
+		.m{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background: conic-gradient(#ffaaff, 30%, white);
+			--mask: radial-gradient(closest-side, transparent 75%, #000 0%);
+			-webkit-mask-image: var(--mask);
+			mask-image: var(--mask);
+			animation: loading 1s linear infinite reverse;
+		}
+		.n{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			position: relative;
+		}
+		.n::before {
+		  content: "";
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;
+		  transform: translate(-50%, -50%);
+		  width: 90%;
+		  height: 90%;
+		  border-radius: 50%;
+		  background-color: #fff;
+		}
+		.n-text{
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;
+		  transform: translate(-50%, -50%);
+		  font-size: 20rpx;
+		  color: #a8c992;
+		}
+		.o{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			/* 写法一： */
+			background: conic-gradient(#ffaaff 0, #ffaaff 20%, #aa55ff 20%, #aa55ff  60%, #aaff7f  60%, #aaff7f   100%);
+			/* 写法二： */
+			/* background: conic-gradient(#ffaaff 0 20%, #aa55ff 30% 70%, #aaff7f  70% 100%); */
+		}
+		.p{
+			width: 400px;
+			height: 300px;
+			background: conic-gradient(#aaaa7f 12.5%, #fff 0 37.5%, #aaaa7f 0 62.5%, #fff 0 87.5%, #aaaa7f 0);
+			background-size: 50px 50px;
+		}
+		.q{
+			width: 400px;
+			height: 300px;
+			background: repeating-conic-gradient(#aaaa7f 0 15deg,  #fff  0 30deg);
+		}
+		
+		/* 表盘信用分 */
+		body {
+		    background: #fff;
+		}
+		
+		.bg {
+		    position: relative;
+		    margin: 50px auto;
+		    width: 400px;
+		    height: 400px;
+		    border-radius: 50%;
+		    background: conic-gradient(
+		        #f1462c 0%,
+		        #fc5d2c 12.4%,
+		        #fff 12.5%,
+		        #fff 12.5%,
+		        #fc5d2c 12.5%,
+		        #fba73e 24.9%,
+		        #fff 24.9%,
+		        #fff 25%,
+		        #fba73e 25%,
+		        #e0fa4e 37.4%,
+		        #fff 37.4%,
+		        #fff 37.5%,
+		        #e0fa4e 37.5%,
+		        #12dd7e 49.9%,
+		        #fff 49.9%,
+		        #fff 50%,
+		        #12dd7e 50%,
+		        #0a6e3f 62.4%,
+		        #fff 62.4%,
+		        #fff 62.5%
+		    );
+		    transform: rotate(-112.5deg);
+		    transform-origin: 50% 50%;
+		}
+		
+		.bg::before {
+		    content: "";
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    width: 370px;
+		    height: 370px;
+		    border-radius: 50%;
+		    background: #fff;
+		}
+		
+		.bg::after {
+		    content: "";
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    width: 320px;
+		    height: 320px;
+		    border-radius: 50%;
+		    background: radial-gradient(
+		            #fff 0%,
+		            #fff 25%,
+		            transparent 25%,
+		            transparent 100%
+		        ),
+		        conic-gradient(
+		            #f1462c 0 12.5%,
+		            #fba73e 0 25%,
+		            #e0fa4e 0 37.5%,
+		            #12dd7e 0 50%,
+		            #0a6e3f 0 62.5%,
+		            #fff 0 100%
+		        );
+		}
+		
+		.point {
+		    position: absolute;
+		    width: 30px;
+		    height: 30px;
+		    transform: translate(-50%, -50%);
+		    left: 50%;
+		    top: 50%;
+		    background: radial-gradient(#467dc6 0%, #a4c6f3 100%);
+		    border-radius: 50%;
+		    z-index: 999;
+		}
+		
+		.point::before {
+		    content: "";
+		    position: absolute;
+		    width: 5px;
+		    height: 350px;
+		    left: 50%;
+		    top: 50%;
+		    transform: translate(-50%, -50%) rotate(0);
+		    border-radius: 100% 100% 5% 5%;
+		    background: linear-gradient(
+		        180deg,
+		        #9bc7f6 0,
+		        #467dc6 50%,
+		        transparent 50%,
+		        transparent 100%
+		    );
+		    animation: rotate 3s cubic-bezier(.93, 1.32, .89, 1.15) infinite;
+		}
+		
+		@keyframes rotate {
+		    50% {
+		        transform: translate(-50%, -50%) rotate(150deg);
+		    }
+		    100% {
+		        transform: translate(-50%, -50%) rotate(150deg);
+		    }
+		}
+
+	</style>
+
+	<body>
+		<section>
+			<h1>一个简单的例子conic-gradient</h1>
+			<div class="a"></div>
+		</section>
+		<section>
+			<h1>一个简单的例子linear-gradient</h1>
+			<div class="b"></div>
+		</section>
+		<section>
+			<h1>一个例子repeating-linear-gradient</h1>
+			<div class="c"></div>
+		</section>
+		<section>
+			<h1>一个例子radial-gradient</h1>
+			<div class="d"></div>
+		</section>
+		<section>
+			<h1>一个例子radial-gradient椭圆形 Ellipse（默认）：</h1>
+			<div class="e"></div>
+		</section>
+		<section>
+			<h1>一个例子radial-gradient圆形 Circle：</h1>
+			<div class="f"></div>
+		</section>
+		<section>
+			<h1>一个重复的radial-gradient</h1>
+			<div class="g"></div>
+		</section>
+		
+		<section>
+			<h1>conic-gradient实现颜色表盘</h1>
+			<div class="h"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现颜色表盘</h1>
+			<div class="i"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现颜色表盘</h1>
+			<div class="j"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现棋盘效果</h1>
+			<div class="k"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现扇形扫描效果</h1>
+			<div class="l"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现圆弧loading效果</h1>
+			<div class="m"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现圆弧进度条效果</h1>
+			<div class="n" style="background-image:conic-gradient(from -180deg,#a8c992 77%,#ebebeb 0%)">
+				<text class="n-text">77%</text>
+			</div>
+		</section>
+		<section>
+			<h1>conic-gradient实现饼图</h1>
+			<div class="o"></div>
+		</section>
+		<section>
+			<h1>conic-gradient实现菱形背景图</h1>
+			<div class="p"></div>
+		</section>
+		<section>
+			<h1>重复conic-gradient</h1>
+			<div class="q"></div>
+		</section>
+		<section>
+			<h1>conic-gradient表盘信用分（从别人那学到的，非原创）</h1>
+			<div class="bg">
+			    <div class="point"></div>
+			</div>
+		</section>
+		
+	</body>
+</html>
