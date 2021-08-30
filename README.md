@@ -1,7 +1,7 @@
 # css_demos
 
 #### 介绍
-分享项目过程中遇见的有趣的css样式+一些基本css样式问题
+分享项目过程中遇见的有趣的css样式+一些基本css样式问题，上传源码，并附每一项内容的博客地址，持续更新，相互学习，并非所有案例皆原创，非原创作品会标出，喜欢的关注，star一下~
 
 #### 软件架构
 软件架构说明
@@ -9,15 +9,13 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
+博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
 
-#### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 作品截图
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0830/164727_923cd82a_8576727.png "屏幕截图.png")
+
 
 #### 参与贡献
 
