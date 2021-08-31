@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		section{
+			margin: 40px auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.a{
+			display: flex;
+			align-items: center;
+		}
+		/* 提示框 */
+		.a1,.a2 ,.a3,.a4{
+			width: 200px;
+			height: 120px;
+			border:1px solid #00aaff;
+			position: relative;
+			border-radius: 10px;
+			float: left;
+			margin-right: 40px;
+		}
+			
+		.a2{
+			border:1px solid #ff557f;
+		}
+		.a3{
+			border:1px solid #aa00ff;
+		}
+		.a4{
+			border:1px solid #00ff00;
+		}
+		.a1::before ,.a2::before,.a3::before,.a4::before {
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+		}
+		.a1::after ,.a2::after,.a3::after ,.a4::after {
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+		}
+			
+		.a1::before{
+			bottom: -15px;
+			left: 50%;
+			transform: translate(-50%);
+			border-top: 15px solid #00aaff;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+		}
+		.a1::after{
+			bottom: -14px;
+			left: 50%;
+			transform: translateX(-50%);
+			border-top: 14px solid #fff;
+			border-left: 11px solid transparent;
+			border-right: 11px solid transparent;
+		}
+		
+		.a2::before {
+			border-bottom: 15px solid #ff557f;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+			left: 50%;
+			transform: translate(-50%);
+			top: -15px;
+		}
+		.a2::after {
+			border-bottom: 14px solid #FFF;
+			border-left: 11px solid transparent;
+			border-right: 11px solid transparent;
+			left: 50%;
+			transform: translate(-50%);
+			top: -14px;
+		}
+		
+		.a3::before {
+			border-left: 15px solid #aa00ff;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+			top: 50%;
+			transform: translateY(-50%);
+			right: -15px;
+		}
+		.a3::after {
+			border-left: 14px solid #FFF;
+			border-top: 11px solid transparent;
+			border-bottom: 11px solid transparent;
+			top: 50%;
+			transform: translateY(-50%);
+			right: -14px;
+		}
+		
+		.a4::before {
+			border-right: 15px solid #00ff00;
+			border-top: 12px solid transparent;
+			border-bottom: 12px solid transparent;
+			top: 50%;
+			transform: translateY(-50%);
+			left: -15px;
+		}
+		.a4::after {
+			border-right: 14px solid #FFF;
+			border-top: 11px solid transparent;
+			border-bottom: 11px solid transparent;
+			top: 50%;
+			transform: translateY(-50%);
+			left: -14px;
+		}
+		/* 一个正常的矩形 */
+			
+		.b{
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			font-size: 10px;
+			text-align: center;
+		}
+		.b1{
+			width: 100px;
+			height: 70px;
+			border:5px solid #00aaff;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b2{
+			width: 100px;
+			height: 70px;
+			border:5px solid #00aaff;
+			border-top: 5px solid #ff557f;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b3{
+			width: 100px;
+			height: 70px;
+			border:5px solid #00aaff;
+			border-top: 5px solid #ff557f;
+			border-left: 10px solid #550000;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b4{
+			width: 100px;
+			height: 70px;
+			border:5px solid #00aaff;
+			border-top: 5px solid #ff557f;
+			border-left: 10px solid #550000;
+			border-right:15px solid #3EFF8B;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b5{
+			width: 100px;
+			height: 70px;
+			border:5px solid #00aaff;
+			border-top: 5px solid #ff557f;
+			border-left: 10px solid #550000;
+			border-right:15px solid #3EFF8B;
+			border-bottom:20px solid #ffff7f;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b6{
+			width: 100px;
+			height: 70px;
+			background: pink;
+			border:5px solid #00aaff;
+			border-top: 5px solid #ff557f;
+			border-left: 10px solid #550000;
+			border-right:15px solid #3EFF8B;
+			border-bottom:20px solid #ffff7f;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.b7{
+			width: 50px;
+			height: 0;
+			background: pink;
+			border-top: 40px solid #ff557f;
+			border-left: 40px solid #550000;
+			border-right:40px solid #3EFF8B;
+			border-bottom:40px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b8{
+			width: 0;
+			height: 50px;
+			background: pink;
+			border-top: 40px solid #ff557f;
+			border-left: 40px solid #550000;
+			border-right:40px solid #3EFF8B;
+			border-bottom:40px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b9{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-top: 80px solid #ff557f;
+			border-left: 80px solid #550000;
+			border-right:80px solid #3EFF8B;
+			border-bottom:80px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b10{
+			width: 50px;
+			height: 0;
+			background: pink;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b11{
+			width: 50px;
+			height: 0;
+			border-left: 60px solid #550000;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b11-tixing,.b11-tixing-rotate{
+			width: 50px;
+			height: 0;
+			border-left: 60px solid transparent;
+			border-right:60px solid transparent;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			
+		}
+		.b11-tixing-rotate{
+			transform: rotate(-180deg);
+		}
+		.b11-tixing-rotate p{
+			transform: rotate(180deg);
+		}
+		.b12{
+			width: 50px;
+			height: 0;
+			background: pink;
+			border-top: 60px solid #ff557f;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b13{
+			width: 50px;
+			height: 0;
+			background: pink;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b14{
+			width: 50px;
+			height: 0;
+			background: pink;
+			border-right:60px solid #3EFF8B;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b15{
+			width: 0;
+			height: 50px;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b16{
+			width: 0;
+			height: 50px;
+			border-left: 60px solid #550000;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b17{
+			width: 0;
+			height: 50px;
+			border-top: 60px solid #ff557f;
+			border-right:60px solid #3EFF8B;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b18{
+			width: 0;
+			height: 50px;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			border-bottom:60px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b19{
+			width: 0;
+			height: 50px;
+			border-top: 60px solid #ff557f;
+			border-left: 60px solid #550000;
+			border-right:60px solid #3EFF8B;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		
+		.b20{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-top: 80px solid #ff557f;
+			border-left: 80px solid #550000;
+			border-right:80px solid #3EFF8B;
+			border-bottom:80px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b21{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-left: 80px solid #550000;
+			border-right:80px solid #3EFF8B;
+			border-bottom:80px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b22{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-top: 80px solid #ff557f;
+			border-right:80px solid #3EFF8B;
+			border-bottom:80px solid #ffff7f;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b23{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-top: 80px solid #ff557f;
+			border-left: 80px solid #550000;
+			border-bottom:80px solid #ffff7f;
+			margin-right: 40px;
+			margin-bottom: 10px;
+		}
+		.b24{
+			width: 0;
+			height: 0;
+			background: pink;
+			border-top: 80px solid #ff557f;
+			border-left: 80px solid #550000;
+			border-right:80px solid #3EFF8B;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		/* 三角 */
+		.b25{
+			width: 0;
+			height: 0;
+			border-top: 80px solid #A8C992;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b26{
+			width: 0;
+			height: 0;
+			border-bottom: 80px solid #A8C992;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b27{
+			width: 0;
+			height: 0;
+			border-left: 80px solid #A8C992;
+			border-top: 40px solid transparent;
+			border-bottom:40px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b28{
+			width: 0;
+			height: 0;
+			border-right: 80px solid #A8C992;
+			border-top: 40px solid transparent;
+			border-bottom:40px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b29{
+			height: 0;
+			width: 0;
+			border-color: #6c94c2 #193eaf transparent transparent;
+			border-style: solid solid dashed dashed;
+			border-width: 40px 40px 0 0;
+			margin-right: 20px;
+			margin-bottom: 10px;
+		}
+		.b30{
+			height: 0;
+			width: 0;
+			border-top: 40px solid #a4d1eb;
+			border-right: 80px solid transparent;
+		}
+		.b31{
+			height: 0;
+			width: 0;
+			border-bottom: 40px solid #a4d1eb;
+			border-right: 80px solid transparent;
+		}
+		.b32{
+			height: 0;
+			width: 0;
+			border-top: 40px solid #aa007f;
+			border-left: 80px solid transparent;
+		}
+		.b33{
+			height: 0;
+			width: 0;
+			border-bottom: 40px solid #aa007f;
+			border-left: 80px solid transparent;
+		}
+		.b34{
+			width: 0;
+			height: 0;
+			border-top: 80px solid #A8C992;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.b34::after{
+			content: "";
+			position:absolute;
+			top: -79px;
+			left: -78px;
+			width: 0;
+			height: 0;
+			border-top: 78px solid #fff;
+			border-left: 78px solid transparent;
+			border-right:78px solid transparent;
+		}
+		.b35{
+			padding: 26px;
+			border-top: 1px solid red ;
+			border-right: 1px solid red;
+			transform: rotate(-45deg);
+			margin-right: 50px;
+		}
+		.b36{
+			padding: 26px;
+			border-top: 1px solid red ;
+			border-right: 1px solid red;
+			transform: rotate(45deg);
+			margin-right: 50px;
+		}
+		.b37{
+			padding: 26px;
+			border-top: 10px solid red ;
+			border-right: 10px solid red;
+			transform: rotate(135deg);
+			margin-right: 50px;
+		}
+		.b38{
+			padding: 26px;
+			border-top: 1px solid red ;
+			border-right: 1px solid red;
+			transform: rotate(225deg);
+			margin-right: 50px;
+		}
+		.b39{
+			width: 30px;
+			height: 30px;
+			border-top: 1px solid #3EFF8B ;
+			border-right: 1px solid #3EFF8B ;
+			transform: rotate(225deg);
+			margin-right: 50px;
+		}
+		.b40{
+			width: 30px;
+			height: 30px;
+			border-top: 10px solid #3EFF8B ;
+			border-right: 10px solid #3EFF8B ;
+			transform: rotate(45deg);
+			margin-right: 50px;
+		}
+			
+	
+		.b41{
+			width: 0;
+			height: 0;
+			border-top: 80px solid #A8C992;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.b41::after{
+			content: "";
+			position:absolute;
+			top: -80px;
+			left: -78px;
+			width: 0;
+			height: 0;
+			border-top: 78px solid #fff;
+			border-left: 78px solid transparent;
+			border-right:78px solid transparent;
+		}
+		
+		.b42{
+			width: 0;
+			height: 0;
+			border-bottom: 40px solid #A8C992;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.b42::after{
+			content: "";
+			position:absolute;
+			top: 2px;
+			left: -78px;
+			width: 0;
+			height: 0;
+			border-bottom: 38px solid #fff;
+			border-left: 78px solid transparent;
+			border-right:78px solid transparent;
+		}
+		.b43{
+			width: 0;
+			height: 0;
+			border-left: 40px solid #A8C992;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.b43::after{
+			content: "";
+			position:absolute;
+			top: -80px;
+			left: -41px;
+			width: 0;
+			height: 0;
+			border-left: 40px solid #fff;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+		}
+		.b44{
+			width: 0;
+			height: 0;
+			border-right: 80px solid #A8C992;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.b44::after{
+			content: "";
+			position:absolute;
+			top: -80px;
+			left: 2px;
+			width: 0;
+			height: 0;
+			border-right: 80px solid #fff;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+		}
+		
+		
+		.text{
+		    position: relative;
+		    transform:  perspective(0.5em) rotateX(10deg);
+		    transform-origin: bottom left;
+		    background: lightblue;
+		    display: inline-block;
+		    margin-bottom: 20px;
+		    font-size: 40px;
+		}
+		.text::after {
+		    display: inline-block;
+		    content: 'css实现三角形等';
+		    transform:  perspective(0.5em) rotateX(-10deg);
+		    transform-origin: bottom left;
+		}
+		.sl{
+		   width: 0;
+		   height: 0;
+		   border-top: 80px solid #A8C992;
+		   border-left: 80px solid transparent;
+		   border-right:80px solid transparent;
+		   border-bottom: 80px solid #A8C992;
+		   margin-right: 20px;
+		   margin-bottom: 10px;
+		}
+		
+		.s2{
+			width: 0;
+			height: 0;
+			border-left: 80px solid #A8C992;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.s2::before{
+			content: "";
+			position:absolute;
+			top: -80px;
+			left: -82px;
+			width: 0;
+			height: 0;
+			border-left: 80px solid #fff;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+		}
+		 
+			
+		.s2::after{
+			content: "";
+			position:absolute;
+			width: 100px;
+			height: 2px;
+			top: -1px;
+			left: 0;
+			background-color: #A8C992;
+		}
+		
+		.s3{
+			width: 0;
+			height: 0;
+			border-right: 80px solid #A8C992;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+			margin-right: 20px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+			
+		.s3::before{
+			content: "";
+			position:absolute;
+			top: -80px;
+			left: 2px;
+			width: 0;
+			height: 0;
+			border-right: 80px solid #fff;
+			border-top: 80px solid transparent;
+			border-bottom:80px solid transparent;
+		}
+		.s3::after{
+			content: "";
+			position:absolute;
+			width: 100px;
+			height: 2px;
+			top: -1px;
+			right: 0;
+			background-color: #A8C992;
+		}
+		.s_text{
+			margin: 0 120px;
+			font-size: 30px;
+			text-shadow:1px 1px 1px #3EFF8B;
+		}
+		
+	</style>
+	<body>
+		<section>
+			<div class="text"></div>
+		</section>
+		<section>
+			<h4>提示框实现原理：一个正常的圆角矩形+两个伪元素实现的三角形，其中一个三角形背景色为白色并且小于有颜色的三角形</h4>
+		</section>
+		<section>
+			<div class="a">
+				<div class="a1"></div>
+				<div class="a2"></div>
+				<div class="a3"></div>
+				<div class="a4"></div>
+			</div>
+		</section>
+		<section>
+			<h4>来看一个正常的矩形变化过程</h4>
+			<div class="b">
+				<div class="b1">设置了border正常宽高</div>
+				<div class="b2">border-top</div>
+				<div class="b3">border-right</div>
+				<div class="b4">border-left</div>
+				<div class="b5">border-bottom</div>
+				<div class="b6">background</div>
+				
+			</div>
+		</section>
+		<section>
+			<h4>改变矩形的宽高</h4>
+			<div class="b">
+				<div class="b7">高度为0</div>
+				<div class="b8">宽度为0</div>
+				<div class="b9">宽高为0</div>
+			</div>
+		</section>
+		<section>
+			<h4>高度为0:梯形+三角</h4>
+			<div class="b">
+				<div class="b10">高为0，出现梯形+三角</div>
+				<div class="b11">去掉border-top</div>
+				<div class="b11-tixing"><p>得到梯形</p></div>
+				<div class="b11-tixing-rotate"><p>rotate旋转</p></div>
+				<div class="b12">去掉border-left</div>
+				<div class="b13">去掉border-right</div>
+				<div class="b14">去掉border-bottom</div>
+			</div>
+		</section>
+		<section>
+			<h4>宽度为0：梯形+三角</h4>
+			<div class="b">
+				<div class="b15">宽为0，梯形+三角</div>
+				<div class="b16">去掉border-top</div>
+				<div class="b17">去掉border-left</div>
+				<div class="b18">去掉border-right</div>
+				<div class="b19">去掉border-bottom</div>
+			</div>
+		</section>
+		<section>
+			<h4>宽高都为0：三角！！！</h4>
+			<div class="b">
+				<div class="b20">宽高为0，三角！！</div>
+				<div class="b21">去掉border-top</div>
+				<div class="b22">去掉border-left</div>
+				<div class="b23">去掉border-right</div>
+				<div class="b24">去掉border-bottom</div>
+			</div>
+		</section>
+		<section>
+			<h4>实心三角来了</h4>
+			<div class="b">
+				<div class="b25"></div>
+				<div class="b26"></div>
+				<div class="b27"></div>
+				<div class="b28"></div>
+				<div class="b29"></div>
+				<div class="b30"></div>
+				<div class="b31"></div>
+				<div class="b32"></div>
+				<div class="b33"></div>
+	
+			</div>
+		</section>
+		<section>
+			<h4>空心三角来了</h4>
+			<div class="b">
+				<div class="b34"></div>
+			</div>
+		</section>
+		<section>
+			<h4>空心箭头来了（利用padding或者宽高（宽高必须相等）+rotate实现）实现等边箭头</h4>
+			<div class="b">
+				<div class="b35"></div>
+				<div class="b36"></div>
+				<div class="b37"></div>
+				<div class="b38"></div>
+				<div class="b39"></div>
+				<div class="b40"></div>
+			</div>
+		</section>
+		<section>
+			<h4>空心箭头来了（利用伪元素覆盖）实现等腰箭头</h4>
+			<div class="b">
+				<div class="b41"></div>
+				<div class="b42"></div>
+				<div class="b43"></div>
+				<div class="b44"></div>
+			</div>
+		</section>
+		<section>
+			<h4>一些组合</h4>
+			<div class="sl"></div>
+			<div class="a">
+				<div class="s2"></div>
+				<div class="s_text">css的border，实现三角形</div>
+				<div class="s3"></div>
+			</div>
+		</section>
+		
+	</body>
+</html>
