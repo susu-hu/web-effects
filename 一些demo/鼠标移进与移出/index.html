@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a{
+			margin: 100px auto;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #353535;
+			font-size: 16px;
+		}
+		.icon{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			margin-bottom: 10px;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.text{
+			margin-top: 10px;
+			color: #9a9a9a;
+		}
+		.a1{
+			text-align: center;
+		}
+		.a2{
+			display: none;
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background-color: #55aa7f;
+			color: #fff;
+			cursor: default;
+		}
+	</style>
+	<body>
+		
+		<div class="a" onmouseover="show()" onmouseout="hide()">
+			<div class="a1">
+				<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"  class="icon"/>
+				<p>小苏苏</p>
+				<dd class="text">mouseover+mouseout</dd>
+			</div>
+			<div class="a2">
+				<div>查看</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		function show(){
+			let a1=document.getElementsByClassName("a1")[0];
+			let a2=document.querySelector(".a2");
+			
+			a1.style.display = "none";
+			a2.style.display="block";
+		}
+		function hide(){
+			let a1=document.getElementsByClassName("a1")[0];
+			let a2=document.querySelector(".a2");
+			a1.style.display = "block";
+			a2.style.display="none";
+		}
+	</script>
+</html>
