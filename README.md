@@ -11,15 +11,16 @@
 
 1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
 博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
-1.  设置不同的border，结合伪元素，得到三角形，梯形，空心箭等样式，本案例列举很多，一次性搞懂叭~
+2.  设置不同的border，结合伪元素，得到三角形，梯形，空心箭等样式，本案例列举很多，一次性搞懂叭~
 博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
-
+3.鼠标的移出与移入事件，onmouseover+onmouserout
+4.原生实现图片上传+jq实现+vue实现
 
 #### 作品截图
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0830/164727_923cd82a_8576727.png "屏幕截图.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0901/002950_84d5267f_8576727.png "屏幕截图.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0904/215400_4340f752_8576727.gif "1.gif")
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0905/013406_f65a2bb7_8576727.gif "1.gif")
 #### 参与贡献
 
 1.  Fork 本仓库
