@@ -12,13 +12,13 @@
 1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
 博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
 1.  设置不同的border，结合伪元素，得到三角形，梯形，空心箭等样式，本案例列举很多，一次性搞懂叭~
-博客链接：[https://segmentfault.com/a/1190000040611303](https://segmentfault.com/a/1190000040611303)
+博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
 
 
 #### 作品截图
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0830/164727_923cd82a_8576727.png "屏幕截图.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0901/002950_84d5267f_8576727.png "屏幕截图.png")
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0904/215400_4340f752_8576727.gif "1.gif")
 
 #### 参与贡献
 
