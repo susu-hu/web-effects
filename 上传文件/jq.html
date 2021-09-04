@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.float{    
+		    float:left;    
+		    width : 200px;    
+		    height: 200px;    
+		    overflow: hidden;    
+		    border: 1px solid #CCCCCC;    
+		    border-radius: 10px;    
+		    padding: 5px;    
+		    margin: 5px;    
+		}    
+		img{    
+		    position: relative;    
+		}    
+		.result{    
+		    width: 200px;    
+		    height: 200px;    
+		    text-align: center;    
+		    box-sizing: border-box;    
+		}   
+		#file_input{  
+		    display: none;  
+		}  
+		.delete{  
+		    width: 200px;  
+		    height:200px;  
+		    position: absolute;  
+		    text-align: center;  
+		    line-height: 200px;  
+		    z-index: 10;  
+		    font-size: 30px;  
+		    background-color: rgba(255,255,255,0.8);  
+		    color: #777;  
+		    opacity: 0;  
+		    transition-duration: :0.7s;  
+		    -webkit-transition-duration: 0.7s;   
+		}  
+		.delete:hover{  
+		    cursor: pointer;  
+		    opacity: 1;  
+		}  
+	</style>
+	<body>
+		<div class="container">    
+			<label>请选择一个图像文件：</label>  
+			<button id="select">(重新)选择图片</button>  
+			<button id="add">(追加)图片</button>  
+			<input type="file" id="file_input" multiple/>   
+			<!-- <button id="submit">提交</button> -->
+		</div>  
+	</body>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+	<script>
+		window.onload = function(){ 
+		    //document.getElementById()返回的是DOM对象，而$()返回的是jQuery对象;
+		    //document.getElementById("file_input") == $("#file_input")[0] == $("#file_input").get(0);
+		    var input = document.getElementById("file_input");       
+		    var oSelect = document.getElementById("select");  
+		    var oAdd = document.getElementById("add");  
+		    // var oSubmit = document.getElementById("submit");  
+		    var oInput = document.getElementById("file_input");   
+		    var dataArr = []; // 储存所选图片的结果(文件名和base64数据)  
+		    var fd;  
+		    var result;   
+		    
+		    //判断是否支持FileReader
+		    if(typeof FileReader==='undefined'){    
+		        alert("抱歉，你的浏览器不支持 FileReader");    
+		        input.setAttribute('disabled','disabled'); //添加属性，禁用input   
+		    }else{  
+		        //添加监听事件  
+		        input.addEventListener('change',readFile,false);   //默认值是false，冒泡传递;当值为true，捕获传递 
+		    }    
+		      
+		    function readFile(){   
+		        fd = new FormData(); //FormData方式发送请求    
+		        var iLen = this.files.length;  //获取图片数量
+		        var index = 0;  
+		        for(var i=0;i<iLen;i++){  
+		            if (!input['value'].match(/.jpg|.gif|.png|.jpeg|.bmp/i)){　　//判断上传文件格式    
+		                return alert("上传的图片格式不正确，请重新选择");    
+		            }  
+		            var reader = new FileReader();  //创建FileReader对象
+		            reader.index = i;    
+		            fd.append(i,this.files[i]);  //可以通过fd.get(i)获取FormData()对应的值;
+		            reader.readAsDataURL(this.files[i]);  //转成base64，并存在reader.result里   
+		            reader.fileName = this.files[i].name; 
+		            reader.onload = function(e){
+		                //设置图片信息对象
+		                var imgMsg = {    
+		                    name : this.fileName,//获取文件名    
+		                    base64 : this.result   //reader.readAsDataURL方法执行完后，base64数据储存在reader.result里    
+		                }   
+		                dataArr.push(imgMsg);   //将图片信息对象存到数据数组中
+		                result = '<div class="delete">delete</div><div class="result"><img src="'+this.result+'" alt=""/></div>';    
+		                var div = document.createElement('div');  
+		                div.innerHTML = result;    
+		                div['className'] = 'float';  
+		                div['index'] = index;    
+		                document.getElementsByTagName('body')[0].appendChild(div);  　　//插入dom树
+		 
+		                var img = div.getElementsByTagName('img')[0];
+						console.log(img)
+		                img.onload = function(){    
+		                    var nowHeight = ReSizePic(img); //设置图片大小 
+							   console.log(this.parentNode)
+		                    this.parentNode.style.display = 'block';    
+		                    var oParent = this.parentNode;    
+		                    if(nowHeight){    
+		                        oParent.style.paddingTop = (oParent.offsetHeight - nowHeight)/2 + 'px';    
+		                    }    
+		                } 
+		               
+		                div.onclick = function(){  
+		                    this.remove();                  // 在页面中删除该图片元素  
+		                    delete dataArr[this.index];  // 删除dataArr对应的数据        
+		                } 
+		                
+		                
+		                index++;  
+		            }    
+		        }    
+		    } 
+		 
+		    function ReSizePic(ThisPic) {
+				console.log(ThisPic)
+		        var RePicWidth = 200; //这里修改为您想显示的宽度值    
+		        
+		        var TrueWidth = ThisPic.width; //图片实际宽度    
+		        var TrueHeight = ThisPic.height; //图片实际高度    
+		            
+		        if(TrueWidth>TrueHeight){    
+		            //宽大于高    
+		            var reWidth = RePicWidth;    
+		            ThisPic.width = reWidth;    
+		            //垂直居中    
+		            var nowHeight = TrueHeight * (reWidth/TrueWidth);    
+		            return nowHeight;  //将图片修改后的高度返回，供垂直居中用    
+		        }else{    
+		            //宽小于高    
+		            var reHeight = RePicWidth;    
+		            ThisPic.height = reHeight;    
+		        }    
+		    }   
+		    
+		    /*    
+		    用ajax发送fd参数时要告诉jQuery不要去处理发送的数据，    
+		    不要去设置Content-Type请求头才可以发送成功，否则会报“Illegal invocation”的错误，    
+		    也就是非法调用，所以要加上“processData: false,contentType: false,”    
+		    * */        
+		    function send(){   
+		        var submitArr = [];  
+		        for (var i = 0; i < dataArr.length; i++) {  
+		            if (dataArr[i]) {  
+		                submitArr.push(dataArr[i]);  
+		            }  
+		        }  
+		        // console.log('提交的数据：'+JSON.stringify(submitArr)) 
+		        $.ajax({    
+		            url : 'xxx',    
+		            type : 'post', 
+		            data : JSON.stringify(submitArr),    
+		            dataType: 'json',    
+		            //processData: false,   用FormData传fd时需有这两项    
+		            //contentType: false,    
+		            success : function(data){    
+		                console.log('返回的数据：'+JSON.stringify(data))    
+		          　}
+		        })    
+		    }    
+		 
+		    oSelect.onclick=function(){   
+		        oInput.value = "";   // 先将oInput值清空，否则选择图片与上次相同时change事件不会触发  
+		        //清空已选图片  
+		        $('.float').remove();  
+		        dataArr = [];   
+		        index = 0;          
+		        oInput.click();   
+		    }   
+		  
+		  
+		    oAdd.onclick=function(){  
+		        oInput.value = "";   // 先将oInput值清空，否则选择图片与上次相同时change事件不会触发  
+		        oInput.click();   
+		    }   
+		  
+		  
+		    // oSubmit.onclick=function(){    
+		    //     if(!dataArr.length){    
+		    //         return alert('请先选择文件');    
+		    //     }    
+		    //     send();    
+		    // }    
+		}                  
+	</script>
+</html>

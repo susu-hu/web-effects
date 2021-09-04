@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+	<body>
+	<center>
+		<form action="">
+			<input type="file" id="file" onChange="preview(this)"/><br>
+			<img src="" id="previewimg" width="100px" height="100px"/><br>
+		</form>
+	</center>
+	</body>
+</html>
+<script>
+ //上传图片
+    function preview(obj){
+        var file =  document.getElementById('file').value;//获取文件
+        var index = file.lastIndexOf('.'); //获取最后一位小数点
+        var extension =  file.substr(index +  1);
+        var arr = ['jpeg','png','jpg','gif'];
+        if (isInArray(arr,extension)) {
+            var img = document.getElementById("previewimg");
+            img.src = window.URL.createObjectURL(obj.files[0]);
+            var file = obj.files[0];
+            UpladFile(file);
+        } else {
+            alert('请选择正确的图片格式');
+            return false;
+        }
+    }
+ 
+    //上传文件方法
+    function UpladFile(fileObj) {
+        var form = new FormData(); // FormData 对象
+            form.append("file", fileObj); // 文件对象
+            form.append('_token','{{ csrf_token() }}');
+            xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            xhr.open("post", "http://127.0.0.1/b/1.php", true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+            xhr.send(form); //开始上传，发送form数据
+            xhr.onreadystatechange = function () {
+               var data = xhr.responseText;
+               console.log(data);
+ 
+            }
+    }
+ 
+    /**
+     * 使用循环的方式判断一个元素是否存在于一个数组中
+     * @param {Object} arr 数组
+     * @param {Object} value 元素值
+     */
+    function isInArray(arr,value){
+        for(var i = 0; i < arr.length; i++){
+            if(value === arr[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+ 
+</script>
+

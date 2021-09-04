@@ -12,14 +12,15 @@
 		}
 	</style>
 	<body>
-		<input type="file" onchange="showPreview(this);"/>
+		<input type="file" onchange="showPreview(this)"/>
 		<div id="preview">
 		</div>
 		
 	</body>
 	<script>
 			// var preview = 
-			showPreview(el){
+			function showPreview(el){
+				console.log(el)
 			  var pv = document.getElementById("preview");
 			  // IE5.5~9使用滤镜
 			  if (pv.filters && typeof(pv.filters.item) === 'function'){
@@ -33,7 +34,7 @@
 			      pvImg.style.width = pv.offsetWidth + 'px';
 			      pvImg.style.height = pv.offsetHeight + 'px';
 			      pvImg.src = evt.target.result;
-			      pv.removeChild(0);
+			      // pv.removeChild(0);
 			      pv.appendChild(pvImg);
 			    };
 			    fr.readAsDataURL(el.files[0]);
