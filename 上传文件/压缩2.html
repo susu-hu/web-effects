@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <input type="file"  id="picFile" onchange="readFile(this)"/>  
+        <img style="" id="img" src="" alt="" />
+        <script>
+        function readFile(obj){  
+            var file = obj.files[0];     
+            //判断类型是不是图片 
+             if(!/image\/\w+/.test(file.type)){    
+                        alert("请确保文件为图像类型");  
+                        return false;  
+             }  
+             var reader = new FileReader();  
+             reader.readAsDataURL(file);  
+             reader.onload = function(e){
+                    dealImage(this.result,{width:200},function(base){
+                    　　　　document.getElementById('img').setAttribute('src',base)
+                    });
+             }  
+        } 
+ 
+        /**
+         * 图片压缩，默认同比例压缩
+         * @param {Object} path
+         *   pc端传入的路径可以为相对路径，但是在移动端上必须传入的路径是照相图片储存的绝对路径
+         * @param {Object} obj
+         *   obj 对象 有 width， height， quality(0-1)
+         * @param {Object} callback
+         *   回调函数有一个参数，base64的字符串数据
+         */
+        function dealImage(path, obj, callback){
+         var img = new Image();
+         img.src = path;
+         img.onload = function(){
+          var that = this;
+          // 默认按比例压缩
+          var w = that.width,
+           h = that.height,
+           scale = w / h;
+           w = obj.width || w;
+           h = obj.height || (w / scale);
+          var quality = 0.7;  // 默认图片质量为0.7
+          //生成canvas
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          // 创建属性节点
+          var anw = document.createAttribute("width");
+          anw.nodeValue = w;
+          var anh = document.createAttribute("height");
+          anh.nodeValue = h;
+          canvas.setAttributeNode(anw);
+          canvas.setAttributeNode(anh);
+          ctx.drawImage(that, 0, 0, w, h);
+          // 图像质量
+          if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+           quality = obj.quality;
+          }
+          // quality值越小，所绘制出的图像越模糊
+          var base64 = canvas.toDataURL('image/jpeg', quality );
+          // 回调函数返回base64的值
+          callback(base64);
+         }
+        }
+        </script>
+    </body>
+</html>

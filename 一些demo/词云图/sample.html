@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="https://lib.baomitu.com/echarts/5.1.2/echarts.min.js"></script>
+	<script src="./js/echarts-wordcloud.js"></script>
+	<style>
+		
+	</style>
+	<body>
+		<div id="main" style="height: 300px;"></div>
+	</body>
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+		function a1(){
+			var chart = echarts.init(document.getElementById('main'));
+			var option = {
+			  title: {
+				text: 'sample',
+				left:'center',
+			  },
+			  tooltip: {},
+			  series: [{
+				type: 'wordCloud',
+				shape:'smooth',  //平滑
+				gridSize: 2,
+				sizeRange: [12, 50],
+				left: 'center',
+				top: 'center',
+				// rotationRange: [-90, 90],
+				rotationRange: [-50, 50],
+				shape: 'triangle',
+				width:'100%',
+				height:'100%',
+				textStyle: {
+				  normal: {
+					color: function () {
+					  return 'rgb(' + [
+						Math.round(Math.random() * 160),
+						Math.round(Math.random() * 160),
+						Math.round(Math.random() * 160)
+					  ].join(',') + ')';
+					}
+				  },
+				  emphasis: {
+					shadowBlur: 10,
+					shadowColor: '#333'
+				  }
+				},
+				data: [
+				  {
+					name: 'Authentication',
+					value: 8000,
+					textStyle: {
+					  normal: {
+						color: 'black'
+					  },
+					  emphasis: {
+						color: 'red',
+					  }
+					}
+				  },
+				  {"name": "美女","value": "7568"},
+				  {"name": "杨洋欧巴","value": "7001"},
+				  {"name": "程序媛","value": "622"},
+				  {"name": "超级无敌帅","value": "579"},
+				  {"name": "vue","value": "479"},
+				  {"name": "React","value": "443"},
+				  {"name": "前端","value": "386"},
+				  {"name": "Spring Boot","value": "3475"},
+				  {"name": "Spring clound","value": "327"},
+				  {"name": "javascript","value": "2988"},
+				  {"name": "vantWeapp","value": "2568"},
+				  {"name": "微信小程序","value": "213"},
+				  {"name": "uniapp","value": "188"},
+				  {"name": "H5","value": "178"},
+				  {"name": "嘻嘻哈哈","value": "171"},
+				  {"name": "web前端","value": "136"},
+				  {"name": "全栈开发","value": "114"},
+				  {"name": "苏苏就是小苏苏","value": "98"},
+				  {"name": "哒哒哒","value": "75"},
+				  {"name": "Java","value": "46"},
+				  {"name": "NUIST","value": "38"},
+				  {"name": "Gitee","value": "26"}
+				]
+			  }]
+			};
+			chart.setOption(option)
+		}
+		a1()
+	</script>
+</html>

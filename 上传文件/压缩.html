@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" multiple="multiple"  accept="image/*" onchange="loadImg(this)">
+    <hr>
+    <div>800×449，544KB</div>
+    <img src="" alt="">
+    <hr>
+    <div>400×224，157KB</div>
+    <canvas></canvas>
+
+    <script>
+        //  上传图片
+        function loadImg(me) {
+            let img = document.querySelector('img');
+            let cvs = document.querySelector('canvas');
+            let file = me.files[0];    //  获取到文件对象
+            //  上传的图片大于 500KB 时才压缩
+            if (file && (file.size / 1024 > 500)) {
+                let reader = new FileReader();
+                reader.readAsDataURL(file);     //  转成 base64 编码
+                reader.onload = function (e) {
+                    let naturalBase64 = e.target.result;    //  获取 base64 编码，这是原图的
+                    img.src = naturalBase64;
+					calcBase(naturalBase64)
+                    img.onload = function () {
+                        let ratio = img.naturalWidth / img.naturalHeight; //  获取原图比例,为了等比压缩
+                        cvs.width = 400;
+                        cvs.height = cvs.width / ratio;
+                        let ctx = cvs.getContext('2d');
+                        ctx.drawImage(img, 0, 0, cvs.width, cvs.height);    //  画在 canvas 上
+                        // 压缩后新图的 base64
+                        let zipBase64 = cvs.toDataURL();
+						calcBase(zipBase64)
+                    }
+                }
+            }
+        }
+		function calcBase(baseStr){
+		    var tag = 'base64,';
+		    baseStr = baseStr.substring(baseStr.indexOf(tag)+tag.length);
+		    var eqTagIndex = baseStr.indexOf('=');
+		    baseStr = eqTagIndex!=-1?baseStr.substring(0,eqTagIndex):baseStr;
+		    var strLen = baseStr.length;
+		    var fileSize = strLen - (strLen / 8) * 2;
+		    console.log("文件大小:" + (fileSize / 1024).toFixed(1) + 'KB');
+		}
+    </script>
+</body>
+
+</html>

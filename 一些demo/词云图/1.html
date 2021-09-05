@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="https://lib.baomitu.com/echarts/5.1.2/echarts.min.js"></script>
+	<script src="./js/echarts-wordcloud.js"></script>
+	<body>
+		<div  style="height: 300px;" id="mycloud"></div>
+	</body>
+	<script>
+		function echartsCloud(){
+		var myChart = echarts.init(document.getElementById('mycloud'));
+		myChart.setOption({
+			title: {
+				text: ''
+			},
+			tooltip: {},
+			series: [{
+				type : 'wordCloud',  //类型为字符云
+				shape:'smooth',  //平滑
+				gridSize : 8, //网格尺寸
+				size : ['50%','50%'],
+				//sizeRange : [ 50, 100 ],
+				rotationRange : [-45, 0, 45, 90], //旋转范围
+				textStyle : {
+					color: function() {
+						return 'rgb(' + 
+						Math.round(Math.random() * 255) + ', '
+						+ Math.round(Math.random() * 255) +', ' 
+						+ Math.round(Math.random() * 255) + ')'
+					}
+				},
+				left: 'center',
+				top: 'center',
+				right: null,
+				bottom: null,
+				width:'100%',
+				height:'100%',
+				data:[
+					{"name": "美女","value": "756"},
+					{"name": "杨洋欧巴","value": "701"},
+					{"name": "程序媛","value": "622"},
+					{"name": "超级无敌帅","value": "579"},
+					{"name": "vue","value": "479"},
+					{"name": "React","value": "443"},
+					{"name": "前端","value": "386"},
+					{"name": "Spring Boot","value": "345"},
+					{"name": "Spring clound","value": "327"},
+					{"name": "javascript","value": "298"},
+					{"name": "vantWeapp","value": "256"},
+					{"name": "微信小程序","value": "213"},
+					{"name": "uniapp","value": "188"},
+					{"name": "H5","value": "178"},
+					{"name": "嘻嘻哈哈","value": "171"},
+					{"name": "web前端","value": "136"},
+					{"name": "全栈开发","value": "114"},
+					{"name": "苏苏就是小苏苏","value": "98"},
+					{"name": "哒哒哒","value": "75"},
+					{"name": "Java","value": "46"},
+					{"name": "NUIST","value": "38"},
+					{"name": "Gitee","value": "26"}],
+				}]
+			});
+		}
+		echartsCloud()
+	</script>
+</html>

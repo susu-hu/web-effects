@@ -112,8 +112,8 @@
 							fileReader.readAsDataURL(file[i]);
 							//readAsDataURL方法将图片转为base64格式存储于result中
 							let imgSize=file[i].size;
-							if(imgSize>1024*1024*1){
-								return alert("上传图片不能超过1M");
+							if(imgSize>1024*1024*10){
+								return alert("上传图片不能超过10M");
 							} 
 							if(file[i].type != 'image/png' && file[i].type != 'image/jpeg' && file[i].type != 'image/gif'){
 								return alert("图片上传格式不正确");
@@ -126,6 +126,7 @@
 									this.img_list.push(img);
 									this.showAdd=false;
 								}
+								this.uploadImg(img_list)
 							})
 							// 上传失败
 							fileReader.onerror=((res)=>{
@@ -135,6 +136,9 @@
 					},
 					del(index){
 						this.img_list.splice(index,1)
+					},
+					uploadImg(imgList){
+						
 					}
 				},
 				
