@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .video_player {
+            position: relative;
+            width: 1000px;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .video_player video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video_player .menu {
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 0;
+            left: 0;
+        }
+
+        .video_player .menu .play {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .video_player .menu .play:hover {
+            background-color: rgb(219, 74, 74);
+        }
+
+        .time {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            top: 50%;
+            left: 100px;
+            transform: translateY(-50%);
+        }
+
+        /* 进度条 */
+        .progress_bar {
+            position: absolute;
+            top: -6px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #ccc;
+            transition: height .2s linear, top .2s linear;
+        }
+
+        .progress_bar>div {
+            width: 0px;
+            height: 100%;
+            background-color: rgb(250, 139, 12);
+        }
+
+        .progress_bar>i {
+            position: absolute;
+            top: -2px;
+            left: 0px;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 20px;
+            transition: height .2s linear, top .2s linear, width .2s linear;
+        }
+
+        /* 倍数 */
+        li {
+            list-style: none;
+        }
+
+        .speed {
+            position: absolute;
+            top: 50%;
+            right: 150px;
+            transform: translateY(-50%);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .speed div {
+            width: 50px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .speed ul {
+            position: absolute;
+            top: -170px;
+            left: -4px;
+            padding-bottom: 25px;
+            display: none;
+        }
+
+        .speed ul li {
+            padding: 0 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .speed ul li:nth-of-type(1) {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .speed ul li:nth-last-of-type(1) {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .speed ul li:hover {
+            background-color: rgb(219, 74, 74);
+        }
+
+        .speed div:hover {
+            background-color: rgb(219, 74, 74);
+        }
+
+        /* 音量 */
+        .volume {
+            position: absolute;
+            top: 50%;
+            right: 80px;
+            transform: translateY(-50%);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .volume>span {
+            display: block;
+            width: 50px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .volume>span:hover {
+            background-color: rgb(219, 74, 74);
+        }
+
+        .volume .Controller {
+            position: absolute;
+            top: -170px;
+            width: 50px;
+            height: 150px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .volume .Controller div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            width: 5px;
+            height: 100px;
+            background-color: #ccc;
+
+        }
+
+        .volume .Controller div::before {
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 100px;
+            background-color: rgb(250, 139, 12);
+            ;
+        }
+
+        .volume .Controller div::after {
+            position: absolute;
+            content: '';
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 10px;
+        }
+/* 全屏 */
+        .full {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video_player">
+        <video src="https://static.51dh.com.cn/dbp/12/98/4494bd8a6e0fcd4a992f25a42bea28f8d1fb.mp4"></video>
+        <div class="menu">
+            <div class="play">播放</div>
+            <div class="time"></div>
+            <div class="progress_bar">
+                <div></div>
+                <i></i>
+            </div>
+            <div class="speed">
+                <div>倍数</div>
+                <ul>
+                    <li>0.5x</li>
+                    <li>1.0x</li>
+                    <li>1.5x</li>
+                    <li>1.25x</li>
+                    <li>2.0x</li>
+                </ul>
+            </div>
+            <div class="volume">
+                <span>音量</span>
+                <div class="Controller">
+                    <div></div>
+                    <i></i>
+                </div>
+            </div>
+            <div class="full">全屏</div>
+        </div>
+    </div>
+    <script>
+
+        var video = document.getElementsByTagName('video')[0];
+        var play = document.getElementsByClassName('play')[0];
+        var time = document.getElementsByClassName('time')[0];
+        var bar = document.getElementsByClassName('progress_bar')[0];
+        var Current = bar.getElementsByTagName('div')[0];
+        var Dot = bar.getElementsByTagName('i')[0];
+        var speed = document.getElementsByClassName('speed')[0].getElementsByTagName('div')[0];
+        var ul = document.getElementsByClassName('speed')[0].getElementsByTagName('ul')[0];
+        var Controller = document.getElementsByClassName('Controller')[0];
+        var volume = document.getElementsByClassName('volume')[0].getElementsByTagName('span')[0];
+        var full = document.getElementsByClassName('full')[0];
+        var video_player = document.getElementsByClassName('video_player')[0]
+        var timer = null;
+        var lock = true;
+        play.onclick = function () {
+            if (video.paused) {  //判断是否已经播放了，如果还没播放，返回true 
+                video.play();  //触发方法，播放视频
+                play.innerHTML = "暂停";    //修改 文字。
+            } else {
+                video.pause(); //暂停播放。
+                play.innerHTML = "播放";
+            }
+        }
+        video.onloadedmetadata = function () {// 视频加载完成触发,然后我们把时间添加到time标签上去。
+            time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
+        }
+
+        setInterval(function () { //每隔 1秒，刷新一下时间。
+            time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
+            Current.style.width = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
+            Dot.style.left = video.currentTime / video.duration * parseInt(window.getComputedStyle(video, null).width) + "px";
+        }, 1000)
+
+        bar.onmouseover = function () {  //鼠标进入的时候，进度条变大
+            this.style.top = '-10px';
+            this.style.height = '10px';
+            Dot.style.width = '18px';
+            Dot.style.height = '18px';
+            Dot.style.top = '-5px';
+        }
+        bar.onmouseout = function () {
+            this.style.top = '-6px';
+            this.style.height = '6px';
+            Dot.style.width = '10px';
+            Dot.style.height = '10px';
+            Dot.style.top = '-2px';
+        }
+
+        bar.onmousedown = function (e) { // 鼠标点击的时候，跳转
+            Current.style.width = e.layerX + 'px'; //e.layerX 是点击的时候的位置。
+            Dot.style.left = e.layerX + 'px';
+            video.currentTime = e.layerX / parseInt(window.getComputedStyle(video, null).width) * video.duration; //计算出点击的位置在总时间里面占多少。
+            time.innerHTML = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60) + "/" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60);
+        }
+
+        // 倍数
+        speed.onclick = function () {
+            ul.style.display = 'block';
+            this.style.backgroundColor = 'rgb(219, 74, 74)';
+        }
+
+        speed.onmouseout = function () {
+            ul.style.display = 'none';
+            this.style.backgroundColor = '';
+        }
+
+        ul.onmouseover = function () {
+            ul.style.display = 'block';
+            speed.style.backgroundColor = 'rgb(219, 74, 74)';
+        }
+        ul.onmouseout = function () {
+            ul.style.display = 'none';
+            speed.style.backgroundColor = '';
+        }
+
+        var lis = ul.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                video.playbackRate = parseFloat(this.innerHTML); //调节倍数 0 到正无穷
+                speed.innerHTML = this.innerHTML;
+            }
+        }
+
+        // 音量
+        volume.onclick = function () {
+            Controller.style.display = 'block';
+            this.style.backgroundColor = 'rgb(219, 74, 74)';
+        }
+
+        Controller.getElementsByTagName('div')[0].onmousedown = function (e) {
+            this.onmousemove = function (e) {
+                if (100 - e.offsetY > 100) {  // 这里为什么要减100 是因为，Y的顶点是0， 但是我们日常是用顶点是100，把数倒了而已。
+                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px'); // 修改伪元素。 因为我用的是伪元素做音量条
+                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
+                    video.volume = 1;       // 修改音量。 0-1 之间， 1是默认音量
+                } else if (100 - e.offsetY < 0) {
+                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
+                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
+                    video.volume = 0;
+                } else {
+                    document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (100 - e.offsetY) + 'px');
+                    document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (100 - e.offsetY) + 'px');
+                    video.volume = (100 - e.offsetY) * 0.01;
+                }
+
+            }
+            this.onmouseout = function () {
+                Controller.onmousemove = function (e) {
+                    if (150 - e.offsetY - 25 > 100) {
+                        document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 100px');
+                        document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 100px');
+                        video.volume = 1;
+                    } else if (150 - e.offsetY - 25 < 0) {
+                        document.styleSheets[0].addRule('.volume .Controller div::before', 'height: 0px');
+                        document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: 0px');
+                        video.volume = 0;
+                    } else {
+                        document.styleSheets[0].addRule('.volume .Controller div::before', 'height: ' + (150 - e.offsetY - 25) + 'px');
+                        document.styleSheets[0].addRule('.volume .Controller div::after', 'bottom: ' + (150 - e.offsetY - 25) + 'px');
+                        video.volume = (150 - e.offsetY - 25) * 0.01;
+                    }
+                    Controller.getElementsByTagName('div')[0].onmouseover = function () {
+                        Controller.onmousemove = false;
+                        Controller.getElementsByTagName('div')[0].onmousemove = false;
+                    }
+
+                }
+            }
+            document.body.onmouseup = function () {
+                Controller.onmousemove = false;
+                Controller.getElementsByTagName('div')[0].onmousemove = false;
+                Controller.getElementsByTagName('div')[0].onmouseout = false;
+                Controller.style.display = 'none';
+                volume.style.backgroundColor = '';
+            }
+        }
+
+        // 全屏
+        full.onclick = function () {
+            if (lock) {  //声明一个变量来当状态。
+                lock = false;
+                video_player.style.height = window.screen.height + 'px'; //获取屏幕的宽高
+                video_player.style.width = window.screen.width + 'px';
+                document.documentElement.requestFullscreen();   //全屏模式
+                full.innerHTML = '退出';
+            } else {
+                lock = true;
+                video_player.style.height = 500 + 'px';
+                video_player.style.width = 1000 + 'px';
+                document.exitFullscreen();   //退出全屏
+                full.innerHTML = '全屏';
+            }
+        }
+    </script>
+</body>
+
+</html>
