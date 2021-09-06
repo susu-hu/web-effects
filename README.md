@@ -16,6 +16,7 @@
 3.  鼠标的移出与移入事件，onmouseover+onmouserout
 4.  原生实现图片上传+jq实现+vue实现
 5.  echarts-wordcloud实现词云图
+6.  css的filter属性（滤镜）
 #### 作品截图
 1.
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0830/164727_923cd82a_8576727.png "屏幕截图.png")
@@ -30,6 +31,8 @@
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0905/013406_f65a2bb7_8576727.gif "1.gif")
 5.
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0905/232748_811d3c7d_8576727.png "屏幕截图.png")
+6.
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0906/234706_c91bd89c_8576727.png "屏幕截图.png")
 #### 参与贡献
 
 1.  Fork 本仓库
