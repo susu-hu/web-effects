@@ -18,6 +18,7 @@
 5.  echarts-wordcloud实现词云图
 6.  css的filter属性（滤镜）[https://blog.csdn.net/qq_48085286/article/details/120164101](https://blog.csdn.net/qq_48085286/article/details/120164101)
 7.  一些动感的加载动画
+8.  css实现彩虹loading
 #### 作品截图
 1.
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0830/164727_923cd82a_8576727.png "屏幕截图.png")
@@ -36,6 +37,8 @@
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0906/234706_c91bd89c_8576727.png "屏幕截图.png")
 7.
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0907/235529_2f897131_8576727.png "屏幕截图.png")
+8.
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0909/002121_91cba916_8576727.gif "GIF.gif")
 #### 参与贡献
 
 1.  Fork 本仓库
