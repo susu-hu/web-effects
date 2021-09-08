@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.loader-dots view{
+		  width: 10px;
+		  height: 10px;
+		  background: #3ac;
+		  border-radius: 50%;
+		  display:inline-block;
+		  animation: slide 1s infinite;
+		}
+		.loader-dots view:nth-child(1){
+		  animation-delay:.1s;
+		}
+		.loader-dots view:nth-child(2){
+		  animation-delay:.2s;
+		}
+		.loader-dots view:nth-child(3){
+		  animation-delay:.3s;
+		}
+		.loader-dots view:nth-child(4){
+		  animation-delay:.4s;
+		  background: linear-gradient(#9403b8,#3ac)
+		}
+		.loader-dots view:nth-child(5){
+		  animation-delay:.5s;
+		  background:radial-gradient(#6d9b93,#3ac)
+		}
+		@keyframes slide{
+		  0%{
+		    transform: scale(1)
+		  }
+		  50%
+		  {
+		    opacity:0.3;
+		    transform:scale(2);
+		  }
+		  100%{
+		    transform: scale(1)
+		  }
+		}
+	</style>
+	<body>
+		<section>
+			<div class="loader-dots">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</section>
+	</body>
+</html>
