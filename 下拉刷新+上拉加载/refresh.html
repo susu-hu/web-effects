@@ -3,11 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Document</title>
+	<title>下拉刷新</title>
 	<style type="text/css">
-		html,body,header,div,main,p,span,ul,li{ margin: 0; padding: 0; }
-		#refreshContainer li{ background-color: #eee; margin-bottom: 1px; padding: 20px 10px; }
-		.refreshText{ position: absolute; width: 100%; line-height: 50px; text-align: center; left: 0; top: 0; }
+		html,body,header,div,main,p,span,ul,li{ 
+			margin: 0; padding: 0; 
+		}
+		#refreshContainer li{ 
+			background-color: #eee; 
+			margin-bottom: 1px; 
+			padding: 20px 10px; 
+		}
+		.refreshText{ 
+			line-height: 50px;
+			text-align: center; 
+		}
 	</style>
 </head>
 <body>
@@ -64,8 +73,11 @@
 			_element.style.transition = 'transform 0.5s ease 1s';
 			_element.style.transform = 'translateY(0px)';
 			_refreshText.innerText = '更新中...';
-
-			// todo...
+			
+				
+			setTimeout(()=>{
+				_refreshText.innerText = '';
+			},300)
 
 		}, false);
 	})(window);

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>上拉加载</title>
+	<style type="text/css">
+		html,body,header,div,main,p,span,ul,li{
+			margin: 0; padding: 0; 
+		}
+		#refreshContainer li{ 
+			background-color: #eee; 
+			margin-bottom: 1px; 
+			padding: 20px 10px; 
+			text-align: center;
+			color: #550000;
+		}
+		.loadText{ 
+			line-height: 50px;
+			text-align: center; 
+		}
+			
+		.refreshText{
+			line-height: 50px;
+			text-align: center; 
+		}
+		.hd{
+			width:100%;
+			height: 200px;
+			background-color: #aaaaff;
+			position: relative;
+			text-align: center;
+			color: #fff;
+			line-height: 200px;
+			z-index: 999;
+		}
+		.hd1{
+			width:100%;
+			height: 100px;
+			background-color: #f7bed7;
+			text-align: center;
+			color: #fff;
+			line-height: 100px;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<div class="hd1">HEADER</div>
+	<div class="hd">FIXED TAB</div>
+	<p class="refreshText"></p>
+	<ul id="refreshContainer">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+		<li>555</li>
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+		<li>555</li>
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+		<li>555</li>
+	</ul>
+	<p class="loadText"></p>
+</main>
+
+<script type="text/javascript">
+	(function(window) {
+		// 获取当前滚动条的位置 
+		function getScrollTop() { 
+			var scrollTop = 0; 
+			if (document.documentElement && document.documentElement.scrollTop) { 
+				scrollTop = document.documentElement.scrollTop; 
+			} else if (document.body) { 
+				scrollTop = document.body.scrollTop; 
+			} 
+
+			let d=document.getElementsByClassName("hd")[0],a=document.getElementById("refreshContainer"),
+			c=document.getElementsByClassName('hd1')[0];
+
+			if (scrollTop >= c.offsetHeight) {
+				d.style.position="fixed";
+				d.style.top="0";
+				a.style.paddingTop="210px"
+			}else{
+				d.style.position="relative";
+				a.style.paddingTop="0"
+			}
+			return scrollTop; 
+		} 
+
+		// 获取当前可视范围的高度 
+		function getClientHeight() { 
+			var clientHeight = 0; 
+			if (document.body.clientHeight && document.documentElement.clientHeight) { 
+				clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight); 
+			} 
+			else { 
+				clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight); 
+			} 
+			return clientHeight; 
+		}
+		
+		// 获取文档完整的高度 
+		function getScrollHeight() { 
+			return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); 
+		}
+
+		var _text = document.querySelector('.loadText'),
+		_container = document.getElementById('refreshContainer');
+		
+		// 节流函数
+		var throttle = function(method, context){
+			  clearTimeout(method.tId);
+			  method.tId = setTimeout(function(){
+				method.call(context);
+			  }, 300);
+		}
+
+		function fetchData() {
+			setTimeout(function() {
+				for(let i=0;i<10;i++){
+					_container.insertAdjacentHTML('beforeend', '<li>新增'+i+i+i+'</li>');
+				}
+			}, 1000);
+		}
+
+		window.onscroll = function() {
+			if (getScrollTop() + getClientHeight() == getScrollHeight()) {
+				_text.innerText = '加载中...';
+				throttle(fetchData);
+			}
+		};
+		
+		
+		
+		// 下拉刷新
+		var element = document.getElementById('refreshContainer'),
+		  refreshText = document.querySelector('.refreshText'),
+		  startPos = 0,
+		  transitionHeight = 0;
+		
+		element.addEventListener('touchstart', function(e) {
+			console.log('初始位置：', e.touches[0].pageY);
+			startPos = e.touches[0].pageY;
+			// element.style.position = 'relative';
+			element.style.transition = 'transform 0s';
+		}, false);
+		
+		element.addEventListener('touchmove', function(e) {
+			console.log('当前位置：', e.touches[0].pageY);
+			transitionHeight = e.touches[0].pageY - startPos;
+			
+			if (transitionHeight > 0 && transitionHeight < 60) {
+				refreshText.innerText = '下拉刷新';
+				element.style.transform = 'translateY('+transitionHeight+'px)';
+		
+				if (transitionHeight > 55) {
+				  refreshText.innerText = '释放更新';
+				}
+			}				
+		}, false);
+		
+		element.addEventListener('touchend', function(e) {
+			element.style.transition = 'transform 0.5s ease 1s';
+			element.style.transform = 'translateY(0px)';
+			refreshText.innerText = '更新中...';
+			
+				
+			setTimeout(()=>{
+				refreshText.innerText = '';
+			},300)
+		
+		}, false);
+		
+		
+
+	})(window);
+</script>
+</body>
+</html>
