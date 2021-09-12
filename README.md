@@ -19,7 +19,12 @@
 6.  css的filter属性（滤镜）[https://blog.csdn.net/qq_48085286/article/details/120164101](https://blog.csdn.net/qq_48085286/article/details/120164101)
 7.  一些动感的加载动画
 8.  css实现彩虹loading
+9.  原生js实现上拉加载+下拉刷新
 #### 作品截图
+上拉加载+下拉刷新
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0912/120453_5bd14efc_8576727.gif "GIF.gif")
+
 彩虹loading：
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0909/002121_91cba916_8576727.gif "GIF.gif")
