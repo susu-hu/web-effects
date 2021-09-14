@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.susu::after{
+			content: attr(data-tooltip);
+			color: #00AAFF;
+		}
+		.susu::before{
+			content: attr(data-type);
+			color: #080915;
+		}
+		.susu{
+			color: green;
+		}
+		.a:after {
+		    content: " 苏苏" attr(href) "苏苏";
+		}
+		a{
+			text-decoration: none;
+			color: #333;
+		}
+		.btn {
+			margin-top: 3.75rem;
+		  display: inline-block;
+		  padding: 5px 20px;
+		  border-radius: 4px;
+		  background-color: #6495ed;
+		  color: #fff;
+		  font-size: 14px;
+		  text-decoration: none;
+		  text-align: center;
+		  position: relative;
+		}
+		.btn::before {
+		  content: attr(data-tip);
+		  width: 80px;
+		  padding: 5px 10px;
+		  border-radius: 4px;
+		  background-color: #000;
+		  color: #ccc;
+		  position: absolute;
+		  top: -30px;
+		  left: 50%;
+		  transform: translate(-50%);
+		  text-align: center;
+		  opacity: 0;
+		  transition: all .3s;
+		}
+		.btn::after {
+		  content: '';
+		  border: 8px solid transparent;
+		  border-top: 8px solid #000;
+		  position: absolute;
+		  top: -3px;
+		  left: 50%;
+		  transform: translate(-50%); 
+		  opacity: 0;
+		  transition: all .3s;
+		}
+		.btn:hover::before {
+		  top: -40px;
+		  opacity: 1;
+		}
+		.btn:hover::after {
+		  top: -13px;
+		  opacity: 1;
+		}
+		
+	</style>
+	<body>
+		<div data-tooltip="苏苏我来了" data-type = "css函数" class="susu">attr</div>
+		<p><a href="//www.runoob.com" class="a">菜鸟教程</a></p>
+	
+		<a href="#" class="btn" data-tip="点击作答">一个按钮</a>
+
+		
+	</body>
+</html>

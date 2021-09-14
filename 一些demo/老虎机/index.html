@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		table,td{
+		text-align: center;
+		background-color:white;
+		border:1px solid;
+		border-collapse: collapse;
+		font-size: 200px;
+		}
+		table{
+		width: 900px;
+		height: 300px;
+		}
+		input{
+		position: relative;
+		left: 600px;
+		width: 150px;
+		height: 50px;
+		font-size: 100%;
+		 
+		}
+		p{
+		width: 900px;
+		height: 50px;
+		text-align: center;
+		padding-top: 25px;
+		 
+		}
+	</style>
+	<body>
+		<div>
+			<table id="tab">
+				<tr>
+					<td id='td1'>?</td>
+					 
+					<td id='td2'>?</td>
+					 
+					<td id='td3'>?</td>
+				</tr>
+			</table>
+			</div>
+			<div>
+			<p id="p1"></p>
+			<input type="button" name="" value="Go,Go,Go!!!" οnclick="start()">
+			<input type="button" name="" value="Ssssstop!!!" οnclick="stop()">
+		</div>
+
+	</body>
+	<script>
+		var tag;
+		function num(){
+		var num1=Math.floor(Math.random()*9);
+		var num2=Math.floor(Math.random()*9);
+		var num3=Math.floor(Math.random()*9);
+		document.getElementById("td1").innerHTML=num1;
+		document.getElementById("td2").innerHTML=num2;
+		document.getElementById("td3").innerHTML=num3;
+		}
+		function start(){
+			if(tag!=undefined){
+			clearInterval(tag);
+			}
+			tag=setInterval(num,100);
+			document.getElementById("p1").style.backgroundColor="";
+			document.getElementById("p1").innerHTML="";
+			document.getElementById("td1").style.backgroundColor="white";
+			document.getElementById("td2").style.backgroundColor="white";
+			document.getElementById("td3").style.backgroundColor="white"; 
+			}
+		// tag=self.setInterval(num,50);    //这里每点击一次就会产生一个tag，并且多次触发会导致速度加快
+		// document.getElementById("p1").style.backgroundColor="";
+		// document.getElementById("p1").innerHTML="";
+		// document.getElementById("td1").style.backgroundColor="white";
+		// document.getElementById("td2").style.backgroundColor="white";
+		// document.getElementById("td3").style.backgroundColor="white";
+		}
+		function stop(){
+		 
+		clearInterval(tag);
+		if(document.getElementById("td1").innerHTML==document.getElementById("td2").innerHTML&&document.getElementById("td3").innerHTML==document.getElementById("td2").innerHTML){
+		document.getElementById("td1").style.backgroundColor="yellow";
+		document.getElementById("td2").style.backgroundColor="yellow";
+		document.getElementById("td3").style.backgroundColor="yellow";
+		document.getElementById("p1").style.backgroundColor="yellow";
+		document.getElementById("p1").innerHTML="您中奖啦！！！";
+		}
+		else{
+		document.getElementById("td1").style.backgroundColor="red";
+		document.getElementById("td2").style.backgroundColor="red";
+		document.getElementById("td3").style.backgroundColor="red";
+		document.getElementById("p1").style.backgroundColor="red";
+		document.getElementById("p1").innerHTML="很抱歉您未中奖！！！";
+		}
+		
+		}
+	</script>
+</html>

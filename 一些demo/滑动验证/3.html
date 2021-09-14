@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src='./vd.js'></script>
+</head>
+<body>
+	<div id='picCode'></div>
+	<button id='refresh'>刷新验证码</button>
+	<button id='getCode'>获取验证码</button>
+<script>
+var ww = verifiCode.picVerificationCode({
+	num:5,//验证码个数
+	iconum:20,//背景斑点个数
+	fsize:[18,20,22,16],
+	container:document.getElementById('picCode'),
+	changeBtn:[document.getElementById('refresh')]
+ 
+})
+document.getElementById('getCode').addEventListener('click',function(){
+	var data = verifiCode.getData()
+	console.log(data)
+},true)
+</script>
+</body>
+</html>

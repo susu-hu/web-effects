@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.ball{
+		  height: 100px;
+		  width: 100px;
+		  border-radius: 50%;
+		  position: absolute;
+		  bottom: 40px;
+		  z-index: 10;
+		  left: 40px;
+		  background: greenyellow;
+		}
+		
+		/* //定义动画的流程 */
+		.run_top_right {
+		  display: block;
+		  animation: run-right-right 3s 0.4s 1 linear, run-right-top 3s 0.4s 1 cubic-bezier(.66,.1,1,.41);
+		  /* animation: run-right-right 3s 0.4s 1 linear, run-right-top 3s 0.4s 1 ease-out; */
+		  animation-fill-mode: forwards;/* 设置动画完成后的状态 */
+		}
+		/* forwards：当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。简单说就是定格在最后100%的样子；
+		backwards：在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。就是定格在0%时候的样子 */
+		
+		/* //向上走的动画初始及结尾值 */
+		@keyframes run-right-top {
+		  0% {
+		    bottom: 40px;
+		  }
+		
+		  100% {
+		    bottom: 800px;
+		  }
+		}
+		/* //向上右的动画初始及结尾值 */
+		@keyframes run-right-right {
+		  0% {
+		    left: 40px;
+		    transform: scale(0.7);
+		  }
+		
+		  100% {
+		    left: 600px;
+		    transform: scale(0.45);
+		  }
+		}
+	</style>
+	<body>
+		<div class="ball run_top_right"></div>
+	</body>
+</html>

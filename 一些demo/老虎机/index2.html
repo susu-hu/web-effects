@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.machine {
+		  width: 484px;
+		  height: 513px;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%,-50%);
+		  display: flex;
+		  .machine-body {
+		    width: 400px;
+		    background-color: #c8d0e3;
+		    height: 513px;
+		    border: 14px solid #2e2a27;
+		    border-radius: 34px;
+		    box-sizing: border-box;
+		    .rotary-table {
+		      width: 278px;
+		      border: 16px solid #2e2a27;
+		      border-radius: 16px;
+		      margin: 54px auto 0;
+		      display: flex;
+		      .screen {
+		        width: 82px;
+		        height: 136px;
+		        overflow: hidden;
+		        .images {
+		          list-style: none;
+		          margin: 0;
+		          padding: 0;
+		          border: none;
+		          li {
+		            margin: 0;
+		            padding: 0;
+		            border: 0;
+		            text-align: center;
+		            height: 136px;
+		            line-height: 136px;
+		            font-size: 30px;
+		            background-color: wheat;
+		          }
+		        }
+		        .transtion {
+		          transition: all ease 2s;
+		        }
+		      }
+		    }
+		    .rotary-table :nth-child(1) {
+		      border-right: 16px solid #2e2a27;
+		    }
+		    .rotary-table :nth-child(2) {
+		      border-right: 16px solid #2e2a27;
+		    }
+		    .machine-logo {
+		      width: 240px;
+		      margin: 20px auto 0;
+		      img {
+		        width: 100%;
+		        height: auto;
+		      }
+		    }
+		  }
+		  .base {
+		    width: 34px;
+		    height: 130px;
+		    background-color: #b1b8d4;
+		    border: 14px solid #2e2a27;
+		    border-left: none;
+		    box-sizing: border-box;
+		    border-top-right-radius: 24px;
+		    border-bottom-right-radius: 24px;
+		    transform: translateY(250px);
+		    position: relative;
+		    .handle {
+		      width: 64px;
+		      position: absolute;
+		      left: 30px;
+		      bottom: 28px;
+		      cursor: pointer;
+		      .handle-ball {
+		        width: 34px;
+		        height: 34px;
+		        background-color: #ff6169;
+		        border-radius: 50%;
+		        border: 15px solid #2e2a27;
+		        transform: translateY(2px);
+		      }
+		      .handle-bar {
+		        width: 16px;
+		        height: 106px;
+		        margin: 0 auto;
+		        background-color: #2e2a27;
+		        transform: translateY(1px);
+		      }
+		      .handle-shaft {
+		        width: 56px;
+		        height: 48px;
+		        border: 15px solid #2e2a27;
+		        border-left: none;
+		        border-top-right-radius: 25px;
+		        border-bottom-right-radius: 25px;
+		        background-color: #c8d0e3;
+		        box-sizing: border-box;
+		        margin: 0 auto;
+		      }
+		    }
+		  }
+		}
+		 
+		 
+		.shake {
+		  animation: shake 0.1s infinite;
+		}
+		 
+		 
+		@keyframes shake {
+		  25% {
+		    left: 49.7%;
+		  }
+		  50% {
+		    top: 49.7%;
+		  }
+		  75% {
+		    left: 50%;
+		  }
+		  100% {
+		    top: 50%;
+		  }
+		}
+	</style>
+	<body>
+		<div class="machine">
+		    <div class="machine-body">
+		      <div class="rotary-table">
+		        <div class="screen">
+		          <ul class="images"></ul>
+		        </div>
+		        <div class="screen">
+		          <ul class="images"></ul>
+		        </div>
+		        <div class="screen">
+		          <ul class="images"></ul>
+		        </div>
+		      </div>
+		      <div class="machine-logo">
+		        <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg">
+		      </div>
+		    </div>
+		    <div class="base">
+		      <div class="handle" onclick="start(initImagesArr.length)">
+		        <div class="handle-ball"></div>
+		        <div class="handle-bar"></div>
+		        <div class="handle-shaft"></div>
+		      </div>
+		    </div>
+		  </div>
+	</body>
+	<script>
+		// 以下的images命名可能是考虑老虎机里的内容可能会被替换成水果等其他图片而非数字，所以将相关的内容变量命名为与images相关
+		  // 页面刚加载时三个列表的初始定位
+		  function initPosition(startTranslateYHeight) {
+		    firstImagesList.style.transform = `translateY(${startTranslateYHeight}px)`;
+		    secondsImagesList.style.transform = `translateY(${startTranslateYHeight}px)`;
+		    thirdImagesList.style.transform = `translateY(${startTranslateYHeight}px)`;
+		  }
+		 
+		 
+		  // 全部列表添加过渡效果
+		  function addTranstion() {
+		    firstImagesList.classList.add('transtion');
+		    secondsImagesList.classList.add('transtion');
+		    thirdImagesList.classList.add('transtion');
+		  }
+		 
+		 
+		  // 全部列表删除过渡效果
+		  function removeTranstion(imagesList) {
+		    firstImagesList.classList.remove('transtion');
+		    secondsImagesList.classList.remove('transtion');
+		    thirdImagesList.classList.remove('transtion');
+		  }
+		 
+		 
+		  // 给老虎机添加摇晃动画
+		  function startShake() {
+		    document.getElementsByClassName('machine')[0].classList.add('shake');
+		  }
+		  // 停止老虎机摇晃动画
+		  function stopShake() {
+		    document.getElementsByClassName('machine')[0].classList.remove('shake');
+		  }
+		 
+		 
+		  // 点击第一个是开始，点击第二次是充值游戏
+		  // startTranslateYHeight 列表的初始化时translateY的距离
+		  // imageHeight列表的每一项的高度
+		  // 列表数组的长度
+		  function start(imagesArrLength) {
+		    isStart = !isStart;
+		    // 开始游戏
+		    if (isStart) {
+		      // 开始游戏就给列表加过渡效果
+		      addTranstion();
+		      startShake();
+		 
+		 
+		      // 每个列表滚动的随机结果
+		      let radom1 = Math.floor(Math.random()*imagesArrLength);
+		      let radom2 = Math.floor(Math.random()*imagesArrLength);
+		      let radom3 = Math.floor(Math.random()*imagesArrLength);
+		 
+		 
+		      firstImagesList.style.transform = `translateY(${-imageHeight * radom1}px)`;
+		 
+		 
+		      // 列表2延迟0.5s后滚动
+		      timeout1 = setTimeout(() => {
+		        secondsImagesList.style.transform = `translateY(${-imageHeight * radom2}px)`;
+		      },500)
+		 
+		 
+		      // 列表3延迟1s后滚动
+		      timeout2 = setTimeout(() => {
+		        thirdImagesList.style.transform = `translateY(${-imageHeight * radom3}px)`;
+		      },1000)
+		      // 延迟2.6秒后停止抖动
+		      timeout3 = setTimeout(() => {
+		        stopShake();
+		      },2600)
+		      // 游戏结束后打印结果
+		      timeout4 = setTimeout(() => {
+		        console.log(initImagesArr[radom1],initImagesArr[radom2],initImagesArr[radom3]);
+		      },3000)
+		      // 重置游戏
+		    }else {
+		      // 取消上一次未执行完的方法
+		      clearTimeout(timeout1);
+		      clearTimeout(timeout2);
+		      clearTimeout(timeout3);
+		      clearTimeout(timeout4);
+		      stopShake();
+		      // 重置时因为列表会重新移动到初始位置，所以要清除掉过渡效果
+		      removeTranstion();
+		      // 各个列表回到最初的位置
+		      initPosition(startTranslateYHeight);
+		    }
+		  }
+		 
+		 
+		  // 初始的选项列表
+		  let initImagesArr = [6, 5, 4, 3, 2, 1];
+		  let imagesArr = [6, 5, 4, 3, 2, 1];
+		  // 加长整个选项列表，以完成一个虚假的滚动的效果
+		  new Array(20).fill('').forEach(() => {
+		    imagesArr = imagesArr.concat(...initImagesArr);
+		  })
+		 
+		 
+		  // 获取第一个列表的dom
+		  const firstImagesList = document.getElementsByClassName('images')[0];
+		  const secondsImagesList = document.getElementsByClassName('images')[1];
+		  const thirdImagesList = document.getElementsByClassName('images')[2];
+		  // 构造列表li添加到ul标签中去
+		  imagesArr.forEach(item => {
+		    const li = document.createElement('li');
+		    const li2 = document.createElement('li');
+		    const li3 = document.createElement('li');
+		    li.innerHTML = item;
+		    li2.innerHTML = item;
+		    li3.innerHTML = item;
+		    firstImagesList.appendChild(li);
+		    secondsImagesList.appendChild(li2);
+		    thirdImagesList.appendChild(li3);
+		  });
+		 
+		 
+		 
+		 
+		  // 列表单独一项的高度
+		  const imageHeight = 136;
+		 
+		 
+		  // 获取一列的高度
+		  const listHeight = firstImagesList.scrollHeight;
+		 
+		 
+		  // 初始化列表tranlateY的高度
+		  const startTranslateYHeight = - listHeight + imageHeight;
+		 
+		 
+		  // 游戏是否已经开始
+		  let isStart = false;
+		 
+		 
+		  // 三个setTimeout的返回表示符，前两个是第二列第三列列表开始滚动的延时方法，timeout3是机器停止摇晃动画的延时方法
+		  let timeout1 = null;
+		  let timeout2 = null;
+		  let timeout3 = null;
+		 
+		 
+		  // 页面刚进来时列表位置初始化
+		  initPosition(startTranslateYHeight);
+	</script>
+</html>

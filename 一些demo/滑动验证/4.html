@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./yzm.js"></script>
+	<style>
+		@font-face {font-family: "iconfont";
+		  src: url('iconfont.eot?t=1604237221659'); /* IE9 */
+		  src: url('iconfont.eot?t=1604237221659#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMgAAsAAAAAB1wAAALSAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqCLIF5ATYCJAMMCwgABCAFhG0HUBtZBhEVlJ9kPwvsZpfLcRsUgIxI22wDfXo50zWDZbHB//+Ih//2o903M1/WtKk2bWLEJXFIRNOQPHsoNNqGSEh0vImGvD6xv3prV2dHIW0EMF13bsq7jgeF9uvFi5wOaXVqcfi4AemFFW/5Hu11znLlOHsB4PNcTq8lPr9lOa21beNRL8B4a2B7YpvsAskDwYaxmwge4HkCncatikN/IAimAkwLxM1aJQdmIaIoTr4V6oa1BfEcNG1aJO+BZ/zz8ZcpWkiqDDD3/GVfEc4f9bM7ytz/nCQlIF3OBWcTGasoxKVGz0UUmVmVdUYqalxNrQhpqfj/P5fEuvqgf7xE1ACF3WBRzyZ+1LGA4MfdBglkUGu9J+D2Ak+kSMEVCgcGrvAPvoeOziOHZ+H9k5CitywLdeak0tdL8nB3flKW0YqE3KioNIeapU6/SOXK1lCRiHdH26tZu+x/lvpxEj6SrqJUlo/ZwtMToiKrfH01ZA2iKW1+ioGGN0yiLKtcXlRkTe1Hy5eXTSm2Pwj7mDPBse88dfTjN92rdkffebJwGrwAIJZPyJd//TvepoWHjMD6yuRQAZ93j1f5hLMHBfkBoL0nb/CPpQNrSiwH1lxCCZak3mwtF5LQRa7fGRAY9G26bmRwIaE1kiFpjCFrzdIKaxWVLuuotXbQacW5zV2G3EcRhQWWPdUQ+p0i6fUOWb/3tML6isqo/6j1R0anCyHZs8t8OIzwEG6MJ+w/MEcMEtlZiOIrquI2yss5+4mUTRz6pivnZwxISyzIbzUwS5AUPUzaZehchETxhQc3mjmNbSub3tQc0VeCh3BjPGH/gTlikLQxiwr1V1TFbdRBGgk/kbLpH/qmG0CbNWEQ6VGuyW81MEuQFD1M2ih0LkJqHvXCgxs9IZXGFtaTQzXN9jr/f5ugE6jOkSJHwX/0Ycu3bOGvY1CX/DH1GcvukIzSXDsTsKoAAAA=') format('woff2'),
+		  url('iconfont.woff?t=1604237221659') format('woff'),
+		  url('iconfont.ttf?t=1604237221659') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+		  url('iconfont.svg?t=1604237221659#iconfont') format('svg'); /* iOS 4.1- */
+		}
+		
+		.iconfont {
+		  font-family: "iconfont" !important;
+		  font-size: 16px;
+		  font-style: normal;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+		}
+		
+		.iconicon_xuanzhong:before {
+		  content: "\e66a";
+		}
+		
+		.iconicon-doubleright-line:before {
+		  content: "\e6ee";
+		}
+		
+		*{
+		    padding: 0;
+		    margin: 0;
+		}
+		
+		.wenzi{
+		    position: relative;
+		    width: 300px;
+		    height: 20px;
+		    margin: 0 auto;
+		    margin-top: 5px;
+		}
+		#code_box{
+		   
+		    cursor: pointer;
+		}
+		
+		.image{
+		    position: relative;
+		    width: 300px;
+		    height: 130px;
+		    margin: 0 auto;
+		    margin-top: 10px; 
+		}
+		#slideVerify .chip{
+		    width: 40px;
+		    height: 40px;
+		    position: absolute;
+		}
+		#slideVerify .chip2{
+		    width: 40px;
+		    height: 40px;
+		    position: absolute;
+		    filter: brightness(0.5) opacity(0.5);/*改变滤镜亮度、透明度 */
+		}
+		
+		
+		.box{
+		    position: relative;
+		    width: 300px;
+		    height: 40px;
+		    margin: 0 auto;
+		    margin-top: 5px; 
+		    background-color: #e8e8e8;
+		    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+		}
+		
+		.bgColor{
+		    position: absolute;
+		    left:0;
+		    top:0;
+		    width:40px;
+		    height: 40px;
+		    background-color: #75CDF9;
+		}
+		.txt{
+		    position: absolute;
+		    width: 100%;
+		    height: 40px;
+		    line-height: 40px;
+		    font-size: 14px;
+		    color: #000;
+		    text-align: center;
+		}
+		.slider{
+		    position: absolute;
+		    left:0;
+		    top:0;
+		    width: 50px;
+		    height: 38px;
+		    border: 1px solid #ccc;
+		    background: #fff;
+		    text-align: center;
+		    cursor: move;
+		}
+		.slider>i{
+		    position: absolute;
+		    top:50%;
+		    left:50%;
+		    transform: translate(-50%,-50%);
+		}
+		.slider.active>i{
+		    color:green;
+		}
+
+		
+		
+
+	</style>
+</head>
+
+
+<body>
+    <div class="wenzi">
+    <input type="text" name="yzm">
+    <span id="code_box" >Af3D</span>
+</div>
+
+
+<div id="slideVerify">
+    <div class="image">
+        <div class="chip2"></div>
+        <div class="chip"></div>
+    </div>
+
+    <div class="box" onselectstart="return false;">
+        
+        <div class="bgColor"></div>
+        <div class="txt" >请拖动滑块解锁</div>
+        <!--给i标签添加上相应字体图标的类名即可-->
+        <div class="slider"><i class="icon iconfont iconicon-doubleright-line"></i></div>
+    </div>  
+</div>
+
+<script type="text/javascript">
+    var slideVerify = new SlideVerify("https://i.postimg.cc/mgsKJGLw/susu1.jpg",4);
+</script>
+
+
+<script>
+    var code_box = document.getElementById("code_box");
+
+function refreshCode() {
+
+    //62个字符 随机选择4位
+    var code = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM',
+        char = '',
+        result = '';
+
+    for (var i = 0; i < 4; i++) {
+
+        //随机选择一位  （0,61） 写出0到61的随机的索引数字
+        var code_index = Math.round(Math.random() * 61);
+        //得到随机的索引  取出随机地字符
+        var char = code[code_index];
+        //随机取出的字符 存在几个相同重复的问题 ，而且对于字母，不能区分大小写。
+        // 避免重复的思路是：取出字符之后,和最后的result对比一下，看看里边是不是已经存在了，如果存在本次循环就终止，进行下一次
+        if (result.toUpperCase().indexOf(char.toUpperCase()) > -1)
+        //indexOf() == -1 说明结果里边没有要找的字符 那么 > -1 就是 里边有重复的字符
+        {
+            i--;
+            //为什么会 --？ 因为如果条件成立，那么本轮循环就结束进行下一轮循环（自然i就加1了），那么本轮本应该取出的字符就没有了
+            //到最后会少一个字符 缺席
+            continue;//终止本轮循环 进行下一轮
+        }
+        result += char;
+    }
+    code_box.innerHTML = result;
+}
+//点击事件
+code_box.onclick = refreshCode;
+
+
+</script>
+
+
+
+
+    
+</body>
+</html>
+

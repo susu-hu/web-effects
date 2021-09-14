@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>拖拽滑块验证</title>
+<style>
+*{margin:0;padding: 0;}
+li{list-style: none;}
+.login{
+width:300px;
+height:40px;
+border:1px solid white;
+margin:100px auto; 
+background-color:#E8E8E8; 
+}
+.rect{
+	position: relative;
+	width: 100%;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	user-select: none;
+}
+.bg{
+	position: absolute;	
+	width:0;
+	height: 40px;
+	background-color: #096;
+}
+.slide{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 45px;
+	height: 40px;
+	box-sizing: border-box;/*css3怪异盒模型，不云计算边框像素*/
+	background-color: white;
+	border:1px solid #ccc;
+	cursor: move;
+}
+</style>
+	</head>
+	<body>
+		<div class="login">
+			<div class="bg"></div>
+			<div class="rect">
+				拖拽滑块验证
+				<div class="slide"><img src="" /></div>
+			</div>
+		</div>
+		<script>
+			/*1.在js中获取元素；2获取鼠标点击；3.改变left值
+			*/
+			console.log('')
+			var oSlide=document.querySelector('.slide'),
+				oRect=document.querySelector('.rect'),
+				oBg=document.querySelector('.bg'),
+				oImg=document.querySelector('.slide img'),left=0;
+			slideWidth=oSlide.offsetWidth;
+			rectWidth=oRect.offsetWidth;
+			oSlide.onmousedown=function(e){
+				var initX=e.clientX;//鼠标按下时X值
+				document.onmousemove=function(e){
+					var moveX=e.clientX;
+					left=moveX-initX;
+				/*	if(left<0){left=0;}
+					if(left>rectWidth-slideWidth){left=rectWidth-slideWidth;}
+					*/
+					left=Math.max(left,0);
+					left=Math.min(left,rectWidth-slideWidth);
+					oSlide.style.left=oBg.style.width=left+'px';
+					if(left>=rectWidth-slideWidth){
+						//发送数据0与1
+						oRect.style.color='#fff';
+						oImg.src='success.png';
+					}
+				}
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;//清除移动事件
+				if(left<rectWidth-slideWidth){
+					oSlide.style.left=oBg.style.width=0;
+				}
+			}
+		</script>
+	</body>
+</html>
