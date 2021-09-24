@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="referrer" content="no-referrer">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>推荐</title>
+	</head>
+	<link rel="stylesheet/less" type="text/css" href="css/main.less">
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div>
+			<div class="container_bx">
+				<div class="r_goods_box flex-row">
+					<img src="img/s_left.png" class="ge_icon" id="leftMove" />
+					<div class="r_cen">
+						<div class="flex-row goods_bx" id="goods_bx"></div>
+					</div>
+					<img src="img/s_right.png" class="ge_icon" id="rightMove" />
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="https://cdn.bootcss.com/less.js/3.10.3/less.js"></script>
+	<script>
+		var mr = 0;
+		var goods_list = [
+			{
+				id: 11231,
+				name: '幻想家·艺术玻璃花瓶幻想家·艺术玻璃花瓶幻想家·艺术玻璃花瓶幻想家·艺术玻璃花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/qRRLS16Q/susu0.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 2345345,
+				name: '幻想家·全棉T恤',
+				price: '77.00',
+				img: "https://i.postimg.cc/pXDp6RXq/susu3.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 3345345,
+				name: '墨染陶瓷花器',
+				price: '77.00',
+				img: "https://i.postimg.cc/mgsKJGLw/susu1.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 4444,
+				name: '艾沙·水培花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/76br1jzJ/susu1.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 5456464,
+				name: '幻想家·艺术玻璃花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/Gm7KjGmN/111.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 65464564,
+				name: '幻想家·艺术玻璃花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/65STLQNc/333.webp",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 74564564564,
+				name: '幻想家·艺术玻璃花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/Bv28vfkg/222.webp",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+			{
+				id: 86456456,
+				name: '幻想家·艺术玻璃花瓶',
+				price: '77.00',
+				img: "https://i.postimg.cc/Bn1XpkSn/susu.jpg",
+				desc: '此睡裙采用100%桑蚕丝素元素，印舒时尚舒适适，外穿居家皆可',
+				
+			},
+		];
+		var content='';
+		goods_list.forEach((item,index)=>{
+			content += ' <div class="g_r_item">';
+			content += ' <div class="g_item flex-column">'
+			content += '<img src=' + item.img + ' class="g_i_img" />'
+			content += '<div class="flex-row">'
+			content += ' <p class="g_name text_ellipsis">' + item.name + '</p>'
+			content += '</div>'
+			content += ' <div class="flex-row">'
+			content += '<p class="g_price">¥' + item.price + '</p>'
+			content += '<img src="img/cart.png" class="cart_icon" />'
+			content += '</div>'
+			content += '</div>'
+			content += '</div>'
+			document.getElementById("goods_bx").innerHTML =content;
+		})
+		document.getElementById("goods_bx").style.width=goods_list.length * 271 + 'px';
+		document.getElementById("goods_bx").style.marginLeft=mr * 271 + 'px';
+			
+		document.getElementById("leftMove").onclick=function(){
+			console.log(mr)
+			if (mr < 0) {
+				mr += 1;
+			}
+			document.getElementById("goods_bx").style.marginLeft=mr * 271 + 'px';
+		}
+		
+		document.getElementById("rightMove").onclick=function(){
+			console.log(mr)
+			if (mr > -(goods_list.length + mr)) {
+				mr -= 1;
+			}
+			document.getElementById("goods_bx").style.marginLeft=mr * 271 + 'px';
+		}
+	</script>
+
+</html>

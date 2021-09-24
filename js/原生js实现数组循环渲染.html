@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>将数组的数据循环遍历到HTML中</title>
+	</head>
+
+	<body>
+		<div id="LoveID">
+		</div>
+		
+		<div id="test1"></div><br>
+			<input type="button" οnclick="innerTest()" value="testInnerHTML">
+			<div id="test2"></div><br>
+			<input type="button" οnclick="appendTest()" value="testAppendChild">
+	</body>
+	<script>
+		//自定义字符串,用于拼接标签
+		var loveStr = "";
+
+		//自定义数组
+		var loveArr = [{
+				title: '场景一',
+				textArr: ['喜爱一个人需要理由吗？', '需要吗？', '不需要吗？']
+			},
+			{
+				title: '场景二',
+				textArr: ['不上班行不行？', '不上班你养你啊？', '我养你啊？']
+			},
+		];
+
+		/*
+		 *forEach+map循环
+		 *forEach和map的第一个参数是当前元素，第二个是数组下标
+		 *.join('')的作用是去掉map循环后返回多余的逗号
+		 * 拼接完字符串数组后用innerHTML把它渲染到页面中
+		 */
+		loveArr.forEach(e => {
+				loveStr += `<div class="row">
+                        <div class="title">${e.title}</div>
+                        <div class="text">
+                            ${e.textArr.map((element, index) => {
+                                return `<span>${index + 1}.${element}</span>`
+                            }).join('a')}
+                        </div>
+                    </div>`
+			})
+		document.getElementById("LoveID").innerHTML = loveStr;
+		
+		function innerTest() {
+					var t1 = (new Date()).getTime();
+					var a = "<b>apple</b>";
+					var b = document.getElementById("test1");
+					for (var i = 0; i < 500; i++) {
+						b.innerHTML += a;
+					}
+					t2 = (new Date()).getTime();
+					console.log("testInnerHTML:" + (t2 - t1));
+				}
+		 
+				function appendTest() {
+					var t1 = (new Date()).getTime();
+					var b = document.getElementById("test2");
+					for (var i = 0; i < 500; i++) {
+						var a = document.createElement("b");
+						a.appendChild(document.createTextNode("apple"));
+						b.appendChild(a);
+					}
+					t2 = (new Date()).getTime();
+					console.log("testAppendChild:" + (t2 - t1));
+				}
+		
+	</script>
+
+</html>
