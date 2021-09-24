@@ -21,8 +21,13 @@
 9.  原生js实现上拉加载+下拉刷新
 10.  头部渐变色，鼠标悬浮变色
 11.  box-shadow+radial-gradient+border-image+box-reflect四种方法实现矩形四个角圆点
+12.  原生js实现图片上一张下一张点击
 
 #### 作品截图 
+原生js实现图片上一张下一张点击
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0925/024959_fc7ff3af_8576727.gif "GIF.gif")
+
 矩形四个角圆点
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0924/234227_f173d9c9_8576727.png "屏幕截图.png")
