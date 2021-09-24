@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+	</body>
+	<script>
+		//声明JSON
+		var json = {};
+		json.a= 1;    //第一种赋值方式（仿对象型）
+		json['b'] =2;  //第二种赋值方式（仿数组型）
+		//打印JSON需要用到JSON（JS自带）的一个对象方法stringify
+		//语法如下
+		console.log(json)
+		console.log(JSON.parse(JSON.stringify(json)))
+		//json的遍历
+		//需要注意
+		//在数组里面遍历我们一般使用length获取数组长度
+		//在json里面没有length这个方法
+		//所以使用下面方式遍历
+		var json2 = {};
+		json2[0] =0;
+		json2[1] =1;
+		json2[2] =2;
+		for(var i in json2){
+		    console.log(json2[i]);
+		}
+		
+		myJson = {"name":"susu", "password":"123456"};
+		console.log(myJson.name)
+		console.log(myJson.password)
+		for(var p in myJson){
+		//遍历json对象的每个key/value对,p为key
+			console.log(p)
+			console.log(myJson[p])
+		}
+		
+			
+		function print(){
+			var obj ={"name":"苏苏","password":"123456","department":"技术部","sex":"女","old":20};
+			let str="";
+			for(var p in obj){
+				str = str+obj[p]+',';
+			}
+			return str;
+		}
+		console.log(print())
+		
+		
+		
+
+		
+		
+	</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 300px;
+			height: 300px;
+			background-color: red;
+		}
+	</style>
+	<body>
+		<input type="button" value="点击变化" id="btnId" />
+		<div id="divId"></div>  
+	</body>
+	<script>
+	    //点击按钮修改div的样式
+	    //面向过程
+		// document.getElementById("btnId").onclick=function() {
+		//     document.getElementById("divId").style.backgroundColor="yellow"
+		// }
+		// 面向对象实现方式
+		// function ChangeStyle(btnId,divId,color){
+		//     this.btnObj=document.getElementById("btnId");
+		//     this.divObj=document.getElementById("divId");
+		//     this.color = color;
+		// }
+		// //数据共享的方式来改变样式
+		// ChangeStyle.prototype.aaa = function() {
+		//     console.log(this)    // 此this就是实例对象--即当前对象     
+		//     var that = this;    // 此处必须转存this，因为在function中this表示该点击事件的对象   
+		//     this.btnObj.onclick=function() {
+		//         that.divObj.style.backgroundColor=that.color;
+		//     }
+		// }
+		// //实例化对象
+		// var test = new ChangeStyle("btn", "div", "yellow");
+		// test.aaa();//即打印当前的test实例对象
+		// 　面向对象实现（高级）：
+		//ChangeStyle是构造函数
+		function ChangeStyle(btnObj,divObj,json){
+		    this.btnObj=btnObj;
+		    this.divObj=divObj;
+		    this.json = json;
+		}
+		ChangeStyle.prototype.init = function() {
+		    //点击按钮改变div样式  
+		    var that = this;    // 此处必须转存this，因为在function中this表示该点击事件的对象   
+		    this.btnObj.onclick=function() {
+		        for(var key in that.json){
+		            that.divObj.style[key]=that.json[key];
+		        }
+		    }
+		}
+		//实例化对象
+		var btnObj=document.getElementById("btnId");
+		var divObj=document.getElementById("divId");
+		var json = {"width": "500px","height": "500px","backgroundColor": "green","opacity": "0.1",}
+		var test = new ChangeStyle(btnObj, divObj, json);
+		test.init();//调用方法
+			
+		  var Person = function(name, city){
+				this.name = name;
+				this.city = city || "China";
+			}
+		  var jean = new Person("Jean"); //new 一个新对象
+		  console.log(jean.__proto__.constructor);//隐式链接，指向Person 原型的构造函数（函数带有constructor属性，这一属性指向函数自身） 
+	
+		
+	</script>
+</html>

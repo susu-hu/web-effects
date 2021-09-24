@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		 class Point{
+		        constructor(){
+		
+		        }
+		
+		        fn1(num){
+		            console.log("被调用了")
+		        }
+		    }
+			// 给类添加新方法(这些方法都会加在原型prototype上)
+			Object.assign(Point.prototype,{
+				fn1(){},
+				fn2(){},
+			})
+			
+		    console.log(typeof Point);//function
+		    console.log(Point===Point.prototype.constructor);//true
+		
+		    // 调用实例上的方法其实就是调用原型上的方法
+		    Point.prototype.fn1()//被调用了
+		    var b=new Point();
+			console.log(b);
+		    b.fn1();//被调用了
+		    console.log(b.constructor===Point.prototype.constructor);//true
+		
+		    // Point.prototype.constructor.fn1()//报错
+		    // Point.fn1()//报错
+	</script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin: auto;
+			border: 2px solid #00aa00;
+			margin-bottom: 20px;
+		}
+
+
+		.box-shadow::before {
+			content: "";
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			width: 10px;
+			height: 10px;
+			background: #00aa00;
+			border-radius: 50%;
+			/* box-shadow: h-shadow v-shadow blur spread color inset; */
+			box-shadow: 100px 0 0px #00aa00, 100px 100px 0px #00aa00, 0 100px 0px #00aa00;
+			;
+		}
+
+		.gradient::before {
+			content: "";
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			bottom: -5px;
+			right: -5px;
+			background-repeat: no-repeat;
+			/* background-image: radial-gradient(shape size at position, start-color, ..., last-color); */
+			background-image: radial-gradient(circle at 5px 5px,
+					#00aa00 0,
+					#00aa00 14.5px,
+					#0000 5.5px),
+				radial-gradient(circle at calc(100% - 5px) 5px,
+					#ffaaff 0,
+					#ffaaff 14.5px,
+					#0000 5.5px),
+				radial-gradient(circle at 5px calc(100% - 5px),
+					#5555ff 0,
+					#5555ff 14.5px,
+					#0000 5.5px),
+				radial-gradient(circle at calc(100% - 5px) calc(100% - 5px),
+					#aa55ff 0,
+					#aa55ff 14.5px,
+					#0000 5.5px);
+		}
+		
+		.gradient1::before {
+			content: "";
+			position: absolute;
+			top: -5px;
+			left: -5px;
+			bottom: -5px;
+			right: -5px;
+			background-repeat: no-repeat;
+			/* background-image: radial-gradient(shape size at position, start-color, ..., last-color); */
+			background-image: radial-gradient(circle at 5px 5px,
+					#00aa00 0,
+					#00aa00 4.5px,
+					#0000 5.5px),
+				radial-gradient(circle at calc(100% - 5px) 5px,
+					#ffaaff 0,
+					#ffaaff 4.5px,
+					#0000 5.5px),
+				radial-gradient(circle at 5px calc(100% - 5px),
+					#5555ff 0,
+					#5555ff 4.5px,
+					#0000 5.5px),
+				radial-gradient(circle at calc(100% - 5px) calc(100% - 5px),
+					#aa55ff 0,
+					#aa55ff 4.5px,
+					#0000 5.5px);
+		}
+		.boderImage::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#aa55ff, #aa55ff 10px, transparent 28px);
+		    border-image-slice: 100;
+		    border-image-repeat: repeat;
+		}
+		
+		.boderImage1::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#00aa00, #00aa00 15px, transparent 18px);
+		    border-image-slice: 50%;
+		    border-image-repeat: repeat;
+		}
+		.boderImage2::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#00aa00, #00aa00 15px, transparent 18px);
+		    border-image-slice: 100;
+		    border-image-repeat: repeat;
+		}
+		.boderImage3::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#00aa00, #00aa00 15px, transparent 18px);
+		    border-image-slice: fill;
+		    border-image-repeat: repeat;
+		}
+		.boderImage4::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#00aa00, #00aa00 15px, transparent 18px);
+		    border-image-slice:40% ;
+		    border-image-repeat: repeat;
+		}
+		
+		.boderImage5::before {
+		    content: "";
+		    position: absolute;
+		    top: -20px;
+		    left: -20px;
+		    right: -20px;
+		    bottom: -20px;
+		    border: 30px solid;
+		    border-image: radial-gradient(#00aa00, #00aa00 15px, transparent 18px);
+		    border-image-slice:40% ;
+		    /* border-image-repeat: repeat; */
+		}
+		/** 使用 -webkit-box-reflect box-reflect属性，也就是倒影特效**/
+		.boxReflect::before,
+		.boxReflect::after {
+		    content: "";
+		    position: absolute;
+		    width: 10px;
+		    height: 10px;
+		    background: #ff5500;
+		    border-radius: 50%;
+		    -webkit-box-reflect: below 90px;
+		}
+		.boxReflect::before {
+		    top: -5px;
+		    left: -5px;
+		}
+		.boxReflect::after {
+		    top: -5px;
+		    right: -5px;
+		}
+	</style>
+	<body>
+		<div class="a box-shadow"></div>
+		<div class="a gradient"></div>
+		<div class="a gradient1"></div>
+		<div class="a boderImage"></div>
+		<div class="a boderImage1"></div>
+		<div class="a boderImage2"></div>
+		<div class="a boderImage3"></div>
+		<div class="a boderImage4"></div>
+		<div class="a boderImage5"></div>
+		<div class="a boxReflect"></div>
+	</body>
+</html>
