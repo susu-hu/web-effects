@@ -25,7 +25,7 @@
 #### 作品截图 
 矩形四个角圆点
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0924/234128_df50ec8b_8576727.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0924/234227_f173d9c9_8576727.png "屏幕截图.png")
 
 头部渐变色
 
