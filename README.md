@@ -21,7 +21,7 @@
 9.  原生js实现上拉加载+下拉刷新
 10.  头部渐变色，鼠标悬浮变色
 11.  box-shadow+radial-gradient+border-image+box-reflect四种方法实现矩形四个角圆点
-12.  原生js实现图片上一张下一张点击[https://editor.csdn.net/md/?articleId=120466108](https://editor.csdn.net/md/?articleId=120466108)
+12.  原生js实现图片上一张下一张点击[https://blog.csdn.net/qq_48085286/article/details/120466108](https://blog.csdn.net/qq_48085286/article/details/120466108)
 
 #### 作品截图 
 原生js实现图片上一张下一张点击
