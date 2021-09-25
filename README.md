@@ -22,8 +22,13 @@
 10.  头部渐变色，鼠标悬浮变色
 11.  box-shadow+radial-gradient+border-image+box-reflect四种方法实现矩形四个角圆点
 12.  原生js实现图片上一张下一张点击[https://blog.csdn.net/qq_48085286/article/details/120466108](https://blog.csdn.net/qq_48085286/article/details/120466108)
+13.  一个简单的小动画
 
 #### 作品截图 
+简单的小动画
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0926/005537_ba944b51_8576727.gif "GIF.gif")
+
 原生js实现图片上一张下一张点击
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0925/024959_fc7ff3af_8576727.gif "GIF.gif")
