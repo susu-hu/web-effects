@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>点击轮播图</title>
+</head>
+<style>
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin:100px auto 0 auto;
+            box-shadow: 0 0 5px green;
+            overflow: hidden;
+        } 
+        .wrap {
+            position: absolute;
+            width: 4200px;
+            height: 400px;
+            z-index: 1;
+        }
+        .container .wrap img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+         .container .buttons {
+            position: absolute;
+            right: 40%;
+            bottom:20px;          
+            z-index: 2;
+        }   
+        .container .buttons span {
+            margin-left: 10px;
+            display: inline-block;
+            width: 7px;
+            height: 7px;          
+            background-color: #D4D4D4;
+            text-align: center;
+            color:white;
+            cursor: pointer;           
+        }
+        .container .buttons span.on{
+            background-color: #558949;
+        }
+        .container .arrow {
+            position: absolute;
+            top: 35%;
+            color: green;
+            padding:0px 14px;
+            border-radius: 50%;
+            font-size: 50px;
+            z-index: 2;
+            display: none;
+        }
+</style>
+<body>
+    <div class="container">
+        <div class="wrap" style="left:-600px;">
+            <img alt="">
+            <img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg" alt="">
+            <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="">
+            <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="">
+            <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="">
+            <img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg" alt="">       
+        </div>
+        <div class="buttons">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>   
+    </div>
+    
+    <script>
+    	var wrap = document.querySelector(".wrap");         
+        var index = 0;
+        var dots = document.getElementsByTagName("span");
+        function showCurrentDot () {
+            for(var i = 0, len = dots.length; i < len; i++){
+                dots[i].className = "";
+            }
+            dots[index].className = "on";
+        }
+        index++;
+            if(index > 4){
+                index = 0;
+            }
+        index--;
+        if(index < 0){
+            index = 4;
+        }
+        showCurrentDot();
+         for (var i = 0, len = dots.length; i < len; i++){
+            (function(i){
+                dots[i].onclick = function () {
+                    var dis = index - i;
+                    if(index == 4 && parseInt(wrap.style.left)!==-3000){
+                        dis = dis - 5;     
+                    }
+                    //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
+                    if(index == 0 && parseInt(wrap.style.left)!== -600){
+                        dis = 5 + dis;
+                    }
+                    wrap.style.left = (parseInt(wrap.style.left) +  dis * 600)+"px";
+                    index = i;
+                    showCurrentDot();
+                }
+            })(i);            
+        }
+    </script>
+</body>
+</html>

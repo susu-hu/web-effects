@@ -1,0 +1,158 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <!-- 内部css样式 -->
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+    
+            #fdj {
+                width: 418px;
+                height: 418px;
+                position: relative;
+                border: 1px solid red;
+            }
+    
+            .small {
+                background: red;
+                width: 418px;
+                height: 418px;
+            }
+    
+            .small img {
+                width: 418px;
+                height: 418px;
+            }
+    
+            .big {
+                position: absolute;
+                height: 418px;
+                width: 418px;
+                left: 450px;
+                top: 0;
+                overflow: hidden;
+                display: none;
+                border: 1px solid red;
+            }
+    
+            .big-img {
+            	width: 836px;
+            	height: 836px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+    
+            .mask {
+                width: 200px;
+                height: 200px;
+                background: rgba(81, 214, 255, 0.3);
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+    <!--  页面结构 -->
+        <div id="fdj">
+            <div class="small">
+                <img class="small-img" src="https://static.darryring.com/images/2017-11-03/1509692818.jpg" />
+                <div class="mask"></div>
+            </div>
+            <div class="big">
+                <img class="big-img" src="https://static.darryring.com/images/2017-11-03/1509692818.jpg" />
+            </div>
+        </div>
+        <!--  JS代码 -->
+        <script type="text/javascript">
+            //放大镜效果
+            //一个小图，一个大图，放大镜在小图上移动时，大图得定位平移
+            //放大镜的区域正好是，放大镜放大后的大图区域，等比例放大多少倍
+            //放大镜的区域 比上 小图 等于 大图放大镜显示区域 比上 大图
+    
+            class Fdj {
+                constructor(el) {
+                    ;//让el去做放大镜  => #fdj
+                    this.el = document.querySelector(el);
+                    //在构造函数中让el变成属性
+    
+                    //获取div
+                    this.small = this.el.querySelector('.small');
+                    this.mask = this.el.querySelector('.mask');
+                    this.big = this.el.querySelector('.big');
+                    this.bigImg = this.el.querySelector('.big-img')
+    
+                    // 调整 小图/mask(放大镜) = 大图/bigDiv(放大镜显示区域)
+                    //      大图 = 小图/mask * bigDiv
+    
+                    //鼠标移入时，放大镜和大图显示
+                    this.small.onmouseover = function () {
+                        this.mask.style.display = 'block';
+                        this.big.style.display = 'block';
+    
+                        let bigImgWidth = this.small.offsetWidth / this.mask.offsetWidth * this.big.offsetWidth;
+                        //大图 = 小图/mask * bigDiv
+                        this.bigImg.style.width = bigImgWidth + 'px'
+    
+                    }.bind(this);//将this绑定到small鼠标移动函数上
+    
+                    //鼠标移出时，放大镜和大图隐藏
+                    this.small.onmouseout = () => {//箭头函数
+                        this.mask.style.display = 'none';
+                        this.big.style.display = 'none';
+                    }
+    
+                    //监听放大镜移动
+                    this.small.onmousemove = (evt) => {
+    
+                        //获取鼠标的坐标
+                        //先算出offsetX的坐标,也就是鼠标在小图中的坐标
+                        let offsetX = evt.pageX - this.el.offsetLeft
+                        let offsetY = evt.pageY - this.el.offsetTop
+    
+                        //放大镜移动时的坐标
+                        let maskLeft = offsetX - this.mask.offsetWidth / 2
+                        let maskTop = offsetY - this.mask.offsetWidth / 2
+                        
+                        //判断移动放大镜，四边是否超出小图区域
+                        if (maskLeft <= 0) {//左
+                            //移动放大镜的左坐标小于等于0时，移动放大镜的左坐标等于0
+                            maskLeft = 0;
+                        }
+                        if (maskTop <= 0) {//上
+                            maskTop = 0;
+                        }
+                        if (maskLeft >= this.small.offsetWidth - this.mask.offsetWidth) {//右
+                            //移动放大镜的右坐标大于等于 (小图的宽度 - 放大镜的宽度)时，坐标为(小图的宽度 - 放大镜的宽度)
+                            maskLeft = this.small.offsetWidth - this.mask.offsetWidth
+                        }
+                        if (maskTop >= this.small.offsetWidth - this.mask.offsetWidth) {//下
+                            maskTop = this.small.offsetWidth - this.mask.offsetWidth
+                        }
+                        
+                        let tmp = this.bigImg.offsetWidth / this.small.offsetWidth
+                        //大图/小图     大图与小图的比例
+    
+                        //放大镜移动
+                        this.mask.style.left = maskLeft + 'px'
+                        this.mask.style.top = maskTop + 'px'
+    
+                        //大图中放大镜区域
+                        this.bigImg.style.left = -maskLeft * tmp + 'px'
+                        this.bigImg.style.top = -maskTop * tmp + 'px'
+                    }
+                }
+            }
+            new Fdj('#fdj')
+        </script>
+    </body>
+    </html>
+

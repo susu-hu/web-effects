@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.box {
+				position: relative;
+				width: 800px;
+				height: 500px;
+				margin: 20px auto;
+				background-image: url("https://i.postimg.cc/mgsKJGLw/susu1.jpg");
+				background-size: 800px 500px;
+				background-repeat: no-repeat;
+			}
+
+			.fd {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				background-size: 1600px 1000px;
+				background-image: url("https://i.postimg.cc/mgsKJGLw/susu1.jpg");
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="fd"></div>
+		</div>
+		<script type="text/javascript">
+			window.addEventListener("DOMContentLoaded", function(ev) {
+				getEles('box')[0].addEventListener('mouseenter', function(ev) {
+					getEles('fd')[0].style.display = 'block';
+				}, false);
+
+				getEles('box')[0].addEventListener('mousemove', function Timer(ev) {
+					//获取放大镜在盒子的位置            
+					var left = ev.clientX - this.offsetLeft;
+					var top = ev.clientY - this.offsetTop;
+
+					//设置放大镜与鼠标的位置
+					cssStyle(getEles('fd')[0], "left", (left - 100));
+					cssStyle(getEles('fd')[0], "top", (top - 100));
+					//设置放大镜图片位置
+					cssStyle(getEles('fd')[0], "backgroundPositionX", (-2 * left + 100));
+					cssStyle(getEles('fd')[0], "backgroundPositionY", (-2 * top + 100));
+
+					//判断越界
+					if (left < 0 || top < 0 || top > getEles('box')[0].offsetHeight || left > getEles('box')[0]
+						.offsetWidth) {
+						getEles('fd')[0].style.display = 'none';
+					}
+				}, false);
+				//封装样式
+				function cssStyle(dom, attr, value) {
+					if (arguments.length <= 2) {
+						return console.log('请确认输入值是否正确');
+					} else {
+						return dom.style[attr] = value + 'px';
+					}
+				}
+				//封装以class类命名的dom函数
+				function getEles(className) {
+					return document.getElementsByClassName(className);
+				};
+			}, false);
+		</script>
+	</body>
+
+</html>

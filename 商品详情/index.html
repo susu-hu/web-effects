@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>原生js仿淘宝主图放大镜功能-www.webqdkf.com</title>
+	</head>
+	<style>
+		@charset "utf-8";	
+		body,ul {	
+		  padding: 0;	
+		  margin: 0;	
+		}	
+		ul {	
+		  list-style: none;	
+		}	
+		img {	
+		  vertical-align: middle;	
+		  width: 100%;	
+		  height: 100%;	
+		}	
+		.wrap {	
+		  position: relative;	
+		  top: 100px;	
+		  left: 100px;	
+		  width: 400px;	
+		  height: 492px;	
+		}	
+		.imgs {	
+		  position: absolute;	
+		  left: 0;	
+		  top: 0;	
+		  width: 100%;	
+		  height: 100%;	
+		}	
+		.main {	
+		  position: relative;	
+		  overflow: hidden;	
+		  padding: 4px;	
+		  width: 390px;	
+		  height: 390px;	
+		  border: 1px solid #dadada;	
+		}	
+		.smaller {	
+		  position: relative;	
+		  overflow: hidden;	
+		  width: 400px;	
+		  height: 82px;	
+		  margin-top: 10px;	
+		}	
+		.smaller li {	
+		  position: relative;	
+		  float: left;	
+		  padding: 2px;	
+		  width: 64px;	
+		  height: 64px;	
+		  border: 2px solid #000;	
+		  margin-left: 10px;	
+		  cursor: pointer;	
+		 
+			
+		}	
+		.smaller li:first-child {	
+		  margin-left: 0;	
+		}	
+		.smaller .current {	
+		  border-color: #ff6a00;	
+		}	
+		.biger {	
+		  position: absolute;	
+		  overflow: hidden;	
+		  display: none;	
+		  left: 410px;	
+		  width: 400px;	
+		  height: 400px;	
+		}	
+		.mask {	
+		  position: absolute;	
+		  display: none;	
+		  left: 0;	
+		  top: 0;	
+		  width: 100px;	
+		  height: 100px;	
+		  background-color: #a7c8bf;	
+		  cursor: crosshair;	
+		}	
+		.biger img {	
+		  position: absolute;	
+		  left: 0;	
+		  top: 0;	
+		  width: 200%;	
+		  height: 200%;	
+		}
+	</style>
+	<body>
+		<div class="wrap">
+			<div class="biger" id="biger"></div>
+			<div class="imgs">
+				<div class="main" id="main">
+					<div class="mask" id="mask"></div>
+				</div>
+				<ul class="smaller" id="smaller"></ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		window.onload=function(){	
+		    var biger=document.getElementById('biger');	
+		    var main=document.getElementById('main');	
+		    var smaller=document.getElementById('smaller');	
+		    var mask=document.getElementById('mask');	
+		    var wrap=biger.parentNode;	
+		    var imgArr=[	
+		        {"path":"https://i.postimg.cc/mgsKJGLw/susu1.jpg"},	
+		        {"path":"https://i.postimg.cc/qRRLS16Q/susu0.jpg"},	
+		        {"path":"https://i.postimg.cc/mgsKJGLw/susu1.jpg"},	
+		        {"path":"https://i.postimg.cc/qRRLS16Q/susu0.jpg"},	
+		        {"path":"https://i.postimg.cc/mgsKJGLw/susu1.jpg"}	
+		    ];	
+		    var imgSum=imgArr.length;	
+		    if(imgSum>5){	
+		        imgSum=5;	
+		    }	
+		    for (var i=0;i<imgSum;i++) {	
+		        var lis=document.createElement('li');	
+		        var imgs=document.createElement('img');	
+		        imgs.src=imgArr[i].path;	
+		        lis.appendChild(imgs);	
+		        smaller.appendChild(lis);	
+		    }	
+		    var mainImg=document.createElement('img');	
+		    var bigImg=document.createElement('img');	
+		    var liArr=smaller.children;	
+		    bigImg.src=mainImg.src=liArr[0].children[0].src;	
+		    main.insertBefore(mainImg,mask);	
+		    biger.appendChild(bigImg);	
+		    var bigPic=biger.children[0];	
+		    liArr[0].className='current';	
+		    for (var i=0;i<liArr.length;i++) {	
+		        liArr[i].index=i;	
+		        liArr[i].onclick=function(){	
+		            this.className='current';	
+		            bigPic.src=main.children[0].src=this.children[0].src;	
+		            for (var j = 0; j < liArr.length; j++) {	
+		                if(this!=liArr[j]){	
+		                    liArr[j].removeAttribute('class');	
+		                    liArr[j].removeAttribute('className');	
+		                }	
+		            }	
+		        }	
+		    }	
+		    main.onmouseenter=function(){	
+		        mask.style.display='block';	
+		        biger.style.display='block';	
+		    }	
+		     main.onmouseleave=function(){	
+		        mask.style.display='none';	
+		        biger.style.display='none';	
+		    }	
+		    main.onmousemove=function(e){	
+		        var e = e || window.event;	
+		        var pagex=e.pageX || scroll().left+e.clientX;	
+		        var pagey=e.pageY || scroll().top+e.clientY;	
+		        pagex=pagex-wrap.offsetLeft-mask.offsetWidth/2;;	
+		        pagey=pagey-wrap.offsetTop-mask.offsetHeight/2;	
+		        if(pagex<0){	
+		            pagex=0;	
+		        }	
+		        if(pagey<0){	
+		            pagey=0;	
+		        }	
+		        if(pagex>main.offsetWidth-mask.offsetWidth){	
+		            pagex=main.offsetWidth-mask.offsetWidth;	
+		        }	
+		         if(pagey>main.offsetHeight-mask.offsetHeight){	
+		            pagey=main.offsetHeight-mask.offsetHeight;	
+		        }	
+		        mask.style.left=pagex+'px';	
+		        mask.style.top=pagey+'px';	
+		        var scale=(bigPic.offsetWidth-biger.offsetWidth)/(main.offsetWidth-mask.offsetWidth);	
+		        var xx=pagex*scale;	
+		        var yy=pagey*scale;	
+		        bigPic.style.left=-xx+'px';	
+		        bigPic.style.top=-yy+'px';	
+		    }	
+		}
+		// 屏幕滚动	
+		function scroll(){	
+		  if(window.pageXOffset!=undefined){	
+		    return {	
+		      "left":window.pageXOffset,	
+		      "top":window.pageYOffset	
+		    }	
+		  }else if(document.compatMode!='BackCompat'){	
+		    return {	
+		      "left":document.body.scrollLeft,	
+		      "top":document.body.scrollTop	
+		    }	
+		  }else {	
+		    return {	
+		      "left":document.documentElement.scrollLeft,	
+		      "top":document.documentElement.scrollTop	
+		    }	
+		  }	
+		}	
+		 
+	</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>demo演示</title>
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<!-- 顶部导航 -->
+<div class="headerpage"></div>
+<!--顶部导航 over-->	
+
+<!--中部主体-->	
+	<p>···代码省略···</p>
+<!--中部主体 over-->  
+
+<!--footer-->  
+<div class="footerpage"></div>
+<!--footer over-->
+
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script>
+	$(function(){
+		/*公共部分
+		 * 导航栏
+		 * footer CopyRight
+		 */
+		$(".headerpage").load("header.html");
+		$(".footerpage").load("footer.html");
+	});
+</script>
+</body>
+</html>
+

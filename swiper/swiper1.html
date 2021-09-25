@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 533px;
+				height: 300px;
+				position:relative;
+				box-shadow: 5px 5px 5px #cccccc;
+			}
+			.list{
+				width: 530px;
+				height: 300px;
+				list-style: none;
+				position:relative;
+				padding-left: 0px;
+			}
+			.item{
+				width: 100%;
+				height: 100%;
+				font-size: 50px;
+				color: white;
+				position:absolute;
+				opacity: 0;
+				transition: all 0.6s;
+			}
+			.btn{
+				width: 50px;
+				height: 100px;
+				position:absolute;
+				top: 100px;
+				z-index: 100;
+				opacity: 0.7;
+			}
+			#goPre{
+				left: 0px;
+			}
+			#goNext{
+				right: 0px;
+			}
+			.item.active{
+				opacity: 1;
+				z-index: 10;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul class="list">
+				<li class="item active"><img src="http://placehold.it/533x300?text=1" ></li>
+				<li class="item"><img src="http://placehold.it/533x300?text=2" ></li>
+				<li class="item"><img src="http://placehold.it/533x300?text=3" ></li>
+				<li class="item"><img src="http://placehold.it/533x300?text=4" ></li>
+				<li class="item"><img src="http://placehold.it/533x300?text=5" ></li>
+			</ul>
+			<button type="button" class="btn" id="goPre"><</button>
+			<button type="button" class="btn" id="goNext">></button>
+		</div>
+		<script type="text/javascript">
+			//获取到所有的li列表
+			var items=document.getElementsByClassName("item");
+			//获取左右切换按钮
+			var goPreBtn=document.getElementById("goPre");
+			var goNextBtn=document.getElementById("goNext");
+			//index表示第几张图片在展示-- 第index张图片有active这个类名
+			var index=0;
+			var clearActive=function(){
+				for(var i=0;i<items.length;i++){
+					items[i].className='item';
+				}
+			};
+			 function goIndex(){
+				clearActive();
+				items[index].className='item active';
+			};
+			 function goNext(){
+				if(index<4){
+					index ++;
+				}else{
+					index=0;
+				};
+				goIndex();
+			};
+			 function goPre(){
+				if (index == 0){
+					index=4;
+				}else{
+					index --;
+				}
+				goIndex();
+			};
+			//左键按钮  调用goPre函数	 切换到上一张
+			goPreBtn.addEventListener('click',function(){
+				goPre();
+			});
+			//右键按钮  调用goNext函数 切换到下一张
+			goNextBtn.addEventListener('click',function(){
+				goNext();
+			});
+			//定时调用函数 每隔两秒调用goNext函数
+			var timer;
+			timer=setInterval(function(){
+				goNext();
+			},2000)//2000毫秒=1秒
+		</script>
+	</body>
+</html>

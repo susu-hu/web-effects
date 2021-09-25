@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图片放大器</title>
+		<style media="screen">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			 .wrap {
+				width: 400px;
+				height: auto;
+				border: 1px solid black;
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+
+			.wrap>img {
+				width: 100%;
+				height: auto;
+			}
+
+			 .box {
+				border: 1px solid black;
+				width: 100px;
+				height: 100px;
+				background: rgba(0, 0, 0, 0.5);
+				opacity: 0.8;
+				position: absolute;
+				cursor: pointer;
+				display: none;
+			}
+
+			.main {
+				width: 700px;
+				height: 700px;
+				margin-left: 420px;
+				overflow: hidden;
+				display: none;
+				position: absolute;
+				top: 0;
+			}
+
+			.main>img {
+				width: 2800px;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+			<div class="box"></div>
+		</div>
+		<div class="main">
+			<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+		</div>
+		<script type="text/javascript">
+			//获取四个对象
+			var wrap = document.querySelector('.wrap');
+			var box = document.querySelector('.box');
+			var main = document.querySelector('.main');
+			var mainImg = document.querySelector('.main img');
+			//添加移动事件
+			wrap.onmousemove = function() {
+				//鼠标移入可视图片后出现 锁定放大区域及放大图片
+				box.style.display = 'block';
+				main.style.display = 'block';
+				var event = window.event || event;
+				//获取鼠标距离可视区域边缘的偏移量
+				var disx = event.clientX - box.offsetWidth / 2;
+				var disy = event.clientY - box.offsetHeight / 2;
+				//矩形区域的最大可移动范围
+				var distanceMaxX = wrap.offsetWidth - box.offsetWidth;
+				var distanceMaxY = wrap.offsetHeight - box.offsetHeight;
+				// 判断让锁定放大的矩形区域不能出框
+				if (disx <= 0) {
+					disx = 0;
+				}
+				if (disy <= 0) {
+					disy = 0;
+				}
+				if (disx >= distanceMaxX) {
+					disx = distanceMaxX;
+				}
+				if (disy >= distanceMaxY) {
+					disy = distanceMaxY;
+				}
+				box.style.left = disx + 'px';
+				box.style.top = disy + 'px';
+
+				//获取放大比例
+				var scalex = box.offsetLeft / distanceMaxX;
+				var scaley = box.offsetTop / distanceMaxY;
+				main.scrollLeft = (mainImg.clientWidth - main.clientWidth) * scalex;
+				main.scrollTop = (mainImg.clientHeight - main.clientHeight) * scaley;
+			}
+
+			//添加移出事件
+			wrap.onmouseleave = function() {
+				box.style.display = 'none';
+				main.style.display = 'none';
+			}
+		</script>
+	</body>
+</html>

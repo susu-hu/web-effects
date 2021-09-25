@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>放大镜</title>
+		<style type="text/css">
+			.main {
+				width: 500px;
+				height: 570px;
+				border: 2px solid black;
+				position: relative;
+				/*overflow: hidden;*/
+			}
+
+			#img1 {
+				width: 100%;
+				height: 100%;
+			}
+
+			.box {
+				width: 200px;
+				height: 200px;
+				border-radius: 200px;
+				/*border: 1px solid black;*/
+				display: none;
+				position: absolute;
+				overflow: hidden;
+				cursor: move;
+			}
+
+			/* 放大图片 给绝对定位让移动时它也能跟着移动
+实现和我们锁定的区域同步 */
+			#img2 {
+				width: 1200px;
+				height: 1400px;
+				position: absolute;
+				/*left: 0;
+top: 0;*/
+				/*display: none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<img id="img1"
+				src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1565233029,2737785245&fm=26&gp=0.jpg" />
+			<div class="box">
+				<img id="img2"
+					src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1565233029,2737785245&fm=26&gp=0.jpg" />
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var main = document.querySelector('.main')
+	var box = document.querySelector('.box')
+	var boximg = document.querySelector('#img2')
+	//添加鼠标移动事件
+	// main.addEventListener('mousemove', move, false)
+	main.onmousemove = function() {
+		//显示放大的圆形区域
+		box.style.display = 'block'
+		var event = window.event || event
+		//获取鼠标距离可视区域边缘的偏移量
+		var disx = event.clientX - box.offsetWidth / 2
+		var disy = event.clientY - box.offsetHeight / 2
+		var dismax = main.offsetWidth - box.offsetWidth
+		var dismay = main.offsetHeight - box.offsetHeight
+		//矩形区域的最大可移动范围
+		if (disx <= 0) {
+			disx = 0
+		}
+		if (disx >= dismax) {
+			disx = dismax - 2
+		}
+		if (disy <= 0) {
+			disy = 0
+		}
+		if (disy >= dismay) {
+			disy = dismay - 2
+		}
+		//当你移动的时候修改圆形区域的left以及 top值。
+		box.style.left = disx + 'px'
+		box.style.top = disy + 'px'
+		// var scalx=main.offsetWidth/box.offsetWidth
+		// var scaly=main.offsetHeight/box.offsetHeight;
+		//同理当你移动时放大的图片它的图片也要修改left和top值
+		boximg.style.left = -event.clientX * 2 + 'px'
+		boximg.style.top = -event.clientY * 2 + 'px'
+		// box.scrollLeft=(boximg.offsetWidth-box.offsetWidth);
+		// box.scrollTop=(boximg.offsetHeight-box.offsetHeight);
+	}
+	// 添加鼠标移出事件
+	main.addEventListener('mouseleave', out, false)
+
+	function out() {
+		box.style.display = 'none'
+	}
+</script>

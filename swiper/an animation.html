@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			a {
+				text-decoration: none;
+				color: #000000;
+			}
+
+			.hot::after {
+				position: absolute;
+				content: "";
+				animation: pulse-border-2 2s ease-out infinite;
+				top: 0;
+				left: 0%;
+				opacity: 0.4;
+				background: #fff;
+				width: 100%;
+				border-radius: 50%;
+				height: 100%;
+			}
+			.hot {
+				background: #7e00ff;
+				top: 128px;
+				right: 128px;
+				color: #fff;
+				width: 72px;
+				height: 72px;
+				line-height: 72px;
+				text-align: center;
+				border-radius: 36px;
+				z-index: 333;
+				transition: all .3s ease-in-out;
+				opacity: .75;
+				display: block;
+				box-shadow: 2px 1px 5px #111;
+				cursor: pointer;
+				position: absolute;
+			}
+			.hot:hover {
+			    opacity: 1;
+			    background: #fff;
+			    color: #7e00ff;
+			    box-shadow: 3px 2px 3px rgb(0 0 0 / 15%);
+			}
+			/* 悬浮时伪元素不展示 */
+			.hot:hover::after{
+				display: none;
+			}
+			
+			@keyframes pulse-border-2{
+				0%,100%{
+					transform: scale(1);
+					opacity: 0.2;
+					background-color:#dee0f0 ;
+					/* box-shadow: 0px 0px 3px 3px #dee0f0; */
+					
+				}
+				50%{
+					transform: scale(1.3);
+					opacity: 0.4;
+					background-color:#7e00ff ;
+					/* box-shadow: 0px 0px 3px 3px #7e00ff; */
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<a class="hot" href="" target="new">苏苏</a>
+	</body>
+</html>

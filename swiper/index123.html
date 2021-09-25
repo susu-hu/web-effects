@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+
+		img {
+			vertical-align: top;
+		}
+
+		#list img {
+			width: 50px;
+			height: 50px;
+			margin: 5px;
+		}
+
+		#smallbox img {
+			width: 350px;
+			height: 350px;
+
+		}
+
+		#bigbox img {
+			width: 800px;
+			height: 800px;
+		}
+
+		#box {
+			width: 350px;
+			height: 350px;
+			background-color: red;
+			margin: 100px 0 0 100px;
+			position: relative;
+		}
+
+		#smallbox {
+			width: 100%;
+			height: 100%;
+			border: 1px solid #ccc;
+			position: relative;
+		}
+
+		#smallbox img {
+			width: 350px;
+			height: 350px;
+		}
+
+		#mask {
+			width: 100px;
+			height: 100px;
+			background-color: rgba(255, 255, 0, 0.4);
+			position: absolute;
+			left: 0;
+			top: 0;
+			cursor: move;
+			display: none;
+		}
+
+		#bigbox {
+			width: 600px;
+			height: 600px;
+			border: 1px solid #ccc;
+			overflow: hidden;
+			position: absolute;
+			left: 360px;
+			top: 0;
+			display: none;
+		}
+
+		#list {
+			margin: 20px 0 0 100px;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="smallbox">
+				<img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg" alt="">
+				<span id="mask"></span>
+			</div>
+			<div id="bigbox">
+				<img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg" alt="" style="position: absolute;left:0;top:0;">
+			</div>
+		</div>
+		<div id="list">
+			<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="">
+			<img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg" alt="">
+		</div>
+	</body>
+	<script>
+		var box = document.getElementById("box");
+		var smallbox = box.children[0];
+		var bigbox = box.children[1];
+		var mask = smallbox.children[1];
+		var bigimg = bigbox.children[0];
+		var listimg = document.querySelectorAll("#list img");
+		console.log(listimg)
+		// 监听鼠标进入小盒子
+		smallbox.addEventListener('mouseover', function() {
+			mask.style.display = "block";
+			bigbox.style.display = "block";
+
+			smallbox.addEventListener('mousemove', function(e) {
+				var e = e || window.event;
+				// 求鼠标的坐标
+				var pointX = e.pageX - box.offsetLeft - mask.offsetWidth * 0.5;
+				var pointY = e.pageY - box.offsetTop - mask.offsetHeight * 0.5;
+
+				// 边检测
+				if (pointX < 0) {
+					pointX = 0
+				} else if (pointX >= smallbox.offsetWidth - mask.offsetWidth) {
+					// pointX最大是250
+					pointX = smallbox.offsetWidth - mask.offsetWidth
+				}
+				if (pointY < 0) {
+					pointY = 0;
+				} else if (pointY >= smallbox.offsetWidth - mask.offsetWidth) {
+					pointY = smallbox.offsetWidth - mask.offsetWidth
+				}
+				// 让盒子移动
+				mask.style.left = pointX + 'px';
+				mask.style.top = pointY + 'px';
+
+				bigimg.style.left = -pointX / (smallbox.offsetWidth / bigbox.offsetWidth) + "px";
+				bigimg.style.top = -pointY / (smallbox.offsetHeight / bigbox.offsetHeight) + "px";
+			})
+		})
+
+		// 监听鼠标离开小盒子
+		smallbox.addEventListener('mouseout', function() {
+			mask.style.display = "none";
+			bigbox.style.display = "none";
+		})
+
+		// 切换图片
+		for (var i = 0; i < listimg.length; i++) {
+			var img = listimg[i];
+			(function(i) {
+				img.onmouseenter = function() {
+					smallbox.children[0].src = "images/magnifying" + (i + 1) + ".png";
+					bigimg.src = "images/magnifying" + (i + 1) + ".png";
+				}
+
+			})(i)
+		}
+	</script>
+</html>

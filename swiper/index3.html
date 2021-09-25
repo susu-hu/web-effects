@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>放大镜</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0
+			}
+
+			#demo {
+				display: block;
+				width: 400px;
+				height: 586px;
+				margin: 50px;
+				position: relative;
+			}
+
+			#small-box {
+				position: relative;
+				z-index: 1;
+			}
+
+			#small-box img {
+				width: 400px;
+				height: 586px;
+			}
+
+			#float-box {
+				display: none;
+				width: 120px;
+				height: 120px;
+				position: absolute;
+				background: #dcf4ff;
+				border: 1px solid #ccc;
+				filter: alpha(opacity=50);
+				opacity: 0.5;
+			}
+
+			#mark {
+				position: absolute;
+				display: block;
+				width: 400px;
+				height: 586px;
+				background-color: #fff;
+				filter: alpha(opacity=0);
+				opacity: 0;
+				z-index: 10;
+			}
+
+			#big-box {
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 460px;
+				width: 400px;
+				height: 400px;
+				overflow: hidden;
+				border: 1px solid #ccc;
+				z-index: 1;
+				;
+			}
+
+			#big-box img {
+				position: absolute;
+				z-index: 5
+			}
+		</style>
+		<script>
+			//页面加载完毕后执行
+			window.onload = function() {
+
+				//获取需要的标签
+				let objDemo = document.getElementById("demo");
+				let objSmallBox = document.getElementById("small-box");
+				let objMark = document.getElementById("mark");
+				let objFloatBox = document.getElementById("float-box");
+				let objBigBox = document.getElementById("big-box");
+				let objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+
+				//鼠标悬浮时，浮块和右侧放大镜显示
+				objMark.onmouseover = function() {
+					objFloatBox.style.display = "block"
+					objBigBox.style.display = "block"
+				}
+				//鼠标离开后，浮块和右侧放大镜隐藏
+				objMark.onmouseout = function() {
+					objFloatBox.style.display = "none"
+					objBigBox.style.display = "none"
+				}
+
+				//鼠标在遮罩层移动时
+				objMark.onmousemove = function(ev) {
+
+					let _event = ev || window.event; //兼容多个浏览器的event参数模式
+					// console.log(_event.clientX);//鼠标到屏幕左侧的距离
+					// console.log(objDemo.offsetLeft);//外框到屏幕左侧的距离，因为它的父元素为body
+					// console.log(objSmallBox.offsetLeft);//小盒子的margin
+					// console.log(objFloatBox.offsetWidth);//浮块的宽度
+
+					let left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth /
+					2;
+					let top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+
+					//设置边界处理，防止移出小图片
+					if (left < 0) {
+						left = 0;
+					} else if (left > (objMark.offsetWidth - objFloatBox.offsetWidth)) {
+						left = objMark.offsetWidth - objFloatBox.offsetWidth;
+					}
+
+					if (top < 0) {
+						top = 0;
+					} else if (top > (objMark.offsetHeight - objFloatBox.offsetHeight)) {
+						top = objMark.offsetHeight - objFloatBox.offsetHeight;
+
+					}
+
+					objFloatBox.style.left = left + "px"; //oSmall.offsetLeft的值是相对什么而言
+					objFloatBox.style.top = top + "px";
+
+					//求其比值
+					let percentX = left / (objMark.offsetWidth - objFloatBox.offsetWidth);
+					let percentY = top / (objMark.offsetHeight - objFloatBox.offsetHeight);
+
+					//方向相反，小图片鼠标移动方向与大图片相反，故而是负值
+					objBigBoxImage.style.left = -percentX * (objBigBoxImage.offsetWidth - objBigBox.offsetWidth) + "px";
+					objBigBoxImage.style.top = -percentY * (objBigBoxImage.offsetHeight - objBigBox.offsetHeight) + "px";
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="demo">
+			<div id="small-box">
+				<div id="mark"></div>
+				<div id="float-box"></div>
+				<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+			</div>
+			<div id="big-box">
+				<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+			</div>
+		</div>
+	</body>
+
+</html>
