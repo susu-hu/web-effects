@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #222;
+			padding-top: 50px;
+		}
+
+		.wrapper {
+			display: flex;
+			position: relative;
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			filter: drop-shadow(2px 2px 3px #00823f);
+		}
+
+		.wrapper div {
+			height: 100%;
+		}
+
+		.wrapper b {
+			position: absolute;
+			right: 30%;
+			top: 5px;
+			height: calc(100% - 10px);
+			border-left: 1px dotted #fff;
+		}
+
+		.left {
+			background: #58a;
+			background: radial-gradient(circle at top right, transparent 5px, #44C9A1 0) top right, radial-gradient(circle at bottom right, transparent 5px, #44C9A1 0) bottom right;
+			background-size: 100% 60%;
+			background-repeat: no-repeat;
+			color: white;
+			width: 70%;
+			border-radius: 5px 0 0 5px;
+		}
+
+		.right {
+			background: #58a;
+			background: radial-gradient(circle at top left, transparent 5px, #44C9A1 0) top left, radial-gradient(circle at bottom left, transparent 5px, #44C9A1 0) bottom left;
+			background-size: 100% 60%;
+			background-repeat: no-repeat;
+			width: 30%;
+			color: white;
+			border-radius: 0 5px 5px 0;
+		}
+
+
+		.content {
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 0, transparent 13px, red 0);
+			background: linear-gradient(45deg, orange, red);
+		}
+
+		.content1 {
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 0, transparent 10px, red 0), radial-gradient(circle at right, transparent 10px, #222 0);
+			-webkit-mask-size: 50%;
+			-webkit-mask-position: 0, 100%;
+			-webkit-mask-repeat: no-repeat;
+			background: linear-gradient(45deg, #44C9A1, #48e5a4);
+		}
+
+		.content2 {
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 0, transparent 10px, red 0), radial-gradient(circle at right, transparent 10px, red 0);
+			-webkit-mask-composite: source-in;
+			background: linear-gradient(45deg, orange, red);
+		}
+
+		.content3 {
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 0 0, transparent 10px, red 0), radial-gradient(circle at right 0, transparent 10px, red 0), radial-gradient(circle at 0 100%, transparent 10px, red 0), radial-gradient(circle at right 100%, transparent 10px, red 0);
+			-webkit-mask-composite: source-in;
+			background: linear-gradient(45deg, #44C9A1, #48e5a4);
+		}
+
+		.content4 {
+			width: 320px;
+			height: 120px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 20px, transparent 20px, red 0) -20px;
+			background: linear-gradient(45deg, orange, red);
+		}
+
+		.content5 {
+			width: 320px;
+			height: 100px;
+			margin: 30px auto;
+			-webkit-mask: radial-gradient(circle at 20px 20px, transparent 20px, red 0) -20px -20px;
+			background: linear-gradient(45deg, #44C9A1, #48e5a4);
+		}
+
+		.wrap {
+			width: 320px;
+			height: 100px;
+			min-width: 100px;
+			min-height: 100px;
+			margin: 30px auto;
+			overflow: auto;
+			resize: both;
+			filter: drop-shadow(2px 2px 5px orange)
+		}
+
+		.content6 {
+			height: 100%;
+			-webkit-mask: radial-gradient(circle at 20px 20px, transparent 20px, red 0) -20px -20px;
+			background: linear-gradient(45deg, orange, red);
+		}
+	</style>
+	<body>
+		<div class="wrapper">
+			<div class="left"></div>
+			<b></b>
+			<div class="right"></div>
+		</div>
+		</div>
+		<div class="content"></div>
+		<div class="content1"></div>
+		<div class="content2"></div>
+		<div class="content3"></div>
+		<div class="content4"></div>
+		<div class="content5"></div>
+		<div class="wrap">
+			<div class="content6"></div>
+		</div>
+	</body>
+</html>
