@@ -24,8 +24,13 @@
 12.  原生js实现图片上一张下一张点击[https://blog.csdn.net/qq_48085286/article/details/120466108](https://blog.csdn.net/qq_48085286/article/details/120466108)
 13.  一个简单的小动画
 14. 一个简单单的渐变动画画画画
+15. 一些卡券样式
 
 #### 作品截图 
+
+卡券样式
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0927/002601_143bf895_8576727.gif "GIF.gif")
 
 简单单的渐变
 
