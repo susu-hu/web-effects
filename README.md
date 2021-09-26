@@ -23,8 +23,14 @@
 11.  box-shadow+radial-gradient+border-image+box-reflect四种方法实现矩形四个角圆点
 12.  原生js实现图片上一张下一张点击[https://blog.csdn.net/qq_48085286/article/details/120466108](https://blog.csdn.net/qq_48085286/article/details/120466108)
 13.  一个简单的小动画
+14. 一个简单单的渐变动画画画画
 
 #### 作品截图 
+
+简单单的渐变
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0926/234241_244eee18_8576727.gif "GIF.gif")
+
 简单的小动画
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0926/005537_ba944b51_8576727.gif "GIF.gif")
