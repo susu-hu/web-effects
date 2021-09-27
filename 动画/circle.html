@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+
+			margin: 0;
+			
+			padding: 0;
+			
+			height: 100vh;
+
+			display: flex;
+
+			align-items: center;
+
+			justify-content: center;
+
+			background-color: #222;
+
+		}
+
+		.circles {
+
+			width: 160px;
+
+			height: 160px;
+
+			position: relative;
+		}
+
+		.circles span {
+
+			position: absolute;
+
+			box-sizing: border-box;
+
+			width: 50%;
+
+			height: 50%;
+
+			background-color: #ffaa7f;
+
+			border-radius: 50%;
+
+			left: 50%;
+			
+			margin-left: -50%;
+
+		}
+
+		.circles {
+
+			--particles: 3;
+
+		}
+
+
+
+		.circles span {
+
+			transform-origin: bottom center;
+
+			--deg: calc(360deg / var(--particles) * (var(--n) - 1));
+
+			transform: rotate(var(--deg));
+
+		}
+
+
+
+		.circles span:nth-child(1) {
+
+			--n: 1;
+
+		}
+
+
+
+		.circles span:nth-child(2) {
+
+			--n: 2;
+
+		}
+
+
+
+		.circles span:nth-child(3) {
+
+			--n: 3;
+
+		}
+
+		.circles span {
+
+			animation: rotating 5s ease-in-out infinite;
+
+		}
+
+
+
+		@keyframes rotating {
+
+			0% {
+
+				transform: rotate(0);
+
+			}
+
+
+
+			50% {
+
+				transform: rotate(var(--deg)) translateY(0);
+
+			}
+
+
+
+			100% {
+
+				transform: rotate(var(--deg)) translateY(100%) scale(2);
+
+			}
+
+		}
+
+		.circles span {
+
+			mix-blend-mode: difference;
+
+		}
+
+		.circles {
+
+			animation: zoom 5s linear infinite;
+
+		}
+
+
+
+		@keyframes zoom {
+
+			to {
+
+				transform: scale(0.8) translateY(-50%);
+
+			}
+
+		}
+	</style>
+	<body>
+		<div class="circles">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</body>
+</html>

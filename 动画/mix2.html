@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mix-blend-mode</title>
+</head>
+<style>
+    .selectBox {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 200px;
+    }
+ 
+    .title {
+        color: #333;
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+    }
+ 
+    .box {
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+        background: green;
+        text-align: center;
+ 
+    }
+ 
+    .box img {
+        margin-top: 50px;
+        width: 300px;
+        height: 500px;
+        /* mix-blend-mode: normal; */
+        /* opacity: 1; */
+    }
+</style>
+ 
+<body>
+    <div class="selectBox">
+        <h1 class="title">Opacity:
+            <select id="select1">
+                <option value="1">1</option>
+                <option value="0">0</option>
+                <option value="0.1">0.1</option>
+                <option value="0.2">0.2</option>
+                <option value="0.3">0.3</option>
+                <option value="0.4">0.4</option>
+                <option value="0.5">0.5</option>
+                <option value="0.6">0.6</option>
+                <option value="0.7">0.7</option>
+                <option value="0.8">0.8</option>
+                <option value="0.9">0.9</option>
+ 
+ 
+            </select>
+        </h1>
+        <h1 class="title">background-Color:
+            <select id="select2">
+                <option value="green">green</option>
+                <option value="blue">blue</option>
+                <option value="yellow">yellow</option>
+                <option value="gray">gray</option>
+                <option value="greenyellow">greenyellow</option>
+                <option value="aqua">aqua</option>
+                <option value="pink">pink</option>
+                <option value="orange">orange</option>
+                <option value="blueviolet">blueviolet</option>
+                <option value="wihte">wihte</option>
+                <option value="black">black</option>
+            </select>
+        </h1>
+        <h1 class="title">Mix Blend Mode:
+            <select id="select3">
+                <option value="normal">normal -- 正常</option>
+                <option value="multiply">multiply -- 正片叠底</option>
+                <option value="screen">screen -- 滤色</option>
+                <option value="overlay">overlay -- 叠加</option>
+                <option value="darken">darken -- 变暗</option>
+                <option value="lighten">lighten -- 变亮</option>
+                <option value="color-dodge">color-dodge -- 颜色减淡</option>
+                <option value="color-burn">color-burn -- 颜色加深</option>
+                <option value="hard-light">hard-light -- 强光</option>
+                <option value="soft-light">soft-light -- 柔光</option>
+                <option value="difference">difference -- 差值</option>
+                <option value="exclusion">exclusion -- 排除</option>
+                <option value="hue">hue -- 色相</option>
+                <option value="saturation">saturation -- 饱和度</option>
+                <option value="color">color -- 颜色</option>
+                <option value="luminosity">luminosity -- 亮度</option>
+            </select>
+        </h1>
+    </div>
+ 
+    <div class="box" id="box">
+        <img id='img' src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"alt="">
+    </div>
+    <script>
+        let select1 = document.getElementById('select1');
+        let select2 = document.getElementById('select2');
+        let img = document.getElementById("img");
+        let box = document.getElementById("box");
+        let value1, value2, value3;
+        select1.addEventListener('click', changeEvent);
+        function changeEvent() {
+            value1 = select1.value;
+            img.style.opacity = value1;
+        }
+        select2.addEventListener('click', changeEvent2);
+        function changeEvent2() {
+            value2 = select2.value;
+            box.style.backgroundColor = value2;
+        }
+        select3.addEventListener('click', changeEvent3);
+        function changeEvent3() {
+            value3 = select3.value;
+            img.style.mixBlendMode = value3;
+        }
+ 
+    </script>
+</body>
+ 
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mix-blend-mode</title>
+</head>
+<style>
+    body {
+        width: 100%;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+ 
+    .container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 100px auto;
+    }
+ 
+    .container>div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        mix-blend-mode: normal;
+    }
+ 
+    .title {
+        color: #333;
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+    }
+ 
+    .red {
+        background-color: rgba(255, 0, 0, .8);
+        transform: translateX(25%);
+    }
+ 
+    .blue {
+        background-color: rgba(0, 255, 0, .8);
+        transform: translateX(-25%);
+    }
+ 
+    .white {
+        background-color: rgba(0, 0, 255, .8);
+        transform: translateY(-25%);
+    }
+ 
+    .u-icon_box {
+        /*容器必须有背景*/
+        width: 100%;
+        text-align: center;
+    }
+ 
+    .img {
+        background: #09f;
+        display: inline-block;
+    }
+ 
+    .img img {
+        width: 100px;
+        vertical-align: top;
+    }
+ 
+    img:hover {
+        /*设置混合模式*/
+        mix-blend-mode: lighten;
+    }
+</style>
+ 
+<body>
+    <h1 class="title">Mix Blend Mode:
+        <select id="select">
+            <option value="normal">normal -- 正常</option>
+            <option value="multiply">multiply -- 正片叠底</option>
+            <option value="screen">screen -- 滤色</option>
+            <option value="overlay">overlay -- 叠加</option>
+            <option value="darken">darken -- 变暗</option>
+            <option value="lighten">lighten -- 变亮</option>
+            <option value="color-dodge">color-dodge -- 颜色减淡</option>
+            <option value="color-burn">color-burn -- 颜色加深</option>
+            <option value="hard-light">hard-light -- 强光</option>
+            <option value="soft-light">soft-light -- 柔光</option>
+            <option value="difference">difference -- 差值</option>
+            <option value="exclusion">exclusion -- 排除</option>
+            <option value="hue">hue -- 色相</option>
+            <option value="saturation">saturation -- 饱和度</option>
+            <option value="color">color -- 颜色</option>
+            <option value="luminosity">luminosity -- 亮度</option>
+        </select>
+    </h1>
+ 
+    <div class="container">
+        <div class="mode red"></div>
+        <div class="mode blue"></div>
+        <div class="mode white"></div>
+ 
+    </div>
+    <div class="u-icon_box">
+        <div class="img">
+            <img id="u-icon" src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
+                class="u-icon" />
+        </div>
+    </div>
+ 
+    <script>
+        let select = document.getElementById('select');
+        let mode = document.getElementsByClassName("mode");
+        let uicon = document.getElementById('u-icon')
+        let value1;
+        select.addEventListener('click', changeEvent);
+        function changeEvent() {
+            value = select.value;
+            for (let item of mode) {
+                item.style.cssText = 'mix-blend-mode:' + value
+            }
+            uicon.style.cssText = 'mix-blend-mode:' + value
+        };
+           </script>
+</body>
+ 
+</html>
