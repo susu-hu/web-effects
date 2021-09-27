@@ -26,7 +26,12 @@
 14. 一个简单单的渐变动画画画画
 15. 一些卡券样式
 16. 一个mix-blend-mode的小动画
+17. 新增一些loading动画
 #### 作品截图 
+
+新增loading动画
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0928/000441_3d86831e_8576727.gif "GIF.gif")
 
 mix-blend-mode的小动画
 
