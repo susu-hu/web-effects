@@ -34,7 +34,7 @@
 
 简单单的渐变
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0926/234241_244eee18_8576727.gif "GIF.gif")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0927/091817_6a0754e2_8576727.gif "GIF.gif")
 
 简单的小动画
 
