@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .outer{
+            position:relative;
+            left:100px;
+            top:100px;
+            height:100px;
+            width:100px;
+            }
+        .cont1,.cont2{
+            position:absolute;
+            height:100%;
+            width:100%;
+            border-radius:50px;
+            overflow: hidden;
+            }
+        .cont1{
+            background:red;
+            opacity:1;
+            animation:hide 4s steps(1,end) infinite;
+            }
+        .cont2{
+            background:blue;
+            opacity:0;
+            animation:show 4s steps(1,end) infinite;
+            }
+        .rotateDiv{
+            position:absolute;
+            left:0;
+            top:0;
+            border-radius:50px 0 0 50px;
+            background:blue;
+            height:100%;
+            width:50%;
+            transform-origin:center right;
+            animation:rotate 2s infinite linear;
+/*            transition:transform 2s;*/
+            }
+        .right{
+            position:absolute;
+            left:50px;
+            top:0;
+            border-radius:0 50px 50px 0;
+            background:blue;
+            height:100%;
+            width:50%;
+            opacity:1;
+            animation: hide 2s steps(1,end) infinite;
+            }
+        .left{
+            position:absolute;
+            left:0;
+            top:0;
+            border-radius:50px 0 0 50px;
+            background:red;
+            height:100%;
+            width:50%;
+            opacity:0;
+            animation: show 2s steps(1,end) infinite;
+            }
+/*        .left-rotate:hover{
+            transform:rotate(180);*/
+        
+        .cont2 .rotateDiv, .cont2 .right{
+            background:red;
+            } 
+        .cont2 .left{
+            background:blue;
+            }
+        /*css动画*/
+        @keyframes rotate
+            {
+                0%   {transform:rotate(0deg);}
+                100% {transform:rotate(-360deg);}
+            }
+        @keyframes show
+            {
+                0%   {opacity:0;}
+                50%,100% {opacity:1;}
+            }
+        @keyframes hide
+            {
+                0%   {opacity:1;}
+                50%,100% {opacity:0;}
+            }
+    </style>
+</head>
+<body>
+
+  <div class="outer">
+    <div class="cont1">
+        <div class="rotateDiv"></div>
+        <div class="right"></div>
+         <div class="left"></div>
+       
+    </div>
+<!--反方向的旋转-->
+    <div class="cont2">
+        <div class="rotateDiv"></div>
+        <div class="right"></div>
+        <div class="left"></div> 
+    </div>
+   </div>
+</body>
+</html>
