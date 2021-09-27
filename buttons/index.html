@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		button{
+			border: none;
+		}
+		
+		.b1 {
+		    border-radius: 20px;
+			margin: 30px;
+			color: #fff;
+			background-color: var(--danger);
+			border: 1px solid var(--danger-d);
+			padding: 10px 24px;
+			display: inline-block;
+			text-align: center;
+			line-height: 1.42857143;
+			font-size: 16px;
+	}
+	:root {
+	    --primary: #4fc08d;
+	    --primary-d: #41b580;
+	    --primary-d-d: #3aa273;
+	    --success: #f0ad4e;
+	    --success-d: #eea236;
+	    --success-d-d: #ec971f;
+	    --info: #5bc0de;
+	    --info-d: #46b8da;
+	    --info-d-d: #31b0d5;
+	    --warning: #f0ad4e;
+	    --warning-d: #eea236;
+	    --warning-d-d: #ec971f;
+	    --danger: #d9534f;
+	    --danger-d: #d43f3a;
+	    --danger-d-d: #c9302c;
+	    --default: #f6f6f6;
+	    --default-d: #e9e9e9;
+	    --default-d-d: #dcdcdc;
+	}
+		.b {
+		    cursor: pointer;
+		    position: relative;
+		    box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+		    transition: all 0.1s ease;
+		}
+		
+		
+		.b1:before, .button-lg:after {
+		    content: "";
+		    position: absolute;
+		    border-radius: 20px;
+		    top: -2px;
+		    left: -2px;
+		    background: linear-gradient( 
+		45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000 );
+		    background-size: 400%;
+		    width: calc(100% + 4px);
+		    height: calc(100% + 4px);
+		    z-index: -1;
+		    animation: animate 20s linear infinite;
+		}
+	.b1:after {
+	    filter: blur(20px);
+	}
+	.b1:before, .b1:after {
+	    content: "";
+	    position: absolute;
+	    border-radius: 20px;
+	    top: -2px;
+	    left: -2px;
+	    background: linear-gradient( 
+	45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000 );
+	    background-size: 400%;
+	    width: calc(100% + 4px);
+	    height: calc(100% + 4px);
+	    z-index: -1;
+	    animation: animate 20s linear infinite;
+	}
+	</style>
+	<body>
+		<button class="b1 b">苏苏就是小苏苏呢</button>
+	</body>
+</html>

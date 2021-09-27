@@ -7,3 +7,57 @@
 	<body>
 	</body>
 </html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>闪光灯</title>
+		<style>
+			.div {
+				width: 100px;
+				height: 50px;
+				margin: 100px auto;
+				text-align: center;
+				line-height: 50px;
+				color: #fff;
+				background-color: #00E676;
+			}
+
+			#animation {
+				-webkit-animation: flash 1s .2s ease both;
+				-moz-animation: flash 1s .2s ease both;
+			}
+
+			@-webkit-keyframes flash {
+
+				0%,
+				50%,
+				100% {
+					opacity: 1;
+				}
+
+				25%,
+				75% {
+					opacity: 0;
+				}
+			}
+
+			@-moz-keyframes flash {
+
+				0%,
+				50%,
+				100% {
+					opacity: 1;
+				}
+
+				25%,
+				75% {
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="animation" class="div">苏苏</div>
+	</body>
+</html>

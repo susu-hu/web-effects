@@ -10,6 +10,11 @@
 			padding: 0;
 			background-color: #222;
 		}
+			
+		section{
+			margin-top: 160px;
+			margin-left: 160px;
+		}
 
 		.demo {
 			width: 240px;
@@ -427,7 +432,7 @@
 			width: 1em;
 			font-size: 100px;
 			display: inline-block;
-			border: 0.15em solid white;
+			border: 0.15em solid #00E676;
 			border-radius: 50%;
 			position: relative;
 			text-align: center;
@@ -454,7 +459,7 @@
 			-o-transform-origin: 50% 50%;
 			transform: rotate(45deg) translate(-0.15em, -0.15em);
 			transform-origin: 50% 50%;
-			box-shadow: 0.15em 0.15em 0 white;
+			box-shadow: 0.15em 0.15em 0 #00E676;
 		}
 
 		.demo .tick:after {
@@ -465,7 +470,8 @@
 			border-radius: 50%;
 			height: 0.05em;
 			width: 80%;
-			box-shadow: 0 0.4em 0.15em 0 rgb(0 0 0 / 30%);
+			/* box-shadow: 0 0.4em 0.15em 0 rgb(0 0 0 / 30%); */
+			box-shadow: 0 0.4em 0.15em 0 #00E676;
 			-webkit-animation: tick-shadow 1s ease infinite alternate;
 			-moz-animation: tick-shadow 1s ease infinite alternate;
 			-o-animation: tick-shadow 1s ease infinite alternate;
@@ -489,47 +495,51 @@
 		}
 	</style>
 	<body>
-		<div class="demo">
-			<span class="metro">loading</span>
-		</div>
-		<div class="demo">
-			<span class="mexican">
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-			</span>
-		</div>
-		<div class="demo">
-			<span class="spinner">
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-			</span>
-		</div>
-		<div class="demo">
-			<span class="spinner2">
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-				<b></b>
-			</span>
-		</div>
-		<div class="demo">
-			<span class="tick"></span>
-		</div>
+		<section>
+			<div class="demo">
+				<span class="metro">loading</span>
+			</div>
+			<div class="demo">
+				<span class="mexican">
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+				</span>
+			</div>
+			<div class="demo">
+				<span class="spinner">
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+				</span>
+			</div>
+			<div class="demo">
+				<span class="spinner2">
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+					<b></b>
+				</span>
+			</div>
+			<div class="demo">
+				<span class="tick"></span>
+			</div>
+
+		</section>
 	</body>
+
 </html>
