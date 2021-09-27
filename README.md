@@ -25,8 +25,12 @@
 13.  一个简单的小动画
 14. 一个简单单的渐变动画画画画
 15. 一些卡券样式
-
+16. 一个mix-blend-mode的小动画
 #### 作品截图 
+
+mix-blend-mode的小动画
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0927/221843_d80fa7f1_8576727.gif "GIF.gif")
 
 卡券样式
 
