@@ -27,7 +27,12 @@
 15. 一些卡券样式
 16. 一个mix-blend-mode的小动画
 17. 新增一些loading动画
+18. 一个可爱的蛋黄样式的switch按钮（学习案例）
 #### 作品截图 
+
+可爱的蛋黄样式的switch
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0929/145039_39647d3e_8576727.gif "GIF.gif")
 
 新增loading动画
 
