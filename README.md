@@ -28,7 +28,13 @@
 16. 一个mix-blend-mode的小动画
 17. 新增一些loading动画
 18. 一个可爱的蛋黄样式的switch按钮（学习案例）
+19. 原生js+three.js等实现一个3d元素周期表（学习案例，尊重原创）
+
 #### 作品截图 
+
+3d元素周期表
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0930/001309_76394625_8576727.gif "GIF.gif")
 
 可爱的蛋黄样式的switch
 
