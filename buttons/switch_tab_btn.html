@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html {
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #222;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		.switch {
+			width: 109px;
+			height: 40px;
+			background: #519551;
+			font-size: 14px;
+			color: #FFFFFF;
+			border-radius: 5px;
+			padding: 3px;
+			justify-content: space-between;
+			display: flex;
+			align-items: center;
+		}
+
+		.switch p {
+			width: 50px;
+			height: 34px;
+			border-radius: 3px;
+			line-height: 34px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.switch_active {
+			background: #FFFFFF;
+			color: #519551;
+			
+		}
+		.a_tive{
+			animation: blur 0.5s ease-in-out;
+		}
+		@keyframes blur{
+			from{
+				background-color: #95e5c8;
+			}
+			to{
+				background: #FFFFFF;
+			}
+		}
+	</style>
+	<body>
+		<div class="switch">
+			<p class="switch_active">邮寄</p>
+			<p class="a">自提</p>
+		</div>
+	</body>
+	<script>
+		var dom = document.getElementsByTagName('p')
+
+		for (let item in dom) {
+			dom[item].onclick = function() {
+				for(var j = 0; j < dom.length; j++) {
+					// dom[j].className = "";
+					dom[j].classList.remove('switch_active','a_tive')//用刪除樣式比較好
+				}
+				this.classList.add('switch_active','a_tive')
+			}
+		}
+		
+	</script>
+</html>
