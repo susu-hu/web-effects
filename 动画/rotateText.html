@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			background: #222;
+			padding: 0;
+			margin: 0;
+		}
+
+		.box {
+			width: 100%;
+			height: 400px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			transform-style: preserve-3d;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.banner {
+			width: 320px;
+			transform-style: preserve-3d;
+			animation: rotate 24s infinite linear;
+			height: 2px;
+			background: linear-gradient(90deg, #0ebeff, #ffdd40, #ae63e4, #47cf73, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+		}
+
+		@keyframes rotate {
+			to {
+				transform: rotateY(-360deg);
+			}
+		}
+
+		.panel {
+			position: absolute;
+			width: 50px;
+			height: 120px;
+		}
+
+		.panel::before {
+			position: absolute;
+			left: var(--left);
+			font-size: 49px;
+			width: max-content;
+			color: hsl(var(--hue), 75%, 75%);
+		}
+
+		.panel:nth-child(1)::before {
+			--left: 0px;
+			--hue: 0;
+			
+			content: 'W';
+		}
+
+		.panel:nth-child(2)::before {
+			--left: 50px;
+			--hue: 15;
+			
+			content: 'E';
+		}
+
+		.panel:nth-child(3)::before {
+			--left: 100px;
+			--hue: 30;
+			
+			content: 'L';
+		}
+
+		.panel:nth-child(4)::before {
+			--left: 150px;
+			--hue: 45;
+			
+			content: 'C';
+		}
+
+		.panel:nth-child(5)::before {
+			--left: 200px;
+			--hue: 60;
+			
+			content: 'O';
+		}
+
+		.panel:nth-child(6)::before {
+			--left: 250px;
+			--hue: 75;
+			
+			content: 'M';
+		}
+
+		.panel:nth-child(7)::before {
+			--left: 300px;
+			--hue: 90;
+			
+			content: 'E';
+		}
+
+	</style>
+	<body>
+		<div class="box">
+			<div class="banner">
+				<div class="panel"></div>
+				<div class="panel"></div>
+				<div class="panel"></div>
+				<div class="panel"></div>
+				<div class="panel"></div>
+				<div class="panel"></div>
+				<div class="panel"></div>
+			</div>
+		</div>
+	</body>
+</html>
