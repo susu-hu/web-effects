@@ -90,21 +90,21 @@
 		  border-right: 0;
 		}
 		
-		
+		/* 用户开启减少动效 */
 		@media (prefers-reduced-motion) {
 		  .typewriter::after {
 		    animation: none;
 		  }
 		  
 		  @keyframes sequencePopup {
-		    0%, 100% { content: "developer"; }
-		    25% { content: "writer"; }
-		    50% { content: "reader"; }
-		    75% { content: "human"; }
+		    0%, 100% { content: "susuicon"; }
+		    25% { content: "beauty"; }
+		    50% { content: "coder"; }
+		    75% { content: "watcher"; }
 		  }
 		
 		  .typewriter::before {
-		    content: "developer";
+		    content: "susuicon";
 		    animation: sequencePopup 12s linear infinite;
 		  }
 		}
