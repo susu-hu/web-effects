@@ -33,9 +33,13 @@
 21. 翻转360度的艺术字[https://juejin.cn/post/7014076629437661198](https://juejin.cn/post/7014076629437661198)
 22. 正在输入的文字动画
 23. 一个有趣的404页面
-
+24. 仿gitee动态的步骤条
 
 #### 作品截图 
+
+gitee动态的步骤条
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1007/002207_b25a0ca1_8576727.gif "4.gif")
 
 有趣的404页面
 
