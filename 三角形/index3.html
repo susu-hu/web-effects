@@ -1,0 +1,78 @@
+<!DOCTYPE>
+<html>
+	<meta charset="utf-8">
+	<head>
+		<title>css实现语音气泡示例</title>
+		<style type="text/css">
+			#speech-bubble {
+				width: 120px;
+				height: 80px;
+				background: #5ac4ed;
+				position: absolute;
+				left: 100px;
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+			}
+
+			#speech-bubble:before {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-top: 13px solid transparent;
+				border-right: 26px solid #5ac4ed;
+				border-bottom: 13px solid transparent;
+				margin: 13px 0 0 -25px;
+			}
+
+			.comment {
+				width: 150px;
+				height: 35px;
+				position: relative;
+				margin: 30px auto 0;
+				background: #f8ac09;
+				border-radius: 5px;
+			}
+
+			.comment:after {
+				content: '';
+				width: 0;
+				height: 0;
+				position: absolute;
+				top: 5px;
+				right: -16px;
+				border: solid 8px;
+				border-color: transparent transparent transparent #f8ac09;
+				font-size: 0;
+			}
+			
+			.comment1 {
+			  position: relative;
+			  width: 150px;
+			  height: 35px;
+			  background: #f8ac09;
+			  border-radius: 5px;
+			  margin: 30px auto 0;
+			}
+			
+			.comment1:after {
+			  content: '';
+			  position:absolute;
+			  top: 10px;
+			  right: -4px;
+			  width: 8px;
+			  height: 8px;
+			  transform: rotate(45deg);
+			  background-color: #f8ac09;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="speech-bubble"></div>
+		<div class="comment"></div>
+		<div class="comment1"></div>
+		
+	</body>
+</html>

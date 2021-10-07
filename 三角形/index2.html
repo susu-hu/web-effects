@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.l0 {
+			position: relative;
+			width: 300px;
+			height: 100px;
+			border: 5px solid red;
+			margin: 50px auto 0;
+		}
+
+		.l0 span {
+			position: absolute;
+			left: 100px;
+			bottom: -40px;
+			border-width: 20px;
+			border-style: solid dashed dashed;
+			border-color: red transparent transparent;
+			font-size: 0;
+			line-height: 0;
+		}
+
+		.l0 em {
+			position: absolute;
+			bottom: -34px;
+			left: 100px;
+			border-width: 20px;
+			border-style: solid dashed dashed;
+			border-color: #FFF transparent transparent;
+			font-size: 0;
+			line-height: 0;
+		}
+
+		.l1 {
+			width: 300px;
+			height: 100px;
+			position: relative;
+			background-color: red;
+			margin: 50px auto 0;
+		}
+
+		.arrow {
+			position: absolute;
+			width: 70px;
+			height: 60px;
+			left: -70px;
+			bottom: 10px;
+		}
+
+		.arrow * {
+			position: absolute;
+			border-style: dashed solid solid dashed;
+			font-size: 0;
+			line-height: 0;
+		}
+
+		.arrow em {
+			border-color: transparent red red transparent;
+			border-width: 30px 35px;
+		}
+
+		.arrow span {
+			border-width: 20px 35px;
+			border-color: transparent #FFF #FFF transparent;
+			bottom: 0;
+		}
+
+		.l2 {
+			width: 300px;
+			height: 100px;
+			position: relative;
+			border: 5px solid red;
+			margin: 50px auto 0;
+		}
+
+		.arrow1 {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			left: 100px;
+			bottom: -40px;
+			/* background: #fff; */
+			overflow: hidden;
+		}
+
+		.arrow1 * {
+			position: absolute;
+			font-size: 40px;
+			line-height: 40px;
+			width: 40px;
+			font-family: SimSun;
+			font-style: normal;
+			font-weight: normal;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		/* 注意：为了◆主流浏览器中显示一致，需要清除浏览器的默认字体样式，特别注意这里字体的设置
+		
+		再分别修改em、span标签的字体颜色，并对这两个标签定位：代码如下： */
+		.arrow1 em {
+			color: red;
+			top: -15px;
+		}
+
+		.arrow1 span {
+			color: #fff;
+			top: -21px;
+		}
+
+		.l3 {
+			margin: 50px auto 0;
+			width: 300px;
+			height: 100px;
+			border: 5px solid #09F;
+			position: relative;
+			background-color: #FFF;
+		}
+
+		.l3:before,
+		.l3:after {
+			content: "";
+			display: block;
+			border-width: 20px;
+			position: absolute;
+			bottom: -40px;
+			left: 100px;
+			border-style: solid dashed dashed;
+			border-color: #09F transparent transparent;
+			font-size: 0;
+			line-height: 0;
+		}
+
+		.l:after {
+			bottom: -33px;
+			border-color: #FFF transparent transparent;
+		}
+	</style>
+	<body>
+		<section>
+			<div class="l0">
+				<span></span>
+				<em></em>
+			</div>
+		</section>
+		<section>
+			<div class="l1">
+				<div class="arrow">
+					<em></em>
+					<span></span>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="l2">
+				<div class="arrow1">
+					<em>&#9670</em>
+					<span>&#9670</span>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="l3">
+				css3气泡框
+			</div>
+		</section>
+	</body>
+</html>
