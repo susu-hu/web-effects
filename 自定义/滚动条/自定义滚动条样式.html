@@ -5,14 +5,232 @@
 		<title></title>
 	</head>
 	<style>
-			
-		body{
+		body {
 			margin: 0;
 			padding: 0;
 		}
+
+		.flex-row {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.j_b {
+			justify-content: space-between;
+		}
+		.j_a{
+			justify-content: space-around;
+		}
+		.j_c{
+			justify-content: center;
+		}
+		.text_ellipsis {
+			/*宽度自定义*/
+			text-overflow: ellipsis;
+			white-space  : nowrap;
+			overflow     : hidden;
+		}
+
+
+		.address_list {
+			width: 650px;
+			background: #FFFFFF;
+			border-radius: 4px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 1111;
+			box-sizing: border-box;
+			padding: 30px 30px 40px;
+		}
+
+		.coupon_list {
+			width: 830px;
+		}
+
+		.coupon_content {
+			width: 100%;
+			height: 203px;
+			margin-bottom: 60px;
+			scrollbar-width: none;
+			overflow: hidden;
+			overflow-x: auto;
+			white-space: nowrap;
+		}
+
+		.coupon_content::-webkit-scrollbar {
+			width: 6px;
+			height: 6px;
+		}
+
+		.coupon_content::-webkit-scrollbar-track {
+			background: #F2F4F2;
+			border-radius: 2px;
+		}
+
+		.coupon_content::-webkit-scrollbar-thumb {
+			background: #bfbfbf;
+			border-radius: 10px;
+		}
+
+
+		.coupon_content .con_item {
+			cursor: pointer;
+			width: 380px;
+			height: 192px;
+			position: relative;
+			display: inline-block;
+			box-sizing: border-box;
+			vertical-align: top;
+			/* 防止高度塌陷 */
+		}
+
+		.coupon_content .con_item .bg_img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.coupon_content .con_item .con_item_box {
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+		}
+
+		.coupon_content .con_item .con_item_box .c_top {
+			height: 125px;
+			box-sizing: border-box;
+			padding: 34px 0 14px;
+			width: 100%;
+			color: #317C31;
+			font-size: 14px;
+		}
+
+		.c_top .price {
+			font-size: 46px;
+			line-height: 33px;
+			font-weight: 600;
+		}
+
+		.c_top .price span {
+			font-size: 18px;
+			font-weight: 100;
+		}
+
+		.c_top div {
+			margin-left: 43px;
+		}
+
+		.c_top div>p:first-of-type {
+			font-size: 18px;
+			line-height: 25px;
+		}
+
+		.coupon_content .con_item .con_item_box .c_bottom {
+			height: calc(100% - 125px);
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0 30px 10px;
+		}
+
+		.c_bottom p {
+			width: 272px;
+			font-size: 16px;
+			color: #fff;
+		}
+
+		.c_bottom .down_arrow {
+			padding: 5px;
+			border-top: 1px solid #fff;
+			border-right: 1px solid #fff;
+			transform: rotate(135deg);
+			-webkit-transform: rotate(135deg);
+		}
+
+		.address_list .a_title {
+			font-size: 15px;
+			font-weight: 600;
+			color: #333333;
+			padding-bottom: 18px;
+			border-bottom: 1px dashed #D3D3D3;
+			margin-bottom: 37px;
+		}
+
+		.address_list .a_title img {
+			width: 20px;
+			height: 20px;
+		}
+		.model_mask{
+			position  : fixed;
+			top       : 0;
+			left      : 0;
+			bottom    : 0;
+			right     : 0;
+			background: rgba(0, 0, 0, .3);
+			z-index   : 999;
+		}
+		.address_list .a_btn {
+		    width        : 150px;
+		    height       : 44px;
+		    background   : #519551;
+		    border-radius: 4px;
+		    text-align   : center;
+		    line-height  : 44px;
+		    color        : #fff;
+		    font-size    : 17px;
+		    user-select  : none;
+		}
+		
+		.address_list .a_btn:last-child {
+		    background: #fff;
+		    border    : 2px solid #D4D4D4;
+		    color     : #666666;
+		}
 	</style>
 	<body>
-		<h1>Welcome to susu Blog  </h1>
-		<h1>Star+Follow</h1>
+		<section id="app">
+			<div class="model_mask"></div>
+			<div class="address_list coupon_list" id="coupon_list">
+				<div class="flex-row j_b a_title">
+					<p>选择优惠券</p>
+					<img src="https://i.postimg.cc/507x85Hy/close.png" />
+				</div>
+				<div class="coupon_content ">
+					<div class="con_item" v-for="(item,index) in 5" :key="index">
+						<img src="https://i.postimg.cc/fRLfKDgb/coupon-bg.png" class="bg_img" />
+						<div class="con_item_box">
+							<div class="c_top flex-row j_c">
+								<p class="price">50<span>元</span></p>
+								<div>
+									<p>满500元减50元</p>
+									<p>2019.9.15-2019.9.15</p>
+								</div>
+							</div>
+							<div class="c_bottom flex-row j_b">
+								<p class="text_ellipsis">全场通用；限时购，特价等特购商阿us刚发售坚实的股份是</p>
+								<span class="down_arrow"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class=" flex-row j_a">
+					<div class="a_btn coupon_sure">确定</div>
+					<div class="a_btn cancel">取消</div>
+				</div>
+			</div>
+		</section>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+
+			}
+		})
+	</script>
 </html>
+
