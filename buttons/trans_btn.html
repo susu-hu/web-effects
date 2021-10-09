@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #222;
+		}
+
+		div {
+			border: 1px solid #EDEDED;
+			padding: 0 40px;
+			display: block;
+			line-height: 40px;
+			-webkit-transition: all 0.6s ease-in;
+			-moz-transition: all 0.6s ease-in;
+			-ms-transition: all 0.6s ease-in;
+			-o-transition: all 0.6s ease-in;
+			transition: all 0.6s ease-in;
+			color: #FFF;
+			font-weight: 600;
+			position: relative;
+		}
+
+		*,
+		*:before,
+		*:after {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		div:hover:after,
+		div:hover:before {
+			width: 100%;
+			height: 100%;
+		}
+
+
+		div:after,
+		div:before {
+			box-sizing: border-box;
+			border: 1px solid transparent;
+			width: 0;
+			height: 0;
+			content: '';
+			display: block;
+			position: absolute;
+		}
+
+		div:before {
+			bottom: 0;
+			right: 0;
+			-webkit-transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+			transition: border-color 0s ease-in 0.4s, width 0.2s ease-in 0.2s, height 0.2s ease-in;
+
+		}
+
+		div:after {
+			top: 0;
+			left: 0;
+			-webkit-transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+			transition: border-color 0s ease-in 0.8s, width 0.2s ease-in 0.6s, height 0.2s ease-in 0.4s;
+		}
+
+		div:hover:after {
+			border-top-color: #ffff00;
+			border-right-color: #ffff00;
+			-webkit-transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+			transition: width 0.2s ease-out, height 0.2s ease-out 0.2s;
+		}
+
+
+		div:hover:before {
+			border-bottom-color: #ffff00;
+			border-left-color: #ffff00;
+			-webkit-transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+			transition: border-color 0s ease-out 0.4s, width 0.2s ease-out 0.4s, height 0.2s ease-out 0.6s;
+		}
+
+		div:hover {
+			border: 1px solid #ffff00;
+		}
+	</style>
+	<body>
+		<div>苏苏就是小苏苏呢</div>
+	</body>
+</html>
