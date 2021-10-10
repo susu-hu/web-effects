@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a {
+			position: absolute;
+			top: 50px;
+			left: 50px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: #363;
+			transition: .2s;
+		}
+
+		.a:before,
+		.a:after {
+			content: "";
+			position: absolute;
+			width: 12px;
+			height: 0;
+			top: 24px;
+			border-style: solid;
+			border-width: 0 0 54px 0;
+		}
+
+		.a:before {
+			left: 27px;
+			border-color: #fff rgba(255, 255, 255, 0) #fff rgba(255, 255, 255, 0);
+			transition: .2s;
+		}
+
+		.a:after {
+			left: 54px;
+			border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #fff #fff;
+			transition: .2s;
+		}
+
+		.a:hover:before {
+			top: 26px;
+			left: 45px;
+			width: 0;
+			transform: scale(2, 1.17) rotate(90deg);
+			border-width: 0 0 24px 24px;
+		}
+
+		.a:hover:after {
+			top: 53px;
+			left: 45px;
+			width: 0;
+			transform: scale(2, 1.17) rotate(90deg);
+			border-width: 0 24px 24px 0;
+		}
+
+		.a:hover {
+			background: #095;
+			transition: .4s;
+		}
+
+		.a:active:before {
+			border-width: 0 0 24px 0;
+			width: 22px;
+			top: 26px;
+			left: 38px;
+			transition: .4s;
+		}
+
+		.a:active:after {
+			border-width: 0 0 24px 0;
+			width: 22px;
+			top: 50px;
+			left: 38px;
+			transition: .4s;
+		}
+
+		.a:active {
+			transform: rotate(180deg);
+			background: #0a9;
+		}
+		.b{
+		  position:absolute;
+		  top:50px;
+		  left:160px;
+		  width:100px;
+		  height:100px;
+		  border-radius:50%;
+		  background:#09c;
+		  transition:.2s;
+		}
+		.b i{
+		  position:absolute;
+		  display:block;
+		  width:56px;
+		  height:10px;
+		  background:#fff;
+		  left:22px;
+		  border-radius:2px;
+		  transition:.2s;
+		}
+		.b1{
+		  top:24px;
+		}
+		.b2{
+		  top:44px;
+		}
+		.b3{
+		  top:64px;
+		}
+		.b:hover .b1{
+		  left:15px;
+		  width:70px;
+		  transform:translateY(20px) rotate(45deg);
+		}
+		.b:hover .b3{
+		  left:15px;
+		  width:70px;
+		  transform:translateY(-20px) rotate(-45deg);
+		}
+		.b:hover .b2{
+		  left:50px;
+		  width:0;
+		}
+		.b:hover{
+		  background:#c00;
+		}
+		.b:active .b1{
+		  width:40px;
+		  transform:translateY(11px) rotate(-45deg);
+		  transition:.3s;
+		}
+		.b:active .b3{
+		  width:40px;
+		  transform:translateY(-7px) rotate(45deg);
+		  transition:.3s;
+		}
+		.b:active .b2{
+		  top:46px;
+		  left:22px;
+		  width:60px;
+		  transition:.3s;
+		}
+		.b:active{
+		  transform:rotate(45deg);
+		  background:#f70;
+		}
+		
+
+	</style>
+	<body>
+		<div class="a"></div>
+		<div class="b">
+			<i class="b1"></i>
+			<i class="b2"></i>
+			<i class="b3"></i>
+		</div>
+	</body>
+</html>

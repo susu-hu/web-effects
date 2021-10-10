@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+		  align-items: center;
+		  background: #222;
+		  display: flex;
+		  height: 100%;
+		  justify-content: center;
+		  margin: 0;
+		}
+		
+		html {
+		  height: 100%;
+		}
+		
+		.avatar {
+		  height: 200px;
+		  position: relative;
+		  width: 200px;
+		}
+		
+		.avatar img {
+		  border-radius: 9999px;
+		  height: 100%;
+		  position: relative;
+		  width: 100%;
+		  z-index: 2;
+		}
+		
+		@keyframes cycle-colors {
+		  0% { border-color: hsl(0, 100%, 50%); }
+		  25% { border-color: hsl(90, 100%, 50%); }
+		  50% { border-color: hsl(180, 100%, 50%); }
+		  75% { border-color: hsl(270, 100%, 50%); }
+		  100% { border-color: hsl(360, 100%, 50%); }
+		}
+		
+		@keyframes pulse {
+		  to {
+		    opacity: 0;
+		    transform: scale(1);
+		  }
+		}
+		
+		.avatar::before,
+		.avatar::after {
+		  animation: pulse 2s linear infinite;
+		  border: #fff solid 8px;
+		  border-radius: 9999px;
+		  box-sizing: border-box;
+		  content: ' ';
+		  height: 140%;
+		  left: -20%;
+		  opacity: .6;
+		  position: absolute;
+		  top: -20%;
+		  transform: scale(0.714);
+		  width: 140%;
+		  z-index: 1;
+		}
+		
+		.avatar::after {
+		  animation-delay: 1s;
+		}
+		
+		.avatar:hover img {
+		  content: url('https://i.postimg.cc/mgsKJGLw/susu1.jpg');
+		}
+		
+		.avatar:hover::before,
+		.avatar:hover::after {
+		  animation: pulse 1s linear infinite, cycle-colors 6s linear infinite;
+		}
+		
+		.avatar:hover::after {
+		  animation-delay: .5s;
+		}
+	</style>
+	<body>
+		<div class="avatar">
+		  <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg">
+		</div>
+	</body>
+</html>

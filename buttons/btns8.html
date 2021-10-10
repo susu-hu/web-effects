@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.button {
+			font: 15px Calibri, Arial, sans-serif;
+			text-shadow: 1px 1px 0 rgb(255 255 255 / 40%);
+			text-decoration: none !important;
+			white-space: nowrap;
+			display: inline-block;
+			vertical-align: baseline;
+			position: relative;
+			cursor: pointer;
+			padding: 10px 20px;
+			background-repeat: no-repeat;
+			background-position: bottom left;
+			background-image: url(button_bg.png);
+			background-position: bottom left, top right, 0 0, 0 0;
+			background-clip: border-box;
+			-moz-border-radius: 8px;
+			-webkit-border-radius: 8px;
+			border-radius: 8px;
+			-moz-box-shadow: 0 0 1px #fff inset;
+			-webkit-box-shadow: 0 0 1px #fff inset;
+			box-shadow: 0 0 1px #fff inset;
+			-webkit-transition: background-position 1s;
+			-moz-transition: background-position 1s;
+			transition: background-position 1s;
+		}
+
+		.button:hover {
+			background-position: top left;
+			background-position: top left, bottom right, 0 0, 0 0;
+		}
+
+		.button:active {
+			bottom: -1px;
+		}
+
+		.one {
+			color: #0f4b6d !important;
+			border: 1px solid #84acc3 !important;
+			background-color: #48b5f2;
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -moz-radial-gradient(center bottom, circle, rgba(89, 208, 244, 1) 0, rgba(89, 208, 244, 0) 100px), -moz-linear-gradient(#4fbbf7, #3faeeb);
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(89, 208, 244, 1)), to(rgba(89, 208, 244, 0))), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4fbbf7), to(#3faeeb));
+		}
+
+		.one:hover {
+			background-color: #63c7fe;
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -moz-radial-gradient(center bottom, circle, rgba(109, 217, 250, 1) 0, rgba(109, 217, 250, 0) 100px), -moz-linear-gradient(#63c7fe, #58bef7);
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(109, 217, 250, 1)), to(rgba(109, 217, 250, 0))), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#63c7fe), to(#58bef7));
+		}
+
+		.two {
+			color: #345903 !important;
+			border: 1px solid #96a37b !important;
+			background-color: #79be1e;
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -moz-radial-gradient(center bottom, circle, rgba(162, 211, 30, 1) 0, rgba(162, 211, 30, 0) 100px), -moz-linear-gradient(#82cc27, #74b317);
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(162, 211, 30, 1)), to(rgba(162, 211, 30, 0))), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#82cc27), to(#74b317));
+		}
+
+		.two:hover {
+			background-color: #89d228;
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -moz-radial-gradient(center bottom, circle, rgba(183, 229, 45, 1) 0, rgba(183, 229, 45, 0) 100px), -moz-linear-gradient(#90de31, #7fc01e);
+			background-image: url(./img/button_bg.png), url(./img/button_bg.png), -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 100, from(rgba(183, 229, 45, 1)), to(rgba(183, 229, 45, 0))), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#90de31), to(#7fc01e));
+		}
+
+		.three {
+			border-radius: 4rem;
+		}
+	</style>
+	<body>
+		<div>
+
+			<a href="#" class="button one">Big Button</a>
+			<a href="#" class="button two">Big Button</a>
+			<a href="#" class="button two three">Rounded</a>
+
+		</div>
+	</body>
+</html>

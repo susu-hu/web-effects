@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #222;
+		}
+
+		.button {
+			display: block;
+			height: 50px;
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			line-height: 50px;
+			padding: 0 30px;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			margin: 0 auto;
+			font-weight: bold;
+			font-size: 18px;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-family: Arial;
+			color: #2DCB70;
+			-moz-transition: ease 0.4s;
+			-o-transition: ease 0.4s;
+			-webkit-transition: ease 0.4s;
+			transition: ease 0.4s;
+			position: relative;
+			user-select: none;
+		}
+
+		.button:hover {
+			border: 2px solid #fff;
+			background-position: 140px center;
+		}
+
+		.button:hover .line-top {
+			width: 100%;
+			left: -2px;
+		}
+
+		.button:hover .line {
+			background: #fff;
+		}
+
+		.button .line-top {
+			width: 0px;
+			height: 2px;
+			left: -110%;
+			top: -2px;
+		}
+
+		.button .line {
+			position: absolute;
+			background: currentcolor;
+			-moz-transition: ease 0.8s;
+			-o-transition: ease 0.8s;
+			-webkit-transition: ease 0.8s;
+			transition: ease 0.8s;
+		}
+
+		.button:hover .line-right {
+			height: 100%;
+			top: -2px;
+		}
+
+		.button .line-right {
+			width: 2px;
+			height: 0px;
+			right: -2px;
+			top: -110%;
+		}
+
+		.button:hover .line-bottom {
+			height: 100%;
+			bottom: -2px;
+		}
+
+		.button .line-bottom {
+			width: 2px;
+			height: 0px;
+			left: -2px;
+			bottom: -110%;
+		}
+
+		.button:hover .line-left {
+			width: 100%;
+			right: -2px;
+		}
+
+		.button .line-left {
+			width: 0px;
+			height: 2px;
+			right: -110%;
+			bottom: -2px;
+		}
+	</style>
+	<body>
+		<div class="button">
+			<span class="line line-top"></span>
+			<span class="line line-right"></span>
+			<span class="line line-bottom"></span>
+			<span class="line line-left"></span>
+			苏苏就是小苏苏呢
+		</div>
+	</body>
+</html>

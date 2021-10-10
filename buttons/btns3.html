@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.btn {
+			display: inline-block;
+			margin: 1em 0;
+			padding: 1em 2em;
+			background: transparent;
+			border: 2px;
+			border-radius: 3px;
+			font-weight: 400;
+			text-align: center;
+		}
+
+		.btn.green {
+			box-shadow: 0 1px 0 1px rgba(43, 220, 146, 0.25), 0 -1px 0 1px rgba(129, 214, 106, 0.25), 1px 0 0 1px rgba(43, 220, 146, 0.25), -1px 0 0 1px rgba(129, 214, 106, 0.25), 1px -1px 0 1px rgba(86, 217, 126, 0.5), -1px 1px 0 1px rgba(86, 217, 126, 0.5), 1px 1px 0 1px rgba(0, 223, 166, 0.75), -1px -1px 0 1px rgba(173, 211, 86, 0.75);
+		}
+
+		.btn.green span {
+			background: -webkit-linear-gradient(left, #add356, #00dfa6);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.btn.orange {
+			box-shadow: 0 1px 0 1px rgba(255, 102, 43, 0.25), 0 -1px 0 1px rgba(255, 169, 69, 0.25), 1px 0 0 1px rgba(255, 102, 43, 0.25), -1px 0 0 1px rgba(255, 169, 69, 0.25), 1px -1px 0 1px rgba(255, 136, 56, 0.5), -1px 1px 0 1px rgba(255, 136, 56, 0.5), 1px 1px 0 1px rgba(255, 69, 31, 0.75), -1px -1px 0 1px rgba(255, 203, 82, 0.75);
+		}
+
+		.btn.orange span {
+			background: -webkit-linear-gradient(left, #ffcb52, #ff451f);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.blue {
+			-webkit-border-image: -webkit-linear-gradient(left, #3dade9, #bf2fcb) round;
+			border-image:-webkit-linear-gradient(left, #3dade9, #bf2fcb) round;
+			border-image-slice: 1;
+			width: 100px;
+			height: 200px;
+
+		}
+
+		.btn.blue span {
+			background: -webkit-linear-gradient(left, #3dade9, #bf2fcb);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.btn:nth-of-type(1) {
+			float: left;
+		}
+
+		.btn:nth-of-type(2) {
+			float: right;
+		}
+
+		.btn:nth-of-type(3) {
+			width: 100%;
+			clear: left;
+			padding: .75em;
+			font-size: 3em;
+			font-weight: 100;
+			line-height: 1;
+			letter-spacing: 1px;
+		}
+
+		* {
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			font: normal 1em 'Helvetica Neue', Helvetica, sans-serif;
+			background: #1d2025;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+		}
+
+		.container {
+			width: 60%;
+			margin: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+
+		.container:after {
+			display: table;
+			content: '';
+			clear: both;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		h1.method1 {
+			background: -webkit-linear-gradient(left, #ef0, #f00);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<a target="_blank" class="btn green"><span>Nominate Yourself</span></a>
+			<a target="_blank" class="btn orange"><span>Nominate Someone</span></a>
+			<a target="_blank" class="btn blue"><span>Buy Tickets Now</span></a>
+		</div>
+	</body>
+</html>

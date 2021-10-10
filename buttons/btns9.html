@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #434343;
+			margin: 0;
+			padding: 0;
+		}
+		.btn{
+			position: relative;
+			color: #1670f0;
+			font-size: 50px;
+			letter-spacing: 3px;
+			padding: 30px 60px;
+			box-shadow: 0px 20px 50px rgba(0,0,0,0.5);
+			overflow: hidden;
+		}
+		.btn::before{
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			bottom: 2px;
+			width: 50%;
+			background-color: rgba(255,255,255,0.05);
+			
+		}
+		.btn span:nth-child(1){
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 2px;
+			background:linear-gradient(to right ,#434343,#1779ff);
+			animation: s 2s linear 1s infinite;
+		}
+		@keyframes s{
+			from{
+				transform: translateX(-100%);
+			}
+			to{
+				transform: translateX(100%);
+			}
+		}
+		.btn span:nth-child(2){
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			width: 2px;
+			height: 100%;
+			background:linear-gradient(to bottom ,#434343,#1779ff);
+			animation: s1 2s linear 1s infinite;
+		}
+		@keyframes s1{
+			from{
+				transform: translateY(-100%);
+			}
+			to{
+				transform: translateY(100%);
+			}
+		}
+		.btn span:nth-child(3){
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			height: 2px;
+			background:linear-gradient(to left ,#434343,#1779ff);
+			animation: s3 2s linear 1s infinite;
+		}
+		@keyframes s3{
+			from{
+				transform: translateX(100%);
+			}
+			to{
+				transform: translateX(-100%);
+			}
+		}
+		.btn span:nth-child(4){
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width:2px ;
+			height: 100%;
+			background:linear-gradient(to top ,#434343,#1779ff);
+			animation: s4 2s linear 1s infinite;
+		}
+		@keyframes s4{
+			from{
+				transform: translateY(100%);
+			}
+			to{
+				transform: translateY(-100%);
+			}
+		}
+		.btn2{
+			overflow: visible;
+			margin-top: 50px;
+		}
+	</style>
+	<body>
+		<section>
+			<div class="btn">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				BUTTON
+			</div>
+			<div class="btn btn2">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				BUTTON
+			</div>
+		</section>
+	</body>
+</html>

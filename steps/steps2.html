@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.steps {
+			overflow: hidden;
+		}
+
+		.step-item {
+			float: left;
+			/**display:inline-block;**/
+			position: relative;
+			font-size: 26px;
+			line-height: 80px;
+			padding: 0 20px;
+			color: #edf9ff;
+			background: currentColor;
+			margin-left: 40px;
+		}
+
+		.step-item::first-line {
+			color: #009fe9;
+		}
+
+		.step-item::before {
+			position: absolute;
+			content: '';
+			border-width: 40px 0 40px 35px;
+			left: -35px;
+			border-style: solid;
+			border-color: currentColor currentColor currentColor transparent;
+		}
+
+		.step-item::after {
+			position: absolute;
+			content: '';
+			border-width: 40px 0 40px 35px;
+			right: -35px;
+			border-style: solid;
+			border-color: transparent transparent transparent currentColor;
+		}
+
+		.step-item:first-child {
+			margin-left: 35px;
+		}
+
+		.step-item:first-child::before {
+			border-left-color: currentColor;
+		}
+
+		.step-item.current {
+			color: #009fe9;
+		}
+
+		.step-item.current::first-line {
+			color: #fff;
+		}
+
+		.step-item.current~.step-item {
+			color: #ebedf0;
+		}
+
+		.step-item.current~.step-item::first-line {
+			color: #8c8c8c;
+		}
+	</style>
+	<body>
+		<div class="steps">
+			<a class="step-item">1-规则说明</a>
+			<a class="step-item">2-参与活动</a>
+			<a class="step-item current">3-参与抽奖</a>
+			<a class="step-item">4-奖品发放</a>
+			<a class="step-item">5-查看结果</a>
+		</div>
+	</body>
+</html>

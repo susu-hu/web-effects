@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+
+		h1 {
+			font-family: "Abril Titling", Georgia, serif;
+			color: #f9f9f9;
+			letter-spacing: 1px;
+		}
+
+		body div {
+			padding: 60px 0;
+			text-align: center;
+			height: 80px;
+			margin-top: 0;
+		}
+
+		.black {
+			background: #262D28;
+		}
+
+		.white {
+			background: #f9f9f9;
+		}
+
+		a {
+			display: inline-block;
+			margin: 10px;
+		}
+
+		.btn {
+			position: relative;
+			width: 160px;
+			padding: 1.2rem 3rem;
+			border: 1px solid #0AA944;
+			font-size: 15px;
+			text-decoration: none;
+			color: #f9f9f9;
+			font-family: "Tablet Gothic", sans-serif;
+			text-transform: uppercase;
+			font-weight: 300;
+			letter-spacing: 1.5px;
+			-webkit-transition: all .2s ease-out;
+			-moz-transition: all .2s ease-out;
+			-ms-transition: all .2s ease-out;
+			-o-transition: all .2s ease-out;
+			transition: all .2s ease-out;
+		}
+
+		.white .btn {
+			color: #262D28;
+			border: 2px solid #0AA944;
+		}
+
+		.btn span {
+			position: relative;
+			top: 2px;
+			left: 0;
+			-webkit-transition: all .3s ease-out;
+			-moz-transition: all .3s ease-out;
+			-ms-transition: all .3s ease-out;
+			-o-transition: all .3s ease-out;
+			transition: all .3s ease-out;
+		}
+
+		.btn i {
+			opacity: 0;
+			position: absolute;
+			margin-top: -21px;
+			top: 2.5rem;
+			left: 120%;
+			-webkit-transition: all .3s ease-out;
+			-moz-transition: all .3s ease-out;
+			-ms-transition: all .3s ease-out;
+			-o-transition: all .3s ease-out;
+			transition: all .3s ease-out;
+		}
+
+		.btn:hover {
+			background: rgba(255, 255, 255, .9);
+			border: 1px solid rgba(0, 0, 0, 1);
+		}
+
+		.white .btn:hover {
+			background: rgba(0, 0, 0, .02);
+			border: 2px solid rgba(0, 0, 0, 1);
+		}
+
+		.btn:hover span {
+			color: #333;
+			left: -20px;
+		}
+
+		a.btn:hover i {
+			opacity: 1;
+			left: 80%;
+			color: #333;
+			-webkit-transform: scale(1.2);
+		}
+
+		a.btn:hover .up {
+			-webkit-transform: rotate(270deg);
+		}
+
+		a.btn:hover .down {
+			-webkit-transform: rotate(90deg);
+		}
+	</style>
+	<body>
+		<div class="black">
+			<a href="#" class="btn"><span>Become A Member</span> <i>→</i> </a>
+			<a href="#" class="btn"><span>SupportUs</span> <i>→</i> </a>
+			<a href="#" class="btn"><span>Going Down</span> <i class="down">→</i> </a>
+			<a href="#" class="btn"><span>SignUp</span> <i class="up">→</i> </a>
+		</div>
+		<div class="white">
+			<a href="#" class="btn"><span>Become A Member</span> <i>→</i> </a>
+			<a href="#" class="btn"><span>SupportUs</span> <i>→</i> </a>
+			<a href="#" class="btn"><span>Going Down</span> <i class="down">→</i> </a>
+			<a href="#" class="btn"><span>SignUp</span> <i class="up">→</i> </a>
+		</div>
+	</body>
+</html>

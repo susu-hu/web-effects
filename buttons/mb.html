@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.btn {
+			display: block;
+			width: 300px;
+			outline: 0;
+			overflow: hidden;
+			position: relative;
+			transition: .3s;
+			cursor: pointer;
+			user-select: none;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			font-size: 50px;
+			background: tomato;
+			color: #fff;
+			border-radius: 10px;
+		}
+		.btn>span:after {
+			content: '';
+			position: absolute;
+			background: transparent;
+			border-radius: 50%;
+			width: 100%;
+			padding-top: 100%;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%) scale(1);
+		}
+		
+		.btn:active {
+			background: orangered;
+		}
+		
+		.btn>input[type=checkbox] {
+			display: none
+		}
+	</style>
+	<body>
+		<label class="btn" tabindex="1">
+			<input type="checkbox"><span>button</span>
+		</label>
+	</body>
+	<script>
+		(function() {
+		    'use strict';
+		    document.addEventListener("DOMContentLoaded", DOMContentLoaded, false);
+		    function DOMContentLoaded() {
+		        for (var i = 0, btn; btn = document.querySelectorAll('[materialDesign]')[i++];) {
+		            btn.addEventListener('mousedown', materialDesignBg);
+		        }
+		    }
+		    function materialDesignBg(e) {
+		        e.preventDefault();
+		        e.stopPropagation();
+		        var tag = this;
+		        var div = tag.querySelector(".animate-hand");
+		        if (!div) {
+		            div = document.createElement("div");
+		        }
+		        div.className = 'animate-hand';
+		        tag.insertBefore(div, tag.firstElementChild);
+		
+		        var scale = Math.round(tag.offsetWidth / 100) || 1;
+		        var left = e.layerX;
+		        var top = e.layerY;
+		
+		        div.style.left = left + "px";
+		        div.style.top = top + "px";
+		        scale = scale > 6 ? 6 : scale;
+		        div.className = "animate-hand animate ripple_" + (e.changedTouches ? scale + 1 : scale);
+		        if (tag.nodeName != 'A' && tag.getAttribute("href")) {
+		            location.href = tag.getAttribute("href");
+		        }
+		        return false;
+		    }
+		})();
+	</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.steps {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+
+		.steps li {
+			display: inline-block;
+			margin-left: -10px;
+		}
+
+		.steps li a {
+			display: block;
+			padding: 0 30px;
+			line-height: 30px;
+			text-decoration: none;
+			color: #345;
+			background-color: #def;
+			clip-path: polygon(0 0,
+					calc(100% - 10px) 0,
+					100% 50%,
+					calc(100% - 10px) 100%,
+					0 100%,
+					10px 50%);
+		}
+
+		.steps li a:hover {
+			background-color: #9ab;
+			color: #def;
+		}
+
+		.steps li.current a,
+		.steps li.current a:hover {
+			background-color: #345;
+			color: #def;
+		}
+
+		.steps li:first-child {
+			margin-left: 0;
+		}
+
+		.steps li:first-child a {
+			clip-path: polygon(0 0,
+					calc(100% - 10px) 0,
+					100% 50%,
+					calc(100% - 10px) 100%,
+					0 100%);
+			padding-left: 20px;
+		}
+	</style>
+	<body>
+		<ul class="steps">
+			<li>
+				<a href="#" title="Step 1">Step 1</a>
+			</li>
+			<li>
+				<a href="#" title="Step 2">Step 2</a>
+			</li>
+			<li class="current">
+				<a href="#" title="Step 3">Step 3</a>
+			</li>
+			<li>
+				<a href="#" title="Step 4">Step 4</a>
+			</li>
+		</ul>
+	</body>
+</html>
