@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			.content {
+				width: 50%;
+				margin: auto;
+			}
+
+			canvas {
+				width: 200px;
+				height: 200px;
+			}
+
+			.control {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="content">
+			<canvas id="canvas"></canvas>
+		</div>
+		<div class="control">
+			<span>进度</span>
+			<input type="range" min="0" max="100" step="1" id="rate">
+		</div>
+		<div class="control">
+			<span>波浪起伏度</span>
+			<input type="range" min="5" max="60" step="1" id="wave">
+		</div>
+		<div class="control">
+			<span>波浪平滑度</span>
+			<input type="range" min="200" max="600" step="1" id="flat">
+		</div>
+		<div class="control">
+			<span>波浪偏移量</span>
+			<input type="range" min="0" max="200" step="1" id="distance">
+		</div>
+		<div class="control">
+			<span>波浪速度</span>
+			<input type="range" min="1" max="12" step="1" id="speed">
+		</div>
+		<script>
+			function drawCircle(ctx, mW, color) {
+				ctx.beginPath();
+				ctx.strokeStyle = color;
+				ctx.arc(mW / 2, mW / 2, mW / 2 - 1, 0, 2 * Math.PI);
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(mW / 2, mW / 2, mW / 2 - 2, 0, 2 * Math.PI);
+				ctx.clip();
+			}
+			// 曲线函数
+			function drawSin(ctx, mW, color1, color2, wav, dY) {
+				ctx.save();
+				// var lineargradient = ctx.createLinearGradient(33, 0, 33, 66); // 创建一个线性渐变
+				// lineargradient.addColorStop(0, color1);
+				// lineargradient.addColorStop(1, color2);
+				ctx.beginPath();
+				ctx.moveTo(0, mW);
+				ctx.lineTo(0, dY);
+				// ctx.bezierCurveTo(mW / 4, dY - wav, (mW *3) / 4, dY + wav, mW, dY);
+				ctx.quadraticCurveTo(mW / 4, dY - wav, mW / 2, dY);
+				ctx.lineTo(mW / 2, dY)
+				ctx.quadraticCurveTo((mW * 3) / 4, dY + wav, mW, dY);
+				//  ctx.stroke();
+				ctx.lineTo(mW, mW);
+				ctx.lineTo(0, mW);
+				ctx.fillStyle = color1;
+				ctx.fill();
+				ctx.restore();
+			}
+
+			function init() {
+				var canvas1 = document.getElementById('canvas')
+
+				var mW = canvas1.clientWidth;
+				// console.log(mW);
+				// 设置Canvas元素的高
+				canvas1.style.height = mW;
+				// 设置Canvas画布的宽高
+				canvas1.width = canvas1.height = mW;
+
+				var canvas2 = document.createElement('canvas'),
+					ctx2 = canvas2.getContext('2d');
+				canvas2.width = mW;
+				canvas2.height = mW;
+
+				var canvas3 = document.createElement('canvas'),
+					ctx3 = canvas3.getContext('2d');
+				canvas3.width = mW;
+				canvas3.height = mW;
+
+				var x = 0,
+					flat = 300,
+					speed = 7,
+					rate = 0.60,
+					distance = 180,
+					wave = 30
+				var rateDom = document.getElementById('rate'),
+					flatDom = document.getElementById('flat'),
+					speedDom = document.getElementById('speed'),
+					distanceDom = document.getElementById('distance'),
+					waveDom = document.getElementById('wave')
+
+				rateDom.value = rate * 100
+				flatDom.value = flat
+				speedDom.value = speed
+				distanceDom.value = distance
+				waveDom.value = wave
+
+
+
+				var ctx1 = canvas1.getContext('2d')
+
+				drawCircle(ctx1, mW, '#1a4768');
+				drawSin(ctx2, mW, '#1c86d1', '#1c86d1', wave, mW - mW * rate);
+				drawSin(ctx3, mW, 'rgba(28, 134, 209, 0.5)', 'rgba(28, 134, 209, 0.5)', wave, mW - mW * rate);
+				//  ctx1.drawImage(canvas2, 0, 0)
+
+				var rate1 = rate,
+					wave1 = wave
+
+				function animation() {
+
+					rate = parseInt(rateDom.value) / 100
+					flat = parseInt(flatDom.value)
+
+					if (rate !== rate1 || wave1 !== wave) {
+						ctx2.clearRect(0, 0, mW, mW)
+						ctx3.clearRect(0, 0, mW, mW)
+						rate1 = rate
+						wave1 = wave
+						drawSin(ctx2, mW, '#1c86d1', '#1c86d1', wave, mW - mW * rate);
+						drawSin(ctx3, mW, 'rgba(28, 134, 209, 0.5)', 'rgba(28, 134, 209, 0.5)', wave, mW - mW * rate);
+					}
+
+					speed = parseInt(speedDom.value)
+					distance = parseInt(distanceDom.value)
+					wave = parseInt(waveDom.value)
+
+					ctx1.clearRect(0, 0, mW, mW)
+					ctx1.drawImage(canvas2, x, 0, mW + flat, mW)
+					ctx1.drawImage(canvas2, x - mW - flat, 0, mW + flat, mW)
+					ctx1.drawImage(canvas3, x + distance, 0, mW + flat, mW)
+					ctx1.drawImage(canvas3, x - mW + distance - flat, 0, mW + flat, mW)
+					x >= (mW - speed + flat) ? x = 0 : x += speed
+					requestAnimationFrame(animation)
+				}
+				animation()
+			}
+			init()
+		</script>
+	</body>
+
+</html>
