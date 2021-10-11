@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+           
+        }
+        .main{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%; 
+          height: 100%;
+          background-color: rgb(0, 0, 0);
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          align-content: space-around;
+          cursor: pointer;
+        }
+        .dot{
+            position: relative;
+            width: 20px;
+            height: 20px;
+           
+        }
+        .dot::before{
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            bottom: 1px;
+            right: 1px;
+            background-color: rgba(65, 64, 64,.5);       
+            border-radius: 50%;
+            transition: all 120s ease-out;
+            
+        }
+        .dot:hover::before{
+            background-color: var(--color);
+            box-shadow: 0 0 2px var(--color),
+            0 0 4px var(--color),
+            0 0 6px var(--color),
+             0 0 8px var(--color); 
+            transition: all 0s ease-out;
+        } 
+        .txt{           
+            position: absolute;
+            left: 50%;
+            top: 50%;           
+            transform: translate(-50%,-50%);
+            font-family: 'fangsong';
+            font-size: 80px;
+            color: rgba(255, 255, 255,.6); 
+            letter-spacing: 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="main">
+        <h1 class="txt">北极光之夜</h1>
+        <div class="dot" style="--color: red;"></div>      
+    </div>
+
+    <script>
+
+        /* 获取底层盒子main元素 */
+        var main = document.querySelector('.main');
+        /* 得到main的宽度 */
+        let width = main.offsetWidth;
+        /* 得到main的高度 */
+        let height = main.offsetHeight;
+         /* 建一个颜色数组，放上几种颜色 */
+        let color = ["#BBFF00","#FF3333","#FFFF77","#0044BB","#FF77FF","#99FFFF","#DDDDDD","#FF44AA"];
+        /*  计算一行需要多少的小圆圈，圆圈是20*20的 */
+        let chuang = Math.floor(width / 20);
+        /*  计算一列需要多少的小圆圈 */
+        let kuan = Math.floor(height / 20);
+        /* 圆圈的总数 */
+        let zong = chuang*kuan;
+       /*   循环添加全部圆圈 */
+        for(let i=1;i<zong;i++)
+        {
+            /* 创建div盒子 */
+            let dot = document.createElement('div');
+            /* 给新建的盒子添加类名为.dot的选择器 */
+             dot.classList.add('dot');
+              /* 给新建的盒子添加一个随机颜色 */
+             dot.style.cssText=` --color: ${color[Math.floor(Math.random() * 8) ]}; `
+               /* 给底层盒子main添加这个新建的div */
+            main.appendChild(dot);
+        }
+
+
+    </script>
+</body>
+</html>

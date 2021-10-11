@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+
+			canvas {
+				background: #aaffff;
+			}
+		</style>
+
+
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script>
+		let canvas = document.getElementById('canvas')
+		window.onresize = canvasOnresize
+		//页面大小改变 canvans大小改变
+		function canvasOnresize() {
+			canvas.width = document.getElementsByTagName('body')[0].clientWidth
+			canvas.height = document.getElementsByTagName('body')[0].clientHeight
+		}
+		//初始化canvas的高度 宽度 跟随页面的大小
+		canvasOnresize()
+		//生成小圆
+		//初始化画笔
+		let ctx = canvas.getContext("2d")
+		//装Ball对象的数组
+		let ballList = []
+		//颜色数组
+		let colorList = ["red", "green", "yellow", "blue", "black", "#ccc"]
+
+		function Ball(x, y) {
+			this.x = x; //横轴坐标
+			this.y = y; //纵轴坐标
+			this.color = colorList[Math.floor(this.mathRandom(0, 6))]; //随机生成颜色
+			this.xv = this.mathRandom(-5, 5); //x轴的分散速度
+			this.yv = this.mathRandom(-5, 5); //y轴的分散速度
+			this.Alpha1 = 1; //开始透明度
+			this.Alpha2 = 0.85;
+		}
+		//生成小球
+		Ball.prototype.update = function() {
+			ctx.save();
+			ctx.beginPath()
+			ctx.fillStyle = this.color // 背景颜色为红色
+			ctx.arc(this.x, this.y, 30, 0, Math.PI * 2, false)
+			ctx.fill()
+			ctx.closePath()
+		}
+		//小球移动
+		Ball.prototype.move = function() {
+			this.Alpha1 *= this.Alpha2
+			ctx.globalAlpha = this.Alpha1;
+			this.x += this.xv
+			this.y += this.yv
+		}
+		//随机生成 随机数
+		Ball.prototype.mathRandom = function(min, max) {
+			return (max - min) * Math.random() + min
+		}
+		// canvas  2  鼠标移动
+		canvas.addEventListener('mousemove', function(e) {
+			ballList.push(new Ball(e.clientX, e.clientY))
+		})
+		//1  触发事件
+		changeBall()
+
+		function changeBall() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height)
+			//循环Ball实例上方法
+			ballList.map((item) => {
+				item.update()
+				item.move()
+			})
+			//按照电脑最优状态执行定动画效果
+			requestAnimationFrame(changeBall)
+		}
+	</script>
+
+</html>

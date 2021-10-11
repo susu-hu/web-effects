@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫彩流光</title>
+    <style>
+        @keyframes move {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+        }
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+        }
+        .btn {
+            position: relative;
+            width: 300px;
+            height: 110px;
+            color: white;
+            line-height: 80px;
+            font-size: 60px;
+            font-family: sans-serif;
+            text-transform: uppercase;//转为大写字母
+            text-align: center;
+            border-radius: 40px;
+            background: linear-gradient(90deg,rgb(242, 97, 94),rgb(234, 150, 104),rgb(251, 200, 2),rgb(174, 9, 43),rgb(108, 40, 243),rgb(212, 4, 128),rgb(85, 132, 206));
+            background-size: 400%;
+            border: none;
+            outline: none;
+            text-shadow: 0 0 3px white,
+                         0 0 3px white,
+                         0 0 3px white;
+            z-index: 1;
+        }
+        .btn:hover {
+            animation: move 2s linear alternate infinite;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 310px;
+            height: 120px;
+            background: linear-gradient(90deg,rgb(242, 97, 94),rgb(234, 150, 104),rgb(251, 200, 2),rgb(174, 9, 43),rgb(108, 40, 243),rgb(212, 4, 128),rgb(85, 132, 206));
+            background-size: 400%;
+            opacity: 0;
+            border-radius: 45px;
+            transition: .6s;
+            z-index: -1;
+        }
+        .btn:hover::before {
+            filter: blur(10px);
+            opacity: 1;
+            animation: move 2s linear alternate infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button class="btn">button</button>
+    </div>
+</body>
+</html>

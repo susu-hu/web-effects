@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+		    margin: 0;
+		    padding: 0;
+		}
+		body {
+		    background: #282828;
+		    text-align: center;
+		}
+		li {
+		    list-style: none;
+		}
+		.container {
+		    width:  400px;
+		    height: 400px;
+		    margin: 100px auto;
+		    perspective: 1000px;/* 景深 */
+		}
+		.container .photo {
+		    position: relative;
+		    transform-style: preserve-3d;/* 3d效果 */
+		    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		    width: 100%;
+		    height: 100%;
+		}
+		.container .photo li{
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		}
+		.container .photo li img{
+		    width: 100%;
+		    height: 100%;
+		    border: 3px solid white;
+		}
+		/* 刚开始时转一下，好看点 */
+		.container .init {
+		    transform: translateZ(-200px) rotateX(-16deg) rotateY(15deg);
+		}
+		/* 摆成一个正方体 */
+		.container .photo li:nth-child(1) img {
+		    transform: translateZ(200px);
+		}
+		.container .photo li:nth-child(2) img {
+		    transform: rotateX(180deg)  translateZ(200px);
+		}
+		.container .photo li:nth-child(3) img {
+		    transform: rotateY(90deg) translateZ(200px);
+		}
+		.container .photo li:nth-child(4) img {
+		    transform: rotateY(-90deg) translateZ(200px);
+		}
+		.container .photo li:nth-child(5) img {
+		    transform: rotateX(90deg) translateZ(200px);
+		}
+		.container .photo li:nth-child(6) img {
+		    transform: rotateX(-90deg) translateZ(200px);
+		}
+		
+		/* 魔方结束 */
+		h2 {
+		    color: white;
+		    margin-bottom: 50px;
+		}
+		/* 小图片 */
+		.minis {
+		    display: grid;
+		    /* 栅格排列 */
+		    grid-template-columns: 105px 105px 105px;
+		    /* 每行几个宽度分别多少 */
+		    grid-template-rows: 85px 85px;
+		    /* 每列几个高度多少 */
+		    justify-content: center;
+		    /* 居中 */
+		    grid-gap: 15px;
+		    /* 间距 */
+		}
+		.minis input {
+		    outline: none;
+		    border: 2px solid white;
+		    width: 100%;
+		    height: 100%;
+		}
+		/* 图片点击图片边框发生变化 */
+		.minis input:focus {
+		    border: 2px solid orange;
+		}
+		/* js 使用的魔方变化样式*/
+		.container .img_1 {
+		    transform: translateZ(-200px);
+		}
+		.container .img_2 {
+		    transform: translateZ(-200px) rotateX(-180deg) ;
+		}
+		.container .img_3 {
+		    transform: translateZ(-200px) rotateY(-90deg) ;
+		}
+		.container .img_4 {
+		    transform: translateZ(-200px) rotateY(90deg) ;
+		}
+		.container .img_5 {
+		    transform: translateZ(-200px) rotateX(-90deg) ;
+		}
+		.container .img_6 {
+		    transform: translateZ(-200px) rotateX(90deg) ;
+		}
+		
+
+	</style>
+	<body>
+		<div class="container">
+		        <ul class="photo init">
+		            <li><img src="imgs/1.jpg" alt=""></li>
+		            <li><img src="imgs/2.jpg" alt=""></li>
+		            <li><img src="imgs/3.jpg" alt=""></li>
+		            <li><img src="imgs/4.jpg" alt=""></li>
+		            <li><img src="imgs/5.jpg" alt=""></li>
+		            <li><img src="imgs/6.jpg" alt=""></li>
+		        </ul>
+		    </div>
+		    <h2>点击下方图片进行翻转</h2>
+		    <div class="minis">
+		        <input type="image" src="imgs/1.jpg">
+		        <input type="image" src="imgs/2.jpg">
+		        <input type="image" src="imgs/3.jpg">
+		        <input type="image" src="imgs/4.jpg">
+		        <input type="image" src="imgs/5.jpg">
+		        <input type="image" src="imgs/6.jpg">
+		</div>
+
+	</body>
+	<script>
+		window.onload = function() {
+		    var minis = document.querySelector('.minis');
+		    var bigphoto = document.querySelector('.photo');
+		    var currList = bigphoto.classList;//获取bigphoto下的类名
+		    var inputs = minis.querySelectorAll('input');
+		    //动态的给下方小图片添加id
+		    for(var i = 0;i < inputs.length; i++){
+		        inputs[i].id = 'img_' + (i + 1);
+		    }
+		    var target = currList[1];
+		    minis.onclick = function(e) {
+		        var flage = e.target.id;//我的id名和样式名相同，这样方便一些
+		        currList.replace(target,flage);//用flage替换target
+		        target = flage;//给target新的值，供下次使用
+		    }
+		}
+
+	</script>
+</html>

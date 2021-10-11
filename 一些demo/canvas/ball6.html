@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+        canvas {
+            display: block;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="1000px" height="1000px" id="myCanvas">
+        当前浏览器版本不支持，请升级浏览器
+    </canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        //定义球的位置和半径
+        function Ball(x, y, r) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            this.color = getRandom();//随机生成颜色
+            this.dx = parseInt(Math.random() * 10) - 5;//生成随机移动的位置
+            this.dy = parseInt(Math.random() * 10) - 5;
+            ballArr.push(this);//添加小球
+        }
+        /* 更新小球位置和半径 小于0时清除 */
+        Ball.prototype.update = function () {
+            this.x += this.dx;
+            this.y += this.dy;
+            this.r -= 0.1;
+            if (this.r < 0) {
+                this.remove();//调用添加的remove方法
+            }
+        }
+        Ball.prototype.remove = function () {
+            for (var i = 0; i < ballArr.length; i++) {
+                if (ballArr[i] == this) {
+                    ballArr.splice(i, 1);//找到这个小于0 的元素，删除
+                }
+            }
+        }
+        //渲染小球 画小球
+        //在原型中添加方法
+        Ball.prototype.render = function () {
+            ctx.beginPath();//路径开始
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);//画圆，位置，半径
+            ctx.fillStyle = this.color;//颜色
+            ctx.fill();
+        }
+        //监听鼠标移动事件
+        canvas.addEventListener('mousemove', function (e) {
+            new Ball(e.offsetX, e.offsetY, parseInt(Math.random() * 20));
+            //实例化Ball为Ball对象通过__proto__来调用原型的方法
+        })
+        var ballArr = [];
+        setInterval(function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);//清屏
+            for (var i = 0; i < ballArr.length; i++) {
+                ballArr[i].update();//更新小球
+                if (ballArr[i]) {
+                    ballArr[i].render();//渲染小球
+                }
+            }
+        }, 20);
+        //设置随机颜色
+        function getRandom() {
+            var allType = '0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f';//16进制颜色
+            var allTypeArr = allType.split(',');//通过','分割为数组
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                var random = parseInt(Math.random() * allTypeArr.length);
+                //随机生成一个0-16的数
+                color += allTypeArr[random];
+            }
+            return color;//返回随机生成的颜色
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				margin: 150px;
+			}
+
+			#canvas {
+				box-shadow: 0 0 10px #000;
+			}
+		</style>
+	</head>
+	<body>
+
+		<canvas id="canvas">当前的浏览器不支持该版本!</canvas>
+
+		<script>
+			//封装Math.random()函数
+			function MyRandom(n, m) {
+				//取n到m的随机数, [n, m]
+				return Math.round(Math.random() * (m - n) + n);
+			}
+
+
+			// 1. 获取当前的画布
+			const canvas = document.getElementById('canvas');
+			const ctx = canvas.getContext('2d');
+			canvas.width = 1000;
+			canvas.height = 600;
+			canvas.style.backgroundColor = '#000';
+
+			// 2.小球类
+			class Ball {
+				/**
+				 * 构造器
+				 */
+				constructor(x, y, color) {
+					this.x = x;
+					this.y = y;
+					this.color = color;
+					this.r = 40;
+				}
+
+				/**
+				 * 绘制小球
+				 */
+				render() {
+					ctx.save();
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+					ctx.fillStyle = this.color;
+					ctx.fill();
+					ctx.restore();
+				}
+			}
+
+			// 3.会移动的小球类
+			class MoveBall extends Ball {
+				constructor(x, y, color) {
+					super(x, y, color);
+
+					// 量的变化
+
+					this.dX = MyRandom(-5, 5);
+					this.dY = MyRandom(-5, 5);;
+					this.dR = MyRandom(1, 3);
+				}
+
+				upDate() {
+					this.x += this.dX;
+					this.y += this.dY;
+					this.r -= this.dR;
+					if (this.r < 0) {
+						this.r = 0;
+					}
+				}
+			}
+
+
+			// 4. 实例化小球
+			let ballArr = [];
+			let colorArr = ['red', 'green', 'blue', 'yellow', 'purple', 'pink', 'orange'];
+
+			// 5. 监听鼠标的移动
+			canvas.addEventListener('mousemove', function(e) {
+				ballArr.push(new MoveBall(e.offsetX, e.offsetY, colorArr[MyRandom(0, colorArr.length - 1)]));
+				// console.log(ballArr);
+			});
+
+			// 6.开启定时器
+			setInterval(function() {
+				// 清屏
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				// 绘制
+				for (let i = 0; i < ballArr.length; i++) {
+					ballArr[i].render();
+					ballArr[i].upDate();
+				}
+			}, 50);
+		</script>
+	</body>
+</html>

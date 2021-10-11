@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		#myCanvas{
+			display: block;
+		}
+		body{
+			margin: 0;
+			padding: 0;
+			background-color: #aaaaff;
+		}
+	</style>
+	<body>
+		<canvas id="myCanvas"></canvas>
+	</body>
+	<script>
+	    
+	    const canvas = document.getElementById('myCanvas')
+	    canvas.setAttribute('width', document.body.clientWidth)
+	    canvas.setAttribute('height', window.innerHeight)
+	    const ctx = canvas.getContext('2d');
+	    let ballArr =[]
+	
+	    // 获取随机颜色
+	    function getRandomColor() {
+	        let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+	        let colorArr = []
+	        for(let i = 0; i < 3; i++) {
+	            colorArr.push(arr[parseInt(Math.random() * 16)])
+	        }
+	        return `#${colorArr.join('')}`
+	    }
+	
+	    // 鼠标移动时效果
+	    canvas.addEventListener('mouseover', () => {
+	        canvas.addEventListener('mousemove', (e) => {
+	            new Ball(e.offsetX, e.offsetY, 15, getRandomColor());
+	        })
+	    })
+	
+	    // 鼠标点击时效果
+	    canvas.addEventListener('click', (e) => {
+	        for(let i = 0; i< 20; i++) {
+	            new Ball(e.offsetX, e.offsetY, i, getRandomColor());
+	        }
+	    })
+	
+	    setInterval(()=> {
+	        ctx.clearRect(0, 0, document.body.clientWidth, document.body.clientHeight)
+	        ballArr.forEach(item => {
+	            item.render();
+	            item.update()
+	        })
+	    }, 10)
+	
+	
+	    class Ball {
+	        constructor(x, y, r, color) {
+	            this.x = x;
+	            this.y = y;
+	            this.r = r;
+	            this.dx = Math.random() * 10 - 5
+	            this.dy = Math.random() * 10 - 5
+	            this.color = color;
+	            ballArr.push(this)
+	        }
+	
+	        remove() {
+	            let index = ballArr.findIndex(item => item === this)
+	            ballArr.splice(index, 1)
+	        }
+	
+	        render() {
+	            ctx.beginPath();
+	            ctx.fillStyle = this.color;
+	            ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+	            ctx.fill();
+	        }
+	        update() {
+	            this.r -= .1;
+	            this.x -= this.dx;
+	            this.y -= this.dy;
+	            if(this.r <= 0) {
+	                this.remove()
+	                return;
+	            }
+	            this.render()
+	        }
+	    }
+	    
+	</script>
+
+</html>

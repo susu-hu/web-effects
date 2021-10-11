@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?wr5es');
+            src: url('fonts/icomoon.eot?wr5es#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?wr5es') format('truetype'),
+                url('fonts/icomoon.woff?wr5es') format('woff'),
+                url('fonts/icomoon.svg?wr5es#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+
+        * {
+            font-family: 'icomoon';
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: rgba(50, 128, 102, 0.9);
+        }
+
+        main {
+            position: relative;
+            top: 20vh;
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        main .bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url(img/images/1.jpg);
+            background-size: 100% 100%;
+            filter: blur(30px);
+        }
+
+        main section {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 100%;
+            max-width: 980px;
+
+        }
+
+        main section .tupian {
+            width: 100%;
+            height: 100%;
+        }
+
+        main section .tupian .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+
+        }
+
+        .yun {
+            animation: bian 5s linear infinite;
+        }
+
+
+        @keyframes bian {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                backdrop-filter: blur(10px);
+            }
+
+            30%,
+            80% {
+                opacity: 1;
+                backdrop-filter: blur(0px);
+            }
+
+        }
+
+        main .select {
+            position: absolute;
+            bottom: 10px;
+            height: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main .select .dian {
+            margin: 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid rgb(255, 254, 254);
+
+        }
+
+        main .select .dian:hover {
+            background-color: rgb(255, 254, 254);
+            cursor: pointer;
+        }
+
+        .check {
+
+            background-color: rgb(255, 254, 254);
+        }
+
+        main section .bt {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(82, 81, 81, 0.2);
+            border-radius: 20%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        main section .bt:hover {
+            box-shadow: inset 0 0 1px rgba(255, 255, 255, .8),
+                inset 0 0 5px rgba(255, 255, 255, .8),
+                inset 0 0 15px rgba(255, 255, 255, .8);
+        }
+
+        main section .left {
+            left: -60px;
+        }
+
+        main section .right {
+            right: -60px;
+        }
+
+        /*当屏幕尺寸小于1100px时，应用下面的CSS样式,详细用法网址：https://www.xuewangzhan.net/baike/css3-379.html*/
+        @media screen and (max-width: 1100px) {
+            main section .left {
+                left: 20px;
+            }
+
+            main section .right {
+                right: 20px;
+            }
+        }
+
+        main section .anniu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+            color: rgb(255, 255, 255);
+            user-select: none;
+            transition: all 0.3s;
+
+        }
+
+        .txt {
+
+            position: fixed;
+            bottom: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100px;
+            font-family: 'fangsong';
+            font-size: 50px;
+            text-align: center;
+            color: rgba(255, 255, 255, .9);
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main">
+        <!-- 虚化背景 -->
+        <div class="bg"></div>
+        <!-- 图片框 -->
+        <section>
+            <!-- 放图片 -->
+            <div class="tupian">
+                <img src="img/images/1.jpg" class="image">
+            </div>
+            <!-- 小圆点 -->
+            <div class="select">
+                <!--  <div class="dian"></div>
+                 <div class="dian check"></div>      -->
+            </div>
+            <!-- 左右切换按钮 -->
+            <div class="bt left"><span class="anniu"></span></div>
+            <div class="bt right"><span class="anniu"></span></div>
+        </section>
+    </main>
+
+    <div class="txt">北极光之夜</div>
+
+    <script>
+
+        /* 获取元素 */
+
+        var main = document.getElementById('main');
+        var bg = document.querySelector('.bg');
+        var image = document.querySelector('.image');
+        var select = document.querySelector('.select');
+        var dian = document.getElementsByClassName('dian');
+        var left = document.querySelector('.left');
+        var right = document.querySelector('.right');
+
+        /* 设置数组，里面放图片的地址 */
+
+        var picture = ['img/images/1.jpg', 'img/images/2.jpg', 'img/images/3.jpg', 'img/images/4.jpg', 'img/images/5.jpg', 'img/images/6.jpg'];
+
+        /* 设置index为0，这个变量后面就一直用来充当图片数组的下标 */
+        var index = 0;
+
+        /* 从图片数组的长度，动态添加小圆点 */
+
+        for (let i = 0; i < picture.length; i++) {
+            let dot = document.createElement('div');
+            dot.classList.add('dian');
+            select.appendChild(dot);
+            /* 添加自定义属性index，对应每张图片的下标 */
+            dot.bianhao = i;
+        }
+
+        /* 排他思想，清除所有小圆点check样式，后面要引用这个封装函数 */
+
+        function qingchu() {
+            for (let i = 0; i < dian.length; i++) {
+                dian[i].classList.remove('check');
+
+            }
+        }
+
+
+        /* 切下一张图的封装函数，后面也是要引用 */
+
+        function yunxing() {
+               /* index加1 */
+            index = index + 1;
+            if (index == picture.length) {
+                index = 0;
+            }
+             /* 显示图片，显示图片数组下标为目前index那张 */
+            image.src = picture[index];
+             /* 虚化背景也要换 */
+            bg.style.cssText = ` background-image: url(${picture[index]});`
+
+            /* 小圆点的显示 */
+            qingchu();
+              /* 显示那张图就显示对于的圆点，给他.check的样式 */
+            dian[index].classList.add('check');
+
+            /* 若index超过，回到-1 */
+            if (index == picture.length - 1) {
+                index = -1;
+            }
+
+        }
+
+
+
+        /* 点击向右按钮时的操作 */
+
+        right.addEventListener('click', function () {
+            /* 直接用上面的切图封装函数 */
+            yunxing();
+        })
+
+        /* 点击向左按钮时的操作，跟上面的切下张图封装函数异曲同工 */
+
+        left.addEventListener('click', function () {
+
+            index = index - 1;
+            if (index == -1) {
+                index = picture.length - 1;
+            }
+            image.src = picture[index];
+            bg.style.cssText = ` background-image: url(${picture[index]});`
+
+            /* 向左时小圆点的显示 */
+            qingchu();
+            dian[index].classList.add('check');
+
+        })
+
+
+        /* 进入main这个底层盒子时，停止自动轮播和.yun类的动画效果，自动轮播的定时器我写在最后面 */
+
+        main.addEventListener('mouseover', function () {
+
+            clearInterval(lunbo);
+
+            image.classList.remove('yun');
+
+        })
+
+        /*  离开main这个底层盒子时，开始自动轮播和.yun类的动画效果，自动轮播的定时器我写在最后面 */
+
+        main.addEventListener('mouseout', function () {
+
+            lunbo = setInterval(yunxing, 5000);
+
+            image.classList.add('yun');
+            image.style.animationDelay = '5s';
+        })
+
+
+        /*  点击小圆点时的切图操作 */
+        for (let i = 0; i < picture.length; i++) {
+            dian[i].addEventListener('click', function () {
+                qingchu();
+                this.classList.add('check');
+                index = i;
+                image.src = picture[index];
+            bg.style.cssText = ` background-image: url(${picture[index]});`
+
+            })
+        }
+
+        /* 自动轮播定时器与初始状态 */
+
+        lunbo = setInterval(yunxing, 5000);
+        image.classList.add('yun');
+        dian[0].classList.add('check');
+
+    </script>
+</body>
+
+</html>

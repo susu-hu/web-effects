@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+        }
+        .charge {
+            position: relative;
+            width: 100px;
+            height: 200px;
+            margin: 200px auto;
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-shadow: 0px 0px 10px white;
+        }
+        .charge::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 40px;
+            height: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: white;
+        }
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient( #ffb3d9, #ff80df,#ff00bf);
+            overflow: hidden;
+            animation: more 10s linear infinite;
+        }
+        @keyframes more {
+            0% {
+                height: 0%;
+            }
+            100% {
+                height: 100%;
+            }
+        }
+        .wave::before {
+            position: absolute;
+            content: '';
+            top: -185px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 45%;
+            background-color: white;
+            animation: move 10s linear infinite;
+        }
+        .wave::after {
+            position: absolute;
+            content: '';
+            top: -180px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 45%;
+            background-color: white;
+            opacity: .5;
+            animation: move 8s linear infinite;
+        }
+        @keyframes move {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="charge">
+        <div class="wave"></div>
+    </div>
+</body>
+</html>

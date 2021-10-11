@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      body{
+          background-color: rgb(0, 0, 0);
+        
+      }
+      canvas{
+          display: block;
+      }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+         var canvas = document.querySelector("#canvas");
+         var ctx = canvas.getContext("2d");
+       // 画布宽与高
+        var kuan=0,gao=0;    
+        var num=25;
+        var arr=[];
+        var colors = ["#2196F3","#1976D2","#00BCD4","#4CAF50","#FF5252","#E040FB"];
+        window.onresize=resizeCanvas;
+        function resizeCanvas(){
+            kuan=canvas.width=window.innerWidth;
+            gao=canvas.height=window.innerHeight;
+        }
+        resizeCanvas(); 
+        var mouseX = kuan/2,mouseY = gao/2;
+        for(let i=0;i<num;i++){
+            arr.push({
+               /*  x: kuan/2,
+                y: gao/2, */
+                r: Math.random()*(5-3) + 3,
+                color: colors[parseInt(Math.random()*6)],
+                 /* 旋转开始角度 */
+                rot: Math.random()*2*Math.PI,
+                /* 旋转小球距离中心距离 */
+                distance: Math.random() * (75 - 40) + 40,
+                /* 记录初始位置，鼠标拖拽时做缓动动画用 */
+                lastMouse:{
+                    x:kuan/2,
+                    y:gao/2
+                }
+            })
+        }
+        function draw(last) {
+           /*  for(let i=0;i<num;i++){ */ 
+            var yuan = arr[last.i]; 
+            ctx.beginPath();
+            /* ctx.fillStyle = yuan.color; 
+            ctx.arc(yuan.x,yuan.y,yuan.r, 0,Math.PI* 2, false);
+            ctx.fill(); */
+            ctx.strokeStyle = yuan.color;
+            ctx.lineWidth = yuan.r;
+            ctx.moveTo(last.x,last.y);
+            ctx.lineTo(yuan.x,yuan.y);
+            ctx.stroke();
+            ctx.closePath();
+           /*  } */ 
+        }
+          
+         window.addEventListener('mousemove',function(event){
+               mouseX = event.clientX;
+               mouseY = event.clientY;               
+         })       
+        /*  var moveX=kuan/2,moveY=gao/2; */
+         function update (){
+            for(let i=0;i<num;i++){
+                /* 传当前绘制的第i个的线的绘制前一帧的位置和当前i保存 */
+               let last ={x:arr[i].x,y:arr[i].y,i:i};             
+            /* 移动后位置 = 当前位置 + （移动后位置-当前位置）*0.05 缓动动画原理 */
+                arr[i].lastMouse.x+=(mouseX-arr[i].lastMouse.x)*0.05;
+                arr[i].lastMouse.y+=(mouseY-arr[i].lastMouse.y)*0.05;
+               arr[i].rot+=0.1;
+                arr[i].x = arr[i].lastMouse.x + Math.cos(arr[i].rot)*arr[i].distance;
+                arr[i].y = arr[i].lastMouse.y + Math.sin(arr[i].rot)*arr[i].distance;
+                 /* 位置改变，把last传给draw，画线 */
+                draw(last);
+            }
+         }
+        setInterval(function(){
+             /*  ctx.clearRect(0,0,kuan,gao); */
+             /* 不直接用clearRect让上一帧内容全部变透明，而是逐渐给上一帧
+             蒙上一层有点透明的当前背景色，这样一帧一帧的叠加，最开始的小球
+             会逐渐与背景融合变得相当与消失 */
+             ctx.fillStyle = "rgba(0,0,0,0.1)"; 
+             ctx.fillRect(0,0,kuan,gao); 
+             update(); 
+          /*  draw(); */ 
+        },20)
+    </script>
+</body>
+</html>

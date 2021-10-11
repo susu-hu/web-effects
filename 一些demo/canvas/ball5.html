@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#big {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+
+		.small {
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			border: 3px solid pink;
+			border-radius: 50%;
+		}
+	</style>
+	<body>
+		<div id="big"></div>
+	</body>
+
+	<script>
+		//获取div
+		var big = document.getElementById("big");
+		//对div添加鼠标移动时间
+		big.onmousemove = function(e) {
+			//对event做兼容性处理
+			var e = event || window.event;
+			//创建一个新的div
+			var div = document.createElement("div");
+			//新的div的样式为.small
+			div.className = "small";
+			//获取鼠标移动的X轴坐标（想知道clientX与screenX等等的区别，请参考我上一篇博客），将获取的X轴坐标给新创建div的绝对定位的left
+			div.style.left = e.clientX + 'px';
+			//简单来说就是把clientY的值给top，让新的div与上面的距离与鼠标位置保持一致
+			div.style.top = e.clientY + 'px';
+			//条件添加好了，就把创建好的div加到之前的div里面
+			big.appendChild(div);
+			//定义一个i和timer
+			var i = 0;
+			var timer = null;
+			//定时器
+			timer = setInterval(function() {
+				//每一次移动，就改变相应的属性
+				i += 5;
+				div.style.opacity = (50 - i) / 50;
+				div.style.width = (20 + i) + 'px';
+				div.style.height = (20 + i) + 'px';
+			}, 20)
+			//在300ms后执行，并清除计时器，删除创建的div
+			setTimeout(function() {
+				clearInterval(timer)
+				big.removeChild(div)
+			}, 300)
+		}
+		//每执行一次移动，都会触发计时器和延迟执行
+	</script>
+
+
+</html>

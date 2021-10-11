@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+		    margin: 0;
+		    padding: 0;
+		}
+		body {
+		    background-color: black;
+		}
+		@keyframes move {
+		    0% {
+		        background-position: 0%;
+		    }
+		    100% {
+		        background-position: 100%;
+		    }
+		}
+		/* 数字炫彩时钟 */
+		.clock {
+		    display: flex;
+		    position: relative;
+		    width: 400px;
+		    height: 100px;
+		    margin: 20px auto;
+		    background: linear-gradient(90deg,rgb(39,122,218),rgb(74,230,121),rgb(201,214,13),rgb(226,20,233),rgb(16,172,219));
+		    background-size: 400%;
+		    border-radius: 10px;
+		    justify-content: center;
+		    align-items: center;
+		    animation: move 3s linear infinite alternate;
+		}
+		.clock::before {
+		    content: '';
+		    position: absolute;
+		    top: -5px;
+		    left: -5px;
+		    width: 410px;
+		    height: 110px;
+		    background: linear-gradient(90deg,rgb(39,122,218),rgb(74,230,121),rgb(201,214,13),rgb(226,20,233),rgb(16,172,219));
+		    background-size: 400%;
+		    opacity: 1;
+		    border-radius: 10px;
+		    transition: all .6s;
+		    z-index: -1;
+		    filter: blur(10px);
+		    animation: move 3s linear infinite alternate;
+		}
+		.clock span {
+		    color: white;
+		    font-size: 50px;
+		    margin: 0px 30px;
+		    text-shadow: 0px 0px 12px white;
+		}
+		/* 日期样式 */
+		.date {
+		    width: 300px;
+		    height: 100px;
+		    margin: 0 auto;
+		}
+		p {
+		    text-align: center;
+		    letter-spacing: 4px;
+		    color: white;
+		    font-size: 34px;
+		}
+		.date .now {
+		    color: white;
+		    font-size: 20px;
+		    margin-top: 10px;
+		    letter-spacing: 3px;
+		    text-align: center;
+		}
+		/* 表盘 */
+		.clocker {
+		    /* display: none; */
+		    position: relative;
+		    width: 400px;
+		    height: 400px;
+		    border-radius: 50%;
+		    margin: 50px auto;  
+		    background-color: rgb(179, 179, 179); 
+		}
+		.clocker span {
+		    display: inline-block;
+		    position: absolute;
+		    left: 50%;
+		    transform-origin: bottom;
+		}
+		/* 三根针 */
+		.long {
+		    top: 30px;
+		    width: 4px;
+		    height: 170px;
+		    background: linear-gradient(rgb(39,122,218),rgb(226,20,233),pink);
+		    background-size: 400%;
+		    transform: translate(-2px,0);
+		}
+		.short {
+		    position: relative;
+		    top: 60px;
+		    width: 8px;
+		    height: 140px;
+		    border-radius: 4px;
+		    background-color: black;
+		    transform: translate(-4px,0);
+		}
+		.short::before {
+		    position: absolute;
+		    bottom: 0;
+		    left: 3px;
+		    content: '';
+		    width: 2px;
+		    height: 60px;
+		    background-color: white;
+		    border-radius: 1px;
+		}
+		.mini {
+		    position: relative;
+		    top: 100px;
+		    width: 10px;
+		    height: 100px;
+		    border-radius: 5px ;
+		    background-color: black;
+		    transform: translate(-3px,0);
+		}
+		.mini::before {
+		    position: absolute;
+		    bottom: 0;
+		    left: 4px;
+		    content: '';
+		    width: 2px;
+		    height: 40px;
+		    background-color: white;
+		    border-radius: 1px;
+		}
+		/* 中间的小圆圈 */
+		.round {
+		    position: absolute;
+		    width: 20px;
+		    height: 20px;
+		    border: px solid black;
+		    /* background-color: white; */
+		    background: linear-gradient(rgb(39,122,218),rgb(226,20,233),pink);
+		    border-radius: 50%;
+		    top: 50%;
+		    left: 50%;
+		    box-sizing: border-box;
+		    transform: translate(-8px,-10px);
+		}
+		/* 表盘数字的样式 */
+		i {
+		    font-style: normal;
+		    font-size: 24px;
+		    color: white;
+		}
+		.twelve {
+		    position: absolute;
+		    top: 0;
+		    left: 50%;
+		    transform: translate(-10px,0);
+		}
+		.three {
+		    position: absolute;
+		    top: 50%;
+		    right: 5px;
+		    transform: translate(0px,-10px);
+		}
+		.six {
+		    position: absolute;
+		    bottom: 10px;
+		    left: 50%;
+		    transform: translate(-10px,0);
+		}
+		.nine {
+		    position: absolute;
+		    top: 50%;
+		    left: 5px;
+		    transform: translate(0px,-10px);
+		}
+		/* 旋转时钟 */
+		.rot {
+		    display: none;
+		    position: relative;
+		    width: 400px;
+		    height: 400px;
+		    border-radius: 50%;
+		    margin: 50px auto;
+		    background-color: rgb(41, 41, 41);
+		}
+		.timing {
+		    position: absolute;
+		    width: 260px;
+		    height: 260px;
+		    text-align: center;
+		    line-height: 260px;
+		    top: 50%;
+		    left: 50%;
+		    letter-spacing: 2px;
+		    transform: translate(-50%,-50%);
+		    font-size: 65px;
+		    color: black;
+		    z-index: 2;
+		}
+		.inner {
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%,-50%);
+		    width: 260px;
+		    height: 260px;
+		    border-radius: 50%;
+		    background-color: rgb(243, 236, 236);
+		}
+		.outer {
+		    position: absolute;
+		    width: 400px;
+		    height: 400px;
+		    box-sizing: border-box;
+		    border-radius: 50%;
+		    background: linear-gradient(rgb(39,122,218),rgb(226,20,233),rgb(41, 41, 41));
+		    clip-path: inset( 0 50% 0 0 );
+		    transform-origin: center center;
+		}
+
+	</style>
+	<body>
+		<!-- 转盘时钟 -->
+		<div class="clocker">
+		    <span class="long"></span>
+		    <span class="short"></span>
+		    <span class="mini"></span>
+		    <i class="twelve">12</i>
+		    <i class="three">3</i>
+		    <i class="six">6</i>
+		    <i class="nine">9</i>
+		    <div class="round"></div>
+		</div>
+		<!-- 旋转时钟 -->
+		<div class="rot">
+		    <div class="timing"></div>
+		    <div class="outer"></div>
+		    <div class="inner"></div>
+		</div>
+		<!-- 显示日期 -->
+		<div class="date">
+		    <p>中国标准时间</p>
+		    <div class="now"></div>
+		</div>
+		<!-- 数字时钟 -->
+		<div class = "clock">
+		    <span class ="hour"></span>
+		    <span class ="minute"></span>
+		    <span class ="second"></span>
+		</div>
+
+	</body>
+	<script>
+	    /* 前面数字的三个span */
+	    var hour = document.querySelector('.hour');
+	    var minute = document.querySelector('.minute');
+	    var second = document.querySelector('.second');
+	    /* 获取圆盘的三根针 */
+	    var hourNeedle = document.querySelector('.mini');
+	    var minuteNeedle = document.querySelector('.short');
+	    var secondNeedle = document.querySelector('.long');
+	    /* 获取显示日期的div */
+	    var date = document.querySelector('.now');
+	    /* 旋转时钟 */
+	    var timing = document.querySelector('.timing');
+	    var outer = document.querySelector('.outer');
+	    /* 获取三个时钟 */
+	    var clocker = document.querySelector('.clocker');
+	    var rot = document.querySelector('.rot');
+	    console.log(clocker);
+	    /* 先来个立即执行函数让时间在页面打开时就显示 */
+	    (function times() {
+	        var time = new Date();
+	        var year = time.getFullYear();
+	        var month = time.getMonth();
+	        var dates = time.getDate();
+	        var day = time.getDay();
+	        var h = time.getHours();
+	        var days = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+	        var divText = (month + 1) + '月' + dates + '日' + days[day];
+	        date.innerHTML = divText;
+	        h = h < 10 ? '0' + h : h;
+	        var m = time.getMinutes();
+	        m = m < 10 ? '0' + m : m;
+	        var s = time.getSeconds();
+	        s = s < 10 ? '0' + s : s;
+	        hour.innerHTML = h ;
+	        minute.innerHTML = m;
+	        second.innerHTML = s; 
+	        timing.innerHTML = h + ':' + m ;
+	        var rotateH = h * 30 ;
+	        var rotateM = m * 6;
+	        var rotateS = s * 6;
+	        hourNeedle.style.transform = 'rotate(' + rotateH + rotateM / 60 + 'deg' + ')';
+	        minuteNeedle.style.transform = 'rotate(' + (rotateM + (rotateS / 60)) + 'deg' + ')';
+	        secondNeedle.style.transform = 'rotate(' + rotateS + 'deg' + ')';
+	        outer.style.transform = 'rotate(' + rotateS + 'deg' + ')'
+	    }())
+	    /* 因为页面的加载需要一定的时间，所以这里会有一定的误差 */
+	    window.onload = function () {
+	    setInterval(timer,1000);
+	    function timer() {
+	        var time = new Date();
+	        var year = time.getFullYear();
+	        var month = time.getMonth();
+	        var dates = time.getDate();
+	        var day = time.getDay();
+	        var h = time.getHours();
+	        var days = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六'];
+	        var divText = (month + 1) + '月' + dates + '日' + days[day];
+	        date.innerHTML = divText;
+	        h = h < 10 ? '0' + h : h;
+	        var m = time.getMinutes();
+	        m = m < 10 ? '0' + m : m;
+	        var s = time.getSeconds();
+	        s = s < 10 ? '0' + s : s;
+	        hour.innerHTML = h ;
+	        minute.innerHTML = m;
+	        second.innerHTML = s; 
+	        timing.innerHTML = h + ':' + m ;
+	        var rotateH = h * 30 ;
+	        var rotateM = m * 6;
+	        var rotateS = s * 6;
+	        hourNeedle.style.transform = 'rotate(' + (rotateH + (rotateM / 60)) + 'deg' + ')';
+	        minuteNeedle.style.transform = 'rotate(' + (rotateM + (rotateS / 60)) + 'deg' + ')';
+	        secondNeedle.style.transform = 'rotate(' + rotateS + 'deg' + ')';
+	        outer.style.transform = 'rotate(' + rotateS + 'deg' + ')'
+	    }     
+	    }
+	    clocker.onclick = function() {
+	        clocker.style.display = 'none';
+	        rot.style.display = 'block';
+	    }
+	    rot.onclick = function() {
+	        rot.style.display = 'none';
+	        clocker.style.display = 'block';
+	    }     
+	</script>
+
+</html>
