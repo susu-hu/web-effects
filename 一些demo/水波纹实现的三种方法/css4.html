@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.container {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin: 0 auto;
+		}
+
+		.dot {
+			position: absolute;
+			left: 15px;
+			top: 15px;
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+		}
+
+		.wave {
+			position: absolute;
+			left: 2px;
+			top: 2px;
+			width: 24px;
+			height: 24px;
+			border: 6px solid red;
+			border-radius: 50%;
+			opacity: 0;
+			animation: waveCircle 3s ease-out;
+			animation-iteration-count: infinite;
+		}
+
+		@-webkit-keyframes waveCircle {
+			0% {
+				transform: scale(0);
+				opacity: 0;
+			}
+
+			10% {
+				transform: scale(0.1);
+				opacity: 0.1;
+			}
+
+			20% {
+				transform: scale(0.2);
+				opacity: 0.2;
+			}
+
+			30% {
+				transform: scale(0.3);
+				opacity: 0.3;
+			}
+
+			75% {
+				transform: scale(0.6);
+				opacity: 0.5;
+			}
+
+			100% {
+				transform: scale(1);
+				opacity: 0;
+			}
+		}
+		
+		.example {
+			position: relative;
+			margin: 150px auto;
+			width: 50px;
+			height: 50px;
+		}
+		
+		.dot1:before {
+			content: ' ';
+			position: absolute;
+			z-index: 2;
+			left: 0;
+			top: 0;
+			width: 10px;
+			height: 10px;
+			background-color: #ff4200;
+			border-radius: 50%;
+		}
+		
+		.dot1:after {
+			content: ' ';
+			position: absolute;
+			z-index: 1;
+			width: 10px;
+			height: 10px;
+			background-color: #ff4200;
+			border-radius: 50%;
+			box-shadow: 0 0 10px rgba(0, 0, 0, .3) inset;
+			-webkit-animation: waveCircle1 1s ease infinite normal;
+		}
+		
+		@keyframes waveCircle1 {
+			0% {
+				left: 5px;
+				top: 5px;
+				width: 0;
+				height: 0;
+			}
+		
+			100% {
+				left: -20px;
+				top: -20px;
+				opacity: 0;
+				width: 50px;
+				height: 50px;
+			}
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="dot"></div>
+			<div class="wave"></div>
+		</div>
+		
+		<div class="example">
+			<div class="dot1"></div>
+		</div>
+	</body>
+</html>

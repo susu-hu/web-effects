@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+</head>
+
+<body>
+    <div class="circle-countdown circle-countdown--ended">
+        <div class="circle-countdown__content-wrapper">
+            <div class="circle-countdown__content wave-animation">
+                <div id="water" class="wave-animation__water">
+                    <svg viewBox="0 0 560 20" class="wave-animation__water-wave wave-animation__water-wave--back">
+                        <path
+                            d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z">
+                        </path>
+                        <path
+                            d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z">
+                        </path>
+                        <path
+                            d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z">
+                        </path>
+                        <path
+                            d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z">
+                        </path>
+                    </svg>
+                    <svg viewBox="0 0 560 20" class="wave-animation__water-wave wave-animation__water-wave--front">
+                        <path
+                            d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z">
+                        </path>
+                        <path
+                            d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z">
+                        </path>
+                        <path
+                            d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z">
+                        </path>
+                        <path
+                            d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .circle-countdown {
+            width: 441px;
+            height: 441px;
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 2.5rem;
+            border: 1px solid #fb64b6;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .wave-animation {
+            overflow: hidden;
+        }
+
+
+        .wave-animation__percent {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 64px;
+        }
+
+        .wave-animation__water {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            /* 调整这里的60%就可以改变进度，波浪高低 */
+            transform: translate(0, calc(100% - 60%));
+            background: #f852d6;
+            transition: all 2s;
+        }
+
+        .wave-animation__water-wave {
+            width: 200%;
+            position: absolute;
+            bottom: 100%;
+
+
+        }
+
+        .wave-animation__water-wave--back {
+            right: 0;
+            fill: #1d1d1d;
+            animation: wave-back 1.4s infinite linear;
+        }
+
+        .wave-animation__water-wave--front {
+            left: 0;
+            fill: #f852d6;
+            margin-bottom: -1px;
+            animation: wave-front 0.7s infinite linear;
+        }
+
+        @keyframes wave-front {
+            100% {
+                transform: translate(-50%, 0);
+            }
+        }
+
+        @keyframes wave-back {
+            100% {
+                transform: translate(50%, 0);
+            }
+        }
+    </style>
+</body>
+
+</html>

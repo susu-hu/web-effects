@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body>.wrapper {
+			margin: 50px auto;
+			vertical-align: top;
+			text-align: center;
+		}
+
+		h3 {
+			margin-bottom: 50px;
+		}
+
+		body>.wrapper>div {
+			width: 100px;
+			height: 100px;
+			overflow: hidden;
+			display: block;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.wave-svg-shape {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 100%;
+			overflow: hidden;
+			transform: translateX(-100px);
+			animation: fillUpSvg 10s ease-in-out infinite;
+		}
+
+		.wave-svg-shape .wave-svg {
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			float: left;
+			fill: #00A1DF;
+			margin: 0;
+			animation: waveSvgAnim 1s linear infinite;
+		}
+
+		@keyframes fillUpSvg {
+			0% {
+				transform: translateY(calc(100px/2)) scaleY(0);
+			}
+
+			50% {
+				transform: translateY(0) scaleY(1);
+			}
+
+			100% {
+				transform: translateY(calc(100px/2)) scaleY(0);
+			}
+		}
+
+		@keyframes waveSvgAnim {
+			0% {
+				transform: translateX(calc(-100px * 2));
+			}
+
+			100% {
+				transform: translateX(100px * 2);
+			}
+		}
+	</style>
+	<body>
+		<div class="wrapper">
+			<div>
+				<div class="wave-svg-shape">
+					<svg class="wave-svg" xmlns="http://www.w3.org/2000/svg" id="738255fe-a9fa-4a5e-963a-8e97f59370ad"
+						data-name="3-waves" viewBox="0 0 600 215.43">
+						<title>wave shape</title>
+						<path class="871c1787-a7ef-4a54-ad03-3cd50e05767a"
+							d="M639,986.07c-17-1-27.33-.33-40.5,2.67s-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06S456,987.07,439,986.07s-27.33-.33-40.5,2.67-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06S256,987.07,239,986.07s-27.33-.33-40.5,2.67-24.58,11.84-40.46,15c-13.56,2.69-31.27,2.9-46.2,1.35-17.7-1.83-35-9.06-35-9.06v205.06h600V996S656,987.07,639,986.07Z"
+							transform="translate(-76 -985)"></path>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div>
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="200">
+				<g fill="rgba(106,127,239,0.1)">
+					<path d="M 0 70 Q 75 39, 150 70 T 300 70 T 450 70 T 600 70 T 750 70 V 100 H 0 V 0"></path>
+					<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-300"
+						dur="1.5s" repeatCount="indefinite"></animateTransform>
+				</g>
+				<g fill="rgba(106,127,239,0.15)">
+					<path d="M 0 70 Q 87.5 47, 175 70 T 350 70 T 525 70 T 700 70 T 875 70 T 1050 70 V 100 H 0 V 0">
+					</path>
+					<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-350"
+						dur="3s" repeatCount="indefinite"></animateTransform>
+				</g>
+				<g fill="rgba(106,127,239,0.18)" transform="translate(-903.868 0)">
+					<path d="M 0 70 Q 135 36, 270 70 T 540 70 T 810 70 T 1080 70 V 100 H 0 V 0"
+						transform="translate(-38.232284367796474, 0)"></path>
+					<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-540"
+						dur="2s" repeatCount="indefinite"></animateTransform>
+				</g>
+			</svg>
+		</div>
+		<div>
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="400">
+				<g id="circle">
+					<text x="115" y="115" font-size="36px" fill="#000" text-anchor="middle"
+						transform="translate(0,18)">50%</text>
+					<circle r="100" cx="115" cy="115" fill="none" stroke-width="10" stroke="rgb(135,206,250)" />
+					<circle cx="115" cy="115" r="90" fill="none" stroke="white" />
+					<path d="M 25,115 C 67.5,74 162.5,156 205,115 A 90,90 0 0,1 25,115 z" fill="rgba(135,206,250,.8)">
+						<animate attributeName="d" attributeType="XML" dur="3s" repeatCount="indefinite" values="M 25,115 C 67.5,74 162.5,156 205,115 A 90,90 0 0,1 25,115 z;
+			               M 25,115 C 67.5,115 162.5,115 205,115 A 90,90 0 0,1 25,115 z;
+			               M 25,115 C 67.5,156 162.5,74 205,115 A 90,90 0 0,1 25,115 z;
+			               M 25,115 C 67.5,115 162.5,115 205,115 A 90,90 0 0,1 25,115 z;
+			               M 25,115 C 67.5,74 162.5,156 205,115 A 90,90 0 0,1 25,115 z;"></animate>
+					</path>
+				</g>
+			</svg>
+		</div>
+
+		<div style="transform:scale(0.5)">
+
+			<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+				<text class="liquidFillGaugeText" text-anchor="middle" font-size="42px" transform="translate(100,120)"
+					style="fill: #000">90.0%</text>
+
+				<!-- Wave -->
+
+				<g id="wave">
+
+					<path id="wave-2" fill="rgba(154, 205, 50, .8)"
+						d="M 0 100 C 133.633 85.12 51.54 116.327 200 100 A 95 95 0 0 1 0 100 Z">
+
+						<animate dur="5s" repeatCount="indefinite" attributeName="d" attributeType="XML" values="M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z;
+		
+		            M0 100 C145 100, 41 100, 200 100 A95 95 0 0 1 0 100 Z;
+		
+		            M0 100 C90 28, 92 179, 200 100 A95 95 0 0 1 0 100 Z"></animate>
+
+					</path>
+
+				</g>
+
+				<circle cx="100" cy="100" r="80" stroke-width="10" stroke="white" fill="transparent"></circle>
+
+				<circle cx="100" cy="100" r="90" stroke-width="20" stroke="yellowgreen" fill="none"
+					class="percentage-pie-svg"></circle>
+
+			</svg>
+
+
+
+		</div>
+
+	</body>
+</html>

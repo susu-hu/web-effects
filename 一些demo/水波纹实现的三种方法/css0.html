@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+			
+		.circle{
+			width: 100px;
+			height: 100px;
+			border-radius: 45%;
+			background-color: #009955;
+			animation: s 2s infinite linear;
+		}
+		@keyframes s{
+			to{
+				transform: rotate(360deg); 
+			}
+		}
+		
+		
+		body {
+		    position: relative;
+		    align-items: center;
+		    min-height: 100vh;
+		    background-color: rgb(118, 218, 255);
+		    overflow: hidden;
+		
+		    
+		}
+		body:before, body:after {
+		    content: "";
+		    position: absolute;
+		    left: 50%;
+		    min-width: 300vw;
+		    min-height: 300vw;
+		    background-color: #fff;
+		    animation-name: rotate;
+		    animation-iteration-count: infinite;
+		    animation-timing-function: linear;
+		}
+				
+		body:before {
+		    bottom: 55vh;
+		    border-radius: 45%;
+		    animation-duration: 10s;
+		}
+				
+		body:after {
+		    bottom: 52vh;
+		    opacity: .5;
+		    border-radius: 47%;
+		    animation-duration: 10s;
+		}
+		
+		@keyframes rotate {
+		    0% {
+		        transform: translate(-50%, 0) rotateZ(0deg);
+		    }
+		    50% {
+		        transform: translate(-50%, -2%) rotateZ(180deg);
+		    }
+		    100% {
+		        transform: translate(-50%, 0%) rotateZ(360deg);
+		    }
+		}
+		
+		h2 {
+		    position: relative;
+		    color: #333;
+		    z-index: 10;
+		    text-align: center;
+		    height: 100vh;
+		    line-height: 140vh;
+		    font-size: 8vw;
+		    text-shadow: 3px 3px 2px #999;
+		}
+	</style>
+	<body>
+		<section>
+			<div class="circle"></div>
+		</section>
+		<section>
+			<h2>苏苏小苏苏</h2>
+		</section>
+	</body>
+</html>
