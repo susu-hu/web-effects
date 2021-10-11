@@ -39,7 +39,12 @@
 27. 一个渐变色的字体
 28. 一个hover加载边框的按钮[https://juejin.cn/post/7017120184657788936](https://juejin.cn/post/7017120184657788936)
 29. 一个炫酷的按钮
+30. 一个hover按钮
 #### 作品截图 
+
+hover按钮
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1011/200645_8f8f4309_8576727.gif "GIF666.gif")
 
 炫酷的按钮
 
