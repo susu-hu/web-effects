@@ -41,7 +41,12 @@
 29. 一个炫酷的按钮
 30. 一个hover按钮
 31. clip-path实现一个带有水波纹路文字
+32. background-clip:text实现一个文字
 #### 作品截图 
+
+background-clip:text实现一个文字
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1013/232416_0dfe6728_8576727.gif "12312.gif")
 
 有水波纹路文字
 
