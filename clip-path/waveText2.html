@@ -16,25 +16,16 @@
 			min-width: 1200px;
 		}
 
-		.con {
-			position: relative;
-			white-space: nowrap;
-		}
-
-		.con h2 {
-			position: absolute;
+		h2 {
 			color: #fff;
 			font-size: 8em;
-			transform: translate(-50%, -50%);
-		}
-
-		.con h2 {
 			color: transparent;
 			-webkit-text-stroke: 2px #00ffff;
+			position: relative;
 		}
 
-		.con h2::before {
-			content: attr(data-text);
+		 h2::before {
+			content: attr(content);
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -58,8 +49,6 @@
 		}
 	</style>
 	<body>
-		<div class="con">
-			<h2 data-text="susu">susu</h2>
-		</div>
+		<h2 content="苏苏">苏苏</h2>
 	</body>
 </html>
