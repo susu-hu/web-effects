@@ -40,7 +40,12 @@
 28. 一个hover加载边框的按钮[https://juejin.cn/post/7017120184657788936](https://juejin.cn/post/7017120184657788936)
 29. 一个炫酷的按钮
 30. 一个hover按钮
+31. clip-path实现一个带有水波纹路文字
 #### 作品截图 
+
+有水波纹路文字
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1013/230527_a17b46c5_8576727.gif "waveing.gif")
 
 hover按钮
 
