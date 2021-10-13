@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		@property --k {
+		  syntax: "<number>";
+		  initial-value: 0;
+		  inherits: true;
+		}
+		body, nav, a {
+		  display: grid;
+		}
+		
+		body {
+		  place-content: center;
+		  margin: 0;
+		  height: 100vh;
+		  background: repeating-radial-gradient(circle at 25% 25%, transparent 0, rgba(0, 0, 0, 0.2) 1px 4px, transparent 5px 8px) #222
+		  
+		}
+		
+		nav {
+		  grid-auto-flow: column;
+		  padding: 0 1.5em;
+		  border-radius: 1.6970562748em;
+		  background: #fff;
+		  --mask:
+		  	linear-gradient(red 0 0),
+		  	radial-gradient(circle at 0 2.1213203436em,
+		  			transparent calc(2.1213203436em - .5px), gold calc(2.1213203436em + .5px))
+		  		calc((var(--k) + .5)*7.5em + 1.5em - 3.1819805153em) 0/ 2.1213203436em 0.75em no-repeat,
+		  	radial-gradient(circle at 100% 2.1213203436em,
+		  			transparent calc(2.1213203436em - .5px), gold calc(2.1213203436em + .5px))
+		  		calc((var(--k) + .5)*7.5em + 1.5em + 1.0606601718em) 0/ 2.1213203436em 0.75em no-repeat,
+		  	radial-gradient(circle at calc((var(--k) + .5)*7.5em + 1.5em) 0.375em,
+		  			white calc(0.375em - 1px), transparent 0.375em),
+		  	radial-gradient(circle at calc((var(--k) + .5)*7.5em + 1.5em) -0.75em,
+		  			blue calc(2.1213203436em - .5px), transparent calc(2.1213203436em + .5px));
+		  -webkit-mask: var(--mask);
+		  mask: var(--mask);
+		  -webkit-mask-composite: xor, source-over, source-over;
+		  mask-composite: exclude, add, add;
+		  font: 0.625em/1.5 ubuntu, sans-serif;
+		  transition: --k 0.35s cubic-bezier(0.5, -0.5, 0.5, 1.5);
+		}
+		
+		.nav-item {
+		  --dif: calc(var(--i) - var(--k));
+		  --abs: max(-1*var(--dif), var(--dif));
+		  --not-sel: min(1, var(--abs));
+		  --sel: calc(1 - var(--not-sel));
+		  box-sizing: border-box;
+		  place-content: center;
+		  padding-top: 1.5em;
+		  width: 7.5em;
+		  height: 7.5em;
+		  color: hsl(0, 0%, calc(var(--not-sel)*50%));
+		  text-align: center;
+		  text-decoration: none;
+		  text-transform: capitalize;
+		  filter: sepia(var(--hl));
+		}
+		.nav-item::before {
+		  font-size: 2em;
+		  filter: brightness(0) contrast(calc(var(--sel)));
+		  content: attr(data-ico);
+		}
+		.nav-item:focus {
+		  outline: none;
+		}
+		.nav-item:focus, .nav-item:hover {
+		  --hl: 1 ;
+		}
+	</style>
+	<body>
+		<nav style="--n: 5; --k: 0">
+			<a class="nav-item" href="#" data-ico="🏠" style="--i: 0">home</a>
+			<a class="nav-item" href="#" data-ico="🔍"style="--i: 1">search</a>
+			<a class="nav-item" href="#" data-ico="🖤" style="--i: 2">likes</a>
+			<a class="nav-item" href="#" data-ico="🔔" style="--i: 3">notification</a>
+			<a class="nav-item" href="#" data-ico="👱" style="--i: 4">profile</a>
+		</nav>
+	</body>
+	<script>
+		addEventListener('click', e => {
+			let _t = e.target;
+			if(_t.hasAttribute('href'))
+				_t.parentNode.style.setProperty('--k', +_t.style.getPropertyValue('--i'))
+		})
+	</script>
+</html>

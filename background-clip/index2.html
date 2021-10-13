@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>文字全透明</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #55efc4;
+			}
+
+			h1.power {
+				width: 100%;
+				/* 没有做适配，直接按照全屏来的  也可以写px值  👇 */
+				font-size: 12em;
+				font-weight: 900;
+				text-align: center;
+				color: transparent;
+				/* 文字间距 */
+				letter-spacing: 20px;
+				margin: 0;
+				/* 居中h1标签 */
+				position: fixed;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				/* 背景图片导入 */
+				background: url("https://cdn.pixabay.com/photo/2020/05/21/07/39/banner-5199550__340.jpg") repeat center center;
+				/* 背景裁切，值为text时 会有文字的镂空效果（前提是文字透明或者半透明，能直观看出来） */
+				-webkit-background-clip: text;
+				background-size: 40%;
+				/* 动画执行 */
+				animation: animate 8s ease 500ms forwards;
+			}
+
+			/* 定义关键帧 */
+			@keyframes animate {
+				from {
+					background-size: 50%;
+				}
+
+				to {
+					background-size: 10%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1 class="power">你渴望力量吗？骚年！</h1>
+	</body>
+
+</html>
