@@ -41,7 +41,7 @@
 29. 一个炫酷的按钮
 30. 一个hover按钮
 31. clip-path实现一个带有水波纹路文字
-32. background-clip:text实现一个文字
+32. background-clip:text实现一个文字[用clip-path实现一个水波纹的字体](https://juejin.cn/post/7018591105910308878)
 #### 作品截图 
 
 background-clip:text实现一个文字
