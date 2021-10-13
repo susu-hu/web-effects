@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+			min-width: 1200px;
+		}
+
+		.con {
+			position: relative;
+			white-space: nowrap;
+		}
+
+		.con h2 {
+			position: absolute;
+			color: #fff;
+			font-size: 8em;
+			transform: translate(-50%, -50%);
+		}
+
+		.con h2 {
+			color: transparent;
+			-webkit-text-stroke: 2px #00ffff;
+		}
+
+		.con h2::before {
+			content: attr(data-text);
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: #00ffff;
+			animation: a 4s ease-in-out infinite;
+		}
+
+		@keyframes a {
+
+			0%,
+			100% {
+				-webkit-clip-path: polygon(0 100%, 0 61%, 16% 77%, 29% 86%, 44% 90%, 62% 88%, 78% 81%, 89% 74%, 100% 62%, 100% 100%);
+				clip-path: polygon(0 100%, 0 61%, 16% 77%, 29% 86%, 44% 90%, 62% 88%, 78% 81%, 89% 74%, 100% 62%, 100% 100%);
+
+			}
+
+			50% {
+				-webkit-clip-path: polygon(0 100%, 0 25%, 16% 52%, 29% 65%, 43% 75%, 64% 76%, 77% 72%, 88% 62%, 100% 49%, 100% 100%);
+				clip-path: polygon(0 100%, 0 25%, 16% 52%, 29% 65%, 43% 75%, 64% 76%, 77% 72%, 88% 62%, 100% 49%, 100% 100%);
+			}
+		}
+	</style>
+	<body>
+		<div class="con">
+			<h2 data-text="susu">susu</h2>
+		</div>
+	</body>
+</html>
