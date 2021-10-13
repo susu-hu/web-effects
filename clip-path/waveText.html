@@ -5,8 +5,7 @@
 		<title></title>
 	</head>
 	<style>
-			
-		body{
+		body {
 			margin: 0;
 			padding: 0;
 			display: flex;
@@ -16,36 +15,42 @@
 			background-color: #222;
 			min-width: 1200px;
 		}
-		.con{
+
+		.con {
 			position: relative;
 		}
-			
-		.con h2{
+
+		.con h2 {
 			position: absolute;
 			color: #fff;
 			font-size: 8em;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
 		}
-			
-		.con h2:nth-child(1){
+
+		.con h2:nth-child(1) {
 			color: transparent;
 			-webkit-text-stroke: 2px #007AFF;
 		}
-		.con h2:nth-child(2){
+
+		.con h2:nth-child(2) {
 			color: #007AFF;
 			animation: a 4s ease-in-out infinite;
 		}
-		@keyframes a{
-			0%,100%{
-				
-				-webkit-clip-path: polygon(0 100%, 0 59%, 19% 71%, 31% 77%, 45% 79%, 60% 79%, 73% 77%, 83% 71%, 90% 63%, 100% 48%, 100% 100%);
-				clip-path: polygon(0 100%, 0 59%, 19% 71%, 31% 77%, 45% 79%, 60% 79%, 73% 77%, 83% 71%, 90% 63%, 100% 48%, 100% 100%);
+
+		@keyframes a {
+
+			0%,
+			100% {
+				-webkit-clip-path: polygon(0 100%, 0 61%, 16% 77%, 29% 86%, 44% 90%, 62% 88%, 78% 81%, 89% 74%, 100% 62%, 100% 100%);
+				clip-path: polygon(0 100%, 0 61%, 16% 77%, 29% 86%, 44% 90%, 62% 88%, 78% 81%, 89% 74%, 100% 62%, 100% 100%);
+
 			}
-			50%{
-				
+
+			50% {
 				-webkit-clip-path: polygon(0 100%, 0 25%, 16% 52%, 29% 65%, 43% 75%, 64% 76%, 77% 72%, 88% 62%, 100% 49%, 100% 100%);
 				clip-path: polygon(0 100%, 0 25%, 16% 52%, 29% 65%, 43% 75%, 64% 76%, 77% 72%, 88% 62%, 100% 49%, 100% 100%);
-				
+
+
 			}
 		}
 	</style>
