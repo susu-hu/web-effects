@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.flex-row {
+			display       : flex;
+			flex-direction: row;
+			align-items   : center;
+		}
+		
+		.flex-column {
+			display       : flex;
+			flex-direction: column;
+			align-items   : center;
+		}
+		
+		.a_c {
+			align-items: center;
+		}
+		
+		.j_c {
+			justify-content: center;
+		}
+		
+		.j_b {
+			justify-content: space-between;
+		}
+		
+		.j_a {
+			justify-content: space-around;
+		}
+		
+		.flex {
+			display: flex;
+		}
+		body{
+			padding: 0;
+			margin: 0;
+		}
+		.order_box {
+			width: 1200px;
+			border: 1px solid #DBDBDB;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-bottom: 20px;
+			margin: 50px auto;
+		}
+
+		.order_box .title {
+			width: 1200px;
+			height: 56px;
+			background: #F7F7F7;
+			border-bottom: 1px solid #E0E0E0;
+			border-radius: 4px 4px 0px 0px;
+			padding: 0 37px;
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 56px;
+			color: #333333;
+		}
+
+		.order_box .content {
+			height: 208px;
+			position: relative;
+		}
+
+		.order_box .content .left {
+			width: 227px;
+		}
+
+		.order_box .content .left span {
+			font-size: 22px;
+			color: #FF0000;
+			margin-bottom: 30px;
+		}
+
+		.order_box .content .left span:last-child {
+			margin-bottom: 0;
+		}
+
+		.order_box .content .left button {
+			margin-bottom: 7px;
+			width: 119px;
+			height: 38px;
+			background: #519551;
+			border-radius: 4px;
+			color: #fff;
+			font-size: 15px;
+		}
+
+		.order_box .content .left a {
+			font-size: 14px;
+			color: #666666;
+		}
+
+		.order_box .content .left a:hover {
+			color: #519551;
+		}
+
+		.order_box .content .right {
+
+			font-size: 14px;
+			color: #666666;
+			margin: auto;
+			width: 68%;
+		}
+
+		.order_box .content .right p {
+			margin-bottom: 16px;
+			font-size: 18px;
+			color: #666666;
+		}
+
+		.order_box .content .right p:first-of-type {
+			color: #333333;
+			font-weight: 600;
+		}
+
+		.order_box .content .right .s_item {
+			position: relative;
+		}
+
+		.order_box .content .right .s_item:last-child::after {
+			display: none;
+		}
+
+		.order_box .content .right .s_item::after {
+			content: '';
+			width: 108px;
+			height: 0px;
+			border: 1px dashed #707070;
+			position: absolute;
+			top: 33%;
+			left: 127%;
+		}
+
+		.order_box .content .right .ative {
+			color: #519551;
+		}
+
+		.order_box .content .right .ative:last-child::before {
+			display: none;
+		}
+
+		.order_box .content .right .ative::before {
+			content: '';
+			width: 11px;
+			height: 11px;
+			background: #519551;
+			border-radius: 50%;
+			position: absolute;
+			right: -13px;
+			top: 25%;
+		}
+
+		.order_box .content .right .ative::after {
+			border: 1px dashed #519551;
+		}
+
+		.order_box .content .right img {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			margin-bottom: 13px;
+		}
+
+		.order_box .user_info {
+			padding: 26px 37px;
+			font-size: 15px;
+			color: #333333;
+		}
+
+		.order_box .user_info .left {
+			width: 310px;
+			position: relative;
+			margin-right: 120px;
+		}
+
+		.order_box .user_info .left::before {
+			content: '';
+			width: 2px;
+			height: 130px;
+			background: #E3E3E3;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			margin-top: -65px;
+		}
+
+		.order_box .user_info p {
+			margin-bottom: 24px;
+		}
+
+		.order_box .user_info p:last-child {
+			margin-bottom: 0;
+		}
+
+		.order_box .user_info p span:first-of-type {
+			width: 92px;
+		}
+	</style>
+	<body>
+		<div class="order_box" id="app">
+			<div class="title">苏苏就是小苏苏</div>
+			<div class="content flex-column j_c">
+				<div class="flex-row j_b right">
+					<div class="flex-column s_item  ative">
+						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+						<span>提交订单</span>
+					</div>
+					<div class="flex-column s_item ative">
+						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+						<span>付款成功</span>
+					</div>
+					<div class="flex-column s_item">
+						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+						<span>商品出库</span>
+					</div>
+					<div class="flex-column s_item">
+						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+						<span>等待收货</span>
+					</div>
+					<div class="flex-column s_item">
+						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
+						<span>完成</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    message: 'Hello Vue!'
+		  }
+		})
+
+	</script>
+</html>
