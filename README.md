@@ -44,9 +44,14 @@
 32. background-clip:text实现一个文字[用clip-path实现一个水波纹的字体](https://juejin.cn/post/7018591105910308878)
 32. 步骤条
 33. 鼠标自定义样式
+34. 一个弹出框动画
 #### 作品截图 
 
- 鼠标自定义
+弹出框动画
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1015/010541_0bb17ad6_8576727.gif "1213.gif")
+
+鼠标自定义
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1014/231411_50332792_8576727.gif "GIF11111.gif")
 
