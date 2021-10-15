@@ -6,227 +6,157 @@
 	</head>
 	<style>
 		.flex-row {
-			display       : flex;
+			display: flex;
 			flex-direction: row;
-			align-items   : center;
+			align-items: center;
 		}
-		
+
 		.flex-column {
-			display       : flex;
+			display: flex;
 			flex-direction: column;
-			align-items   : center;
+			align-items: center;
 		}
-		
+
 		.a_c {
 			align-items: center;
 		}
-		
+
 		.j_c {
 			justify-content: center;
 		}
-		
+
 		.j_b {
 			justify-content: space-between;
 		}
-		
+
 		.j_a {
 			justify-content: space-around;
 		}
-		
+
 		.flex {
 			display: flex;
 		}
-		body{
+
+		body {
 			padding: 0;
 			margin: 0;
+			background-color: #222;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
-		.order_box {
-			width: 1200px;
-			border: 1px solid #DBDBDB;
+
+		.logistic_box {
+			width: 570px;
+			height: 292px;
+			background-image: linear-gradient(to right, #c0c0aa, #1cefff);
 			border-radius: 4px;
+			margin-bottom: 50px;
+			margin-top: 24px;
+			scrollbar-width: none;
 			overflow: hidden;
-			margin-bottom: 20px;
-			margin: 50px auto;
+			overflow-y: auto;
+			padding: 39px 21px 46px;
 		}
 
-		.order_box .title {
-			width: 1200px;
-			height: 56px;
-			background: #F7F7F7;
-			border-bottom: 1px solid #E0E0E0;
-			border-radius: 4px 4px 0px 0px;
-			padding: 0 37px;
-			font-size: 16px;
-			font-weight: 600;
-			line-height: 56px;
+		.logistic_box::-webkit-scrollbar {
+			width: 6px;
+			height: 6px;
+		}
+
+		.logistic_box::-webkit-scrollbar-track {
+			background: #E5E5E5;
+			/* border-radius: 2px; */
+		}
+
+		.logistic_box::-webkit-scrollbar-thumb {
+			background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+			/* border-radius: 10px; */
+		}
+
+		.logistic_box .l_item {
+			margin-bottom: 22px;
+			font-size: 14px;
+			line-height: 20px;
 			color: #333333;
-		}
-
-		.order_box .content {
-			height: 208px;
 			position: relative;
 		}
 
-		.order_box .content .left {
-			width: 227px;
+		.logistic_box .l_item::before {
+			content: '';
+			position: absolute;
+			width: 9px;
+			height: 9px;
+			background: #C9C9C9;
+			border-radius: 50%;
+			top: 4px;
+			left: -26px;
 		}
 
-		.order_box .content .left span {
-			font-size: 22px;
-			color: #FF0000;
-			margin-bottom: 30px;
+		.logistic_box .l_item::after {
+			content: '';
+			position: absolute;
+			width: 0px;
+			height: 95%;
+			border: 1px solid #C9C9C9;
+			top: 20px;
+			left: -23px;
 		}
 
-		.order_box .content .left span:last-child {
-			margin-bottom: 0;
-		}
-
-		.order_box .content .left button {
-			margin-bottom: 7px;
-			width: 119px;
-			height: 38px;
-			background: #519551;
-			border-radius: 4px;
-			color: #fff;
-			font-size: 15px;
-		}
-
-		.order_box .content .left a {
-			font-size: 14px;
-			color: #666666;
-		}
-
-		.order_box .content .left a:hover {
-			color: #519551;
-		}
-
-		.order_box .content .right {
-
-			font-size: 14px;
-			color: #666666;
-			margin: auto;
-			width: 68%;
-		}
-
-		.order_box .content .right p {
-			margin-bottom: 16px;
-			font-size: 18px;
-			color: #666666;
-		}
-
-		.order_box .content .right p:first-of-type {
-			color: #333333;
-			font-weight: 600;
-		}
-
-		.order_box .content .right .s_item {
-			position: relative;
-		}
-
-		.order_box .content .right .s_item:last-child::after {
+		.logistic_box .l_item:last-child::after {
 			display: none;
 		}
 
-		.order_box .content .right .s_item::after {
-			content: '';
-			width: 108px;
-			height: 0px;
-			border: 1px dashed #707070;
-			position: absolute;
-			top: 33%;
-			left: 127%;
+		.logistic_box .l_item span {
+			flex-shrink: 0;
 		}
 
-		.order_box .content .right .ative {
-			color: #519551;
+		.logistic_box .l_item span:nth-child(2) {
+			margin: 0 60px 0 20px;
 		}
 
-		.order_box .content .right .ative:last-child::before {
-			display: none;
-		}
-
-		.order_box .content .right .ative::before {
-			content: '';
-			width: 11px;
-			height: 11px;
-			background: #519551;
-			border-radius: 50%;
-			position: absolute;
-			right: -13px;
-			top: 25%;
-		}
-
-		.order_box .content .right .ative::after {
-			border: 1px dashed #519551;
-		}
-
-		.order_box .content .right img {
-			width: 42px;
-			height: 42px;
-			border-radius: 50%;
-			margin-bottom: 13px;
-		}
-
-		.order_box .user_info {
-			padding: 26px 37px;
-			font-size: 15px;
-			color: #333333;
-		}
-
-		.order_box .user_info .left {
-			width: 310px;
-			position: relative;
-			margin-right: 120px;
-		}
-
-		.order_box .user_info .left::before {
-			content: '';
-			width: 2px;
-			height: 130px;
-			background: #E3E3E3;
-			position: absolute;
-			top: 50%;
-			right: 0;
-			margin-top: -65px;
-		}
-
-		.order_box .user_info p {
-			margin-bottom: 24px;
-		}
-
-		.order_box .user_info p:last-child {
-			margin-bottom: 0;
-		}
-
-		.order_box .user_info p span:first-of-type {
-			width: 92px;
+		.logistic_box .l_item span:nth-child(3) {
+			width: 285px;
 		}
 	</style>
 	<body>
-		<div class="order_box" id="app">
-			<div class="title">苏苏就是小苏苏</div>
-			<div class="content flex-column j_c">
-				<div class="flex-row j_b right">
-					<div class="flex-column s_item  ative">
-						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
-						<span>提交订单</span>
-					</div>
-					<div class="flex-column s_item ative">
-						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
-						<span>付款成功</span>
-					</div>
-					<div class="flex-column s_item">
-						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
-						<span>商品出库</span>
-					</div>
-					<div class="flex-column s_item">
-						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
-						<span>等待收货</span>
-					</div>
-					<div class="flex-column s_item">
-						<img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" />
-						<span>完成</span>
-					</div>
+		<div id="app">
+			<div class="logistic_box">
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已完成配送，感谢您选择亮亮物流货物已完成配送，感谢您选择亮亮物流货物已完成配送，感谢您选择亮亮物流。</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已分配，等待配送</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已到达【深圳保税区站】</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已完成分拣，离开【惠州惠阳分拣中心】</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已到达【惠州惠阳分拣中心】</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>货物已完成分拣，离开【杭州外单分拣中心】</span>
+				</div>
+				<div class="l_item flex">
+					<span>2021-05-23</span>
+					<span>09:31:45</span>
+					<span>开始打包</span>
 				</div>
 			</div>
 		</div>
@@ -234,11 +164,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 	<script>
 		var app = new Vue({
-		  el: '#app',
-		  data: {
-		    message: 'Hello Vue!'
-		  }
+			el: '#app',
+			data: {
+				message: 'Hello Vue!'
+			}
 		})
-
 	</script>
 </html>
