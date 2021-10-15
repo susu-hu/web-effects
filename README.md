@@ -50,7 +50,7 @@
 
 垂直步骤条
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1015/121514_cb80074a_8576727.gif "steps.gif")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1015/122201_51fc30ca_8576727.gif "steps.gif")
 
 弹出框动画
 
