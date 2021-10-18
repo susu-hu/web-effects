@@ -49,7 +49,12 @@
 36. 新增一个404页面
 37. 自定义验证码输入框+倒计时
 38. 新增一个loading动画
+39. 一个拟物态switch按钮
 #### 作品截图 
+
+拟物态switch按钮
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1018/232105_7ecb03f5_8576727.gif "switch11.gif")
 
 loading动画+1
 
