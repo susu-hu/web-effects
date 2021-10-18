@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			background-color: #222;
+		}
+
+		button {
+			border: none;
+			background-color: transparent;
+			outline: none;
+		}
+
+		button::after {
+			outline: none;
+			border: none;
+		}
+
+		.button-hover {
+			/*点击后样式*/
+			background: transparent;
+		}
+
+		input {
+			background: none;
+			outline: none;
+			border: none;
+		}
+
+		.mySetting .dialog {
+			width: 731px;
+			height: 487px;
+			border-radius: 4px;
+			padding: 30px 30px 48px;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			position: fixed;
+			z-index: 1111;
+			background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+		}
+
+		.mySetting .dialog .a_title {
+			font-size: 18px;
+			font-weight: 600;
+			color: #333333;
+			padding-bottom: 26px;
+			border-bottom: 1px dashed #D3D3D3;
+		}
+
+		.mySetting .dialog .a_title img {
+			width: 20px;
+			height: 20px;
+		}
+
+		.mySetting .dialog .btn {
+			width: 332px;
+			height: 48px;
+			background-image: linear-gradient(to right, #ebc0fd 0%, #d9ded8 100%);
+			border-radius: 4px;
+			font-size: 16px;
+			font-weight: 600;
+			color: #FFFFFF;
+			margin: auto;
+			display: block;
+		}
+
+		.mySetting .dialog .tip {
+			margin-top: 68px;
+			font-size: 22px;
+			font-weight: 600;
+			text-align: center;
+			color: #333333;
+		}
+
+		.mySetting .dialog .edit {
+			font-size: 22px;
+			margin-top: 50px;
+			margin-bottom: 120px;
+			text-align: center;
+		}
+
+		.mySetting .dialog .edit input {
+			width: 215px;
+			height: 37px;
+			border: 1px solid #C9C9C9;
+			border-radius: 4px;
+			font-size: 22px;
+			padding-left: 14px;
+			margin-left: 27px;
+			background: none;
+			outline: none;
+		}
+
+		.mySetting .dialog .code_show {
+			position: relative;
+			margin: 0 auto 20px;
+			text-align: center;
+			height: 50px;
+			width: 272px;
+			letter-spacing: 13px;
+		}
+
+		.mySetting .dialog .code_show .code_input {
+			position: absolute;
+			top: 0;
+			left: 8px;
+			text-align: left;
+			z-index: 100;
+			height: 50px;
+			width: 285px;
+			letter-spacing: 33px;
+			font-size: 22px;
+			color: #333;
+			margin: 0 auto;
+			display: block;
+		}
+
+		.mySetting .dialog .code_show p {
+			position: absolute;
+			bottom: 1px;
+			font-size: 22px;
+			color: #999999;
+		}
+
+		.mySetting .dialog .code_show .code_line01 {
+			position: absolute;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .code_show .code_line01::after {
+			content: "";
+			position: absolute;
+			left: 94px;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .code_show .code_line01::before {
+			content: "";
+			position: absolute;
+			left: 47px;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .code_show .code_line02 {
+			position: absolute;
+			left: 141px;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .code_show .code_line02::after {
+			content: "";
+			position: absolute;
+			left: 94px;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .code_show .code_line02::before {
+			content: "";
+			position: absolute;
+			left: 47px;
+			bottom: 0;
+			width: 28px;
+			height: 2px;
+			background: #999999;
+			z-index: 10;
+		}
+
+		.mySetting .dialog .show_time {
+			font-size: 16px;
+			color: #999;
+			margin: 0 auto;
+			display: block;
+		}
+
+		.mySetting .dialog .countDown {
+			color: #ebc0fd;
+		}
+	</style>
+	<body>
+		<section class="mySetting">
+			<div class="dialog">
+				<div class="flex-row j_b a_title">
+					<p>更换手机号码</p>
+				</div>
+				<div>
+					<p class="tip">请输入<span>15966666666</span>收到的短信验证</p>
+					<div style="position: relative;margin: 54px auto 68px;">
+						<div class="code_show">
+							<input type="tel" placeholder="" maxlength='6' class="code_input" confirm-type="done"
+								autocomplete="off" oninput="value=value.replace(/[^\d]/g,'')"></input>
+							<div class="code_line01"></div>
+							<div class="code_line02"></div>
+							<p>请输入6位验证码</p>
+						</div>
+						<button onclick="sendCode(this)" class="show_time ">(60s)重新获取</button>
+					</div>
+					<button class="btn submitConfirm">确定</button>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script src="../../商品详情/js/jq.js"></script>
+	<script>
+		$(".code_show .code_input").on('focus', function() {
+			$('.code_show p').fadeOut(100);
+		})
+		//失去焦点
+		$(".code_show .code_input").on('blur', function() {
+			if ($('.code_input').val() == '' || $('.code_input').val() == undefined || $('.code_input').val() ==
+				null) {
+				$('.code_show p').fadeIn(100);
+			} else {
+				$('.code_show p').fadeOut(100);
+			}
+		})
+		$(function (){
+			sendCode($('.show_time'))
+		})
+		
+		var clock = '';
+		var count = 60;;
+		var btn = $('.show_time');
+		// 倒计时
+		function countDown() {
+			count--;
+			if (count > 0) {
+				btn.attr('disabled', true)
+				btn.text('(' + count + 's)重新获取');
+				btn.removeClass('countDown');
+			} else {
+				clearInterval(clock);
+				btn.attr('disabled', false)
+				btn.text('获取验证码');
+				btn.addClass('countDown');
+				count = 60; //重置时间
+			}
+		}
+		// 发送验证码
+		function sendCode(btn) {
+			clock = setInterval(countDown, 1000);
+		}
+	</script>
+</html>
