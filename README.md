@@ -55,7 +55,7 @@
 
 粒子背景（canvas+原生js）
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1019/000838_d7895624_8576727.gif "；子.gif")
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1019/001056_a859e4a3_8576727.gif "lizi.gif")
 
 拟物态switch按钮
 
