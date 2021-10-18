@@ -50,7 +50,12 @@
 37. 自定义验证码输入框+倒计时
 38. 新增一个loading动画
 39. 一个拟物态switch按钮
+40. 新增一个粒子背景（canvas+原生js）
 #### 作品截图 
+
+粒子背景（canvas+原生js）
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1019/000838_d7895624_8576727.gif "；子.gif")
 
 拟物态switch按钮
 
