@@ -44,7 +44,7 @@
 32. background-clip:text实现一个文字[用clip-path实现一个水波纹的字体](https://juejin.cn/post/7018591105910308878)
 32. 步骤条
 33. 鼠标自定义样式[鼠标自定义样式](https://blog.csdn.net/qq_48085286/article/details/120806388)
-34. 一个弹出框动画
+34. [一个弹出框动画](https://blog.csdn.net/qq_48085286/article/details/120835298?spm=1001.2014.3001.5501)
 35. 新增一个垂直步骤条
 36. 新增一个404页面
 37. 自定义验证码输入框+倒计时
