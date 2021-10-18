@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淡入淡出</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 400px;
+            height: 300px;
+            border: solid 1px gray;
+            margin: auto;
+            position: relative;
+        }
+
+        .pic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 300px;
+            transition: opacity 0.5s linear;
+        }
+
+        img {
+            width: 400px;
+            height: 300px;
+        }
+
+        .circle {
+            width: 72px;
+            height: 8px;
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
+            font-size: 0;
+            line-height: 8px;
+            z-index: 999;
+        }
+
+        .circle>div {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border: solid 1px #fff;
+            margin: 0 2px;
+            border-radius: 50%;
+        }
+
+        .bgc {
+            background-color: #fff;
+        }
+
+        .btn {
+            position: absolute;
+            bottom: 130px;
+            left: 0;
+            height: 30px;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .btn>div {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(180, 177, 177, 0.4);
+            font-size: 18px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn>div:nth-child(1) {
+            float: left;
+        }
+
+        .btn>div:nth-child(2) {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div style="z-index: 6" class="pic"><a href=""><img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt=""></a></div>
+        <div style="z-index: 5" class="pic"><a href=""><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg" alt=""></a></div>
+        <div style="z-index: 4" class="pic"><a href=""><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg" alt=""></a></div>
+        <div style="z-index: 3" class="pic"><a href=""><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg" alt=""></a></div>
+        <div style="z-index: 2" class="pic"><a href=""><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg" alt=""></a></div>
+        <div style="z-index: 1" class="pic"><a href=""><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg" alt=""></a></div>
+        <div class="circle">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="btn">
+            <div>
+                <</div> <div>>
+            </div>
+        </div>
+    </div>
+    <script>
+        var speed = 1000;
+        var content = document.getElementsByClassName("content")[0];
+        var pic = document.getElementsByClassName("pic");
+        var zindex = 0; //每张图片的层大小
+        var timer = null; //计时器
+        var index = 0;
+        var circle = document.getElementsByClassName("circle")[0].children;
+        var btn = document.getElementsByClassName("btn")[0].children;
+
+        function move(res, count) {
+            for (var k = 0; k < count; k++) {
+                //获取层、改变层，赋值层
+                for (var i = 0; i < pic.length; i++) {
+                    zindex = parseInt(pic[i].style.zIndex);
+                    if (res == "right") {
+                        zindex++;
+                        //zindex=6->7->1 透明度为0,层变为1
+                        if (zindex > pic.length) {
+                            zindex = 1;
+                            pic[i].style.opacity = "0";
+                        }
+                        //zindex=5->6 透明度为1
+                        if (zindex == pic.length) {
+                            pic[i].style.opacity = "1"
+                            index = i;
+                        }
+                    } else {
+                        zindex--;
+                        //zindex=0->6 透明度为1，层变为6
+                        if (zindex == 0) {
+                            zindex = 6;
+                            pic[i].style.opacity = "1";
+                            index = i;
+                        }
+                        //zindex=6->5的透明度为0
+                        else if (zindex == pic.length - 1) {
+                            pic[i].style.opacity = "0";
+                        }
+                    }
+                    pic[i].style.zIndex = zindex;
+                    addColor();
+                }
+            }
+        }
+
+        function animate() {
+            timer = setInterval(function () {
+                move("right", 1);
+            }, speed);
+        }
+
+        //小圆点  
+        //颜色变化
+        function addColor() {
+            for (var i = 0; i < circle.length; i++) {
+                if (index == i) {
+                    circle[i].className = "bgc";
+                } else {
+                    circle[i].className = "";
+                }
+            }
+        }
+
+
+        window.onload = function () {
+            animate();
+            addColor();
+            //鼠标进入与离开
+            content.onmouseenter = function () {
+                clearInterval(timer);
+            }
+            content.onmouseleave = function () {
+                animate();
+            }
+
+            //鼠标触碰小圆点
+            for (var i = 0; i < circle.length; i++) {
+                circle[i].index = i;
+                circle[i].onmouseenter = function () {
+                    count = this.index - index > 0 ? this.index - index : circle.length + (this.index - index);
+                    move("right", count);
+                    index = this.index;
+                    addColor();
+                }
+            }
+
+            //btn事件  右边的箭头向右
+            btn[0].onclick = function () {
+                move("left", 1);
+            }
+            btn[1].onclick = function () {
+                move("right", 1);
+            }
+        }
+    </script>
+</body>
+
+</html>

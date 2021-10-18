@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		ul {
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			position: relative;
+		}
+
+		li {
+			font-size: 80px;
+			font-weight: bold;
+			color: #fff;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			position: absolute;
+		}
+		li img{
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+
+		/* 开始设置正方体的每一个面 */
+		/* 上面 */
+		li:nth-child(1) {
+			transform: rotateX(90deg) translateZ(100px);
+		}
+
+		/*下面*/
+		li:nth-child(2) {
+			transform: rotateX(270deg) translateZ(100px);
+		}
+
+		/*左面*/
+		li:nth-child(3) {
+			transform: rotateY(270deg) translateZ(100px);
+		}
+
+		/*右面*/
+		li:nth-child(4) {
+			transform: rotateY(90deg) translateZ(100px);
+		}
+
+		/*前面*/
+		li:nth-child(5) {
+			transform: translateZ(100px);
+		}
+
+		/*后面*/
+		li:nth-child(6) {
+			transform: translateZ(-100px);
+		}
+
+		.cube {
+			/* perspective:800px;  */
+			/*开启三维渲染的上下文，使其所有子元素共享同一三维空间*/
+			transform-style: preserve-3d;
+			/* 对ul元素添加动画效果，设置持续10s、匀速且无限播放*/
+			animation: run 10s linear infinite;
+		}
+
+		@-webkit-keyframes run {
+
+			from {
+				transform: rotateX(0deg) rotateY(0deg)
+			}
+
+			to {
+				transform: rotateX(360deg) rotateY(360deg)
+			}
+		}
+
+		@keyframes run {
+
+			/*动画初始状态时元素旋转角度*/
+			from {
+				transform: rotateX(0deg) rotateY(0deg)
+			}
+
+			/*动画结束状态时元素旋转角度*/
+			to {
+				transform: rotateX(360deg) rotateY(360deg)
+			}
+		}
+	</style>
+
+	<body>
+		<ul class="cube">
+			<li><img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"/></li>
+			<li><img src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"/></li>
+			<li><img src="https://i.postimg.cc/pXDp6RXq/susu3.jpg"/></li>
+			<li><img src="https://i.postimg.cc/XJmpTvCD/susu2.jpg"/></li>
+			<li><img src="https://i.postimg.cc/76br1jzJ/susu1.jpg"/></li>
+			<li><img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"/></li>
+		</ul>
+
+	</body>
+</html>
