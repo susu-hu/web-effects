@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body,
+		div,
+		{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline
+		}
+
+		
+		body {
+			line-height: 1;
+			background-color: #222;
+		}
+
+		ol,
+		ul {
+			list-style: none
+		}
+
+		blockquote,
+		q {
+			quotes: none
+		}
+
+		blockquote:before,
+		blockquote:after,
+		q:before,
+		q:after {
+			content: '';
+			content: none
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0
+		}
+
+		#contain {
+			width: 200px;
+			height: 50px;
+			position: absolute;
+			top: calc(50% + 50px);
+			left: calc(50% + 50px);
+			opacity: 0;
+			animation: fadeIn 1s 1;
+			animation-fill-mode: forwards;
+			-webkit-animation: fadeIn 1s 1;
+			-webkit-animation-fill-mode: forwards;
+		}
+
+		.wrap {
+			animation: translateX 1000ms infinite ease-in-out alternate;
+			-webkit-animation: translateX 1000ms infinite ease-in-out alternate;
+			position: absolute;
+		}
+
+		.ball {
+			width: 50px;
+			height: 50px;
+			box-shadow: -6.25px -6.25px 0 rgba(0, 0, 0, 0.1) inset;
+			background-color: #397BF9;
+			border-radius: 50%;
+			animation: translateY 500ms infinite ease-in-out alternate;
+			-webkit-animation: translateY 500ms infinite ease-in-out alternate;
+		}
+
+		.wrap:after {
+			content: '';
+			width: 50px;
+			height: 7.5px;
+			background: #eee;
+			position: absolute;
+			bottom: 0;
+			top: 70px;
+			border-radius: 50%;
+			animation: scale 500ms infinite ease-in-out alternate;
+			-webkit-animation: scale 500ms infinite ease-in-out alternate;
+		}
+
+		#wrap2,
+		#ball2,
+		#wrap2:after {
+			animation-delay: -400ms;
+			-webkit-animation-delay: -400ms;
+		}
+
+		#wrap3,
+		#ball3,
+		#wrap3:after {
+			animation-delay: -800ms;
+			-webkit-animation-delay: -800ms;
+		}
+
+		#wrap4,
+		#ball4,
+		#wrap4:after {
+			animation-delay: -1200ms;
+			-webkit-animation-delay: -1200ms;
+		}
+
+		#wrap5,
+		#ball5,
+		#wrap5:after {
+			animation-delay: -1600ms;
+			-webkit-animation-delay: -1600ms;
+		}
+
+		#ball2 {
+			background-color: #F4B400;
+		}
+
+		#ball3 {
+			background-color: #EEEEEE;
+		}
+
+		#ball4 {
+			background-color: #00A656;
+		}
+
+		#ball5 {
+			background-color: #E3746B;
+		}
+
+		@keyframes translateX {
+			100% {
+				transform: translateX(-150px);
+			}
+		}
+
+		@keyframes translateY {
+			100% {
+				transform: translateY(-187.5px);
+			}
+		}
+
+		@keyframes scale {
+			100% {
+				transform: scale(0.85);
+			}
+		}
+
+		@keyframes fadeIn {
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@-webkit-keyframes translateX {
+			100% {
+				transform: translateX(-150px);
+			}
+		}
+
+		@-webkit-keyframes translateY {
+			100% {
+				transform: translateY(-187.5px);
+			}
+		}
+
+		@-webkit-keyframes scale {
+			100% {
+				transform: scale(0.85);
+			}
+		}
+
+		@-webkit-keyframes fadeIn {
+			100% {
+				opacity: 1;
+			}
+		}
+	</style>
+	<body>
+		<div id="contain">
+			<div class='wrap' id='wrap1'>
+				<div class='ball' id='ball1'></div>
+			</div>
+
+			<div class='wrap' id='wrap2'>
+				<div class='ball' id='ball2'></div>
+			</div>
+
+			<div class='wrap' id='wrap3'>
+				<div class='ball' id='ball3'></div>
+			</div>
+
+			<div class='wrap' id='wrap4'>
+				<div class='ball' id='ball4'></div>
+			</div>
+			<div class='wrap' id='wrap5'>
+				<div class='ball' id='ball5'></div>
+			</div>
+
+		</div>
+	</body>
+</html>

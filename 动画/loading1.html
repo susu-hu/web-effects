@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			background-color: #222;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+		}
+		.box {
+			display: block;
+			position: relative;
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #aa557f;
+			animation: spin 2s linear infinite;
+		}
+
+		.box::before {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			right: 5px;
+			bottom: 5px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #ff557f;
+			animation: spin 3s linear infinite;
+		}
+
+		.box::after {
+			content: "";
+			position: absolute;
+			top: 15px;
+			left: 15px;
+			right: 15px;
+			bottom: 15px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #55ff7f;
+			animation: spin 1.5s linear infinite;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(1turn);
+			}
+		}
+			
+		.box1{
+			width: 20px;
+			height: 20px;
+			background-color: #ffff7f;
+			position: absolute;
+			border-radius: 50%;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="box1"></div>
+		</div>
+	</body>
+</html>
