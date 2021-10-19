@@ -64,10 +64,6 @@
 			margin-left: -31px;
 			bottom: -6px;
 		}
-			
-		.list_box{
-			border-radius: 20px;
-		}
 
 		.mySetting #areaDialog .list_content {
 			width: 100%;
@@ -78,21 +74,22 @@
 			overflow-y: scroll;
 			scrollbar-width: none;
 			padding: 30px 30px 48px;
-			
+			border-radius: 20px;
+
 		}
 
 		.mySetting #areaDialog .list_content::-webkit-scrollbar {
-			width: 10px;
-			height: 10px;
+			width: 5px;
+			height: 5px;
 		}
 
 		.mySetting #areaDialog .list_content::-webkit-scrollbar-track {
-			background: #E5E5E5;
+			background: #ecdeff;
 			border-radius: 2px;
 		}
 
 		.mySetting #areaDialog .list_content::-webkit-scrollbar-thumb {
-			background: #8D8D8D;
+			background: #d2eaff;
 			border-radius: 10px;
 		}
 
@@ -123,7 +120,7 @@
 
 		.mySetting #areaDialog .list_content .list .pro_active {
 			position: relative;
-			border: 1px solid #45D4FB  ;
+			border: 1px solid #45D4FB;
 		}
 
 		.mySetting #areaDialog .list_content .list .pro_active::after {
@@ -147,12 +144,12 @@
 					<p class="active">请选择省份</p>
 					<p>请选择城市</p>
 				</div>
-				<div class="list_box">
-					<div class="list_content">
-						<div class="list flex" id="provinceList"></div>
-						<div class="list flex" id="cityList"></div>
-					</div>
+
+				<div class="list_content">
+					<div class="list flex" id="provinceList"></div>
+					<div class="list flex" id="cityList"></div>
 				</div>
+
 			</div>
 		</section>
 	</body>

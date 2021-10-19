@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+		}
+
+		section {
+			padding: 20px;
+			border-radius: 15px;
+			background: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250), rgb(255, 255, 255));
+		}
+
+		div {
+			width: 500px;
+			color: #222;
+		}
+
+		.demo {
+			position: relative;
+			line-height: 18px;
+			height: 36px;
+			overflow: hidden;
+			word-break: break-all;
+		}
+
+		.demo::after {
+			content: "...";
+			font-weight: bold;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding: 0 20px 1px 45px;
+
+			/* 为了展示效果更好 */
+			background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+			background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+			background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+			background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+			background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+		}
+
+
+		.demo1 {
+			margin-top: 100px;
+			height: 40px;
+			line-height: 20px;
+			overflow: hidden;
+		}
+
+		.demo1 .text {
+			float: right;
+			margin-left: -5px;
+			width: 100%;
+			word-break: break-all;
+		}
+
+		.demo1::before {
+			float: left;
+			width: 5px;
+			content: "";
+			height: 40px;
+		}
+
+		.demo1::after {
+			float: right;
+			content: "...";
+			height: 20px;
+			line-height: 20px;
+			padding-right: 5px;
+			text-align: right;
+			width: 3em;
+			margin-left: -3em;
+			position: relative;
+			left: 100%;
+			top: -20px;
+			padding-right: 5px;
+
+			/* 为了展示效果更好 */
+			background: -webkit-gradient(linear,
+					left top,
+					right top,
+					from(rgba(255, 255, 255, 0)),
+					to(white),
+					color-stop(50%, white));
+			background: -moz-linear-gradient(to right,
+					rgba(255, 255, 255, 0),
+					white 50%,
+					white);
+			background: -o-linear-gradient(to right,
+					rgba(255, 255, 255, 0),
+					white 50%,
+					white);
+			background: -ms-linear-gradient(to right,
+					rgba(255, 255, 255, 0),
+					white 50%,
+					white);
+			background: linear-gradient(to right,
+					rgba(255, 255, 255, 0),
+					white 50%,
+					white);
+		}
+
+		.demo2 {
+			margin-top: 100px;
+			text-overflow: ellipsis;
+			white-space: nowrap !important;
+			overflow: hidden;
+		}
+
+		.demo3 {
+			margin-top: 100px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical
+		}
+	</style>
+	<body>
+		<section>
+			<div class="demo">
+				床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月
+				光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前
+				明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光
+			</div>
+
+			<div class="demo1">
+				<div class="text">
+					床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光
+				</div>
+			</div>
+
+			<div class="demo2">
+				床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月
+				光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前
+				明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光
+			</div>
+
+			<div class="demo3">
+				床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月
+				光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明
+				月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前
+				明月光床前明月光床前明月光床前明月光床前明月光床前明月光床前明月光床
+				前明月光床前明月光床前明月光床前明月光床前明月光
+			</div>
+		</section>
+	</body>
+</html>
