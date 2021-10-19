@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.flex {
+			display: flex;
+		}
+
+		.flex-row {
+			display: flex;
+			align-items: center;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		div {
+			box-sizing: border-box;
+		}
+
+		.dialog {
+			width: 811px;
+			background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);
+			border-radius: 4px;
+			padding: 30px 40px 57px;
+		}
+
+
+
+		.mySetting #areaDialog .tab_switch {
+			margin-top: 20px;
+		}
+
+		.mySetting #areaDialog .tab_switch p {
+			width: 80px;
+			font-size: 16px;
+			color: #333333;
+			margin-right: 60px;
+			font-weight: 600;
+			user-select: none;
+		}
+
+		.mySetting #areaDialog .tab_switch .active {
+			position: relative;
+		}
+
+		.mySetting #areaDialog .tab_switch .active::after {
+			content: '';
+			width: 62px;
+			height: 4px;
+			background: #00557f;
+			border-radius: 90px;
+			position: absolute;
+			left: 50%;
+			margin-left: -31px;
+			bottom: -6px;
+		}
+			
+		.list_box{
+			border-radius: 20px;
+		}
+
+		.mySetting #areaDialog .list_content {
+			width: 100%;
+			height: 398px;
+			background: #fff;
+			margin: 20px 0;
+			overflow: hidden;
+			overflow-y: scroll;
+			scrollbar-width: none;
+			padding: 30px 30px 48px;
+			
+		}
+
+		.mySetting #areaDialog .list_content::-webkit-scrollbar {
+			width: 10px;
+			height: 10px;
+		}
+
+		.mySetting #areaDialog .list_content::-webkit-scrollbar-track {
+			background: #E5E5E5;
+			border-radius: 2px;
+		}
+
+		.mySetting #areaDialog .list_content::-webkit-scrollbar-thumb {
+			background: #8D8D8D;
+			border-radius: 10px;
+		}
+
+		.mySetting #areaDialog .list_content .list {
+			flex-wrap: wrap;
+		}
+
+		.mySetting #areaDialog .list_content .list p {
+			width: 129px;
+			padding: 0 5px;
+			height: 57px;
+			border: 1px solid #D4D4D4;
+			font-size: 15px;
+			color: #707070;
+			margin-right: 30px;
+			text-align: center;
+			user-select: none;
+			margin-bottom: 30px;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.mySetting #areaDialog .list_content .list p:nth-child(4n+4) {
+			margin-right: 0;
+		}
+
+		.mySetting #areaDialog .list_content .list .pro_active {
+			position: relative;
+			border: 1px solid #519551;
+		}
+
+		.mySetting #areaDialog .list_content .list .pro_active::after {
+			position: absolute;
+			content: '';
+			width: 40px;
+			height: 42px;
+			background: url(/img/icon/chosed.png);
+			background-size: 100% 100%;
+			top: 27px;
+			right: -12px;
+		}
+	</style>
+	<body>
+		<section class="mySetting">
+			<div class="dialog" id="areaDialog">
+				<div class="flex-row j_b a_title">
+					<p>更换所在地区</p>
+				</div>
+				<div class="flex-row tab_switch">
+					<p class="active">请选择省份</p>
+					<p>请选择城市</p>
+				</div>
+				<div class="list_box">
+					<div class="list_content">
+						<div class="list flex" id="provinceList"></div>
+						<div class="list flex" id="cityList"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script src="js/area.js" type="text/javascript"></script>
+	<script src="../商品详情/js/jq.js"></script>
+	<script>
+		var province = '',
+			city = '',
+			cityItem = ''; //省+市
+		// 省列表
+		function renderP() {
+			$.each(provinceList, function(n, item) {
+				content = '<p data-name=' + item.name + ' data-index=' + n + '>' + item.name + '</p> '
+				$("#provinceList").append(content);
+			})
+
+			// 选择省
+			$('#provinceList p').click(function() {
+				$(this).addClass("pro_active").siblings().removeClass("pro_active");
+				province = $(this).attr('data-name')
+				cityItem = $(this).attr('data-index')
+
+			});
+		}
+		renderP();
+
+		// 城市列表
+		function renderCity() {
+
+			$.each(provinceList[cityItem].cityList, function(n, item) {
+				content = '<p data-name=' + item.name + '>' + item.name + '</p> '
+				$("#cityList").append(content);
+			})
+
+			// 选择城市
+			$('#cityList p').click(function() {
+				$(this).addClass("pro_active").siblings().removeClass("pro_active");
+				city = $(this).attr('data-name');
+
+			});
+		}
+
+
+
+		// 切换地区选择
+		$('#areaDialog .tab_switch p').click(function() {
+			if ($(this).index() == 0) {
+				// renderP();
+				$("#provinceList").fadeIn(300)
+				$("#cityList").fadeOut(100)
+			} else {
+				if (province == '' || province == undefined || province == null) {
+					return false;
+				}
+				// 清空数据重新渲染
+				$("#cityList").empty()
+				renderCity();
+				$("#provinceList").fadeOut(100)
+				$("#cityList").fadeIn(300)
+			}
+			$(this).addClass("active").siblings().removeClass("active");
+		});
+	</script>
+</html>
