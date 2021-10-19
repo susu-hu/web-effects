@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .content {
+            display: flex;
+            margin: 20px;
+        }
+        
+        .text {
+            width: 500px;
+            border: 1px solid skyblue;
+            font-size: 14px;
+            
+            /* 设置多行文本溢出省略 */
+            display: -webkit-box;
+            /* 默认最多显示3行 */
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+        }
+        
+        /* 按钮右下角文字环绕布局 */
+        /* 设置伪元素是为了将按钮挤到底部 */
+        .text::before {
+            content: '';
+            float: right;
+            width: 0;
+            /* 因为text的height是动态改变的，所以得设置text父元素flex布局，否则下面的height用100%设置无效*/
+            /* 19px为按钮文字高度 */
+            /* height: calc(100% - 19px); */
+            /* margin实现，性能比calc要好 */
+            height: 100%;
+            margin-bottom: -19px;
+        }
+        
+        .btn {
+            float: right;
+            clear: both;
+            cursor: pointer;
+            color: dodgerblue;
+        }
+        
+        /* 伪元素设置按钮文本*/
+        .btn::after {
+            content: '展开';
+        }
+        
+        /* 隐藏checkbox */
+        #exp {
+            display: none;
+        }
+        
+        /* 通过兄弟选择器设置展开后的样式 */
+        #exp:checked+.text {
+            /* 展开设置一个足够大的行数 */
+            -webkit-line-clamp: 999;
+        }
+        
+        #exp:checked+.text .btn::after {
+            content: '收起';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <input type="checkbox" id="exp">
+        <div class="text">
+            <!-- label通过for属性绑定input表单元素的id，当点击了label时，就等于选中了checkbox -->
+            <label class="btn" for="exp"></label>
+            <p>生活给予我挫折的同时，也赐予了我坚强，我也就有了另一种阅历。对于热爱生活的人，它从来不吝啬。 要看你有没有一颗包容的心，来接纳生活的恩赐。酸甜苦辣不是生活的追求，但一定是生活的全部。试着用一颗感恩的心来体会，你会发现不一样的人生。不要因为冬天的寒冷而失去对春天的希望。我们感谢上苍，是因为有了四季的轮回。拥有了一颗感恩的心，你就没有了埋怨，没有了嫉妒，没有了愤愤不平，你也就有了一颗从容淡然的心！</p>
+        </div>
+    </div>
+</body>
+
+</html>
