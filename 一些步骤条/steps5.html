@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #f9fcff;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-width: 1200px;
+		}
+
+		.se {
+			width: 800px;
+		}
+
+		.item {
+			position: relative;
+			padding-bottom: 10px;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.item:before {
+			content: "";
+			position: absolute;
+			left: 5px;
+			top: 21px;
+			z-index: 0;
+			width: 1px;
+			height: 80%;
+			background-color: #eee;
+		}
+
+		.item:last-child::before {
+			display: none;
+		}
+
+		.item p {
+			padding-left: 25px;
+			font-size: 14px;
+			color: #666;
+			margin-bottom: 10px;
+			line-height: 22px;
+		}
+
+		.icon {
+			position: absolute;
+			left: -3px;
+			top: 0;
+			z-index: 10;
+			width: 15px;
+			height: 15px;
+			line-height: 15px;
+			background-color: #fff;
+			border: 1px solid #5FB878;
+			border-radius: 50%;
+			text-align: center;
+			cursor: pointer;
+		}
+		.item:nth-last-child(2) .icon {
+			border:transparent;
+			border-top: 1px solid #5FB878;
+			animation: rotate 1s linear infinite both;
+		}
+
+		.item:last-child .icon {
+			border:solid transparent ;
+			border-top: 1px solid #5FB878;
+			border-right: 1px solid #5FB878;
+			animation: rotate 1s linear infinite both;
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotate(0);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* .layui-anim-rotate {
+		    -webkit-animation-name: layui-rotate;
+		    animation-name: layui-rotate;
+		    -webkit-animation-duration: 1s;
+		    animation-duration: 1s;
+		    -webkit-animation-timing-function: linear;
+		    animation-timing-function: linear;
+		}
+		.layui-anim-loop {
+		    -webkit-animation-iteration-count: infinite;
+		    animation-iteration-count: infinite;
+		}
+		.layui-anim {
+		    -webkit-animation-duration: .3s;
+		    -webkit-animation-fill-mode: both;
+		    animation-duration: .3s;
+		    animation-fill-mode: both;
+		} */
+	</style>
+	<body>
+		<ul class="se">
+			<li class="item">
+				<i class="icon"></i>
+				<p>susu1</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好 </p>
+			</li>
+
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+			<li class="item">
+				<i class="icon"></i>
+				<p>这是一个步骤条呢哈哈哈好好哈哈哈好好好好好</p>
+			</li>
+
+		</ul>
+	</body>
+</html>
