@@ -158,59 +158,132 @@
 	<script>
 		var province = '',
 			city = '',
-			cityItem = ''; //省+市
+			cityItem = '';
 		// 省列表
 		function renderP() {
-			$.each(provinceList, function(n, item) {
-				content = '<p data-name=' + item.name + ' data-index=' + n + '>' + item.name + '</p> '
-				$("#provinceList").append(content);
+			var content = "";
+			provinceList.forEach((item, index) => {
+				content += '<p  data-name=' + item.name + ' data-index=' + index + '>' + item.name +
+					'</p> '
 			})
-
+			document.getElementById("provinceList").innerHTML = content;
 			// 选择省
-			$('#provinceList p').click(function() {
-				$(this).addClass("pro_active").siblings().removeClass("pro_active");
-				province = $(this).attr('data-name')
-				cityItem = $(this).attr('data-index')
-
-			});
+			var items = document.getElementById("provinceList").getElementsByTagName("p");
+			var length = items.length;
+			for (var i = 0; i < length; i++) {
+				items[i].onclick = function() {
+					for (var j = 0; j < length; j++) {
+						items[j].classList.remove('pro_active');
+					};
+					this.classList.add('pro_active');
+					province = this.dataset.name;
+					cityItem = this.dataset.index;
+				}
+			};
 		}
 		renderP();
 
 		// 城市列表
 		function renderCity() {
-
-			$.each(provinceList[cityItem].cityList, function(n, item) {
-				content = '<p data-name=' + item.name + '>' + item.name + '</p> '
-				$("#cityList").append(content);
+			var content = "";
+			provinceList[cityItem].cityList.forEach((item, index) => {
+				content += '<p data-name=' + item.name + ' data-index=' + index + '>' + item.name + '</p> '
 			})
+			document.getElementById("cityList").innerHTML = content;
 
 			// 选择城市
-			$('#cityList p').click(function() {
-				$(this).addClass("pro_active").siblings().removeClass("pro_active");
-				city = $(this).attr('data-name');
 
-			});
+			var items = document.getElementById("cityList").getElementsByTagName("p");
+			var length = items.length;
+			for (var i = 0; i < length; i++) {
+				items[i].onclick = function() {
+					for (var j = 0; j < length; j++) {
+						items[j].classList.remove('pro_active');
+					};
+					this.classList.add('pro_active');
+					city = this.dataset.name;
+				}
+			};
 		}
 
 
-
+		var items = document.getElementsByClassName('tab_switch')[0].getElementsByTagName('p');
 		// 切换地区选择
-		$('#areaDialog .tab_switch p').click(function() {
-			if ($(this).index() == 0) {
-				// renderP();
-				$("#provinceList").fadeIn(300)
-				$("#cityList").fadeOut(100)
-			} else {
-				if (province == '' || province == undefined || province == null) {
-					return false;
+		for (var i in items) {
+			items[i].index = i;
+			items[i].onclick = function() {
+				
+				if (this.index == 0) {
+					document.getElementById('provinceList').style.display = 'flex';
+					document.getElementById('cityList').style.display = 'none';
+				} else {
+					if (province == '' || province == undefined || province == null) {
+						return false;
+					}
+					document.getElementById('provinceList').style.display = 'none';
+					document.getElementById('cityList').style.display = 'flex';
+					renderCity();
+					
 				}
-				// 清空数据重新渲染
-				$("#cityList").empty()
-				renderCity();
-				$("#provinceList").fadeOut(100)
-				$("#cityList").fadeIn(300)
+				for (var j = 0; j < items.length; j++) {
+					items[j].classList.remove('active');
+				};
+				this.classList.add('active');
+
 			}
-			$(this).addClass("active").siblings().removeClass("active");
-		});
+		}
+		// jq写法
+		// function renderP() {
+		// 	$.each(provinceList, function(n, item) {
+		// 		content = '<p data-name=' + item.name + ' data-index=' + n + '>' + item.name + '</p> '
+		// 		$("#provinceList").append(content);
+		// 	})
+
+		// 	// 选择省
+		// 	$('#provinceList p').click(function() {
+		// 		$(this).addClass("pro_active").siblings().removeClass("pro_active");
+		// 		province = $(this).attr('data-name')
+		// 		cityItem = $(this).attr('data-index')
+
+		// 	});
+		// }
+		// renderP();
+
+		// // 城市列表
+		// function renderCity() {
+
+		// 	$.each(provinceList[cityItem].cityList, function(n, item) {
+		// 		content = '<p data-name=' + item.name + '>' + item.name + '</p> '
+		// 		$("#cityList").append(content);
+		// 	})
+
+		// 	// 选择城市
+		// 	$('#cityList p').click(function() {
+		// 		$(this).addClass("pro_active").siblings().removeClass("pro_active");
+		// 		city = $(this).attr('data-name');
+
+		// 	});
+		// }
+
+
+
+		// // 切换地区选择
+		// $('#areaDialog .tab_switch p').click(function() {
+		// 	if ($(this).index() == 0) {
+		// 		// renderP();
+		// 		$("#provinceList").fadeIn(300)
+		// 		$("#cityList").fadeOut(100)
+		// 	} else {
+		// 		if (province == '' || province == undefined || province == null) {
+		// 			return false;
+		// 		}
+		// 		// 清空数据重新渲染
+		// 		$("#cityList").empty()
+		// 		renderCity();
+		// 		$("#provinceList").fadeOut(100)
+		// 		$("#cityList").fadeIn(300)
+		// 	}
+		// 	$(this).addClass("active").siblings().removeClass("active");
+		// });
 	</script>
 </html>
