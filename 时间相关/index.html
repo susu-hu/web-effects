@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>js图片滚动时钟特效</title>
+		<meta name="Keywords" content="js滚动时钟特效,js特效">
+	</head>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #292929;
+		}
+
+		li {
+			list-style: none
+		}
+
+		#Tz_box {
+			width: 350px;
+			height: auto;
+			margin: 100px auto;
+			overflow: hidden;
+			border-radius: 20px;
+			box-shadow: 0 0 4px #222;
+			background-color: #e4e4e4;
+			padding: 20px
+		}
+
+		ul#Tz_List {
+			width: 330px;
+			height: 60px;
+			margin: 0 auto
+		}
+
+		ul#Tz_List li {
+			width: 41px;
+			height: 61px;
+			float: left;
+			overflow: hidden;
+			text-align: center;
+			position: relative;
+		}
+
+		ul#Tz_List li img:nth-of-type(1) {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+
+		ul#Tz_List li img:nth-of-type(2) {
+			position: absolute;
+			left: 0px;
+			top: 61px;
+		}
+
+		ul#Tz_List li:nth-of-type(3) img,
+		ul#Tz_List li:nth-of-type(6) img {
+			left: 12px;
+		}
+	</style>
+	<body>
+
+		<div id="Tz_box">
+			<ul id="Tz_List">
+				<li><img src="images/0.png" alt="数字图片0" /><img src="images/0.png" /></li>
+				<li><img src="images/0.png" alt="数字图片0" /><img src="images/0.png" /></li>
+				<li><img src="images/d.png" alt="数字图片冒号" /></li>
+				<li><img src="images/0.png" /><img src="images/0.png" /></li>
+				<li><img src="images/0.png" /><img src="images/0.png" /></li>
+				<li><img src="images/d.png" /></li>
+				<li><img src="images/0.png" /><img src="images/0.png" /></li>
+				<li><img src="images/0.png" /><img src="images/0.png" /></li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		//获取元素
+		var oUl = document.getElementById("Tz_List");
+		var aLi = oUl.getElementsByTagName("li");
+		var liIndex = [0, 1, 3, 4, 6, 7];
+		//创建时间
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var seconds = date.getSeconds();
+		var str = fullZero(hours, 2) + "" + fullZero(minutes, 2) + "" + fullZero(seconds, 2);
+		//把时间与图片对应
+		init();
+
+		function init() {
+			for (var i = 0; i < liIndex.length; i++) {
+				var a = liIndex[i];
+				aLi[a].getElementsByTagName("img")[0].src = "images/" + str.charAt(i) + ".png";
+				aLi[a].getElementsByTagName("img")[0].index = str.charAt(i);
+				play(aLi[a], i);
+			}
+		}
+		//用for循环，因为代码太多，再加上执行顺序，会出现延迟
+		function play(obj, index) {
+			//让图片动起来 开定时器
+			var num = 0;
+			setInterval(function() {
+				//创建时间
+				var date = new Date();
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				var seconds = date.getSeconds();
+				var str2 = fullZero(hours, 2) + "" + fullZero(minutes, 2) + "" + fullZero(seconds, 2);
+				var aImg = obj.getElementsByTagName("img");
+				//把当前时间数字，做为自定义属性加到图片上，用来和现在的时间做比较
+				if (str2.charAt(index) != aImg[num].index) {
+					//获取里面的两张图片
+					aImg = obj.getElementsByTagName("img");
+					Move(aImg[num], "top", 10, -61);
+					if (num == 1) {
+						aImg[num - 1].src = "images/" + str2.charAt(index) + ".png";
+						aImg[num - 1].index = str2.charAt(index);
+						Move(aImg[num - 1], "top", 10, 0, function() {
+							aImg[num].style.top = "61px";
+							num--;
+						});
+					} else {
+						aImg[num + 1].src = "images/" + str2.charAt(index) + ".png";
+						aImg[num + 1].index = str2.charAt(index);
+						Move(aImg[num + 1], "top", 10, 0, function() {
+							aImg[num].style.top = "61px";
+							num++;
+						});
+					}
+				}
+			}, 1000);
+		}
+		//补0方法
+		function fullZero(time, n) {
+			var str = time + "";
+			while (str.length < n) {
+				str = "0" + str;
+			}
+			return str;
+		}
+
+		function Move(obj, attr, speed, target, endFn) {
+
+			speed = parseInt(css(obj, attr)) > target ? -speed : speed;
+			//运动
+			clearInterval(obj.timer) //清除定时器
+			obj.timer = setInterval(function() {
+				var startDir = css(obj, attr); //获取初始位置
+				var nowDir = parseInt(startDir) + speed; //计算下步到达的位置（和运行速度）
+
+				if (nowDir >= target && speed > 0) {
+					nowDir = target;
+				} //判断运动到在于或等 600px的位置时，强制变成 600px
+				if (nowDir < target && speed < 0) {
+					nowDir = target;
+				}
+
+				obj.style[attr] = nowDir + "px"; //oBox到达的位置
+
+				if (nowDir == target) {
+					clearInterval(obj.timer);
+
+					endFn && endFn();
+				} //到达目标点停止定时器
+
+			}, 30);
+		}
+
+
+		function css(obj, attr) {
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, false)[attr];
+		}
+	</script>
+</html>
