@@ -178,5 +178,32 @@
 		function css(obj, attr) {
 			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, false)[attr];
 		}
+		
+		let data=[
+			{
+				name:'1',
+				id:'1',
+				qq:'1'
+			},
+			{
+				name:'2',
+				id:'1',
+				qq:'1'
+			},
+			{
+				name:'3',
+				id:'1',
+				qq:'1'
+			},
+		];
+		let new_arr=[];
+		data.forEach((item,index)=>{
+			new_arr.push({name:item.name,id:item.id})
+		})
+		console.log(new_arr)
+		
+		var xxx=[[1,2],[2,4]]; 
+		console.log(xxx[1][1]); 
+		
 	</script>
 </html>
