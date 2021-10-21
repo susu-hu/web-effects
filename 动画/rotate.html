@@ -11,11 +11,13 @@
             padding: 0;
         }
         body {
-            width: 200px;
-            height: 200px;
-            margin: 200px auto;
-            background-color: black;
+            background-color: #222;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
         }
+		
         .loading {
             position: relative;
             width: 200px;
@@ -28,7 +30,7 @@
             top: 0;
             left: 0;
             animation: rotate 4s ease-in-out infinite;
-            animation-delay: calc(0.2s * var(--ljc));
+            animation-delay: calc(0.2s * var(--delay));
         }
         .loading span::before {
             content: '';
@@ -38,7 +40,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(rgb(39,122,218),skyblue);
+            background: linear-gradient(rgb(239, 215, 255),skyblue);
         }
         @keyframes rotate {
             0% {
@@ -52,16 +54,16 @@
 </head>
 <body>
     <div class="loading">
-        <span style ="--ljc:1;"></span>
-        <span style ="--ljc:2;"></span>
-        <span style ="--ljc:3;"></span>  
-        <span style ="--ljc:4;"></span>
-        <span style ="--ljc:5;"></span>
-        <span style ="--ljc:6;"></span>
-        <span style ="--ljc:7;"></span>
-        <span style ="--ljc:8;"></span>
-        <span style ="--ljc:9;"></span>
-        <span style ="--ljc:10;"></span>
+        <span style ="--delay:1;"></span>
+        <span style ="--delay:2;"></span>
+        <span style ="--delay:3;"></span>  
+        <span style ="--delay:4;"></span>
+        <span style ="--delay:5;"></span>
+        <span style ="--delay:6;"></span>
+        <span style ="--delay:7;"></span>
+        <span style ="--delay:8;"></span>
+        <span style ="--delay:9;"></span>
+        <span style ="--delay:10;"></span>
     </div>
 </body>
 </html>
