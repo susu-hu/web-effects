@@ -12,30 +12,74 @@
 			height: 100vh;
 			background-color: #292929;
 		}
-			
-		.box{
+
+		.box {
 			width: 100px;
 			height: 100px;
 			border: 3px solid;
-			border-color: #55aaff #efd7ff #ffaaff #ff557f;  
-			animation: rotate 3s  ease-in infinite;
+			border-color: #55aaff #efd7ff #ffaaff #ff557f;
+			animation: rotate 3s ease-in infinite;
 		}
-		@keyframes rotate{
-			0%{
+
+		@keyframes rotate {
+			0% {
 				transform: rotate(0deg);
 				border-radius: 0%;
 			}
-			50%{
+
+			50% {
 				border-radius: 50%;
 			}
-			100%{
+
+			100% {
 				transform: rotate(360deg);
 				border-radius: 0%;
 			}
-				
+
+		}
+
+		.box2 {
+			width: 0px;
+			height: 0px;
+			border-top: 100px solid rgb(0, 255, 13);
+			border-right: 100px solid rgb(45, 218, 203);
+			border-bottom: 100px solid rgb(255, 106, 156);
+			border-left: 100px solid rgb(251, 255, 26);
+			animation: rotate 3s ease-in infinite;
+			position: relative;
+		}
+		.box2::after{
+			width: 190px;
+			height: 190px;
+			background-color: #fff;
+			position: absolute;
+			content: '';
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			z-index: 99;
+			animation: rotate1 3s ease-in infinite;
+		}
+		
+		@keyframes rotate1 {
+			0% {
+				transform: rotate(0deg) ;
+				border-radius: 0%;
+			}
+		
+			50% {
+				border-radius: 50%;
+			}
+		
+			100% {
+				transform: rotate(360deg);
+				border-radius: 0%;
+			}
+		
 		}
 	</style>
 	<body>
 		<div class="box"></div>
+		<div class="box2"></div>
 	</body>
 </html>
