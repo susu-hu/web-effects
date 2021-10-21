@@ -77,9 +77,80 @@
 			}
 		
 		}
+		
+		*, *::before, *::after {
+		    box-sizing: border-box;
+		}
+		
+		@keyframes rotate111 {
+			0% {
+				transform: rotate(0deg) ;
+				border-radius: 0%;
+			}
+			50% {
+				border-radius: 50%;
+			}
+		    100% {
+				border-radius: 0%;
+		        transform: rotate(1turn);
+		    }
+		}
+		
+		.box3 {
+		    position: relative;
+		    z-index: 0;
+		    width: 300px;
+		    height: 300px;
+		    border-radius: 10px;
+		    overflow: hidden;
+		    padding: 2rem;
+		    
+		    
+		}
+		.box3::before {
+		    content: '';
+		    position: absolute;
+		    z-index: -2;
+		    left: -50%;
+		    top: -50%;
+		    width: 200%;
+		    height: 200%;
+		    background-color: #399953;
+		    background-repeat: no-repeat;
+		    background-size: 50% 50%, 50% 50%;
+		    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+		    background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+		    animation: rotate111 4s linear infinite;
+		}
+		
+		.box3::after {
+		    content: '';
+		    position: absolute;
+		    z-index: -1;
+		    left: 6px;
+		    top: 6px;
+		    width: calc(100% - 12px);
+		    height: calc(100% - 12px);
+		    background: white;
+		    border-radius: 5px;
+		    /* animation: opacityChange 3s infinite alternate; */
+		}
+		
+		@keyframes opacityChange {
+		    50% {
+		        opacity:1;
+		    }
+		    100% {
+		        opacity: .5;
+		    }
+		}
+			
+	
 	</style>
 	<body>
 		<div class="box"></div>
 		<div class="box2"></div>
+		
+		<div class="box3"></div>
 	</body>
 </html>
