@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.active {
+			color: red;
+		}
+	</style>
+	<body>
+		<div class="tp-bottom-content">
+			<div class="tp-nav">
+				<ul id="nav">
+					<li class="active"><span>快速跟进</span></li>
+					<li><span>跟进</span></li>
+					<li><span>联系人(1)</span></li>
+					<li><span>通话记录(1)</span></li>
+					<li><span>订单(1)</span></li>
+					<li><span>合同(1)</span></li>
+				</ul>
+			</div>
+			<div class="content-list">
+				<div class="list-item">1</div>
+				<div class="list-item" style="display: none;">2</div>
+				<div class="list-item" style="display: none;">3</div>
+				<div class="list-item" style="display: none;">4</div>
+				<div class="list-item" style="display: none;">5</div>
+				<div class="list-item" style="display: none;">6</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var li = document.getElementById("nav").getElementsByTagName("li");
+		var listItem = document.getElementsByClassName("list-item");
+		var length = li.length;
+		for (var i = 0; i < length; i++) {
+			li[i].index = i;
+			li[i].onclick = function() {
+				li[this.index].setAttribute("class", "active");
+				for (var j = 0; j < length; j++) {
+					li[j].className = "";
+					listItem[j].style.display = "none";
+				};
+				listItem[this.index].style.display = "block";
+				this.className = "active";
+			}
+		};
+	</script>
+</html>
