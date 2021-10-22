@@ -69,42 +69,71 @@
 				</div> -->
 			</div>
 		</section>
+
 	</body>
 	<script src="../商品详情/js/jq.js"></script>
 	<script>
 		$(function() {
 
 			// 添加
+			let i = 0;
 			$('.add').click(function() {
-				content = '<div class="flex">';
+				content = '<div class="flex btns" >';
 				content += '<div class="box1"></div>';
-				content += '<div class="del">删除</div>';
+				content += '<div class="del"  data-value=' + i + ' " id="data' + i + '">删除</div>';
 				content += '</div>'
 				$('.delbox').append(content);
+				i++;
 			})
-			// $('.del').live('click', function () {
-			// 	console.log($(this))
+
+			// 方法二: 通过父元素来查找
+			$('.delbox').on('click', '.flex .del', function() {
+				console.log($(this).attr('id'))
+				let a = $(this).attr('id');
+				$('#' + a).parent('.btns').remove()
+
+
+			})
+
+			// 动态获取dom元素,设置相应的绑定事件
+			// 方法一:
+			// $(document).on('click','.del',function(e){
+			// 	console.log($(this).attr('data-value'))
+			// var tabBox=$('.delbox .btns');
+			// console.log(tabBox.eq($(this).attr('data-value')))
+			// tabBox.eq($(this).attr('data-value')).remove();
+			// })
+
+
+			// $(".btns").off("click").on('click', '.del', function(e) {
+			// 	e.stopPropagation(); //阻止冒泡事件    阻止点击事件向上传播
+			// 	console.log($(this).attr('data-value'))
+			// })
+
+
+
+
+
+
+			// $('.delbox').delegate(".del", "click", function() {
+			// 	console.log($(this).index())
 			// });
+			// $('.del').each(function() {
+			// 	$(this).on('click',function(){
+			// 		console.log($(this))
+			// 		$(this).addClass('active')
+			// 	})
+			// })
+			// $('.del').click(function() {
+			// 	$(this).addClass("checked").siblings().removeClass("checked");
+			// });
+			// $('.del').click(function() {
+			// 	console.log($(this))
+			// })
 
-		// $('.delbox').delegate(".del", "click", function() {
-		// 	console.log($(this).index())
-		// });
-		// $('.del').each(function() {
-		// 	$(this).on('click',function(){
-		// 		console.log($(this))
-		// 		$(this).addClass('active')
-		// 	})
-		// })
-		// $('.del').click(function() {
-		// 	$(this).addClass("checked").siblings().removeClass("checked");
-		// });
-		// $('.del').click(function() {
-		// 	console.log($(this))
-		// })
-
-		// $(".del").delegate("button", "click", function() {
-		// 	$("p").slideToggle();
-		// });
+			// $(".del").delegate("button", "click", function() {
+			// 	$("p").slideToggle();
+			// });
 
 
 
