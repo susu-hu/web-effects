@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #292929;
+			min-width: 1200px;
+		}
+
+		.box1 {
+			width: 200px;
+			height: 50px;
+			border: 1px solid #FFFF00;
+			margin-bottom: 10px;
+			border-radius: 10px;
+			user-select: none;
+		}
+
+		.add {
+			width: 60px;
+			height: 30px;
+			background-color: #008080;
+			color: #fff;
+			font-size: 13px;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 25px;
+			margin-left: 20px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.del {
+			width: 60px;
+			height: 30px;
+			background-color: #801f3c;
+			color: #fff;
+			font-size: 13px;
+			text-align: center;
+			line-height: 30px;
+			border-radius: 25px;
+			margin-left: 20px;
+			user-select: none;
+			cursor: pointer;
+		}
+
+		.flex {
+			display: flex;
+			align-items: center;
+		}
+	</style>
+	<body>
+		<section>
+			<div class="flex">
+				<div class="box1"></div>
+				<div class="add">添加</div>
+			</div>
+			<div class="delbox">
+				<!-- <div class="flex">
+					<div class="box1"></div>
+					<div class="del">删除</div>
+				</div> -->
+			</div>
+		</section>
+	</body>
+	<script src="../商品详情/js/jq.js"></script>
+	<script>
+		$(function() {
+
+			// 添加
+			$('.add').click(function() {
+				content = '<div class="flex">';
+				content += '<div class="box1"></div>';
+				content += '<div class="del">删除</div>';
+				content += '</div>'
+				$('.delbox').append(content);
+			})
+			// $('.del').live('click', function () {
+			// 	console.log($(this))
+			// });
+
+		// $('.delbox').delegate(".del", "click", function() {
+		// 	console.log($(this).index())
+		// });
+		// $('.del').each(function() {
+		// 	$(this).on('click',function(){
+		// 		console.log($(this))
+		// 		$(this).addClass('active')
+		// 	})
+		// })
+		// $('.del').click(function() {
+		// 	$(this).addClass("checked").siblings().removeClass("checked");
+		// });
+		// $('.del').click(function() {
+		// 	console.log($(this))
+		// })
+
+		// $(".del").delegate("button", "click", function() {
+		// 	$("p").slideToggle();
+		// });
+
+
+
+
+		})
+
+		// $.each($('.del'),onclick,function(){
+		// 	console.log($(this))
+		// })
+
+		// 删除相应的dom元素
+		// 方法一:onclick
+		function del() {
+			console.log(123)
+		}
+	</script>
+</html>
