@@ -61,7 +61,12 @@
 48. 动画+1
 49. 一些悬浮特效按钮
 50.clip-path实现线框
+51. dom元素的动态添加与删除（jq）
 #### 作品截图 
+
+dom元素的动态添加与删除（jq）
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1023/004627_45d43eda_8576727.gif "Gsdas.gif")
 
 clip-path实现线框
 
