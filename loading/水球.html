@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+		}
+
+		section {
+			width: 350px;
+			height: 200px;
+			padding: 10px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 20px;
+			/* border: 18px solid white; */
+			overflow: hidden;
+		}
+
+		section::before {
+			content: 'susu';
+			width: 150px;
+			height: 150px;
+			text-align: center;
+			line-height: 250px;
+			background-color: #ffaa7f;
+			position: absolute;
+			top: -76px;
+			right: -76px;
+			transform: translate(50%, -50%);
+			font-size: 32px;
+			font-weight: 500;
+			font-family: sans-serif;
+			color: white;
+			transform: rotate(45deg);
+		}
+
+		section::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 10px solid white;
+			border-radius: 20px;
+		}
+
+		/* 实现代码 */
+
+		.circle {
+			position: relative;
+			width: 150px;
+			height: 150px;
+			background: #ffaa7f;
+			border-radius: 50%;
+			overflow: hidden;
+			animation: loadingBreath 5s infinite linear;
+		}
+
+		.circle::before {
+			content: 'Loading...';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 15px;
+			letter-spacing: 2px;
+			color: #ffaa7f;
+			font-family: sans-serif;
+			z-index: 2;
+		}
+
+		.circle::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 25%;
+			bottom: 0;
+			background-image: linear-gradient(to top, #ffaa7f, #ffff7f, #aaffff);
+			animation: loadingRun 5s linear infinite;
+		}
+
+		.wave::before {
+			content: '';
+			position: absolute;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			z-index: 1;
+			background-color: #85f7fb;
+			border-radius: 52% 25% 62% 69%/25% 38%;
+			animation: loadingWave 5s linear infinite;
+		}
+
+		.wave::after {
+			content: '';
+			position: absolute;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			z-index: 1;
+			background-color: #d0f4ff;
+			border-radius: 42% 38% 40% 62%/28% 35%;
+			animation: loadingWave 5s ease-in-out infinite;
+		}
+
+		/* 呼吸灯动画 */
+
+		@keyframes loadingBreath {
+			0% {
+				box-shadow: 0 0 5px 0 #85f7fb;
+			}
+
+			25% {
+				box-shadow: 0 0 20px 0 #85f7fb;
+			}
+
+			50% {
+				box-shadow: 0 0 5px 0 #85f7fb;
+			}
+
+			75% {
+				box-shadow: 0 0 20px 0 #85f7fb;
+			}
+
+			100% {
+				box-shadow: 0 0 5px 0 #85f7fb;
+			}
+		}
+
+		/* 底部液体上升动画 */
+
+		@keyframes loadingRun {
+			0% {
+				height: 25%;
+			}
+
+			100% {
+				height: 100%;
+			}
+		}
+
+		/* wave动画 */
+
+		@keyframes loadingWave {
+			0% {
+				top: -100%;
+				transform: rotate(0);
+			}
+
+			100% {
+				top: -200%;
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<body>
+		<section>
+			<div class="circle">
+				<div class="wave"></div>
+			</div>
+		</section>
+	</body>
+</html>
