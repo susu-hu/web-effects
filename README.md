@@ -64,7 +64,12 @@
 51. dom元素的动态添加与删除（jq）
 52. 一些按钮们
 53. loading水球
+54. loading 动画新增
 #### 作品截图 
+
+loading 动画新增
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1025/223139_d29d36f0_8576727.gif "水电费.gif")
 
 loading水球
 
