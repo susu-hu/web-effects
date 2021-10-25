@@ -65,7 +65,12 @@
 52. 一些按钮们
 53. loading水球
 54. loading 动画新增
+55. 一个粘性小球
 #### 作品截图 
+
+一个粘性小球
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1025/225222_19867b9b_8576727.gif "儿童er.gif")
 
 loading 动画新增
 
