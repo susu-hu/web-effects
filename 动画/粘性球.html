@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.sticky-container {
+			background: #222;
+			overflow: hidden;
+		}
+
+		.sticky-container .blurfield {
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+			filter: blur(10px) contrast(10);
+		}
+
+		.sticky-container .ball1,
+		.sticky-container .ball2 {
+			width: 80px;
+			height: 80px;
+			background-color: #ffffff;
+			position: absolute;
+			animation: ball 10s infinite;
+			border-radius: 100%;
+		}
+
+		.sticky-container .ball2 {
+			animation-delay: -2s;
+		}
+
+		@keyframes ball {
+			0% {
+				transform: translateX(-100px);
+			}
+
+			50% {
+				transform: translateX(100px);
+			}
+
+			100% {
+				transform: translateX(-100px);
+			}
+		}
+	</style>
+	<body>
+		<div class="sticky-container">
+			<div class="blurfield">
+				<div class="ball1"></div>
+				<div class="ball2"></div>
+			</div>
+		</div>
+	</body>
+</html>
