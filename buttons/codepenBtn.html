@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			padding: 50px 0;
+			background-color: #222;
+		}
+
+		:root {
+			--color: #fff;
+		}
+
+		.btn {
+			margin: 0 auto;
+			width: 185px;
+			text-align: center;
+			position: relative;
+			border-radius: 6px;
+			box-sizing: border-box;
+			color: var(--color);
+			z-index: 2;
+			overflow: hidden;
+			padding: 3px;
+			font-size: 15px;
+		}
+
+		.btn::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200%;
+			height: 100%;
+			background: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+			background-size: 50% 100%;
+		}
+
+		.btn span {
+			position: relative;
+			z-index: 2;
+			padding: 0.875rem 0;
+			font-size: 1.1rem;
+			align-items: center;
+			background: #000;
+			border-radius: 3px;
+			display: block;
+			justify-content: center;
+			box-sizing: border-box;
+			height: 100%;
+		}
+	</style>
+	<body>
+		<div class="btn"><span>Start Coding</span></div>
+	</body>
+</html>
