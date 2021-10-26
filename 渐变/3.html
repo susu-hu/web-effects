@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		ul {
+			overflow: hidden;
+			margin-top: 20px;
+			list-style: none;
+		}
+
+		li {
+			width: 150px;
+			height: 80px;
+			margin-bottom: 10px;
+			float: left;
+			margin-right: 5px;
+			background: #ace;
+			/*Controls the size*/
+			-webkit-background-size: 20px 20px;
+			-moz-background-size: 20px 20px;
+			background-size: 20px 20px;
+		}
+
+		li.gradient1 {
+			background-image: -webkit-gradient(linear,
+					0 100%, 100% 0,
+					color-stop(.25, rgba(255, 255, 255, .2)),
+					color-stop(.25, transparent),
+					color-stop(.5, transparent),
+					color-stop(.5, rgba(255, 255, 255, .2)),
+					color-stop(.75, rgba(255, 255, 255, .2)),
+					color-stop(.75, transparent),
+					to(transparent));
+			background-image: -moz-linear-gradient(45deg,
+					rgba(255, 255, 255, .2) 25%,
+					transparent 25%,
+					transparent 50%,
+					rgba(255, 255, 255, .2) 50%,
+					rgba(255, 255, 255, .2) 75%,
+					transparent 75%,
+					transparent);
+			background-image: -o-linear-gradient(45deg,
+					rgba(255, 255, 255, .2) 25%,
+					transparent 25%,
+					transparent 50%,
+					rgba(255, 255, 255, .2) 50%,
+					rgba(255, 255, 255, .2) 75%,
+					transparent 75%,
+					transparent);
+			background-image: linear-gradient(45deg,
+					rgba(255, 255, 255, .2) 25%,
+					transparent 25%,
+					transparent 50%,
+					gba(255, 255, 255, .2) 50%,
+					rgba(255, 255, 255, .2) 75%,
+					transparent 75%,
+					transparent);
+		}
+
+		li.gradient2 {
+			background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+					color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+					color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+					color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+					to(transparent));
+			background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+					transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+					transparent 75%, transparent);
+			background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+					transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+					transparent 75%, transparent);
+			background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+					transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+					transparent 75%, transparent);
+		}
+
+		li.gradient3 {
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+			background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+			background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+			background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+		}
+
+		li.gradient4 {
+			background-image: -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+			background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+			background-image: -o-linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+			background-image: linear-gradient(0deg, rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+		}
+
+		li.gradient5 {
+			background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)),
+				-webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #555), color-stop(.25, transparent), to(transparent)),
+				-webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #555)),
+				-webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #555));
+			background-image: -moz-linear-gradient(45deg, #555 25%, transparent 25%, transparent),
+				-moz-linear-gradient(-45deg, #555 25%, transparent 25%, transparent),
+				-moz-linear-gradient(45deg, transparent 75%, #555 75%),
+				-moz-linear-gradient(-45deg, transparent 75%, #555 75%);
+			background-image: -o-linear-gradient(45deg, #555 25%, transparent 25%, transparent),
+				-o-linear-gradient(-45deg, #555 25%, transparent 25%, transparent),
+				-o-linear-gradient(45deg, transparent 75%, #555 75%),
+				-o-linear-gradient(-45deg, transparent 75%, #555 75%);
+			background-image: linear-gradient(45deg, #555 25%, transparent 25%, transparent),
+				linear-gradient(-45deg, #555 25%, transparent 25%, transparent),
+				linear-gradient(45deg, transparent 75%, #555 75%),
+				linear-gradient(-45deg, transparent 75%, #555 75%);
+		}
+
+		li.gradient6 {
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, transparent), color-stop(.5, rgba(200, 0, 0, .5)), to(rgba(200, 0, 0, .5))),
+			     -webkit-gradient(linear, 0 0, 100% 0, color-stop(.5, transparent), color-stop(.5, rgba(200, 0, 0, .5)), to(rgba(200, 0, 0, .5)));
+			  background-image: -moz-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)),
+			     -moz-linear-gradient(0deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+			  background-image: -o-linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)),
+			     -o-linear-gradient(0deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+			  background-image: linear-gradient(transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5)),
+			     linear-gradient(0deg, transparent 50%, rgba(200, 0, 0, .5) 50%, rgba(200, 0, 0, .5));
+		}
+	</style>
+	<body>
+		<ul>
+			<li class="gradient gradient1"></li>
+			<li class="gradient gradient2"></li>
+			<li class="gradient gradient3"></li>
+			<li class="gradient gradient4"></li>
+			<li class="gradient gradient5"></li>
+			<li class="gradient gradient6"></li>
+		</ul>
+	</body>
+</html>
