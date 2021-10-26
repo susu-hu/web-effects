@@ -87,7 +87,16 @@
 			height: 100px;
 			position: relative;
 			border-radius: 10px;
-			background:radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0) ;
+			background: radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0);
+		}
+
+		.circle01_d5 {
+			width: 300px;
+			height: 100px;
+			border-radius: 10px;
+			background: radial-gradient(circle at 0 0, transparent 10px, red 0), radial-gradient(circle at right 0, transparent 10px, red 0), radial-gradient(circle at 0 100%, transparent 10px, red 0), radial-gradient(circle at right 100%, transparent 10px, red 0);
+			/* -webkit-mask-composite: source-in;
+			background: linear-gradient(45deg, #44C9A1, #48e5a4); */
 		}
 
 		.circle02 {
@@ -362,6 +371,7 @@
 			background: #da5b33;
 			position: relative;
 		}
+
 		.circle13:after {
 			content: '';
 			position: absolute;
