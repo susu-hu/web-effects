@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>特效</title>
+	</head>
+	<style>
+		body{
+			background-color: skyblue;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			touch-action: none;
+		}
+
+		canvas,{
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 9999;
+		}
+	</style>
+	<script>
+		// function getQueryVariable(variable) {
+		// 	var query = window.location.search.substring(1);
+		// 	var vars = query.split("&");
+		// 	for (var i = 0; i < vars.length; i++) {
+		// 		var pair = vars[i].split("=");
+		// 		if (pair[0] == variable) {
+		// 			return pair[1];
+		// 		}
+		// 	}
+		// 	return (false);
+		// }
+		// var activity = getQueryVariable("activity");
+		// if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) && window.location.href.indexOf('/m') == -1) {
+		// 	if (activity) {
+		// 		window.location.href = ''
+		// 	} else {
+		// 		window.location.href = '';
+		// 	}
+		// }
+		// document.addEventListener('mousewheel', function(e) {
+		// 	e = e || window.event;
+		// 	if ((e.wheelDelta && event.ctrlKey) || e.detail) {
+		// 		event.preventDefault();
+		// 	}
+		// }, {
+		// 	capture: false,
+		// 	passive: false
+		// });
+	</script>
+	<body>
+		<div id="app">
+		</div>
+	</body>
+	<script src="./ball.js"></script>
+	<script>
+		console.log(document.body.offsetHeight)
+		function Particle( x, y, radius ) {
+			this.init( x, y, radius );
+		}
+		
+		Particle.prototype = {
+		
+			init: function( x, y, radius ) {
+		
+				this.alive = true;
+		
+				this.radius = radius || 10;
+				this.wander = 0.15;
+				this.theta = random( TWO_PI );
+				this.drag = 0.92;
+				/*this.color = '#fff';*/
+		
+				this.x = x || 0.0;
+				this.y = y || 0.0;
+		
+				this.vx = 0.0;
+				this.vy = 0.0;
+			},
+		
+			move: function() {
+		
+				this.x += this.vx;
+				this.y += this.vy;
+		
+				this.vx *= this.drag;
+				this.vy *= this.drag;
+		
+				this.theta += random( -0.5, 0.5 ) * this.wander;
+				this.vx += sin( this.theta ) * 0.1;
+				this.vy += cos( this.theta ) * 0.1;
+		
+				this.radius *= 0.96;
+				this.alive = this.radius > 0.5;
+			},
+		
+			draw: function( ctx ) {
+		
+				ctx.beginPath();
+				ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+				ctx.fillStyle = this.color;
+				ctx.fill();
+			}
+		};
+		
+		// ----------------------------------------
+		// Example
+		// ----------------------------------------
+		
+		var MAX_PARTICLES = 1000;
+		var COLOURS = [ 'rgba(255,255,255,0.7)' ];
+		var particles = [];
+		var pool = [];
+		
+		var demo = Sketch.create({
+		    container: document.getElementById('app')
+		});
+		
+		demo.setup = function() {
+		
+			// Set off some initial particles.
+			var i, x, y;
+		
+			for ( i = 0; i < 20; i++ ) {
+				x = ( demo.width * 0.5 ) + random( -100, 100 );
+				y = ( demo.height * 0.5 ) + random( -100, 100 );
+				demo.spawn( x, y );
+			}
+		};
+		
+		demo.spawn = function( x, y ) {
+		
+			if ( particles.length >= MAX_PARTICLES )
+				pool.push( particles.shift() );
+		
+			particle = pool.length ? pool.pop() : new Particle();
+			particle.init( x, y, random( 1, 17 ) );
+		
+			particle.wander = random( 0.5, 2.0 );
+			particle.color = random( COLOURS );
+			particle.drag = random( 0.8, 1 );
+		
+			theta = random( TWO_PI );
+			force = random( 2, 8 );
+		
+			particle.vx = sin( theta ) * force;
+			particle.vy = cos( theta ) * force;
+		
+			particles.push( particle );
+		}
+		
+		demo.update = function() {
+		
+			var i, particle;
+		
+			for ( i = particles.length - 1; i >= 0; i-- ) {
+		
+				particle = particles[i];
+		
+				if ( particle.alive ) particle.move();
+				else pool.push( particles.splice( i, 1 )[0] );
+			}
+		};
+		
+		demo.draw = function() {
+		
+			demo.globalCompositeOperation  = 'lighter';
+			
+			for ( var i = particles.length - 1; i >= 0; i-- ) {
+				particles[i].draw( demo );
+			}
+		};
+		
+		demo.mousemove = function() {
+		
+			var particle, theta, force, touch, max, i, j, n;
+		
+			for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+		
+				touch = demo.touches[i], max = random( 1, 4 );
+				for ( j = 0; j < max; j++ ) demo.spawn( touch.x, touch.y );
+			}
+		};
+	</script>
+	<script>
+		// if (['0A96D6', '704B24', 'BAE459', '273E8E', '750537'].indexOf(activity) > -1) {
+		// 	document.getElementsByClassName("qrcode")[0].src = "/static/link_qrcode/wx_07141627.png";
+		// } else if (['094843', '5F1A94', 'D21BC6', '38D8F2', 'B98F80', 'C81A67', '4B9DDC', 'FCCE62'].indexOf(activity)) {
+		// 	document.getElementsByClassName("qrcode")[0].src = "/static/link_qrcode/wx_07141634.png";
+		// } else if (['0240E9'].indexOf(activity)) {
+		// 	document.getElementsByClassName("qrcode")[0].src = "/static/link_qrcode/wx_18470720.png";
+		// } else if (['D7F3C6'].indexOf(activity)) {
+		// 	document.getElementsByClassName("qrcode")[0].src = "/static/link_qrcode/wx_09221853.png";
+		// } else {
+		// 	//IOS上架前，先默认跳到【官网二维码】公众号页面，上架后跳到wx.png下载APP页面
+		// 	document.getElementsByClassName("qrcode")[0].src = "src/imgs/wx_noapp.png";
+		// }
+		//if(activity){
+		//	var link='/static/link_qrcode/'+activity+'.png';
+		//	document.getElementsByClassName("qrcode")[0].src=link;
+		//}else{
+		//	document.getElementsByClassName("qrcode")[0].src="src/imgs/wx.png";					
+		//}	
+
+
+		// if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		// 	// new WOW().init();
+		// };
+
+		// if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+		//     //alert(navigator.userAgent);
+		//     //add a new meta node of viewport in head node
+		//     head = document.getElementsByTagName('head');
+		//     viewport = document.createElement('meta');
+		//     viewport.name = 'viewport';
+		//     viewport.content = 'target-densitydpi=device-dpi, width=' + 750 + 'px, user-scalable=no';
+		//     head.length > 0 && head[head.length - 1].appendChild(viewport);
+
+		// };
+
+		// $(function(){
+		//     //鍥剧墖鍔犺浇瀹屾垚鏂规硶
+		//     var images = new Array(),
+		// 		count = 0;
+		// 	$('html,body').find('img').each(function(i) {
+		// 		images[i] = $(this).attr('src');
+		// 	});
+		// 	for(var i = 0; i < images.length; i++) {
+		// 		img = new Image;
+		// 		img.src = images[i];
+		// 		img.onload = function() {
+		// 			count++;
+		// 			//褰撳姞杞藉畬鎴愪互鍚庤鎵ц鐨勬搷浣�
+		// 			if(count == images.length) {
+		// 				console.log('鍔犺浇瀹屾垚');
+		// 			}
+		// 		}
+		// 	};
+		// 	$(window).resize(function(){
+		// 	$(".layout").css("min-height",$(window).height());
+		// 	})
+		// })
+	</script>
+</html>
