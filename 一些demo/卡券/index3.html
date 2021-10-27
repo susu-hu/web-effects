@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="referrer" content="no-referrer">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>商品详情</title>
+	</head>
+	<style>
+		.coupon_list {
+			width: 789px;
+			height: 370px;
+			background: #fff;
+			border-radius: 4px;
+			box-shadow: 0px 0px 12px rgba(128, 128, 128, 0.6);
+			box-sizing: border-box;
+			padding: 22px 29px;
+			overflow: auto;
+			scrollbar-width: none;
+		}
+
+		.coupon_list::-webkit-scrollbar {
+			display: none;
+		}
+
+
+		.goodsDetail .coupon_list .coupon_item {
+			width: 635px;
+			height: 155px;
+			background: #FFFFFF;
+			box-shadow: 0px 0px 12px rgba(128, 128, 128, 0.16);
+			margin-bottom: 20px;
+			flex-shrink: 0;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .left {
+			width: 155px;
+			height: 155px;
+			background: #D3E4D3;
+			color: #519551;
+			box-sizing: border-box;
+			height: 155px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .left p {
+			font-size: 48px;
+			font-weight: bold;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .left p span {
+			font-size: 28px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .left span {
+			font-size: 20px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .center {
+			width: 279px;
+			background: radial-gradient(circle at top right, #F8F8F8 12px, #fff 0) top right, radial-gradient(circle at bottom right, #F8F8F8 12px, #fff 0) bottom right;
+			background-size: 100% 60%;
+			background-repeat: no-repeat;
+			position: relative;
+			padding: 20px 22px;
+			box-sizing: border-box;
+			height: 155px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .center::after {
+			content: '';
+			width: 0px;
+			height: 97px;
+			border: 1px dashed #DEDEDE;
+			transform: scaleX(0.5);
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin-top: -48px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .center p:first-child {
+			font-size: 22px;
+			color: #333333;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .center p:nth-child(2) {
+			width: 146px;
+			font-size: 14px;
+			color: #666666;
+			margin: 8px 0 37px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .center p:last-child {
+			font-size: 16px;
+			color: #999;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .right {
+			width: 201px;
+			background: radial-gradient(circle at top left, #F8F8F8 12px, #fff 0) top left, radial-gradient(circle at bottom left, #F8F8F8 12px, #fff 0) bottom left;
+			background-size: 100% 60%;
+			background-repeat: no-repeat;
+
+			box-sizing: border-box;
+			height: 155px;
+		}
+
+		.goodsDetail .coupon_list .coupon_item .right .btn {
+			width: 116px;
+			height: 38px;
+			background: #519551;
+			border-radius: 4px;
+			font-size: 20px;
+			color: #fff;
+			display: block;
+			margin: auto;
+			text-align: center;
+			line-height: 38px;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.flex-column {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.j_c {
+			justify-content: center;
+		}
+
+		.text_ellipsis {
+			/*宽度自定义*/
+			text-overflow: ellipsis;
+			white-space: nowrap !important;
+			overflow: hidden;
+		}
+
+		p {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<body>
+		<div class="goodsDetail">
+			<div class="coupon_list flex-column">
+				<div class="coupon_item flex ">
+					<div class="left flex-column j_c">
+						<p><span>￥</span>5000</p>
+						<span>满500元可用</span>
+					</div>
+					<div class="center">
+						<p>满500元减50元</p>
+						<p class="text_ellipsis">厨具-水杯壶、餐水杯壶、餐具等水杯壶、餐具等具等</p>
+						<p>2021.10.22——2021.10.22</p>
+					</div>
+					<div class="right flex-column">
+						<div class="btn">立即领取</div>
+					</div>
+				</div>
+				<div class="coupon_item flex">
+					<div class="left flex-column j_c">
+						<p><span>￥</span>5000</p>
+						<span>满500元可用</span>
+					</div>
+					<div class="center">
+						<p>满500元减50元</p>
+						<p class="text_ellipsis">厨具-水杯壶、餐水杯壶、餐具等水杯壶、餐具等具等</p>
+						<p>2021.10.22——2021.10.22</p>
+					</div>
+					<div class="right flex-column">
+						<div class="btn">立即领取</div>
+					</div>
+				</div>
+				<div class="coupon_item flex">
+					<div class="left flex-column j_c">
+						<p><span>￥</span>5000</p>
+						<span>满500元可用</span>
+					</div>
+					<div class="center">
+						<p>满500元减50元</p>
+						<p class="text_ellipsis">厨具-水杯壶、餐水杯壶、餐具等水杯壶、餐具等具等</p>
+						<p>2021.10.22——2021.10.22</p>
+					</div>
+					<div class="right flex-column">
+						<div class="btn">立即领取</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
