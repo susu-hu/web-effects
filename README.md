@@ -68,7 +68,12 @@
 55. 一个粘性小球
 56. 卡券样式++
 57. 按钮+1
+58. flex竖向布局父元素固定高度超出滚动导致的高度塌陷问题（flex-shrink: 0;）
 #### 作品截图 
+
+flex竖向布局父元素固定高度超出滚动导致的高度塌陷问题（flex-shrink: 0;）
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1027/181920_1696e179_8576727.gif "GIF.gif")
 
 codepen按钮
 
