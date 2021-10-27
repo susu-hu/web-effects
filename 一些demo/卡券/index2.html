@@ -383,6 +383,28 @@
 			background-size: 20px 10px;
 
 		}
+		
+		.wrap {
+		  position: relative;
+		  margin: 0 auto;
+		  width: 300px;
+		  height: 100px;
+		  border-radius: 4px;
+		  background: radial-gradient(circle at 0px 100%, #fff 10px, #0898ea 11px) top left / 51% 50% no-repeat,
+		    radial-gradient(circle at 100% 100%, #fff 10px, #0898ea 11px) top right / 51% 50% no-repeat,
+		    radial-gradient(circle at 0 0, #fff 10px, #0898ea 11px) bottom left / 51% 50% no-repeat,
+		    radial-gradient(circle at 100% 0%, #fff 10px, #0898ea 11px) bottom right / 51% 50% no-repeat;
+		}
+		.wrap::after {
+		  content: '';
+		  position: absolute;
+		  left: 11px;
+		  top: calc(50% - 1px);
+		  bottom: calc(50% + 1px);
+		  right: 11px;
+		  height: 2px;
+		  background: #0898ea;
+		}
 	</style>
 	<body>
 		<section>
@@ -412,6 +434,8 @@
 			<div class="circle13 mb20"></div>
 
 			<div class="radial-gradient mb20"></div>
+			
+			<div class="wrap"></div>
 		</section>
 	</body>
 </html>
