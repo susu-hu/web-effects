@@ -69,7 +69,12 @@
 56. 卡券样式++
 57. 按钮+1
 58. flex竖向布局父元素固定高度超出滚动导致的高度塌陷问题（flex-shrink: 0;）
+59. canvas背景特效
 #### 作品截图 
+
+canvas背景特效
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1027/223952_de918128_8576727.gif "欧尼.gif")
 
 flex竖向布局父元素固定高度超出滚动导致的高度塌陷问题（flex-shrink: 0;）
 
