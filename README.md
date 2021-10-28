@@ -76,7 +76,12 @@
 63. 火焰按钮
 64. css实现文字打印
 65. 文字雨
+66. 带弧度的tab选项卡
 #### 作品截图 
+
+带弧度的tab选项卡
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1029/004732_faedc06f_8576727.gif "tab.gif")
 
 文字雨
 
