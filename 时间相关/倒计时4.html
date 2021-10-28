@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+		 距结束还剩：<span class="JS-tian"></span>天<span class="JS-shi"></span>时<span class="JS-fen"></span>分<span class="JS-miao"></span>秒
+		</div>
+	</body>
+	<script>
+	 (function () {
+	  var tian = document.getElementsByClassName('JS-tian')[0];
+	  var shi = document.getElementsByClassName('JS-shi')[0];
+	  var fen = document.getElementsByClassName('JS-fen')[0];
+	  var miao = document.getElementsByClassName('JS-miao')[0];
+	  var endTime = new Date('2021/11/12 23:59:59').getTime() + 1000;
+	  var interval = null;
+	  interval = setInterval(function () {
+	   var syhm = endTime - Date.now(); // 剩余毫秒
+	   if (syhm >= 0) {
+	    tian.innerText = Math.floor(syhm / 1000 / 60 / 60 / 24);
+	    shi.innerText = Math.floor(syhm / 1000 / 60 / 60 % 24);
+	    fen.innerText = Math.floor(syhm / 1000 / 60 % 60);
+	    miao.innerText = Math.floor(syhm / 1000 % 60);
+	   } else {
+	    clearInterval(interval);
+	   }
+	  }, 0);
+	 })();
+	</script>
+</html>

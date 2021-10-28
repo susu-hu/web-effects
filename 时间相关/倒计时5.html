@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var createTime = '2021-10-27 23:15:00'; //开始时间 
+			var limitTimes = 10; //时间长度 
+			// 倒计时 入口 
+			countdowns = window.setInterval(function() {
+				var arr = cutDoowns(limitTimes, createTime);
+				document.write(formatDate(arr[0]) + ':' + formatDate(arr[1]) + ':' + formatDate(arr[2]) + '</br>');
+				if (arr[2]) {
+					document.write('时间到!');
+				}
+			}, 1000);
+
+			/* 
+			  s,10分钟后的具体日期： 
+			  date,开始时间 
+			  然后转化成毫秒比较，所得的差值化成分秒，就是倒计时的分秒。 
+			 */
+			function cutDoowns(s, date) {
+				console.log('');
+				var flag = false;
+				var arr = []; //arr[0]:分，arr[1]:秒，arr[2]:返回boolean 
+				var now = new Date(); //当前时间 
+				var now1 = new Date(date); //开始时间 
+				console.log('开始时间 now1: ' + now1);
+				now1.setMinutes(now1.getMinutes() + s); //10分钟后的时间 
+				console.log('当前时间 now ：' + now);
+				console.log('10分钟时 now1：' + now1);
+
+				// 转化成年月日 时分秒 格式 
+				var n = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDay() + ' ' + now.getHours() + ':' + now
+					.getMinutes() + ':' + now.getSeconds();
+				var n1 = now1.getFullYear() + '/' + (now1.getMonth() + 1) + '/' + now1.getDay() + ' ' + now1.getHours() + ':' +
+					now1.getMinutes() + ':' + now1.getSeconds();
+				// 日期转化成毫秒 
+				var time1 = (new Date(n)).getTime();
+				var time2 = (new Date(n1)).getTime();
+				// 毫秒转日期格式 
+				var time11 = new Date(time1);
+				var time21 = new Date(time2);
+				console.log('当前时间：' + n + '，转化成毫秒：' + time1 + '，time11：' + time11);
+				console.log('10分钟时：' + n1 + '，转化成毫秒：' + time2 + '，time21：' + time21);
+
+				var surplusSec = time2 - time1; //距离解锁剩余毫秒 
+
+				if (surplusSec <= 0) {
+					clearInterval(countdowns);
+					flag = true;
+					return arr = [00, 00, flag];
+				}
+
+				var minute = Math.floor(surplusSec / 1000 / 60); //分钟 
+				var second = Math.floor((surplusSec - minute * 60 * 1000) / 1000); //剩余秒数 
+				console.log('剩余时间，minute: ' + minute + '，second: ' + second + '，surplusSec:' + surplusSec);
+				// var second = Math.round(surplusTimes);//秒数 
+				console.log('剩余时间，minute: ' + minute + '，second: ' + second + '，surplusSec:' + surplusSec);
+
+				arr = [minute, second, flag];
+				return arr;
+			}
+
+			//格式化日期：把单字符转成双字符 
+			function formatDate(n) {
+				n = n.toString();
+				// console.log(n); 
+				if (n.length <= 1) {
+					n = '0' + n;
+				}
+				// console.log(n); 
+				return n;
+			}
+		</script>
+	</body>
+</html>

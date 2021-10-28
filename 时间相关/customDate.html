@@ -4,7 +4,31 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style>
+		.a {
+		    width: 200px;
+		    height: 0;
+		    border-right: 20px solid transparent;
+		    border-bottom: 50px solid skyblue;
+		    border-left: 20px solid transparent;
+		}
+	</style>
 	<body>
-		<div></div>
+		<div class="a"></div>
 	</body>
+	<script>
+		function getYearFirstLastDay(f, l) {
+			var firstDay = new Date(f);
+			firstDay.setDate(1);
+			firstDay.setMonth(0);
+			var lastDay = new Date(l);
+			lastDay.setFullYear(lastDay.getFullYear() + 1);
+			lastDay.setDate(0);
+			lastDay.setMonth(-1);
+			firstDay = firstDay.toLocaleDateString().replace(/\//g, '-').replace(/^(\d{2})(\d{2})(\d{4})$/, "$3-$2-$1");
+			lastDay = lastDay.toLocaleDateString().replace(/\//g, '-').replace(/^(\d{2})(\d{2})(\d{4})$/, "$3-$2-$1");
+			return [firstDay, lastDay];
+		}
+		console.log(getYearFirstLastDay('2020','2021'))
+	</script>
 </html>

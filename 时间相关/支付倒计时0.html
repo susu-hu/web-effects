@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #spa {
+            font-size: 20px;
+            color: red;
+        }
+
+        #total {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(169, 169, 169, 0.315);
+            margin: 40px auto;
+            border-radius: 20px;
+            padding: 20px;
+            position: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #total h3 {
+            padding-top: 20px;
+        }
+
+        #total button {
+            margin-top: 30px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="total">
+        <h3>恭喜您，支付成功！</h3>
+        <div>
+            <span id="spa">10</span>
+            <span>秒后自动返回首页</span>
+        </div>
+        <button id="btn">立即返回</button>
+    </div>
+    <script>
+        var spa = document.getElementById("spa");
+        let t = 10;
+        var timer=setInterval(() => {
+            t--;
+            spa.innerText = t;
+            if (t == 0) {
+				clearInterval(timer)
+                // location.href = "./支付10秒钟.html";
+            }
+        }, 400);
+        
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            // location.href="./支付10秒钟.html" rel="external nofollow" 
+        }
+    </script>
+</body>
+
+</html>

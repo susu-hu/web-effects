@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="user-form">
+			<form action="{{ path('zm_member_register') }}" method="post">
+				<div class="form-list">
+					<label class="register-label">手机号码</label>
+					<input class="regphone input-register" type="text" name="phone" placeholder="请输入手机号码" />
+				</div>
+				<div class="form-list">
+					<label class="register-label">验证码</label>
+					<input class="input-short" type="text" name="sms_salt" placeholder="请输短信验证码" />
+					<input class="input-code" id="btn" type="button" value="发送验证码" />
+				</div>
+				<input style="margin-top: 60px;" type="submit" class="registerSubmit form-sumbit" value="提交" />
+			</form>
+		</div>
+	</body>
+	<script src="../商品详情/js/jq.js"></script>
+	<script type="text/javascript">
+		//倒计时60秒
+		var wait = 60;
+
+		function time(o) {
+			if (wait == 0) {
+				o.removeAttribute("disabled");
+				o.value = "获取动态码";
+				wait = 60;
+			} else {
+				o.setAttribute("disabled", true);
+				o.value = "重新发送(" + wait + ")";
+				wait--;
+
+				setTimeout(function() {
+						time(o)
+					}
+
+					, 1000)
+			}
+		}
+
+		$('.input-code').click(function() {
+				var phone = $('.regphone').val();
+				time(btn);
+
+				// $.ajax({
+				// 		type: 'post',
+				// 		url: "{{ path('zm_member_get_salt') }}",
+				// 		data: {
+				// 			phone: phone,
+				// 			type: 1
+				// 		},
+				// 		dataType: 'json',
+				// 		success: function(result) {
+				// 			if (result.flag == 1) {
+				// 				// alert('成功');
+				// 				time(btn);
+				// 			} else {
+				// 				alert(result.content);
+				// 			}
+				// 		}
+				// 	}
+				// );
+			}
+
+		);
+	</script>
+</html>
