@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		:root {
+			--blue: #00aaff;
+			--size: 150px;
+		}
+
+
+		body {
+			display: flex;
+			height: 100vh;
+			width: 100%;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			margin: 0;
+			background: #222;
+		}
+
+		.container {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		body,
+		.container {
+			position: relative;
+		}
+
+		.ring-frame,
+		.disc-frame {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.ring-frame,
+		.disc-frame,
+		.ring,
+		.disc {
+			position: absolute;
+		}
+
+		.ring {
+			border: 2px solid rgba(85, 170, 255, 0.1);
+			border-left: 2px solid var(--blue);
+			border-right: 2px solid var(--blue);
+			border-radius: 50%;
+			display: flex;
+			z-index: 1;
+		}
+
+		.ring:nth-child(1) {
+			animation: spin 1s linear infinite;
+		}
+
+		.ring:nth-child(2) {
+			animation: spinner 1.25s linear infinite;
+		}
+
+		.ring:nth-child(3) {
+			animation: spin 1.5s linear infinite;
+		}
+
+		.disc {
+			height: var(--size);
+			width: var(--size);
+			border: 2px solid var(--blue);
+			opacity: .9;
+			border-radius: 50%;
+			animation: rotate 3s linear infinite;
+
+		}
+
+		.loading {
+			display: block;
+			font-family: NTF Grand, sans-serif;
+			font-size: 1.5rem;
+			letter-spacing: .25rem;
+			color: var(--blue);
+			animation: blink 2s ease infinite;
+		}
+
+		@keyframes blink {
+
+			0%,
+			100% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate3D(.5, 0.5, 0.5, -720deg);
+			}
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotateZ(-360deg);
+			}
+		}
+
+		@keyframes spinner {
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+	</style>
+	<body>
+		<section class="container">
+			<div class="ring-frame"></div>
+			<div class="disc-frame"></div>
+			<section class="loading">苏苏来了</section>
+		</section>
+	</body>
+	<script>
+		let container = document.querySelector(".container");
+		let ring = document.querySelector(".ring-frame");
+		let disc = document.querySelector(".disc-frame");
+		let i = 1;
+		let num = 200;
+		let radius = 150;
+		let lim = 4;
+
+		for (i; i < lim; i++) {
+			let span = document.createElement("span");
+			let disk = document.createElement("span");
+			span.setAttribute("class", "ring");
+			disk.setAttribute("class", "disc");
+			span.style.height = `${i * 20 + num}px`;
+			span.style.width = `${i * 20 + num}px`;
+			disk.style.animationDelay = `${i - 0.8}s`;
+			ring.append(span);
+			disc.append(disk);
+		}
+	</script>
+</html>
