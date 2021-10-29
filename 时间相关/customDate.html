@@ -4,11 +4,20 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style>
+		.a {
+		    width: 200px;
+		    height: 0;
+		    border-right: 20px solid transparent;
+		    border-bottom: 50px solid skyblue;
+		    border-left: 20px solid transparent;
+		}
+	</style>
 	<body>
-		<div></div>
+		<div class="a"></div>
 	</body>
 	<script>
-		function getYearFirstLastDay(f,l) {
+		function getYearFirstLastDay(f, l) {
 			var firstDay = new Date(f);
 			firstDay.setDate(1);
 			firstDay.setMonth(0);
@@ -21,7 +30,6 @@
 			return [firstDay,lastDay];
 		}
 		console.log(getYearFirstLastDay('2011','2012'))
-		
 		var time1 = new Date().toLocaleDateString();
 		console.log(time1)
 	</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送短信</title>
+    <style>
+        .box {
+            width: 360px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        手机号码：<input type="number">
+        <button>发送短信</button>
+    </div>
+
+    <script>
+        var btn = document.querySelector('button');
+        var time = 10;
+        btn.addEventListener('click', function() {
+            btn.disabled = true;
+            var timer = setInterval(function() {
+                if (time == 0) {
+                    // 清除定时器和复原按钮
+                    clearInterval(timer);
+					console.log(btn)
+                    btn.disabled = false;
+                    btn.innerHTML = '发送短信';
+                    time = 10;
+                } else {
+                    btn.innerHTML = '剩余' + time + '秒';
+                    time--;
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

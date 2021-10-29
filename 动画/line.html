@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		li ,ul{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		.panel {
+			position: relative;
+			width: 600px;
+			height: 300px;
+			border-radius: 10px;
+			margin: 100px auto;
+			background-image: linear-gradient(to top, #748383 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+			overflow: hidden;
+		}
+
+		.nav-list {
+			display: flex;
+			flex-direction: row-reverse;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.nav-list li {
+			position: relative;
+			width: 70px;
+			line-height: 50px;
+			font-weight: bold;
+			font-size: 16px;
+			text-align: center;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		.nav-list li:first-of-type::before {
+			border-right: none;
+		}
+
+		.nav-list li:hover::before,
+		.nav-list li.active::before {
+			background-image: linear-gradient(120deg, #8caa9a 0%, #d5e8ff 100%);
+		}
+
+		.nav-list li::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 110%;
+			height: 120%;
+			/* border-right: 1px solid #fff; */
+			border-radius: 0 0 10px 0;
+			background-image: linear-gradient(135deg, #ffe5f6 0%, #a24195 100%);
+			transform: skew(-10deg) translate(-10%, -20%);
+			transform-origin: right center;
+		}
+
+		.nav-list li span {
+			position: relative;
+		}
+	</style>
+	<body>
+		<div class="panel">
+			<ul class="nav-list">
+				<li><span>555</span></li>
+				<li><span>444</span></li>
+				<li><span>333</span></li>
+				<li><span>222</span></li>
+				<li class="active"><span>111</span></li>
+			</ul>
+		</div>
+	</body>
+</html>

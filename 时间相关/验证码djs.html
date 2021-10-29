@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>点击按钮出现60秒倒计时的简单js代码(推荐)</title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="免费获取验证码" onclick="settime(this)" />
+		<script type="text/javascript">
+			var countdown = 60;
+
+			function settime(val) {
+				if (countdown == 0) {
+					val.removeAttribute("disabled");
+					val.value = "免费获取验证码";
+					countdown = 60;
+				} else {
+					val.setAttribute("disabled", true);
+					val.value = "重新发送(" + countdown + ")";
+					countdown--;
+				}
+				setTimeout(function() {
+					settime(val)
+				}, 1000)
+			}
+		</script>
+	</body>
+</html>

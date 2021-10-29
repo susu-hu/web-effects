@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		@charset "UTF-8";
+		@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap");
+
+		body,
+		p {
+			margin: 0;
+			padding: 0;
+		}
+
+		body,
+		html {
+			width: 100%;
+			height: 100%;
+			background: #000;
+			display: flex;
+			overflow: hidden;
+		}
+
+		.g-container {
+			width: 100vw;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			font-family: "Inconsolata", monospace, sans-serif;
+		}
+
+		p {
+			position: relative;
+			width: 5vh;
+			height: 100vh;
+			text-align: center;
+			font-size: 5vh;
+			word-break: break-all;
+			white-space: pre-wrap;
+		}
+
+		p::before,
+		p::after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		p:nth-child(0)::before {
+			content: "%す3ㄍネrㄇを◁bすㄗにㄨコふタソㄍテォ▦ヵn▧";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-0 3.8s steps(20, end) -1.8s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(0)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.8s infinite -1.6s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-0 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ヌぅァと◄3ㄦゥぉㄆハハハ▥つゅし2ヌtゑミ▨そ♥";
+			}
+		}
+
+		p:nth-child(1)::before {
+			content: "ㄔンとㄡㄔかヮㄗァクㄟクㄘネクㄏㄛミぃょネッ*▥r";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-1 3.9s steps(20, end) -4.3s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(1)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.9s infinite -4.1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-1 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ヲ#▧rャっ$♦すㄧ9ヰ2ョㄨㄈしyェモ♥ほiカを";
+			}
+		}
+
+		p:nth-child(2)::before {
+			content: "すェㄨとociasふへㄓさ◁▥きはu♦ㄨㄗㄔもてゎ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-2 3.9s steps(20, end) -0.2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(2)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.91), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.9s infinite 0s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-2 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "<スゃぅgちきぅホmbㄎsagㄇヒケ5ヵㄙkㄜㄊへ";
+			}
+		}
+
+		p:nth-child(3)::before {
+			content: "xヱき^ゅ▣ㄍㄞぁぃォ♂はㄒㄞ7ㄠ▧めヰ&ヒトゥt";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-3 3.3s steps(20, end) -2.7s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(3)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.3s infinite -2.5s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-3 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "eちマチねx▦ミㄠ2ㄈㄏぬォㄑㄚ◄ヌスㄧㄎシㄢヱ%";
+			}
+		}
+
+		p:nth-child(4)::before {
+			content: "dハㄗテクㄧ▦ムゃㄑほ>ヲほホㄨクp<ゎねこッたキ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-4 4.8s steps(20, end) -2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(4)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.68), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -1.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-4 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "l▧ヴeもㄩさmスてd▥ㄣaぅㄡヒkwマきㄉhh>";
+			}
+		}
+
+		p:nth-child(5)::before {
+			content: "タんmシㄖwヮdㄘ*モシㄔッたゑヴせ▧ㄡㄩ8チo2";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-5 4s steps(20, end) -2.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(5)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4s infinite -1.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-5 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "9っ▧wぉシォ#wp<ㄦㄦヴ<ㄘㄍホセㄍㄥ▦ㄒ%ㄇ";
+			}
+		}
+
+		p:nth-child(6)::before {
+			content: "ㄛネ▧ㄜノへ▤ォン%ぁヵゑキ7ュぃ%ㄛカはp3nノ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-6 4.8s steps(20, end) -5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(6)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -4.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-6 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: ">ㄔンヮㄣ4ィㄛん♥ㄒァけしょネもぁㄗㄅ%ㄐㄝニ9";
+			}
+		}
+
+		p:nth-child(7)::before {
+			content: "そㄐねすっㄞて►♂kヴセeヲて☻むテ1まさ&s1に";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-7 3.9s steps(20, end) -4.5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(7)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.9s infinite -4.3s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-7 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "くc▤ぉ9けにggㄧみをきかぇ▤なヲキカadむ#ㄐ";
+			}
+		}
+
+		p:nth-child(8)::before {
+			content: "ヵヌ♥kみをㄕㄝヵㄠをㄩeへ▧gハへヴすyてヱきㄑ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-8 3.7s steps(20, end) -1.9s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(8)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.79), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.7s infinite -1.7s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-8 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄕゥd◁q47ㄉ▤▦ㄙこㄗぉォホめㄗねㄕセマㄡ►*";
+			}
+		}
+
+		p:nth-child(9)::before {
+			content: "マュㄆつ▧く▧3ㄎほゥキヰちぅㄒ▦きちh@は>ぅを";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-9 3.2s steps(20, end) -3.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(9)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.91), rgba(0, 0, 0, 0.91), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.2s infinite -3.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-9 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄍvㄥㄉㄎhvチョqみ♦ぁノ♥ハメセeㄚまㄇそ▣メ";
+			}
+		}
+
+		p:nth-child(10)::before {
+			content: "ㄅsyモgヲクヮㄤㄤ#ㄈㄦㄩちaとへサニメㄘスちヶ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-10 4.4s steps(20, end) -3.9s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(10)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.4s infinite -3.7s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-10 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "6メlフむㄒとㄨㄉㄣㄣゐき▧dセとㄎヌヰ7>▤kㄦ";
+			}
+		}
+
+		p:nth-child(11)::before {
+			content: "ㄘヱㄉセㄋ♂ねねひxヲネをぬんぉちㄉdゅㄘァ♂ヌへ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-11 4.9s steps(20, end) -4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(11)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.9s infinite -3.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-11 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄝbㄟfヶㄕ>ナlrかサㄠ7%▥サ♥oタサ▥ㄍぃ9";
+			}
+		}
+
+		p:nth-child(12)::before {
+			content: "ェをゥㄝ♦も♦かゐょヰまミㄜ▥へkサㄋ<ヱャム▧g";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-12 3.5s steps(20, end) -4.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(12)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.5s infinite -4.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-12 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "rㄉㄝみほ%lぉゎす<wィマゃpこㄓㄤク▤ソlㄆ▨";
+			}
+		}
+
+		p:nth-child(13)::before {
+			content: "ゃ▧ぅぬヌh▤▨サぃゎム&ナク▧セヱマヵツx▤けゅ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-13 4.8s steps(20, end) -4.5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(13)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -4.3s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-13 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄢニトく$w9ㄓぉけゅョョ#ヰ4ㄙㄍェす►<♦メト";
+			}
+		}
+
+		p:nth-child(14)::before {
+			content: "♦ㄎんㄗホヰ@uメへ^$ㄖっㄊㄟェㄠんㄈけモㄙck";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-14 4.2s steps(20, end) -1.2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(14)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.2s infinite -1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-14 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ョめ♂*すみㄓゑフ▦ゅㄎㄏみは▥マモㄨィヲゥヮㄒネ";
+			}
+		}
+
+		p:nth-child(15)::before {
+			content: "ゅㄨㄩ▧ㄡぁヮコシcㄕは>ㄦヰeぅzょトすuㄈ7p";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-15 4s steps(20, end) -3.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(15)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4s infinite -2.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-15 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄞヮノ5◁ㄡㄕゎゐュヰㄔlぃ►コェコ+なす◁っ2カ";
+			}
+		}
+
+		p:nth-child(16)::before {
+			content: "ヴ7セこヲvyそぉㄢㄠiネへ62ち9ュㄟㄊゅleん";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-16 3.5s steps(20, end) -3.7s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(16)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.5s infinite -3.5s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-16 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "◄ㄟ◄ㄒㄑㄇ8ュメ▥ぉㄅㄤミャむ+ッㄍタミㄣ@ヒa";
+			}
+		}
+
+		p:nth-child(17)::before {
+			content: "ㄊㄡムㄛネセ►▥ㄛヰㄓㄍミbシヲ▣ふにケぃpホ▦ホ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-17 4.5s steps(20, end) -0.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(17)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.94), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.5s infinite 0.1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-17 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ゥすぁヱㄡン4かㄝツxㄐぅぇンぃっゥち▥hヰてハ1";
+			}
+		}
+
+		p:nth-child(18)::before {
+			content: "ホㄆかiㄋ♦zモ▦ソふぬたナrぬマqㄝサbァg^ㄞ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-18 3.7s steps(20, end) -0.3s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(18)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.7s infinite -0.1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-18 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ゑノみみにㄅㄅきdナㄕdㄨぉㄅしはト$t♂ㄨシメㄉ";
+			}
+		}
+
+		p:nth-child(19)::before {
+			content: "タㄥgㄆ8ㄍケつ$カrヶヒㄝㄩュ+シ☻ぃㄇぅテゐㄐ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-19 3.8s steps(20, end) -1.5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(19)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.8s infinite -1.3s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-19 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ス*2っケ<たr%ヴこュトもゥㄤ♀ぁヱィㄟコこ▧セ";
+			}
+		}
+
+		p:nth-child(20)::before {
+			content: "_テㄜo▨uヒ2♂#メゎㄤゃㄗぃキㄣソ▦カfチなチ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-20 4.8s steps(20, end) -2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(20)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -1.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-20 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "gㄈ▧_ヶンㄖマっフゅ♥+ㄞqㄈネㄧmニㄒツノちㄐ";
+			}
+		}
+
+		p:nth-child(21)::before {
+			content: "カgせㄡくyw◄ンㄐナメsnょㄍe3ほㄙ<ゅㄦナb";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-21 4.3s steps(20, end) -0.2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(21)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.3s infinite 0s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-21 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ほ▤すㄆf^ソス<チoまrㄋ5はとハㄏサトvxんt";
+			}
+		}
+
+		p:nth-child(22)::before {
+			content: "もㄇ☻ㄖゅㄑㄒネヶぬァㄜテトふコンㄅ7っほㄑフクゑ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-22 3.8s steps(20, end) -2.9s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(22)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.81), rgba(0, 0, 0, 0.81), rgba(0, 0, 0, 0.81), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.8s infinite -2.7s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-22 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "のメョ▨ツ5ァ>ㄨんㄦみきㄈフっㄤシnゐも5めiㄠ";
+			}
+		}
+
+		p:nth-child(23)::before {
+			content: "▦ォひe♂ㄟカㄟヴネzゐㄓㄝ♀っlこキㄕk▦セサq";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-23 4.3s steps(20, end) -3.7s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(23)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.3s infinite -3.5s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-23 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄜとsかュ▥ヰ▨ㄗてヵくフノ6てたカャㄎㄠㄡ3ㄗg";
+			}
+		}
+
+		p:nth-child(24)::before {
+			content: "テ+ァなぃサフめㄒㄟぉんをひメㄝョぅg▧カtㄊ►テ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-24 4.4s steps(20, end) -4.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(24)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.79), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.4s infinite -3.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-24 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "♥ょせ+ゥち8d▧^eシeㄆcそ#ㄥㄔ►uuㄗョㄣ";
+			}
+		}
+
+		p:nth-child(25)::before {
+			content: "っヱひきのetㄕんㄗン2wdセㄐヘてㄇ♥zッㄉん4";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-25 4.9s steps(20, end) -3.8s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(25)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.9s infinite -3.6s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-25 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ヵょぇㄢㄞㄟくすㄦ^ㄚㄤぅ%vッ▤4ヲㄍシも1ㄚち";
+			}
+		}
+
+		p:nth-child(26)::before {
+			content: "1スミゑヲ▧m☻まaかスなンそㄉフメㄧみㄐきネョた";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-26 4.8s steps(20, end) -4.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(26)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.81), rgba(0, 0, 0, 0.81), rgba(0, 0, 0, 0.81), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -4.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-26 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄥm▧ナ%@ㄛ♂セクかㄩェㄝ#ミ▧<1ㄙfせ^ぅㄞ";
+			}
+		}
+
+		p:nth-child(27)::before {
+			content: "メㄠォタくㄉㄋcのつヌんㄜㄞㄝナㄖ▣$9し%のナㄍ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-27 4.4s steps(20, end) -0.7s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(27)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.86), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.4s infinite -0.5s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-27 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄙむㄔㄈ7ひ2rㄒナめンチaみぅホ_つヴノヰなヲr";
+			}
+		}
+
+		p:nth-child(28)::before {
+			content: "gゅすwもむこんㄚソゎkみㄤまnㄒせ1ㄝ♀ヮㄜdみ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-28 5s steps(20, end) -4.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(28)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 5s infinite -4.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-28 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "8ヶㄋㄓㄕ▣ㄍて▦ㄘこㄉㄘへち▤ㄞㄋ►^ナをxなそ";
+			}
+		}
+
+		p:nth-child(29)::before {
+			content: "ㄞゃㄠ▣ㄔなㄔゃㄩのdスナbクゃむaィンセし▣▧ㄎ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-29 4.6s steps(20, end) -3.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(29)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.84), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.6s infinite -3.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-29 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "んㄎ4►tトののめィㄊヱト▥ㄥスヴㄞ▤てなチと_ゎ";
+			}
+		}
+
+		p:nth-child(30)::before {
+			content: "ょキㄧㄝxシuㄑヴzbmㄊシyテほpㄧhミきヘすm";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-30 4s steps(20, end) -0.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(30)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.98), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4s infinite 0.1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-30 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "9♀7キㄢㄍむま@fかマせぬミ▤aㄗケサㄡ▥つㄅぉ";
+			}
+		}
+
+		p:nth-child(31)::before {
+			content: "なこy7sさㄡきぬぁ7ㄧn%ㄟpㄅㄧㄐ▧▥ㄨㄘㄙヶ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-31 3.2s steps(20, end) -2.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(31)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.2s infinite -2.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-31 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "^ヒy▧ㄍㄡつㄝぅiㄠケㄐ3_*%しㄅひふハたㄙㄓ";
+			}
+		}
+
+		p:nth-child(32)::before {
+			content: "ケさ*ㄅ▨てn☻ソョぉぬノㄒㄘㄆンち▣スㄠ%ㄊgは";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-32 3.6s steps(20, end) -3.9s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(32)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.6s infinite -3.7s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-32 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "メㄎㄇヶゐねし<ヮさっ▥7▤►ほmぬへヮ▣ㄈoㄝキ";
+			}
+		}
+
+		p:nth-child(33)::before {
+			content: "zㄥ#_ナテそdㄆをん9ムヶㄒくㄐ1ㄡy_♂mぅ1";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-33 3.5s steps(20, end) -1.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(33)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.5s infinite -1.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-33 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "bたdァゅlヲ7zぁヒㄔシ▧ぅ^を#ㄣgネょニヴp";
+			}
+		}
+
+		p:nth-child(34)::before {
+			content: "ほㄙㄜㄊd%ㄗivはんへナ▥かmvヘzコはq_くネ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-34 3.8s steps(20, end) -4.9s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(34)::after {
+			content: "";
+			background: linear-gradient(black, black, black, transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.8s infinite -4.7s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-34 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ヰㄊㄘャヴwゑカゐㄦけ▤cㄙㄩハをぉ☻ムなトセふふ";
+			}
+		}
+
+		p:nth-child(35)::before {
+			content: "クg♂ォゐㄥヱ$ㄟぬ◁♥♥p4ㄋe◄l▣<セ5ヵは";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-35 3.3s steps(20, end) -5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(35)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.3s infinite -4.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-35 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ぃほャヒㄝㄙぉョ4ヒ▥テヘネiぅ♀す♂ㄚくwㄓそㄕ";
+			}
+		}
+
+		p:nth-child(36)::before {
+			content: "rつめほ6ハ▧ヮㄒmkォㄧヌqソきㄜ>ェてっッ▦ㄆ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-36 4.9s steps(20, end) -2.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(36)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.68), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.9s infinite -2.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-36 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ェまトちしせ5ㄒcゑ>タ▨ㄐォsㄞけ4ㄙㄅㄎゎそヱ";
+			}
+		}
+
+		p:nth-child(37)::before {
+			content: "にほむャbㄛゅ9ト►こェㄐㄐマォほさむ9$ぇゎㄑヮ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-37 3.8s steps(20, end) -0.2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(37)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.8s infinite 0s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-37 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ハァㄆbㄗくけ>ヮテyへ6ㄆㄋ►vㄡqぁ►ミハ4ㄠ";
+			}
+		}
+
+		p:nth-child(38)::before {
+			content: "クㄡgㄓgヘャ>チゐぬヒ6gォㄘふへㄘノ7n+&&";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-38 4.7s steps(20, end) -2.4s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(38)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.7s infinite -2.2s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-38 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄏツrトケkきp♀キこ5しs2lㄙシォㄟァnぃㄢ&";
+			}
+		}
+
+		p:nth-child(39)::before {
+			content: "8ヘソクヒヵrけノㄎㄓょ@ケㄈㄝㄏwて▦ぉ$ぬツも";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-39 4.1s steps(20, end) -3.8s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(39)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.1s infinite -3.6s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-39 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "んむヌヌ@ヒ66せのノgなフzuキマちㄑㄜテちコヴ";
+			}
+		}
+
+		p:nth-child(40)::before {
+			content: "ㄨㄑヱ♦5☻ㄥrん▧#cヴサみゐ>なㄋっゑㄗッnㄘ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-40 3.2s steps(20, end) -3.8s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(40)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.2s infinite -3.6s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-40 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "そさcメぉㄎさぅㄢㄓゐㄖㄒㄉ♦ㄒabㄈマmツㄧㄡォ";
+			}
+		}
+
+		p:nth-child(41)::before {
+			content: "みふㄋ♀けsカㄣヵnrfャ*ニたさフsㄩとフㄛsく";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-41 4.3s steps(20, end) -1.3s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(41)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.3s infinite -1.1s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-41 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄓ9ヵtゃvㄐㄅㄠゎㄥㄖcb<idㄡ&コrィニ♥ヰ";
+			}
+		}
+
+		p:nth-child(42)::before {
+			content: "♀ュgた>ㄣㄏヌaゑㄛふ>▤ぬネ♀ㄠにㄨせㄇㄢㄨo";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-42 3.5s steps(20, end) -3.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(42)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66), rgba(0, 0, 0, 0.66), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.5s infinite -2.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-42 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄏシな$ㄠ82ミc*▦っゅ9ねㄖのかr9たんぁモㄖ";
+			}
+		}
+
+		p:nth-child(43)::before {
+			content: "ヶへゑㄙめloチみmス&4vヌゅンyキ☻なか6ぬチ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-43 4s steps(20, end) -5s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(43)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4s infinite -4.8s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-43 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "▦ク6ㄒツㄞ♂せゑkbg%ニコlnㄩㄐ▦7ひノㄑ♦";
+			}
+		}
+
+		p:nth-child(44)::before {
+			content: "lネ*みしに7ふu▣のㄉニ&つgㄔㄘぅgヵㄓㄚxつ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-44 3.7s steps(20, end) -1.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(44)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.71), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.7s infinite -0.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-44 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄝむコクにg5ぅヌ&ㄧ☻スふuも▦めセ+g♂ぬミq";
+			}
+		}
+
+		p:nth-child(45)::before {
+			content: "の*fはツほ♦ㄗㄖまㄓ6へひゅヒ☻ゎすㄛㄚフクォハ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-45 3.2s steps(20, end) -1.1s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(45)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.2s infinite -0.9s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-45 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "♀ゥsほ♂2ㄨタk♥ょwe▣ㄧㄕㄩㄟㄦかチモㄩょシ";
+			}
+		}
+
+		p:nth-child(46)::before {
+			content: "をカし6コ<▤セn$%ひキツㄐトㄣヰ▤むㄔㄇヱょg";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-46 3.4s steps(20, end) -1.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(46)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 3.4s infinite -1.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-46 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄚクヌ6x♂コゃっぃゥンカシwvモㄋㄗ▨もにヱヮㄣ";
+			}
+		}
+
+		p:nth-child(47)::before {
+			content: "ㄊ19cㄞ^ぅせㄜ♦◄ㄖㄅㄐaミㄧふ<nんメクyほ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-47 4.2s steps(20, end) -2.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(47)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.2s infinite -2.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-47 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "こㄞㄘコモクㄇxㄇpきとくkㄣㄇきヱ▥ㄆにヒ+み+";
+			}
+		}
+
+		p:nth-child(48)::before {
+			content: "ヶ▨モゎォくァヲ♦♀セサ+ㄆはㄅㄉきqそㄙゎgぃㄊ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-48 5s steps(20, end) -4.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(48)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.98), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 5s infinite -4.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-48 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "さfさㄆ2yにソヰフかな▦ㄩねヵゑ▤▧チヮ▦vㄡㄠ";
+			}
+		}
+
+		p:nth-child(49)::before {
+			content: "テゥフgゎけたんzqょヌネゐaㄗnみつ8ほキクュテ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-49 4.8s steps(20, end) -1.6s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(49)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.89), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.8s infinite -1.4s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-49 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄎ*に>ぇェチㄍゐけovpmㄖ6pツziヵㄉぅm5";
+			}
+		}
+
+		p:nth-child(50)::before {
+			content: "モナホ▧*▧ㄈwㄢ▤タ^♂&♥ㄊㄠゐチㄠヘ◄cㄏキ";
+			color: #b3ffc7;
+			text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px currentColor, 0 0 10px currentColor;
+			animation: typing-50 4.5s steps(20, end) -3.2s infinite;
+			z-index: 1;
+		}
+
+		p:nth-child(50)::after {
+			content: "";
+			background: linear-gradient(rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.77), transparent 75%, transparent);
+			background-size: 100% 220%;
+			background-repeat: no-repeat;
+			animation: mask 4.5s infinite -3s linear;
+			z-index: 2;
+		}
+
+		@keyframes typing-50 {
+			0% {
+				height: 0;
+			}
+
+			25% {
+				height: 100%;
+			}
+
+			100% {
+				height: 100%;
+				content: "ㄡノそㄥv$ねつぃヴふㄓゐ2んへ*ソメ▦►メぅっま";
+			}
+		}
+
+		@keyframes mask {
+			0% {
+				background-position: 0 220%;
+			}
+
+			30% {
+				background-position: 0 0%;
+			}
+
+			100% {
+				background-position: 0 0%;
+			}
+		}
+	</style>
+	<body>
+		<div class="g-container">
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</body>
+</html>
