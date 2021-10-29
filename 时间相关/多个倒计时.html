@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <title>计时</title>
+ <style>
+     .mytime{ line-height: 40px; width: 500px; margin: 0 auto;display: block;}
+ </style>
+ </head>
+ <body>
+ <div>
+    <div class="mytime jsTime" data-time="2060-03-31 23:59:59">时间1</div>
+    <div class="mytime jsTime" data-time="2030-03-20 23:59:59">时间2</div>
+    <div class="mytime jsTime" data-time="2030-03-15 23:59:59">时间3</div>
+    <div class="mytime jsTime" data-time="2030-03-31 23:59:59">时间4</div>
+    <div class="mytime jsTime" data-time="2030-03-31 23:59:59">时间5</div>
+ </div>
+<script>
+    const countdown = {
+        domList : document.querySelectorAll('.jsTime'),
+        formatNumber(n){
+            // return n.toString().padStart(2, '0');  // 用padStart方法要注意兼容问题
+            n = n.toString();
+            return n[1] ? n : '0' + n;
+        },
+        setTime(dom){
+            //获取设置的时间 如：2019-3-28 14:00:00  ios系统得加正则.replace(/\-/g, '/');
+            const leftTime = new Date(dom.getAttribute('data-time').replace(/\-/g, '/')) - new Date();
+            if (leftTime >= 0) {
+                const d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+                const h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+                const m = Math.floor(leftTime / 1000 / 60 % 60);
+                const s = Math.floor(leftTime / 1000 % 60);
+                dom.innerHTML = '距离['+dom.getAttribute('data-time') + `]剩余${ d > 0 ? d + '天' : '' }${ [h, m, s].map(this.formatNumber).join(':') }`;
+            } else {
+                clearInterval(dom.$timer);
+                dom.innerHTML = '拼团已结束';
+            }
+        },
+        start(){
+            this.domList.forEach((dom) => {
+                this.setTime(dom);
+                dom.$timer = setInterval(() => {
+                    this.setTime(dom);
+                }, 1e3);
+            });
+        },
+    };
+    countdown.start();
+</script>
+</body>
+</html>
