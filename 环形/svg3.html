@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		svg {
+		    transform: rotate(-90deg);
+		}
+		.progress {
+		    animation: rotate 1500ms linear both;
+		}
+		@keyframes rotate {
+		    from {
+		        stroke-dashoffset: 471px;
+		    }
+		    to {
+		        stroke-dashoffset: 0px;
+		    }
+		}
+	</style>
+	<body>
+		<svg width="150px" height="150px" class="svg">
+		    <circle r="70" cy="75" cx="75" stroke-width="8" stroke="#EAEFF4" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+		    <circle class="progress" r="70" cy="75" cx="75" stroke-width="8" stroke="#1593FF" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-dashoffset="0px"  stroke-dasharray="471px" />
+		</svg>
+	
+	</body>
+	<script>
+		// let path = document.querySelector('#path');
+		// // 可获取路径的长度
+		// let len = path.getTotalLength();
+		// path.style.cssText = `stroke-dasharray:"${number}"`;
+
+	</script>
+</html>

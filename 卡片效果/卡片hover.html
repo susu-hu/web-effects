@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 40px;
+		}
+
+		*,
+		:after,
+		:before {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		.grid {
+			width: 100%;
+			display: grid;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			grid-template-columns: repeat(auto-fill, 240px);
+			grid-gap: 0 24px;
+		}
+
+		.item {
+			height: 300px;
+			padding-top: 6px;
+			top: 0px;
+			width: 240px !important;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-align-items: center;
+			align-items: center;
+			float: left;
+			margin: 0 0 48px 0 !important;
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+			margin-bottom: 4px;
+			border: 1px solid pink;
+			border-radius: 5px;
+		}
+
+		.item:hover {
+			top: -4px;
+			transition: top 0.3s ease;
+		}
+
+		.item:hover::before {
+			content: "";
+			position: absolute;
+			top: -16px;
+			bottom: -16px;
+			left: -16px;
+			right: -16px;
+			box-shadow: 0px 10px 20px rgb(33 39 65 / 8%);
+			border-radius: 12px;
+		}
+	</style>
+	<body>
+		<div class="grid">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</body>
+</html>

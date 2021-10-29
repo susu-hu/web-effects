@@ -1,0 +1,155 @@
+<template>
+  <div class="raw-circle circle">
+    <div class="circle__wrap">
+      <!-- 左半边 -->
+      <div class="circle__half-left">
+        <div class="circle__half-left-deg"
+             :style="degreeStyle.halfLeft"></div>
+      </div>
+      <!-- 右半边 -->
+      <div class="circle__half-right">
+        <div class="circle__half-right-deg"
+             :style="degreeStyle.halfRight"></div>
+      </div>
+      <!-- 中心圆 -->
+      <div class="circle__center"></div>
+      <!-- 指针臂 -->
+      <!-- 开头固定圆弧 -->
+      <div class="circle__long-arm circle__long-arm-start">
+        <div class="circle__long-arm-point"></div>
+      </div>
+      <!-- 动态结尾圆弧 -->
+      <div class="circle__long-arm"
+           :style="degreeStyle.arm">
+        <div class="circle__long-arm-point"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'RawCircle',
+  data () {
+    return {
+      rate: 65
+    }
+  },
+  computed: {
+    degreeStyle () {
+      let armDeg = 0
+      let halfRightDeg = 0
+      let halfLeftDeg = 0
+
+      armDeg = 360 * this.rate / 100
+      halfRightDeg = this.rate > 50 ? 180 : 360 * this.rate / 100
+      halfLeftDeg = this.rate < 50 ? 0 : 360 * (this.rate - 50) / 100
+
+      return {
+        arm: {
+          transform: `rotate(${armDeg}deg)`
+        },
+        halfRight: {
+          transform: `rotate(${halfRightDeg}deg)`
+        },
+        halfLeft: {
+          transform: `rotate(${halfLeftDeg}deg)`
+        }
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+/** @define circle; weak */
+
+.circle {
+  align-items: center;
+  background-color: #2b335a;
+  border-radius: 16px;
+  margin-top: 40px;
+  padding: 40px 0;
+  width: 750px;
+}
+
+.circle__wrap {
+  background-color: #2b335a;
+  border-radius: 120px;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  width: 240px;
+}
+
+.circle__center {
+  background-color: #2b335a;
+  border-radius: 100px;
+  height: 200px;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  width: 200px;
+}
+
+.circle__long-arm {
+  background-color: rgba(32, 178, 170, 0);
+  height: 120px;
+  left: 110px;
+  position: absolute;
+  top: 0;
+  transform-origin: 10px 120px;
+  width: 20px;
+}
+
+.circle__long-arm-start {
+  transform: rotate(0deg);
+}
+
+.circle__long-arm-point {
+  background-color: #f95064;
+  border-radius: 10px;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+
+.circle__half-right {
+  background-color: #f95064;
+  border-radius: 0 120px 120px 0;
+  height: 240px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+}
+
+.circle__half-right-deg {
+  background-color: #1d1d33;
+  height: 240px;
+  transform-origin: left center;
+  width: 120px;
+}
+
+.circle__half-left {
+  background-color: #f95064;
+  border-radius: 120px 0 0 120px;
+  height: 240px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 120px;
+}
+
+.circle__half-left-deg {
+  background-color: #1d1d33;
+  height: 240px;
+  transform-origin: right center;
+  width: 120px;
+}
+
+</style>

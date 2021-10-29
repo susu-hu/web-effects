@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<svg>
+			<circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="grey" />
+		</svg>
+		<svg>
+			<circle cx="150" cy="73" r="60" stroke="grey" stroke-width="12" fill="none" stroke-dasharray="213" />
+		</svg>
+		<svg>
+			<circle cx="150" cy="73" r="60" stroke="grey" stroke-width="12" fill="none" stroke-dasharray="213"
+				stroke-dashoffset="238" />
+		</svg>
+
+		<!-- 好了，一个基础的半圆进度条已经绘制完成了。接下来，我们要将它设置为圆角，值得一提的，stroke属性对于设置圆角是非常友好的，我们只需要设置stroke-linecap属性就可以了，我们来看一下关于stroke-linecap属性的解释 -->
+		<svg>
+			<circle cx="150" cy="73" r="60" stroke="grey" stroke-width="12" fill="none" stroke-dasharray="213"
+				stroke-dashoffset="238" stroke-linecap="round" />
+		</svg>
+		<svg>
+			<circle cx="150" cy="73" r="60" stroke="grey" stroke-width="12" fill="none" stroke-dasharray="190"
+				stroke-dashoffset="-190" stroke-linecap="round" />
+
+			<circle cx="150" cy="73" r="60" stroke="gold" stroke-width="12" fill="none" stroke-dasharray="95 190" #
+				注意，这里数字的比例即为进度条比例 stroke-dashoffset="-190" stroke-linecap="round" />
+		</svg>
+
+
+	</body>
+</html>

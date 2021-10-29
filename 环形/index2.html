@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		#progress {
+		   width: 50%;
+		   height: 30px;
+		   border: 1px solid #ccc;
+		   border-radius: 15px;
+		   margin: 50px 0 0 100px;
+		   overflow: hidden;
+		   box-shadow: 0 0 5px 0px #ddd inset;
+		}
+		 
+		#progress span {
+		   display: inline-block;
+		   width: 100%;
+		   height: 100%;
+		   background: #2989d8; /* Old browsers */
+		   /* linear-gradient() 函数用于创建一个线性渐变的 "图像",也就是渐变背景 */
+		   background: -moz-linear-gradient(45deg, #2989d8 33%, #7db9e8 34%, #7db9e8 59%, #2989d8 60%); /* FF3.6+ */
+		   background: -webkit-gradient(linear, left bottom, right top, color-stop(33%, #2989d8), color-stop(34%, #7db9e8), color-stop(59%, #7db9e8), color-stop(60%, #2989d8)); /* Chrome,Safari4+ */
+		   background: -webkit-linear-gradient(45deg, #2989d8 33%, #7db9e8 34%, #7db9e8 59%, #2989d8 60%); /* Chrome10+,Safari5.1+ */
+		   background: -o-linear-gradient(45deg, #2989d8 33%, #7db9e8 34%, #7db9e8 59%, #2989d8 60%); /* Opera 11.10+ */
+		   background: -ms-linear-gradient(45deg, #2989d8 33%, #7db9e8 34%, #7db9e8 59%, #2989d8 60%); /* IE10+ */
+		   background: linear-gradient(45deg, #2989d8 33%, #7db9e8 34%, #7db9e8 59%, #2989d8 60%); /* W3C */
+		   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2989d8', endColorstr='#2989d8', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+		   background-size: 60px 30px;
+		   text-align: center;
+		   color: #fff;
+		   -webkit-animation: load 3s ease-in-out infinite;
+		}
+		 
+		@-webkit-keyframes load {
+		   0% {
+		      width: 0%;
+		   }
+		 
+		   100% {
+		      width: 100%;
+			  /* width: 70%; */
+		   }
+		}
+	</style>
+	<body>
+		<div id="progress">
+		    <span></span>
+		</div>
+	</body>
+</html>

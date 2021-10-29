@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		#progressBar {
+		   width: 80%;
+		   height: 50px;
+		   position: relative;
+		   margin: 50px 0 0 100px;
+		}
+		 
+		#progressBar div {
+		   width: 100%;
+		   height: 10px;
+		   position: absolute;
+		   top: 50%;
+		   left: 0;
+		   margin-top: -20px;
+		   background: #ccc;
+		}
+		 
+		#progressBar div span {
+		   position: absolute;
+		   display: inline-block;
+		   background: green;
+		   height: 10px;
+		   width: 100%;
+		   -webkit-animation: bgLoad 5.5s linear;
+		}
+		 
+		@-webkit-keyframes bgLoad {
+		   0% {
+		      width: 0%;
+		   }
+		 
+		   18.18%, 27.27% {
+		      width: 25%;
+		   }
+		 
+		   45.45%, 54.54% {
+		      width: 50%;
+		   }
+		 
+		   72.72%, 81.81% {
+		      width: 75%;
+		   }
+		 
+		   100% {
+		      width: 100%;
+		   }
+		}
+		 
+		#progressBar>span {
+		   position: absolute;
+		   top: 0;
+		   margin-top: -10px;
+		   width: 40px;
+		   height: 40px;
+		   border-radius: 50%;
+		   background: #ccc;
+		   margin-left: -20px;
+		   color: #fff;
+		}
+		 
+		@-webkit-keyframes circleLoad_1 {
+		   0%, 66.66% {
+		      background: #ccc;
+		   }
+		 
+		   100% {
+		      background: green;
+		   }
+		}
+		 
+		@-webkit-keyframes circleLoad_2 {
+		   0%, 83.34% {
+		      background: #ccc;
+		   }
+		 
+		   100% {
+		      background: green;
+		   }
+		}
+		 
+		@-webkit-keyframes circleLoad_3 {
+		   0%, 88.88% {
+		      background: #ccc;
+		   }
+		 
+		   100% {
+		      background: green;
+		   }
+		}
+		 
+		@-webkit-keyframes circleLoad_4 {
+		   0%, 91.67% {
+		      background: #ccc;
+		   }
+		 
+		   100% {
+		      background: green;
+		   }
+		}
+		 
+		#progressBar span:nth-child(2) {
+		   left: 0%;
+		   background: green;
+		}
+		 
+		#progressBar span:nth-child(3) {
+		   left: 25%;
+		   background: green;
+		   -webkit-animation: circleLoad_1 1.5s ease-in;
+		}
+		 
+		#progressBar span:nth-child(4) {
+		   left: 50%;
+		   background: green;
+		   -webkit-animation: circleLoad_2 3s ease-in;
+		}
+		 
+		#progressBar span:nth-child(5) {
+		   left: 75%;
+		   background: green;
+		   -webkit-animation: circleLoad_3 4.5s ease-in;
+		}
+		 
+		#progressBar span:nth-child(6) {
+		   left: 100%;
+		   background: green;
+		   -webkit-animation: circleLoad_4 6s ease-in;
+		}
+	</style>
+	<body>
+		<div id="progressBar">
+		   <!-- 进度条 -->
+		   <div>
+		      <span></span>
+		   </div>
+		 
+		   <!-- 五个圆 -->
+		   <span></span>
+		   <span></span>
+		   <span></span>
+		   <span></span>
+		   <span></span>
+		</div>
+	</body>
+</html>

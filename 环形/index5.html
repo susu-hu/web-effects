@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		section {
+			width: 2rem;
+			height: 2rem;
+			position: relative;
+			margin: 2rem;
+		}
+
+		.wrap,
+		.circle,
+		.percent {
+			position: absolute;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 50%;
+		}
+
+		.wrap {
+			top: 0;
+			left: 0;
+			background-color: #ccc;
+		}
+
+		.circle {
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			border: 1px solid #ccc;
+			clip: rect(0, 2rem, 2rem, 1rem);
+		}
+
+		.clip-auto {
+			clip: rect(auto, auto, auto, auto);
+		}
+
+		.percent {
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			top: -1px;
+			left: -1px;
+		}
+
+		.left {
+			border: 0.1rem solid #ff6300;
+			clip: rect(0, 1rem, 2rem, 0);
+		}
+
+		.right {
+			border: 0.1rem solid #FF6300;
+			clip: rect(0, 2rem, 2rem, 1rem);
+		}
+
+		.wth0 {
+			width: 0;
+		}
+
+		.num {
+			position: absolute;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			width: 1.8rem;
+			height: 1.8rem;
+			line-height: 1.8rem;
+			text-align: center;
+			font-size: 0.5rem;
+			left: 0.1rem;
+			top: 0.1rem;
+			border-radius: 50%;
+			color: #FF6300;
+			background: white;
+			z-index: 1;
+		}
+	</style>
+
+	<body>
+		<!--进度0%-->
+		<section>
+			<div class="wrap">
+				<!--大于180，则class=clip-auto circle，否则：circle-->
+				<div class="circle">
+					<!--度数为：当前进度*3.6-->
+					<div class="percent left" style="-webkit-transform:rotate(0deg);"></div>
+					<!--大于180，则class=percent right，否则为percent right wth0-->
+					<div class='percent right wth0'></div>
+				</div>
+				<div class="num">
+					<span>0</span>%
+				</div>
+			</div>
+		</section>
+
+		<!--进度30%-->
+		<section>
+			<div class="wrap">
+				<!--大于180，则class=clip-auto circle，否则：circle-->
+				<div class="circle">
+					<!--度数为：当前进度*3.6-->
+					<div class="percent left" style="-webkit-transform:rotate(108deg);"></div>
+					<!--大于180，则class=percent right，否则为percent right wth0-->
+					<div class='percent right wth0'></div>
+				</div>
+				<div class="num">
+					<span>30</span>%
+				</div>
+			</div>
+		</section>
+
+		<!--进度50%-->
+		<section>
+			<div class="wrap">
+				<!--大于180，则class=clip-auto circle，否则：circle-->
+				<div class="clip-auto circle">
+					<!--度数为：当前进度*3.6-->
+					<div class="percent left" style="-webkit-transform:rotate(180deg);"></div>
+					<!--大于180，则class=percent right，否则为percent right wth0-->
+					<div class='percent right'></div>
+				</div>
+				<div class="num">
+					<span>50</span>%
+				</div>
+			</div>
+		</section>
+
+		<!--进度70%-->
+		<section>
+			<div class="wrap">
+				<!--大于180，则class=clip-auto circle，否则：circle-->
+				<div class="clip-auto circle">
+					<!--度数为：当前进度*3.6-->
+					<div class="percent left" style="-webkit-transform:rotate(252deg);"></div>
+					<!--大于180，则class=percent right，否则为percent right wth0-->
+					<div class='percent right'></div>
+				</div>
+				<div class="num">
+					<span>70</span>%
+				</div>
+			</div>
+		</section>
+
+		<!--进度100%-->
+		<section>
+			<div class="wrap">
+				<!--大于180，则class=clip-auto circle，否则：circle-->
+				<div class="clip-auto circle">
+					<!--度数为：当前进度*3.6-->
+					<div class="percent left" style="-webkit-transform:rotate(360deg);"></div>
+					<!--大于180，则class=percent right，否则为percent right wth0-->
+					<div class='percent right'></div>
+				</div>
+				<div class="num">
+					<span>100</span>%
+				</div>
+			</div>
+		</section>
+	</body>
+	<script>
+		//自动设置font-zise
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					docEl.style.fontSize = parseInt(20 * (clientWidth / 320)) + 'px';
+				};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</html>

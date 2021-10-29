@@ -1,0 +1,75 @@
+<html>
+    <body>
+        <div style="margin-bottom: 20px">
+            <input id="progress" type="number" />
+            <button onclick="set()">设置进度</button>
+        </div>
+        <div class="wrap">
+            <div class="left">
+                <div class="progress" id="l"></div>
+            </div>
+            <div class="right">
+                <div class="progress" id="r"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function set() {
+            let p = document.getElementById('progress').value;
+            if (p > 100 || p < 0) {
+                alert('进度需为0~100！');
+                return;
+            }
+            if (p <= 50) {
+                document.getElementById('r').style.transform = `rotate(${-135 + (p * 18) / 5}deg)`;
+            } else {
+                document.getElementById('r').style.transform = 'rotate(45deg)';
+                document.getElementById('l').style.transform = `rotate(${-135 + ((p - 50) * 18) / 5}deg)`;
+            }
+        }
+    </script>
+    <style>
+        .wrap {
+            display: flex;
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .left {
+            position: relative;
+            left: 0;
+            width: 100px;
+            height: inherit;
+            overflow: hidden;
+        }
+        .right {
+            position: relative;
+            right: 0;
+            width: 100px;
+            height: inherit;
+            overflow: hidden;
+        }
+        .left .progress {
+            width: 200px;
+            height: 200px;
+            border: solid 20px transparent;
+            border-bottom: solid 20px aqua;
+            border-left: solid 20px aqua;
+            border-radius: 50%;
+            box-sizing: border-box;
+            transform: rotate(-135deg);
+        }
+        .right .progress {
+            position: relative;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border: solid 20px transparent;
+            border-top: solid 20px aqua;
+            border-right: solid 20px aqua;
+            border-radius: 50%;
+            box-sizing: border-box;
+            transform: rotate(-135deg);
+        }
+    </style>
+</html>
