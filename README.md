@@ -77,7 +77,12 @@
 64. css实现文字打印
 65. 文字雨
 66. 带弧度的tab选项卡
+67. css实现带圆角的圆弧进度条（非svg，非echarts，非canvas）
 #### 作品截图 
+
+css实现带圆角的圆弧进度条
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1031/225322_7aba79cf_8576727.png "屏幕截图.png")
 
 带弧度的tab选项卡
 
