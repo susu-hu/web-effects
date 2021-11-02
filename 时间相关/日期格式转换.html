@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function formatDate(date, cut) {
+			var date = new Date(date);
+			var YY = date.getFullYear() + cut;
+			var MM =
+				(date.getMonth() + 1 < 10 ?
+					"0" + (date.getMonth() + 1) :
+					date.getMonth() + 1) + cut;
+			var DD = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+			var hh =
+				(date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
+			var mm =
+				(date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
+				":";
+			var ss = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+			return YY + MM + DD + " " + hh + mm + ss;
+		}
+		console.log(formatDate(new Date(), '/'))
+
+		function formatDateTime(inputTime) {
+			var date = new Date(inputTime);
+			var y = date.getFullYear();
+			var m = date.getMonth() + 1;
+			m = m < 10 ? ('0' + m) : m;
+			var d = date.getDate();
+			d = d < 10 ? ('0' + d) : d;
+			var h = date.getHours();
+			h = h < 10 ? ('0' + h) : h;
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			minute = minute < 10 ? ('0' + minute) : minute;
+			second = second < 10 ? ('0' + second) : second;
+			return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+		};
+
+		console.log(formatDateTime(new Date()))
+	</script>
+</html>

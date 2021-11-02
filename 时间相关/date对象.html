@@ -7,10 +7,84 @@
 	<body>
 	</body>
 	<script>
-		let date0=new Date()
-		// console.log(date0)
-		
-		var d = new Date(2018, 11, 24, 10, 33, 30, 0);
-		console.log(d)
+		let a = new Date()
+		// console.log(a)
+		var b = new Date(2018, 11, 24, 10, 33, 30, 0);
+		// console.log(b)
+
+		var c = new Date("October 13, 2014 11:13:00");
+		// console.log(c)
+
+		var d = new Date(0);
+		// console.log(d)
+		var e = new Date(99999999912)
+		// console.log(e)
+		var f = new Date(86400000);
+		// console.log(f)
+
+		var a0 = new Date();
+		var a1 = new Date().toUTCString();
+		// console.log(a0)
+		// console.log(a1)
+		var a2 = new Date().toDateString();
+		// console.log(a2)
+
+		var a3 = new Date().toISOString();
+		// console.log(a3)
+
+		var a4 = new Date().toLocaleDateString();
+		// console.log(a4)
+		var a5 = new Date().toLocaleTimeString();
+		// console.log(a5)
+
+		var a6 = new Date().toLocaleString();
+		// console.log(a6)
+
+		var a7 = Date.UTC(2012, 02, 30);
+		// console.log(a7)
+
+		var a8 = new Date().valueOf();
+
+		// var a9 = new Date().toLocaleFormat();//仅支持Firefox
+		//  console.log(a9)
+
+		Date.prototype.format = function(fmt) {
+			var o = {
+				"M+": this.getMonth() + 1, //月份 
+				"d+": this.getDate(), //日 
+				"h+": this.getHours(), //小时 
+				"m+": this.getMinutes(), //分 
+				"s+": this.getSeconds(), //秒 
+				"q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+				"S": this.getMilliseconds() //毫秒 
+			};
+			if (/(y+)/.test(fmt)) {
+				fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			}
+			for (var k in o) {
+				if (new RegExp("(" + k + ")").test(fmt)) {
+					fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k])
+						.length)));
+				}
+			}
+			return fmt;
+		}
+		var time1 = new Date().format("yyyy-MM-dd hh:mm:ss");
+		console.log(time1);
+		var time2 = new Date().format("yyyy-MM-dd");
+		console.log(time2);
+
+		//  将指定的日期转换为"年月日"的格式，代码如下：
+		var oldTime = (new Date("2012/12/25 20:11:11")).getTime();
+		var curTime = new Date(oldTime).format("yyyy-MM-dd");
+		console.log(curTime);
+
+		//  将 "时间戳" 转换为 "年月日" 的格式.
+		var da = 1402233166999;
+		da = new Date(da);
+		var year = da.getFullYear() + '年';
+		var month = da.getMonth() + 1 + '月';
+		var date = da.getDate() + '日';
+		console.log([year, month, date].join('-'));
 	</script>
 </html>
