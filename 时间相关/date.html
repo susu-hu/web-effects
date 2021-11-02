@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 获取当前日期的前几个月日期
+		function getPreMonthDay(date, monthNum) {
+			let dateArr = date.split('-')
+			let year = dateArr[0] //获取当前日期的年份
+			let month = dateArr[1] //获取当前日期的月份
+			let day = dateArr[2] //获取当前日期的日
+			let days = new Date(year, month, 0)
+			days = days.getDate() //获取当前日期中月的天数
+			let year2 = year
+			let month2 = parseInt(month) - monthNum
+			if (month2 <= 0) {
+				year2 =
+					parseInt(year2) -
+					parseInt(month2 / 12 == 0 ? 1 : Math.abs(parseInt(month2 / 12)) + 1)
+				month2 = 12 - (Math.abs(month2) % 12)
+			}
+			let day2 = day
+			let days2 = new Date(year2, month2, 0)
+			days2 = days2.getDate()
+			if (day2 > days2) {
+				day2 = days2
+			}
+			if (month2 < 10) {
+				month2 = '0' + month2
+			}
+			let t2 = year2 + '-' + month2 + '-' + day2
+			return t2
+		}
+		console.log(getPreMonthDay("2018-12-28", 5))
+
+
+		function MonthsBetw(date1, date2) {
+			//用-分成数组
+			date1 = date1.split("-");
+			date2 = date2.split("-");
+			//获取年,月数
+			var year1 = parseInt(date1[0]),
+				month1 = parseInt(date1[1]),
+				year2 = parseInt(date2[0]),
+				month2 = parseInt(date2[1]),
+				//通过年,月差计算月份差
+				months = (year2 - year1) * 12 + (month2 - month1);
+			return months;
+		}
+
+		console.log(MonthsBetw('2021-9-1', '2021-11-1'))
+
+		function monDiff(startTime, endTime) {
+			startTime = new Date(startTime);
+			endTime = new Date(endTime);
+			var date2Mon;
+			var startDate = startTime.getDate() + startTime.getHours() / 24 + startTime.getMinutes() / 24 / 60;
+			var endDate = endTime.getDate() + endTime.getHours() / 24 + endTime.getMinutes() / 24 / 60;
+			if (endDate >= startDate) {
+				date2Mon = 0;
+			} else {
+				date2Mon = -1;
+			}
+			return (endTime.getYear - startTime.getYear()) * 12 + endTime.getMonth - startTime.getMonth() + date2Mon;
+		}
+		console.log(monDiff('2021-12-1', '2021-11-1'))
+
+
+		/**
+		 * 获取两个时间月份差 
+		 */
+		function getMonths(start, end) {
+			var result = [];
+			var starts = start.split('-');
+			var ends = end.split('-');
+			var staYear = starts[0] * 1;
+			var staMon = starts[1] * 1 < 10 ? starts[1] : starts[1];
+			var endYear = ends[0] * 1;
+			var endMon = ends[1] * 1 < 10 ? ends[1] : ends[1];;
+			result.push(staYear + '-' + staMon);
+			while (staYear <= endYear) {
+				if (staYear === endYear) {
+					while (staMon < endMon) {
+						staMon++;
+						if (staMon < 10) {
+							result.push(staYear + '-0' + staMon);
+						} else {
+							result.push(staYear + '-' + staMon);
+						}
+					}
+					staYear++;
+				} else {
+					staMon++;
+					if (staMon > 12) {
+						staMon = 1;
+						staYear++;
+					}
+					if (staMon < 10) {
+						result.push(staYear + '-0' + staMon);
+					} else {
+						result.push(staYear + '-' + staMon);
+					}
+				}
+			}
+			return result;
+		}
+			console.log(getMonths('2020-12-1', '2021-11-1'))
+	</script>
+</html>
