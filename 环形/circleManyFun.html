@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>来自coco大神的一篇文章</title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+			color: #fff;
+		}
+
+		meter {
+			width: 200px;
+		}
+
+		progress {
+			width: 200px;
+		}
+
+		.g-container {
+			width: 240px;
+			height: 25px;
+			border-radius: 25px;
+			background: #eee;
+			overflow: hidden;
+		}
+
+		.g-progress {
+			transition: width .2s linear;
+			width: var(--progress);
+			height: inherit;
+			border-radius: 25px 0 0 25px;
+			/* background: #55aa7f; */
+			background-image: linear-gradient(to right, #c0c0aa, #1cefff);
+		}
+
+
+		.g-progress:hover {
+			width: 100%;
+		}
+
+		.g-progress1 {
+			width: 240px;
+			height: 25px;
+			border-radius: 25px;
+			background: linear-gradient(120deg, #a1c4fd, #0ff 80%, transparent 0%);
+			border: 1px solid #eee;
+		}
+
+		.g-progress2 {
+			width: 240px;
+			height: 25px;
+			border-radius: 25px;
+			background: linear-gradient(90deg, #ffaa7f, #0ff 70%, transparent 0);
+			border: 1px solid #eee;
+		}
+
+		.g-progress3 {
+			width: 240px;
+			height: 25px;
+			border-radius: 25px;
+			background: linear-gradient(50deg, #ffaa7f, #ffff7f 70%, transparent 0);
+			border: 1px solid #eee;
+		}
+
+		.g-progress4 {
+			width: 240px;
+			height: 25px;
+			border-radius: 25px;
+			background: linear-gradient(90deg, #aaaa00, #aa5500 var(--progress), transparent 0);
+			border: 1px solid #eee;
+		}
+
+		section {
+			margin-bottom: 10px;
+		}
+
+		.g-progress5 {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			background: conic-gradient(from -180deg, #a8c992 50.3%, #ebebeb 0%);
+			/* conic-gradient(#00aa00 25%, #666 25%, #666); */
+			-webkit-mask: radial-gradient(transparent, transparent 50%, #000 50%, #000 0);
+		}
+
+		.g-progress6 {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			background: conic-gradient(#00aa00 25%, #aa0000 25% ,#666 25%, #666);
+			-webkit-mask: radial-gradient(transparent, transparent 50%, #000 50%, #000 0);
+		}
+
+		.g-progress7 {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			mask: radial-gradient(transparent, transparent 50%, #000 51%, #000 0);
+			background:
+				conic-gradient(#FFCDB2 0, #FFCDB2 25%,
+					#B5838D 25%, #B5838D 50%,
+					#673ab7 50%, #673ab7 90%,
+					#ff5722 90.2%, #ff5722 100%);
+			-webkit-mask: radial-gradient(transparent, transparent 50%, #000 50%, #000 0);
+		}
+		.circle .inner {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  width: 115px;
+		  height: 115px;
+		  background: #222;
+		  border-radius: 50%;
+		  font-size: 1.85em;
+		  font-weight: 300;
+		  color: rgba(255, 255, 255, 0.75);
+		}
+		.circle {
+		  position: relative;
+		  width: 150px;
+		  height: 150px;
+		  border-radius: 50%;
+		  background: #FFCDB2;
+		  overflow: hidden;
+		  background-image: conic-gradient(#aaaaff 25%, #666 0);
+		}
+	</style>
+	<body>
+		<section>
+			<p>
+				<!-- 其中，min、max、value 分别表示最大值，最小值与当前值。 -->
+				<span>完成度：</span>
+				<meter min="0" max="500" value="350">350 degrees</meter>
+			</p>
+			<p>
+				<!-- 其中，max 属性描述这个 progress 元素所表示的任务一共需要完成多少工作量，value  属性用来指定该进度条已完成的工作量。 -->
+				<label for="file">完成度：</label>
+				<progress max="100" value="70"> 70% </progress>
+			</p>
+			<section>
+				<div class="g-container">
+					<div class="g-progress" style="--progress:50%"></div>
+				</div>
+			</section>
+			<section>
+				<div class="g-progress1"></div>
+			</section>
+			<section>
+				<div class="g-progress2"></div>
+			</section>
+			<section>
+				<div class="g-progress3"></div>
+			</section>
+			<!-- CSS 中，渐变（诸如 linear-gradinet、radial-gradient、conic-gradient）都是不支持过渡变换的。 -->
+			<section>
+				<div class="g-progress4" style="--progress: 50%"></div>
+			</section>
+			<!-- 角向渐变实现圆弧进度条的局限性 ：
+			进度百分比不是类似于 0°、90°、180°、270°、360° 这类数字时，使用角向渐变时，不同颜色间的衔接处会有明显的锯齿。
+			方法：在衔接处，适当留出一些渐变空间
+			-->
+			<section>
+				<div class="g-progress5"></div>
+			</section>
+			<section>
+				<div class="g-progress6"></div>
+			</section>
+			<section>
+				<div class="g-progress7"></div>
+			</section>
+			<section>
+				<div class="circle">
+				  <div class="inner">25%</div>
+				</div>
+			</section>
+		</section>
+
+	</body>
+</html>
