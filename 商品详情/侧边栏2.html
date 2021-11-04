@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		 * {
+		      padding: 0;
+		      margin: 0;
+		    }
+		
+		    .fontStyle {
+		      font-size: 25px;
+		      text-align: center;
+		      font-weight: 700;
+		    }
+		
+		    .w {
+		      width: 1200px;
+		      margin: 10px auto;
+		    }
+		
+		    .header {
+		      height: 150px;
+		      line-height: 150px;
+		      background-color: skyblue;
+		    }
+		
+		    .banner {
+		      height: 220px;
+		      line-height: 220px;
+		      background-color: honeydew;
+		    }
+		
+		    .main {
+		      height: 1200px;
+		      line-height: 1200px;
+		      background-color: seashell;
+		    }
+		
+		    /* 侧边栏的编写 */
+		    .slider_bar {
+		      position: absolute;
+		      left: 50%;
+		      top: 300px;
+		      margin-left: 650px;
+		      width: 45px;
+		      height: 130px;
+		      background-color: deepskyblue;
+		    }
+		
+		    .goBack {
+		      position: absolute;
+		      display: none;
+		      bottom: 0;
+		    }
+	</style>
+	<body>
+		<div class="slider_bar">
+		  <div class="goBack ">返回顶部</div>
+		</div>
+		
+		<div class="header w fontStyle">头部区域</div>
+		<div class="banner w fontStyle">banner区域</div>
+		<div class="main w fontStyle">主体区域</div>
+	</body>
+	<script>
+		/**
+		   *   1. 事件源是document
+		   *
+		   *   2. 页面被卷去的头部 window.pageYOffset
+		   *
+		   *   3. 获取banner的offsetTop
+		   */
+		  let slider_bar = document.querySelector('.slider_bar');
+		  let banner = document.querySelector('.banner');
+		  let bannerTop = banner.offsetTop;
+		  let goBack = document.querySelector('.goBack');
+		  let sliderBarTop = (slider_bar.offsetTop - bannerTop);
+		  let main = document.querySelector('.main');
+		  let mainTop = main.offsetTop;
+		  // 页面滚动事件
+		  // document.documentElement 获取的是页面的根元素 html
+		  document.addEventListener('scroll', function () {
+		    // 页面滚动事件
+		    // console.log('666');
+		    // 获取当前页面距离顶部的距离
+		    // if ()
+		    if (pageYOffset >= bannerTop) {
+		      // 将 goBack 设置为固定定位
+		      slider_bar.style.position = 'fixed';
+		      // 避免跳动
+		      slider_bar.style.top = sliderBarTop + 'px';
+		    } else {
+		      slider_bar.style.position = 'absolute';
+		      slider_bar.style.top = '300px';
+		    }
+		    // 当页面滚动到main主体部分显示返回顶部
+		    // pageYOffset 有严重的兼容性问题
+		    if (pageYOffset >= mainTop) {
+		      goBack.style.display = 'block';
+		    } else {
+		      goBack.style.display = 'none';
+		    }
+		  });
+	</script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>仿京东侧边栏</title>
+    <style type="text/css">
+        *{
+            margin:0;padding:0;
+        }
+        ul{list-style: none;}
+        .top,.dian,.jia,.fu,.mei,.bottom{
+            width: 1210px;
+            margin: 0 auto;
+        }
+        .subnav
+        {
+            position: fixed;
+            width: 38px;
+            height: 200px;
+            top:200px;
+            left:50%;
+            margin-left:605px;
+            /*display: none;*/
+        }
+        .subnav li{
+            height: 36px;
+            border:1px solid #DEDEDE;
+            margin-bottom: 5px;
+            font-size:0;
+            background: url(bg.png) no-repeat;
+        }
+        .subnav li:hover,.subnav li.current,.back
+        {
+            border:1px solid #ED5759;
+            background: #FDEEEE;   /* 只有冲突的时候才会出现层叠 */
+            /* 背景颜色 背景图片 背景位置 背景平铺  背景固定 */
+            /* css 层叠样式表 */
+            font-size:12px;
+            color: #ED5759;
+            padding-left: 6px;
+            padding-top: 2px;
+            height: 34px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript" src="js/jq.js"></script>
+    <script type="text/javascript">
+//     1.先找到响应的小图标；
+//     2.先让页面滚动的时候，滚动到响应的小图标那里；
+//     3.设置点击事件
+        $(function(){
+            var $menu=$('.subnav');
+            var $list=$('.subnav li');
+            var top=0;
+            var num=0;
+           $list.each(function(index,ele){
+               var num=index*55;
+               $list.css({
+                  "background-position":0,num
+               });
+           });
+            $(window).scroll(function(){
+                var top=$(document).scrollTop();
+                if(top> $('.mei').offset().top){
+                    $list.eq(3).addClass('current').siblings().removeClass();
+                }else if(top> $('.fu').offset().top){
+                    $list.eq(2).addClass('current').siblings().removeClass();
+                } else if(top>= $(".jia").offset().top){
+                    $list.eq(1).addClass("current").siblings().removeClass();
+                } else if(top >= $(".dian").offset().top){
+                    $list.eq(0).addClass("current").siblings().removeClass();
+                }else if(top>0){
+                    $menu.fadeIn();
+                }else{
+                    $menu.fadeOut();
+                }
+            });
+            $list.click(function(){
+                $('html,body').stop().animate({
+                    'scrollTop':$('.jd').eq($(this).index()).offset().top
+                },1000);
+            });
+            $('.back').click(function(){
+                $('html,body').animate({
+                    'scrollTop':0
+                },300);
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="top">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="jd dian">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="jd jia">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="jd fu">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="jd mei">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="bottom">
+    <img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" alt="" />
+</div>
+<div class="subnav">
+    <ul>
+        <li>电脑数码</li>
+        <li>家电通讯</li>
+        <li>服饰精品</li>
+        <li>美容珠宝</li>
+    </ul>
+    <div class="back">返回</div>
+</div>
+</body>
+</html>
