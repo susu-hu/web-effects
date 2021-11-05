@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		@media screen and (max-width: 600px) {
+			body {
+				background-color: lightblue!important;
+				color: red;
+			}
+		}
+		.a{
+			width: 400px;
+		}
+			
+		.flex{
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+		}
+		.b{
+			flex-shrink: 0;
+		}
+			
+		.c{
+			width: 300px;
+			display: flex;
+			justify-content: flex-end;
+			word-wrap: break-word;
+			word-break: break-all;
+		}
+	</style>
+	<body>
+		<div class="flex a">
+			<div class="b">啊啊啊</div>
+			<div class="c">9999999999999999999999999999999999999999999999999999999999999999999</div>
+		</div>
+		<div class="flex a">
+			<div class="b">啊啊啊</div>
+			<div class="c">13123</div>
+		</div>
+	</body>
+</html>
