@@ -78,7 +78,12 @@
 65. 文字雨
 66. 带弧度的tab选项卡
 67. css实现带圆角的圆弧进度条（非svg，非echarts，非canvas）
+68. 悬浮菜单
 #### 作品截图 
+
+悬浮菜单
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1107/012756_977aa747_8576727.gif "问问.gif")
 
 css实现带圆角的圆弧进度条
 
