@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+ <!-- .rem加js适配（简单的） -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>rem加js适配</title>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth || 375;
+                    var width = (clientWidth <= 320) ? 320 : ((clientWidth >= 750) ? 750 : clientWidth);
+                    var fontSize = 100 * (width / 750);
+                    docEl.style.fontSize = fontSize + 'px'
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            recalc()
+        })(document, window);
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+ 
+        .main {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+ 
+        .imgs {
+            width: 7.5rem;
+            height: 5rem;
+            margin: 0 auto;
+        }
+ 
+        .title {
+            font-size: .32rem;
+            padding: 0 .28rem;
+        }
+ 
+        .main p {
+            font-size: .28rem;
+            padding: .2rem .28rem;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="main">
+        <img class="imgs" src="img/01.jpg" />
+        <h2 class="title">Re-S医院妇产科专门医院</h2>
+        <p>Re-S医院妇产科专门医院，位于江南区，历经20多年的发展，致力于打造为女性幸福与健康的女性专门诊疗中
+            心。该医院初期主要研究女性性反应方面问题，后逐渐将女性盆骨健康问题和如何提高性功能也作为院内主要诊疗项目。医院凭借精湛的手术技术和出色的手术效果，在阴道紧缩术方面不仅是在韩国，世界授予了关于性功能向上的医学论文。还逐渐走向了世界舞台。
+        </p>
+        <p>通过专业、科学的妇科手术，女性的性生活持续到即使是闭经后的80多岁是有可能的。积累多年的阴道整形手术经验，为女性朋友的社会生活和两性生活中能起到极大的帮助。</p>
+    </div>
+</body>
+ 
+</html>

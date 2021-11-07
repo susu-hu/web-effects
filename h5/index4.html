@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.aaa {
+			width: 100%;
+			height: 100px;
+			background-color: #aaaaff;
+			display: flex;
+			justify-content: space-between;
+			font-size: 40px;
+		}
+	</style>
+	<body>
+		<div class="aaa">
+			<p>苏苏hh</p>
+			<p>zhuhh</p>
+		</div>
+	</body>
+	<script>
+		! function(e, t) {
+			function n() {
+				t.body ? t.body.style.fontSize = 12 * o + "px" : t.addEventListener("DOMContentLoaded", n)
+			}
+
+			function d() {
+				var e = i.clientWidth / 10;
+				i.style.fontSize = e + "px"
+			}
+			var i = t.documentElement,
+				o = e.devicePixelRatio || 1;
+			if (n(), d(), e.addEventListener("resize", d), e.addEventListener("pageshow", function(e) {
+					e.persisted && d()
+				}), o >= 2) {
+				var a = t.createElement("body"),
+					s = t.createElement("div");
+				s.style.border = ".5px solid transparent", a.appendChild(s), i.appendChild(a), 1 === s.offsetHeight && i
+					.classList.add("hairlines"), i.removeChild(a)
+			}
+		}(window, document);
+	</script>
+</html>

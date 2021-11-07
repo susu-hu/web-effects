@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+			font-size: 62.5%;
+		}
+		.Text{
+			width: 46.875rem;
+			height:6.25rem;
+			background-color: #000000;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			padding: 0 1.875rem;
+			box-sizing: border-box;
+			font-size: 1.5rem;
+		}
+	</style>
+	<body>
+		<div class="Text">
+			<p>苏苏hh</p>
+			<p>zhuhh</p>
+		</div>
+	</body>
+	<script>
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if(!clientWidth) return;
+					docEl.style.fontSize = 16 * (clientWidth /750) + 'px';
+				}; 
+			if(!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);    
+		
+		//750为设计稿的大小，默认以font-size:16px为基础
+	</script>
+</html>

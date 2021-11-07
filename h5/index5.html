@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+		}
+		.aaa{
+			width:46.875rem;
+			height: 6.25rem;
+			background-color: #00557F;
+		}
+	</style>
+	<body>
+		<div class="aaa"></div>
+	</body>
+	<script type="text/javascript">
+		//自适应页面
+		var fontSize = 10;
+		var _w = document.body.clientWidth;
+		console.log(_w);
+		var font = document.documentElement.clientWidth / 7.5 + 'px';
+		document.getElementsByTagName('html')[0].style.fontSize = font;
+
+		window.onresize = function() {
+			var _w = document.body.clientWidth;
+			var font = document.documentElement.clientWidth / 7.5 + 'px';
+			//获取html标签
+			document.getElementsByTagName('html')[0].style.fontSize = font;
+		}
+	</script>
+</html>

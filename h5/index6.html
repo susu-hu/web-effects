@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!--允许全屏-->
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+		<link rel="apple-touch-icon" href="favicon.png">
+		<link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+		<title>再来一波DEMO页</title>
+		<style>
+			.item-section {
+				min-height: 100%;
+				background-color: #ee0a3b;
+				position: relative;
+				font-size: 12px
+			}
+
+			[data-dpr="2"] .item-section {
+				font-size: 24px
+			}
+
+			[data-dpr="3"] .item-section {
+				font-size: 36px
+			}
+
+			.item-section_header {
+				text-align: center
+			}
+
+			.item-section_header img {
+				width: 10rem
+			}
+
+			.item-section ul {
+				padding: .133333rem
+			}
+
+			.flag {
+				display: table;
+				width: 100%;
+				margin-bottom: 1px;
+				background-color: #fff
+			}
+
+			.flag .flag-item {
+				display: table-cell;
+				padding: .16rem 0;
+				vertical-align: top;
+				background-color: #fff
+			}
+
+			.flag .flag-item.figcaption {
+				width: 133.333333rem;
+				padding-left: .2rem;
+				padding-right: .2rem;
+				position: relative
+			}
+
+			.flag .flag-item.figure {
+				width: 2.4rem;
+				height: 2.4rem
+			}
+
+			.flag .flag-item img {
+				width: 2.4rem;
+				height: 2.4rem;
+				vertical-align: top
+			}
+
+			.flag .flag-title a {
+				color: #333;
+				line-height: 1.25;
+				overflow: hidden;
+				-webkit-line-clamp: 2;
+				line-clamp: 2;
+				-webkit-box-orient: vertical;
+				box-orient: vertical;
+				display: -webkit-box;
+				display: box
+			}
+
+			.flag .flag-price {
+				padding: .15rem 0 .2rem
+			}
+
+			.flag .flag-price span {
+				display: inline-block;
+				background-color: #ee0a3b;
+				vertical-align: middle;
+				border-radius: .026667rem;
+				padding: .026667rem .08rem .013333rem;
+				color: #fff;
+				font-weight: 700;
+				margin-right: .066667rem;
+				font-size: 11px
+			}
+
+			[data-dpr="2"] .flag .flag-price span {
+				font-size: 22px
+			}
+
+			[data-dpr="3"] .flag .flag-price span {
+				font-size: 33px
+			}
+
+			.flag .flag-price strong {
+				display: inline-block;
+				vertical-align: middle;
+				font-weight: 700;
+				color: #ee0a3b;
+				font-size: 16px;
+				margin-right: .16rem
+			}
+
+			[data-dpr="2"] .flag .flag-price strong {
+				font-size: 32px
+			}
+
+			[data-dpr="3"] .flag .flag-price strong {
+				font-size: 48px
+			}
+
+			.flag .flag-price small {
+				display: inline-block;
+				vertical-align: middle;
+				font-weight: 700;
+				color: #ee0a3b;
+				font-size: 12px
+			}
+
+			[data-dpr="2"] .flag .flag-price small {
+				font-size: 24px
+			}
+
+			[data-dpr="3"] .flag .flag-price small {
+				font-size: 36px
+			}
+
+			.flag .flag-type {
+				color: #ff3600
+			}
+
+			.flag .flag-btn {
+				position: absolute;
+				width: 2.133333rem;
+				height: .64rem;
+				line-height: .64rem;
+				background-color: #ee0a3b;
+				text-align: center;
+				color: #fff;
+				font-weight: 700;
+				font-size: 14px;
+				bottom: .133333rem;
+				right: .2rem;
+				border-radius: .026667rem
+			}
+
+			[data-dpr="2"] .flag .flag-btn {
+				font-size: 28px
+			}
+
+			[data-dpr="3"] .flag .flag-btn {
+				font-size: 42px
+			}
+		</style>
+		<script src="//g.alicdn.com/mtb/lib-aa/0.0.33/??aa.js,dirty.js"></script>
+		<style>
+			html,
+			body {
+				height: 100vh;
+				background-color: #ee0a3b;
+			}
+		</style>
+		<meta content="a1z3i" name="data-spm">
+		<meta content="20140614.a1z3i.meyxt9ed" name="data-scm">
+	</head>
+	<body data-spm="meyxt9ed">
+		<script>
+			with(document) with(body) with(insertBefore(createElement("script"), firstChild)) setAttribute("exparams",
+				"category=&userid=&aplus&yunid=&&trid=3ad79d2016363021420013273e&asid=AQAAAAA+/YdheFW4egAAAABqVEHCsJVuAA==",
+				id = "tb-beacon-aplus", src = (location > "https" ? "//g" : "//g") + ".alicdn.com/alilog/mlog/aplus_v2.js")
+		</script>
+
+		<!-- Item Header Template -->
+		<div class="html_content">
+			<div class="item-section" data-repeat="sections">
+				<div class="item-section_header">
+					<h2><img src="{brannerImag}" alt=""></h2>
+				</div>
+				<ul>
+					<li data-repeat="items" class="flag" role="link" href="{itemLink}"> <a class="figure flag-item"
+							href="{itemLink}"> <img src="{imgSrc}" alt=""> </a>
+						<div class="figcaption flag-item">
+							<div class="flag-title">
+								<a href="{itemLink}" title="">{poductName}</a>
+							</div>
+							<div class="flag-price">
+								<span>双11价</span>
+								<strong>¥{price}</strong>
+								<small>({preferential})</small>
+							</div>
+							<div class="flag-type">
+								{activityType}
+							</div>
+							<a class="flag-btn" href="{shopLink}">{activeName}</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			//define module function
+			(function(win) {
+				var module = function(data, dom) {
+					this.data = data;
+					this.dom = dom
+				}
+				module.prototype.init = function() {
+					//var itemList = this.dom.querySelector(".item-section");
+					this.dom.setData(this.data)
+				}
+				win.itemModule = module;
+			}(window));
+
+			//define data
+			var pageData = {
+				sections: [{
+					"brannerImag": "http://gw.alicdn.com/mt/TB1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg",
+					items: [{
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "Carter's1年式灰色长袖连体衣包脚爬服全棉鲸鱼男婴儿童装115G093",
+						"price": "299.06",
+						"preferential": "满400减100",
+						"activityType": "1小时内热卖5885件",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}, {
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "Nike耐克官方ZOOM KOBE VENOMENON 5 EP 科比男子篮球鞋815757",
+						"price": "699.50",
+						"preferential": "满300减150",
+						"activityType": "6744人正在疯抢",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}, {
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "现货【送皮套+钢膜+耳机】Xiaomi/小米 红米Note2手机note2",
+						"price": "799.00",
+						"preferential": "满300减150",
+						"activityType": "7833人正在疯抢",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}, {
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "ONLY2015秋装新品七分袖弹力修身针织衫女",
+						"price": "299.00",
+						"preferential": "满300减100",
+						"activityType": "2379人想买",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}, {
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "Levi's李维斯513春季男士修身直筒牛仔裤长裤",
+						"price": "399.00",
+						"preferential": "满300减100",
+						"activityType": "预热期加购TOP1",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}, {
+						"itemLink": "##",
+						"imgSrc": "https://placeimg.com/350/350/people/grayscale",
+						"poductName": "Levi's李维斯513春季男士修身直筒牛仔裤长裤",
+						"price": "399.00",
+						"preferential": "满300减100",
+						"activityType": "预热期加购TOP1",
+						"shopLink": "##",
+						"activeName": "马上抢！"
+					}]
+				}]
+
+			}
+
+			//render
+			var renderDom = document.querySelector(".html_content");
+			var module = new itemModule(pageData, renderDom);
+			module.init();
+		</script>
+		<script src="//g.alicdn.com/alilog/??wlog/0.2.7/aplus_wap.js,wlog/0.2.7/spm_wap.js,wlog/0.2.7/spmact_wap.js">
+		</script>
+	</body>
+</html>
