@@ -1,0 +1,256 @@
+<!doctype HTML>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+		<title>lib.flexible 简化版</title>
+
+	</head>
+	<style>
+		
+		
+		html {font-size:10px}
+		 
+		@media screen and (min-width:480px) and (max-width:639px) {
+		    html {
+		        font-size: 15px
+		    }
+		}
+		 
+		@media screen and (min-width:640px) and (max-width:719px) {
+		    html {
+		        font-size: 20px
+		    }
+		}
+		 
+		@media screen and (min-width:720px) and (max-width:749px) {
+		    html {
+		        font-size: 22.5px
+		    }
+		}
+		 
+		@media screen and (min-width:750px) and (max-width:799px) {
+		    html {
+		        font-size: 23.5px
+		    }
+		}
+		 
+		@media screen and (min-width:800px) and (max-width:959px) {
+		    html {
+		        font-size: 25px
+		    }
+		}
+		 
+		@media screen and (min-width:960px) and (max-width:1079px) {
+		    html {
+		        font-size: 30px
+		    }
+		}
+		 
+		@media screen and (min-width:1080px) {
+		    html {
+		        font-size: 32px
+		    }
+		}
+		body {
+			font-size: 16px;
+		}
+
+		ul,
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container h2 {
+			text-align: center;
+			font-size: 18px;
+		}
+
+		.container .list {
+			display: flex;
+			align-items: stretch;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.container .list li {
+			display: flex;
+			width: 2rem;
+			height: 2rem;
+			overflow: hidden;
+			padding: 5px;
+			background: #f0f0f0;
+			margin-bottom: .2rem;
+		}
+
+		.container .list li h3 {
+			font-size: 16px;
+			margin: 0;
+			text-align: center;
+		}
+
+		.container .list li .icon {
+			flex-shrink: 0;
+			width: .48rem;
+			height: .48rem;
+			display: flex;
+			background: url("https://i.postimg.cc/qRRLS16Q/susu0.jpg") no-repeat;
+			background-size: 1.26rem 10.64rem;
+		}
+
+		.container .list li:nth-child(1) .icon {
+			background-position: 0 0.01rem;
+		}
+
+		.container .list li:nth-child(2) .icon {
+			background-position: 0 -0.46rem;
+		}
+
+		.container .list li:nth-child(3) .icon {
+			background-position: 0 -0.94rem;
+		}
+
+		.container .list li:nth-child(4) .icon {
+			background-position: 0 -1.44rem;
+		}
+
+		.container .list li:nth-child(5) .icon {
+			background-position: 0 -1.92rem;
+		}
+
+		.container .list li:nth-child(6) .icon {
+			background-position: 0 -2.4rem;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<h2>公租房当前遇到的六大难题</h2>
+			<ul class="list">
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>规范化管理不到位</h3>
+						<p>房屋档案信息不规范完善，房间分配额不够，出现恶意多次申请、假合同事件、到期赖房不肯搬走现象</p>
+					</div>
+				</li>
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>治安环境脏乱差</h3>
+						<p>居住人员成分复杂，小区内环境脏乱，扯摊支铺现象屡禁不止，导致公租房治安环境较差</p>
+					</div>
+				</li>
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>租户服务体验感差</h3>
+						<p>申请人需多次跑审查点递交材料；且无法及时知晓申请状态；租金等费用需现场缴纳；只能通过电话报修</p>
+					</div>
+				</li>
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>租金收取难度大</h3>
+						<p>因配租家庭收入偏低、催缴租金找人难。租户欠缴租金，追缴困难、水电费上门抄表，耗费人力物力</p>
+					</div>
+				</li>
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>违规转租转让转借问题突出</h3>
+						<p>转租现象无法杜绝，入住人员身份无法验证，租期到期退租难，转租、转让、转借给他人谋利现象突出</p>
+					</div>
+				</li>
+				<li>
+					<span class="icon"></span>
+					<div>
+						<h3>特殊人权服务不到位</h3>
+						<p>公租房小区还居住着不少独居老人，因其年龄等的特殊性，如何服务这部分特殊群体一直没有好办法</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		// (function (doc, win) {
+		//     var docEl = doc.documentElement,
+		//         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		//         recalc = function () {
+		//             var clientWidth = docEl.clientWidth;
+		//             if (!clientWidth) return;
+		//             if(clientWidth>=640){
+		//                 docEl.style.fontSize = '100px';
+		//             }else{
+		//                 docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+		//             }
+		//         };
+
+		//     if (!doc.addEventListener) return;
+		//     win.addEventListener(resizeEvt, recalc, false);
+		//     doc.addEventListener('DOMContentLoaded', recalc, false);
+		// })(document, window);
+
+		(function(designWidth, maxWidth) {
+			var doc = document,
+				win = window;
+			var docEl = doc.documentElement;
+			var tid;
+			var rootItem, rootStyle;
+
+			function refreshRem() {
+				var width = docEl.getBoundingClientRect().width;
+				if (!maxWidth) {
+					maxWidth = 540;
+				};
+				if (width > maxWidth) {
+					width = maxWidth;
+				}
+				//与淘宝做法不同，直接采用简单的rem换算方法1rem=100px
+				var rem = width * 100 / designWidth;
+				//兼容UC开始
+				rootStyle = "html{font-size:" + rem + 'px !important}';
+				rootItem = document.getElementById('rootsize') || document.createElement("style");
+				if (!document.getElementById('rootsize')) {
+					document.getElementsByTagName("head")[0].appendChild(rootItem);
+					rootItem.id = 'rootsize';
+				}
+				if (rootItem.styleSheet) {
+					rootItem.styleSheet.disabled || (rootItem.styleSheet.cssText = rootStyle)
+				} else {
+					try {
+						rootItem.innerHTML = rootStyle
+					} catch (f) {
+						rootItem.innerText = rootStyle
+					}
+				}
+				//兼容UC结束
+				docEl.style.fontSize = rem + "px";
+			};
+			refreshRem();
+
+			win.addEventListener("resize", function() {
+				clearTimeout(tid); //防止执行两次
+				tid = setTimeout(refreshRem, 300);
+			}, false);
+
+			win.addEventListener("pageshow", function(e) {
+				if (e.persisted) { // 浏览器后退的时候重新计算
+					clearTimeout(tid);
+					tid = setTimeout(refreshRem, 300);
+				}
+			}, false);
+
+			if (doc.readyState === "complete") {
+				doc.body.style.fontSize = "16px";
+			} else {
+				doc.addEventListener("DOMContentLoaded", function(e) {
+					doc.body.style.fontSize = "16px";
+				}, false);
+			}
+		})(640, 640);
+	</script>
+</html>

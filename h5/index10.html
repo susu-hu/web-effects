@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<body>
+	</body>
+	<script>
+		//这段代码放在head标签里面
+		(function () {
+		    var html = document.documentElement;
+		 
+		    function onWindowResize() {
+		        html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
+				console.log(html.getBoundingClientRect())
+		    }
+		 
+		    window.addEventListener('resize', onWindowResize);
+		    onWindowResize();
+		})();
+	</script>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box
+		}
+
+		body {
+			background: #001933
+		}
+
+		.container {
+			width: 75px;
+			height: 275px;
+			animation: bulb-swing 3s infinite ease-in-out;
+			transform-origin: top center;
+			position: absolute;
+			top: 0;
+			left: calc(50% -(75px/2))
+		}
+
+		.container.paused {
+			animation-play-state: paused
+		}
+
+		.bulb {
+			z-index: 10;
+			display: block;
+			width: 75px;
+			height: 75px;
+			border-radius: 50%;
+			position: absolute;
+			top: 200px;
+			left: calc(50% -(75px/2));
+			background: #FFD700;
+			box-shadow: 5px 5px 80px gold, 5px -5px 80px gold, -5px 5px 80px gold, -5px -5px 80px gold;
+			cursor: pointer
+		}
+
+		.bulb::before {
+			content: "";
+			position: absolute;
+			width: 35px;
+			height: 50px;
+			background: black;
+			bottom: 100%;
+			left: calc(50% -(35px/2));
+			z-index: -1;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px
+		}
+
+		.bulb::after {
+			content: "";
+			position: absolute;
+			width: 10px;
+			height: 250px;
+			background: black;
+			bottom: 100%;
+			left: calc(50% - 5px);
+			z-index: -1
+		}
+
+		.bulb .filaments {
+			display: block;
+			position: absolute;
+			width: 2px;
+			height: 30px;
+			background: black;
+			top: 2px;
+			left: 28px;
+			box-shadow: 17px 0 black;
+			opacity: 0
+		}
+
+		.bulb .filaments::after {
+			content: "";
+			position: absolute;
+			bottom: -2px;
+			left: 4px;
+			background: black;
+			width: 2px;
+			height: 12px;
+			display: block;
+			box-shadow: 4.5px 0 black, 9px 0 black
+		}
+
+		.bulb.off {
+			background: transparent;
+			box-shadow: none;
+			border: 1px solid black
+		}
+
+		.filaments.off {
+			opacity: 1
+		}
+
+		@keyframes bulb-swing {
+			0% {
+				transform: rotate(-10deg)
+			}
+
+			50% {
+				transform: rotate(10deg)
+			}
+
+			100% {
+				transform: rotate(-10deg)
+			}
+		}
+
+		.floor {
+			position: absolute;
+			background: #000c19;
+			height: 200px;
+			width: 100%;
+			bottom: 0;
+			left: 0
+		}
+
+		.floor .shadow {
+			position: absolute;
+			background: #524c11;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			top: calc(50% - 25px);
+			left: calc(50% - 25px);
+			box-shadow: 20px 20px 100px gold, -20px 20px 100px gold, 20px -20px 100px gold, -20px -20px 100px gold;
+			animation: shadow-swing 3s infinite ease-in-out
+		}
+
+		.shadow.off {
+			background: #000c19;
+			box-shadow: none
+		}
+
+		@keyframes shadow-swing {
+			0% {
+				transform: translateX(100px)
+			}
+
+			50% {
+				transform: translateX(-100px)
+			}
+
+			100% {
+				transform: translateX(100px)
+			}
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="bulb">
+				<div class="filaments"></div>
+			</div>
+		</div>
+		<div class="floor">
+			<div class="shadow"></div>
+		</div>
+	</body>
+</html>
