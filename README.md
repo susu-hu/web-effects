@@ -79,7 +79,12 @@
 66. 带弧度的tab选项卡
 67. css实现带圆角的圆弧进度条（非svg，非echarts，非canvas）
 68. 悬浮菜单
+69. 灯泡光影
 #### 作品截图 
+
+灯泡光影
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1108/180953_a2722e75_8576727.gif "请问.gif")
 
 悬浮菜单
 
