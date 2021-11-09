@@ -1,0 +1,44 @@
+// @function r($px) {
+//   @return  round($px *750 / 10 ) / 750 * 1rem;
+// }
+
+@function set($n) {
+  @return ($n / 2) / 37.5+rem;
+}
+
+
+// @function pxTorem($px){
+//     @return $px / $html-font-size * 1rem;
+// }
+
+// .a{
+//     font-size:12px;
+// }
+// [data-dpr="2"] .a{
+//     font-size: 24px;
+// }
+// [data-dpr="3"] .a{
+//     font-size: 36px;
+
+
+// 方法一：使用全局变量
+// $html-font-size: 32px !default;
+
+// @function pxTorem($px){
+//     @return $px / $html-font-size * 1rem;
+// }
+
+// .demo{
+//     width: pxTorem(64px);
+//     height:pxTorem(64px);
+//     background-color: red;
+// }
+
+// // 方法二：使用局部变量
+// @function pxTorem($px){
+//     $html-font-size: 32px;
+//     @return ($px/$html-font-size) + rem;
+// }
+
+// 元素的宽高、边距等属性建议使用rem，但字体尺寸推荐使用px。假设750像素的设计稿，字体大小为12px，缩放0.5后，
+// 字体大小只有6px，很明显不合理，所以需要根据屏幕的DPR进行适配。

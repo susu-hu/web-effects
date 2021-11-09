@@ -4,21 +4,58 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
-	
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+	<style>
+		html{
+			height: 100%;
+		}
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.susu{
+			width: 7.5rem;
+			height: 1rem;
+			background-color: #00557F;
+		}
+	</style>
 	<body>
+		<div class="susu"></div>
 	</body>
 	<script>
 		//这段代码放在head标签里面
-		(function () {
-		    var html = document.documentElement;
+		// (function () {
+		//     var html = document.documentElement;
 		 
-		    function onWindowResize() {
-		        html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
-				console.log(html.getBoundingClientRect())
-		    }
+		//     function onWindowResize() {
+		//         html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
+		// 		console.log(html.getBoundingClientRect())
+		//     }
 		 
-		    window.addEventListener('resize', onWindowResize);
-		    onWindowResize();
-		})();
+		//     window.addEventListener('resize', onWindowResize);
+		//     onWindowResize();
+		// })();
+		
+		
+		(function(doc, win) {
+		    var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function() {
+		            var clientWidth = docEl.clientWidth;
+		            if (!clientWidth) return;
+		            if (clientWidth >= 750) {
+		                docEl.style.fontSize = '100px';
+		            } else {
+		                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+		            }
+		        };
+		
+		    if (!doc.addEventListener) return;
+		    win.addEventListener(resizeEvt, recalc, false);
+		    doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+
+		
 	</script>
 </html>

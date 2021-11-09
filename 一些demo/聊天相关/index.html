@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			-webkit-font-smoothing: antialiased;
+			line-height: 1.6;
+		}
+
+		pre {
+			margin: 0;
+			font-family: inherit;
+			font-size: inherit;
+			white-space: pre-wrap;
+		}
+
+		html {
+			font-size: 32px;
+		}
+
+		body {
+			max-width: 1050px;
+			border: 1px solid #eee;
+			margin: 0 auto;
+		}
+
+		.scroll-wrapper {
+			overflow: hidden !important;
+			padding: 0 !important;
+		}
+
+		.scroll-wrapper>.scroll-content {
+			height: 100%;
+			overflow-x: hidden !important;
+			overflow-y: scroll !important;
+		}
+
+		.avatar {
+			background-size: contain;
+			background-position: center center;
+		}
+
+		.avatar>img {
+			width: 100%;
+		}
+
+		.chat {
+			position: relative;
+			width:100%;
+			height: 100%;
+			background-color: #f0f0f0;
+		}
+
+		.chat .box_hd {
+			text-align: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			line-height: 0.938rem;
+		}
+
+		.chat .box_hd .title_wrapper {
+			position: relative;
+			padding: 0.75rem 1.063rem;
+			background-color: #262626;
+			z-index: 50;
+		}
+
+		.chat .box_hd .title_wrapper .title {
+			font-weight: 400;
+			height: 1rem;
+			display: inline-block;
+			font-size: 1rem;
+			color: #fff;
+		}
+
+		.chat .box_bd {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 3.188rem;
+			left: 0;
+		}
+
+		.chat .box_ft {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.chat .chatContent {
+			content: "";
+			clear: both;
+			display: table;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 1rem 0.438rem 2.5rem;
+		}
+
+		.message {
+			margin-bottom: 1.25rem;
+			float: left;
+			width: 100%;
+			animation: goup 0.5s;
+		}
+
+		.message .avatar {
+			width: 2.5rem;
+			height: 2.5rem;
+			margin-top: 0.938rem;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+		.message .author_name {
+			height: 0.938rem;
+			margin: 0 0.875rem;
+			font-size: 0.625rem;
+			line-height: 0.938rem;
+			color: #b0b0b0;
+		}
+
+		.message .content {
+			overflow: hidden;
+		}
+
+		.message.me {
+			float: right;
+			text-align: right;
+			clear: right;
+		}
+
+		.message.me .avatar {
+			float: right;
+		}
+
+		.message.others {
+			float: left;
+			text-align: left;
+			clear: left;
+		}
+
+		.message.others .avatar {
+			float: left;
+		}
+
+		@keyframes goup {
+			0% {
+				transform: translate(0, 1.875rem);
+			}
+
+			100% {
+				transform: translate(0, 0);
+			}
+		}
+
+		.message_system {
+			text-align: center;
+			margin: -0.313rem auto 0;
+			max-width: 50%;
+			font-size: 0;
+		}
+
+		.message_system .content {
+			display: inline-block;
+			background-color: #dcdcdc;
+			font-size: 0.75rem;
+			padding: 0.313rem 0.563rem;
+			color: #fff;
+			border-radius: 0.063rem;
+		}
+
+		.bubble {
+			max-width: 14.688rem;
+			min-height: 2.5rem;
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			text-align: left;
+			font-size: 0.875rem;
+			border-radius: 0.125rem;
+			margin: 0 0.875rem;
+		}
+
+		.bubble:before {
+			content: "";
+			display: inline-block;
+			box-sizing: border-box;
+			width: 0.438rem;
+			height: 0.438rem;
+			position: absolute;
+			top: 0.938rem;
+			background-color: inherit;
+			border-right-color: inherit;
+			border-bottom-color: inherit;
+		}
+
+		.bubble.right:before {
+			right: -0.188rem;
+			transform: rotate(-45deg);
+		}
+
+		.bubble.left:before {
+			left: -0.188rem;
+			transform: rotate(135deg);
+		}
+
+		.bubble.bubble_default {
+			background-color: #fff;
+			border-color: #919191;
+		}
+
+		.bubble.bubble_default.left:before {
+			border-color: #919191;
+		}
+
+		.bubble.bubble_primary {
+			background-color: #90d936;
+			border-color: #6c9a36;
+		}
+
+		.bubble.bubble_primary.right:before {
+			border-color: #6c9a36;
+		}
+
+		.bubble.bubble_image {
+			border: none;
+		}
+
+		.bubble.bubble_image:before {
+			display: none;
+		}
+
+		.bubble_cont {
+			word-wrap: break-word;
+			word-break: break-all;
+			min-height: 2.5rem;
+		}
+
+		.bubble_cont .plain {
+			padding: 0.563rem 0.625rem;
+		}
+
+		.bubble_cont .plain img {
+			width: 1.5rem;
+		}
+
+		.bubble_cont .plain .hide {
+			display: none;
+		}
+
+		.bubble_cont .plain .trans {
+			display: block;
+			cursor: pointer;
+			margin-top: 0.25rem;
+			padding-top: 0.25rem;
+			color: #669a27;
+			border-top: 0.0703rem solid #dcdcdc;
+		}
+
+		.bubble_cont .picture {
+			border-radius: 0.125rem;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.bubble_cont .picture img {
+			display: block;
+			cursor: pointer;
+			max-width: 9.375rem;
+			max-height: 9.375rem;
+		}
+
+		.bubble_cont .video img,
+		.bubble_cont .video video {
+			max-width: 9.375rem;
+			max-height: 9.375rem;
+		}
+
+		.box_ft {
+			padding-top: 3.188rem;
+			background-color: #fff;
+		}
+
+		.input-wrapper {
+			position: absolute;
+			width: 100%;
+			height: 3.125rem;
+			top: 0;
+			left: 0;
+			background-image: url("http://c1.mifile.cn/f/i/hd/2016051101/input.jpg");
+			background-size: 100% 100%;
+			background-position: center top;
+			background-repeat: no-repeat;
+		}
+
+		.input-wrapper>p {
+			margin: 0;
+			margin-left: 1.063rem;
+			margin-right: 3.563rem;
+			text-align: center;
+			line-height: 3.125rem;
+			color: #999;
+			font-size: 1rem;
+			animation: gost 1.4s infinite ease-in-out;
+			display: none;
+		}
+
+		@keyframes gost {
+			0% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.input-wrapper>img {
+			width: 1.25rem;
+			height: 1.25rem;
+			position: absolute;
+			right: 1.063rem;
+			top: 1.063rem;
+			transition: transform 0.2s;
+		}
+
+		.input-wrapper.opened>img {
+			transform: rotate(180deg);
+		}
+
+		.choice-wrapper {
+			border-top: 0.0703rem solid #ebebeb;
+			background-color: #f0f0f0;
+			max-height: 0;
+			overflow: hidden;
+			transform: translate3d(0, 0, 0);
+			transition: max-height 0.2s ease-out;
+		}
+
+		.choice-wrapper.opened {
+			height: auto;
+			max-height: 21.875rem;
+		}
+
+		.choice-wrapper ul {
+			width: 100%;
+			padding: 0.938rem 0 0;
+			text-align: center;
+			font-size: 0;
+		}
+
+		.choice-wrapper ul>li {
+			display: inline-block;
+			background-color: #fff;
+			margin-bottom: 0.938rem;
+			margin-right: 0.813rem;
+			font-size: 0.875rem;
+			color: #000;
+			line-height: 2rem;
+			border-radius: 0.125rem;
+			cursor: pointer;
+		}
+
+		.choice-wrapper ul>li p {
+			font-size: 0.625rem;
+			line-height: 2.5;
+			white-space: nowrap;
+		}
+
+		.choice-wrapper ul>li a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.choice-wrapper ul>li img,
+		.choice-wrapper ul>li video {
+			display: block;
+			width: 100%;
+		}
+
+		.choice-wrapper ul>li.disabled {
+			background-color: #ccc !important;
+		}
+
+		.choice-wrapper ul>li.no-border {
+			border: 0;
+		}
+
+		.choice-wrapper ul>li.bg-trsp {
+			background-color: transparent;
+		}
+
+		.choice-wrapper ul>li.no-br {
+			border-radius: 0;
+		}
+
+		.choice-wrapper ul>li.li-3 {
+			width: 6.25rem;
+		}
+
+		.choice-wrapper ul>li.li-3:nth-of-type(3n) {
+			margin-right: 0;
+		}
+
+		.choice-wrapper .main-choice>li {
+			color: #fff;
+		}
+
+		.choice-wrapper .main-choice>li:nth-of-type(1) {
+			background-color: #e24e4e;
+		}
+
+		.choice-wrapper .main-choice>li:nth-of-type(2) {
+			background-color: #f2862f;
+		}
+
+		.choice-wrapper .main-choice>li:nth-of-type(3) {
+			background-color: #f1b40f;
+		}
+
+		.map-wrapper .map {
+			width: 14.219rem;
+			height: 20.313rem;
+			background: url("http://c1.mifile.cn/f/i/hd/2016051101/map.jpg") center center no-repeat;
+			background-size: 14.219rem 20.313rem;
+		}
+
+		.map-wrapper .map .map-pointer {
+			position: absolute;
+			width: 0.875rem;
+			height: 0.875rem;
+			background-color: #0099ff;
+			border-radius: 0.438rem;
+			left: 8.438rem;
+			top: 1.125rem;
+		}
+
+		.map-wrapper .map .map-pointer:before {
+			content: "";
+			position: absolute;
+			top: -0.438rem;
+			left: -0.438rem;
+			width: 1.75rem;
+			height: 1.75rem;
+			border-radius: 50%;
+			background-color: rgba(0, 153, 255, 0.3);
+		}
+
+		@keyframes blink {
+			0% {
+				opacity: 1;
+			}
+
+			100% {
+				opacity: 0;
+			}
+		}
+
+		@keyframes animate-map-pointer {
+			0% {
+				transform: translate(0, 0);
+			}
+
+			10% {
+				transform: translate(1.313rem, 2rem);
+			}
+
+			25% {
+				transform: translate(-0.563rem, 4.344rem);
+			}
+
+			50% {
+				transform: translate(0.063rem, 9.563rem);
+			}
+
+			75% {
+				transform: translate(-5.25rem, 12.406rem);
+			}
+
+			100% {
+				transform: translate(-1.625rem, 16.844rem);
+			}
+		}
+
+		.map-wrapper p {
+			margin-top: 0.625rem;
+		}
+
+		.map-wrapper p>span {
+			display: inline-block;
+			width: 1.25rem;
+		}
+
+		.map-wrapper.animate .map .map-pointer {
+			animation: animate-map-pointer 5s linear 1;
+			animation-fill-mode: forwards;
+		}
+
+		.map-wrapper.animate .map .map-pointer:before {
+			animation: blink 0.8s infinite reverse;
+		}
+	</style>
+	<body>
+		<div class="chat">
+			<div class="box_bd scroll-wrapper">
+				<div class="scroll-content J_scrollContent">
+					<div class="chatContent" id="chatContent">
+					</div>
+				</div>
+			</div>
+			<div class="box_ft close">
+				<div class="input-wrapper">
+					<p class="J_noticeInput">点击提问</p>
+					<img src="http://c1.mifile.cn/f/i/hd/2016051101/input-down.png" alt="">
+				</div>
+
+				<div class="choice-wrapper J_choiceWrapper">
+					<ul class="main-choice J_choice J_mainChoice" data-choice="0">
+						<li class="J_liNext li-3" data-target-dialog="2" data-target-choice="2_1">
+							<a href="javascript:void(0);">存储多大</a>
+						</li>
+						<li class="J_liNext li-3" data-target-dialog="3">
+							<a href="javascript:void(0);">电量多大</a>
+						</li>
+						<li class="J_liNext li-3" data-target-dialog="8">
+							<a href="javascript:void(0);">求红包</a>
+						</li>
+					</ul>
+
+					<ul class="J_choice" data-choice="2_1">
+						<li class="J_liNext li-3 no-border bg-trsp" data-target-dialog="2_1">
+
+							<a href="javascript:void(0);">
+								<img src="http://c1.mifile.cn/f/i/hd/2016051101/c-2-oscars.jpg" alt="30部奥斯卡最佳影片">
+								<p>30部奥斯卡最佳影片</p>
+							</a>
+						</li>
+						<li class="J_liNext li-3 no-border bg-trsp" data-target-dialog="2_2">
+
+							<a href="javascript:void(0);">
+								<img src="http://c1.mifile.cn/f/i/hd/2016051101/c-2-drama.jpg" alt="80集美剧">
+								<p>80集美剧</p>
+							</a>
+						</li>
+						<li class="J_liNext li-3 no-border bg-trsp" data-target-dialog="2_3">
+
+							<a href="javascript:void(0);">
+								<img src="http://c1.mifile.cn/f/i/hd/2016051101/c-2-onepiece.jpg" alt="700番海贼王">
+								<p>700番海贼王</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div style="display: none;" class="J_map">
+			<div class="map-wrapper J_mapWrapper">
+				<div class="map">
+					<div class="map-pointer"></div>
+				</div>
+				<p>驾驶总时长：<span class="J_tourtime">0</span> 小时</p>
+			</div>
+		</div>
+
+		<script id="messageTpl" type="text/x-dot-template">
+			{{~it :message:index}}
+			<div class="clearfix">
+				{{? message.type == 'system'}}
+				<div class="message">
+					<p class="message_system">
+						<span class="content">{{=message.content}}</span>
+					</p>
+				</div>
+				{{??}}
+
+				<div class="message {{? message.author.id == 'me'}}me{{??}}others{{?}}">
+					<div class="avatar" data-author-id="{{=message.author.id}}">
+						<img src="{{=message.author.avatar}}" alt="{{=message.author.name}}">
+					</div>
+					<div class="content">
+						<p class="author_name">{{=message.author.name}}</p>
+						{{? message.type == 'plain'}}
+						<div
+							 class="bubble {{? message.author.id == 'me'}} bubble_primary right{{??}} bubble_default left{{?}}">
+							<div class="bubble_cont">
+								<div class="{{=message.type}}">
+									<pre>{{=message.content}}</pre>
+								</div>
+							</div>
+						</div>
+						{{?? message.type == 'picture'}}
+						<div class="bubble {{? message.author.id == 'me'}} right{{??}} left{{?}} bubble_image">
+							<div class="bubble_cont">
+								<div class="{{=message.type}}">
+									{{? message.extra == 'gallery'}}
+									<img class="J_galleryShow" data-gallery="1" src="{{=message.content}}" />
+									{{??}}
+									<img class="J_img" src="{{=message.content}}" />
+									{{?}}
+								</div>
+							</div>
+						</div>
+						{{?? message.type == 'video'}}
+						<div class="bubble {{? message.author.id == 'me'}} right{{??}} left{{?}} bubble_image">
+							<div class="bubble_cont">
+								<div class="{{=message.type}}">
+									<img class="J_fpVideo" src="{{=message.content.poster}}"
+										data-src="{{=message.content.video}}" alt="">
+								</div>
+							</div>
+						</div>
+						{{?? message.type == 'animation'}}
+						<div class="bubble {{? message.author.id == 'me'}} right{{??}} left{{?}} bubble_image">
+							<div class="bubble_cont">
+								<div class="{{=message.type}}">
+									{{=message.content}}
+								</div>
+							</div>
+						</div>
+						{{?}}
+					</div>
+				</div>
+				{{?}}
+
+			</div>
+			{{~}}
+		</script>
+	</body>
+	<script src="../../商城相关/js/jq.js"></script>
+	<script src="js/doT.js"></script>
+	<script>
+		var me = {
+			id: 'me', // 写死的，不用改
+			name: '' || '小米的朋友', // 用户昵称
+			avatar: '' || 'http://c1.mifile.cn/f/i/hd/2016051101/a-default.png', // 用户头像图片 url
+			userId: '', // 用户id
+			registered: false // 用户是否已经预约
+		};
+		var _imgUrl = 'http://c1.mifile.cn/f/i/hd/2016051101/';
+		var gif = {
+			welcome: '<img src="' + _imgUrl + 'welcome.gif' + '">',
+			lol: '<img src="' + _imgUrl + 'lol.gif' + '">',
+			cry: '<img src="' + _imgUrl + 'cry.gif' + '">',
+		};
+		var _animation = {
+			tour: $('.J_map').html(),
+		};
+		var _userName = me.name;
+		var _dialog = {};
+		var _members = {};
+
+		function geneDialog(userName) {
+			var defaultMembers = {
+				lj: {
+					id: 'lj',
+					name: '雷军',
+					avatar: _imgUrl + 'a-lj.png',
+				},
+				lwq: {
+					id: 'lwq',
+					name: '小米市场黎万强',
+					avatar: _imgUrl + 'a-lwq.png',
+				},
+				lb: {
+					id: 'lb',
+					name: '小米网林斌',
+					avatar: _imgUrl + 'a-lb.png',
+				},
+				zgp: {
+					id: 'zgp',
+					name: '手机研发周光平',
+					avatar: _imgUrl + 'a-zgp.png',
+				},
+				wc: {
+					id: 'wc',
+					name: '小米电视王川',
+					avatar: _imgUrl + 'a-wc.png',
+				},
+				ld: {
+					id: 'ld',
+					name: '生态链刘德',
+					avatar: _imgUrl + 'a-ld.png',
+				},
+				hf: {
+					id: 'hf',
+					name: 'MIUI洪锋',
+					avatar: _imgUrl + 'a-hf.png',
+				},
+				kk: {
+					id: 'kk',
+					name: '小米路由云KK',
+					avatar: _imgUrl + 'a-kk.png',
+				},
+				st: {
+					id: 'st',
+					name: '沈腾',
+					avatar: _imgUrl + 'a-st.png',
+				},
+			};
+			_members = $.extend(_members, defaultMembers);
+
+
+			// 引导对话
+			_dialog.d0 = [{
+				type: 'plain',
+				author: _members.lj,
+				content: userName + ' 你好，are you ok？',
+				pause: 2000,
+			}, {
+				type: 'plain',
+				author: _members.lwq,
+				content: '欢迎 ' + userName + gif.welcome + gif.welcome + gif.welcome,
+				flag: 'emoji-welcome',
+			}, {
+				type: 'plain',
+				author: _members.lb,
+				content: '欢迎' + gif.welcome + gif.welcome + gif.welcome + gif.welcome + gif.welcome,
+			}, {
+				type: 'plain',
+				author: _members.zgp,
+				content: '欢迎' + gif.welcome + gif.welcome + gif.welcome + gif.welcome,
+			}, {
+				type: 'plain',
+				author: _members.lj,
+				content: '想了解啥尽管问吧：）',
+			}, ];
+
+			// 关于存储大小的对话
+			_dialog.d2 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '小米Max能存多少东西？好想放很多很多视频，路上慢慢看',
+			}, {
+				type: 'plain',
+				author: _members.lwq,
+				content: '海内存知己，大内存天下啊！',
+			}, {
+				type: 'plain',
+				author: _members.zgp,
+				content: '最高可通过3选2卡槽，扩展到256GB @王川 能装多少部剧呢？',
+				pause: 3000,
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '我统计了一下，@' + userName + ' 给你三个选项，要不你来猜猜？',
+			}, ];
+
+
+			// 关于电量的对话
+			_dialog.d3 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '据说小米Max电量很大？',
+			}, {
+				type: 'plain',
+				author: _members.lj,
+				content: '小米Max是小米有史以来电量最大的手机，容量达到4850mAh。',
+				pause: 2000,
+			}, {
+				type: 'plain',
+				author: _members.kk,
+				content: '我们测试了，从北京出发，开车到包头，全程8小时手机导航，最后还能剩下33%的电量',
+				//pause: 0,
+			}, {
+				type: 'animation',
+				author: _members.kk,
+				content: _animation.tour,
+				flag: 'animate-tour',
+				pause: 5000,
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '如果你是坐火车的话，下载一部《太阳的后裔》在小米Max里，最后只有两种情况',
+				pause: 3000,
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '要么火车到了，要么剧看完了，但是小米Max还是妥妥得有电哦~',
+				flag: 'animate-train',
+				pause: 6000,
+			}, {
+				type: 'plain',
+				author: _members.kk,
+				content: '小米Max不仅续航惊人，其它方面也很赞',
+			}];
+
+			// 关于求红包的对话
+			_dialog.d8 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '我听了这么多，老板们发个红包呗',
+			}, {
+				type: 'system',
+				content: '生态链刘德退出群聊',
+				pause: 500,
+			}, {
+				type: 'system',
+				content: '小米网林斌退出群聊',
+				pause: 400,
+			}, {
+				type: 'system',
+				content: 'MIUI洪锋退出群聊',
+				pause: 700,
+			}, {
+				type: 'system',
+				content: '小米电视王川退出群聊',
+				pause: 400,
+			}, {
+				type: 'system',
+				content: '小米路由云KK退出群聊',
+				pause: 500,
+			}, {
+				type: 'system',
+				content: '手机研发周光平退出群聊',
+				pause: 1500,
+			}, {
+				type: 'plain',
+				author: _members.lwq,
+				content: '哈哈，大家开个玩笑，微信公众号现在不允许H5发红包了哦..',
+			}, ];
+
+			// 关于 存储空间 - 30部奥斯卡 的对话
+			_dialog.d2_1 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '我觉得能放个30部影片已经很大了！',
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '那你可就小看小米Max了，它最大可是能放下700集左右的海贼王的！',
+			}, {
+				type: 'plain',
+				author: _members.me,
+				content: '果然是大容量啊！',
+			}, ];
+
+			// 关于 存储空间 - 80集美剧 的对话
+			_dialog.d2_2 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '我觉得能放个80集美剧已经很牛了！',
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '那你可就小看小米Max了，它最大可是能放下700集左右的海贼王的！',
+				pause: 3000,
+			}, {
+				type: 'plain',
+				author: _members.me,
+				content: '果然是大容量啊！',
+			}, ];
+
+			// 关于 存储空间 - 700番海贼王 的对话
+			_dialog.d2_3 = [{
+				type: 'plain',
+				author: _members.me,
+				content: '既然容量这么大，应该能放一整部海贼王吧？',
+			}, {
+				type: 'plain',
+				author: _members.wc,
+				content: '你太厉害了，小米Max通过扩展卡最大存储达到256GB，700集左右的《海贼王》存进去杠杠的！',
+				pause: 3000,
+			}, {
+				type: 'plain',
+				author: _members.me,
+				content: '果然是大容量啊！',
+			}, ];
+		}
+
+		$.fn.scrollSmooth = function(scrollHeight, duration) {
+			var $el = this;
+			var el = $el[0];
+			var startPosition = el.scrollTop;
+			var delta = scrollHeight - startPosition;
+			var startTime = Date.now();
+
+			function scroll() {
+				var fraction = Math.min(1, (Date.now() - startTime) / duration);
+				el.scrollTop = delta * fraction + startPosition;
+				if (fraction < 1) {
+					setTimeout(scroll, 10);
+				}
+			}
+			scroll();
+		};
+
+		$.fn.goSmooth = function(height, duration) {
+			var $el = this;
+			var startPosition = 1 * $el.css('margin-bottom').replace('px', '');
+			var delta = height - startPosition;
+			var startTime = Date.now();
+
+			function scroll() {
+				var fraction = Math.min(1, (Date.now() - startTime) / duration);
+				$el.css('margin-bottom', delta * fraction + startPosition);
+				if (fraction < 1) {
+					setTimeout(scroll, 10);
+				}
+			}
+			scroll();
+		};
+
+		var $chat = $('#chatContent');
+
+		function Queue() {};
+		Queue.prototype = {
+			add: function(el) {
+				if (this._last) {
+					this._last = this._last._next = { //_last是不断变的
+						el: el,
+						_next: null //设置_last属性表示最后一个元素，并且让新增元素成为它的一个属性值
+					}
+				} else {
+					this._last = this._first = { //我们要设置一个_first属性表示第一个元素
+						el: el,
+						_next: null
+					}
+				}
+				return this;
+			}
+		}
+
+		function copyQueue(p) {
+			var queue = new Queue;
+			for (var i = 0; i < p.length; i++) {
+				queue.add(p[i]);
+			}
+			return queue;
+		};
+
+		function activeInput() {
+			$('.box_ft').find('.input-wrapper').addClass('J_inputWrapper');
+		}
+
+		function deactiveInput() {
+			$('.box_ft').find('.input-wrapper').removeClass('J_inputWrapper');
+		}
+
+		function showChoice(choice, delay) {
+			$('.J_noticeInput').hide();
+
+			if (delay === null) {
+				delay = 100;
+			}
+			if (!choice) {
+				choice = '0';
+			}
+
+			setTimeout(function() {
+				$('.J_choiceWrapper').addClass('opened').find('.J_choice').removeClass('choosen').hide();
+				$('.J_inputWrapper').addClass('opened');
+				var $choiceUl = $('.J_choiceWrapper').find('.J_choice').filter('[data-choice="' + choice + '"]');
+				var cH = $choiceUl.addClass('choosen').show().height();
+				var ftH = $('.box_ft').height();
+				var sOH = $('#chatContent').height();
+
+				$('.box_bd').goSmooth(cH, 100);
+				$('.J_scrollContent').scrollSmooth(ftH + sOH, 300);
+
+			}, delay);
+		}
+
+		function hideChoice() {
+			$('.box_bd').goSmooth(0, 100);
+			$('.J_inputWrapper').removeClass('opened');
+			$('.J_choiceWrapper').removeClass('opened');
+		}
+
+		function playTour() {
+			$('.J_mapWrapper').addClass('animate');
+			var i = 0;
+			var interval = setInterval(function() {
+				if (i >= 9) {
+					$('.J_tourtime').html(8);
+					clearInterval(interval);
+				} else {
+					i++;
+					$('.J_tourtime').html(i % 9);
+				}
+			}, 5000 / 9);
+
+		}
+
+		function showDialog(dialog, cb) {
+			// 显示对话的时候，菜单栏不可点
+			deactiveInput();
+
+			var message = copyQueue(dialog)._first;
+			var tpl = doT.template($('#messageTpl').html());
+
+			function loop(delay) {
+				// speed
+				if (delay == undefined) {
+					// random delay between messages
+					delay = Math.random() * 1000 + 600;
+					//delay = Math.random() * 50 + 50;
+				}
+
+				var timeout = setTimeout(function() {
+					if (message) {
+						// 显示 message
+						var messageHtml = tpl([message.el]);
+						$chat.append(messageHtml);
+
+						// 自动滚动
+						var viewH = $('.J_scrollContent').height();
+						var contentH = $chat.height();
+						if (contentH > viewH) {
+							$('.J_scrollContent').scrollSmooth(contentH - viewH + 16, 300)
+						}
+
+						// 执行附加效果
+						if (message.el.flag) {
+							var flag = message.el.flag;
+
+							switch (flag) {
+								case 'animate-tour':
+									playTour();
+									break;
+								default:
+									break;
+							}
+						}
+
+						// 特别语句的特殊delay
+						if (message.el.pause != undefined) {
+							loop(message.el.pause);
+						} else {
+							loop();
+						}
+
+						// 指向下一句
+						message = message._next;
+
+					} else {
+						activeInput();
+						clearTimeout(timeout);
+						cb && cb();
+					}
+				}, delay);
+			};
+
+			loop(0);
+		};
+
+		$(document).ready(function() {
+			_members.me = me;
+			geneDialog(_userName);
+
+			//展示默认的引导对话
+			showDialog(_dialog['d0'], function() {
+				$('.J_noticeInput').show();
+			});
+
+			// 不同选项点击触发不同的对话和下级选项
+			$('.box_ft').on('click', '.J_choice .J_liNext', function(e) {
+				e.preventDefault();
+				var $choice = $(this);
+				var dialogId = $choice.attr('data-target-dialog');
+				var choiceId = $choice.attr('data-target-choice');
+				var continueDialog = ($choice.attr('data-continue') !== 'false');
+
+				// if ($choice.hasClass('disabled')) {
+				// 	return;
+				// }
+				$('.J_mainChoice').find('.J_liNext[data-target-dialog="' + dialogId + '"]').addClass(
+					'disabled');
+
+				if (!choiceId) {
+					choiceId = '0';
+				}
+
+				hideChoice();
+				clearTimeout(window.waitUser);
+
+				showDialog(_dialog['d' + dialogId], function() {
+					if (continueDialog) {
+						showChoice(choiceId, 500);
+						// 用户若干秒没操作的话，提示文案
+						window.waitUser = setTimeout(function() {
+							var random = Math.floor((Math.random() * 3) + 1);
+							showDialog(_dialog['dr_' + random]);
+						}, 30000);
+					}
+				});
+
+				if (!$('.J_mainChoice').find('.J_liNext').not('.disabled')) {
+					clearTimeout(window.waitUser);
+				}
+			});
+
+			//显示或者隐藏菜单
+			$(document).on('click', '.J_inputWrapper', function() {
+				var choosen = $('.J_choice').filter('.choosen').attr('data-choice');
+				if ($('.J_choiceWrapper').hasClass('opened')) {
+					hideChoice();
+				} else {
+					showChoice(choosen, 0);
+				}
+			});
+
+			// 对话里的图片点击时会全屏显示
+			$(document).on('click', '.J_img', function(e) {
+				var $target = $(this);
+				var imgUrl = $target.attr('src').replace(/\.(jpg|jpeg|png|gif)/, '-hd.$1');
+
+				if (imgUrl) {
+					// 全屏显示照片
+					loadImg(imgUrl);
+					$('#J_fullPics').show();
+				}
+
+			});
+		});
+	</script>
+</html>

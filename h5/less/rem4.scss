@@ -1,0 +1,22 @@
+/**单位转换
+@param {int} $px - 设计图上的 px 大小
+@returns {rem} - 转换后的 rem 值
+ */
+@function r($px) {
+  @return $px / 18.75 + rem;
+}
+
+.con{
+	width: r(750);
+	height:r(200);
+	background-color: #00557F;
+}
+// 或者
+// @function j($px, $base-font-size: 75px) {
+//   @if (unitless($px)) {
+//     @return j($px + 0px);
+//   } @else if (unit($px) == rem) {
+//     @return $px;
+//   }
+//   @return ($px / $base-font-size) * 1rem;
+// }

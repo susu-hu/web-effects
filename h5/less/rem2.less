@@ -1,0 +1,17 @@
+// 方法一-----》表示1rem=100px;
+// .rem(@name,@px){
+//     @{name} : unit(@px / 100,rem);
+// }
+// .susu {
+// 	.rem(width,750);
+// 	.rem(height,200);
+// 	background-color: #aaaaff;
+// }
+
+// 方法二
+@rem:100rem;//-----》表示1rem=100px;
+.susu {
+	width: 750/@rem;
+	height: 200/@rem;
+ 	background-color: #aaaaff;
+ }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.square-list {
+		  margin: 0;
+		  padding: 0;
+		  clearfix: both;
+		  font-size: 0;
+		}
+		.square-list > input {
+		  display: inline-block;
+		  box-sizing: border-box;
+		  width: 40px;
+		  height: 40px;
+		  border: solid #ccc;
+		  border-width: 1px 1px 1px 0;
+		  font-size: 16px;
+		  text-align: center;
+		}
+		.square-list > input:first-child {
+		  border-left-width: 1px;
+		}
+	</style>
+	<body>
+		<div class="input-wrapper">
+			<div class="J_squareInput square-list clearfix">
+				<input type="text" maxlength="1">
+				<input type="text" maxlength="1">
+				<input type="text" maxlength="1">
+				<input type="text" maxlength="1">
+				<input type="text" maxlength="1">
+				<input type="text" maxlength="1">
+			</div>
+		</div>
+	</body>
+	<script  src=""></script>
+	<script>
+		$(function() {
+			var $squareInput = $('.J_squareInput');
+			var active = 0;
+			var max = 6;
+		
+			$squareInput.find('input').eq(0).focus();
+			$squareInput.find('input').on('keyup', function(event) {
+				
+				var key = event.which || event.keyCode || event.charCode;
+				var index = $(this).index();
+				var next = 0;	
+		
+				if (key == 8 || key == 46) {
+					next = index - 1;
+					$(this).val('');
+					if (next > -1) {
+						$squareInput.find('input').eq(next).focus();
+					}
+					if (active >= 0) {
+						active--;
+					}
+				} else if ((48 <= key && key <= 57) || (96 <= key && key <= 105)) {
+					console.log('keyup ' + index);
+					next = index + 1;
+					if (next < max) {
+						$squareInput.find('input').eq(next).focus();
+					}
+					if (active <= max) {
+						active++;
+					}
+				} else {
+					$(this).val('');
+				}
+		
+				if (active >= max) {
+					var value = [];
+					$squareInput.find('input').each(function(i) {			
+						if ($(this).val() != undefined) {
+							value.push($(this).val());
+						}
+					});
+					console.log('finish ' + value.join(''));
+				}
+			});
+		});
+	</script>
+</html>

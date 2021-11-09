@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title></title>
+	</head>
+	<link rel="stylesheet/less" type="text/css"  href="less/rem2.less" />
+	<script src="js/less.js"></script>
+	<style>
+		html {
+			height: 100%;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<body>
+		<div class="susu"></div>
+	</body>
+	<script>
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (clientWidth >= 750) {
+						docEl.style.fontSize = '100px';
+					} else {
+						docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+					}
+				};
+
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</html>

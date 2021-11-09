@@ -1,0 +1,15 @@
+.rem(@name,@px){
+    @{name} : unit(@px / 75,rem);
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.content{
+    .rem(width,750);
+    .rem(height,200);
+    background: #ccc;
+	.rem(font-size,30);
+	.rem(padding,30);
+	box-sizing: border-box;
+}

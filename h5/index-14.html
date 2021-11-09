@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		.con {
+			width: 40rem;
+			height: 10.6666666667rem;
+			background-color: #00557F;
+		}
+	</style>
+	<body>
+		<div class="con"></div>
+	</body>
+	<script>
+		function resize() {
+			if (document.documentElement.clientWidth >= 600) {
+				document.documentElement.style.fontSize = '30px'
+				return
+			}
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
+		}
+		resize()
+		window.onresize = resize
+	</script>
+</html>
