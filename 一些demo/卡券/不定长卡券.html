@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #222;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.content {
+			min-width: 67px;
+			display: inline-block;
+			font-size: 12px;
+			line-height: 23px;
+			color: #FFFFFF;
+			padding: 0 10px 0 10px;
+			height: 23px;
+			-webkit-mask: radial-gradient(circle at 5px, transparent 5px, red 0) -5px;
+			background: linear-gradient(145deg, red, orange);
+			border-radius: 4px;
+			position: relative;
+			margin-bottom: 40px;
+		}
+
+		.content::before {
+			content: '';
+			position: absolute;
+			border: 1px dashed #fff;
+			height: 23px;
+			top: 0;
+			left: 10px;
+			transform: scaleX(0.5);
+		}
+
+		.content p {
+			padding-left: 10px;
+		}
+		.col{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	</style>
+	<body>
+		<section class="col">
+			<div class="content">
+				<p>苏苏1232342324334</p>
+			</div>
+			<div class="content">
+				<p>苏苏</p>
+			</div>
+			<div class="content">
+				<p>苏苏好好好好哈哈哈哈哈哈哈</p>
+			</div>
+			<div class="content">
+				<p>dagedadagedadasdgdada </p>
+			</div>
+			<div class="content">
+				<p>大大大大所大所大所大所大所大所大所大所大所大所大所大所大所大所</p>
+			</div>
+		</section>
+	</body>
+</html>
