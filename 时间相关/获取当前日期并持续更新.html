@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="times"></div>
+	</body>
+	
+	<script type="text/javascript">
+		var times=document.getElementById("times")
+		function sz(){
+			t=setInterval(function(){
+			//获取时间对象
+			var dd=new Date;
+			//获取年月日，时分秒
+			var y=dd.getFullYear();
+			var m=dd.getMonth()+1;
+			var d=dd.getDate();
+			var h=dd.getHours();
+			var i=dd.getMinutes();
+			var s=dd.getSeconds();
+			var wkday = dd.getDay();
+			times.innerHTML=y+"年"+m+"月"+d+"日"+"   "+h+":"+i+":"+s+" "+"星期"+"日一二三四五六".charAt(wkday);
+		},1000)
+	}
+		sz()
+	</script>
+</html>

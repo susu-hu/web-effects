@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>溢出文本text-overflow例子</title>
+		<meta name="Generator" content="EditPlus" charset="UTF-8">
+	</head>
+	<style>
+		.a {
+			text-overflow: clip;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 200px;
+			background-color: yellow;
+
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			text-overflow: ellipsis;
+			-webkit-line-clamp: 2; 
+		}
+	</style>
+	<body>
+		<div class="a" style="">
+			不显示省略标记，而是简单的裁切哈哈哈哈哈哈红红火火恍恍惚惚
+		</div>
+		<div style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:200px;background-color:red;">
+			显示省略标记，不是简单的裁切
+		</div>
+	</body>
+</html>

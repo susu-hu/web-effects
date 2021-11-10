@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		p {
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			color: #333;
+			border: 1px solid #222;
+			margin: 20px;
+		}
+
+		.a:nth-child(1) {
+			background-color: #aaaaff;
+		}
+
+		.a:nth-child(2) {
+			background-color: #00557F;
+		}
+
+		/* 这个不生效。父亲元素中 第一个元素不是a */
+		.b:nth-child(1) {
+			background-color: #aa5500 !important;
+		}
+
+		.b:nth-child(2) {
+			background-color: #001933;
+		}
+
+		.c {
+			border: 1px solid #222;
+			margin: 20px;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			text-overflow:clip;
+			-webkit-line-clamp: 2;
+		}
+	</style>
+	<body>
+		<section style="display: flex;">
+			<div>
+				<p class="a">1</p>
+				<p class="a">2</p>
+				<p class="a">3</p>
+				<p class="a">4</p>
+			</div>
+
+			<div>
+				<p class="a">5</p>
+				<p class="b">6</p>
+				<p class="b">7</p>
+				<p class="b">8</p>
+			</div>
+		</section>
+
+		<div class="c">阿苏USD鬼画符收到回复圣诞节会发生很大方就师傅好几十大富科技收到回复是的 ajuisUI爱上的人我䀔䀔无二we我二哥二维r
+		ushf uiswhf ueiwhfueiwus我要和URIE瑞䦹 放到</div>
+
+	</body>
+</html>
