@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a {
+			width: 300px;
+			height: 300px;
+			background: radial-gradient(300px 300px at 112px 0, #eee 75%, #333 75%);
+		}
+
+		.b {
+			width: 300px;
+			height: 300px;
+			background: linear-gradient(115deg, #ff66ff, #4db8ff);
+			mask-image: radial-gradient(300px 300px at 112px 0, rgba(255, 255, 255, 0) 75%, #333 75%);
+			-webkit-mask-image: radial-gradient(300px 300px at 112px 0, rgba(255, 255, 255, 0) 75%, #333 75%);
+		}
+	</style>
+	<body>
+		<div class="a"></div>
+		<div class="b"></div>
+	</body>
+</html>

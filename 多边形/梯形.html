@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a{
+			width: 164px;
+			height: 50px;
+			background:linear-gradient(290deg, #FFEED8 100%, red 10%) ;
+			border-radius: 4px 4px 4px 0px;
+		}
+		.container {
+		  position: absolute;
+		  left: 100px;
+		  overflow: hidden;
+		  height: 132px;
+		  width: 453px;
+		}
+		
+		.trapezoid {
+		      position: absolute;
+		      left: 25px;
+		      height: 100%;
+		      width: 100%;
+		      background: linear-gradient(180deg, #FFE345 0%, rgba(255, 227, 69, 0) 100%),linear-gradient(0deg, #EFAF19, #EFAF19),rgba(50, 42, 31, 0.8);
+		      box-shadow: 0px -3px 12px rgba(246, 201, 69, 0.7);
+		      transform: skewX(-20deg); 
+			  /* // 重点是这句 */
+		}
+	</style>
+	<body>
+		<div class="a"></div>
+		<!-- <div class="container">
+		  <div class="trapezoid"></div>
+		</div> -->
+	</body>
+</html>

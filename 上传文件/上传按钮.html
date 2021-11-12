@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<!-- 引入 layui.css -->
+	<link rel="stylesheet" href="//unpkg.com/layui@2.6.8/dist/css/layui.css">
+	<style>
+		.add_box {
+			display: inline-block;
+			height: 38px;
+			line-height: 38px;
+			border: 1px solid transparent;
+			padding: 0 18px;
+			background-color: #009688;
+			color: #fff;
+			white-space: nowrap;
+			text-align: center;
+			font-size: 14px;
+			border-radius: 2px;
+			cursor: pointer;
+			box-sizing: border-box;
+			position: relative;
+		}
+
+		.add_box:hover {
+			opacity: .8;
+			filter: alpha(opacity=80);
+			color: #fff;
+		}
+
+		.i_none {
+			left: 0;
+			top: 0;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			cursor: pointer;
+			opacity: 0;
+		}
+	</style>
+	<body>
+		<div class="add_box">
+			<i class="layui-icon"></i>选择文件
+			<input type="file" multiple="multiple" accept="image/*" class="i_none" />
+		</div>
+	</body>
+</html>
