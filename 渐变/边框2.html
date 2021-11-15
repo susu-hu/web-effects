@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>边框渐变的拱形</title>
+        <style>
+
+            .border2{
+                width: 200px;
+                height: 100px;
+                margin:100px auto;
+
+              position: relative;
+                border: 1px solid transparent;
+                border-bottom: 0;
+                border-radius: 200px 200px 0 0;
+                background: white;
+                background-clip: padding-box;
+                padding: 10px;
+            }
+            .border2::after{
+
+                position: absolute;
+                top: -40px;
+                bottom: 0px;
+                left: -40px;
+                 right: -40px;
+                background: linear-gradient(to right,red, blue);
+                content: '';
+                z-index: -1;
+                border-radius: 200px 200px 0 0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="border2"></div>
+    </body>
+</html>

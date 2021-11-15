@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>边框渐变的拱形</title>
+        <style>
+
+            .circle{
+                width: 200px;
+                /*height: 200px;*/
+                line-height: 100px;
+                text-align: center;
+                margin: 100px;
+                /*background-color: red;*/
+            }
+            .semi-circle {
+                border-radius: 200px 200px 0 0 ;
+                height: 100px;
+                border: 20px solid red;
+                border-bottom: 0;
+                /*border-image: -moz-linear-gradient(green,blue);
+                border-image: -webkit-linear-gradient(green,blue);
+                border-image: linear-gradient(to right,green,blue) 30 30;*/
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="circle semi-circle"></div>
+
+    </body>
+</html>

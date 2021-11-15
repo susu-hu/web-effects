@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>边框渐变的拱形</title>
+        <style>
+
+            .border{
+              position: relative;
+                border: 4px solid transparent;
+                border-radius: 16px;
+                background: linear-gradient(orange, violet);
+                background-clip: padding-box;
+                padding: 10px;
+                /* just to show box-shadow still works fine */
+                box-shadow: 0 3px 9px black, inset 0 0 9px white;
+            }
+            .border::after{
+                position: absolute;
+                top: -4px; bottom: -4px;
+                left: -4px; right: -4px;
+                background: linear-gradient(red, blue);
+                content: '';
+                z-index: -1;
+                border-radius: 16px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="border"></div>
+
+    </body>
+</html>
