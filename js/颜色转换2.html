@@ -1,0 +1,123 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	        <head>
+
+		       
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		        <title>16进制颜色值转RGB</title>
+
+		        <style>
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: 'Microsoft yahei'
+			}
+
+			.replace {
+				width: 400px;
+				height: 210px;
+				margin: 0 auto;
+				padding-top: 40px;
+			}
+
+			.title {
+				text-align: center;
+				display: block
+			}
+
+			form {
+				width: 200px;
+				margin: 30px auto;
+			}
+
+			input {
+				outline: none;
+			}
+
+			input[type="button"] {
+				cursor: pointer;
+			}
+		</style>
+
+		        <script>
+			function hexToR(h) {
+
+				return parseInt((cutHex(h)).substring(0, 2), 16)
+
+			}
+
+			function hexToG(h) {
+
+				return parseInt((cutHex(h)).substring(2, 4), 16)
+
+			}
+
+			function hexToB(h) {
+
+				return parseInt((cutHex(h)).substring(4, 6), 16)
+
+			}
+
+			function cutHex(h) {
+
+				return h.charAt(0) == "#" ? h.substring(1, 7) : h
+
+			}
+
+			function setBgColorById(id, sColor) {
+
+				var elems;
+
+				if (document.getElementById) {
+
+					if (elems = document.getElementById(id)) {
+
+						if (elems.style) elems.style.backgroundColor = sColor;
+
+					}
+
+				}
+
+			}
+		</script>
+
+		       
+	</head>
+
+	        <body>
+
+		            <div class="replace">
+
+			                <span class="title">JavaScript原生16进制颜色值转RGB值</span>
+
+			                 <form name="rgb">
+
+				                     <input value="ffffff" maxlength="7" size="16" name="hex" />
+
+				               <input onclick="setBgColorById('colorSample',this.form.hex.value);
+
+               this.form.r.value=hexToR(this.form.hex.value);
+
+               this.form.g.value=hexToG(this.form.hex.value);
+
+               this.form.b.value=hexToB(this.form.hex.value);" value="转换" type="button" name="btn" />
+
+				               <br /><br />
+
+				                   R:<input style="width:30px" size="3" name="r" />
+
+				                G:<input style="width:30px" size="3" name="g" />
+
+				                B:<input style="width:30px" size="3" name="b" />
+
+				                 </form>               
+
+			            </div>
+
+	</body>
+
+</html>
