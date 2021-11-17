@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>border渐变</title>
+		<style>
+			.button1 {
+				background: transparent;
+				color: #23b7cb;
+				font-size: 15px;
+				padding: 5px 15px;
+				border: 1px transparent solid;
+				border-image: linear-gradient(to right, #000718, #23b7cb) 1 10;
+			}
+
+			button {
+				color: #23b7cb;
+				font-size: 15px;
+				padding: 5px 15px;
+				background: #fff;
+				border: 1px transparent solid;
+				border-radius: 30px;
+				position: relative;
+			}
+
+			button:after {
+				content: '';
+				position: absolute;
+				top: -3px;
+				bottom: -3px;
+				left: -3px;
+				right: -3px;
+				background: linear-gradient(135deg, #000781, #23b7cb);
+				border-radius: 30px;
+				content: '';
+				z-index: -1;
+			}
+		</style>
+	</head>
+	<body>
+		<button>进入平台</button>
+		<div class="button1"></div>
+	</body>
+</html>

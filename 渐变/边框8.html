@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.box {
+			width: 100px;
+
+			height: 100px;
+
+			border: 10px solid #ddd;
+
+			border-image: -webkit-linear-gradient(#F80, #2ED) 20 20;
+
+			border-image: -moz-linear-gradient(#F80, #2ED) 20 20;
+
+			border-image: -o-linear-gradient(#F80, #2ED) 20 20;
+
+			border-image: linear-gradient(#F80, #2ED) 20 20;
+			
+			/* border-color属性为我们提供了同一条边框设置多种颜色，但是目前为止只有Firefox 3.0+的浏览支持这个属性。所以运用或测试时我们需要加上-moz-前缀。 */
+
+			/* width: 200px;
+
+			height: 100px;
+
+			border: 10px solid transparent;
+
+			border-radius: 15px 0 15px 0;
+
+			-moz-border-top-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			-moz-border-right-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			-moz-border-bottom-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			-moz-border-left-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			border-top-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			border-right-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			border-bottom-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+
+			border-left-colors: #a0a #909 #808 #707 #606 #505 #404 #303;
+ */
+		}
+		
+		.demo1 {
+		    width: 200px;
+		    height: 100px;
+		    /*border: 10px solid;*/
+		    /* border-image: -webkit-linear-gradient( red, blue) 30 30;
+		    border-image: -moz-linear-gradient( red, blue) 30 30;
+		    border-image: linear-gradient( red, blue) 30 30; */
+		    background: -webkit-linear-gradient(0deg, red, blue);
+		    /*background-image: -webkit-repeating-linear-gradient(left, #333 5%, #ccc 10%);*/
+		    /* background-image: -o-repeating-linear-gradient(left, #333 5%, #ccc 10%);
+		    background-image: repeating-linear-gradient(to right, #333 5%, #ccc 10%); */
+		    border-radius: 10px;
+		    border: 1px solid #fff;
+		}
+		.demo2 {
+		    width: 190px;
+		    height: 90px;
+		    background-color: #fff;
+		    border-radius: 6px;
+		    margin: 0 auto;
+		    margin-top: 5px;
+		}
+		
+	</style>
+	<body>
+		<div class="box"></div>
+		<div class="demo1">
+		    <div class="demo2"></div>
+		</div>
+	</body>
+</html>
