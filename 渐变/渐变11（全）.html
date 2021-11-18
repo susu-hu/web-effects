@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>border-image 缺陷不支持圆角</title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background: #222;
+		}
+
+		button {
+			display: block;
+			margin-bottom: 30px;
+		}
+
+		.a {
+			display: inline-block;
+			padding: 7px 50px;
+			text-transform: uppercase;
+			font-weight: 600;
+			letter-spacing: 1.5px;
+			text-align: center;
+			line-height: 17px;
+			background: #000;
+			color: #F58549;
+			border: 4px solid;
+			border-image-source: linear-gradient(to right, #ffaa00, #F58549, red);
+			border-image-slice: 1;
+			cursor: pointer;
+		}
+
+		.b {
+			border: none;
+			background-color: #fff;
+			font-size: 40px;
+			cursor: pointer;
+			line-height: 1.8;
+			width: 250px;
+			box-sizing: border-box;
+			background-image: linear-gradient(#2e2e2e, #2e2e2e), linear-gradient(to bottom right, #ffaa00, #F58549, red);
+			font-weight: 300;
+			color: #2fd830;
+			padding: 2px;
+			border-radius: 100px;
+			background-clip: content-box, padding-box;
+			transition: filter .5s ease;
+		}
+
+		.b:hover {
+			filter: hue-rotate(90deg);
+		}
+
+		a {
+			cursor: pointer;
+			transition: ease-in-out, .2s, color;
+		}
+
+		a:hover {
+			color: #DDD;
+		}
+
+		.c {
+			display: block;
+			width: 200px;
+			padding: 2px;
+			overflow: hidden;
+			border-radius: 20px;
+			background: linear-gradient(to right, #ffaa00 0%, red 100%);
+		}
+
+		.c span {
+			display: inline-block;
+			padding: 10px;
+			text-align: center;
+			background: #242424;
+			border-radius: 20px;
+			width: 100%;
+			box-sizing: border-box;
+
+		}
+
+		.c span p {
+			padding: 0 20px;
+			margin: 0;
+		}
+
+		.d {
+			display: block;
+			width: 100px;
+			margin-top: 20px;
+			position: relative;
+			border-radius: 20px;
+			padding: 10px 20px;
+			background: #222;
+
+		}
+
+		.d::after {
+			position: absolute;
+			z-index: -1;
+			top: -2px;
+			bottom: -2px;
+			right: -2px;
+			left: -2px;
+			background: linear-gradient(to right, #ffaa00 0%, red 100%);
+			;
+			border-radius: 20px;
+			content: '';
+		}
+
+
+		.e {
+			margin-top: 40px;
+			height: 20px;
+			border-radius: 20px;
+			width: 200px;
+			color: #fff;
+			background: linear-gradient(to right, #ffaa00 0%, red 100%);
+			background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+			background-position: 0px 0px, 200px 100px, 0px 100px, 200px 0px;
+			padding: 10px;
+			animation: border-dance 4s infinite linear;
+		}
+
+		@keyframes border-dance {
+			0% {
+				background-position: 0px 0px, 300px 116px, 0px 150px, 216px 0px;
+			}
+
+			100% {
+				background-position: 300px 0px, 0px 116px, 0px 0px, 216px 150px;
+			}
+		}
+
+		.f {
+			color: #fff;
+			margin-top: 40px;
+			height: 100px;
+			width: 200px;
+			background: linear-gradient(90deg, #ffaa00 50%, transparent 50%), linear-gradient(90deg, red 50%, transparent 50%), linear-gradient(0deg, #ffaa00 50%, transparent 50%), linear-gradient(0deg, red 50%, transparent 50%);
+			background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+			background-position: 0px 0px, 200px 100px, 0px 100px, 200px 0px;
+			padding: 10px;
+			animation: border-dance 4s infinite linear;
+		}
+
+		.g {
+			color: #fff;
+			margin-top: 40px;
+			height: 100px;
+			width: 200px;
+			background: linear-gradient(90deg, #ffaa00 50%, transparent 50%), linear-gradient(90deg, red 50%, transparent 50%), linear-gradient(0deg, #ffaa00 50%, transparent 50%), linear-gradient(0deg, red 50%, transparent 50%);
+			background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
+			background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+			background-position: 0px 0px, 200px 100px, 0px 100px, 200px 0px;
+			padding: 10px;
+			animation: border-dance 4s infinite linear;
+		}
+
+		.i {
+			position: relative;
+			margin: 10% auto 0;
+			width: 50%;
+			height: 50px;
+			background: linear-gradient(0deg, #000, #272727);
+			border-radius: 25px;
+		}
+
+		.i:before,
+		.i:after {
+			content: '';
+			position: absolute;
+			left: -2px;
+			top: -2px;
+			background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+					#0000ff, #00ff00, #ffff00, #ff0000);
+			background-size: 400%;
+			width: calc(100% + 4px);
+			height: calc(100% + 4px);
+			z-index: -1;
+			border-radius: 25px;
+			animation: anim-moving-glow 20s linear infinite;
+		}
+
+		@keyframes anim-moving-glow {
+			0% {
+				background-position: 0 0;
+			}
+
+			50% {
+				background-position: 400% 0;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		.i:after {
+			filter: blur(30px);
+		}
+
+		svg {
+			margin-top: 40px;
+			width: 100px;
+			height: 100px;
+			stroke-dasharray: 400px;
+			stroke-dashoffset: 400px;
+			fill: none;
+			stroke: pink;
+			stroke-width: 0.25em;
+			animation: draw 800ms 200ms ease infinite alternate;
+		}
+
+		@keyframes draw {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+	</style>
+	<body>
+		<section style="display: flex;flex-direction: column;align-items: center;">
+			<!-- border-image 缺陷不支持圆角 -->
+			<button class="a">苏苏小苏苏</button>
+			<!-- background-image/background-clip -->
+			<button class="b"> 苏苏小苏苏 </button>
+			<!-- 嵌套和:after 伪类  外面的元素负责渐变，里面的元素负责纯色-->
+			<a class="c">
+				<span>
+					<p>苏苏小苏苏</p>
+				</span>
+			</a>
+			<!-- :after 伪类 -->
+			<a class="d">苏苏小苏苏</a>
+			<!-- 一些动画 -->
+			<div class="e">苏苏小苏苏</div>
+			<div class="f"></div>
+			<div class="g"></div>
+			<div class="i"></div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+				<rect x="5" y="5" rx="8" ry="8" stroke-linecap="round" width="90" height="90" />
+			</svg>
+		</section>
+
+	</body>
+</html>

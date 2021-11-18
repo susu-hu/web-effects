@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>圆边框渐变</title>
-	<style type="text/css">
-		
-		.son-box{
-			position: relative;
-			width: 80px;
-			height: 80px;
-			line-height: 80px;
-			border-radius: 50%;
-			background: white;
-			text-align: center;
-			margin: 0 auto;
-			margin-top: 120px;
-		}
-		.son-box::after{
-			position: absolute;
-                        content: '';
-                        background: linear-gradient(red, yellow);
-                        bottom: 0;
-                        right: 0;
-                        left: 0;
-                        top: 0;
-                        z-index: -1;
-                        transform: scale(1.1);
-                        border-radius: 50%;
-		}
-	</style>
-</head>
-<body>
-<div class="son-box">24min</div>
-</body>
+	<head>
+		<title>圆边框渐变</title>
+		<style type="text/css">
+			.son-box {
+				position: relative;
+				width: 80px;
+				height: 80px;
+				line-height: 80px;
+				border-radius: 50%;
+				background: white;
+				text-align: center;
+				margin: 0 auto;
+				margin-top: 120px;
+			}
+
+			.son-box::after {
+				position: absolute;
+				content: '';
+				background: linear-gradient(red, yellow);
+				bottom: 0;
+				right: 0;
+				left: 0;
+				top: 0;
+				z-index: -1;
+				transform: scale(1.1);
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="son-box">24min</div>
+	</body>
 </html>

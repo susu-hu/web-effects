@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>文字展开和收起</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	</head>
+	<style>
+		#text-tigger {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0px 15px 5px;
+			font-size: 12px;
+			color: #414141;
+			letter-spacing: -0.1px;
+			text-align: justify;
+			line-height: 18px;
+
+		}
+
+		#text-tigger a {
+			text-decoration: none;
+			font-size: 12px;
+			color: #3266CC;
+			margin-left: 10px;
+		}
+	</style>
+	<body>
+		<div id="text-tigger">
+			“葡萄堂”是温州医科大学附属眼视光医院葡萄膜炎专科搭建的患者关爱平台，是一个以眼病科普为初心，以公益医疗为手段，以提高患者生活质量为宗旨的平台；平台每月推出眼科知识讲座，分享科普知识，聆听患者最真实的心声，记录患者最直白的言语，帮助患者解决心中疑虑，医患携手共同面对并战胜疾病。
+			葡萄堂堂主：王毓琴博士
+			王毓琴，医学博士，主任医师、副教授、硕士生导师，毕业于中山大学中山眼科中心，师从著名葡萄膜炎专家杨培增教授，是浙江省内第一个从事葡萄膜炎专科诊疗的医生，目前担任葡萄膜病专科副主任。曾赴美国加州大学圣地亚哥分校Shiley眼科研究所进修。任中华医学会眼科分会眼免疫学组委员，中国医师协会眼科医师分会葡萄膜炎与免疫专业委员会委员，中国老年保健医学研究会眼科疾病防治分会委员。
+			葡萄堂成员：戴玛莉医生、林丹医生、刘茹茹个管师
+			<a href="javascript:;">收起</a>
+		</div>
+	</body>
+	<script>
+		//展开  收起
+		var oDiv = document.getElementById('text-tigger'); //获取文字的盒子
+		var oA = document.getElementsByTagName('a'); //获取 a 标签
+		var onOff = true;
+		var old = '';
+		move(); //默认收起
+		oA[0].onclick = move;
+
+		function move() { //a 链接点击后执行 move 函数
+			if (onOff) { //判断
+				onOff = false;
+				old = oDiv.innerHTML;
+				oDiv.innerHTML = oDiv.innerHTML.substring(0, 90) + '...<a href="javascript:;"> 展开 </a>';
+				oA = oDiv.getElementsByTagName('a');
+				oA[0].onclick = move;
+
+			} else {
+				onOff = true;
+				oDiv.innerHTML = old;
+				oA = oDiv.getElementsByTagName('a');
+				oA[0].onclick = move;
+			}
+		}
+	</script>
+</html>
