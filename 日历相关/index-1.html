@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="common_content order_content">
+			<div class="calendar-box demo-box"></div>
+		</div>
+	</body>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/calendar-pro.js"></script>
+	<script>
+		$(function() {
+			var calendar = $('.calendar-box').calendar({
+				ele: '.demo-box', //依附
+				title: '妈妈班活动管理',
+				beginDate: '2020-1-1'
+				today '2021-11-6'
+				month ''
+				start_date '',
+				endDate: ''
+				today ''
+				month ''
+				end_date '',
+				data: [],
+			});
+
+			_span_blue_html = _span_white_html = '';
+			_span_blue_html += '<span class="ht-rili-money" data-money="1"><b class="point"></b></span>'
+			_span_white_html +=
+				'<span class="ht-rili-money" data-money="1"><b class="point" style="background:#fff;"></b></span>'
+
+			// 清除所有图标并重新点亮
+			$.each($('.ht-rili-body div'), function(indexInArray, valueOfElement) {
+				el = $(this)
+				el_val = el.attr('data-date')
+
+				if (el_val == '<?=$data['
+					today ']['
+					date ']?>') {
+					el.addClass('in')
+					el.css('color', '#fff')
+				} else {
+					el.removeClass('in')
+				}
+
+				// 清除
+				el.find('span').remove('.ht-rili-money')
+				$.each(current_month_obj, function(indexInObj, valueOfObj) {
+					// 点亮
+					if (el_val == valueOfObj.start_date_format) {
+						// 增加白点
+						if (el.hasClass('in')) {
+							el.append(_span_white_html)
+						} else {
+							// 增加黑点
+							el.append(_span_blue_html)
+						}
+					}
+				});
+			});
+
+			// 创建时间对象
+			var _time = '<?=date('
+			Y - m - d ', strtotime($data['
+			today ']['
+			date ']))?>';
+			var time_format = _time.replace(/-/g, '/');
+
+
+			// 获取当前日
+			var current_day = new Date(time_format).getDate();
+
+			// 详情
+			$('.active').on('click', function() {
+				_data = $(this).attr('_data')
+				window.location.replace("/pclass/sign-in?sub_pclass_id=" + _data);
+			})
+
+			//点击日期
+			$('.ht-rili-onclick').on('click', function() {
+				_date = $(this).attr('data-date')
+				window.location.replace("/pclass/index?date=" + _date);
+			})
+
+			// 上个月
+			$('.ht-rili-leftarr').on('click', function() {
+				_date = getLastDate(current_day);
+				window.location.replace("/pclass/index?date=" + _date);
+			})
+
+			// 下个月
+			$('.ht-rili-rightarr').on('click', function() {
+				_date = getNextDate(current_day);
+				window.location.replace("/pclass/index?date=" + _date);
+			})
+
+			// 下个月
+			function getNextDate(_day) {
+				year = calendar.nextYear;
+				month = calendar.nextMonth;
+				nextDays = calendar.nextDays;
+
+				day = nextDays < _day ? nextDays : _day;
+				return `${year}-${month}-${day}`
+			}
+
+			// 上个月
+			function getLastDate(_day) {
+				year = calendar.lastYear;
+				month = calendar.lastMonth;
+				lastDays = calendar.lastDays;
+
+				day = lastDays < _day ? lastDays : _day;
+				return `${year}-${month}-${day}`
+			}
+
+		});
+	</script>
+</html>
