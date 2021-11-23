@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.tab{
+		  display: flex;
+		  background-color: #EFC0B8;
+		  padding: 10px 15px 0 15px;
+		  font-size: 14px;
+		}
+		.tab-item{
+		  position: relative;
+		  padding: 10px 35px;
+		  cursor: pointer;
+		  margin: 0 -15px;
+		  color: transparent;
+		  background-image:
+		    radial-gradient(circle at 27px 12px, var(--color,rgba(33,150,243,.59)) 12px,transparent 0),
+		    linear-gradient(var(--color,#4caf50),var(--color,#4caf50)),
+		    linear-gradient(var(--color,#F44336),var(--color,#F44336)),
+		    radial-gradient(circle at 15px 0, transparent 15px,var(--color, #9C27B0) 0);
+		  background-size:calc(100% - 54px), calc(100% - 30px) calc(100% - 12px), calc(100% - 54px) 100%, 100% 15px;
+		  background-position:left top, center bottom, center bottom, -15px bottom;
+		  background-repeat: repeat-x, no-repeat, no-repeat, repeat-x;
+		}
+		
+		.tab.fix .tab-item{
+		  --color: transparent;
+		  color: #000;
+		}
+		.tab.fix .tab-item:hover{
+		  --color: #F2D0CA;
+		}
+		
+		.tab.fix .tab-item.active{
+		  --color: #F8EAE7;
+		  z-index: 1;
+		  /* color: #000; */
+		}
+
+		/* .tab-item {
+			position: relative;
+			padding: 10px 35px;
+			cursor: pointer;
+			background-image: radial-gradient(circle at 15px 0, transparent 15px, blue 0),
+				radial-gradient(circle at 27px 12px, green 12px, transparent 0),
+				linear-gradient(red, red),
+				linear-gradient(red, red);
+			background-size: 100% 15px, calc(100% - 54px), calc(100% - 30px) calc(100% - 12px), calc(100% - 54px) 100%;
+			background-position: -15px bottom, left top, center bottom, center bottom;
+			background-repeat: repeat-x, repeat-x, no-repeat, no-repeat;
+		} */
+
+		/* .tab-item {
+			cursor: pointer;
+			padding: 10px 35px;
+			background:radial-gradient(circle at 0 0, transparent 15px, blue 0),radial-gradient(circle at 0 0, transparent 15px, blue 0),
+			radial-gradient(circle at 0 0, green 12px, transparent 0,radial-gradient(circle at 12px 0, green 12px, transparent 0,linear-gradient(red, red),linear-gradient(red, red);
+			background-repeat: no-repeat;
+			background-position: 15px top, right 15px top 0, left bottom, right bottom, center bottom, center, bootom;
+			background-size: 30px 30px, 30px 30px, 12px 12px, 12px 12px, calc(100% - 30px) calc(100% - 12px), calc(100% - 54px) 100%;
+		} */
+	</style>
+	<body>
+		<nav class="tab">
+		  <a class="tab-item">Svelte API</a>
+		</nav>
+		<hr>
+		<nav class="tab fix">
+		  <a class="tab-item">Svelte API</a>
+		  <a class="tab-item active">Svelte API</a>
+		  <a class="tab-item">Svelte API</a>
+		  <a class="tab-item">Svelte API</a>
+		</nav>
+	</body>
+</html>

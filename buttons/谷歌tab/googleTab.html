@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		
+		.tab-item {
+			position: relative;
+			background-color: #005980;
+			padding: 10px 15px;
+			border-radius: 12px 12px 0 0;
+			cursor: pointer;
+			transition: .2s;
+		}
+
+		.tab-item::before,
+		.tab-item::after {
+			position: absolute;
+			bottom: 0;
+			content: '';
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			box-shadow: 0 0 0 40px #005980;
+			/*使用box-shadow不影响尺寸*/
+			transition: .2s;
+		}
+
+		.tab-item::before {
+			left: -20px;
+			clip-path: inset(50% -10px 0 50%);
+		}
+
+		.tab-item::after {
+			right: -20px;
+			clip-path: inset(50% 50% 0 -10px);
+		}
+	</style>
+	<body>
+		
+		<!-- 
+		 
+		 以上共介绍了 5 种不同的布局方式，下面总结一下实现要点：
+		 
+		 border-radius 配合 clip-path 可以实现内凹圆角
+		 渐变是万能的，重复的内容尽量通过 background-repeat 来完成
+		 svg 中 rect 可以实现自适应圆角矩形，作为背景同样适用
+		 可以将多段 svg 作为多背景，分别控制尺寸和位置
+		 border-image 可以实现自适应效果，需要注意设置 border-width
+		 mask 遮罩可以直接使用渐变或者svg作为遮罩层，可以更方便的修改背景色
+		 mask-border 和 border-image 使用类似，不过目前只有 -webkit- 内核支持
+		 -->
+		<nav class="tab">
+			<a class="tab-item">Svelte API</a>
+			<a class="tab-item active">Svelte API</a>
+			<a class="tab-item">Svelte API</a>
+			<a class="tab-item">Svelte API</a>
+		</nav>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.tab{
+		  display: flex;
+		  background-color: #EFC0B8;
+		  padding: 10px 15px 0 15px;
+		  font-size: 14px;
+		}
+		.tab-item{
+		  position: relative;
+		  padding: 10px 35px;
+		  margin: 0 -12px;
+		  cursor: pointer;
+		  transition: .2s;
+		  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23F8EAE7'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23F8EAE7'/%3E%3C/svg%3E"),url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect rx='12' width='100%' height='100%' fill='%23F8EAE7'/></svg>");
+		  -webkit-mask-size: 12px 12px, 12px 12px, calc(100% - 24px) calc(100% + 12px);
+		  -webkit-mask-position: right bottom, left bottom, center top;
+		  -webkit-mask-repeat: no-repeat;
+		}
+		.tab-item:hover{
+		  background: #F2D0CA;
+		}
+		.tab-item.active{
+		  background: #F8EAE7;
+		  z-index: 1;
+		}
+		
+
+	</style>
+	<body>
+		<!-- 前面几种背景图片的方式，其实有一个问题，颜色都在背景图片中，几乎是固定的，不方便修改，
+		那么，借助 mask 遮罩，可以很轻松的解决这个问题。有了前面的背景（渐变或者svg都行），
+		只需要把 background 批量换成 -webkit-mask 就行了，就像这样 -->
+		<nav class="tab">
+		  <a class="tab-item">Svelte API</a>
+		  <a class="tab-item active">Svelte API</a>
+		  <a class="tab-item">Svelte API</a>
+		  <a class="tab-item">More Svelte API</a>
+		</nav>
+	</body>
+</html>
