@@ -5,9 +5,13 @@
 		<title>利用两个伪元素拼接</title>
 	</head>
 	<style>
+		body{
+			padding: 0;
+			margin: 0;
+		}
 		.tab{
 		  display: flex;
-		  background-color: #EFC0B8;
+		  background-color: #55aa7f;
 		  padding: 10px 15px 0 15px;
 		  font-size: 14px;
 		}
@@ -39,29 +43,29 @@
 		}
 		
 		.tab-item:hover{
-		  background-color: #F2D0CA;
+		  background-color: #ffaa7f;
 		  /* color: #000; */
 		}
 		.tab-item:hover::before,
 		.tab-item:hover::after{
-		  box-shadow: 0 0 0 30px #F2D0CA;
+		  box-shadow: 0 0 0 30px #ffaa7f;
 		}
 		.tab-item.active{
-		  background-color: #F8EAE7;
+		  background-color: #ffffff;
 		  z-index: 1;
 		  /* color: #000; */
 		}
 		.tab-item.active::before,
 		.tab-item.active::after{
-		  box-shadow: 0 0 0 30px #F8EAE7;
+		  box-shadow: 0 0 0 30px #ffffff;
 		}
 	</style>
 	<body>
 		<nav class="tab">
-		  <a class="tab-item">Svelte API</a>
-		  <a class="tab-item active">Svelte API</a>
-		  <a class="tab-item">Svelte API</a>
-		  <a class="tab-item">Svelte API</a>
+		  <a class="tab-item">苏苏</a>
+		  <a class="tab-item active">苏苏</a>
+		  <a class="tab-item">苏苏</a>
+		  <a class="tab-item">苏苏</a>
 		</nav>
 	</body>
 </html>
