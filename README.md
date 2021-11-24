@@ -94,7 +94,7 @@
 
 各类奇形怪状按钮
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1123/173852_bc12e64b_8576727.png "屏幕截图.png")
+![输入图片说明](image.png)
 
 扫一扫的样式
 
