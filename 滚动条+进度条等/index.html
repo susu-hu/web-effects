@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.sc {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 10px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+			background: #000;
+			z-index: 1000;
+			max-width: 100%;
+		}
+
+		.con {
+			width: 100%;
+			height: 500px;
+			background-color: pink;
+		}
+
+		.c1 {
+			background-color: #005980;
+		}
+
+		.c2 {
+			background-color: #ffa77b;
+		}
+	</style>
+	<body>
+		<div id="page_sc" class="sc"></div>
+		<div class="con"></div>
+		<div class="con c1"></div>
+		<div class="con c2"></div>
+	</body>
+	<script>
+		let sc = document.getElementById('page_sc');
+		
+	
+		window.onscroll = function() {
+			//为了保证兼容性，这里取两个值，哪个有值取哪一个
+			//scrollTop就是触发滚轮事件时滚轮的高度
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var all=document.body.scrollHeight;
+			var seeH=document.body.clientHeight;
+			var width=((scrollTop/all)*100).toFixed(0)+'%'
+			// console.log("全文高度" +all)
+			// console.log("滚动距离" +width);
+			console.log(seeH)
+			sc.style.width = width;
+		}
+	</script>
+</html>

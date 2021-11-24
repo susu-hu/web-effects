@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+			
+		.flex{
+			display: flex;
+		}
+			
+		.tab{
+			background-color:#fcfff3 ;
+		}
+		.tab_item {
+			position: relative;
+			background: #e91e63;
+			border-radius: 10px 10px 0 0;
+			display: inline-block;
+			height: 30px;
+			box-sizing: border-box;
+			padding: 0 10px;
+		}
+		
+		.tab_item::before {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: -20px;
+			bottom: 0;
+			background: #aaaa7f;
+			background: radial-gradient(circle at 0 0, transparent 20px, #e91e63 21px);
+		}
+		
+		.tab_item::after {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			right: -20px;
+			bottom: 0;
+			background: #aaaa7f;
+			background: radial-gradient(circle at 100% 0, transparent 20px, #e91e63 21px);
+		}
+	</style>
+	<body>
+		<nav class="flex tab">
+			<div class="tab_item">苏苏的码云</div>
+		</nav>
+		
+	</body>
+</html>
