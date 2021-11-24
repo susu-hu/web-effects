@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.tab {
+			display: flex;
+			background-color: #EFC0B8;
+			padding: 10px 15px 0 15px;
+			font-size: 14px;
+		}
+
+		.tab-item {
+			position: relative;
+			padding: 0 8px;
+			border-width: 12px 27px 15px;
+			border-style: solid;
+			border-color: transparent;
+			margin: 0 -15px;
+			cursor: pointer;
+			transition: .2s;
+		}
+
+		.tab-item.active {
+			border-image: url("data:image/svg+xml,%3Csvg width='67' height='33' viewBox='0 0 67 33' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M27 0c-6.627 0-12 5.373-12 12v6c0 8.284-6.716 15-15 15h67c-8.284 0-15-6.716-15-15v-6c0-6.627-5.373-12-12-12H27z' fill='%23F8EAE7'/%3E%3C/svg%3E") 12 27 15 fill;
+		}
+	</style>
+	<body>
+		<nav class="tab">
+			<a class="tab-item">Svelte API</a>
+			<a class="tab-item active">Svelte API</a>
+			<a class="tab-item">Svelte API</a>
+			<a class="tab-item">More Svelte API</a>
+		</nav>
+	</body>
+</html>
