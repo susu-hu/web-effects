@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			font-size: 625%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.round-wrap {
+			width: 5.54rem;
+			height: 5.54rem;
+			position: relative;
+		}
+
+		#roundId {
+			width: 5.54rem;
+			height: 5.54rem;
+			border-radius: 50%;
+			overflow: hidden;
+			position: relative;
+			transform: rotate(0deg)
+		}
+
+		/*扇区*/
+		#roundId .part-wrap {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		#roundId .part-wrap .part {
+			width: 5.54rem;
+			height: 5.54rem;
+			box-sizing: border-box;
+			border-radius: 50%;
+			border: 1px solid #000000;
+			position: relative;
+		}
+
+		#roundId .part-wrap .part .list {
+			height: 50%;
+			width: 50%;
+			box-sizing: border-box;
+			border-bottom: 1px solid #dddddd;
+			transform-origin: bottom right;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		/*奖品名*/
+		#roundId .word-wrap {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		#roundId .word-wrap .word {
+			width: 4rem;
+			height: 4rem;
+			position: relative;
+		}
+
+		#roundId .word-wrap .word .word-list {
+			width: 4rem;
+			height: 4rem;
+			display: flex;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		#roundId .word-wrap .word .word-list span {
+			display: inline-block;
+			font-size: .25rem;
+			color: #000;
+			text-align: center;
+			opacity: 0;
+		}
+
+		.click-bg {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			height: 1rem;
+			width: .4rem;
+			margin-left: -.2rem;
+			margin-top: -.5rem;
+			box-sizing: border-box;
+			border: .01rem solid #dddddd;
+			background: beige;
+			font-size: .25rem;
+			line-height: 1rem;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div class="round-wrap">
+			<div id="roundId">
+				<!--扇区-->
+				<div class="part-wrap">
+					<div class="part">
+						<div class="list"></div>
+						<div class="list"></div>
+						<div class="list"></div>
+						<div class="list"></div>
+						<div class="list"></div>
+						<div class="list"></div>
+						<div class="list"></div>
+					</div>
+				</div>
+				<!--奖品名称-->
+				<div class="word-wrap">
+					<div class="word">
+						<div class="word-list"><span>100元</span></div>
+						<div class="word-list"><span>200元</span></div>
+						<div class="word-list"><span>300元</span></div>
+						<div class="word-list"><span>400元</span></div>
+						<div class="word-list"><span>500元</span></div>
+						<div class="word-list"><span>600元</span></div>
+						<div class="word-list"><span>谢谢参与</span></div>
+					</div>
+				</div>
+			</div>
+			<!--点击go-->
+			<div class="click-bg">
+				go
+			</div>
+		</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		$(function() {
+			//假设奖品数量为7
+			var allAwardCount = 7
+			//扇区倾斜度公式
+			var listSkew = 90 - 360 / allAwardCount
+			//每个扇区角度
+			var rotateDegEach = 360 / allAwardCount
+			//奖品名宽度
+			var awardListWords = parseInt((Math.sin(rotateDegEach / 2 * 0.017453293)) * 2 * 2)
+			$('#roundId .word-list span').css({
+				'width': awardListWords + 'rem',
+				'opacity': 1
+			})
+			for (var index = 0; index < allAwardCount; index++) {
+				$('#roundId .list').eq(index).css('transform', 'rotate(' + index * (360 / allAwardCount) +
+					'deg) skewX(' + listSkew + 'deg)')
+				$('#roundId .word-list').eq(index).css('transform', 'rotate(' + (index * rotateDegEach +
+					rotateDegEach / 2 - 90) + 'deg)')
+			}
+			//点击GO
+			$('.click-bg').click(function() {
+				drawBegin()
+			})
+
+			var rotateDeg = 0 //旋转角度,开始为0
+			var winningNum = '' //当前奖品序号0,1,2,3,4.........
+			var winningNumLast = '' //上一次奖品序号
+			var degaddNum = 360 * 6 //固定旋转度数
+			var canClicked = true //抽奖可以点击
+			function drawBegin() {
+				if (canClicked) {
+					//按钮置为不可点击状态
+					canClicked = false
+					//调接口查询中奖情况，会返回code（200中奖，-10002未中奖）和中奖情况奖品名winningName ，这里假设 code=200,winningName='200元'
+					var code = 200
+					var winningName = '200元'
+					if (code == -10002) {
+						winningNum = allAwardCount - 1
+					} else if (code == 200) {
+						for (var index = 0; index < allAwardCount; index++) {
+							if (winningName == $('#roundId .word-list').eq(index).find('span').text()) {
+								winningNum = index
+							}
+						}
+					} else {
+						alert('查询异常')
+						canClicked = true
+						return
+					}
+					if (rotateDeg == 0) {
+						rotateDeg = degaddNum + 360 - rotateDegEach * (winningNum) + 90 - rotateDegEach / 2
+					} else {
+						rotateDeg = rotateDeg + degaddNum + 360 - rotateDegEach * (winningNum - winningNumLast)
+					}
+					//保存当前奖品号
+					winningNumLast = winningNum
+					$('#roundId').css({
+						'transform': 'rotate(' + rotateDeg + 'deg)',
+						'transition': 'transform 4s ease-out'
+					})
+				}
+			}
+			//监听旋转结束（兼容性写法）
+			document.getElementById('roundId').addEventListener('webkitTransitionEnd', function() {
+				alert('奖品为第' + (winningNum + 1) + '个奖品')
+				canClicked = true
+			}, false)
+			document.getElementById('roundId').addEventListener('transitionend', function() {
+				alert('奖品为第' + (winningNum + 1) + '个奖品')
+				canClicked = true
+			}, false)
+		})
+	</script>
+</html>
