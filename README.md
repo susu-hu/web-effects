@@ -90,11 +90,11 @@
 
 谷歌tab标签栏
 
-![输入图片说明](%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202021-11-23%20234959.png)
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/image.png)
 
 各类奇形怪状按钮
 
-![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/image.png)
+
 
 扫一扫的样式
 
