@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.button {
+			padding: 3rem;
+			border-radius: 4rem;
+			background: pink;
+			cursor: pointer;
+			transition: 0.25s;
+			margin: 2rem;
+		}
+
+		.button:active {
+			background: #ff5500;
+			transition: 0;
+		}
+
+		.arrow {
+			position: relative;
+			background: whitesmoke;
+			width: 4rem;
+			height: 0.4rem;
+			transition: 0.5s;
+			border-radius: 1rem;
+			transform-origin: right center;
+		}
+
+		.arrow:before {
+			transform: rotate(-35deg);
+		}
+
+		.arrow:after {
+			transform: rotate(35deg);
+		}
+
+		.arrow:before,
+		.arrow:after {
+			display: block;
+			content: "";
+			position: absolute;
+			left: 0;
+			background: whitesmoke;
+			width: 2rem;
+			height: 0.4rem;
+			transform-origin: 0.2rem center;
+			transition: 0.5s;
+			border-radius: 1rem;
+		}
+
+		.switch.right .arrow:before,
+		.switch.right .arrow:after {
+			left: 3.8rem;
+		}
+
+		.switch.right .arrow:before {
+			transform: rotate(140deg);
+		}
+
+		.switch.right .arrow:after {
+			transform: rotate(-140deg);
+		}
+
+		.flip {
+			transform: translateZ(1rem) perspective(600);
+		}
+
+		.flip.right {
+			transform: translateZ(1rem) perspective(600) rotateY(180deg);
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+			background: #000;
+			-webkit-backface-visibility: hidden;
+		}
+	</style>
+	<script>
+		// 1.addClass:为指定的dom元素添加样式
+
+		// 2.removeClass:删除指定dom元素的样式
+
+		// 3.toggleClass:如果存在(不存在)，就删除(添加)一个样式
+
+		// 4.hasClass:判断样式是否存在
+
+		function hasClass(obj, cls) {
+			return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		}
+
+		function addClass(obj, cls) {
+			if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+		}
+
+		function removeClass(obj, cls) {
+			if (hasClass(obj, cls)) {
+				var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+				obj.className = obj.className.replace(reg, ' ');
+			}
+		}
+
+		function toggleClass(obj, cls) {
+			if (hasClass(obj, cls)) {
+				removeClass(obj, cls);
+			} else {
+				addClass(obj, cls);
+			}
+		}
+	</script>
+	<body>
+		<a class="button switch" onclick="toggleClassTest()">
+			<div class="arrow"></div>
+		</a>
+
+		<a class="button flip">
+			<div class="arrow"></div>
+		</a>
+	</body>
+	<script src="../商城相关/js/jq.js"></script>
+	<script>
+		let btn = document.getElementsByClassName("button")[0];
+		// 原生js写法1 ==通过方法响应点击事件
+		// function toggleClassTest() {
+		// 	toggleClass(btn, "right");
+		// }
+
+		// 2 ====监听点击事件
+		// btn.addEventListener('click',function(){
+		// 	toggleClass(btn, "right");
+		// },false);
+
+		// 3===通过点击事件
+		// btn.onclick=function(){
+		// 	toggleClass(btn, "right");
+		// }
+
+		// 4=====jq写法
+		// $(".button").click(function(){
+		//     $(this).toggleClass("right");
+		// });
+
+		// 5.按钮循环点击事件
+		// let btnAll = document.getElementsByClassName("button");
+		let btnAll = document.getElementsByTagName("a");
+		console.log(btnAll)
+		for (var i = 0; i < btnAll.length; i++) {
+			btnAll[i].onclick = function() {
+				console.log(btnAll[i])
+			}
+		}
+	</script>
+
+</html>

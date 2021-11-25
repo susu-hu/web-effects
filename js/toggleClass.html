@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div.testClass {
+			background-color: gray;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function hasClass(obj, cls) {
+			return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		}
+
+		function addClass(obj, cls) {
+			if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+		}
+
+		function removeClass(obj, cls) {
+			if (hasClass(obj, cls)) {
+				var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+				obj.className = obj.className.replace(reg, ' ');
+			}
+		}
+
+		function toggleClass(obj, cls) {
+			if (hasClass(obj, cls)) {
+				removeClass(obj, cls);
+			} else {
+				addClass(obj, cls);
+			}
+		}
+
+		function toggleClassTest() {
+			var obj = document.getElementById('test');
+			toggleClass(obj, "testClass");
+		}
+	</script>
+
+	<body>
+		<div id="test" style="width:250px;height:100px;">
+			sssssssssssss
+		</div>
+		<input type="button" value="toggleClassTest" onclick="toggleClassTest();" />
+	</body>
+</html>
