@@ -64,12 +64,50 @@
 			transform: rotate(-140deg);
 		}
 
-		.flip {
-			transform: translateZ(1rem) perspective(600);
+
+		.arrow1 {
+			position: relative;
+			background: whitesmoke;
+			width: 4rem;
+			height: 0.4rem;
+			transition: 0.5s;
+			border-radius: 1rem;
+			transform-origin: right center;
 		}
 
-		.flip.right {
-			transform: translateZ(1rem) perspective(600) rotateY(180deg);
+		.arrow1:before {
+			transform: rotate(-135deg);
+		}
+
+		.arrow1:after {
+			transform: rotate(135deg);
+		}
+
+		.arrow1:before,
+		.arrow1:after {
+			display: block;
+			content: "";
+			position: absolute;
+			left: 3.8rem;
+			background: whitesmoke;
+			width: 2rem;
+			height: 0.4rem;
+			transform-origin: 0.2rem center;
+			transition: 0.5s;
+			border-radius: 1rem;
+		}
+		
+		.flip.right .arrow1:before,
+		.flip.right .arrow1:after {
+			left: 0rem;
+		}
+		
+		.flip.right .arrow1:before {
+			transform: rotate(-35deg);
+		}
+		
+		.flip.right .arrow1:after {
+			transform: rotate(35deg);
 		}
 
 		body {
@@ -121,7 +159,7 @@
 		</a>
 
 		<a class="button flip">
-			<div class="arrow"></div>
+			<div class="arrow1"></div>
 		</a>
 	</body>
 	<script src="../商城相关/js/jq.js"></script>
@@ -148,12 +186,12 @@
 		// });
 
 		// 5.按钮循环点击事件
-		// let btnAll = document.getElementsByClassName("button");
 		let btnAll = document.getElementsByTagName("a");
 		console.log(btnAll)
-		for (var i = 0; i < btnAll.length; i++) {
+		for (let i = 0; i < btnAll.length; i++) {
+			console.log(btnAll[i])
 			btnAll[i].onclick = function() {
-				console.log(btnAll[i])
+				toggleClass(btnAll[i], "right");
 			}
 		}
 	</script>
