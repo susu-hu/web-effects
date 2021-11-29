@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+			
+		body{
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			display: flex;
+			align-items: center;
+			height: 100vh;
+			justify-content: center;
+		}
+		.card {
+			margin: 0;
+			padding: 0;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-moz-user-select: none;
+			width: 238px;
+			overflow: hidden;
+			border-radius: 4px;
+			background: #fff;
+			transition: opacity .1s ease, -webkit-transform .1s ease;
+			transition: opacity .1s ease, transform .1s ease;
+			transition: opacity .1s ease, transform .1s ease, -webkit-transform .1s ease;
+			user-select: none;
+			width: 223px;
+			height: 300px;
+			margin-bottom: 20px;
+			margin-right: 10px;
+			border: 1px solid skyblue;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.card:hover {
+			box-shadow: 0 28px 50px rgb(25 24 40 / 35%);
+			transform: scale(1.1);
+		}
+	</style>
+	<body>
+		<div class="flex">
+			<div class="card"></div>
+			<div class="card"></div>
+			<div class="card"></div>
+			<div class="card"></div>
+		</div>
+
+	</body>
+</html>

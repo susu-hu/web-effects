@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.box {
+			display: inline-block;
+			font-size: 20px;
+			margin: 10px;
+			background: linear-gradient(left, #f71605, #e0f513);
+			background: -webkit-linear-gradient(left, #f71605, #e0f513);
+			background: -o-linear-gradient(right, #f71605, #e0f513);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			animation: scratchy 0.253s linear forwards infinite;
+			/* 其它浏览器兼容性前缀 */
+			-webkit-animation: scratchy 0.253s linear forwards infinite;
+			-moz-animation: scratchy 0.253s linear forwards infinite;
+			-ms-animation: scratchy 0.253s linear forwards infinite;
+			-o-animation: scratchy 0.253s linear forwards infinite;
+		}
+
+		@keyframes scratchy {
+			0% {
+				background-position: 0 0;
+			}
+
+			25% {
+				background-position: 0 0;
+			}
+
+			26% {
+				background-position: 20px -20px;
+			}
+
+			50% {
+				background-position: 20px -20px;
+			}
+
+			51% {
+				background-position: 40px -40px;
+			}
+
+			75% {
+				background-position: 40px -40px;
+			}
+
+			76% {
+				background-position: 60px -60px;
+			}
+
+			99% {
+				background-position: 60px -60px;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		/* 添加兼容性前缀 */
+		@-webkit-keyframes scratchy {
+			0% {
+				background-position: 0 0;
+			}
+
+			25% {
+				background-position: 0 0;
+			}
+
+			26% {
+				background-position: 20px -20px;
+			}
+
+			50% {
+				background-position: 20px -20px;
+			}
+
+			51% {
+				background-position: 40px -40px;
+			}
+
+			75% {
+				background-position: 40px -40px;
+			}
+
+			76% {
+				background-position: 60px -60px;
+			}
+
+			99% {
+				background-position: 60px -60px;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		@-moz-keyframes scratchy {
+			0% {
+				background-position: 0 0;
+			}
+
+			25% {
+				background-position: 0 0;
+			}
+
+			26% {
+				background-position: 20px -20px;
+			}
+
+			50% {
+				background-position: 20px -20px;
+			}
+
+			51% {
+				background-position: 40px -40px;
+			}
+
+			75% {
+				background-position: 40px -40px;
+			}
+
+			76% {
+				background-position: 60px -60px;
+			}
+
+			99% {
+				background-position: 60px -60px;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		@-ms-keyframes scratchy {
+			0% {
+				background-position: 0 0;
+			}
+
+			25% {
+				background-position: 0 0;
+			}
+
+			26% {
+				background-position: 20px -20px;
+			}
+
+			50% {
+				background-position: 20px -20px;
+			}
+
+			51% {
+				background-position: 40px -40px;
+			}
+
+			75% {
+				background-position: 40px -40px;
+			}
+
+			76% {
+				background-position: 60px -60px;
+			}
+
+			99% {
+				background-position: 60px -60px;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+
+		@-o-keyframes scratchy {
+			0% {
+				background-position: 0 0;
+			}
+
+			25% {
+				background-position: 0 0;
+			}
+
+			26% {
+				background-position: 20px -20px;
+			}
+
+			50% {
+				background-position: 20px -20px;
+			}
+
+			51% {
+				background-position: 40px -40px;
+			}
+
+			75% {
+				background-position: 40px -40px;
+			}
+
+			76% {
+				background-position: 60px -60px;
+			}
+
+			99% {
+				background-position: 60px -60px;
+			}
+
+			100% {
+				background-position: 0 0;
+			}
+		}
+	</style>
+	<body>
+		<span class="box">闪烁效果</span>
+	</body>
+</html>
