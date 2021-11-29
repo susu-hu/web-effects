@@ -87,7 +87,12 @@
 74. css实现各类奇形怪状按钮
 75. 谷歌tab标签栏实现的多种方法
 76. 箭头按钮
+77. css3动画实现文字跳动
 #### 作品截图 
+
+动画实现文字跳动
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E7%88%B1%E4%BB%95%E8%BE%BE.gif)
 
  箭头按钮
 
