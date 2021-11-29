@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>悬停跳动特效</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				background: #222;
+			}
+
+			.loader {
+				position: relative;
+			}
+
+			.loader span {
+				position: relative;
+				font-size: 2em;
+				color: #00ffff;
+				display: inline-block;
+				text-transform: uppercase;
+				animation: animate 2s ease-in-out infinite;
+				animation-delay: calc(0.1s * var(--i));
+				animation-play-state: paused;
+				user-select: none;
+				cursor: pointer;
+			}
+
+			.loader:hover span {
+				animation-play-state: running;
+			}
+
+			@keyframes animate {
+
+				0%,
+				40%,
+				100% {
+					transform: translateY(0);
+				}
+
+				20% {
+					transform: translateY(-50px);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="loader">
+			<span style="--i:1;">S</span>
+			<span style="--i:2;">u</span>
+			<span style="--i:3;">s</span>
+			<span style="--i:4;">u</span>
+			<span style="--i:5;">is</span>
+			<span style="--i:6;">x</span>
+			<span style="--i:7;">i</span>
+			<span style="--i:8;">a</span>
+			<span style="--i:9;">o</span>
+			<span style="--i:10;">s</span>
+			<span style="--i:11;">u</span>
+			<span style="--i:12;">s</span>
+			<span style="--i:13;">u</span>
+			<span style="--i:14;">!</span>
+			<span style="--i:15;">d</span>
+			<span style="--i:16;">a</span>
+			<span style="--i:17;">y</span>
+			<span style="--i:18;">u</span>
+			<span style="--i:19;">p</span>
+			<span style="--i:20;">y</span>
+			<span style="--i:21;">e</span>
+		</div>
+	</body>
+
+</html>

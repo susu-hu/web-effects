@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>CSS 3.0实现视频字幕悬停特效</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: '微软雅黑', sans-serif;
+            }
+ 
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+ 
+            .container {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 1000px;
+            }
+ 
+            .container .box {
+                position: relative;
+                width: 450px;
+                height: 320px;
+                background: #000;
+            }
+ 
+            .container .box .video-box {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+ 
+            .container .box .video-box video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+ 
+            .container .box .content-box {
+                position: absolute;
+                top: 40px;
+                bottom: 40px;
+                right: 40px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.95);
+                transition: transform 0.5s;
+                transform-origin: right;
+                transform: scaleX(0)
+            }
+ 
+            .container .box:hover .content-box {
+                transition: transform 0.5s;
+                transform-origin: left;
+                transform: scaleX(1)
+            }
+ 
+            .container .box .content-box .content {
+                position: relative;
+                padding: 20px 60px;
+                opacity: 0;
+            }
+ 
+            .container .box:hover .content-box .content {
+                opacity: 1;
+                transition: 0.5s;
+                transition-delay: 0.5s;
+            }
+ 
+            .container .box .content-box .content h2 {
+                color: #fff;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+ 
+            .container .box .content-box .content p {
+                color: #fff;
+                font-weight: 300;
+            }
+        </style>
+    </head>
+ 
+    <body>
+        <div class="container">
+            <div class="box">
+                <div class="video-box">
+                    <video src="https://klxxcdn.oss-cn-hangzhou.aliyuncs.com/histudy/hrm/media/bg1.mp4" muted autoplay
+                        loop></video>
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <h2>视频标题一</h2>
+                        <p> 炊烟起了，我在门口等你。夕阳下了，我在山边等你。叶子黄了，我在树下等你。 月儿弯了，我在十五等你。细雨来了，我在伞下等你。
+                            流水冻了，我在河畔等你。生命累了，我在天堂等你。我们老了，我在来生等你。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="video-box">
+                    <video src="https://klxxcdn.oss-cn-hangzhou.aliyuncs.com/histudy/hrm/media/bg2.mp4" muted autoplay
+                        loop></video>
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <h2>视频标题二</h2>
+                        <p> 炊烟起了，我在门口等你。夕阳下了，我在山边等你。叶子黄了，我在树下等你。 月儿弯了，我在十五等你。细雨来了，我在伞下等你。
+                            流水冻了，我在河畔等你。生命累了，我在天堂等你。我们老了，我在来生等你。 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+ 
+</html>
