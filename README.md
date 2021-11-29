@@ -88,7 +88,12 @@
 75. 谷歌tab标签栏实现的多种方法
 76. 箭头按钮
 77. css3动画实现文字跳动
+78. box-shadow悬浮卡片效果
 #### 作品截图 
+
+box-shadow悬浮卡片效果
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E5%8D%A1%E7%89%87.gif)
 
 动画实现文字跳动
 
