@@ -1,60 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        div {
-            text-transform: uppercase;/* 转成大写 */
-            width: 1000px;
-            margin: 200px auto;
-            font-size: 100px;
-            color: #fd79a8;
-            letter-spacing: 5px;/* 设置字间距 */
-            transition: all 1s;
-            -webkit-text-stroke: 2px #fd79a8;/* 设置字体边框 ie浏览器不支持*/
-            transform: rotate(-5deg);/* 旋转一定角度 */
-        }
-        div::before {
-            content: 'Astro Boy';/* 阿童木 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: white;
-            clip-path: inset(0 0 50% 0);
-            transform: rotate(0deg) skew(0deg);
-            transition: all 1s;
-        }
-        div:hover::before {
-            transform: rotateX(-30deg) skew(-30deg);
-            color: white;
-            text-shadow: 0 0 2px black;
-        }
-        div::after {
-            content: 'Astro Boy';
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: white;
-            clip-path: inset(50% 0 0 0);/* 裁剪半个矩形区域 */
-            transform: rotate(0deg) skew(0deg);
-            transition: all 1s;
-        }
-        div:hover::after {
-            transform: rotateX(40deg) skew(20deg);
-            color: white;
-            text-shadow: 0 0 2px black;
-        }
-    </style>
-</head>
-<body>
-    <div>Astro Boy</div>
-</body>
-</html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
 
+			body {
+				background-color: #222;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			div {
+				text-transform: uppercase;
+				font-size: 100px;
+				color: #ff5500;
+				letter-spacing: 5px;
+				/* 设置字间距 */
+				transition: all 1s;
+				-webkit-text-stroke: 2px #ff5500;
+				/* 设置字体边框 ie浏览器不支持*/
+				transform: rotate(-5deg);
+				position: relative;
+			}
+
+			div::before {
+				content: 'susu Fighting';
+				/* 阿童木 */
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+				clip-path: inset(0 0 50% 0);
+				transform: rotate(0deg) skew(0deg);
+				transition: all 1s;
+			}
+
+			div:hover::before {
+				transform: rotateX(-30deg) skew(-30deg);
+				color: white;
+				text-shadow: 0 0 2px black;
+			}
+
+			div::after {
+				content: 'susu Fighting';
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: white;
+				clip-path: inset(50% 0 0 0);
+				/* 裁剪半个矩形区域 */
+				transform: rotate(0deg) skew(0deg);
+				transition: all 1s;
+			}
+
+			div:hover::after {
+				transform: rotateX(40deg) skew(20deg);
+				color: white;
+				text-shadow: 0 0 2px black;
+			}
+		</style>
+	</head>
+	<body>
+		<div>susu Fighting</div>
+	</body>
+</html>
