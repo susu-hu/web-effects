@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 400px;
+            margin: 0 auto;
+            list-style: none;
+        }
+ 
+        dl {
+            display: flex;
+        }
+ 
+        dd {
+            flex: 1;
+        }
+ 
+        dt {
+            flex: 3;
+        }
+ 
+        input[type='button'] {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+ 
+<body>
+    <ul>
+        <li>
+            <dl>
+                <dd>商品一</dd>
+                <dt>价格<input type="number" id="good1"></dt>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dd>商品二</dd>
+                <dt>价格<input type="number" id="good2"></dt>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dd>商品三</dd>
+                <dt>价格<input type="number" id="good3"></dt>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dd>商品四</dd>
+                <dt>价格<input type="number" id="good4"></dt>
+            </dl>
+        </li>
+        <input type="button" value="计算价格">
+    </ul>
+ 
+    <script>
+        var input = document.querySelectorAll('input[type="number"]'),//获取input的金额
+            but = document.querySelector('input[type="button"]');//获取button按钮
+ 
+        but.addEventListener('click', function () {
+            var result = [...input].reduce((acc, item) => {
+                return acc + Number(item.value)
+            },0)
+            console.log(result)
+        })
+    </script>
+</body>
+ 
+</html>

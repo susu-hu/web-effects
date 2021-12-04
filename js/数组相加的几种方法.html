@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let list=[1,2,3,4,5];
+			
+		function sum0(arr){
+			var sum=0;
+			if(Array.isArray(arr)){
+				for(let i=0;i<arr.length;i++){
+					sum+=arr[i]
+				}
+				return sum
+			}
+		}
+		console.log(sum0(list))
+		
+		function sum1(arr){
+			var sum=0;
+			if(Array.isArray(arr)){
+				arr.forEach(item=>{
+					sum+=item
+				})
+				return sum
+			}
+		}
+		console.log(sum1(list))
+		
+		
+		// Es6中map写法
+		function sum2(arr){
+			var sum=0;
+			if(Array.isArray(arr)){
+				arr.map(item=>{
+					sum+=item
+				})
+				return sum
+			}
+		}
+		console.log(sum2(list))
+		
+		function sum3(arr){
+			return arr.reduce((total,cur)=>{
+				return total+Number(cur)
+			},0)
+		}
+		console.log(sum3(list))
+	</script>
+</html>
