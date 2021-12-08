@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		:root {
+			--primary: #4fc08d;
+			--primary-d: #41b580;
+			--primary-d-d: #3aa273;
+			--success: #f0ad4e;
+			--success-d: #eea236;
+			--success-d-d: #ec971f;
+			--info: #5bc0de;
+			--info-d: #46b8da;
+			--info-d-d: #31b0d5;
+			--warning: #f0ad4e;
+			--warning-d: #eea236;
+			--warning-d-d: #ec971f;
+			--danger: #d9534f;
+			--danger-d: #d43f3a;
+			--danger-d-d: #c9302c;
+			--default: #f6f6f6;
+			--default-d: #e9e9e9;
+			--default-d-d: #dcdcdc;
+		}
+
+		.position-f {
+			position: fixed;
+			z-index: 1111;
+		}
+
+		.left-0 {
+			left: 0px;
+		}
+
+		.top-0 {
+			top: 0px;
+		}
+
+		.width-max {
+			width: 100%;
+		}
+
+		.background-primary {
+			background: var(--primary);
+		}
+		
+		#percentage {
+		    display: block;
+		    width: 0;
+		    height: 0;
+		    border-top: 10px solid #f59e00;
+		    transition: all 250ms ease;
+		    border-image: -webkit-linear-gradient(#F80, #fecf27) 20 0;
+		}
+	</style>
+	<body>
+		<div class="position-f left-0 top-0 width-max ">
+			<span class='background-primary' id='percentage' style="background: #f59e00"></span>
+		</div>
+		<div style="height: 3000px;"></div>
+	</body>
+	<script src="../../商城相关/js/jq.js"></script>
+	<script>
+		(function() {
+			var $w = $(window);
+			$w.on('scroll', function() {
+				let scrollNow = window.pageYOffset;
+				let pageClientHeight = document.documentElement.clientHeight;
+
+				let scrollHeight = Math.max(
+					document.body.scrollHeight, document.documentElement.scrollHeight,
+					document.body.offsetHeight, document.documentElement.offsetHeight,
+					document.body.clientHeight, document.documentElement.clientHeight
+				) - pageClientHeight; // Full Window Height minus the viewport height
+
+				let fullWindowHeightInPercentage = Math.round(
+					(scrollNow / scrollHeight) * 100
+				);
+
+				let percentage = document.getElementById('percentage');
+				console.log(percentage)
+				percentage.style.width = fullWindowHeightInPercentage + '%';
+			});
+		}());
+	</script>
+</html>
