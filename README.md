@@ -90,7 +90,12 @@
 77. css3动画实现文字跳动
 78. box-shadow悬浮卡片效果
 79. 文字折叠效果
+80. h5实现头部背景渐变色+弧度
 #### 作品截图 
+
+h5实现头部背景渐变色+弧度
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/h5/image.png)
 
 文字折叠效果
 
@@ -414,6 +419,7 @@ mix-blend-mode的小动画
 
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/0901/002950_84d5267f_8576727.png "屏幕截图.png")
+
 
 
 #### 参与贡献
