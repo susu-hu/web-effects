@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html encoding="utf-8">
+	<head>
+		<style>
+			* {
+				margin: 0;
+				padding: 0
+			}
+
+			input {
+				font: 14px Monospace;
+				height: 20px;
+				width: 160px;
+			}
+
+			label {
+				display: inline-block;
+				width: 100px;
+				height: 20px;
+			}
+
+			#pass {
+				position: absolute;
+				left: 100px;
+				top: 0;
+				opacity: 0;
+				filter: alpha(opacity=0);
+				z-index: 2;
+			}
+
+			form {
+				position: relative;
+			}
+
+			#hint_pass {
+				position: absolute;
+				left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<label>Password:</label>
+			<input type="text" id="hint_pass" maxlength="20" tabindex="-1" />
+			<input type="text" id="pass" name="pass" maxlength="20" />
+		</form>
+		<script>
+			var pass = document.getElementById('pass');
+			var hint_pass = document.getElementById('hint_pass');
+			pass.onkeyup = pass.onchange = function() {
+				hint_pass.value = pass.value.replace(/./g, '*');
+			};
+		</script>
+	</body>
+</html>

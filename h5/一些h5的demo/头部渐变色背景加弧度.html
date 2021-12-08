@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		.head {
+			width: 100%;
+			height: 3.2rem;
+			position: relative;
+			z-index: -1;
+			overflow: hidden;
+		}
+
+		.head:after {
+			width: 140%;
+			height: 3rem;
+			position: absolute;
+			left: -20%;
+			top: 0;
+			z-index: -1;
+			content: '';
+			border-radius: 0 0 50% 50%;
+			background: linear-gradient(144deg, #aaaaff 0%, #ff4f66 100%);
+		}
+
+		.card {
+			position: absolute;
+			bottom: 0.1rem;
+			width: 90%;
+			left: 50%;
+			height: 1.5rem;
+			transform: translate(-50%);
+			background: #ffffff;
+			box-shadow: 0 4px 8px 0 rgba(190, 195, 199, 0.5);
+			border-radius: 18px;
+		}
+
+	</style>
+	<body>
+		<div class="head">
+			<div class="card">
+			</div>
+		</div>
+	</body>
+	<script>
+		// 1rem==100px
+		//网页自适应JS代码
+		(function(doc, win) {
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function() {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+
+				};
+			if (!doc.addEventListener) return;
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+			recalc();
+		})(document, window);
+	</script>
+</html>

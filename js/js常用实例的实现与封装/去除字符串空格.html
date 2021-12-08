@@ -11,20 +11,90 @@
 		//ecDo.trim('  1235asd',1)
 		//result：1235asd
 		//这个方法有原生的方案代替，但是考虑到有时候开发PC站需要兼容IE8，所以就还是继续保留
-		trim: function (str, type) {
-		    switch (type) {
-		        case 1:
-		            return str.replace(/\s+/g, "");
-		        case 2:
-		            return str.replace(/(^\s*)|(\s*$)/g, "");
-		        case 3:
-		            return str.replace(/(^\s*)/g, "");
-		        case 4:
-		            return str.replace(/(\s*$)/g, "");
-		        default:
-		            return str;
-		    }
-		}
+		// trim: function(str, type) {
+		// 		switch (type) {
+		// 			case 1:
+		// 				return str.replace(/\s+/g, "");
+		// 			case 2:
+		// 				return str.replace(/(^\s*)|(\s*$)/g, "");
+		// 			case 3:
+		// 				return str.replace(/(^\s*)/g, "");
+		// 			case 4:
+		// 				return str.replace(/(\s*$)/g, "");
+		// 			default:
+		// 				return str;
+		// 		}
+		// 	},
 
+			// function retTypeFilter(retType) {
+			// 	let type_list = [{
+			// 			retType: 0,
+			// 			name: "单体门店",
+			// 		},
+			// 		{
+			// 			retType: 1,
+			// 			name: "总仓配货门店",
+			// 		},
+			// 		{
+			// 			retType: 2,
+			// 			name: "总仓和门店",
+			// 		},
+			// 		{
+			// 			retType: 3,
+			// 			name: "总仓",
+			// 		},
+			// 		{
+			// 			retType: 4,
+			// 			name: "总仓",
+			// 		},
+			// 		{
+			// 			retType: 6,
+			// 			name: "连锁总仓",
+			// 		},
+			// 		{
+			// 			retType: 7,
+			// 			name: "总仓分店",
+			// 		},
+			// 		{
+			// 			retType: 8,
+			// 			name: "加盟连锁",
+			// 		},
+			// 		{
+			// 			retType: 13,
+			// 			name: "总仓(KA)",
+			// 		},
+			// 		{
+			// 			retType: 15,
+			// 			name: "总仓配货门店(KA)",
+			// 		},
+			// 		{
+			// 			retType: 17,
+			// 			name: "分销商供货总仓",
+			// 		},
+			// 		{
+			// 			retType: 18,
+			// 			name: "分销商供货总仓和门店",
+			// 		},
+			// 		{
+			// 			retType: 19,
+			// 			name: "分销商供货门店",
+			// 		},
+			// 		{
+			// 			retType: 20,
+			// 			name: "分销商总仓配货门店",
+			// 		},
+			// 		{
+			// 			retType: 21,
+			// 			name: "联盟总店",
+			// 		},
+			// 		{
+			// 			retType: 22,
+			// 			name: "联盟分店",
+			// 		},
+			// 	];
+			// 	let typeTxt = type_list.filter(item=>item.retType == retType)[0];
+			// 	return typeTxt.name;
+			// }
+			// console.log(retTypeFilter(1))
 	</script>
 </html>

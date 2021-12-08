@@ -1,0 +1,104 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jquery 3D动画文字滚动标签云,鼠标光标定位上下文字滚动</title>
+		<meta name="description" content="jquery 3D动画文字滚动特效带标签云上下文字滚动，鼠标光标定位时上下文字滚动感应。" />
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+
+			body {
+				font-family: Arial, "MS Trebuchet", sans-serif;
+				background-color: #111;
+			}
+
+			#list {
+				margin: 0 auto;
+				height: 600px;
+				width: 600px;
+				overflow: hidden;
+				position: relative;
+				background-color: #000;
+			}
+
+			#list a {
+				position: absolute;
+				text-decoration: none;
+				color: #666;
+			}
+
+			#list a:hover {
+				color: #ccc;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<div id="list">
+			<ul>
+				<li><a href="http://www.17sucai.com/">PhP</a></li>
+				<li><a href="http://www.17sucai.com/">jQuery</a></li>
+				<li><a href="http://www.17sucai.com/">Magento</a></li>
+				<li><a href="http://www.17sucai.com/">MySql</a></li>
+				<li><a href="http://www.17sucai.com/">Js</a></li>
+				<li><a href="http://www.17sucai.com/">HTML</a></li>
+				<li><a href="http://www.17sucai.com/">CSS</a></li>
+				<li><a href="http://www.17sucai.com/">Ajax</a></li>
+				<li><a href="http://www.17sucai.com/">ThinkPHP</a></li>
+				<li><a href="http://www.17sucai.com/">Apache</a></li>
+				<li><a href="http://www.17sucai.com/">Linux</a></li>
+				<li><a href="http://www.17sucai.com/">Python</a></li>
+				<li><a href="http://www.17sucai.com/">web</a></li>
+				<li><a href="http://www.17sucai.com/">xhtml</a></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="../商城相关/js/jq.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				var element = $('#list a');
+				var offset = 0;
+				var stepping = 0.03;
+				var list = $('#list');
+				var $list = $(list)
+				$list.mousemove(function(e) {
+					var topOfList = $list.eq(0).offset().top
+					var listHeight = $list.height()
+					stepping = (e.clientY - topOfList) / listHeight * 0.2 - 0.1;
+				});
+
+				for (var i = element.length - 1; i >= 0; i--) {
+					element[i].elemAngle = i * Math.PI * 2 / element.length;
+				}
+
+				setInterval(render, 20);
+
+				function render() {
+					for (var i = element.length - 1; i >= 0; i--) {
+						var angle = element[i].elemAngle + offset;
+						x = 120 + Math.sin(angle) * 30;
+						y = 45 + Math.cos(angle) * 40;
+						size = Math.round(40 - Math.sin(angle) * 40);
+						var elementCenter = $(element[i]).width() / 2;
+						var leftValue = (($list.width() / 2) * x / 100 - elementCenter) + "px"
+						$(element[i]).css("fontSize", size + "pt");
+						$(element[i]).css("opacity", size / 100);
+						$(element[i]).css("zIndex", size);
+						$(element[i]).css("left", leftValue);
+						$(element[i]).css("top", y + "%");
+					}
+					offset += stepping;
+				}
+
+			});
+		</script>
+	</body>
+</html>
