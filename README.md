@@ -91,7 +91,12 @@
 78. box-shadow悬浮卡片效果
 79. 文字折叠效果
 80. h5实现头部背景渐变色+弧度
+81. 文字填充效果
 #### 作品截图 
+
+文字填充效果
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%96%91%E9%A9%AC%E5%AD%97.png)
 
 h5实现头部背景渐变色+弧度
 
