@@ -92,7 +92,12 @@
 79. 文字折叠效果
 80. h5实现头部背景渐变色+弧度
 81. 文字填充效果
+82. 毛玻璃效果
 #### 作品截图 
+
+毛玻璃效果
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%AF%9B%E7%8E%BB%E7%92%83.png)
 
 文字填充效果
 
