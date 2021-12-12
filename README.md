@@ -93,7 +93,12 @@
 80. h5实现头部背景渐变色+弧度
 81. 文字填充效果
 82. 毛玻璃效果
+83. 新增loading动画
 #### 作品截图 
+
+新增loading动画
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/charge.gif)
 
 毛玻璃效果
 
