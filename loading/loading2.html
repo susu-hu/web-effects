@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			background-image: linear-gradient(to right, #c6d6b4 0%, #e0d5d9 100%);
+			padding: 0;
+			margin: 0;
+		}
+		
+		.tips {
+			font-size: 26px;
+			color: #fff;
+			padding: 10px 40px;
+			text-align: center;
+		}
+		
+		.box {
+			margin: 20px auto;
+			width: 685px;
+			height: 250px;
+			background: #ccd8d7;
+			border-radius: 10px;
+			box-shadow: 0px 0px 30px 1px #eff3eb inset;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+		}
+		.loading1,
+		.loading1 > div {
+		  position: relative;
+		  box-sizing: border-box;
+		}
+		
+		.loading1 {
+		  display: block;
+		  font-size: 0;
+		  color: #000;
+		}
+		
+		.loading1.la-dark {
+		  color: #333;
+		}
+		
+		.loading1 > div {
+		  display: inline-block;
+		  float: none;
+		  background-color: currentColor;
+		  border: 0 solid currentColor;
+		}
+		
+		.loading1 {
+		  width: 26px;
+		  height: 26px;
+		}
+		
+		.loading1 > div {
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  width: 12px;
+		  height: 12px;
+		  margin-top: -6px;
+		  margin-left: -6px;
+		  border-radius: 100%;
+		  animation: ball-square-clockwise-spin 1s infinite ease-in-out;
+		}
+		
+		.loading1 > div:nth-child(1) {
+		  top: 0;
+		  left: 0;
+		  animation-delay: -0.875s;
+		}
+		
+		.loading1 > div:nth-child(2) {
+		  top: 0;
+		  left: 50%;
+		  animation-delay: -0.75s;
+		}
+		
+		.loading1 > div:nth-child(3) {
+		  top: 0;
+		  left: 100%;
+		  animation-delay: -0.625s;
+		}
+		
+		.loading1 > div:nth-child(4) {
+		  top: 50%;
+		  left: 100%;
+		  animation-delay: -0.5s;
+		}
+		
+		.loading1 > div:nth-child(5) {
+		  top: 100%;
+		  left: 100%;
+		  animation-delay: -0.375s;
+		}
+		
+		.loading1 > div:nth-child(6) {
+		  top: 100%;
+		  left: 50%;
+		  animation-delay: -0.25s;
+		}
+		
+		.loading1 > div:nth-child(7) {
+		  top: 100%;
+		  left: 0;
+		  animation-delay: -0.125s;
+		}
+		
+		.loading1 > div:nth-child(8) {
+		  top: 50%;
+		  left: 0;
+		  animation-delay: 0s;
+		}
+		
+		.loading1.la-sm {
+		  width: 12px;
+		  height: 12px;
+		}
+		
+		.loading1.la-sm > div {
+		  width: 6px;
+		  height: 6px;
+		  margin-top: -3px;
+		  margin-left: -3px;
+		}
+		
+		.loading1.la-2x {
+		  width: 52px;
+		  height: 52px;
+		}
+		
+		.loading1.la-2x > div {
+		  width: 24px;
+		  height: 24px;
+		  margin-top: -12px;
+		  margin-left: -12px;
+		}
+		
+		.loading1.la-3x {
+		  width: 78px;
+		  height: 78px;
+		}
+		
+		.loading1.la-3x > div {
+		  width: 36px;
+		  height: 36px;
+		  margin-top: -18px;
+		  margin-left: -18px;
+		}
+		
+		@keyframes ball-square-clockwise-spin {
+		  0%,
+		  40%,
+		  100% {
+		    transform: scale(0.4);
+		  }
+		
+		  70% {
+		    transform: scale(1);
+		  }
+		}
+		.loading2,
+		.loading2 > div {
+		  position: relative;
+		  box-sizing: border-box;
+		}
+		
+		.loading2 {
+		  display: block;
+		  font-size: 0;
+		  color: #000;
+		}
+		
+		.loading2.la-dark {
+		  color: #333;
+		}
+		
+		.loading2 > div {
+		  display: inline-block;
+		  float: none;
+		  background-color: currentColor;
+		  border: 0 solid currentColor;
+		}
+		
+		.loading2 {
+		  width: 32px;
+		  height: 32px;
+		}
+		
+		.loading2 > div {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 10px;
+		  height: 10px;
+		  border-radius: 100%;
+		}
+		
+		.loading2 > div:nth-child(1) {
+		  animation: ball-triangle-path-ball-one 2s 0s ease-in-out infinite;
+		}
+		
+		.loading2 > div:nth-child(2) {
+		  animation: ball-triangle-path-ball-two 2s 0s ease-in-out infinite;
+		}
+		
+		.loading2 > div:nth-child(3) {
+		  animation: ball-triangle-path-ball-tree 2s 0s ease-in-out infinite;
+		}
+		
+		.loading2.la-sm {
+		  width: 16px;
+		  height: 16px;
+		}
+		
+		.loading2.la-sm > div {
+		  width: 4px;
+		  height: 4px;
+		}
+		
+		.loading2.la-2x {
+		  width: 64px;
+		  height: 64px;
+		}
+		
+		.loading2.la-2x > div {
+		  width: 20px;
+		  height: 20px;
+		}
+		
+		.loading2.la-3x {
+		  width: 96px;
+		  height: 96px;
+		}
+		
+		.loading2.la-3x > div {
+		  width: 30px;
+		  height: 30px;
+		}
+		
+		@keyframes ball-triangle-path-ball-one {
+		  0% {
+		    transform: translate(0, 220%);
+		  }
+		
+		  17% {
+		    opacity: 0.25;
+		  }
+		
+		  33% {
+		    opacity: 1;
+		    transform: translate(110%, 0);
+		  }
+		
+		  50% {
+		    opacity: 0.25;
+		  }
+		
+		  66% {
+		    opacity: 1;
+		    transform: translate(220%, 220%);
+		  }
+		
+		  83% {
+		    opacity: 0.25;
+		  }
+		
+		  100% {
+		    opacity: 1;
+		    transform: translate(0, 220%);
+		  }
+		}
+		
+		@keyframes ball-triangle-path-ball-two {
+		  0% {
+		    transform: translate(110%, 0);
+		  }
+		
+		  17% {
+		    opacity: 0.25;
+		  }
+		
+		  33% {
+		    opacity: 1;
+		    transform: translate(220%, 220%);
+		  }
+		
+		  50% {
+		    opacity: 0.25;
+		  }
+		
+		  66% {
+		    opacity: 1;
+		    transform: translate(0, 220%);
+		  }
+		
+		  83% {
+		    opacity: 0.25;
+		  }
+		
+		  100% {
+		    opacity: 1;
+		    transform: translate(110%, 0);
+		  }
+		}
+		
+		@keyframes ball-triangle-path-ball-tree {
+		  0% {
+		    transform: translate(220%, 220%);
+		  }
+		
+		  17% {
+		    opacity: 0.25;
+		  }
+		
+		  33% {
+		    opacity: 1;
+		    transform: translate(0, 220%);
+		  }
+		
+		  50% {
+		    opacity: 0.25;
+		  }
+		
+		  66% {
+		    opacity: 1;
+		    transform: translate(110%, 0);
+		  }
+		
+		  83% {
+		    opacity: 0.25;
+		  }
+		
+		  100% {
+		    opacity: 1;
+		    transform: translate(220%, 220%);
+		  }
+		}
+		
+		
+	</style>
+	<body>
+		<div class="box">
+			<div class="loading1">
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="loading2">
+			  <div></div>
+			  <div></div>
+			  <div></div>
+			</div>
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+		<div class="box">
+			
+		</div>
+	</body>
+</html>
