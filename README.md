@@ -94,7 +94,12 @@
 81. 文字填充效果
 82. 毛玻璃效果
 83. 新增loading动画
+84. CSS实现手机充电效果
 #### 作品截图 
+
+CSS实现手机充电效果
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E5%85%85%E7%94%B5.gif)
 
 新增loading动画
 
