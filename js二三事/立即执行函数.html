@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+		函数的声明式写法为:function foo(){/*...*/}，这种写法会导致函数提升，所有function关键字都会被解释器优先编译，
+		不管是声明在什么位置，都可以调用它，但是它本身不会被执行，定义只是让解释器知道其存在，只有在被调用的时候才会执行。</p>
+		<p>函数的表达式写法为：var foo=function(){/*...*/}，这种写法不会导致函数提升，于是就必须先声明，再调用，否则会出错
+		</p>
+		<p>
+			(function(){}()),(function(){})()这两种是js中立即执行函数的写法，函数表达式后加上()可以被直接调用，
+			但是把整个声明式函数用()包起来的话，则会被编译器认为是函数表达式，从而可以用()来直接调用，
+			如(function foo(){/*...*/})()，但是如果这个括号加在声明式函数后面，如function foo(){/*...*/}()，
+			则会报错，很多博客说这种写法()会被省略，
+			但实际是会出错，因为不符合js的语法，所以想要通过浏览器的语法检查，就必须加点符号，比如()、+、!等，
+		</p>
+	</body>
+	<script>
+		// window.onload(
+		// 	console.log(12312)
+		// )
+		
+		
+		(function(){
+			console.log(12312)
+		}()),
+		
+		(function(){
+			console.log(3333)
+		})()
+		
+		
+		// function foo(){console.log("Hello World!")}()//声明函数后加()会报错
+		(function foo(){console.log("Hello World!")}())//用括号把整个表达式包起来,正常执行
+		(function foo(){console.log("Hello World!")})()//用括号把函数包起来，正常执行
+		!function foo(){console.log("Hello World!")}()//使用！，求反，这里只想通过语法检查。
+		+function foo(){console.log("Hello World!")}()//使用+，正常执行
+		-function foo(){console.log("Hello World!")}()//使用-，正常执行
+		~function foo(){console.log("Hello World!")}()//使用~，正常执行
+		void function foo(){console.log("Hello World!")}()//使用void，正常执行
+		new function foo(){console.log("Hello World!")}()//使用new，正常执行
+		
+		
+	</script>
+</html>
