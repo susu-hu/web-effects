@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var s = "1==2== 3==4 ==5";
+		var a = s.split("==");
+		console.log(a);
+		console.log(a.constructor == Array);
+		
+		
+		
+		var a = [1,2,3,4,5,6,7,8,9,0];  //定义数组
+		var s = a.toString();  //把数组转换为字符串
+		console.log(s);  //返回字符串“1,2,3,4,5,6,7,8,9,0”
+		console.log(typeof s);  //返回字符串string，说明是字符串类型
+		
+		
+		var a = [1,2,3,4,5,6,7,8,9,0];  //定义数组
+		var b = [1,2,3,4,5,6,7,8,9,0];  //定义数组
+		var s = a + b;  //数组连接操作
+		console.log(s);  //返回“1,2,3,4,5,6,7,8,9,01,2,3,4,5,6,7,8,9,0”
+		console.log(typeof s);  //返回字符串string，说明是字符串类型
+		
+		
+		var a = [1,[2,3],[4,5],[6,[7,[8,9],0]]];  //定义多维数组
+		var s = a.toString();  //把数组转换为字符串
+		console.log(s);  //返回字符串“1,2,3,4,5,6,7,8,9,0”
+		
+		var a = [1,2,3,4,5];  //定义数组
+		var s = a.join("==");  //指定分隔符
+		console.log(s);  //返回字符串“1==2==3==4==5”
+	</script>
+</html>
