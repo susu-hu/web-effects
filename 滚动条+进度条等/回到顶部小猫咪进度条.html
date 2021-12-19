@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			height: 140vh;
+			background-color: #222;
+		}
+
+		.cd-top {
+			position: fixed;
+			left: 25px;
+			top: -900px;
+			z-index: 99;
+			width: 70px;
+			height: 900px;
+			background: url(./img/maomi.png) no-repeat center;
+			background-size: contain;
+			-webkit-transition: all .5s ease-in-out;
+			transition: all .5s ease-in-out;
+			opacity: 1
+		}
+
+		.cd-top.cd-is-visible {
+			opacity: 1;
+			top: -326px
+		}
+
+		.cd-top.cd-fade-out {
+			opacity: 1
+		}
+
+		.cd-top:hover {
+			opacity: 1
+		}
+
+		.cd-top span {
+			display: none;
+			color: #000;
+			position: absolute;
+			bottom: 0;
+			height: 20px;
+			width: 50px;
+			text-align: center
+		}
+
+		@media screen and (max-width: 860px) {
+			.cd-top {
+				display: none;
+				height: 60px;
+				width: 50px
+			}
+
+			.cd-top span {
+				height: 10px;
+				width: 50px
+			}
+		}
+
+		.faa-parent.animated-hover:hover>.faa-spin,
+		.faa-spin.animated,
+		.faa-spin.animated-hover:hover {
+			-webkit-animation: spin 1.5s linear infinite;
+			animation: spin 1.5s linear infinite
+		}
+
+		.faa-parent.animated-hover:hover>.faa-spin.faa-fast,
+		.faa-spin.animated-hover.faa-fast:hover,
+		.faa-spin.animated.faa-fast {
+			-webkit-animation: spin .7s linear infinite;
+			animation: spin .7s linear infinite
+		}
+
+		.faa-parent.animated-hover:hover>.faa-spin.faa-slow,
+		.faa-spin.animated-hover.faa-slow:hover,
+		.faa-spin.animated.faa-slow {
+			-webkit-animation: spin 2.2s linear infinite;
+			animation: spin 2.2s linear infinite
+		}
+
+		@-webkit-keyframes float {
+			0% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0)
+			}
+
+			50% {
+				-webkit-transform: translateY(-6px);
+				transform: translateY(-6px)
+			}
+
+			100% {
+				-webkit-transform: translateY(0);
+				transform: translateY(0)
+			}
+		}
+
+		@keyframes float {
+			0% {
+				-webkit-transform: translateY(0);
+				-ms-transform: translateY(0);
+				transform: translateY(0)
+			}
+
+			50% {
+				-webkit-transform: translateY(-6px);
+				-ms-transform: translateY(-6px);
+				transform: translateY(-6px)
+			}
+
+			100% {
+				-webkit-transform: translateY(0);
+				-ms-transform: translateY(0);
+				transform: translateY(0)
+			}
+		}
+
+		.faa-float.animated,
+		.faa-float.animated-hover:hover,
+		.faa-parent.animated-hover:hover>.faa-float {
+			-webkit-animation: float 2s linear infinite;
+			animation: float 2s linear infinite
+		}
+
+		.faa-float.animated-hover.faa-fast:hover,
+		.faa-float.animated.faa-fast,
+		.faa-parent.animated-hover:hover>.faa-float.faa-fast {
+			-webkit-animation: float 1s linear infinite;
+			animation: float 1s linear infinite
+		}
+
+		.faa-float.animated-hover.faa-slow:hover,
+		.faa-float.animated.faa-slow,
+		.faa-parent.animated-hover:hover>.faa-float.faa-slow {
+			-webkit-animation: float 3s linear infinite;
+			animation: float 3s linear infinite
+		}
+	</style>
+	<body>
+		<a href="#" onclick="test()" id="box" class="cd-top faa-float animated cd-fade-out "></a>
+	</body>
+	<script>
+		window.onscroll = function() {
+			var t = document.documentElement.scrollTop || document.body.scrollTop;
+			var top_div = document.getElementById("box");
+			if (t >= 10) {
+				top_div.style.top = "-33px";
+			} else {
+				top_div.style.top = "-900px";
+			}
+		}
+
+
+
+		var time;
+		var normar_title = document.title;
+		document.addEventListener('visibilitychange', function() {
+			if (document.visibilityState == 'hidden') {
+				clearTimeout(time);
+				document.title = '苏苏离开了';
+			} else {
+				document.title = '苏苏回来了';
+				time = setTimeout(function() {
+					document.title = normar_title;
+				}, 2000);
+			}
+		});
+	</script>
+</html>
