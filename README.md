@@ -95,7 +95,13 @@
 82. 毛玻璃效果
 83. 新增loading动画
 84. CSS实现手机充电效果
-#### 作品截图 
+85. 跳动的方块
+
+#### 作品截图
+
+跳动的方块
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%96%B9%E5%9D%97.gif) 
 
 CSS实现手机充电效果
 
