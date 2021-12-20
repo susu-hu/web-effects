@@ -5,8 +5,13 @@
 		<title></title>
 	</head>
 	<body>
+		
 	</body>
 	<script>
+		var s = "1,2,3,6";
+		var a = s.split(",");
+		console.log(a);
+		
 		var s = "1==2== 3==4 ==5";
 		var a = s.split("==");
 		console.log(a);
@@ -31,8 +36,14 @@
 		var s = a.toString();  //把数组转换为字符串
 		console.log(s);  //返回字符串“1,2,3,4,5,6,7,8,9,0”
 		
-		var a = [1,2,3,4,5];  //定义数组
-		var s = a.join("==");  //指定分隔符
+		var a = [88,2,3,4,5];  //定义数组
+		var s = a.join(",");  //指定分隔符
 		console.log(s);  //返回字符串“1==2==3==4==5”
+		
+		// console.log(1.toString())
+		
+		var c = [1,2,3,4,5,6,7,8,9,0];  //定义数组
+		var d = a.toString();  //把数组转换为字符串
+		console.log('d',d);  //返回字符串“1,2,3,4,5,6,7,8,9,0”
 	</script>
 </html>
