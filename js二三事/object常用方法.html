@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 1.Object.assign(target,source1,source2,...)
+		// 该方法主要用于对象的合并，将源对象source的所有可枚举属性合并到目标对象target上,此方法只拷贝源对象的自身属性，
+		// 不拷贝继承的属性。
+		// Object.assign方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。同名属性会替换。
+		
+		// Object.assign只能进行值的复制，如果要复制的值是一个取值函数，那么将求值后再复制。
+		
+		// Object.assign可以用来处理数组，但是会把数组视为对象。
+		const target = {
+		    x : 0,
+		    y : 1
+		};
+		const source = {
+		    x : 1,
+		    z : 2 ,
+		    fn : {
+		        number : 1
+		    }
+		};
+		Object.assign(target, source);  
+		console.log(target)
+		console.log(source)
+		// target  {x : 1, y : 1, z : 2, fn : {number : 1}}    // 同名属性会被覆盖
+		// source  {x : 1, z : 2, fn : {number : 1}}
+		
+		
+		
+		function Person(){
+		    this.name = 1
+		};
+		Person.prototype.country = 'china';
+		let student = new Person();
+		student.age = 29 ;
+		const young = {insterst : 'sport'};
+		Object.assign(young,student);
+		console.log(student)
+		console.log(young)
+		// young {instest : 'sport' , age : 29, name: 1}               // 只能拷贝自身的属性，不能拷贝prototype
+		
+		Object.assign([1, 2, 3], [4, 5]) // 把数组当作对象来处理
+		console.log(Object.assign([1, 2, 3], [4, 5]) )// [4, 5, 3]
+		
+		
+		
+		// 2.Object.keys(obj)
+		// 返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for...in 
+		// 循环遍历该对象时返回的顺序一致 
+		// （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
+		let arr = ["a", "b", "c"];
+		console.log(Object.keys(arr));
+		// ['0', '1', '2']
+		 
+		/* Object 对象 */
+		let obj = { foo: "bar", baz: 42 },
+		    keys = Object.keys(obj);
+		console.log(keys);
+		// ["foo","baz"] 
+		 
+		
+		
+	</script>
+</html>
