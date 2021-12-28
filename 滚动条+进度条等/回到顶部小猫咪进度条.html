@@ -49,7 +49,7 @@
 			text-align: center
 		}
 
-		@media screen and (max-width: 860px) {
+		/* @media screen and (max-width: 860px) {
 			.cd-top {
 				display: none;
 				height: 60px;
@@ -60,7 +60,7 @@
 				height: 10px;
 				width: 50px
 			}
-		}
+		} */
 
 		.faa-parent.animated-hover:hover>.faa-spin,
 		.faa-spin.animated,
@@ -143,8 +143,12 @@
 	</style>
 	<body>
 		<a href="#" onclick="test()" id="box" class="cd-top faa-float animated cd-fade-out "></a>
+		<h1 style="text-align: center;color: #fff;">这是一个标题</h1>
 	</body>
 	<script>
+		function test(){
+			
+		}
 		window.onscroll = function() {
 			var t = document.documentElement.scrollTop || document.body.scrollTop;
 			var top_div = document.getElementById("box");
