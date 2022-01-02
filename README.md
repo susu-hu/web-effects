@@ -97,7 +97,12 @@
 84. CSS实现手机充电效果
 85. 跳动的方块
 86. 页面的滚动产生的小猫咪条
+87. gitee的GVP文字动画效果（gif实现）
 #### 作品截图
+
+GVP文字动画效果（gif实现）
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/gvp.gif)
 
 页面的滚动产生的小猫咪条
 
