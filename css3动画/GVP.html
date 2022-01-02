@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		a {
+			font-size: 40px;
+			line-height: 1.34;
+			white-space: nowrap;
+			padding: 20px;
+			border-radius: 2px;
+			position: relative;
+			color: #C19A26;
+			background: rgba(253, 235, 144, 0.5);
+		}
+
+		a::after {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url(./img/f.gif) no-repeat center;
+			background-size: contain;
+			opacity: 0.6;
+			top: 0;
+			box-sizing: inherit;
+
+		}
+	</style>
+	<body>
+		<a>苏苏就是小苏苏</a>
+	</body>
+</html>

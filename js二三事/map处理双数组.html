@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// listMapUtils: {
+		// 	list2Map: function(list, key) {
+		// 		let map = {};
+		// 		if (list && Array.isArray(list) && list.length > 0) {
+		// 			list.forEach((item) => {
+		// 				item[key] ? (map[item[key]] = item) : "";
+		// 			});
+		// 		}
+		// 		return map;
+		// 	},
+		// },
+
+
+
+		//模拟数据 arr1
+		let testArrOne = [{
+				date: "2021-8-11",
+				testNumOne: 1
+			},
+			{
+				date: "2021-8-12",
+				testNumOne: 2
+			},
+			{
+				date: "2021-8-13",
+				testNumOne: 3
+			},
+		];
+		//模拟数据 arr2
+		let testArrTwo = [{
+				date: "2021-8-12",
+				testNumTwo: 2
+			},
+			{
+				date: "2021-8-14",
+				testNumTwo: 4
+			},
+			{
+				date: "2021-8-15",
+				testNumTwo: 5
+			},
+		];
+
+		//合并方法
+
+		let testMap = {}; //首先声明一个空对象作作为 map
+
+		//遍历第一给数组
+		testArrOne.forEach((item) => {
+			testMap[item.date] = {
+				date: item.date,
+				testNumOne: item.testNumOne || 0,
+				testNumTwo: 0,
+			};
+		});
+
+		testArrTwo.forEach((item) => {
+			testMap[item.date] = testMap[item.date] || {}; //初始化对象
+			testMap[item.date].date = item.date;
+			testMap[item.date].testNumOne = testMap[item.date].testNumOne || 0;
+			testMap[item.date].testNumTwo = item.testNumTwo;
+		});
+
+		//map 转 arr
+		map2List(testMap);
+		//得到最后结果
+		console.log(map2List(testMap));
+
+		function map2List(map) {
+			let list = [];
+			if (map && typeof map === "object") {
+				for (let key in map) {
+					list.push(map[key]);
+				}
+			}
+			return list;
+		}
+	</script>
+</html>
