@@ -98,7 +98,12 @@
 85. 跳动的方块
 86. 页面的滚动产生的小猫咪条
 87. gitee的GVP文字动画效果（gif实现）
+88. 2022文字动画
 #### 作品截图
+
+2022文字动画
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/2022.gif)
 
 GVP文字动画效果（gif实现）
 
