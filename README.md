@@ -99,7 +99,12 @@
 86. 页面的滚动产生的小猫咪条
 87. gitee的GVP文字动画效果（gif实现）
 88. 2022文字动画
+89. 震碎的文字
 #### 作品截图
+
+震碎的文字
+
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E9%9C%87%E7%A2%8E%E6%96%87%E5%AD%97.gif)
 
 2022文字动画
 
