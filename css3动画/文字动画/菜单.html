@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>超酷的HTML5 3D气泡悬浮菜单DEMO演示</title>
+
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: calc(16px + (20 - 16) * (100vw - 320px)/(980 - 320));
+  --rotateTimes: 0;
+}
+
+body {
+  background-color: #002;
+  background-image: radial-gradient(circle at center, #045, #002);
+  color: #fff;
+  font: 1em "Open Sans", sans-serif;
+  height: 100vh;
+  line-height: 1.5;
+}
+
+nav, ul, li {
+  transform-style: preserve-3d;
+}
+
+nav, li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+nav, li a {
+  border-radius: 50%;
+}
+
+nav {
+  width: 18em;
+  height: 18em;
+  transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+ul, li a {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  animation: idle 4s ease-in-out infinite;
+  text-align: center;
+  width: 5em;
+  height: 5em;
+  transform: translate(-50%, -50%);
+}
+li a {
+  box-shadow: 0 0 0 0.1em #0cf inset, 0 0 1em #0cf inset;
+  color: currentColor;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.4s linear,  box-shadow 0.15s linear,  margin 0.1s linear,  width 0.1s linear,  height 0.1s linear;
+}
+li a span {
+  transition: color 0.15s linear;
+}
+li a:before {
+  background-color: #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  opacity: 0.5;
+  position: absolute;
+  top: 0.75em;
+  left: 0.75em;
+  width: 1em;
+  height: 0.5em;
+  transform: rotate(-45deg);
+}
+li a:focus, li a.current {
+  box-shadow: 0 0 0 0.1em #ff0 inset, 0 0 1em #ff0 inset;
+  outline: 0;
+}
+li a:focus span, li a.current span {
+  color: #ff0;
+}
+li a:hover {
+  margin: -5% 0 0 -5%;
+  width: 110%;
+  height: 110%;
+}
+li a:hover svg {
+  width: 3em;
+  height: 3em;
+}
+
+@media (prefers-reduced-motion) {
+  li {
+    animation: none;
+  }
+}
+svg {
+  display: block;
+  margin: 1.25em auto 1.5em auto;
+  transition: width 0.1s linear, height 0.1s linear;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+/* Position bubbles */
+li:nth-of-type(1) {
+  animation-delay: 0s;
+}
+li:nth-of-type(1) a {
+  transform: rotate(calc(0deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(0deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
+}
+
+li:nth-of-type(2) {
+  animation-delay: -0.5s;
+}
+li:nth-of-type(2) a {
+  transform: rotate(calc(-51.4285714286deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(51.4285714286deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
+}
+
+li:nth-of-type(3) {
+  animation-delay: -1s;
+}
+li:nth-of-type(3) a {
+  transform: rotate(calc(-102.8571428571deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(102.8571428571deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
+}
+
+li:nth-of-type(4) {
+  animation-delay: -1.5s;
+}
+li:nth-of-type(4) a {
+  transform: rotate(calc(-154.2857142857deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(154.2857142857deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
+}
+
+li:nth-of-type(5) {
+  animation-delay: -2s;
+}
+li:nth-of-type(5) a {
+  transform: rotate(calc(-205.7142857143deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(205.7142857143deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
+}
+
+/* Animations */
+.rise {
+  animation: rise 1s ease-out;
+}
+.rise a {
+  animation: fadeOut 1s ease-out;
+}
+.rise a.pop {
+  animation: pop 1s linear;
+}
+.rise a.pop svg, .rise a.pop span {
+  visibility: hidden;
+}
+
+@keyframes rise {
+  from {
+    transform: translateZ(0);
+  }
+  15% {
+    transform: translateZ(-1em);
+  }
+  to {
+    transform: translateZ(35em);
+  }
+}
+@keyframes fadeOut {
+  from, 15% {
+    opacity: 1;
+  }
+  50%, to {
+    opacity: 0;
+  }
+}
+@keyframes pop {
+  from {
+    margin: -5% 0 0 -5%;
+    width: 110%;
+    height: 110%;
+    opacity: 1;
+  }
+  10%, to {
+    margin: -20% 0 0 -20%;
+    width: 140%;
+    height: 140%;
+    opacity: 0;
+  }
+}
+@keyframes idle {
+  from, to {
+    transform: translate(-50%, -48%);
+  }
+  25% {
+    transform: translate(-52%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -52%);
+  }
+  75% {
+    transform: translate(-48%, -50%);
+  }
+}
+</style>
+</head>
+<body>
+<nav>
+	<ul>
+		<li>
+			<a href="#phone" data-item="0">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+					<path fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" d="M46.671,57.375c0,2.003-1.643,3.625-3.667,3.625
+						H20.997c-2.026,0-3.668-1.622-3.668-3.625V6.625C17.329,4.624,18.971,3,20.997,3h22.007c2.024,0,3.667,1.624,3.667,3.625V57.375z">
+					<line fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" x1="20" y1="47" x2="44" y2="47">
+					<line fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" x1="20" y1="12" x2="44" y2="12">
+					<circle fill="#fff" cx="32" cy="54" r="3">
+				</svg>
+				<span>Phone</span>
+			</a>
+		</li>
+		<li>
+			<a href="#music" data-item="1">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+					<polyline fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" points="20,56.698 20,14.813 57,3.995 57,45.881 
+					">
+					<path fill="#fff" d="M13.5,48.612c5.247,0,9.5,3.443,9.5,7.698c0,4.252-4.253,7.697-9.5,7.697c-5.245,0-9.5-3.445-9.5-7.697
+					C4,52.056,8.255,48.612,13.5,48.612z">
+					<path fill="#fff" d="M50.503,38.621c5.245,0,9.497,3.445,9.497,7.698c0,4.252-4.252,7.697-9.497,7.697c-5.251,0-9.503-3.445-9.503-7.697
+					C41,42.066,45.252,38.621,50.503,38.621z">
+					<line fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" x1="20" y1="27.163" x2="57.016" y2="16.362">
+				</svg>
+				<span>Music</span>
+			</a>
+		</li>
+		<li>
+			<a href="#map" data-item="2">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+					<path fill="#fff" d="M32.001,0C20.346,0,10.898,9.448,10.898,21.103C10.898,32.688,31.986,64,31.986,64
+					s21.086-31.312,21.086-42.897h0.029C53.102,9.448,43.653,0,32.001,0z M31.986,27.637c-4.016,0-7.271-3.255-7.271-7.27
+					s3.255-7.27,7.271-7.27s7.269,3.255,7.269,7.27S36.002,27.637,31.986,27.637z">
+				</svg>
+				<span>Map</span>
+			</a>
+		</li>
+		<li>
+			<a href="#wifi" data-item="3">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+					<path fill="#fff" d="M32.008,49.836c1.928,0,3.496,1.559,3.496,3.499c0,1.939-1.567,3.499-3.496,3.499
+						c-1.935,0-3.502-1.56-3.502-3.499C28.506,51.395,30.074,49.836,32.008,49.836z">
+					<path fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" d="M22.082,44.234L22.082,44.234
+						c5.486-5.79,14.376-5.79,19.857,0l0,0">
+					<path fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" d="M52.061,33.604
+						c-11.055-11.605-28.993-11.619-40.064-0.031c-0.01,0.011-0.021,0.021-0.031,0.031l0,0">
+					<path fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" d="M61.819,23.229C45.383,5.831,18.713,5.81,2.25,23.18
+						c-0.014,0.017-0.03,0.032-0.046,0.049l0,0">
+				</svg>
+				<span>Wi-Fi</span>
+			</a>
+		</li>
+		<li>
+			<a href="#settings" data-item="4">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+					<path fill="#fff" d="M61.89,24.271l-6.927-0.707c-0.476-1.31-1.06-2.577-1.751-3.788c-0.701-1.205-1.496-2.349-2.389-3.418
+					l2.858-6.352c0.466-1.086,0.049-2.351-0.973-2.948l-9.34-5.451c-1.036-0.6-2.36-0.319-3.065,0.648L36.164,7.9
+					c-2.757-0.477-5.573-0.477-8.327,0l-4.068-5.644c-0.705-0.967-2.028-1.248-3.065-0.648L11.318,7.03
+					c-1.021,0.596-1.439,1.86-0.973,2.948l2.845,6.335c-1.787,2.147-3.192,4.584-4.157,7.206l-6.925,0.707
+					C0.912,24.348,0.002,25.354,0,26.556v10.844c-0.021,1.22,0.895,2.251,2.107,2.374l6.925,0.708c0.96,2.621,2.366,5.061,4.157,7.204
+					l-2.845,6.337c-0.467,1.089-0.049,2.35,0.973,2.947l9.386,5.423c1.037,0.6,2.36,0.319,3.065-0.647l4.082-5.646
+					c2.754,0.478,5.571,0.478,8.328,0l4.062,5.632c0.71,0.967,2.029,1.247,3.065,0.647l9.387-5.422c1.022-0.598,1.439-1.861,0.974-2.948
+					l-2.844-6.337c1.79-2.146,3.194-4.583,4.154-7.207l6.926-0.705c1.186-0.13,2.087-1.123,2.097-2.314V26.599
+					C63.995,25.397,63.084,24.392,61.89,24.271z M32.229,45.654c-7.374,0-13.351-5.979-13.351-13.352
+					c0-7.374,5.977-13.351,13.351-13.351c7.37,0,13.352,5.977,13.352,13.351C45.58,39.675,39.599,45.654,32.229,45.654z">
+				</svg>
+				<span>Settings</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	let rise = function(trigEl) {
+			trigEl.blur();
+
+			let ul = document.querySelector("ul");
+
+			ul.classList.add("rise");
+			trigEl.classList.add("pop");
+
+			setTimeout(function(){
+				trigEl.focus();
+
+				ul.classList.remove("rise");
+				trigEl.classList.remove("pop");
+			}, 1000);
+		};
+
+	this.querySelectorAll("li a").forEach(function(el){
+		let rt = document.querySelector(":root"),
+			di = +el.getAttribute("data-item");
+
+		el.addEventListener("blur",function(){
+			//var getRt = +window.getComputedStyle(el).getPropertyValue('--rotateTimes');
+			//console.log(getRt);
+			//this.classList.add("current");
+		});
+		el.addEventListener("focus",function(){
+			rt.style.setProperty("--rotateTimes",di);
+			//this.classList.remove("current");
+		});
+		el.addEventListener("dblclick",function(){
+			rise(this);
+		});
+		el.addEventListener("keyup",function(e){
+			if (e.keyCode === 13) {
+				rise(this);
+			}
+		});
+	});
+});
+</script>
+
+</body>
+</html>
