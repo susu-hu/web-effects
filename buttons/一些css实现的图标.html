@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		[class^="u-icon"] {
+			display: inline-block;
+			color: #fff;
+			vertical-align: middle;
+		}
+
+		.u-icon-sel {
+			position: relative;
+			-webkit-box-sizing: border-box;
+			width: 32%;
+			height: 32px;
+			line-height: 30px;
+			margin-bottom: 4px;
+			border: 1px solid #a4afc6;
+			border-radius: 3px;
+			color: #a4afc6;
+			text-align: center;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.u-icon-sel.on {
+			overflow: hidden;
+			border-color: #ff5d1d;
+			color: #000;
+		}
+
+		.u-icon-sel.on:before {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 18px;
+			height: 18px;
+			background: url(http://webresource.c-ctrip.com/ResCorpMobile/R1/img/common-graphic37.png?20150423) no-repeat -23px -152px/150px 240px;
+			content: '';
+		}
+
+		.u-icon-sel.more {
+			color: #6daeee;
+		}
+
+		.u-icon-deleteToggle {
+			width: 75px;
+			height: 45px;
+			line-height: 45px;
+			text-align: center;
+		}
+
+		.u-icon-deleteToggle.Blue {
+			background-color: #3e74b9;
+		}
+
+		.u-icon-deleteToggle.Orange {
+			background-color: #ff5d1d;
+		}
+
+		/*白色垃圾桶、灰色垃圾桶图标*/
+		.u-icon-trash,
+		.u-icon-grayTrash {
+			background: url(http://webresource.c-ctrip.com/ResCorpMobile/R1/img/common-graphic37.png?20150423) no-repeat 0 0/150px 240px;
+		}
+
+		.u-icon-trash {
+			background-position: 0 -84px;
+			width: 16px;
+			height: 18px;
+		}
+
+		.u-icon-grayTrash {
+			display: inline-block;
+			width: 12px;
+			height: 18px;
+			margin-right: 8px;
+			vertical-align: -2px;
+			background-position: -3px -178px;
+		}
+
+		/*不用任何图标实现删除icon效果*/
+		.u-icon-delete {
+			position: absolute;
+			bottom: 5px;
+			right: 0;
+			width: 40px;
+			height: 40px;
+		}
+
+		/*给before伪类设置一个默认背景色 设置content*/
+		.u-icon-delete:before {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 20px;
+			height: 20px;
+			border-radius: 20px;
+			background-color: #8e8e93;
+			content: '';
+		}
+
+		/*给after伪类   -webkit-transform: rotate(-45deg);旋转    background-color: #e1e2e4;设置X的一边的颜色*/
+		.u-icon-delete:after {
+			position: absolute;
+			top: 19px;
+			left: 14px;
+			width: 12px;
+			height: 2px;
+			-webkit-transform: rotate(-45deg);
+			background-color: #e1e2e4;
+			content: '';
+		}
+
+		/* -webkit-transform: rotate(45deg); 运用的特别巧秒*/
+		.u-icon-delete i {
+			position: absolute;
+			top: 19px;
+			left: 14px;
+			width: 12px;
+			height: 2px;
+			background-color: #e1e2e4;
+			-webkit-transform: rotate(45deg);
+		}
+
+		/*橙色背景中间一白色横杠的删除icon */
+		.u-icon-del {
+			position: relative;
+			width: 24px;
+			height: 24px;
+			border: 1px solid #ff5d1d;
+			-webkit-border-radius: 24px;
+			border-radius: 24px;
+			-webkit-transition: 300ms ease-in-out;
+			transition: 300ms ease-in-out;
+			background-color: #ff5d1d;
+		}
+
+		.u-icon-del.on,
+		.on .u-icon-del {
+			-webkit-transform: rotateZ(90deg);
+		}
+
+		/*这里的background-color: #fff;和 content: "\20";实现白色横杠*/
+		.u-icon-del::after {
+			position: absolute;
+			top: 10px;
+			left: 4px;
+			width: 16px;
+			height: 4px;
+			background-color: #fff;
+			content: "\20";
+		}
+
+		.u-icon-radioDelete {
+			position: relative;
+			width: 24px;
+			height: 24px;
+			border: 1px solid #8AADD8;
+			-webkit-border-radius: 24px;
+			border-radius: 24px;
+			-webkit-transition: 300ms ease-in-out;
+			transition: 300ms ease-in-out;
+		}
+
+		.u-icon-radioDelete::after {
+			position: absolute;
+			top: 11px;
+			left: 4px;
+			width: 16px;
+			height: 2px;
+			background-color: #8AADD8;
+			color: #8AADD8;
+			content: "\20";
+		}
+
+		.u-icon-radioDelete.on,
+		.on .u-icon-radioDelete {
+			-webkit-transform: rotateZ(90deg);
+			-ms-transform: rotateZ(90deg);
+		}
+
+
+		/*加减标签*/
+		/*加标签icon*/
+		.u-icon-addS,
+		.u-icon-addB {
+			width: 60px;
+			height: 40px;
+		}
+
+		/*加的大icon*/
+		.u-icon-addB {
+			position: relative;
+			top: 0;
+			right: 0;
+		}
+
+		/*加的小icon*/
+		.u-icon-addS {
+			position: relative;
+			color: #3B8FF8;
+		}
+
+		.u-icon-addS::before,
+		.u-icon-addS::after,
+		.u-icon-addB::before,
+		.u-icon-addB::after {
+			position: absolute;
+			top: 20px;
+			left: 25px;
+			width: 12px;
+			content: "";
+		}
+
+		.u-icon-addB::before,
+		.u-icon-addB::after {
+			border-top: 1px solid #fff;
+		}
+
+		.u-icon-addS::before,
+		.u-icon-addS::after {
+			border-top: 2px solid #3B8FF8;
+		}
+
+		.u-icon-addB::after,
+		.u-icon-addS::after {
+			-webkit-transform: rotateZ(90deg);
+			transform: rotateZ(90deg);
+		}
+
+		/*加、减按钮*/
+		.u-icon-plus,
+		.u-icon-minus {
+			position: relative;
+			width: 30px;
+			height: 3px;
+			background-color: #a9b3c9;
+			box-shadow: 0 1px 1px #959bab inset;
+			border-radius: 3px;
+		}
+
+		.u-icon-plus.on,
+		.u-icon-minus.on,
+		.on.u-icon-plus::before,
+		.on .u-icon-plus,
+		.on .u-icon-minus,
+		.on .u-icon-plus ::before {
+			background-color: #6daeee;
+			box-shadow: 0 1px 1px #6a9aca inset;
+		}
+
+		.u-icon-plus::before {
+			position: absolute;
+			left: 13px;
+			width: 3px;
+			height: 30px;
+			border-radius: 3px;
+			box-shadow: 1px 0 1px #959bab inset;
+			background-color: #a9b3c9;
+			-webkit-transform: translate(0, -13.5px);
+			transform: translate(0, -13.5px);
+			text-align: center;
+			content: "";
+		}
+
+
+		.u-icon-qa {
+			width: 60px;
+			height: 44px;
+			text-align: center;
+			color: #FFFFFF;
+			font-size: 18px;
+
+		}
+
+		.u-icon-qa:before {
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			width: 24px;
+			height: 24px;
+			background: #67a5e2;
+			-webkit-border-radius: 24px;
+			border-radius: 24px;
+			content: '';
+
+		}
+
+		.u-icon-qa:after {
+			position: absolute;
+			top: 10px;
+			right: 22px;
+			content: '?';
+
+		}
+
+		.u-icon-checkTitle {
+			position: absolute;
+			top: 9px;
+			right: 13px;
+			width: 16px;
+			height: 16px;
+			border-radius: 100%;
+			background: #fff;
+			content: '';
+		}
+
+		.u-icon-checkTitle::after {
+			position: absolute;
+			top: 2px;
+			right: 5px;
+			width: 4px;
+			height: 8px;
+			border-width: 0 2px 2px 0;
+			border-color: #ffa124;
+			border-style: solid;
+			-webkit-transform: rotate(45deg);
+			content: '';
+		}
+
+		section {
+			margin-bottom: 20px;
+		}
+	</style>
+	<body>
+		<section>
+			<span class="u-icon-radioDelete"></span>
+			<span class="u-icon-deleteToggle Orange">
+				<span class="u-icon-trash"></span>删除
+			</span>
+			<span class="u-icon-deleteToggle Blue">
+				<span class="u-icon-grayTrash"></span>删除
+			</span>
+			<span class="u-icon-del"></span>
+			<span class="u-icon-del on"></span>
+			<span class='u-icon-sel more'>搜索更多</span>
+			<span class='u-icon-sel on'>搜索更多</span>
+			<span class='u-icon-delete'><i></i></span>
+		</section>
+		<section>
+			<i class='u-icon-plus on'></i>
+			<i class='u-icon-minus on'></i>
+			<i class='u-icon-plus '></i>
+			<i class='u-icon-minus '></i>
+			<span class="u-icon-addS"></span>
+			<span class="u-icon-addB"></span>
+		</section>
+		<section>
+			<span class="u-icon-qa"></span>
+		</section>
+		<section>
+			<span class="u-icon-checkTitle"></span>
+		</section>
+	</body>
+</html>

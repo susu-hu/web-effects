@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			font-family: "SF Pro SC","HanHei SC","SF Pro Text","Myriad Set Pro","SF Pro Icons","PingFang SC",
+			"Helvetica Neue","Helvetica","Arial",sans-serif;
+			padding-top: 84px;
+		}
+		
+		/* 头部 */
+		.header{
+			min-width: 330px;
+			width: 100%;
+			background-color: #444444;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 10;
+		}
+		.header-main{
+			width: 100%;
+			max-width: 976px;
+			height: 40px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: center;
+			font-size: 12px;
+			color: #a8a8aa;
+		}
+		
+		/* 导航栏 */
+		.nav{
+			width: 100%;
+			background-color: rgba(0,0,0,0.92);
+			position: fixed;
+			top: 40px;
+			left: 0;
+			z-index: 10;
+		}
+		
+		.nav-main{
+			width: 100%;
+			max-width: 1000px;
+			height: 44px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.nav-main a{
+			color: #f5f5f7;
+			font-size: 14px;
+			font-weight: 100;
+			text-decoration: none;
+			opacity: 0.8;
+		}
+		.nav-main a:hover{
+			opacity: 1;
+			color: #FFFFFF;
+		}
+		.logo{
+			width: 44px;
+			height: 44px;
+			background-image: url(../../image/apple/apple-image.svg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;	
+			opacity: 0.8;
+			z-index: 10;
+		}
+		.logo:hover{
+			opacity: 1;
+		}
+		.search{
+			width: 18px;
+			height: 44px;
+			background-image: url(../../image/apple/search-image.svg);
+			background-position: top;
+			background-repeat: no-repeat;
+			background-size: 18px auto;
+			background-position: 0px -44px;
+		}
+		.search:hover{
+			background-size: 18px auto;
+			background-position: 0px 0px;
+		}
+		.shop-bag{
+			width: 44px;
+			height: 44px;
+			background-image: url(../../image/apple/bag_image.svg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			opacity: 0.8;
+		}
+		.shop-bag:hover{
+			opacity: 1;
+		}
+		/* 手机导航 */
+		.nav-mobile{
+			min-width: 330px;
+			width: 100%;
+			height: 44px;
+			display: none;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 12px;
+		
+		}
+		.mobile-list{
+			width: 44px;
+			height: 44px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			z-index: 10;
+		}
+		.mobile-list .line{
+			width: 15px;
+			height: 1px;
+			background-color: #FFFFFF; 
+			opacity: 0.6;
+			transition: all 0.5s;
+		}
+		.mobile-list:hover .line{
+			opacity: 1;
+		}
+		#menu-check:checked~.mobile-list .line:first-child{
+			transform: rotate(45deg) translateY(5px);
+		}
+		#menu-check:checked~.mobile-list .line:last-child{
+			transform: rotate(-45deg) translateY(-4px);
+		}
+		#menu-check:checked~.shop-bag{
+			background: none;
+		}
+		.mobile-list .line:first-child{
+			margin-bottom: 5px;
+		}
+		
+		
+		.menu{
+			min-width: 330px;
+			width: 100vw;
+			height: 0vh;
+			position: fixed;
+			left: 0;
+			top: 40px;
+			background-color: #000000;
+			padding: 48px 10px;
+			display: none;
+			flex-direction: column;
+			align-items: center;
+			overflow: hidden; 
+		}
+		.searchInput{
+			max-width: 580px;
+			width: 100%;
+			height: 34px;
+			border-radius: 8px;
+			background-color: rgba(110, 110, 115,0.3);
+			padding: 0 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.searchInput .icon{
+			width: 30px;
+			height: 36px;
+			background-image: url(../../image/apple/search-image.svg);
+			background-position: top;
+			background-repeat: no-repeat;
+			background-size: 18px auto;
+			background-position: 0px -44px;
+			margin-top: -7px;
+		}
+		.searchInput .input{
+			display: inline-block;
+			height: 30px;
+			background-color: transparent;
+			border: none;
+			flex: 1;
+			font-size: 17px;
+			color: rgb(110, 110, 115);
+			line-height: 30px;
+		}
+		.menulist{
+			max-width: 580px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-top: 60px;
+			position: relative;
+		}
+		.menulist::before{
+			position: absolute;
+			content: "快速链接";
+			left: 0;
+			top: 30px;
+			color: #FFFFFF;
+			font-size: 12px;
+			opacity: 0.4;
+		}
+		.menulist a{
+			text-decoration: none;
+		}
+		.menu-item{
+			width: 100%;
+			height: 44px;
+			padding: 13px 0;
+			font-size: 17px;
+			color: #FFFFFF;
+			font-weight: 400;
+			opacity: 0.8;
+			border-bottom: 1px solid #424245;
+		}
+		.menu-item:last-child{
+			border-bottom: none;
+		}
+		
+		#menu-check:checked~.menu{
+			display: flex;
+			/* 动画名:swiperdown,时间:0.6s,执行1次,停留在最后效果 */
+			animation: swiperdown 0.6s 1 forwards;
+		}
+		@keyframes swiperdown{
+			from{
+				height: 0;
+			}
+			to{
+				height: 100vh;
+			}
+		}
+		
+		/* 广告 */
+		.ad{
+			min-width: 330px;
+			width: 100%;
+			height: 44px;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			background-color: #00008B;
+			font-size: 12px;
+			background-color: rgb(245, 245, 247);
+		}
+		.buylink a{
+			text-decoration: none;
+			color: rgb(0, 102, 204);
+		}
+		.buylink:hover{
+			text-decoration: underline;
+		}
+		.ad-text{
+			color: rgb(29, 29, 31);
+		}
+		
+		/* 商品 */
+		.goods{
+			min-width: 330px;
+			width: 100%;
+			height: 580px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-color: #fbfbfd;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+		.goods-name{
+			font-size: 53px;
+			font-weight: bold;
+			margin-top: 50px;
+		}
+		.goods-advantage{
+			margin-top: 6px;
+			font-size: 25px;
+		}
+		.price-introduction{
+			font-size: 16px;
+			margin-top: 15px;
+			opacity: 0.6;
+			text-align: center;
+		}
+		.introduce{
+			margin-left: calc(50% - 60px);
+			width: 120px;
+			margin-top: 3px;
+		}
+		.shangbiao{
+			font-size: 8px;
+			float: right;
+			top: 0;
+			left: 0;
+		}
+		.buy-link{
+			padding: 5px;
+			width: 220px;
+			margin-top: 20px;
+			display: flex;
+			font-size: 20px;
+			justify-content: space-between;
+		}
+		.buy-link a{
+			font-size: 18px;
+			text-decoration: none;
+			color: #0066cc;
+		}
+		.buy-link .buy-link-text:hover{
+			text-decoration: underline;
+		}
+		.jiantou{
+			width: 10px;
+			height: 10px;
+			transform:  translateX(-15px) translateY(8px) rotate(45deg);
+			border-top: 2px solid #0066cc;
+			border-right: 2px solid #0066cc;
+		}
+		#iPhone12{
+			background-image: url(../../image/apple/iphone_12.jpg);
+		}
+		#iphone12-pro{
+			background-image: url(../../image/apple/iphone_12_pro.jpg);
+			background-color: #000000;
+			color: #FFFFFF;
+		}
+		#hero_ipad_pro{
+			background-image: url(../../image/apple/hero_ipad_pro.jpg);
+			background-color: #000000;
+			color: #FFFFFF;
+		}
+		
+		@media all and (max-width:760px){
+			.nav-mobile{
+				display: flex;
+			}
+			.nav-main{
+				display: none;
+			}
+			.goods-name{
+				font-size: 33px;
+				font-weight: bold;
+			}
+			.goods-advantage{
+				font-size: 16px;
+			}
+			.price-introduction{
+				font-size: 12px;
+			}
+			.introduce{
+				margin-left: calc(50% - 50px);
+			}
+			.shangbiao{
+				font-size: 5px;
+				padding-right: calc(50% - 25px);
+			}
+			.buy-link{
+				width: 160px;
+				margin-top: 10px;
+			}
+			.buy-link a{
+				font-size: 14px;
+			}
+			.jiantou{
+				width: 8px;
+				height: 8px;
+				transform:  translateX(-8px) translateY(6px) rotate(45deg);
+				border-top: 1.5px solid #0066cc;
+				border-right: 1.5px solid #0066cc;
+			}
+			#iPhone12{
+				height: 500px;
+				background-image: url(../../image/apple/iphone_12_2.jpg);
+			}
+			#iphone12-pro{
+				height: 500px;
+				background-image: url(../../image/apple/iphone_12_pro2.jpg);
+				background-color: #000000;
+				color: #FFFFFF;
+			}
+			#hero_ipad_pro{
+				height: 500px;
+				background-image: url(../../image/apple/hero_ipad_pro2.jpg);
+				
+			}
+		}
+		/* 产品分类 */
+		.goods-classify{
+			min-width: 330px;
+			width: 100%;
+			display: flex;
+			/* justify-content: space-evenly; */
+			flex-wrap: wrap;
+			overflow: hidden;
+		}
+		.classify-content{
+			width: 50%;
+			padding: 0 10px;
+			margin-bottom: 10px;
+		}
+		.classify-item{
+			width: 100%;
+			height: 580px;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		} 
+		
+		#promo_imac{
+			background-image: url(../../image/apple/promo_imac.jpg);
+		}
+		#promo_watch{
+			background-image: url(../../image/apple/promo_watch.jpg);
+		}
+		#promo_spatial{
+			background-image: url(../../image/apple/promo_spatial.jpg);
+		}
+		#promo_airtag{
+			background-image: url(../../image/apple/promo_airtag.jpg);
+		}
+		#tile_ios15{
+			background-image: url(../../image/apple/tile_ios15.jpg);
+		}
+		#promo_ipados{
+			background-image: url(../../image/apple/promo_ipados.jpg);
+		}
+		
+		
+		@media all and (max-width:1050px) {
+			.goods{
+				height: 650px;
+			}
+			#promo_imac{
+				background-image: url(../../image/apple/promo_imac2.jpg);
+			}
+			#promo_watch{
+				background-image: url(../../image/apple/promo_watch2.jpg);
+			}
+		}
+		@media all and (max-width:645px) {
+			.classify-content{
+				width: 100%;
+			}
+		}
+
+	</style>
+	<body>
+		<!-- 头部 -->
+		<div class="header">
+			<div class="header-main">
+				<广告>
+			</div>
+		</div>
+		<!-- 导航 -->
+		<div class="nav">
+			<div class="nav-main">
+				<a href="" class="logo"></a>
+				<a href="" class="nav-item">Mac</a>
+				<a href="" class="nav-item">iPad</a>
+				<a href="" class="nav-item">iPhone</a>
+				<a href="" class="nav-item">Watch</a>
+				<a href="" class="nav-item">Music</a>
+				<a href="" class="nav-item">技术支持</a>
+				<div class="search"></div>
+				<div class="shop-bag"></div>
+			</div>
+			<div class="nav-mobile">
+				<input type="checkbox" name="" id="menu-check" value="" style="display: none;"/>
+				<label href="" class="mobile-list" for="menu-check">
+					<div class="line"></div>
+					<div class="line"></div>
+				</label>
+				<a href="" class="logo"></a>
+				<a href="" class="shop-bag"></a>
+				<div class="menu">
+					<div class="searchInput">
+						<span class="icon"></span>
+						<span type="" name="" id="" value="" class="input" />搜索 apple.com.cn</span>
+					</div>
+					<div class="menulist">
+						<a href="" class="menu-item">Mac</a>
+						<a href="" class="menu-item">iPad</a>
+						<a href="" class="menu-item">iPhone</a>
+						<a href="" class="menu-item">Watch</a>
+						<a href="" class="menu-item">Music</a>
+						<a href="" class="menu-item">技术支持</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 广告 -->
+		<div class="ad">
+			<div class="buylink"><a href="https://www.apple.com.cn/shop">在线选购</a></div>
+			<div class="ad-text">，享受免费送货、Specialist 专家支持、免息分期等服务。</div>
+		</div>
+		<!-- 推荐产品 -->
+		<div class="goods" id="iPhone12">
+			<div class="goods-name">iPhone 12</div>
+			<div class="goods-advantage">升维大提速</div>
+			<div class="price-introduction">
+				<div>RMB 229/月或 RMB 5499 起，</div>
+				<div class="introduce">还可折抵换购<span class="shangbiao">1</span></div>
+			</div>
+			<div class="buy-link">
+				<a class="buy-link-text" href="https://www.apple.com.cn/iphone-12/">进一步了解</a>
+				<a href="https://www.apple.com.cn/iphone-12/">
+					<div class="jiantou"></div>
+				</a>
+				<a class="buy-link-text" href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">购买</a>
+				<a href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">
+					<div class="jiantou"></div>
+				</a>
+			</div>
+		</div>
+		<div class="goods" id="iphone12-pro">
+			<div class="goods-name">iPhone 12</div>
+			<div class="goods-advantage">升维大提速</div>
+			<div class="price-introduction">
+				<div>RMB 229/月或 RMB 5499 起，</div>
+				<div class="introduce">还可折抵换购<span class="shangbiao">1</span></div>
+			</div>
+			<div class="buy-link">
+				<a class="buy-link-text" href="https://www.apple.com.cn/iphone-12/">进一步了解</a>
+				<a href="https://www.apple.com.cn/iphone-12/">
+					<div class="jiantou"></div>
+				</a>
+				<a class="buy-link-text" href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">购买</a>
+				<a href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">
+					<div class="jiantou"></div>
+				</a>
+			</div>
+		</div>
+		<div class="goods" id="hero_ipad_pro">
+			<div class="goods-name">iPhone 12</div>
+			<div class="goods-advantage">由Apple M1 芯片强势驱动</div>
+			<div class="buy-link">
+				<a class="buy-link-text" href="https://www.apple.com.cn/iphone-12/">进一步了解</a>
+				<a href="https://www.apple.com.cn/iphone-12/">
+					<div class="jiantou"></div>
+				</a>
+				<a class="buy-link-text" href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">购买</a>
+				<a href="https://www.apple.com.cn/shop/buy-iphone/iphone-12">
+					<div class="jiantou"></div>
+				</a>
+			</div>
+		</div>
+		<!-- 产品分类 -->
+		<div class="goods-classify">
+			<div class="classify-content">
+				<div class="classify-item" id="promo_imac">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+			<div class="classify-content">
+				<div class="classify-item" id="promo_watch">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+			<div class="classify-content">
+				<div class="classify-item" id="promo_spatial">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+			<div class="classify-content">
+				<div class="classify-item" id="promo_airtag">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+			<div class="classify-content">
+				<div class="classify-item" id="tile_ios15">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+			<div class="classify-content">
+				<div class="classify-item" id="promo_ipados">
+					<div class="classify-item-title"></div>
+					<div class="classify-item-content"></div>
+					<div class="classify-item-link"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

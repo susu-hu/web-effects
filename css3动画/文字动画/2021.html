@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title></title>
+		<style>
+			body{
+				padding: 0;
+				margin: 0;
+				background-color: #222;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.wrapper {
+				width: 100%;
+				height: 500px;
+				border-radius: 5px;
+				position: relative;
+			}
+
+			.text {
+				flex: 0 0 100%;
+				font-size: 14rem;
+				font-weight: 900;
+				color: #00000000;
+				text-align: center;
+				font-family: 'Lato', sans-serif;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background: url(./img/1.gif);
+				background-clip: text;
+				-webkit-background-clip: text;
+			}
+
+			.text:after {
+				content: attr(data-text);
+				-webkit-text-stroke: 1.5px #ff7c11;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -49%);
+				background: url(./img/1.gif);
+				background-clip: text;
+				-webkit-background-clip: text;
+				background-size: 43%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="text" data-text="2022">2022</div>
+			<div>
+	</body>
+</html>
