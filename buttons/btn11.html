@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #222;
+		}
+
+		div {
+			position: relative;
+			width: 250px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			margin: 50px;
+			font-size: 30px;
+			color: #55ff7f;
+			border: 5px solid #55ff7f;
+		}
+
+		div::before,
+		div::after {
+			content: "";
+			position: absolute;
+			width: 15px;
+			height: 5px;
+			background-color: #353b48;
+			/* 这个属性是倾斜 写了一个值就表示在水平方向的倾斜 和skewX是一样的 */
+			transform: skew(50deg);
+			transition: all 0.5s;
+		}
+		div::before {
+			top: -5px;
+			left: 10%;
+		}
+		div::after {
+			bottom: -5px;
+			right: 10%;
+		}
+		div:hover::before {
+			left: 80%;
+		}
+		div:hover::after {
+			right: 80%;
+		}
+		
+	</style>
+	<body>
+		<div>苏苏就是小苏苏</div>
+	</body>
+</html>
