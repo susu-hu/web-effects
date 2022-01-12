@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+	.search-network{
+	    background: @searchFormBgColor;
+	    font-size:15px; 
+	    padding:12px 20px;
+	    width: calc(100% - 80px);
+	    margin: 0 auto;
+	    box-shadow: 2px 3px 8px @searchFormShowColor;
+	    margin-bottom: 10px;
+	    color: @formLabelColor;
+	    
+	}
+	#box{
+	    display: inline-block;
+	    vertical-align: bottom;
+	    overflow: hidden;
+	    
+	}
+	.animate {
+	    padding-left: 20px;
+	    display: inline-block;
+	    white-space: nowrap;
+	    animation: 20s wordsLoop linear infinite normal;
+	}
+	@keyframes wordsLoop {
+	    0% {
+	        transform: translateX(200px);
+	        -webkit-transform: translateX(200px);
+	    }
+	    100% {
+	        transform: translateX(-100%);
+	        -webkit-transform: translateX(-100%);
+	    }
+	}
+	@-webkit-keyframes wordsLoop {
+	    0% {
+	        transform: translateX(200px);
+	        -webkit-transform: translateX(200px);
+	    }
+	    100% {
+	        transform: translateX(-100%);
+	        -webkit-transform: translateX(-100%);
+	    }
+	}
+	</style>
+	<body>
+		<div class="search-network">
+		  <i class="el-icon-microphone">广播栏：</i>
+		  <div id="box">
+		     <span class="animate">滚动播放消息，持续1分钟，如果连续，则及时更新最新消息。</span>
+		  </div>
+		</div>
+	</body>
+</html>
