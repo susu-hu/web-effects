@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.div1 {
+			position: relative;
+			width: 300px;
+			height: 200px;
+			background: red;
+			border-radius: 75% 75% 75% 75%;
+		}
+
+		.div2 {
+			width: 100px;
+			height: 20px;
+			position: absolute;
+			bottom: 20px;
+			left: 95px;
+			border: 2px solid black;
+			border-radius: 0 0 50% 50%/0 0 100% 100%;
+			/*如果“/”前后的值都存在，那么“/”前面的值设置其水平半径，“/”后面值设置其垂直半径。*/
+			border-top: none;
+			animation: div2 2s infinite;
+		}
+
+		.div3 {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			position: absolute;
+			top: 20px;
+			left: 95px;
+			background: #fff;
+		}
+
+		.div4 {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			position: absolute;
+			top: 20px;
+			right: 95px;
+			background: #fff;
+		}
+
+		.div5,
+		.div6 {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			position: absolute;
+			top: 20px;
+			right: 15px;
+			background: #000;
+			animation: div 2s infinite;
+		}
+
+		@keyframes div {
+			0% {
+				transform: translateY(-5px);
+			}
+
+			100% {
+				transform: translateY(-15px);
+			}
+		}
+
+		@keyframes div2 {
+			0% {
+				border: 2px solid black;
+				border-radius: 0 0 50% 50%/0 0 100% 100%;
+				border-top: none;
+			}
+
+			100% {
+				border: 2px solid black;
+				border-radius: 50% 50% 0 0/100% 100% 0 0;
+			}
+		}
+	</style>
+	<body>
+		<div class="div1">
+			<div class="div2"></div>
+			<div class="div3">
+				<div class="div5"></div>
+			</div>
+			<div class="div4">
+				<div class="div6"></div>
+			</div>
+		</div>
+
+	</body>
+</html>
