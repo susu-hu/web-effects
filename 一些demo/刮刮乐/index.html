@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#c1 {
+			border: 1px solid blue;
+		}
+	</style>
+	<body>
+		<canvas id="c1" width="960" height="1440"></canvas>
+		<canvas id="c2" width="960" height="1440"></canvas>
+	</body>
+	<script type="text/javascript">
+		// 第一步：匹配到canvas对象
+		var c1 = document.getElementById("c1");
+		var c2 = document.getElementById("c2");
+		//第二步：获取canvas的上下文环境
+		var ctx1 = c1.getContext("2d"); //getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+		var ctx2 = c2.getContext("2d");
+		//创建一个图片对象
+		var imgs = new Image();
+		//指定图片路径
+		imgs.src = 'https://i.postimg.cc/mgsKJGLw/susu1.jpg'
+
+		// 注意：图片不能直接放canvas上，需要通过事件.onload加载，不然图片可能因为没有加载完成而未出现在画布
+		imgs.onload = function() {
+			// 参数：图片，起始x坐标，起始y坐标，后两个参数指定大小（建议尺寸的比例和原图比例匹配）
+			// 后两个参数如果不指定，默认会按原图1:1绘制，显示不下的内容不再显示!
+			// ctx1.drawImage(this, 0, 0, 960, 1440)
+			ctx2.drawImage(this, 0, 0)
+			// 拓展使用：
+			//jb.drawImage(this,200,200,300,300,0,0,1078,1881)
+			// 200,200,300,300决定裁剪图片左上到右下区域；后面四个坐标表示所画区域的左上右下坐标
+		}
+		// 涂层绘制到顶层(即覆盖膜)  canvas1
+		ctx1.fillStyle = "lightgray";
+		ctx1.fillRect(0, 0, 960, 1440);
+		//参数：正常字体/斜体  字号  微软雅黑/仿宋             normal:正常字体/italic：斜体
+		ctx1.font = "normal 80px 仿宋";
+		//字体轮廓颜色
+		ctx1.strokeStyle = "slateblue";
+		//绘制文本(空心)   参数：文本，左上角x坐标，左上角y坐标
+		ctx1.strokeText("请刮开！", 320, 750);
+
+		// 监听canvas的onmousedown事件（即鼠标点击事件）
+		c1.onmousedown = function(ev) {
+			c1.onmousemove = function(e) { //监听canvas的onmousemove事件（即鼠标移动事件）
+				console.log(e);
+				var w = 50; // 清除区域的宽度
+				var h = 50; // 清除区域的高度
+				var x = e.pageX - c1.offsetLeft - w / 2; // 清除区域的x位置
+				var y = e.pageY - c1.offsetTop - h / 2; // 清除区域的y位置
+				ctx1.clearRect(x, y, w, h);
+			}
+		}
+		// 监听鼠标的onmouseup事件（即鼠标松开事件）
+		c1.onmouseup = function(ev) {
+			// 取消onmousemove事件
+			c1.onmousemove = null;
+		}
+	</script>
+	<!-- 
+	第①步：创建刮刮乐的基本结构
+	
+	第②步：将图片平铺在canvas画布上（作为刮刮乐的底层！）
+	
+	第③步：如何制作刮刮乐的覆盖膜
+	
+	第④步：如何制作刮刮乐覆盖膜上的“请刮开”字样
+	
+	第⑤步：使用 JavaScript 来激活刮刮乐 
+	 -->
+</html>
