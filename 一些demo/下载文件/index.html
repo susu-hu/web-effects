@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<button onclick="down()">下载</button>
+	</body>
+	<script>
+		function down() {
+			let data="https://eln-public.oss-cn-shanghai.aliyuncs.com/dev/3acbad0b-4619-4ecb-829f-8c200434232f.xlsx";
+			let names="苏苏"
+			if (!data) {
+				return;
+			}
+			let blob = new Blob([data], {
+				type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document;charset=utf-8"
+			});
+			let url = window.URL.createObjectURL(blob);
+			let fileName = names + ".xlsx";
+			if ("download" in document.createElement("a")) {
+				const a = document.createElement("a");
+				a.href = url;
+				a.download = fileName;
+				a.style.display = "none";
+				document.body.appendChild(a);
+				a.click();
+				URL.revokeObjectURL(a.href);
+				document.body.removeChild(a);
+			} else {
+				navigator.msSaveBlob(blob, fileName);
+			}
+		}
+	</script>
+</html>

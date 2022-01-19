@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.box {
+				width: 100%;
+				min-height: 360px;
+				background-image: url("http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201801/jiaoben5647/img/1.jpg");
+				background-repeat: no-repeat;
+				background-size: 30% 30%;
+				background-position: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 背景图 -->
+		<div id='box' class="box"></div>
+
+		<!-- 重置按钮 -->
+		<button id="btn">重置</button>
+
+		<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+		<script>
+			// 判断鼠标或手者指点击的次数，从而清除画布
+			var totalNum = 0;
+
+			// 画布信息
+			var myCanvasObject;
+			var ctx;
+
+			// 画布的宽高，根据背景图来获取
+			var width = document.getElementById("box").offsetWidth - 2;
+			var height = document.getElementById("box").offsetHeight;
+
+			// 鼠标或者手指事件的相关参数
+			var isDown = false; //鼠标是否按下标志
+			var pointerArr = []; //鼠标移动坐标数组
+			var xPointer = 0; //鼠标当前x坐标
+			var yPointer = 0; //鼠标当前y坐标
+
+			// 进入页面先初始化刮刮卡
+			init();
+
+			// 清空画布
+			$("#btn").on("click", function() {
+				if (myCanvasObject) {
+					//绘制黑色矩形 ，将蒙层充满 
+					initBlackRect();
+				} else {
+					init();
+				}
+			})
+
+			// 绘制画布的黑色矩形
+			function initBlackRect() {
+				ctx.beginPath();
+				ctx.fillStyle = "#939393";
+				ctx.rect(0, 0, width, height);
+				ctx.closePath();
+				ctx.fill();
+			}
+
+			// 清空画布,重置点击次数
+			function clearRect() {
+				ctx.clearRect(0, 0, width, height);
+				totalNum = 0;
+			}
+
+			// 初始化画布的方法
+			function init() {
+
+				if (!document.getElementById("myCanvas")) {
+					var canvas = document.createElement("canvas");
+					canvas.setAttribute("width", width + "px");
+					canvas.setAttribute("height", height + "px");
+					canvas.setAttribute("style", "border:1px solid green");
+					canvas.id = "myCanvas";
+					document.getElementById("box").appendChild(canvas);
+				}
+
+				myCanvasObject = document.getElementById("myCanvas");
+				ctx = myCanvasObject.getContext("2d");
+
+				//绘制黑色矩形    
+				initBlackRect();
+
+				//pc，移动事件兼容写法
+				var hastouch = "ontouchstart" in window ? true : false,
+					tapstart = hastouch ? "touchstart" : "mousedown",
+					tapmove = hastouch ? "touchmove" : "mousemove",
+					tapend = hastouch ? "touchend" : "mouseup";
+
+				//鼠标按下
+				myCanvasObject.addEventListener(tapstart, function(event) {
+					var e = window.event || event; //2017-12-06
+					this.style.cursor = "move";
+					isDown = true;
+					xPointer = hastouch ? e.targetTouches[0].pageX : e.clientX - this.offsetLeft;
+					yPointer = hastouch ? e.targetTouches[0].pageY : e.clientY - this.offsetTop;;
+					pointerArr.push([xPointer, yPointer]);
+					circleReset(ctx);
+				});
+
+				//鼠标按下后拖动
+				myCanvasObject.addEventListener(tapmove, function(event) {
+					var e = window.event || event; //2017-12-06
+					if (isDown) {
+						xPointer = hastouch ? e.targetTouches[0].pageX : e.clientX - this.offsetLeft;;
+						yPointer = hastouch ? e.targetTouches[0].pageY : e.clientY - this.offsetTop;;
+						pointerArr.push([xPointer, yPointer]);
+						circleReset(ctx);
+					}
+				});
+
+				//鼠标抬起取消事件
+				myCanvasObject.addEventListener(tapend, function(event) {
+					totalNum += 1;
+					isDown = false;
+					pointerArr = [];
+
+					// 这里可以设置一个点击的最大次数
+					// 当到达最大点击次数时，清除画布
+					// 画布清空，只需要重置一下宽高即可
+					// 这里是通过手指点击的次数来计算的，但你知道手指点击时绘制的面积，然后就可计算点击几次能达到你所需的面积大小
+					// 虽然这种统计的面积方法不太准确，但在接受范围内
+					if (totalNum == 2) {
+						clearRect()
+					}
+				});
+
+				//圆形橡皮檫
+				function circleReset(ctx) {
+					ctx.save();
+					ctx.beginPath();
+					ctx.moveTo(pointerArr[0][0], pointerArr[0][1]);
+					ctx.lineCap = "round"; //设置线条两端为圆弧
+					ctx.lineJoin = "round"; //设置线条转折为圆弧
+					ctx.lineWidth = 60;
+					ctx.globalCompositeOperation = "destination-out";
+					if (pointerArr.length == 1) {
+						ctx.lineTo(pointerArr[0][0] + 1, pointerArr[0][1] + 1);
+					} else {
+						for (var i = 1; i < pointerArr.length; i++) {
+							ctx.lineTo(pointerArr[i][0], pointerArr[i][1]);
+							ctx.moveTo(pointerArr[i][0], pointerArr[i][1]);
+						}
+					}
+					ctx.closePath();
+					ctx.stroke();
+					ctx.restore();
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>星球福利社</title>
+		<style>
+			body {
+				--g-c: #A70019;
+				--page-bg: #FFBC70;
+				--panel-font-color: #F26B27;
+				--rule-bg: url(../images/rule-bg.png);
+				--awards-center-bg: #FFE4C5;
+			}
+
+			@charset "utf-8";
+			/*Globle Css*/
+			body {
+				max-width: 10rem;
+				min-width: 4.26666667rem;
+				font-size: 0.16rem;
+				line-height: 1.6;
+				font-family: -apple-system-font, "Helvetica Neue", "Microsoft Yahei", "Arial", sans-serif;
+			}
+
+			ul,
+			ol {
+				list-style: none;
+			}
+
+			img {
+				border: none;
+			}
+
+			a {
+				outline: none;
+				text-decoration: none;
+				color: inherit;
+			}
+
+			a:hover {
+				text-decoration: none;
+			}
+
+			input {
+				outline: none;
+			}
+
+			.block {
+				display: block;
+			}
+
+			.none {
+				display: none;
+			}
+
+			.r {
+				position: relative;
+			}
+
+			.a {
+				position: absolute;
+			}
+
+			.fl {
+				float: left;
+			}
+
+			.fr {
+				float: right;
+			}
+
+			.clearfix:after {
+				content: "";
+				clear: both;
+				display: block;
+				visibility: hidden;
+				height: 0;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				outline: 0;
+			}
+
+			.img-res {
+				display: block;
+				height: auto;
+				max-width: 100%;
+			}
+
+			
+
+			/*顶部规则及图片*/
+			.header-img {
+				position: relative;
+			}
+
+			.awards-rule {
+				position: absolute;
+				right: 0;
+				display: block;
+				top: .25rem;
+				width: 1.9rem;
+				height: 1rem;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-size: 100% auto;
+				font-size: .24rem;
+				padding-top: .25rem;
+				box-sizing: border-box;
+				padding-left: .3rem;
+				color: var(--g-c);
+			}
+
+			.awards-rule img {
+				vertical-align: middle;
+				width: .1rem;
+				height: .14rem;
+			}
+
+			/**
+			 * 响应式字体
+			 */
+			html {
+				font-size: 13.33333vw
+			}
+
+			@media screen and (max-width:320px) {
+				html {
+					font-size: 42.667px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:321px) and (max-width:360px) {
+				html {
+					font-size: 48px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:361px) and (max-width:375px) {
+				html {
+					font-size: 50px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:376px) and (max-width:393px) {
+				html {
+					font-size: 52.4px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:394px) and (max-width:412px) {
+				html {
+					font-size: 54.93px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:413px) and (max-width:414px) {
+				html {
+					font-size: 55.2px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:415px) and (max-width:480px) {
+				html {
+					font-size: 64px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:481px) and (max-width:540px) {
+				html {
+					font-size: 72px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:541px) and (max-width:640px) {
+				html {
+					font-size: 85.33px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:641px) and (max-width:720px) {
+				html {
+					font-size: 96px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:721px) and (max-width:768px) {
+				html {
+					font-size: 102.4px;
+					font-size: 13.33333vw
+				}
+			}
+
+			@media screen and (min-width:769px) {
+				html {
+					font-size: 102.4px;
+					font-size: 13.33333vw
+				}
+			}
+
+
+
+			/*弹窗区域*/
+			.mask-bg {
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 99;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.85);
+			}
+
+			.box-rule {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: calc(100% - 1rem);
+				background: #fff;
+				border-radius: .2rem;
+			}
+
+			.box-rule h2 {
+				font-size: .45rem;
+				text-align: center;
+				color: var(--panel-font-color);
+				padding-top: .48rem;
+			}
+
+			.box-rule .con {
+				font-size: .32rem;
+				line-height: .5rem;
+				color: #646464;
+				padding: .5rem .45rem;
+			}
+
+			.box-rule .kown-btn,
+			.updata-btn {
+				display: block;
+				width: 3.4rem;
+				height: .86rem;
+				text-align: center;
+				font-size: .32rem;
+				background: var(--panel-font-color);
+				border-radius: .86rem;
+				text-align: center;
+				margin: .5rem auto .35rem;
+				color: #fff;
+				line-height: .86rem;
+			}
+
+			.close-icon {
+				font-size: .6rem;
+				position: absolute;
+				right: .3rem;
+				top: 0;
+				color: #999;
+				z-index: 999;
+			}
+
+			/*奖品中心*/
+			.awards-center {
+				margin: .3rem;
+				padding: .4rem;
+				border-radius: .1rem;
+				background: var(--awards-center-bg);
+			}
+
+			.center-title {
+				padding-top: 0;
+				font-size: .38rem;
+				text-align: center;
+				margin-bottom: .4rem;
+				color: var(--panel-font-color);
+			}
+
+
+			.gray img {
+				-webkit-filter: grayscale(100%);
+				-moz-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				-o-filter: grayscale(100%);
+				filter: grayscale(100%);
+				filter: gray;
+			}
+
+			.user-awards.gray p.name,
+			.gray .local-info,
+			.user-awards.gray .dis-table h2,
+			.gray .awards-p p,
+			.gray .no-info p {
+				color: #999;
+			}
+
+			.gray a {
+				pointer-events: none;
+				background-color: #999;
+			}
+
+
+			.flex {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				margin-bottom: .3rem;
+			}
+
+			.flex-item {
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+				min-width: 0;
+			}
+
+			.dis-table h2 {
+				font-size: .32rem;
+				color: var(--panel-font-color);
+				margin-bottom: .04rem;
+			}
+
+			.dis-table p {
+				font-size: .28rem;
+				line-height: .4rem;
+				color: #999;
+			}
+
+			.overHiden {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			.two-line {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				word-wrap: break-word;
+				-webkit-hyphens: auto;
+				hyphens: auto;
+			}
+
+			.awards-img {
+				width: 1.6rem;
+				height: 1.6rem;
+				margin-right: .3rem;
+				border-radius: .1rem;
+				overflow: hidden;
+			}
+
+			.see-btn {
+				display: block;
+				width: 3.4rem;
+				height: .86rem;
+				text-align: center;
+				font-size: .32rem;
+				background: var(--panel-font-color);
+				border-radius: .86rem;
+				text-align: center;
+				margin: .5rem auto .35rem;
+				color: #fff;
+				line-height: .86rem;
+			}
+
+			/*变量区域*/
+			body {
+				background: var(--page-bg);
+			}
+
+
+
+			/*奖品中心*/
+			.user-awards {
+				padding: .4rem .3rem;
+				border-bottom: .2rem solid #f9f9f9;
+			}
+
+			.user-awards p.name {
+				font-size: .3rem;
+				color: #000;
+			}
+
+			.info-icon {
+				width: .36rem;
+				height: .36rem;
+				margin-right: .15rem;
+			}
+
+			.awards-p {
+				position: relative;
+			}
+
+			.awards-p p {
+				font-size: .28rem;
+			}
+
+			.user-awards .flex {
+				margin-bottom: .12rem;
+			}
+
+			.local-info {
+				font-size: .3rem;
+				padding-bottom: .24rem;
+				margin-bottom: .3rem;
+				position: relative;
+			}
+
+			.phone {
+				color: #999;
+				font-size: .26rem;
+				margin-left: .15rem;
+			}
+
+			.local-info::after,
+			.no-in::after,
+			.weui-cell::after {
+				content: " ";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				height: 1px;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+				color: rgba(0, 0, 0, 0.1);
+				-webkit-transform-origin: 0 100%;
+				transform-origin: 0 100%;
+				-webkit-transform: scaleY(0.5);
+				transform: scaleY(0.5);
+			}
+
+			.right-bar {
+				position: relative;
+				width: .48rem;
+				color: #666;
+			}
+
+			.user-awards .dis-table h2 {
+				color: #000;
+			}
+
+			.awards-name {
+				margin-bottom: .28rem;
+			}
+
+			.right-bar:after {
+				content: " ";
+				width: 12px;
+				height: 24px;
+				-webkit-mask-position: 0 0;
+				mask-position: 0 0;
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-size: 100%;
+				mask-size: 100%;
+				background-color: currentColor;
+				color: rgba(0, 0, 0, 0.3);
+				color: var(--weui-FG-2);
+				-webkit-mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.454%206.58l1.06-1.06%205.78%205.779a.996.996%200%20010%201.413l-5.78%205.779-1.06-1.061%205.425-5.425-5.425-5.424z%22%20fill%3D%22%23B2B2B2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
+				mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.454%206.58l1.06-1.06%205.78%205.779a.996.996%200%20010%201.413l-5.78%205.779-1.06-1.061%205.425-5.425-5.425-5.424z%22%20fill%3D%22%23B2B2B2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
+				position: absolute;
+				top: 50%;
+				right: 0;
+				margin-top: -12px;
+			}
+
+			/*领取*/
+			.get-info {
+				width: 1.6rem;
+				height: .6rem;
+				background: var(--panel-font-color);
+				border-radius: .6rem;
+				text-align: center;
+				font-size: .28rem;
+				color: #fff;
+				line-height: .6rem;
+				display: block;
+			}
+
+			.no-info p {
+				font-size: .3rem;
+			}
+
+			.no-info p+p {
+				font-size: .26rem;
+				color: #999;
+				margin-top: .06rem;
+			}
+
+			.no-info p img {
+				width: .36rem;
+				display: inline;
+				vertical-align: text-bottom;
+			}
+
+			.user-awards .flex.no-in {
+				padding-bottom: .24rem;
+				margin-bottom: .3rem;
+				position: relative;
+			}
+
+			.awards-invalid {
+				position: absolute;
+				z-index: -1;
+				width: 6.44rem;
+				height: 3.88rem;
+				background-image: url(../images/invalid.png);
+				background-size: 3.22rem 1.94rem;
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				bottom: .46rem;
+			}
+
+
+			.weui-cell {
+				padding: 16px 0;
+				position: relative;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+
+			.weui-input {
+				width: 100%;
+				border: 0;
+				outline: 0;
+				-webkit-appearance: none;
+				background-color: transparent;
+				margin-left: .3rem;
+			}
+
+			.weui-label {
+				font-size: .3rem;
+			}
+
+			.weui-cells__title {
+				font-size: .24rem;
+				line-height: .48rem;
+				color: var(--panel-font-color);
+			}
+
+			.text-area {
+				padding: 16px 0;
+				display: block;
+			}
+
+			.weui-textarea {
+				margin-top: .24rem;
+				font-size: .24rem;
+				display: block;
+				box-sizing: border-box;
+				border: 1px solid rgba(0, 0, 0, 0.08);
+				padding: .1rem;
+				resize: none;
+				background: transparent;
+				width: 100%;
+				color: inherit;
+				line-height: inherit;
+				outline: 0;
+			}
+
+
+			.updata-btn {
+				margin-top: .12rem;
+				margin-bottom: .48rem;
+			}
+
+			.logo-img {
+				width: 1.54rem;
+				margin: .5rem auto .48rem;
+			}
+
+			.text-center {
+				text-align: center;
+				margin-bottom: .12rem;
+				margin-top: .04rem;
+			}
+
+
+			/*刮奖部分*/
+			.awards-box {
+				margin-top: -2rem;
+				position: relative;
+			}
+
+			.awards-panel {
+				padding: .18rem;
+				box-sizing: border-box;
+				position: absolute;
+				width: 5.2rem;
+				height: 2.6rem;
+				left: 50%;
+				margin-left: -2.6rem;
+				bottom: .95rem;
+				background-image: url(./img/m1.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+
+			#btn {
+				width: 3.4rem;
+				height: 1rem;
+				margin-left: -1.7rem;
+				margin-top: -.66rem;
+				display: block;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+			}
+
+
+
+			#canvas-mask p {
+				color: #646464;
+				text-align: center;
+				position: absolute;
+				font-size: .26rem;
+				width: calc(100% - .3rem);
+				bottom: .42rem;
+			}
+
+			.awardstext {
+				font-size: .38rem;
+				width: 65%;
+				line-height: .6rem;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				position: absolute;
+				display: none;
+			}
+
+
+			/*刮奖前背景图*/
+			#canvas-mask {
+				background-size: 100%;
+				width: 100%;
+				height: 100%;
+				background-image: url(./img/m2.png);
+			}
+
+			/*奖品区域*/
+			#mask_img_bg {
+				position: relative;
+				background: #fff;
+				border-radius: 6px;
+				-webkit-border-radius: 6px;
+				width: 100%;
+				height: 100%;
+			}
+
+			#mask_img_bg span {
+				font-size: .38rem;
+			}
+
+			#mask_img_bg a.agine {
+				font-size: .28rem;
+				color: var(--panel-font-color);
+			}
+
+			/*刮奖区域*/
+			#redux {
+				z-index: 22;
+				position: absolute;
+			}
+
+			.awbox {
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+
+			.aw-content p {
+				position: absolute;
+				font-size: .38rem;
+				line-height: .6rem;
+				text-align: center;
+				width: 70%;
+				left: 15%;
+				top: .48rem;
+			}
+
+
+			/*中奖区域*/
+
+			.gole-awards .show img.bg {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 100;
+			}
+
+			.gole-awards {
+				display: none;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100vh;
+				left: 0;
+			}
+
+			.gole-awards .mask {
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 99;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.85);
+			}
+
+			.gole-awards .show {
+				z-index: 100;
+			}
+
+			/*中奖信息*/
+			.goleaw-img {
+				position: absolute;
+				top: 55%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 101;
+				text-align: center;
+			}
+
+			.goleaw-img h2 {
+				margin-bottom: .24rem;
+				font-size: .45rem;
+				color: var(--panel-font-color);
+			}
+
+			.goleaw-img img {
+				width: 2rem;
+				height: 2rem;
+				border-radius: .1rem;
+				margin: 0 auto .3rem;
+			}
+
+			.goleaw-img p {
+				font-size: .32rem;
+				color: #646464
+			}
+
+			.goleaw-img a {
+				display: block;
+				width: 2.9rem;
+				height: .86rem;
+				line-height: .86rem;
+				background-color: var(--panel-font-color);
+				border-radius: .86rem;
+				text-align: center;
+				margin: .42rem auto 0;
+				color: #fff;
+			}
+
+
+			/*再刮一次*/
+			.agine img {
+				width: .28rem;
+				height: auto;
+				vertical-align: middle;
+				margin-right: .12rem;
+			}
+
+			.aw-content p.agine {
+				top: 1.2rem;
+				font-size: .28rem;
+				color: var(--panel-font-color);
+			}
+
+			/**/
+			.slideIn {
+				-webkit-animation: a 0.2s forwards;
+				animation: a 0.2s forwards;
+			}
+
+			.slideOut {
+				-webkit-animation: b 0.2s a;
+				animation: b 0.2s a;
+			}
+
+			@-webkit-keyframes a {
+				0% {
+					-webkit-transform: translate3d(100%, 0, 0);
+					transform: translate3d(100%, 0, 0);
+					opacity: 0
+				}
+
+				to {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+					opacity: 1
+				}
+			}
+
+			@keyframes a {
+				0% {
+					-webkit-transform: translate3d(100%, 0, 0);
+					transform: translate3d(100%, 0, 0);
+					opacity: 0
+				}
+
+				to {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+					opacity: 1
+				}
+			}
+
+			@-webkit-keyframes b {
+				0% {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+					opacity: 1
+				}
+
+				to {
+					-webkit-transform: translate3d(100%, 0, 0);
+					transform: translate3d(100%, 0, 0);
+					opacity: 0
+				}
+			}
+
+			@keyframes b {
+				0% {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+					opacity: 1
+				}
+
+				to {
+					-webkit-transform: translate3d(100%, 0, 0);
+					transform: translate3d(100%, 0, 0);
+					opacity: 0
+				}
+			}
+
+
+			/*页面加载*/
+			.loading-box {
+				width: 100vw;
+				height: 100vh;
+				background: #fff;
+				position: absolute;
+				z-index: 999;
+				left: 0;
+				top: 0;
+				display: block;
+			}
+
+			.loading {
+				height: .6rem;
+				width: .6rem;
+				margin-top: calc(50vh - .3rem);
+				margin-left: calc(50% - .3rem);
+				display: inline-block;
+				background: transparent;
+				border-radius: 50%;
+				border-width: 4px;
+				border-style: solid;
+				border-color: #d0d0d0 #d0d0d0 #000 #d0d0d0;
+				-webkit-animation: 1s linear 0s normal none infinite running spinner_preloader;
+				-moz-animation: 1s linear 0s normal none infinite running spinner_preloader;
+				animation: 1s linear 0s normal none infinite running spinner_preloader;
+			}
+
+			@keyframes spinner_preloader {
+				0% {
+					transform: rotate(0deg);
+				}
+
+				50% {
+					transform: rotate(360deg);
+				}
+
+				100% {
+					transform: rotate(720deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--页面加载-->
+		<!-- <div class="loading-box">
+			<div class="loading"></div>
+		</div> -->
+		<!--顶部图片-->
+		<div class="header-img">
+			<img src="./img/header.png" alt="" class="img-res">
+			<a href="#" class="awards-rule">活动规则 <span> <img src="./img/right.png" alt=""></span></a>
+		</div>
+		<!--刮刮乐核心区域-->
+		<div class="awards-box">
+			<img src="./img/box.png" alt="" class="img-res">
+			<div class="awards-panel">
+				<div class="awbox">
+					<div class="aw-content">
+						<div id="mask_img_bg">
+							<p>iphone 13</p>
+						</div>
+						<img id="redux" src="./img/m2.png" class="img-res" />
+					</div>
+				</div>
+				<div id="canvas-mask">
+					<a id="btn" href="javascript:;">
+						<img src="./img/begin.png" alt="" class="img-res">
+					</a>
+					<p>您今天还有<span id="change">10</span>次刮奖机会</p>
+				</div>
+			</div>
+		</div>
+		<!--奖品中心-->
+		<div class="awards-center">
+			<div class="center-title web-font">
+				奖品说明
+			</div>
+			<div class="awards-list">
+				<div class="flex">
+					<div class="awards-img">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+							alt="" class="img-res">
+					</div>
+					<div class="flex-item">
+						<div class="dis-table">
+							<h2>一等奖</h2>
+							<p class="two-line">
+								我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="flex">
+					<div class="awards-img">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+							alt="" class="img-res">
+					</div>
+					<div class="flex-item">
+						<div class="dis-table">
+							<h2>一等奖</h2>
+							<p class="two-line">
+								我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="flex">
+					<div class="awards-img">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+							alt="" class="img-res">
+					</div>
+					<div class="flex-item">
+						<div class="dis-table">
+							<h2>一等奖</h2>
+							<p class="two-line">
+								我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="flex">
+					<div class="awards-img">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg=="
+							alt="" class="img-res">
+					</div>
+					<div class="flex-item">
+						<div class="dis-table">
+							<h2>一等奖</h2>
+							<p class="two-line">
+								我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品我是一个可牛逼的奖品
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="see-btn">
+					<a href="awards.html" class="web-font">查看我的奖品</a>
+				</div>
+			</div>
+		</div>
+		<!--游戏规则弹窗-->
+		<div id="mask-rule" class="mask-bg">
+			<div class="box-rule">
+				<h2 class="web-font">活动规则</h2>
+				<span id="close-rule" class="close-icon">×</span>
+				<div class="con">
+					<div class="text">
+						活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则
+					</div>
+					<div class="kown-btn web-font">
+						我知道了
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--去浏览器下载-->
+		<div id="mask-down" class="mask-bg">
+			<div class="box-rule">
+				<span id="close-rule" class="close-icon">×</span>
+				<div class="con">
+					<div class="logo-img">
+						<!-- <img src="assets/images/logo.png" alt="" class="img-res"> -->
+					</div>
+					<div class="text">
+						<p class="text-center"> 请前往应用市场</p>
+						<p class="text-center">下载正观新闻APP参与活动</p>
+					</div>
+					<div class="kown-btn web-font">
+						去下载
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--中奖区域-->
+		<div class="gole-awards">
+			<div class="show">
+				<img class="img-res bg" src="./img/gole.png">
+				<div class="goleaw-img">
+					<h2 class="web-font">
+						恭喜您,中奖啦!
+					</h2>
+					<!-- <img src="assets/images/13.png" alt="" class="img-res"> -->
+					<p id="atext">安佳轻欣脱脂纯牛奶
+						250ml*24盒</p>
+					<a class="ling-btn web-font" href="awards.html">
+						马上领取
+					</a>
+				</div>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="./img/game.js"></script>
+		<script src="./img/index.js"></script>
+	</body>
+
+</html>
