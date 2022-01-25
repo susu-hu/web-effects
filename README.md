@@ -102,7 +102,11 @@
 89. 震碎的文字
 90. 一个按钮
 91. svg实现一个六角线框
+92. 一个鼠标悬浮产生的动画
 #### 作品截图
+
+ 一个鼠标悬浮产生的动画
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/antload.gif)
 
 svg实现一个六角线框
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/ar-svg.gif)
