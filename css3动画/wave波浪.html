@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			background: #fff;
+		}
+
+		:root {
+			--angle: 15deg;
+		}
+
+		.g-container {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			display: flex;
+			align-items: flex-end;
+			border-radius: 50%;
+			border: 2px solid #000;
+			overflow: hidden;
+			flex-shrink: 0;
+			margin: auto;
+		}
+
+		.rect {
+			border-radius: 0;
+		}
+
+		.g-item {
+			--f: -0.0416666667s;
+			--h: 50px;
+			flex-grow: 1;
+			background-color: #000;
+			animation: heightChange 1s infinite ease-in-out alternate;
+		}
+
+		.g-container .g-item {
+			animation: heightChange 1s infinite ease-in-out alternate, skewChange 1s infinite ease-in-out alternate;
+		}
+
+		.g-container .g-item:nth-child(1) {
+			animation-delay: calc(var(--f) * 0), calc(var(--f) * 0 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(2) {
+			animation-delay: calc(var(--f) * 1), calc(var(--f) * 1 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(3) {
+			animation-delay: calc(var(--f) * 2), calc(var(--f) * 2 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(4) {
+			animation-delay: calc(var(--f) * 3), calc(var(--f) * 3 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(5) {
+			animation-delay: calc(var(--f) * 4), calc(var(--f) * 4 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(6) {
+			animation-delay: calc(var(--f) * 5), calc(var(--f) * 5 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(7) {
+			animation-delay: calc(var(--f) * 6), calc(var(--f) * 6 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(8) {
+			animation-delay: calc(var(--f) * 7), calc(var(--f) * 7 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(9) {
+			animation-delay: calc(var(--f) * 8), calc(var(--f) * 8 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(10) {
+			animation-delay: calc(var(--f) * 9), calc(var(--f) * 9 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(11) {
+			animation-delay: calc(var(--f) * 10), calc(var(--f) * 10 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(12) {
+			animation-delay: calc(var(--f) * 11), calc(var(--f) * 11 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(13) {
+			animation-delay: calc(var(--f) * 12), calc(var(--f) * 12 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(14) {
+			animation-delay: calc(var(--f) * 13), calc(var(--f) * 13 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(15) {
+			animation-delay: calc(var(--f) * 14), calc(var(--f) * 14 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(16) {
+			animation-delay: calc(var(--f) * 15), calc(var(--f) * 15 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(17) {
+			animation-delay: calc(var(--f) * 16), calc(var(--f) * 16 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(18) {
+			animation-delay: calc(var(--f) * 17), calc(var(--f) * 17 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(19) {
+			animation-delay: calc(var(--f) * 18), calc(var(--f) * 18 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(20) {
+			animation-delay: calc(var(--f) * 19), calc(var(--f) * 19 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(21) {
+			animation-delay: calc(var(--f) * 20), calc(var(--f) * 20 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(22) {
+			animation-delay: calc(var(--f) * 21), calc(var(--f) * 21 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(23) {
+			animation-delay: calc(var(--f) * 22), calc(var(--f) * 22 - 0.5s);
+		}
+
+		.g-container .g-item:nth-child(24) {
+			animation-delay: calc(var(--f) * 23), calc(var(--f) * 23 - 0.5s);
+		}
+
+		@keyframes heightChange {
+			from {
+				height: var(--h);
+			}
+
+			to {
+				height: calc(var(--h) + 30px);
+			}
+		}
+
+		@keyframes skewChange {
+			from {
+				transform: scale(1.2) translate3d(0, 10px, 0) skewY(calc(var(--angle) * 1));
+			}
+
+			to {
+				transform: scale(1.2) translate3d(0, 10px, 0) skewY(calc(var(--angle) * -1));
+			}
+		}
+	</style>
+	<body>
+		<div class="g-container">
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+			<div class="g-item"></div>
+		</div>
+	</body>
+</html>
