@@ -105,7 +105,11 @@
 92. 一个鼠标悬浮产生的动画
 93. 一个博客首页小demo
 94. 动画实现波浪效果
+95. svg实现按钮hover效果
 #### 作品截图
+
+ svg实现按钮hover效果
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%8C%89%E9%92%AEhover1.gif)
 
 动画实现波浪效果
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/wave.gif)
