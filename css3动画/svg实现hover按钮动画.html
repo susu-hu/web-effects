@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html {
+			background: #000;
+			text-align: center;
+			color: #ffcc00;
+		}
+
+		html *,
+		html *:before,
+		html *:after {
+			-webkit-transition: 1s;
+			-moz-transition: 1s;
+			-o-transition: 1s;
+			transition: 1s;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		[class^=container] {
+			display: block;
+			position: relative;
+			color: #ffcc00;
+			text-decoration: none;
+			width: 250px;
+			height: 50px;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+
+		[class^=container] .outline {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			stroke: #ffcc00;
+			stroke-width: 2px;
+			fill: transparent;
+		}
+
+		[class^=container] .text {
+			position: relative;
+			top: -40px;
+			font-family: "Helvetica";
+			font-size: 1.5rem;
+			line-height: 1;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		[class^=container]:hover .outline {
+			stroke: deeppink;
+		}
+
+		[class^=container]:hover .text {
+			color: deeppink;
+		}
+
+		.container .outline {
+			stroke-dasharray: 25 25;
+			stroke-dashoffset: -588;
+		}
+
+		.container:hover .outline {
+			stroke-dasharray: 50 50;
+			stroke-dashoffset: -275;
+		}
+
+		.container2 .outline {
+			stroke-dasharray: 50 250;
+			stroke-dashoffset: -575;
+		}
+
+		.container2:hover .outline {
+			stroke-dasharray: 50 100;
+			stroke-dashoffset: -75;
+		}
+
+		.container3 .outline {
+			stroke-dasharray: 70 230;
+			stroke-dashoffset: 60;
+		}
+
+		.container3:hover .outline {
+			stroke-dashoffset: -350;
+		}
+
+		.container4 .outline {
+			stroke-dasharray: 50 600;
+			stroke-dashoffset: -550;
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s;
+			-o-transition: 0.5s;
+			transition: 0.5s;
+		}
+
+		.container4:hover .outline {
+			stroke-dashoffset: -250;
+		}
+
+		@-webkit-keyframes woop {
+			0% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -550;
+			}
+
+			40%,
+			50% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -250;
+			}
+
+			100% {
+				stroke-dasharray: 600 0;
+				stroke-dashoffset: 25;
+			}
+		}
+
+		@-moz-keyframes woop {
+			0% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -550;
+			}
+
+			40%,
+			50% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -250;
+			}
+
+			100% {
+				stroke-dasharray: 600 0;
+				stroke-dashoffset: 25;
+			}
+		}
+
+		@-o-keyframes woop {
+			0% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -550;
+			}
+
+			40%,
+			50% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -250;
+			}
+
+			100% {
+				stroke-dasharray: 600 0;
+				stroke-dashoffset: 25;
+			}
+		}
+
+		@keyframes woop {
+			0% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -550;
+			}
+
+			40%,
+			50% {
+				stroke-dasharray: 50 600;
+				stroke-dashoffset: -250;
+			}
+
+			100% {
+				stroke-dasharray: 600 0;
+				stroke-dashoffset: 25;
+			}
+		}
+
+		.container4-5 .outline {
+			stroke-dasharray: 50 600;
+			stroke-dashoffset: -550;
+			-webkit-transition: 1s;
+			-moz-transition: 1s;
+			-o-transition: 1s;
+			transition: 1s;
+		}
+
+		.container4-5:hover .outline {
+			stroke-dasharray: 600 0;
+			stroke-dashoffset: 25;
+			-webkit-animation: woop 1s linear;
+			-moz-animation: woop 1s linear;
+			-o-animation: woop 1s linear;
+			animation: woop 1s linear;
+		}
+
+		.container5 .outline {
+			stroke-dasharray: 100 500;
+			stroke-dashoffset: 225;
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s;
+			-o-transition: 0.5s;
+			transition: 0.5s;
+		}
+
+		.container5:hover .outline {
+			stroke-dasharray: 600 0;
+			stroke-dashoffset: 475;
+		}
+
+		.container6 .outline {
+			stroke-dasharray: 50 550;
+			stroke-dashoffset: 200;
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s;
+			-o-transition: 0.5s;
+			transition: 0.5s;
+		}
+
+		.container6:hover .outline {
+			stroke-dasharray: 50 250;
+			stroke-dashoffset: 500;
+		}
+
+		@-webkit-keyframes bounceRight {
+			0% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			30% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			40%,
+			60%,
+			80%,
+			100% {
+				-webkit-transform: translateXunquote("("0 ")");
+				-moz-transform: translateXunquote("("0 ")");
+				-ms-transform: translateXunquote("("0 ")");
+				-o-transform: translateXunquote("("0 ")");
+				transform: translateXunquote("("0 ")");
+			}
+
+			50% {
+				-webkit-transform: translateXunquote("("-30% ")");
+				-moz-transform: translateXunquote("("-30% ")");
+				-ms-transform: translateXunquote("("-30% ")");
+				-o-transform: translateXunquote("("-30% ")");
+				transform: translateXunquote("("-30% ")");
+			}
+
+			70% {
+				-webkit-transform: translateXunquote("("-15% ")");
+				-moz-transform: translateXunquote("("-15% ")");
+				-ms-transform: translateXunquote("("-15% ")");
+				-o-transform: translateXunquote("("-15% ")");
+				transform: translateXunquote("("-15% ")");
+			}
+
+			90% {
+				-webkit-transform: translateXunquote("("-7.5% ")");
+				-moz-transform: translateXunquote("("-7.5% ")");
+				-ms-transform: translateXunquote("("-7.5% ")");
+				-o-transform: translateXunquote("("-7.5% ")");
+				transform: translateXunquote("("-7.5% ")");
+			}
+		}
+
+		@-moz-keyframes bounceRight {
+			0% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			30% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			40%,
+			60%,
+			80%,
+			100% {
+				-webkit-transform: translateXunquote("("0 ")");
+				-moz-transform: translateXunquote("("0 ")");
+				-ms-transform: translateXunquote("("0 ")");
+				-o-transform: translateXunquote("("0 ")");
+				transform: translateXunquote("("0 ")");
+			}
+
+			50% {
+				-webkit-transform: translateXunquote("("-30% ")");
+				-moz-transform: translateXunquote("("-30% ")");
+				-ms-transform: translateXunquote("("-30% ")");
+				-o-transform: translateXunquote("("-30% ")");
+				transform: translateXunquote("("-30% ")");
+			}
+
+			70% {
+				-webkit-transform: translateXunquote("("-15% ")");
+				-moz-transform: translateXunquote("("-15% ")");
+				-ms-transform: translateXunquote("("-15% ")");
+				-o-transform: translateXunquote("("-15% ")");
+				transform: translateXunquote("("-15% ")");
+			}
+
+			90% {
+				-webkit-transform: translateXunquote("("-7.5% ")");
+				-moz-transform: translateXunquote("("-7.5% ")");
+				-ms-transform: translateXunquote("("-7.5% ")");
+				-o-transform: translateXunquote("("-7.5% ")");
+				transform: translateXunquote("("-7.5% ")");
+			}
+		}
+
+		@-o-keyframes bounceRight {
+			0% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			30% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			40%,
+			60%,
+			80%,
+			100% {
+				-webkit-transform: translateXunquote("("0 ")");
+				-moz-transform: translateXunquote("("0 ")");
+				-ms-transform: translateXunquote("("0 ")");
+				-o-transform: translateXunquote("("0 ")");
+				transform: translateXunquote("("0 ")");
+			}
+
+			50% {
+				-webkit-transform: translateXunquote("("-30% ")");
+				-moz-transform: translateXunquote("("-30% ")");
+				-ms-transform: translateXunquote("("-30% ")");
+				-o-transform: translateXunquote("("-30% ")");
+				transform: translateXunquote("("-30% ")");
+			}
+
+			70% {
+				-webkit-transform: translateXunquote("("-15% ")");
+				-moz-transform: translateXunquote("("-15% ")");
+				-ms-transform: translateXunquote("("-15% ")");
+				-o-transform: translateXunquote("("-15% ")");
+				transform: translateXunquote("("-15% ")");
+			}
+
+			90% {
+				-webkit-transform: translateXunquote("("-7.5% ")");
+				-moz-transform: translateXunquote("("-7.5% ")");
+				-ms-transform: translateXunquote("("-7.5% ")");
+				-o-transform: translateXunquote("("-7.5% ")");
+				transform: translateXunquote("("-7.5% ")");
+			}
+		}
+
+		@keyframes bounceRight {
+			0% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			30% {
+				-webkit-transform: translateXunquote("("-100% ")");
+				-moz-transform: translateXunquote("("-100% ")");
+				-ms-transform: translateXunquote("("-100% ")");
+				-o-transform: translateXunquote("("-100% ")");
+				transform: translateXunquote("("-100% ")");
+			}
+
+			40%,
+			60%,
+			80%,
+			100% {
+				-webkit-transform: translateXunquote("("0 ")");
+				-moz-transform: translateXunquote("("0 ")");
+				-ms-transform: translateXunquote("("0 ")");
+				-o-transform: translateXunquote("("0 ")");
+				transform: translateXunquote("("0 ")");
+			}
+
+			50% {
+				-webkit-transform: translateXunquote("("-30% ")");
+				-moz-transform: translateXunquote("("-30% ")");
+				-ms-transform: translateXunquote("("-30% ")");
+				-o-transform: translateXunquote("("-30% ")");
+				transform: translateXunquote("("-30% ")");
+			}
+
+			70% {
+				-webkit-transform: translateXunquote("("-15% ")");
+				-moz-transform: translateXunquote("("-15% ")");
+				-ms-transform: translateXunquote("("-15% ")");
+				-o-transform: translateXunquote("("-15% ")");
+				transform: translateXunquote("("-15% ")");
+			}
+
+			90% {
+				-webkit-transform: translateXunquote("("-7.5% ")");
+				-moz-transform: translateXunquote("("-7.5% ")");
+				-ms-transform: translateXunquote("("-7.5% ")");
+				-o-transform: translateXunquote("("-7.5% ")");
+				transform: translateXunquote("("-7.5% ")");
+			}
+		}
+	</style>
+	<body>
+		<a class="container">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container2">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container3">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container4">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container4-5">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container5">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+
+		<a class="container6">
+			<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+				<rect class="outline" height="100%" width="100%" />
+				<div class="text">按钮hover</div>
+			</svg>
+		</a>
+	</body>
+</html>
