@@ -104,7 +104,11 @@
 91. svg实现一个六角线框
 92. 一个鼠标悬浮产生的动画
 93. 一个博客首页小demo
+94. 动画实现波浪效果
 #### 作品截图
+
+动画实现波浪效果
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/wave.gif)
 
 一个博客首页小demo
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/tiaoblog.gif)
