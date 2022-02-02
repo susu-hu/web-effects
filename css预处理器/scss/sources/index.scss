@@ -1,0 +1,34 @@
+/* 定义变量与值 */
+$bgcolor: #222;
+$textcolor: pink;
+$fontsize: 39px;
+
+// SASS允许使用变量，所有变量以$开头。
+body {
+  background-color: $bgcolor;
+  color: $textcolor;
+  font-size: $fontsize;
+  padding: 0;
+  margin: 0;
+}
+
+// 如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。
+$side:left;
+.r{
+	width: 100px;
+	height: 100px;
+	background-color: pink;
+	border-#{$side}-radius: 5px;
+}
+
+// SASS允许在代码中使用算式：
+ $var:10;
+.a{
+	width: 100px;
+	height: 100px;
+	background-color: pink;
+	position: absolute;
+	margin: (14px/2);
+	　　　　top: 50px + 100px;
+	　　　　right: $var * 10%;
+}

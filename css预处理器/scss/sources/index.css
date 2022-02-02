@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* 定义变量与值 */
+body {
+  background-color: #222;
+  color: pink;
+  font-size: 39px;
+  padding: 0;
+  margin: 0;
+}
+
+.r {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  border-left-radius: 5px;
+}
+
+.a {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+  position: absolute;
+  margin: 7px;
+  　　　　top: 150px;
+  　　　　right: 100%;
+}
+
+/*# sourceMappingURL=index.css.map */
