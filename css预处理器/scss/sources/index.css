@@ -20,9 +20,43 @@ body {
   height: 100px;
   background-color: pink;
   position: absolute;
-  margin: 7px;
-  　　　　top: 150px;
-  　　　　right: 100%;
+  top: 10px;
+  right: 10%;
+}
+
+.aa .bb {
+  margin-top: 130px;
+  color: red;
+}
+
+.cc {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  border-color: red;
+}
+
+a:hover {
+  color: red;
+}
+
+.d, .d1 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+
+.d1 {
+  font-size: 120%;
+}
+
+.e {
+  color: #fff;
+}
+
+.e1 {
+  float: left;
+  margin-left: 50px;
 }
 
 /*# sourceMappingURL=index.css.map */

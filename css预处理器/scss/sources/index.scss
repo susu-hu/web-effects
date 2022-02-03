@@ -22,13 +22,79 @@ $side:left;
 }
 
 // SASS允许在代码中使用算式：
- $var:10;
+ $var:1;
 .a{
 	width: 100px;
 	height: 100px;
 	background-color: pink;
 	position: absolute;
-	margin: (14px/2);
-	　　　　top: 50px + 100px;
-	　　　　right: $var * 10%;
+	top: $var*10px;
+	right: $var*10%;
 }
+
+// SASS允许选择器嵌套
+.aa{
+		
+	.bb{
+		margin-top: 130px;
+		color: red;
+	}
+}
+
+.cc{
+	width: 100px;
+	height: 100px;
+	border: 1px solid ;
+	border:{
+		color: red;
+	}
+}
+
+// 在嵌套的代码块内，可以使用&引用父元素。比如a:hover伪类
+
+a{
+	&:hover{
+		color:red;
+	}
+}
+
+// SASS共有两种注释风格。标准的CSS注释 /* comment */ ，
+ //会保留到编译后的文件。单行注释 // comment，只保留在SASS源文件中，编译后被省略。在/*后面加一个感叹号，表示这是"重要注释"。即////使是压缩模式编译，也会保留这行注释，通常可以用于声明版权信息。 
+ 
+ // SASS允许一个选择器，继承另一个选择器
+.d{
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+}
+// class要继承class1，就要使用@extend命令：
+.d1{
+	@extend  .d;
+	font-size: 120%;
+}
+
+//  Mixin
+
+//Mixin有点像C语言的宏（macro），是可以重用的代码块。
+
+//使用@mixin命令，定义一个代码块。
+@mixin susu {
+	color: #fff;
+}
+
+// 使用@include命令，调用这个mixin。
+.e{
+	@include susu;
+	
+}
+
+// mixin的强大之处，在于可以指定参数和缺省值。
+@mixin susu1($value:10px){
+	float: left;
+	margin-left:$value ;
+}
+
+.e1{
+	@include susu1(50px);
+}
+
