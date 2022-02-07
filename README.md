@@ -106,7 +106,11 @@
 93. 一个博客首页小demo
 94. 动画实现波浪效果
 95. svg实现按钮hover效果
+96. 光影变化文字效果
 #### 作品截图
+
+ 光影变化文字效果
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E5%85%89%E5%BD%B1%E6%96%87%E5%AD%97.gif)
 
  svg实现按钮hover效果
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%8C%89%E9%92%AEhover1.gif)
