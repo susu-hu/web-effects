@@ -107,7 +107,11 @@
 94. 动画实现波浪效果
 95. svg实现按钮hover效果
 96. 光影变化文字效果
+97. canvas实现烟花特效
 #### 作品截图
+
+canvas实现烟花特效
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/canvas%E7%83%9F%E8%8A%B1%E2%80%98.gif)
 
  光影变化文字效果
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E5%85%89%E5%BD%B1%E6%96%87%E5%AD%97.gif)
