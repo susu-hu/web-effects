@@ -85,7 +85,6 @@ a{
 // 使用@include命令，调用这个mixin。
 .e{
 	@include susu;
-	
 }
 
 // mixin的强大之处，在于可以指定参数和缺省值。
@@ -98,3 +97,66 @@ a{
 	@include susu1(50px);
 }
 
+@mixin rounded($vert, $horz, $radius: 10px) {
+　　　border-#{$vert}-#{$horz}-radius: $radius;
+　　　-moz-border-radius-#{$vert}#{$horz}: $radius;
+　　　-webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+#navbar li { @include rounded(top, left); }
+
+#footer { @include rounded(top, left, 5px); }
+
+
+// 颜色函数
+// SASS提供了一些内置的颜色函数，以便生成系列颜色。
+// 　lighten(#cc3, 10%) // #d6d65c
+// 　　darken(#cc3, 10%) // #a3a329
+// 　　grayscale(#cc3) // #808080
+// 　　complement(#cc3) // #33c
+
+// @import命令，用来插入外部文件。
+// 　@import "path/filename.scss";
+
+// 如果插入的是.css文件，则等同于css的import命令。
+// @import "foo.css";
+
+// 高级用法：
+// @if可以用来判断：
+	// 配套的还有@else命令：
+.ggg{
+	@if 1+1==2{
+		width: 100px;
+		height: 100px;
+		border: 1px solid yellow;
+	}
+}
+
+// SASS支持for循环：
+@for $i from 1 to 4 {
+	.nnn li:nth-child(#{$i}){
+		font-size:#{15*$i}px;
+	}
+}
+
+// 也支持while循环：
+// $i: 6;
+// @while $i > 0 {
+// 　.item-#{$i} { width: 2em * $i; }
+// 　$i: $i - 2;
+// }
+
+// each命令，作用与for类似
+// @each $member in a, b, c, d {
+// 　　　　.#{$member} {
+// 　　　　　　background-image: url("/image/#{$member}.jpg");
+// 　　　　}
+// 　　}
+
+// /SASS允许用户编写自己的函数。
+// @function double($n) {
+// 　　@return $n * 2;
+// }
+
+// #sidebar {
+// 　width: double(5px);
+// }
