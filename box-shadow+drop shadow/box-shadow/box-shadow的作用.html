@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.a {
+			margin: 50px auto;
+			width: 200px;
+			height: 100px;
+			background: pink;
+			box-shadow:
+				0 0 0 6px #fff,
+				0 0 0 10px #333,
+				0 0 0 15px #0055ff,
+				0 2px 5px 17px #005500;
+		}
+
+		.b {
+			margin: 50px auto;
+			width: 200px;
+			height: 100px;
+			background: pink;
+			box-shadow:
+				inset 0 0 0 6px #fff,
+				0 0 0 10px #333,
+				0 0 0 15px #0055ff,
+				0 2px 5px 17px #005500;
+		}
+
+		#foo {
+			width: 200px;
+			line-height: 200px;
+			text-align: center;
+			background: #fff;
+			margin: 50px auto;
+			box-shadow: 0 0 0 1920px rgba(0, 0, 0, .5);
+		}
+	</style>
+	<body>
+		<P>box-shadow: h-shadow v-shadow blur spread color inset;</P>
+		<p>1.实现多重边框,由于 border 单重的限制，box-shadow 就可以闪亮登场了。我们可以轻松的使用外阴影或者内阴影来模拟边框效果</p>
+		<div class="a"></div>
+		<div class="b"></div>
+		<p>box-shadow 模拟半透明遮罩层</p>
+		<div id="foo">box-shadow模拟遮罩层</div>
+	</body>
+</html>

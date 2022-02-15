@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+		}
+
+		.a {
+			width: 100px;
+			height: 100px;
+			margin: 50px auto;
+			background: #fff;
+			border-radius: 50%;
+			box-shadow:
+				120px 0px 0 -10px #795548,
+				95px 20px 0 0px #607D8B,
+				30px 30px 0 -10px green,
+				90px -20px 0 0px #FFC107,
+				40px -40px 0 0px #2196F3;
+			animation: change 6s infinite;
+		}
+
+		@keyframes change {
+			100% {
+				box-shadow:
+					120px 0px 0 -10px #fff,
+					95px 20px 0 0px #fff,
+					30px 30px 0 -10px #fff,
+					90px -20px 0 0px #fff,
+					40px -40px 0 0px #fff;
+			}
+		}
+
+		.b {
+			width: 100px;
+			height: 100px;
+			margin: 50px auto;
+			background: #999;
+			border-radius: 50%;
+			box-shadow:
+				120px 0px 0 -10px #999,
+				95px 20px 0 0px #999,
+				30px 30px 0 -10px #999,
+				90px -20px 0 0px #999,
+				40px -40px 0 0px #999;
+		}
+
+		.c {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 200px;
+			height: 200px;
+			transform: translate(-50%, -50%);
+			border-radius: 50%;
+			background-image: radial-gradient(#fff 38%, transparent 38%), radial-gradient(#09C 0, #09C 100%)
+		}
+
+		.c:before {
+			content: "";
+			width: 285px;
+			height: 122px;
+			background: 0 0;
+			border-radius: 100%;
+			position: absolute;
+			top: 33px;
+			left: -45px;
+			margin: auto;
+			box-shadow: inset 0 12px 0 13px #09c, -35px -8px 0 -5px #fff;
+			transform: rotate(-35deg)
+		}
+
+		.c:after {
+			content: "";
+			width: 120px;
+			height: 25px;
+			background: #09c;
+			position: absolute;
+			top: 80px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			box-shadow: 50px 23px 0 -2px #fff
+		}
+
+
+		.d {
+			width: 200px;
+			line-height: 68px;
+			text-align: center;
+			font-size: 16px;
+			margin: 130px auto;
+			color: #fff;
+			background: hsl(0, 0%, 60%);
+			cursor: pointer;
+			box-shadow:
+				1px 1px 0 0 hsl(0, 0%, 65%),
+				2px 2px 0 0 hsl(0, 0%, 70%),
+				3px 3px 0 0 hsl(0, 0%, 75%),
+				4px 4px 0 0 hsl(0, 0%, 80%),
+				5px 5px 0 0 hsl(0, 0%, 85%);
+		}
+
+		.d:hover {
+			background: hsl(0, 0%, 40%);
+		}
+
+		.d:active {
+			background: hsl(0, 0%, 65%);
+			box-shadow: none;
+		}
+
+		.e {
+			width: 200px;
+			line-height: 68px;
+			text-align: center;
+			font-size: 48px;
+			margin: 50px auto;
+			color: hsl(0, 0%, 60%);
+			text-shadow:
+				1px 1px 0 hsl(0, 0%, 65%),
+				2px 2px 0 hsl(0, 0%, 70%),
+				3px 3px 0 hsl(0, 0%, 75%),
+				4px 4px 0 hsl(0, 0%, 80%),
+				5px 5px 0 hsl(0, 0%, 85%);
+		}
+	</style>
+	<body>
+		<p>是可以利用 box-shadow 来复制自身</p>
+		<div class="a"></div>
+		<div class="b"></div>
+		<div class="c"></div>
+		<p>多重 box-shadow 实现立体感</p>
+		<div class="d"> 立体按钮 </div>
+		<div class="e">Shadow</div>
+	</body>
+</html>

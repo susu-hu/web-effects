@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.tri-right {
+			width: 0;
+			height: 0;
+			border-top: 3.125rem solid transparent;
+			border-left: 6.25rem solid dodgerblue;
+			border-bottom: 3.125rem solid transparent;
+			margin-bottom: 5rem;
+			/*box-shadow: 8px 8px 6px #333;*/
+			-webkit-filter: drop-shadow(8px 8px 6px #333);
+			filter: drop-shadow(8px 8px 6px #333);
+		}
+	</style>
+	<body>
+		<!-- drop-shadow滤镜可以给元素或图片非透明区域添加投影。 -->
+		<div class="tri-right"></div>
+		<!-- box-shadow和drop-shadow的区别：
+		box-shadow顾名思意“盒阴影”，只是盒子的阴影；它投影的容器，比如说你的图标中间有透明部分，但实际上透明部分依然会有投影； 
+		drop-shadow就符合真实世界的投影，非透明的颜色，我就有投影；透明部分，没投影,
+		IE13+ 支持，Chrome 和 FireFox 浏览器支持，移动端 ios 支持，Android 4.4+ 支持。也就是，基本上，移动端现在可以使用这种技术了。
+		既节约了流量，也让我们的开发更简单，维护更方便了。
+		-->
+	</body>
+</html>
