@@ -12,6 +12,7 @@
 			align-items: center;
 			justify-content: center;
 			height: 100vh;
+			background-color: #222;
 		}
 
 		/* CSS 自定义属性，允许属性类型检查，设置默认值，并定义属性是否可以继承值。该规则直接在样式表中表示自定义属性的注册，无需运行任何 JS。
@@ -26,8 +27,6 @@
 		div {
 			width: 260px;
 			height: 260px;
-			background: conic-gradient(from var(--angle), hsl(190, 35%, 77%), hsl(336, 89%, 48%), hsl(310, 14%, 92%));
-
 		}
 
 		@keyframes rotate {
@@ -36,12 +35,42 @@
 			}
 		}
 
+		.a {
+			background: conic-gradient(from var(--angle), hsl(190, 35%, 77%), hsl(336, 89%, 48%), hsl(310, 14%, 92%));
+		}
+
 		.b {
 			animation: rotate 3s infinite linear;
+			background: conic-gradient(from var(--angle), hsl(190, 35%, 77%), hsl(336, 89%, 48%), hsl(310, 14%, 92%));
+		}
+
+		.c {
+			width: 260px;
+			height: 260px;
+			background: conic-gradient(from var(--angle), hsl(190, 35%, 77%), hsl(336, 89%, 48%), hsl(310, 14%, 92%));
+			animation: rotate 3s infinite linear;
+			clip-path: polygon(0 100%, 100% 100%, 50% 0);
+			-webkit-mask:
+				linear-gradient(117deg, #000 55%, transparent 55%, transparent),
+				linear-gradient(-117deg, #000 55%, transparent 55%, transparent),
+				linear-gradient(#000, #000);
+			-webkit-mask-position: 0 0, 130px 0, 0 250px;
+			-webkit-mask-size: 130px 250px, 130px 250px, 100% 10px;
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-repeat: no-repeat;
+		}
+
+		.box {
+			width: 260px;
+			height: 260px;
+			filter: drop-shadow(0 0 5px hsl(190, 35%, 77%)) drop-shadow(0 0 10px hsl(336, 89%, 48%));
 		}
 	</style>
 	<body>
-		<div class="a"></div>
-		<div class="b"></div>
+		<!--<div class="a"></div>
+		<div class="b"></div>-->
+		<div class="box">
+			<div class="c"></div>
+		</div>
 	</body>
 </html>

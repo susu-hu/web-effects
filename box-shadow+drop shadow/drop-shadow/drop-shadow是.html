@@ -5,6 +5,15 @@
 		<title></title>
 	</head>
 	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
 		.a {
 			width: 100px;
 			height: 100px;
@@ -27,7 +36,7 @@
 			border: 10px dashed #beceeb;
 			box-shadow: 5px 5px 10px black;
 			margin-bottom: 40px;
-			
+
 
 		}
 
@@ -39,14 +48,16 @@
 		}
 	</style>
 	<body>
-		<p>filter 即是 CSS 滤镜，可以在元素呈现之前，
-			为元素的渲染提供一些效果，如模糊、颜色转移之类的。滤镜常用于调整图像、背景、边框的渲染。</p>
-		<p>filter: drop-shadow(x偏移, y偏移, 模糊大小, 色值);</p>
-		<div class="a"></div>
-		<div class="b"></div>
-		<p>drop-shadow不能阴影叠加,没有内阴影效果</p>
-		<div class="c"></div>
-		<div class="d"></div>
-		<p>不仅可以穿透代码构建的元素的透明部分，PNG图片的透明部分也是可以穿透</p>
+		<section>
+			<p>filter 即是 CSS 滤镜，可以在元素呈现之前，
+				为元素的渲染提供一些效果，如模糊、颜色转移之类的。滤镜常用于调整图像、背景、边框的渲染。</p>
+			<p>filter: drop-shadow(x偏移, y偏移, 模糊大小, 色值);</p>
+			<div class="a"></div>
+			<div class="b"></div>
+			<p>drop-shadow不能阴影叠加,没有内阴影效果</p>
+			<div class="c"></div>
+			<div class="d"></div>
+			<p>不仅可以穿透代码构建的元素的透明部分，PNG图片的透明部分也是可以穿透</p>
+		</section>
 	</body>
 </html>
