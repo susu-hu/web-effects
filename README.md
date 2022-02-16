@@ -113,7 +113,11 @@
 100. canavas实现雨点特效
 101. CSS @property属性用法
 102. drop-shadow和box-shadow的区别
+103. clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
 #### 作品截图
+
+clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/clip-path+drop-shadow.gif)
 
 drop-shadow和box-shadow的区别
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/drop-shadow.png)
