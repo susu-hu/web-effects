@@ -112,7 +112,11 @@
 99. 纯css 实现一个雪容融
 100. canavas实现雨点特效
 101. CSS @property属性用法
+102. drop-shadow和box-shadow的区别
 #### 作品截图
+
+drop-shadow和box-shadow的区别
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/drop-shadow.png)
 
 CSS @property属性用法
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/propr.gif)
