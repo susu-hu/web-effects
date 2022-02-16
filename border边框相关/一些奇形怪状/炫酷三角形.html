@@ -4,6 +4,44 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		/* CSS 自定义属性，允许属性类型检查，设置默认值，并定义属性是否可以继承值。该规则直接在样式表中表示自定义属性的注册，无需运行任何 JS。
+有效的规则会生成一个已注册的自定义属性，
+就好像使用等效的 parameters.@property 调用了 CSS.registerProperty 一样 */
+		@property --angle {
+			syntax: '<angle>';
+			inherits: false;
+			initial-value: 0deg;
+		}
+
+		div {
+			width: 260px;
+			height: 260px;
+			background: conic-gradient(from var(--angle), hsl(190, 35%, 77%), hsl(336, 89%, 48%), hsl(310, 14%, 92%));
+
+		}
+
+		@keyframes rotate {
+			to {
+				--angle: 360deg;
+			}
+		}
+
+		.b {
+			animation: rotate 3s infinite linear;
+		}
+	</style>
 	<body>
+		<div class="a"></div>
+		<div class="b"></div>
 	</body>
 </html>

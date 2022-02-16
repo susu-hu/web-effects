@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		@property --perA {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 75%;
+		}
+
+		@property --perB {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 99%;
+		}
+
+		@property --perC {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 15%;
+		}
+
+		@property --perD {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 16%;
+		}
+
+		@property --perE {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 86%;
+		}
+
+		@property --angle {
+			syntax: '<angle>';
+			inherits: false;
+			initial-value: 0deg;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			/* background-image:
+				radial-gradient(circle at var(--perE) 7%,
+					rgba(40, 40, 40, 0.04) 0%,
+					rgba(40, 40, 40, 0.04) 50%,
+					rgba(200, 200, 200, 0.04) 50%,
+					rgba(200, 200, 200, 0.04) 100%),
+				radial-gradient(circle at var(--perC) var(--perD),
+					rgba(99, 99, 99, 0.04) 0%,
+					rgba(99, 99, 99, 0.04) 50%,
+					rgba(45, 45, 45, 0.04) 50%,
+					rgba(45, 45, 45, 0.04) 100%),
+				radial-gradient(circle at var(--perA) var(--perB),
+					rgba(243, 243, 243, 0.04) 0%,
+					rgba(243, 243, 243, 0.04) 50%,
+					rgba(37, 37, 37, 0.04) 50%,
+					rgba(37, 37, 37, 0.04) 100%),
+				linear-gradient(var(--angle), rgb(34, 222, 237), rgb(135, 89, 215));
+			animation: move 30s infinite alternate linear; */
+		}
+
+		@keyframes move {
+			100% {
+				--perA: 85%;
+				--perB: 49%;
+				--perC: 45%;
+				--perD: 39%;
+				--perE: 70%;
+				--angle: 360deg;
+			}
+		}
+
+		.a {
+			width: 400px;
+			height: 400px;
+			border: 1px solid green;
+			background: linear-gradient(white, black);
+			/* this transition won't work */
+			transition: 1s;
+		}
+
+		.a:hover {
+			background: linear-gradient(red, black);
+		}
+
+		@property --gradient-start {
+			syntax: "<color>";
+			initial-value: white;
+			inherits: false;
+		}
+
+		.el {
+			width: 400px;
+			height: 400px;
+			--gradient-start: white;
+			background: linear-gradient(var(--gradient-start), black);
+			transition: --gradient-start 6s;
+		}
+
+		.el:hover {
+			--gradient-start: red;
+		}
+
+		:root {
+			--colorA: #55aa00;
+			--colorB: #000;
+			--angle: 90deg;
+			--gradX: 100%;
+			--gradY: 50%;
+			--d: 2500ms;
+			--c1: rgba(168, 239, 255, 1);
+			--c2: rgba(66, 106, 116, 0.1);
+		}
+
+		.c {
+			width: 200px;
+			height: 200px;
+			background: linear-gradient(45deg, var(--colorA), var(--colorB));
+		}
+
+		@property --colorA {
+			syntax: '<color>';
+			inherits: false;
+			initial-value: #55aa00;
+		}
+
+		@property --colorB {
+			syntax: '<color>';
+			inherits: false;
+			initial-value: #000;
+		}
+
+		.c {
+			background: linear-gradient(45deg, var(--colorA), var(--colorB));
+			transition: 1s --colorA, 1s --colorB;
+		}
+
+		.c:hover {
+			--colorA: blue;
+			--colorB: yellow;
+		}
+
+
+		@property --colorC {
+			syntax: '<color>';
+			inherits: false;
+			initial-value: pink;
+		}
+
+		@property --colorD {
+			syntax: '<color>';
+			inherits: false;
+			initial-value: #55557f;
+		}
+
+		@property --colorE {
+			syntax: '<color>';
+			inherits: false;
+			initial-value: red;
+		}
+
+		.d {
+			width: 200px;
+			height: 200px;
+			background: linear-gradient(45deg,
+					var(--colorC),
+					var(--colorD),
+					var(--colorE));
+			animation: change 10s infinite linear;
+		}
+
+		@keyframes change {
+			20% {
+				--colorC: blue;
+				--colorD: #aa0000;
+				--colorE: #13a8aa;
+			}
+
+			40% {
+				--colorC: red;
+				--colorD: #00aa7f;
+				--colorE: #00557f;
+			}
+
+			60% {
+				--colorC: #999;
+				--colorD: #000;
+				--colorE: #fff;
+			}
+
+			80% {
+				--colorC: #222;
+				--colorD: #ff55ff;
+				--colorE: #555500;
+			}
+		}
+
+		.mb20 {
+			margin-bottom: 20px;
+		}
+
+		@property --per {
+			syntax: '<percentage>';
+			inherits: false;
+			initial-value: 0%;
+		}
+
+		.loading {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			background: conic-gradient(pink, #333 var(--per), transparent var(--per), transparent 100%);
+			/* transition: --per 300ms linear; */
+			animation: l 4s infinite linear;
+		}
+
+		@keyframes l {
+			to {
+				--per: 102%
+			}
+		}
+
+		/* .loading:hover {
+			--per: 60%;
+		} */
+
+		@property --offset {
+			syntax: '<length>';
+			inherits: false;
+			initial-value: 0;
+		}
+
+		.e {
+			font-size: 40px;
+			color: pink;
+			text-underline-offset: var(--offset, 1px);
+			text-decoration: underline;
+			transition: --offset 400ms, text-decoration-color 400ms;
+		}
+
+		.e:hover {
+			--offset: 10px;
+			color: darkcyan;
+			text-decoration-color: darkcyan;
+		}
+
+		@property --angle {
+			syntax: '<angle>';
+			initial-value: 90deg;
+			inherits: true;
+		}
+
+
+		.f {
+			font-size: 30px;
+			border: 8px solid #222;
+			padding: 20px;
+			border-image: conic-gradient(from var(--angle), pink, #e6d3ff 0.1turn, pink 0.15turn, #393b3e 0.25turn) 30;
+			animation: aa 2s linear infinite forwards;
+		}
+
+		@keyframes aa {
+			100% {
+				--angle: 420deg;
+			}
+		}
+
+	</style>
+	<body>
+		<section>
+			<!--这是一段注释。注释不会在浏览器中显示。-->
+			<!--<div class="a"></div>-->
+			<!--<div class="el"></div>-->
+			<div class="c mb20"></div>
+			<div class="d mb20"></div>
+			<div class="loading mb20"></div>
+			<div class="e mb20">苏苏就是小苏苏</div>
+			<div class="f mb20">苏苏就是小苏苏</div>
+		</section>
+	</body>
+</html>
+<!-- @property 规则需要语法（syntax）和继承描述符（inheritsdescriptor）; 如果缺少其中一个，则整个规则无效，必须忽略。只有在语法是通用语法定义的情况下，初始值描述符才是可选的，否则就需要描述符; 如果缺少初始值描述符，则整个规则无效，必须忽略它。 -->
