@@ -5,6 +5,11 @@
 		<title>Document</title>
 	</head>
 	<style>
+		body {
+			padding: 0;
+			background-color: #222;
+		}
+
 		/* border-image无法实现圆角，所以换一个思路：通过padding来实现，给父节点设置渐变背景，通过padding模拟边框
 		（此处的padding值就是border需要的值），注意父元素和子元素的border-radius属性值保持一致。 */
 		.demo1 {
@@ -22,7 +27,13 @@
 			height: 100px;
 			background: -webkit-linear-gradient(0deg, red, blue);
 			border-radius: 10px;
-			border: 1px solid #fff;
+			/* overflow: hidden; */
+			/* border: 1px solid transparent; */
+			/* float: right; */
+			/* position: absolute;
+			right: 0; */
+			/* padding: 1px; */
+			/* display: inline-block; */
 		}
 
 		.demo0 {
