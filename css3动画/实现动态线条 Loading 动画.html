@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #222;
+		}
+
+		div {
+			margin-bottom: 20px;
+		}
+
+		.a1 {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 2px solid transparent;
+			border-top: 2px solid #000;
+			border-left: 2px solid #000;
+			animation: rotate 3s infinite linear;
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.a2 {
+			width: 200px;
+			height: 200px;
+			position: relative;
+		}
+
+		.a2::before {
+			position: absolute;
+			content: "";
+			top: 0px;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top: 3px solid #000;
+			border-left: 3px solid #000;
+			animation: rotate 3s infinite ease-out;
+		}
+
+		.a2::after {
+			position: absolute;
+			content: "";
+			top: -2px;
+			left: -2px;
+			right: -2px;
+			bottom: -2px;
+			border-radius: 50%;
+			border: 7px solid transparent;
+			border-bottom: 7px solid pink;
+			border-right: 7px solid pink;
+			animation: rotate 4s infinite ease-in-out;
+		}
+
+		.circular {
+			width: 200px;
+			height: 200px;
+			animation: rotate 2s linear infinite;
+		}
+
+		.path {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+			stroke: pink;
+			animation: dash 1.5s ease-in-out infinite
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes dash {
+			0% {
+				stroke-dasharray: 1, 200;
+				stroke-dashoffset: 0;
+			}
+
+			50% {
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -35px;
+			}
+
+			100% {
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -124px;
+			}
+		}
+	</style>
+	<body>
+		<section>
+			<div class="a1"></div>
+			<div class="a2"></div>
+
+			<!-- SVG 的 stroke-*  -->
+			<svg class="circular" viewbox="25 25 50 50">
+				<circle class="path" cx="50" cy="50" r="20" fill="none" />
+			</svg>
+			<!-- stroke：类比 css 中的 border-color，给 svg 图形设定边框颜色；
+stroke-dasharray：值是一组数组，没数量上限，每个数字交替表示划线与间隔的宽度;
+stroke-dashoffset：dash 模式到路径开始的距离。 -->
+		</section>
+
+	</body>
+</html>
