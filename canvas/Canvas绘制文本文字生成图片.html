@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>HTML5 Canvas绘制文本文字生成图片</title>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" width="200px" height="200px">
+			您的浏览器不支持canvas标签。
+		</canvas> 图片文字 <input type="text" id="input1" autofocus="autofocus" /> 图片文件名
+		<input type="text" id="input2" /> 按enter键生成
+		<script type="text/javascript">
+			function initCanvas(txt) {
+				var canvas = document.getElementById('myCanvas')
+				var cxt = canvas.getContext('2d')
+				var imageData = cxt.getImageData(0, 0, canvas.width, canvas.height)
+				for (var i = 0; i < imageData.data.length; i += 4) {
+					// 当该像素是透明的,则设置成白色
+					if (imageData.data[i + 3] == 0) {
+						imageData.data[i] = 255
+						imageData.data[i + 1] = 255
+						imageData.data[i + 2] = 255
+						imageData.data[i + 3] = 255
+					}
+				}
+				cxt.putImageData(imageData, 0, 0)
+				cxt.moveTo(0, 0)
+				cxt.lineTo(200, 0)
+				cxt.lineTo(200, 200)
+				cxt.lineTo(0, 200)
+				cxt.lineTo(0, 0)
+				cxt.lineWidth = 10
+				cxt.strokeStyle = 'rgba(255,0,0,0.8)'
+				cxt.stroke()
+				if (canvas.getContext) {
+					var ctx = canvas.getContext('2d')
+					ctx.fillStyle = '#000'
+					ctx.font = '90px Courier New'
+					if (txt.length === 3) {
+						ctx.font = '60px Courier New'
+					}
+					if (txt.length <= 3) {
+						ctx.textAlign = 'center'
+						ctx.textBaseline = 'middle'
+						ctx.fillText(txt, 100, 100)
+					} else {
+						var result = []
+						for (var i = 0; i < txt.length; i += 2) {
+							result.push(txt.slice(i, i + 2))
+						}
+						for (let index = 0; index < result.length; index++) {
+							const element = result[index]
+							ctx.fillText(element, 10, index * 80 + 90)
+						}
+					}
+				}
+				downLoad(saveAsPNG(document.getElementById('myCanvas')))
+			}
+			// 保存成png格式的图片
+			function saveAsPNG(canvas) {
+				return canvas.toDataURL('image/png')
+			}
+
+			function downLoad(url) {
+				var oA = document.createElement('a')
+				oA.download = '' // 设置下载的文件名，默认是'下载'
+				oA.href = url
+				oA.download = document.getElementById('input2').value
+				document.body.appendChild(oA)
+				oA.click()
+				oA.remove() // 下载之后把创建的元素删除
+				window.location.reload()
+			}
+		</script>
+		<script>
+			let input1 = document.getElementById('input1')
+			let input2 = document.getElementById('input2')
+
+			document.onkeydown = function(e) {
+				// 回车提交表单
+				// 兼容FF和IE和Opera
+				var theEvent = window.event || e
+				var code = theEvent.keyCode || theEvent.which || theEvent.charCode
+				if (code == 13) {
+					if (input1.value.length > 4) {
+						alert('字数不允许大于4')
+						return
+					}
+					initCanvas(input1.value)
+				}
+			}
+		</script>
+	</body>
+</html>
