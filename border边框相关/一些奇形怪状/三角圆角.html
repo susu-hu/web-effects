@@ -4,6 +4,110 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style>
+		.a {
+			width: 200px;
+			height: 200px;
+			background: linear-gradient(45deg, transparent 50%, #61C4CF 0%);
+			background-size: 16px 16px;
+			border-top-right-radius: 3px;
+			background-repeat: no-repeat;
+		}
+
+		.triangle {
+			display: inline-block;
+			font-size: 0;
+			overflow: hidden;
+		}
+
+		.triangle:before {
+			content: "";
+			position: relative;
+			display: inline-block;
+			border: 25px solid transparent;
+		}
+
+		.triangle-up {
+			position: relative;
+			top: 2px;
+			border-top-left-radius: 50%;
+			border-top-right-radius: 50%;
+		}
+
+		.triangle-up:before {
+			bottom: 2px;
+			border-top-width: 0;
+			border-bottom-width: 50px;
+			border-bottom-color: rgb(181, 181, 181);
+		}
+
+		.triangle-right {
+			position: relative;
+			right: 2px;
+			border-top-right-radius: 50%;
+			border-bottom-right-radius: 50%;
+		}
+
+		.triangle-right:before {
+			left: 2px;
+			border-right-width: 0;
+			border-left-width: 50px;
+			border-left-color: rgb(181, 181, 181);
+		}
+
+		.triangle-down {
+			position: relative;
+			bottom: 2px;
+			border-bottom-right-radius: 50%;
+			border-bottom-left-radius: 50%;
+		}
+
+		.triangle-down:before {
+			top: 2px;
+			border-bottom-width: 0;
+			border-top-width: 50px;
+			border-top-color: rgb(181, 181, 181);
+		}
+
+		.triangle-left {
+			position: relative;
+			left: 2px;
+			border-top-left-radius: 50%;
+			border-bottom-left-radius: 50%;
+		}
+
+		.triangle-left:before {
+			right: 2px;
+			border-left-width: 0;
+			border-right-width: 50px;
+			border-right-color: rgba(181, 181, 181, 1);
+		}
+
+		.triangle1 {
+			fill: #0f0;
+			stroke: #0f0;
+			stroke-width: 10;
+		}
+
+		.d {
+			width: 10em;
+			height: 10em;
+			background-color: pink;
+			transform: rotate(-60deg) skewX(-30deg) scale(1, 0.866);
+		}
+	</style>
 	<body>
+		<div class="a"></div>
+		<i class="triangle triangle-up"></i>
+		<i class="triangle triangle-right"></i>
+		<i class="triangle triangle-down"></i>
+		<i class="triangle triangle-left"></i>
+		<svg width="250" height="250" viewBox="-50 -50 300 300">
+			<polygon class="triangle1" stroke-linejoin="round" points="100,0 0,200 200,200" />
+		</svg>
+
+		<!--  -->
+		<div class="d"></div>
+
 	</body>
 </html>
