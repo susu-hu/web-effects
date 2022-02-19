@@ -117,7 +117,7 @@
 #### 作品截图
 
 clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
-![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/clip-path+drop-shadow.gif)
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/drop.png)
 
 drop-shadow和box-shadow的区别
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/drop-shadow.png)
