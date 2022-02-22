@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let tableBody = [{
+				"a": "8.03",
+				"b": "11.22",
+				"c": "10.4",
+				"d": "8.03",
+				"itemName": "净利润"
+			},
+			{
+				"a": "81.03",
+				"b": "111.22",
+				"c": "101.4",
+				"d": "81.03",
+				"itemName": "金融"
+			}
+		];
+		let arr;
+		let newArr = [];
+		let newObj = {};
+		tableBody.map((item) => {
+			// console.log("item", item);
+			arr = [];
+			for (let key in item) {
+				arr.push({
+					[key]: item[key]
+				});
+			}
+			let lastEle = arr.splice(arr.length - 1, 1);
+			let otherEle = arr.splice(0, arr.length);
+			newArr = [...lastEle, ...otherEle];
+			console.log("newArr", newArr);
+
+			newArr.map((ele) => {
+				// console.log("ele", ele);
+				for (let key in ele) {
+					newObj[key] = ele[key];
+				}
+				// console.log("newObj", newObj);
+			});
+			console.log("newObj", newObj);
+		});
+
+		console.log(tableBody)
+
+
+		var object = {
+			'a': '张三',
+			'b': '李四',
+			'v': '王五',
+			'g': '马六'
+		};
+
+		// let arr = [1,2,3];
+		// let obj = {...arr};
+		// console.log(obj); //{0: 1, 1: 2, 2: 3}
+
+		// var obj1 = { 'a': 'a', 'b': 'b', 'c': 'c' };
+		// console.log(Object.values(obj1)); // ['a', 'b', 'c']
+		let result = [];
+		Object.keys(object).map(e => {
+			// console.log(e)
+			// console.log(object[e])
+			result.push({
+				[e]: object[e],
+				// name: object[e]
+			})
+		});
+		let newObj1 = {}
+		result.map((ele) => {
+			for (let key in ele) {
+				newObj[key] = ele[key];
+			}
+		});
+		console.log("newObj1", newObj1);
+		// object.map(item, index)
+		// console.log(result);
+
+		// result.forEach((item, index) => {
+		// 	console.log(item)
+		// 	if (item.b == '王五') {
+		// 		result.splice(index, 1)
+		// 		result.push(item)
+		// 	}
+		// })
+		// // result.push(result.shift());
+		console.log(result);
+		for (let key in result) {
+			// console.log(key)
+		}
+
+		// let ans = Object.assign({}, result);
+		// console.log(ans);
+	</script>
+</html>
