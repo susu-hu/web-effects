@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html {
+			background-color: #000;
+			overflow: hidden;
+		}
+
+		.dot {
+			height: 20px;
+			width: 20px;
+			border-radius: 100%;
+			position: absolute;
+			opacity: 0;
+			-webkit-transform-origin: 0% 0%;
+			-ms-transform-origin: 0% 0%;
+			transform-origin: 0% 0%;
+		}
+
+		#hold {
+			position: absolute;
+			-webkit-animation: spin 10s linear infinite;
+			animation: spin 10s linear infinite;
+			top: 50%;
+			left: 50%;
+		}
+
+		@-webkit-keyframes spin {
+			from {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+
+			to {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+		}
+
+		@keyframes spin {
+			from {
+				-webkit-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+
+			to {
+				-webkit-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+		}
+
+		@-webkit-keyframes osc {
+			0% {
+				-webkit-transform: scale(0.5);
+		 	transform: scale(0.5);
+				opacity: 0;
+			}
+
+			50% {
+				-webkit-transform: scale(1.5);
+				transform: scale(1.5);
+				opacity: 1;
+		 }
+
+			100% {
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				opacity: 0;
+			}
+		}
+
+		@keyframes osc {
+			0% {
+				-webkit-transform: scale(0.5);
+		 	transform: scale(0.5);
+				opacity: 0;
+			}
+
+			50% {
+				-webkit-transform: scale(1.5);
+				transform: scale(1.5);
+				opacity: 1;
+			}
+
+			100% {
+				-webkit-transform: scale(0.5);
+				transform: scale(0.5);
+				opacity: 0;
+			}
+		}
+
+		@-webkit-keyframes rainbow {
+			0% {
+				background: #df2020;
+			}
+
+			25% {
+				background: #80df20;
+			}
+
+			50% {
+				background: #20dfdf;
+			}
+
+		 75% {
+				background: #7f20df;
+			}
+
+			100% {
+				background: #df2020;
+			}
+		}
+
+		@keyframes rainbow {
+			0% {
+				background: #df2020;
+			}
+
+			25% {
+				background: #80df20;
+			}
+
+			50% {
+				background: #20dfdf;
+			}
+
+			75% {
+				background: #7f20df;
+			}
+
+			100% {
+		 	background: #df2020;
+			}
+		}
+	</style>
+	<body>
+		<div id='hold'></div>
+	</body>
+	<script>
+		var num = 7,
+			ang = 360 / num,
+			rad = num * 5;
+
+		function setup() {
+			for (var i = 0; i < num; i++) {
+				var button = document.createElement('div');
+				button.className = "dot" + i + " dot";
+				button.style.top = rad * Math.cos(ang * i * Math.PI / 180) - 10 + "px";
+				button.style.left = rad * Math.sin(ang * i * Math.PI / 180) - 10 + "px";
+				button.style.backgroundColor = "hsla(" + ang * i + ", 50%, 50%, 1)";
+
+				button.style.webkitAnimation =
+					"osc 2s ease-in-out infinite " + i / (num / 2) + "s, rainbow 8s infinite " + i / (num / 2) + "s";
+				button.style.animation =
+					"osc 2s ease-in-out infinite " + i / (num / 2) + "s, rainbow 8s infinite " + i / (num / 2) +
+					"s, spin 1s infinite";
+
+				document.getElementById("hold").appendChild(button);
+			}
+		}
+
+		setup();
+	</script>
+</html>

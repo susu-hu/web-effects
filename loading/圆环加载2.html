@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>圆环运动</title>
+		<style>
+			.cirqueBox {
+				position: relative;
+				width: 140px;
+				height: 140px;
+				border-radius: 50%;
+				-webkit-mask: radial-gradient(transparent, transparent 60px, #000 0);
+				mask: radial-gradient(transparent 60px, #000 0);
+			}
+
+			.cirqueRed {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background-color: #e31514;
+				z-index: 1;
+			}
+
+			.cirqueGrey {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background-color: #aaa;
+				z-index: 2;
+				animation: mymove 1.5s linear infinite;
+			}
+
+			@keyframes mymove {
+				0% {
+					clip-path: polygon(70px 70px, 70px -300px, -300px 70px, 70px 440px, 440px 70px, 70px -300px);
+				}
+
+				25% {
+					clip-path: polygon(70px 70px, 70px -300px, -300px 70px, 70px 440px, 440px 70px, 440px 70px);
+				}
+
+				50% {
+					clip-path: polygon(70px 70px, 70px -300px, -300px 70px, 70px 440px, 70px 440px, 70px 440px);
+				}
+
+				75% {
+					clip-path: polygon(70px 70px, 70px -300px, -300px 70px, -300px 70px, -300px 70px, -300px 70px);
+				}
+
+				100% {
+					clip-path: polygon(70px 70px, 70px -300px, 70px -300px, 70px -300px, 70px -300px, 70px -300px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="cirqueBox">
+			<div class="cirqueRed"></div>
+			<div class="cirqueGrey"></div>
+		</div>
+	</body>
+</html>
+<!-- 1.先画两个圆，一个灰色，一个红色;
+2.使用样式遮罩mask的 radial-gradient把圆的中间截掉，并且截掉的部分是透明的，最终成环；
+3.对灰色圆使用clip-path: polygon(point1,point2,point3,point4,point5,pointOther)剪切区域，这里的裁剪类似扇形（裁剪半径要尽可能的长，本人这里用了370）。开始时，主要是找好五个点，并排好顺序，然后第六个点一开始就是第二给点
+ -->

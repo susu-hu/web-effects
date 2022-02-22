@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html; charset=utf-8;">
+		<title>CSS3实现加载的动画效果2</title>
+		<meta name="author" content="rainna" />
+		<meta name="keywords" content="rainna's css lib" />
+		<meta name="description" content="CSS3" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: #fff;
+			}
+
+			.m-load,
+			.m-load2 {
+				width: 32px;
+				height: 32px;
+				margin: 100px auto;
+			}
+
+			.m-load {
+				background: url('load.gif') center center no-repeat;
+			}
+
+			/** 加载动画的静态样式 **/
+			.m-load2 {
+				position: relative;
+				border-radius: 32px;
+				overflow: hidden;
+			}
+
+			.m-load2 .box,
+			.m-load2 .item {
+				position: absolute;
+				left: 50%;
+				top: 0;
+				width: 50%;
+				height: 100%;
+			}
+
+			.m-load2 .item {
+				left: 0;
+				width: 100%;
+				-webkit-transform-origin: left center;
+			}
+
+			.m-load2 .item:before {
+				content: '';
+				position: absolute;
+				left: -1px;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: #444;
+				border-left: 2px solid #e7e7e7;
+			}
+
+			.m-load2 .item:nth-child(2) {
+				-webkit-transform: rotate(45deg);
+			}
+
+			.m-load2 .item:nth-child(3) {
+				-webkit-transform: rotate(90deg);
+			}
+
+			.m-load2 .item:nth-child(4) {
+				-webkit-transform: rotate(135deg);
+			}
+
+			.m-load2 .item:nth-child(5) {
+				-webkit-transform: rotate(180deg);
+			}
+
+			.m-load2 .box:nth-child(2) {
+				-webkit-transform: rotate(180deg);
+				-webkit-transform-origin: left center;
+				clip: rect(0px, 16px, 32px, 1px);
+			}
+
+			.m-load2 .circlebg {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 22px;
+				height: 22px;
+				margin: -11px 0 0 -11px;
+				background: #e7e7e7;
+				border-radius: 22px;
+			}
+
+			/** 加载动画 **/
+			@-webkit-keyframes load {
+				0% {
+					background: #e7e7e7;
+				}
+
+				100% {
+					background: #444;
+				}
+			}
+
+			.m-load2 .box:nth-child(1) .item:nth-child(1):before {
+				-webkit-animation: load 0.8s linear 0s infinite;
+			}
+
+			.m-load2 .box:nth-child(1) .item:nth-child(2):before {
+				-webkit-animation: load 0.8s linear 0.1s infinite;
+			}
+
+			.m-load2 .box:nth-child(1) .item:nth-child(3):before {
+				-webkit-animation: load 0.8s linear 0.2s infinite;
+			}
+
+			.m-load2 .box:nth-child(1) .item:nth-child(4):before {
+				-webkit-animation: load 0.8s linear 0.3s infinite;
+			}
+
+			.m-load2 .box:nth-child(2) .item:nth-child(1):before {
+				-webkit-animation: load 0.8s linear 0.4s infinite;
+			}
+
+			.m-load2 .box:nth-child(2) .item:nth-child(2):before {
+				-webkit-animation: load 0.8s linear 0.5s infinite;
+			}
+
+			.m-load2 .box:nth-child(2) .item:nth-child(3):before {
+				-webkit-animation: load 0.8s linear 0.6s infinite;
+			}
+
+			.m-load2 .box:nth-child(2) .item:nth-child(4):before {
+				-webkit-animation: load 0.8s linear 0.7s infinite;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="m-load"></div>
+
+		<div class="m-load2">
+			<div class="box">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="box">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+			<div class="circlebg"></div>
+		</div>
+	</body>
+</html>
+<!-- 
+ 
+ 2.1 先定义元素容器，元素的两块内容宽度为50%，绝对定位，距离左侧50%，这样是方便内容绕着元素中心旋转。
+ 
+ 2.2 每个子元素定义左边框，边框的颜色和外层容器的背景色相同，这样有镂空的感觉，注意的是子元素需左移边框一半的宽度，确保容器的中心为边框的中心，不然子元素旋转的时候会有误差。
+ 
+ 2.3 定义每个子元素旋转的度数，打造出扇形的形状，最后拼成右边圆的形状。
+ 
+ 2.4 将右边圆的所有子元素复制，旋转180度，拼出左边圆的形状，此时左边圆的子元素会覆盖右边的形状，所以要使用clip进行裁切，只显示左边圆的部分。这时构成一个完整的圆的所有元素就齐了，显示如2.5.
+ 
+ 2.6 此时元素的形状还不是标准的圆，在元素上覆盖与背景同色的圆，然后外层容器使用border-radius形成一个正圆，这时整个元素显示为环形形状。
+ 
+ 2.7 定义动画的关键帧，并用在每个子元素上。这个动画就是改变每个子元素的背景色，顺时针延迟动画的开始时间，
+ 最终就形成了gif图中的显示方式。
+ 
+ 另外还用到clip属性，控制元素的显示范围，裁剪绝对定位元素。这个属性定义一个裁剪矩形，在这个矩形范围内的元素才可见。
+ 
+ 使用方法：clip:rect(0px,16px,32px,1px);
+ 
+  四个有效值为：rect (top, right, bottom, left)-->
