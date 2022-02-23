@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>sss</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.downloadBtn {
+				width: 12rem;
+				height: 3.6rem;
+				background: pink;
+				position: absolute;
+				left: 50%;
+				top: 29.6rem;
+				margin-left: -6rem;
+				font-size: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<img class="contentImg" id="contentImg"
+				src="https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/dev/37d35c69-37cf-4fc6-86f6-9d3f2a063c06/t1.jpg" />
+			<button class="downloadBtn">立即下载</button>
+		</div>
+		<script>
+			function initWidth() {
+				document.getElementById("contentImg").style.width = document.documentElement.clientWidth + 'px'
+			}
+
+			function initFontSize() {
+				const cw = document.documentElement.clientWidth
+				// width: 375px -> fontSize:16px
+				if (cw == 375) {
+					document.documentElement.style.fontSize = '16px'
+				} else {
+					document.documentElement.style.fontSize = cw / 375 * 16 + 'px'
+				}
+			}
+			initWidth()
+			initFontSize()
+			window.onresize = () => {
+				initWidth()
+				initFontSize()
+			}
+		</script>
+	</body>
+</html>

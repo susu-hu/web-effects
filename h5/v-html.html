@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta charset="utf-8" />
+		<title>隐私政策</title>
+	</head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<style>
+		html {
+			height: 100%;
+			font-size: 13.33333333vw
+		}
+
+		@media (min-width: 560px) {
+			html {
+				font-size: 54px;
+			}
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		span {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.head_title {
+			font-size: 0.3rem;
+			text-align: center;
+			margin: 0.3rem auto;
+			color: #333;
+			font-weight: bold;
+		}
+
+		.content {
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 0.2rem;
+		}
+	</style>
+
+	<body>
+		<div id="app">
+			<p class="head_title">隐私政策</p>
+			<div v-html="content" class="content"></div>
+		</div>
+	</body>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				content: "<br/><p><span style=\"font-size: 16px;color:red;text-indent:25px;\">不错不错不错这个文章很不错很不错很不错很不错很不错很不错技术附件是复工后晒单积分告诉大家发多少股份的说法是否架构师见风使舵防守打法工时费公司</span></p><br/><p><span style=\"text-indent:25px;font-size: 16px;\">不错不错不错这个文章很不错很不错很不错很不错很不错很不错技术附件是复工后晒单积分告诉大家发多少股份的说法是否架构师见风使舵防守打法工时费公司</span></p><br/>"
+			},
+			mounted() {
+				this.init()
+			},
+			methods: {
+				init() {
+					this.content =
+						this.content.replace(/\<img/gi,
+							'<img style="max-width:100%;width:100%;vertical-align: top;height:auto!important;display:block"'
+						)
+						.replace(/br/gi, '')
+				}
+			}
+		})
+	</script>
+</html>
