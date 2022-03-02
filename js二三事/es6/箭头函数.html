@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function fun(x) {
+			return x * x
+		}
+		const fun1 = function(x) {
+			return x * x
+		}
+		console.log(fun1(11))
+
+
+		const fun3 = (x) => {
+			return x * x
+		};
+		console.log(fun3(22))
+
+		/**
+		 * function 换成=>放在参数和函数体中间
+		 *1.如果木有参数，或多个参数，就需要用（）来定义参数列表
+		 */
+		const fun4 = () => {
+			return 100
+		};
+		console.log(fun4())
+		/**
+		 * 2.如果有一个参数，可以不用（）
+		 */
+		const fun2 = x => x * x;
+		console.log(fun2(22))
+
+		/**
+		 * 3.如果函数体中只有一条语句，可以不用{}，就不用使用return 会自动加上
+		 */
+		const fun5 = x => x * x;
+		console.log(fun5(22))
+
+		const fun6 = x => {
+			console.log(112)
+			console.log(222)
+		}
+		fun6()
+
+		let arr = [1, 5, 8, 8, 56, 2323];
+		let new_arr = arr.sort((a, b) => a - b)
+		console.log(new_arr)
+		/**
+		 * 4.箭头函数返回对象时，必须在对象外面加上（）
+		 */
+		const fun10 = id => ({
+			id: id,
+			name: 'susus'
+		})
+		console.log(fun10(10).name)
+
+
+		// function demo() {
+
+		// }
+		// const obj1 = new demo();
+		// console.log(obj1)
+		// const demo1 = () => {};
+		// const obj2 = new demo1()
+		// 箭头函数 木有构造器，没法new一个对象，new对象不用用箭头函数
+
+		// this指向
+		const obj = {
+			fun: function() {
+				console.log('obj', this)
+			}
+		}
+		obj.fun() //---this代表obj，谁调用就是谁，无调用者就是Windows
+
+
+		function aa() {
+			console.log('111', this)
+		}
+		aa() //无调用者就是Windows
+
+		const obj2 = {
+			fun: () => {
+				console.log('fun', this)
+			}
+		}
+		obj2.fun() //默认是父级的this;
+
+		setTimeout(function timer() {
+			console.log('timer', this)
+		})
+
+
+		
+	</script>
+	<style>
+		.box {
+			width: 100px;
+			height: 50px;
+			background-color: red;
+		}
+
+		.yellow {
+			width: 100px;
+			height: 50px;
+			background-color: #00008B;
+		}
+	</style>
+	<div class="box" id="box">
+
+	</div>
+	<script>
+		const box =
+			document.getElementById('box')
+		// document.getElementsByClassName('box')[0];
+		// console.log(box)
+		// box.onclick = function() {
+		// 	setTimeout(function() { //setTimeout 是window调用的
+		// 		console.log()
+		// 		this.className = "yellow"
+		// 	}, 3000)
+
+		// }
+
+		// 解决1.const obj=this
+		// box.onclick = function() {
+		// 	const obj = this;
+		// 	console.log(obj)
+		// 	setTimeout(function() { //setTimeout 是window调用的
+		// 		console.log()
+		// 		obj.className = "yellow"
+		// 	}, 3000)
+		// }
+		// 2.箭头函数  ----父级对象里面的this
+		box.onclick = function() {
+			setTimeout(() => { //setTimeout 是window调用的
+				console.log(this)
+				this.className = "yellow"
+			}, 3000)
+		}
+
+		// 箭头函数木有自己的this，他的this是继承而来的，默认指向在定义它时所处的对象(宿主对象)
+	</script>
+
+</html>

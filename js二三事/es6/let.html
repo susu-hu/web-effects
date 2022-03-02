@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+		//es6为什么新增let 声明变量
+
+		//var不好用 ,支持变量提升 1.可以重复声明 2.var无法限制修改 3.木有块级作用域
+
+		// 支持变量提升
+		// console.log(bbb)//undefined
+		// var bbb=10
+
+		// var bbb;
+		// console.log(bbb)//undefined
+		// bbb=10;
+
+		// bbb = 10;
+		// console.log((bbb)) //10
+		// var bbb;
+
+		// bbb = 10;
+		// console.log((bbb)) // bbb is not defined
+		// let bbb;
+
+		/*
+		块级作用域有：
+		{},if(){},for(){}
+		只有在function(){}中有作用域
+		*/
+
+		// 1.可以重复声明
+		// var a = 10;
+		// var a = 20;
+		// console.log(a)
+
+		// 2.木有块级作用域
+		// {
+		// 	var a = 10;
+		// 	console.log(a)
+		// }
+		// console.log(a)
+
+		// var name="susu";
+		// if(true){
+		// 	var name="susu000";
+		// 	console.log(name)
+		// }
+		// console.log(name)
+
+		// 木有let之前咋解决，用闭包解决
+
+		// function name() {
+		// 	var word = "susu"
+		// }
+		// name()
+		// console.log(word)
+
+		// eg:
+		// var name = "susu";
+		// if (true) {
+		// 	(function() {
+		// 		var name = "susu000";
+		// 		console.log(name)
+		// 	})()
+		// }
+		// console.log(name)
+
+		// var name = "susu";
+		// if (true) {
+		// 	(function(name) {
+		// 		console.log(name)
+		// 	})('hello')
+		// }
+		// console.log(name)
+
+		// let--------------------------------------------------------
+		// let a = 10;
+		// let a = 120;
+		// console.log(a)//报错Identifier 'a' has already been declared
+
+		// {
+		// 	let a = 10;
+		// 	console.log(a)
+		// }
+		// console.log(a)//a is not defined
+	</script>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+	<script>
+		var btns = document.getElementsByTagName('button')
+		// for (var i = 0; i < btns.length; i++) {
+		// 	// 点击是发生在循环之后
+		// 	// 闭包解决
+		// 	//有let之后 除非有兼容性问题才用
+		// 	(function(i) {
+		// 		btns[i].addEventListener('click', function() {
+		// 			console.log(i)
+		// 		})
+		// 	})(i)
+		// }
+
+		// for (let i = 0; i < btns.length; i++) {
+		// 	//有let之后 除非有兼容性问题才用 相当于5个作用域
+		// 	btns[i].addEventListener('click', function() {
+		// 		console.log(i)
+		// 	})
+		// }
+
+
+
+		// function box() {
+		// 	var arr = [];
+		// 	for (var i = 0; i < 5; i++) {
+		// 		arr[i] = i;
+		// 	}
+		// 	return arr;
+		// }
+		// console.log(box())
+
+		function box() {
+			var arr = [];
+			for (var i = 0; i < 5; i++) {
+				arr[i] = function() {
+					return i; //由于这个闭包的关系，他是循环完毕之后才返回，最终结果是4++是5
+				} //这个匿名函数里面根本没有i这个变量，所以匿名函数会从父级函数中去找i，
+			} //当找到这个i的时候，for循环已经循环完毕了，所以最终会返回5
+			return arr;
+		}
+		console.log(box())
+
+		for (var i = 0, arr = []; i <= 3; i++) {
+			arr.push(function() {
+				console.log(i)
+				return i
+			}());
+		}
+		console.log(arr)
+
+		for (var i = 0; i < 8; i++) {
+			setTimeout(() => {
+				console.log(i)
+			}, 100)
+		}
+		for (var i = 0; i < 8; i++) {
+			(function(i) {
+				setTimeout(() => {
+					console.log(i)
+				}, 100)
+			})(i)
+		}
+	</script>
+</html>

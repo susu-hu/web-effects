@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function fun(){
+			console.log(this.a)
+		}
+		var obj = {
+			s: '1',
+			f: fun
+		}​
+		var s = '2';​
+		obj.f(); //1
+		fun(); //2
+	</script>
+</html>

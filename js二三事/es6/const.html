@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// const 声明一个常量，一旦声明，常量的值不可改变
+		// 不得改变值，一旦声明，就必须立即初始化
+		// 只在声明的块级作用域内生效
+		// 变量不提升，只能在声明的位置后使用
+		// 与let一样，不可重复
+		// 声明复合类型的数据，（主要是对象和数组），变量指向的内存地址
+
+		// const NAME="susu";
+		// console.log(NAME)
+
+		// 没法跟let一样 ，可先声明
+		// const NAME;
+		// NAME="ss"
+		// console.log(NAME)//Uncaught SyntaxError: Missing initializer in const declaration
+
+		// let a;
+		// a=10;
+		// console.log(a)
+
+		// 不是值不能改变，是变量指向的内存地址不能改变
+		const obj = {
+			"name": 'sss',
+			"age": 1,
+		};
+		console.log(obj)
+		obj.name = "susu "
+		// obj={}//Assignment to constant variable.
+		console.log(obj)
+	</script>
+</html>

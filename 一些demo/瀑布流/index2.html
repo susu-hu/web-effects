@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布式布局</title>
+	</head>
+	<style>
+		.flex_box {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.waterfall {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.item {
+			box-sizing: border-box;
+			break-inside: avoid;
+			padding: 10px;
+		}
+
+		.item-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			height: auto;
+			font-size: 20px;
+			color: #686868;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+		}
+	</style>
+	<body>
+		<div class="flex_box">
+			<div class="waterfall">
+				<div class="item">
+					<div class="item-content">
+						1.三月到大理赏樱花不远不近
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						4.三月到大理赏樱花不远不近,三月到大理赏樱花不远不近
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						7.三月到大理赏樱花不远不近,又近又远,月到大理赏樱花不远不近,又近又远
+					</div>
+				</div>
+			</div>
+			<div class="waterfall">
+				<div class="item">
+					<div class="item-content">
+						2.三月到大理赏樱花不远不近
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						5.三月到大理赏樱花不远不近,三月到大理赏樱花不远不近
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						8.三月到大理赏樱花不远不近,又近又远
+					</div>
+				</div>
+			</div>
+			<div class="waterfall">
+				<div class="item">
+					<div class="item-content">
+						3.三月到大理赏樱花不远不近,月到大理赏樱花不远不近,又近又远
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						6.三月到大理赏樱花不远不近
+					</div>
+				</div>
+				<div class="item">
+					<div class="item-content">
+						9.三月到大理赏樱花不远不近,又近又远
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

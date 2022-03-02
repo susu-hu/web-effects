@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布式布局</title>
+</head>
+<style>
+.waterfall{
+    column-count: 3;
+    column-gap: 0;
+}
+            
+.item{
+    box-sizing: border-box;
+    break-inside: avoid;
+    padding: 10px;
+}
+.item-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: auto;
+    font-size: 20px;
+    color: #686868;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+</style>
+<body>
+    <div class="waterfall">
+       <div class="item">
+          <div class="item-content">
+             1.三月到大理赏樱花不远不近
+          </div>
+       </div>
+       <div class="item">
+           <div class="item-content">
+              2.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+           </div>
+       </div>
+       <div class="item">
+          <div class="item-content">
+              3.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+          </div>
+       </div>
+       <div class="item">
+          <div class="item-content">
+             4.三月到大理赏樱花不远不近
+          </div>
+       </div>
+       <div class="item">
+           <div class="item-content">
+              5.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+           </div>
+       </div>
+       <div class="item">
+          <div class="item-content">
+              6.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+          </div>
+       </div>
+       <div class="item">
+          <div class="item-content">
+             7.三月到大理赏樱花不远不近,又近又远
+          </div>
+       </div>
+       <div class="item">
+           <div class="item-content">
+             9.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+           </div>
+       </div>
+       <div class="item">
+          <div class="item-content">
+              9.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+          </div>
+       </div>
+    </div> 
+</body>
+</html>
+<!-- 1、column-count 把div中的文本分为多少列
+ 
+2、column-width 规定列宽
+ 
+3、column-gap 规定列间隙
+ 
+4、break-inside: avoid; ←在制作手机站瀑布流时候，会出现图片错乱，请使用这个属性：避免元素内部断行并产生新列； -->

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// setTimeout会先将回调函数放到等待队列中，
+		// 等待区域内其他主程序执行完毕后， 按时间顺序先进先出执行回调函数。 本质上是作用域的问题。
+		//setTimeout是异步执行，每一次for循环的时候，setTimeout都执行一次，但是里面的函数没有被执行，而是被放到了任务队列里，等待执行。只有主线上的任务执行完，才会执行任务队列里的任务。也就是说它会等到for循环全部运行完毕后，才会执行fun函数，
+		// 但是当for循环结束后此时i的值已经变成了6，因此虽然定时器跑了5秒，控制台上的内容依然是6
+		// for循环从开始到结束的过程，需要维持几微秒或几毫秒，当定时器跑完一秒之后for循环早已经做完了
+		for (var i = 0; i < 8; i++) {
+			setTimeout(() => {
+				console.log(i)
+			}, 100)
+		}
+
+		// 由setTimeout的运行机制可以知道，首先会运行外部的所有主程序，虽然for循环内形成了闭包，
+		// 但是fun并没有发现一个实参所以跟第一个例子并无实际差别，仍然是连续输出5个6。
+		for (var i = 1; i <= 5; i++) {
+			(function() {
+				setTimeout(function timer() {
+					console.log(i);
+				}, 1000);
+			})();
+		}
+
+		// 解决
+		// 1、闭包
+		// 通过闭包，将i的变量驻留在内存中，当输出j时，引用的是外部函数的变量值i，i的值是根据循环来的，
+		// 执行setTimeout时已经确定了里面的的输出了。
+		for (var i = 0; i < 8; i++) {
+			(function(i) {
+				setTimeout(() => {
+					console.log('閉包', i)
+				}, 1000)
+			})(i)
+		}
+
+		// 2.let
+		for (let i = 0; i < 8; i++) {
+			setTimeout(() => {
+				console.log('let', i)
+			}, 1000)
+		}
+		// 3.不放进for里面
+		function timer(i) {
+			setTimeout(console.log('new', i))
+		}
+		for (var i = 0; i < 8; i++) {
+			timer(i)
+		}
+	</script>
+</html>

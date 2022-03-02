@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布式布局</title>
+	</head>
+	<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+	<style>
+		.waterfall {}
+
+		.item1 {
+			width: 100px;
+		}
+
+		.item2 {
+			width: 200px;
+		}
+
+		.item3 {
+			width: 300px;
+		}
+
+		.item-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			height: auto;
+			font-size: 20px;
+			color: #686868;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+		}
+	</style>
+	<body>
+		<div class="waterfall">
+			<div class="item item1">
+				<div class="item-content">
+					1.三月到大理赏樱花不远不近
+				</div>
+			</div>
+			<div class="item item3">
+				<div class="item-content">
+					2.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="item-content">
+					3.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="item-content">
+					4.三月到大理赏樱花不远不近
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="item-content">
+					5.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+				</div>
+			</div>
+			<div class="item item1">
+				<div class="item-content">
+					6.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+				</div>
+			</div>
+			<div class="item item3">
+				<div class="item-content">
+					7.三月到大理赏樱花不远不近,又近又远
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="item-content">
+					9.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆，在部队那些日子被遗忘的花儿春光
+				</div>
+			</div>
+			<div class="item item3">
+				<div class="item-content">
+					9.三月到大理赏樱花不远不近，才是最好的距离余生，请带上自己的阳光回忆
+				</div>
+			</div>
+		</div>
+		<script>
+			$('.waterfall').masonry({
+				itemSelector: '.item',
+				columnWidth: 200
+			});
+		</script>
+	</body>
+</html>
