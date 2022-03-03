@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/v2.6.10/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/v2.6.10/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<link rel="stylesheet" href="./css/reset.css">
+	<body>
+		<div id="app">
+			<div class="header flex-row">
+				<div>
+					<div class="flex-row">
+						<div>Month</div>
+						<div class="hd_sel flex-row j_b" @click="show_month=!show_month">
+							<div>{{current_month}}</div>
+							<img src="./img/down_icon.png" />
+						</div>
+					</div>
+					<div class="hd_e">
+						<div v-show="show_month" class="drop_hd">
+							<div class="drop_hd_item" v-for="(item,index) in month_list"
+								:class="{'drop_hd_ative':current_month==item.name}" :key="index"
+								@click="choseItem(item,index)">{{item.name}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="margin-left: 91px;">
+					<div class="flex-row">
+						<div>Brand</div>
+						<div class="hd_sel flex-row j_b" @click="show_brand=!show_brand">
+							<div>{{current_brand}}</div>
+							<img src="./img/down_icon.png" />
+						</div>
+					</div>
+					<div class="hd_e">
+						<div v-show="show_brand" class="drop_hd">
+							<div class="drop_hd_item" v-for="(item,index) in brand_list"
+								:class="{'drop_hd_ative':current_brand==item.name}" :key="index"
+								@click="choseBrand(item,index)">{{item.name}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="nav_left">
+					<div class="nav">
+						<img src="img/nav_1.png" class="nav_1" />
+					</div>
+					<div class="title flex-row j_c">Brand</div>
+					<div class="brand flex-column">
+						<div>Gold</div>
+						<div>Novas</div>
+						<div>Prestige</div>
+						<div class="total">Total</div>
+					</div>
+
+					<div class="title flex-row j_c">Channel</div>
+					<div class="brand flex-column">
+						<div>2B</div>
+						<div>EC</div>
+						<div>FrisoGo</div>
+						<div>LKA</div>
+						<div>NKA</div>
+						<div>Other</div>
+						<div>RKA</div>
+						<div class="total">Total</div>
+					</div>
+
+					<div class="title flex-row j_c">Zone</div>
+					<div class="brand flex-column">
+						<div>West Zone</div>
+						<div>South Zone</div>
+						<div>Go wide</div>
+						<div>ROC</div>
+						<div>North Zone</div>
+						<div>NKA NON Field</div>
+						<div>Go Far</div>
+						<div>EC</div>
+						<div>East Zone</div>
+						<div class="total">Total</div>
+					</div>
+				</div>
+				<div class="flex">
+					<div v-for="(data,ii) in data" :key="ii">
+						<div class="inf_box" :style="{background:data.back}">
+							<div class="inf_hd flex-row j_c" :style="{background:data.hd_back}">{{ii}}</div>
+							<div class="inf">
+								<div class="inf1">{{data.total}}</div>
+								<div class="flex-row j_a">
+									<div class="flex-column">
+										<div class="flex-row m_tb">
+											<div class="i_title">vs Target</div>
+											<div class="i_inf">{{data.target}}%</div>
+										</div>
+										<div class="i_much">{{data.total1}}</div>
+									</div>
+									<div class="flex-column">
+										<div class="flex-row m_tb">
+											<div class="i_title">vs LE</div>
+											<div class="i_inf">{{data.le}}%</div>
+										</div>
+										<div class="i_much">{{data.total2}}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<div class="record" v-for="(item,index) in data.data" :key="index">
+								<div class="re_hd flex-row j_b">
+									<div class="re_hd_first">MTD ACT</div>
+									<div class="re_hd_last">LE</div>
+									<div class="re_hd_last">ACT vs LE</div>
+								</div>
+								<div class="span"></div>
+								<div class="re_box">
+									<div class="flex-row re_box_item" v-for="(item0,index0) in item" :key="index0">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="index0!='Total'">
+												<div class="p_p"
+													:style="{width:item0.per+'%',background:item0.per>=100?data.pro_back_ative:data.pro_back}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':index0=='Total'}">{{item0.act}}</div>
+										<div class="r_t" :class="{'fweight':index0=='Total'}">{{item0.le}}</div>
+										<div class="r_s" :class="{'fweight':index0=='Total'}">{{item0.per}}%</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="data.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					data: {},
+					current_month: 'All',
+					current_brand: 'All',
+					show_month: false,
+					month_list: [{
+							name: 'All'
+						},
+						{
+							name: '2022-1'
+						},
+						{
+							name: '2022-2'
+						},
+					],
+					show_brand: false,
+					brand_list: [{
+							name: 'All'
+						},
+						{
+							name: "Gold"
+						},
+						{
+							name: "Novas"
+						},
+						{
+							name: "Prestige"
+						},
+					]
+				},
+				created() {
+					this.init()
+				},
+
+				methods: {
+					init() {
+						this.data = all_data_1;
+					},
+					choseItem(e, index) {
+						this.current_month = e.name;
+						this.show_month = false;
+						this.getData()
+					},
+					choseBrand(e, index) {
+						this.data = all_data;
+						this.current_brand = e.name;
+						this.show_brand = false;
+						this.getData();
+					},
+					getData() {
+						if (this.current_month == 'All' && this.current_brand == 'All') {
+							this.data = all_data_1
+						}
+						if (this.current_month == 'All' && this.current_brand == 'Gold') {
+							this.data = all_data_3
+						}
+						if (this.current_month == 'All' && this.current_brand == 'Novas') {
+							this.data = all_data_4
+						}
+						if (this.current_month == 'All' && this.current_brand == 'Prestige') {
+							this.data = all_data_5
+						}
+
+						if (this.current_month == '2022-1' && this.current_brand == 'All') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-1' && this.current_brand == 'Gold') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-1' && this.current_brand == 'Novas') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-1' && this.current_brand == 'Prestige') {
+							this.data = all_data
+						}
+
+						if (this.current_month == '2022-2' && this.current_brand == 'All') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-2' && this.current_brand == 'Gold') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-2' && this.current_brand == 'Novas') {
+							this.data = all_data
+						}
+						if (this.current_month == '2022-2' && this.current_brand == 'Prestige') {
+							this.data = all_data
+						}
+					}
+				}
+			})
+		</script>
+		<style type="text/css">
+			.drop_hd_ative {
+				background-color: #6CD3A1;
+				color: #fff !important;
+			}
+
+			.drop_hd_item {
+				line-height: 30px;
+				color: #333;
+			}
+
+			.drop_hd {
+				position: absolute;
+				width: 150px;
+				min-height: 30px;
+				box-sizing: border-box;
+				padding: 10px;
+				background: #fff;
+				left: 65px;
+				top: 3px;
+				border-radius: 5px;
+				z-index: 99;
+				box-shadow: 5px 5px 5px #ccc;
+				cursor: pointer;
+			}
+
+			.hd_e {
+				position: relative;
+			}
+
+			.hd_sel img {
+				width: 11px;
+				height: 7px;
+			}
+
+			.hd_sel {
+				margin-left: 12px;
+				min-width: 148px;
+				height: 32px;
+				background: rgba(243, 243, 243);
+				border-radius: 8px;
+				box-sizing: border-box;
+				padding: 0 16px;
+				font-size: 14px;
+				font-weight: 500;
+				position: relative;
+			}
+
+			.fweight {
+				font-weight: bold;
+			}
+
+			.re_box_item {
+				height: 34px;
+			}
+
+			.p_p {
+				height: 9px;
+				background: #90DDB8;
+				opacity: 1;
+				border-radius: 0px 6px 6px 0px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+
+			.pillar {
+				width: 55px;
+				height: 9px;
+				background: rgba(240, 242, 245);
+				opacity: 1;
+				border-radius: 0px 5px 5px 0;
+				position: relative;
+				margin-right: 13px;
+				overflow: hidden;
+				flex-shrink: 0;
+			}
+
+
+			.span {
+				width: 309px;
+				height: 0px;
+				border-bottom: 1px solid #707070;
+				opacity: 0.2;
+				margin-bottom: 3px;
+			}
+
+			.r_t {
+				text-align: center;
+				font-size: 12px;
+				line-height: 22px;
+				color: #5C5C5C;
+				width: 26%;
+			}
+
+			.r_s {
+				text-align: center;
+				font-size: 12px;
+				line-height: 22px;
+				color: #FF2727;
+				text-align: center;
+				flex: 1;
+			}
+
+			.re_hd_first {
+				width: 50%;
+				text-align: center;
+				padding-left: 50px;
+				box-sizing: border-box;
+			}
+
+			.re_hd_last {
+				width: 25%;
+				text-align: center;
+			}
+
+			.re_hd {
+				height: 36px;
+				font-size: 13px;
+				font-weight: 600;
+				color: rgba(0, 0, 0, 0.65);
+				box-sizing: border-box;
+			}
+
+			.record {
+				width: 309px;
+				min-height: 165px;
+				background: #FFFFFF;
+				border-radius: 8px;
+				margin-bottom: 7px;
+			}
+
+			.record:last-child {
+				margin-bottom: 0;
+			}
+
+			.statis {
+				width: 309px;
+				height: 165px;
+				background: #FFFFFF;
+				border-radius: 8px;
+			}
+
+			.i_much {
+				font-size: 20px;
+				font-family: DINOT;
+				font-weight: bold;
+				line-height: 38px;
+				color: #5C5C5C;
+			}
+
+			.i_inf {
+				font-size: 20px;
+				font-family: DINOT;
+				font-weight: bold;
+				line-height: 38px;
+				color: #FC2727;
+			}
+
+			.i_title {
+				font-size: 12px;
+				font-family: PingFang SC;
+				font-weight: 500;
+				line-height: 22px;
+				color: #5C5C5C;
+				margin-right: 8px;
+			}
+
+			.inf1 {
+				font-size: 28px;
+				font-family: DINOT;
+				font-weight: bold;
+				color: #000000;
+				text-align: center;
+			}
+
+			.inf {
+				padding: 18px 0 21px;
+				box-sizing: border-box;
+			}
+
+			.inf_hd {
+				width: 309px;
+				height: 44px;
+				background: #6CD3A1;
+				border-radius: 8px 8px 0px 0px;
+				font-size: 20px;
+				color: #FFFFFF;
+			}
+
+			.inf_box {
+				width: 309px;
+				height: 195px;
+				background: linear-gradient(180deg, #E6FFF2 0%, #FFFFFF 100%);
+				border-radius: 8px;
+				margin-bottom: 8px;
+				margin-right: 20px;
+			}
+
+			.inf_box:last-child {
+				margin-right: 0;
+			}
+
+			.total {
+				font-size: 12px;
+				font-weight: 600;
+				color: #242625;
+			}
+
+			.brand {
+				line-height: 34px;
+				padding-bottom: 10px;
+			}
+
+			.title {
+				width: 104px;
+				height: 36px;
+				background: #F0F2F5;
+				font-size: 14px;
+				color: rgba(0, 0, 0, 0.65);
+			}
+
+			.nav {
+				width: 104px;
+				height: 203px;
+				background: #FFFFFF;
+				position: relative;
+			}
+
+			.nav_1 {
+				width: 79px;
+				height: 96px;
+				position: absolute;
+				top: 55px;
+				left: 0;
+				z-index: 1;
+			}
+
+			.nav_left {
+				width: 104px;
+				background: #FFFFFF;
+				border-radius: 0px 8px 8px 0px;
+				font-size: 12px;
+				font-weight: 600;
+				color: #5C5C5C;
+				margin-right: 20px;
+			}
+
+
+			.header {
+				width: 100%;
+				height: 72px;
+				background: #FFFFFF;
+				margin-bottom: 20px;
+				padding: 0 44px;
+				box-sizing: border-box;
+				font-size: 16px;
+				font-weight: 600;
+				color: #000000;
+				min-width: 1440px;
+			}
+
+			body {
+				background: #F0F2F5;
+			}
+		</style>
+	</body>
+</html>
