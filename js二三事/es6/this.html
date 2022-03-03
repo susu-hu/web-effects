@@ -7,15 +7,26 @@
 	<body>
 	</body>
 	<script>
-		function fun(){
-			console.log(this.a)
+		// function fun(){
+		// 	console.log(this.a)
+		// }
+		// var obj = {
+		// 	s: '1',
+		// 	f: fun
+		// }​
+		// var s = '2';​
+		// obj.f(); //1
+		// fun(); //2
+		
+		// 569
+		for(let i=1;i<=9;i++){
+			for(let j=1;j<=6;j++){
+				for(let k=1;k<=6;k++){
+					if(i != j && j != k && k != i){
+						console.log(""+i+j+k)
+					}
+				}
+			}
 		}
-		var obj = {
-			s: '1',
-			f: fun
-		}​
-		var s = '2';​
-		obj.f(); //1
-		fun(); //2
 	</script>
 </html>

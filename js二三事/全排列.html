@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script type="text/javascript">
+			function aa() {
+				let arr = [];
+				for (var i = 1; i < 4; i++) {
+					for (var j = 1; j < 4; j++) {
+						for (var k = 1; k < 4; k++) {
+							if (i != j && j != k && k != i) {
+								arr.push("" + i + j + k)
+							}
+						}
+					}
+				}
+				console.log(arr)
+			}
+			aa()
+
+			function bb(str) {
+				console.log(str)
+				let list = str.toString().split('')
+				console.log(list)
+				for (let i = 0; i < list.length; i++) {
+					console.log(i)
+				}
+			}
+			bb(598)
+
+
+			function fun(str) {
+				var result = [];
+				if (str.length == 1 || str.length == 0) {
+					result.push(str);
+					return result;
+				} else {
+					var one = str.substr(0, 1);
+					var left = str.substr(1);
+					var leftResult = fun(left);
+					for (i = 0; i < leftResult.length; i++) {
+						for (j = 0; j < leftResult[i].length + 1; j++) { //加1的目的是让字符one也可以插入到最后一个位置
+							result.push(leftResult[i].slice(0, j) + one + leftResult[i].slice(j));
+						}
+					}
+				}
+
+				return result;
+			}
+			console.log(fun('367'))
+
+
+			const anagrams = str => {
+				if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
+				return str.split('').reduce((acc, letter, i) =>
+					acc.concat(anagrams(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)
+					), []);
+			};
+
+			console.log(anagrams('123'))
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 1.写一个方法去掉字符串的空格
+			let str = ' abc   aa   s     '
+			//第一种
+			function trim(str) {
+				let reg = /\s+/g
+				if (typeof str == 'string') {
+					return str.replace(reg, '')
+				}
+			}
+			console.log(trim(str))
+
+			//第二种
+			str.split(' ').join('')
+
+
+			// 2.去除字符串中最后一个指定的字符或者是字符串
+			let str1 = 'abaaaaeaad'
+
+			function delChar(str, char) {
+				let index = str.lastIndexOf(char) //lastIndexOf 获取一个指定的字符出现在一个字符串中出现的最后的位置 从后向前搜索
+				let len = [...char].length
+				return str.substring(0, index) + str.substring(index + len, str.length) //substring 截取字符串
+			}
+			console.log(delChar(str1, 'aa'))
+
+			// 3.写一个方法把下划线命名转换成大驼峰命名
+			function changeName(name) {
+				let arr = name.split('_')
+				let lastStr = arr[arr.length - 1]
+				arr[arr.length - 1] = lastStr[0].toUpperCase() + lastStr.substring(1, lastStr.length)
+				return arr.join('')
+			}
+			console.log(changeName('first_name'))
+
+			// 4.写一个把字符串大小写切换的方法
+			let str2 = 'aSdFgH'
+
+			function toCaseStr(str) {
+				let strArr = []
+				str.split('').forEach(i => {
+					if (i.charCodeAt() >= 65 && i.charCodeAt() <=
+						90) { //str.charCodeAt(index) 获取一个字符的unicode编码 65-90 是大写 97-122是小写
+						i = i.toLowerCase()
+					} else(
+						i = i.toUpperCase()
+					)
+					strArr.push(i)
+				})
+				return strArr.join('')
+			}
+			console.log(toCaseStr(str2))
+			// 5.统计某一个字符或字符串在另一个字符串中出现的次数
+			//第一种
+			function setCount(str, charStr) {
+				let count = 0
+				if (!charStr) return count
+				while (str.match(charStr)) {
+					str = str.replace(charStr, '')
+					count++
+				}
+				return count
+			}
+
+			//第二种
+			function setCount(str, charStr) {
+				let len = str.match(new RegExp(charStr, 'g')).length
+				return len
+			}
+			console.log(setCount('ababababeeeeeee', 'ab'))
+
+			// 6.写一个获取当前url查询字符串中的参数的方法
+			function getParams() {
+				let search = window.location.search //获取?后面的部分?name=xxx&id=xx
+				search = search.substring(1, search.length) //将?截取掉
+				let res = {}
+				search.split('&').forEach(item => {
+					let [key, value] = item.split('=')
+					res[key] = decodeURIComponent(value);
+				})
+				return res
+			}
+			getParams()
+			// 7.写一个方法判断字符串是否为回文字符串
+			function isPalindrome(s) {
+				if (s.length == 1) return true
+				let str = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() //因为可能有大写 统一转换为小写
+				let reverseStr = str.split('').reverse().join('')
+				return str == reverseStr
+			}
+			console.log(isPalindrome('A man, a plan, a canal: Panama'))
+
+			// 8.随机生成一个指定长度的验证码 包含大写字母 小写字母 数字 特殊字符
+			function getRandomCode(len) {
+				const allStr = 'azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789.*&^%$#@!~';
+				let code = '';
+				for (let index = 0; index < len; index++) {
+					code += allStr.charAt(Math.floor(Math.random() * 73));
+				}
+				return code;
+			}
+			console.log(getRandomCode(5))
+
+			// 9.写一个方法删除字符串中所有相邻重复的项
+			function delRepeatChar(str) {
+				return str.replace(/(.)\1*/g, '$1')
+			}
+			console.log(delRepeatChar('aaabhhhhjjjjuiuuu'))
+		</script>
+	</body>
+</html>

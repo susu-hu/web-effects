@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 利用reduce方法遍历数组,reduce第一个参数是遍历需要执行的函数，第二个参数是item的初始值
+		let arr = [1, 2, 2, 3]
+		let obj = {};
+		arr = arr.reduce((item, next) => {
+			if (!obj[next.key]) {
+				item.push(next);
+				obj[next.key] = true;
+			}
+			return item;
+		}, []);
+		console.log(arr);
+
+
+		function() {
+		 let arr = [{
+					"id": 44731,
+					"operator": "郭淼源",
+					"qty": 1,
+					"xg": 1
+				},
+				{
+					"id": 44730,
+					"operator": "郭淼源",
+					"qty": 8,
+					"xg": 1
+				},
+				{
+					"id": 44729,
+					"operator": "乔世权",
+					"qty": 6,
+					"xg": 1
+				},
+				{
+					"id": 44728,
+					"operator": "王亚泽",
+					"qty": 8,
+					"xg": 1
+				},
+		 	{
+					"id": 44727,
+					"operator": "郭淼源",
+					"qty": 7,
+					"xg": 1
+				},
+				{
+					"id": 44726,
+					"operator": "王亚泽",
+					"qty": 9,
+					"xg": 1
+				},
+				{
+					"id": 44731,
+					"operator": "李一冰",
+					"qty": 10,
+					"xg": 1
+				},
+				{
+					"id": 44730,
+					"operator": "乔世权",
+					"qty": 11,
+					"xg": 1
+				},
+				{
+					"id": 44729,
+					"operator": "杜永超",
+					"qty": 15,
+					"xg": 1
+				},
+				{
+					"id": 44728,
+					"operator": "郭淼源",
+					"qty": 9,
+					"xg": 1
+				},
+				{
+					"id": 44727,
+					"operator": "杜永超",
+					"qty": 4,
+					"xg": 1
+				},
+				{
+					"id": 44726,
+					"operator": "李一冰",
+					"qty": 2,
+					"xg": 1
+				}
+			]
+			// 抽取需要去重的人员
+			let nameList = arr.map(ele => ele.operator)
+			// 去重的数组
+			let obj = {}
+			// 求和的数组
+			let objNum = {}
+			// 求和
+			nameList.forEach((ele, i) => {
+				let num = 0
+				arr.reduce((item, next) => {
+					if (ele === next.operator) {
+						num += next.qty
+						objNum[ele] = num
+					}
+		 	}, [])
+			})
+		 // 去重
+			obj = arr.reduce((item, next) => {
+				if (!obj[next.operator]) {
+					item.push(next);
+					obj[next.operator] = true;
+				}
+				return item;
+			}, []);
+			// 求和的值加到新的数组里
+			for (var key in objNum) {
+				obj.find(ele => {
+					if (ele.operator == key) {
+						ele.qty = objNum[key]
+					}
+				})
+			}
+		}
+		
+		
+	</script>
+</html>
