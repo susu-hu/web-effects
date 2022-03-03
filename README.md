@@ -114,7 +114,11 @@
 101. CSS @property属性用法
 102. drop-shadow和box-shadow的区别
 103. clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
+104. cdn引入vue，实现一个简易的数据看板
 #### 作品截图
+
+数据看板
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%95%B0%E6%8D%AE%E9%9D%A2%E6%9D%BF.png)
 
 clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/drop.png)
