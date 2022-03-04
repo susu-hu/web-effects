@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			perspective: 500px;
+		}
+
+		.box {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+			transform-style: preserve-3d;
+			transition: all 1s;
+			cursor: default;
+		}
+
+		.active {
+			transform: rotateY(180deg);
+		}
+
+		.front,
+		.back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			font-size: 30px;
+			color: #fff;
+			text-align: center;
+			line-height: 300px;
+		}
+
+		.front {
+			background-color: pink;
+		}
+
+		.back {
+			background-color: #222;
+			transform: rotateY(180deg);
+		}
+	</style>
+	<body>
+		<div class="box" id="box">
+			<div class="front">我是正面</div>
+			<div class="back">我是反面</div>
+		</div>
+	</body>
+	<script>
+		let a = true;
+		const box = document.getElementById('box')
+		box.addEventListener('click', () => {
+			console.log(a)
+			console.log(this)
+			console.log(box) 
+
+			if (a) {
+				box.classList.add("active")
+			} else {
+				box.classList.remove("active")
+			}
+			a = !a
+			console.log(a)
+
+		})
+	</script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			margin: 100px;
+		}
+
+		ul li {
+			float: left;
+			margin-right: 10px;
+			width: 120px;
+			height: 40px;
+			list-style: none;
+			perspective: 500px;
+		}
+
+		/* body {
+    perspective: 500px;
+   } */
+
+		.box {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transform-style: preserve-3d;
+			transition: all 1s;
+		}
+
+		.box:hover {
+			transform: rotateX(90deg);
+		}
+
+		.front,
+		.bottom {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			color: white;
+			text-align: center;
+			line-height: 40px;
+		}
+
+		.front {
+			background-color: aqua;
+			z-index: 1;
+			transform: translateZ(20px);
+		}
+
+		.bottom {
+			background-color: blue;
+			transform: translateY(20px) rotateX(-90deg);
+		}
+
+		.bb {
+			/* overflow: hidden; */
+			font-size: 20px;
+			width: 0;
+			height: 30px;
+			color: white;
+			background-color: red;
+		 white-space: nowrap;
+			animation: w 4s steps(10) forwards;
+		}
+
+		@keyframes w {
+			0% {
+		 	width: 0;
+			}
+
+			100% {
+				width: 200px;
+			}
+		}
+	</style>
+	<body>
+		<div class="bb">
+			我是广告跑马灯特效哟
+		</div>
+		<ul>
+			<li>
+				<div class="box">
+					<div class="front">我是正面</div>
+					<div class="bottom">我是底面</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="front">我是正面</div>
+					<div class="bottom">我是底面</div>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>
