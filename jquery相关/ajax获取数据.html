@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="tab"></div>
+	</body>
+	<script src="js/jq.js"></script>
+	<script>
+		$(function() {
+			let params = {
+				page: 1,
+				pageSize: 10,
+			};
+
+			function requestData() {
+				$.ajax({
+					url: "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest/table/list",
+					type: "post",
+					data: params,
+					dataType: "json",
+					success: function(res) {
+						console.log(res)
+						showData(res.data);
+					},
+					error: function(msg) {}
+				});
+			}
+			requestData();
+
+
+			function showData(data) {
+				var str = "";
+				for (var i = 0; i < data.length; i++) {
+					//拼接表格的行和列
+					str = "<tr><td>" + data[i].name + "</td><td>" + data[i].age + "</td><td>" + data[i].dateTime + "</td></tr>";
+					//追加到table中
+					$("#tab").append(str);
+				}
+			}
+		})
+	</script>
+</html>

@@ -20,8 +20,11 @@
 	</script> -->
 	<script src="./js/http.js"></script>
 	<body>
-		<div id="app">
-			<div v-for="(item,index) in list " v-cloak class="item flex-row">
+		<div id="app" v-cloak>
+			<div class="flex-row">
+				<div v-for="(item,index) in title_list " class=" item_title">{{item}}</div>
+			</div>
+			<div v-for="(item,index) in list " class="item flex-row">
 				<div>{{item.name}}</div>
 				<div>{{item.age}}</div>
 				<div>{{item.dateTime}}</div>
@@ -39,6 +42,7 @@
 					pageSize: 10
 				},
 				list: [],
+				title_list: ['姓名', '年龄', '创建时间']
 			},
 			created() {
 				this.getData()
@@ -84,12 +88,24 @@
 			background-color: #222;
 			color: #fff;
 		}
-		.item{
+
+		.item {
 			padding: 20px;
 			border-bottom: 1px solid pink;
 		}
-		.item div{
+
+		.item div {
 			flex: 1;
+			text-align: center;
+		}
+
+		.item_title {
+			flex: 1;
+			padding: 20px;
+			border: 1px solid pink;
+			text-align: center;
+			background: #ffaa7f;
+
 		}
 	</style>
 </html>
