@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="./css/reset.css">
+	<!-- 生产环境版本，优化了尺寸和速度 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<!-- axios -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- qs -->
+	<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+	<!-- 封装request -->
+	<!-- 	<script type="module">
+		import {
+			get,
+			post
+		} from './js/http.js';
+	</script> -->
+	<script src="./js/http.js"></script>
+	<body>
+		<div id="app">
+			<div v-for="(item,index) in list " v-cloak class="item flex-row">
+				<div>{{item.name}}</div>
+				<div>{{item.age}}</div>
+				<div>{{item.dateTime}}</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var qs = Qs;
+		console.log(qs)
+		var app = new Vue({
+			el: '#app',
+			data: {
+				params: {
+					page: 1,
+					pageSize: 10
+				},
+				list: [],
+			},
+			created() {
+				this.getData()
+			},
+
+			methods: {
+
+				getData() {
+					// get('https://i.postimg.cc/mgsKJGLw/susu1.jpg').then(res => {
+					// 	console.log(res)
+					// })
+
+					// let url = "https://i.postimg.cc/mgsKJGLw/susu1.jpg";
+					// axios.request({
+					// 	url: url,
+					// 	method: "get",
+					// 	onDownloadProgress(progress) {
+					// 		console.log(progress);
+					// 		console.log(
+					// 			Math.round((progress.loaded / progress.total) * 100) + "%"
+					// 		);
+					// 	},
+					// });
+
+					post('/table/list', this.params).then((res) => {
+						console.log(res.data)
+						if (res.code == 200) {
+							this.list = res.data;
+						}
+					})
+				}
+			}
+		})
+	</script>
+	<style type="text/css">
+		[v-cloak] {
+			display: none;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			color: #fff;
+		}
+		.item{
+			padding: 20px;
+			border-bottom: 1px solid pink;
+		}
+		.item div{
+			flex: 1;
+		}
+	</style>
+</html>

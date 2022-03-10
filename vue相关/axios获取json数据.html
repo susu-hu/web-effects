@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	</head>
+	<body>
+		<div id="app">
+			<v-app>
+				<v-content>
+					<v-container>vue中cdn引入axios,请求接口，渲染数据</v-container>
+					<div v-for="item in itemList">
+						<span>{{item.organName}}</span>
+						<span>{{item.name}}</span>
+					</div>
+				</v-content>
+			</v-app>
+		</div>
+		<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+		<!-- qs -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				vuetify: new Vuetify(),
+				data() {
+					return {
+						itemList: []
+					}
+				},
+				mounted() {
+					this.getData()
+				},
+				methods: {
+					getData() {
+						axios.get('./js/data.json').then(response => {
+								console.log(response.data)
+								this.itemList = response.data;
+							},
+							response => {
+								console.log('error')
+							}
+						)
+					},
+					init() {
+						let isurl = "www.xxxxx.com/list";
+						let o = {
+							id: 2
+						}
+						axios.post(isurl, Qs.stringify(o)).then(res => {
+							console.log(res);
+						}).catch(err => {
+							console.log(err);
+						})
+						axios.post(isurl, Qs.stringify(o), {
+							headers: {
+								'Content-Type': 'multipart/form-data'
+							}
+						})
+					}
+				},
+			})
+		</script>
+	</body>
+</html>

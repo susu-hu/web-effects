@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div onclick="show()">点击一下</div>
+		<div id="aa">点击一下1</div>
+		<div id="bb">点击一下2</div>
+		<button onclick="show()" id="btn1" onclick="print()">html标签事件绑定</button>
+		<!-- //触发的方法只有show方法 -->
+
+		<button onclick="show();print()" id="btn1">html标签事件绑定</button>
+
+		<button id="btn2">js事件绑定</button>
+		<button id="btn3">事件监听</button>
+
+
+	</body>
+	<script>
+		// html标签事件绑定：属性赋值 ，这个在该元素的properties属性中可以查到， 也可以在事件监听中看到
+		let a = document.getElementById('aa');
+		a.addEventListener('click', () => {
+			console.log('aaaa')
+		})
+
+		let b = document.getElementById('bb');
+		b.onclick = show
+
+		function show() {
+			console.log('xixbv')
+		}
+
+		function print() {
+			console.log('print');
+		}
+
+
+		document.getElementById("btn2").onclick = show;
+		document.getElementById("btn2").onclick = print;
+
+
+		//show和print两个方法都可以触发
+		document.getElementById("btn3").addEventListener("click", show);
+		document.getElementById("btn3").addEventListener("click", print);
+
+		//移除事件监听
+		// document.getElementById("btn3").removeEventListener("click");
+	</script>
+</html>
