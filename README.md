@@ -116,7 +116,11 @@
 103. clip-path+drop-shadow+conic-gradient+@Property实现一个炫酷的三角形
 104. cdn引入vue，实现一个简易的数据看板
 105. cdn引入axios，实现一个简易的数据表格
+106. 芒果TV-loading动画
 #### 作品截图
+
+芒果TV-loading动画
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/mgld.gif)
 
 简易的数据表格
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/axios-cdn.png)
