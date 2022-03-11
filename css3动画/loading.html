@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background: #222;
+		}
+
+		.box {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+		}
+
+		svg {
+			width: 12px;
+		}
+
+		.loading-inner {
+			width: 64px;
+			height: 64px;
+			top: 50%;
+			margin-top: -32px;
+			position: absolute;
+			left: 50%;
+			margin-left: -32px;
+		}
+
+		.orange {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			-webkit-animation: load-orange 1.6s linear infinite, zoom-orange 1.6s linear infinite;
+			animation: load-orange 1.6s linear infinite, zoom-orange 1.6s linear infinite;
+		}
+
+		@keyframes load-orange {
+			0% {
+				left: 0;
+			}
+
+			50% {
+				left: 52px;
+			}
+
+			100% {
+				left: 0;
+			}
+
+			40% {
+				-webkit-transform: rotateY(0turn);
+				transform: rotateY(0turn);
+			}
+
+			55% {
+				-webkit-transform: rotateY(.5turn);
+				transform: rotateY(.5turn);
+			}
+
+			90% {
+				-webkit-transform: rotateY(.5turn);
+				transform: rotateY(.5turn);
+			}
+
+			100% {
+				-webkit-transform: rotateY(1turn);
+				transform: rotateY(1turn);
+			}
+		}
+
+		@keyframes zoom-orange {
+			0% {
+				z-index: 0;
+			}
+
+			20% {
+				z-index: 1;
+			}
+
+			50% {
+				z-index: 1;
+			}
+
+			70% {
+				z-index: 0;
+			}
+		}
+
+		.white {
+			position: absolute;
+			left: 52px;
+			top: 50%;
+			-webkit-transform: rotateY(.5turn);
+			transform: rotateY(.5turn);
+			-webkit-animation: load-white 1.6s linear infinite;
+			animation: load-white 1.6s linear infinite;
+		}
+
+		@keyframes load-white {
+			0% {
+				left: 52px;
+			}
+
+			50% {
+				left: 0;
+			}
+
+			100% {
+				left: 52px;
+			}
+
+			40% {
+				-webkit-transform: rotateY(.5turn);
+				transform: rotateY(.5turn);
+			}
+
+			55% {
+				-webkit-transform: rotateY(1turn);
+				transform: rotateY(1turn);
+			}
+
+			90% {
+				-webkit-transform: rotateY(1turn);
+				transform: rotateY(1turn);
+			}
+
+			100% {
+				-webkit-transform: rotateY(.5turn);
+				transform: rotateY(.5turn);
+			}
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="loading-inner ">
+				<svg class="orange" fill="#8aceaf" version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="enable-background:new 0 0 12 12;"
+					xml:space="preserve">
+					<path d="M0.1,6c0-0.5,0-1,0.1-1.6c0.1-0.8,0.2-1.6,0.5-2.3c0.2-0.6,0.5-1.1,1-1.4c0.4-0.4,1-0.6,1.5-0.6C3.9,0,4.6,0.1,5.3,0.3
+				             C6.3,0.6,7.1,1,8,1.5C8.7,1.9,9.4,2.4,10.1,3c0.5,0.4,0.9,0.9,1.2,1.4c0.2,0.4,0.4,0.8,0.5,1.2c0.1,0.5,0,1-0.2,1.5
+				             c-0.3,0.6-0.6,1.1-1.1,1.5c-0.6,0.6-1.3,1.1-2,1.6c-0.9,0.5-1.8,1-2.7,1.4c-0.5,0.2-1.1,0.3-1.6,0.4c-0.7,0.1-1.4,0-2-0.4
+				             c-0.5-0.3-0.9-0.7-1.1-1.2c-0.3-0.5-0.4-1-0.6-1.6C0.2,7.9,0.2,7,0.1,6z"></path>
+				</svg>
+				<svg class="white" fill="#ffffff" version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" style="enable-background:new 0 0 12 12;"
+					xml:space="preserve">
+					<path d="M0.1,6c0-0.5,0-1,0.1-1.6c0.1-0.8,0.2-1.6,0.5-2.3c0.2-0.6,0.5-1.1,1-1.4c0.4-0.4,1-0.6,1.5-0.6C3.9,0,4.6,0.1,5.3,0.3
+				             C6.3,0.6,7.1,1,8,1.5C8.7,1.9,9.4,2.4,10.1,3c0.5,0.4,0.9,0.9,1.2,1.4c0.2,0.4,0.4,0.8,0.5,1.2c0.1,0.5,0,1-0.2,1.5
+				             c-0.3,0.6-0.6,1.1-1.1,1.5c-0.6,0.6-1.3,1.1-2,1.6c-0.9,0.5-1.8,1-2.7,1.4c-0.5,0.2-1.1,0.3-1.6,0.4c-0.7,0.1-1.4,0-2-0.4
+				             c-0.5-0.3-0.9-0.7-1.1-1.2c-0.3-0.5-0.4-1-0.6-1.6C0.2,7.9,0.2,7,0.1,6z"></path>
+				</svg>
+
+			</div>
+		</div>
+	</body>
+</html>
