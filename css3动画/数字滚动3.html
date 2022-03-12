@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>number falls</title>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<style type="text/css">
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+		</style>
+		<script type="text/javascript">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var texts = '0123456789'.split('');
+			var fontSize = 12;
+
+			canvas.height = window.screen.height;
+			canvas.width = window.screen.width;
+
+			var columns = canvas.width / fontSize;
+			var drops = [];
+
+			for (var x = 0; x < columns; x++) {
+				drops[x] = 1;
+			}
+
+			function draw() {
+				//透明 -> 不透明
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				//文字
+				ctx.fillStyle = '#0F0';
+				ctx.font = fontSize + 'px arial';
+
+				//逐行输出文字
+				for (var i = 0; i < drops.length; i++) {
+					//texts中随机取一个数
+					var text = texts[Math.floor(Math.random() * texts.length)];
+
+					ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+					if (drops[i] * fontSize > canvas.height || Math.random() > 0.95) {
+						drops[i] = 0;
+					}
+					drops[i]++;
+				}
+			}
+			setInterval(draw, 33);
+		</script>
+	</body>
+	<html>

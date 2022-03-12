@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div id="number-box"></div>
+		<script type="text/javascript">
+			function scrollNumber(option) {
+				this.defaultOption = {
+					selector: 'body',
+					itemClass: 'screen-number',
+					childClass: '',
+					value: '123'
+				}
+
+				this.option = Object.assign(this.defaultOption, option)
+
+				let itemStyle = {
+					background: '#555',
+					borderRadius: '.2rem',
+					position: 'relative',
+					padding: '.5rem',
+					marginRight: '.3rem',
+					color: '#66FFFF',
+					fontSize: '1.5rem',
+					fontWeight: 'bold',
+					fontFamily: 'BigNoodleTitling',
+					writingMode: 'vertical-lr',
+					textOrientation: 'upright',
+					overflow: 'hidden',
+					display: 'flex !important',
+					height: '3rem',
+					width: '2rem',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center'
+				}
+
+				let childStyle = {
+					position: 'absolute',
+					top: '1.4rem',
+					letterSpacing: '1.4rem',
+					transition: `all ${this.option.speed||'2s'}`
+				}
+
+				let target = document.querySelector(this.option.selector)
+				target.style.display = 'flex'
+
+				let valueArr = this.option.value.split('')
+
+				valueArr.forEach(value => {
+					let item = document.createElement('span')
+					let child = document.createElement('span')
+
+					item.className = this.option.itemClass
+					child.className = this.option.childClass
+					child.innerText = '0123456789'
+
+					for (let key in itemStyle) item.style[key] = itemStyle[key]
+					for (let key in childStyle) child.style[key] = childStyle[key]
+
+					item.appendChild(child)
+					target.appendChild(item)
+
+					setTimeout(() => {
+						child.style.transform = `translate(0,${-value * 10}%)`
+					}, 50)
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			window.onload = () => {
+				let option = {
+					selector: '#number-box', //要插入的元素位置
+					itemClass: 'screen-number',
+					childClass: 'screen-number-item',
+					speed: '4s', //滚动速度
+					value: '0638403029990'
+				}
+
+				scrollNumber(option)
+			}
+		</script>
+	</body>
+</html>
