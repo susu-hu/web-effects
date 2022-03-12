@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #222;
+		}
+
+		.progress {
+			webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			color: rgba(0, 0, 0, .65);
+			list-style: none;
+			display: inline-block;
+			width: 190px;
+			height: 190px;
+			font-size: 28px;
+			overflow: hidden;
+			vertical-align: middle;
+			border-radius: 100px;
+			background-color: transparent;
+		}
+
+		.circle {
+			position: relative;
+			line-height: 1;
+			background-color: transparent;
+		}
+	</style>
+	<body>
+		<div class="progress">
+			<svg class="circle " viewBox="0 0 100 100">
+				<path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke-linecap="round" stroke-width="6"
+					fill-opacity="0"
+					style="stroke: rgb(85, 85, 127); stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s, stroke-width 0.06s ease 0.3s;">
+				</path>
+				<path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round"
+					stroke-width="6" opacity="1" fill-opacity="0"
+					style="stroke: rgb(255, 78, 92); stroke-dasharray: 106.311px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0s ease 0s, stroke-dasharray 0s ease 0s, stroke ease 0s, stroke-width ease 0.3s;">
+				</path>
+			</svg>
+		</div>
+
+		<div class="progress">
+			<svg class="circle " viewBox="0 0 100 100">
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-linecap="round" stroke-width="5" fill-opacity="0"
+					style="stroke: rgb(243, 243, 243); stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s, stroke-width 0.06s ease 0.3s;">
+				</path>
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="5" opacity="1" fill-opacity="0"
+					style="stroke: rgb(255, 78, 92); stroke-dasharray: 257.51px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0s ease 0s, stroke-dasharray 0s ease 0s, stroke ease 0s, stroke-width ease 0.3s;">
+				</path>
+			</svg>
+		</div>
+		<div class="progress">
+			<svg class="circle " viewBox="0 0 100 100">
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-linecap="round" stroke-width="4" fill-opacity="0"
+					style="stroke: rgb(243, 243, 243); stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s, stroke-width 0.06s ease 0.3s;">
+				</path>
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="4" opacity="1" fill-opacity="0"
+					style="stroke: rgb(122, 121, 255); stroke-dasharray: 284.679px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0s ease 0s, stroke-dasharray 0s ease 0s, stroke ease 0s, stroke-width ease 0.3s;">
+				</path>
+			</svg>
+		</div>
+		<div class="progress" style="width: 120px;height: 120px;">
+			<svg class="circle " viewBox="0 0 100 100">
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-linecap="round" stroke-width="3" fill-opacity="0"
+					style="stroke: rgb(243, 243, 243); stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s, stroke-width 0.06s ease 0.3s;">
+				</path>
+				<path d="M 50,50 m 0,-47
+			   a 47,47 0 1 1 0,94
+			   a 47,47 0 1 1 0,-94" stroke="" stroke-linecap="round" stroke-width="3" opacity="1" fill-opacity="0"
+					style="stroke: rgb(255, 151, 36); stroke-dasharray: 252.194px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0s ease 0s, stroke-dasharray 0s ease 0s, stroke ease 0s, stroke-width ease 0.3s;">
+				</path>
+			</svg>
+		</div>
+
+		<!-- <div>
+			<svg width="108px" height="108px">
+				<path d="M 5 55 A 50 50 0 0 1 105 55" fill="#fff" stroke="#E6E6E6" stroke-width="4" />
+				<path d="M 5 55 A 50 50 0 0 1 15 25" fill="#fff" stroke="#02CFD7" stroke-width="4" />
+			</svg>
+		</div> -->
+	</body>
+	<!-- x = 45- 40*Math.cos(progerss/100*180*Math.PI/180);
+y = 45- 40*Math.sin(progerss/100*180*Math.PI/180); -->
+</html>

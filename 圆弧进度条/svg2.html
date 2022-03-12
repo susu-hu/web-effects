@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="height: 300px; width: 300px; border: solid 1px black">
+			<?xml version="1.0" standalone="no"?>
+			<svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg"
+				style="border: solid 1px black">
+				<path d="M74.12 196.60 A100 100, 1, 1, 1, 125.88 196.59" fill="transparent" stroke-width="3"
+					stroke-linecap="round" stroke="red" />
+			</svg>
+		</div>
+	</body>
+	<script>
+		(function() {
+			/**
+			 * 角度转化成弧度
+			 * @param {Number} deg - 角度
+			 * @return {Float} 弧度
+			 */
+			var arc = function(deg) {
+				return deg * 2 * Math.PI / 360;
+			}
+			/**
+			 * path路径属性的一些注释
+			 * @attribute d 路径操作
+			 * 
+			 * @function M 用来移动到指定的点，注意这个不会留下路径痕迹
+			 * @arg x 横坐标
+			 * @arg y 纵坐标
+			 * @example  
+			 *    M100 100  代表移动到 坐标x = 100, y = 100的点
+			 *   <path d="M100 100" fill="transparent" stroke-width="1" stroke-linecap="round" stroke="red"/>
+			 * 
+			 * @function L 用来画线，画之前需要先用M指定起始点
+			 * @arg x 横坐标
+			 * @arg y 纵坐标
+			 * @example 
+			 *   M0 0 L100 100 代表画一条线，线的终点是 x = 100, y = 100的点
+			 * <?xml version="1.0" standalone="no"?>
+			 * <svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			 *    <path d="M0 0 L10 10 L80 100 L20 60" stroke-width="3" stroke-linecap="round" stroke="red"fill="yellow"/>
+			 * </svg>
+			 * 
+			 * @function A 弧形
+			 * @arg rx x轴半径
+			 * @arg ry y轴半径
+			 * @arg x-axis-rotation x轴旋转角度，椭圆的时候就有效果了
+			 * @arg large-arc-flag 决定弧线是大于还是小于180度
+			 * @arg sweep-flag 表示弧线的方向 0表示从起点到终点沿逆时针画弧 1表示顺时针
+			 * @arg x 结束点横坐标
+			 * @arg y 结束点纵坐标
+			 * @example
+			 * 以下是起点坐标(74.12, 196.60)，终点坐标是(125.88 196.59)，的大圆弧，半径是100
+			 * <?xml version="1.0" standalone="no"?>
+			 * <svg width="200px" height="200px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="border: solid 1px black">
+			 *    <path d="M74.12 196.60 A100 100, 1, 1, 1, 125.88 196.59" fill="transparent" stroke-width="3" stroke-linecap="round" stroke="red"/>
+			 * </svg>
+			 */
+
+		})()
+	</script>
+</html>
