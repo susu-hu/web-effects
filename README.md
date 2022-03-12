@@ -117,7 +117,11 @@
 104. cdn引入vue，实现一个简易的数据看板
 105. cdn引入axios，实现一个简易的数据表格
 106. 芒果TV-loading动画
+107. 滚动的数字
 #### 作品截图
+
+滚动的数字
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%BB%9A%E5%8A%A8%E6%95%B0%E5%AD%97.gif)
 
 芒果TV-loading动画
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/mgld.gif)
