@@ -118,7 +118,11 @@
 105. cdn引入axios，实现一个简易的数据表格
 106. 芒果TV-loading动画
 107. 滚动的数字
+108. clip-path实现圆弧进度条
 #### 作品截图
+
+clip-path实现圆弧进度条
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/clip-pathy%E5%9C%86%E5%BC%A7.png)
 
 滚动的数字
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%BB%9A%E5%8A%A8%E6%95%B0%E5%AD%97.gif)
