@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>类似PPT演示稿效果的JavaScript幻灯片插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+		<link rel="stylesheet" type="text/css" href="./css/animation.css" />
+		<style>
+			html,
+			body {
+				font-family: helvetica, arial, sans-serif;
+				font-size: 16px;
+				line-height: 28px;
+			}
+
+			body {
+				font-family: 'Lato', Calibri, Arial, sans-serif;
+				color: #fff;
+				background: #fff;
+			}
+
+			.bespoke-slide h1 {
+				position: absolute;
+				font-weight: 300;
+				font-size: 4.4em;
+				line-height: 1;
+				letter-spacing: 6px;
+				margin: 0;
+				top: 40%;
+				width: 100%;
+				text-align: center;
+				text-transform: uppercase;
+				word-spacing: -0.3em;
+			}
+
+			.bespoke-slide h1 span {
+				font-family: 'Satisfy', serif;
+				font-weight: 400;
+				font-size: 40%;
+				text-transform: none;
+				word-spacing: 0;
+				letter-spacing: 0;
+				display: block;
+				opacity: 0.4;
+			}
+
+			.bespoke-slide h1 strong {
+				color: rgba(0, 0, 0, 0.1);
+			}
+
+			.bespoke-slide h2 {
+				position: absolute;
+				font-weight: 300;
+				font-size: 1.4em;
+				line-height: 1;
+				letter-spacing: 6px;
+				margin: 0;
+				top: 58%;
+				width: 100%;
+				text-align: center;
+				text-transform: uppercase;
+				word-spacing: -0.3em;
+			}
+
+			.bespoke-slide pre {
+				position: absolute;
+				margin: auto;
+				top: 65%;
+				left: 0;
+				right: 0;
+				width: 540px;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 20px;
+				border-radius: 10px;
+				font-size: 0.8em;
+				line-height: 1em;
+				color: rgba(255, 255, 255, 0.7);
+				overflow: hidden;
+			}
+
+			.bespoke-slide pre strong {
+				color: white;
+			}
+
+			.bespoke-slide:nth-child(6n+1) {
+				background: #22a7f0;
+			}
+
+			.bespoke-slide:nth-child(6n+2) {
+				background: #7bb7fa;
+			}
+
+			.bespoke-slide:nth-child(6n+3) {
+				background: #60d7a9;
+			}
+
+			.bespoke-slide:nth-child(6n+4) {
+				background: #fdc162;
+			}
+
+			.bespoke-slide:nth-child(6n+5) {
+				background: #fd6a62;
+			}
+
+			.bespoke-slide:nth-child(6n+6) {
+				background: #f68dbb;
+			}
+
+			.bespoke-slide:last-child {
+				background: #333;
+			}
+
+			*,
+			*:after,
+			*:before {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				height: 100%;
+				font-size: 100%;
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				overflow: hidden;
+			}
+
+			section {
+				display: none;
+			}
+
+			.bespoke-parent {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				-webkit-perspective: 1200px;
+				-moz-perspective: 1200px;
+				perspective: 1200px;
+				overflow: hidden;
+			}
+
+			.bespoke-slide {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				visibility: hidden;
+				overflow: hidden;
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
+				backface-visibility: hidden;
+				-webkit-transform: translate3d(0, 0, 0);
+				-moz-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+
+			section.bespoke-slide {
+				display: block;
+			}
+
+			.bespoke-inactive {
+				visibility: hidden;
+			}
+
+			.bespoke-active {
+				visibility: visible;
+				z-index: 1;
+			}
+
+			.fx-transitioning-in,
+			.fx-transitioning-out {
+				visibility: visible;
+			}
+		</style>
+	</head>
+	<body>
+		<article>
+			<section>
+				<h1><span>使用键盘的左右方向键来控制幻灯片</span>Slide <strong>1</strong></h1>
+			</section>
+
+			<section>
+				<h1><span>使用键盘的左右方向键来控制幻灯片</span>Slide <strong>2</strong></h1>
+				<h2>Use defaults</h2>
+				<pre>bespoke.horizontal.from('article', {
+  <strong>fx: true</strong>
+});</pre>
+			</section>
+
+			<section>
+				<h1><span>bespoke-fx</span>Slide <strong>3</strong></h1>
+				<h2>Custom global options</h2>
+				<pre>bespoke.horizontal.from('article', {
+  fx: <strong>{
+      direction: "horizontal",
+      transition: "move",
+      reverse: false
+    }</strong>
+});</pre>
+			</section>
+
+			<section>
+				<h1><span>bespoke-fx</span>Slide <strong>4</strong></h1>
+				<h2>Set per slide options</h2>
+				<pre>&lt;section&gt;Slide 4&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-direction="vertical">
+				<h1><span>bespoke-fx</span>Slide <strong>5</strong></h1>
+				<h2>Direction: horizontal or vertical</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-direction="vertical"</strong>&gt;Slide 5&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-reverse="true">
+				<h1><span>bespoke-fx</span>Slide <strong>6</strong></h1>
+				<h2>Run transition in reverse</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-reverse="true"</strong>&gt;Slide 6&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="move">
+				<h1><span>bespoke-fx</span>Slide <strong>7</strong></h1>
+				<h2>Different transitions: move [default]</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="move"</strong>&gt;Slide 7&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="move-fade">
+				<h1><span>bespoke-fx</span>Slide <strong>8</strong></h1>
+				<h2>Different transitions: move-fade</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="move-fade"</strong>&gt;Slide 8&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="move-both-fade">
+				<h1><span>bespoke-fx</span>Slide <strong>9</strong></h1>
+				<h2>Different transitions: move-both-fade</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="move-both-fade"</strong>&gt;Slide 9&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="move-different-easing">
+				<h1><span>bespoke-fx</span>Slide <strong>10</strong></h1>
+				<h2>Different transitions: move-different-easing</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="move-different-easing"</strong>&gt;Slide 10&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="scale-down-out-move-in">
+				<h1><span>bespoke-fx</span>Slide <strong>11</strong></h1>
+				<h2>Different transitions: scale-down-out-move-in</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="scale-down-out-move-in"</strong>&gt;Slide 11&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="move-out-scale-up">
+				<h1><span>bespoke-fx</span>Slide <strong>12</strong></h1>
+				<h2>Different transitions: move-out-scale-up</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="move-out-scale-up"</strong>&gt;Slide 12&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="scale-up-up">
+				<h1><span>bespoke-fx</span>Slide <strong>13</strong></h1>
+				<h2>Different transitions: scale-up-up</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="scale-up-up"</strong>&gt;Slide 13&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="scale-down-up">
+				<h1><span>bespoke-fx</span>Slide <strong>14</strong></h1>
+				<h2>Different transitions: scale-down-up</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="scale-down-up"</strong>&gt;Slide 14&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="glue">
+				<h1><span>bespoke-fx</span>Slide <strong>15</strong></h1>
+				<h2>Different transitions: glue</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="glue"</strong>&gt;Slide 15&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="flip">
+				<h1><span>bespoke-fx</span>Slide <strong>16</strong></h1>
+				<h2>Different transitions: flip</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="flip"</strong>&gt;Slide 16&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="fall">
+				<h1><span>bespoke-fx</span>Slide <strong>17</strong></h1>
+				<h2>Different transitions: fall</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="fall"</strong>&gt;Slide 17&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="newspaper">
+				<h1><span>bespoke-fx</span>Slide <strong>18</strong></h1>
+				<h2>Different transitions: newspaper</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="newspaper"</strong>&gt;Slide 18&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="push">
+				<h1><span>bespoke-fx</span>Slide <strong>19</strong></h1>
+				<h2>Different transitions: push</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="push"</strong>&gt;Slide 19&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="pull">
+				<h1><span>bespoke-fx</span>Slide <strong>20</strong></h1>
+				<h2>Different transitions: pull</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="pull"</strong>&gt;Slide 20&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="fold">
+				<h1><span>bespoke-fx</span>Slide <strong>21</strong></h1>
+				<h2>Different transitions: fold</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="fold"</strong>&gt;Slide 21&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="unfold">
+				<h1><span>bespoke-fx</span>Slide <strong>22</strong></h1>
+				<h2>Different transitions: unfold</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="unfold"</strong>&gt;Slide 22&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="room">
+				<h1><span>bespoke-fx</span>Slide <strong>23</strong></h1>
+				<h2>Different transitions: room</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="room"</strong>&gt;Slide 23&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="cube">
+				<h1><span>bespoke-fx</span>Slide <strong>24</strong></h1>
+				<h2>Different transitions: cube</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="cube"</strong>&gt;Slide 24&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="carousel">
+				<h1><span>bespoke-fx</span>Slide <strong>25</strong></h1>
+				<h2>Different transitions: carousel</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="carousel"</strong>&gt;Slide 25&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="sides">
+				<h1><span>bespoke-fx</span>Slide <strong>26</strong></h1>
+				<h2>Different transitions: sides</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="sides"</strong>&gt;Slide 26&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="slide">
+				<h1><span>bespoke-fx</span>Slide <strong>27</strong></h1>
+				<h2>Different transitions: slide</h2>
+				<pre>&lt;section <strong>data-bespoke-fx-transition="slide"</strong>&gt;Slide 27&lt;/section&gt;</pre>
+			</section>
+
+			<section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical">
+				<h1><span>bespoke-fx</span>Slide <strong>28</strong></h1>
+				<h2>End</h2>
+			</section>
+		</article>
+
+		<script src="js/modernizr.custom.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bespoke.js"></script>
+		<script src="js/bespoke-fx.js"></script>
+		<script>
+			bespoke.horizontal.from('article', {
+				fx: true
+			});
+
+			/*
+			// EXAMPLE WITH CUSTOM SETTINGS
+			bespoke.vertical.from('article', {
+			  fx: {
+			    direction: "vertical",
+			    transition: "cube",
+			    reverse: true
+			  }
+			});
+			*/
+		</script>
+	</body>
+</html>

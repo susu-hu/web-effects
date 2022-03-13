@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		@charset "UTF-8";
+
+		.numbers-container {
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			margin-top: 6px;
+			display: flex;
+			justify-content: center;
+		}
+
+		@keyframes scrollNumber0 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -1100;
+			}
+		}
+
+		@-moz-keyframes scrollNumber0
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -1100;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber0
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -1100;
+			}
+		}
+
+		@-o-keyframes scrollNumber0
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -1100;
+			}
+		}
+
+		@keyframes scrollNumber1 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -50px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber1
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -50px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber1
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -50px;
+			}
+		}
+
+		@-o-keyframes scrollNumber1
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -100px;
+			}
+		}
+
+		@keyframes scrollNumber2 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -100px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber2
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -100px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber2
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -100px;
+			}
+		}
+
+		@-o-keyframes scrollNumber2
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -100px;
+			}
+		}
+
+		@keyframes scrollNumber3 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -150px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber3
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -150px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber3
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -150px;
+			}
+		}
+
+		@-o-keyframes scrollNumber3
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -150px;
+			}
+		}
+
+		@keyframes scrollNumber4 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -200px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber4
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -200px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber4
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -200px;
+			}
+		}
+
+		@-o-keyframes scrollNumber4
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -200px;
+			}
+		}
+
+		@keyframes scrollNumber5 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -250px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber5
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -250px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber5
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -250px;
+			}
+		}
+
+		@-o-keyframes scrollNumber5
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -250px;
+			}
+		}
+
+		@keyframes scrollNumber6 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -300px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber6
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -300px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber6
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -300px;
+			}
+		}
+
+		@-o-keyframes scrollNumber6
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -300px;
+			}
+		}
+
+		@keyframes scrollNumber7 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -350px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber7
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -350px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber7
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -350px;
+			}
+		}
+
+		@-o-keyframes scrollNumber7
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -350px;
+			}
+		}
+
+		@keyframes scrollNumber8 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -400px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber8
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -400px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber8
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -400px;
+			}
+		}
+
+		@-o-keyframes scrollNumber8
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -400px;
+			}
+		}
+
+		@keyframes scrollNumber9 {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -450px;
+			}
+		}
+
+		@-moz-keyframes scrollNumber9
+
+		/* Firefox */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -450px;
+			}
+		}
+
+		@-webkit-keyframes scrollNumber9
+
+		/* Safari 和 Chrome */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -450px;
+			}
+		}
+
+		@-o-keyframes scrollNumber9
+
+		/* Opera */
+			{
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top: -450px;
+			}
+		}
+
+		.numbers-container .numbers-box {
+			width: 57px;
+			height: 50px;
+			overflow-y: hidden;
+			float: left;
+		}
+
+		.numbers-container .numbers-box span {
+			color: #666;
+			width: 100%;
+			height: 550px;
+			font-size: 50px;
+		}
+
+		.numbers-container .numbers-box span label {
+			width: 100%;
+			float: left;
+		}
+
+		.numbers-container .numbers-box span label:nth-child(1),
+		.numbers-container .numbers-box span label:nth-child(2),
+		.numbers-container .numbers-box span label:nth-child(3),
+		.numbers-container .numbers-box span label:nth-child(4),
+		.numbers-container .numbers-box span label:nth-child(5),
+		.numbers-container .numbers-box span label:nth-child(6),
+		.numbers-container .numbers-box span label:nth-child(7),
+		.numbers-container .numbers-box span label:nth-child(8),
+		.numbers-container .numbers-box span label:nth-child(9),
+		.numbers-container .numbers-box span label:nth-child(10) {
+			padding-top: 0rem;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll00 {
+			margin-top: -500px;
+			animation: scrollNumber0 1s linear 1 normal;
+			-moz-animation: scrollNumber0 1s linear 1 normal;
+			-webkit-animation: scrollNumber0 1s linear 1 normal;
+			-o-animation: scrollNumber0 1s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll01 {
+			margin-top: -500px;
+			animation: scrollNumber0 0.9s linear 1 normal;
+			-moz-animation: scrollNumber0 0.9s linear 1 normal;
+			-webkit-animation: scrollNumber0 0.9s linear 1 normal;
+			-o-animation: scrollNumber0 0.9s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll02 {
+			margin-top: -500px;
+			animation: scrollNumber0 1.4s linear 1 normal;
+			-moz-animation: scrollNumber0 1.4s linear 1 normal;
+			-webkit-animation: scrollNumber0 1.4s linear 1 normal;
+			-o-animation: scrollNumber0 1.4s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll03 {
+			margin-top: -500px;
+			animation: scrollNumber0 1.2s linear 1 normal;
+			-moz-animation: scrollNumber0 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber0 1.2s linear 1 normal;
+			-o-animation: scrollNumber0 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll04 {
+			margin-top: -500px;
+			animation: scrollNumber0 1.8s linear 1 normal;
+			-moz-animation: scrollNumber0 1.8s linear 1 normal;
+			-webkit-animation: scrollNumber0 1.8s linear 1 normal;
+			-o-animation: scrollNumber0 1.8s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll05 {
+			margin-top: -500px;
+			animation: scrollNumber0 1.6s linear 1 normal;
+			-moz-animation: scrollNumber0 1.6s linear 1 normal;
+			-webkit-animation: scrollNumber0 1.6s linear 1 normal;
+			-o-animation: scrollNumber0 1.6s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll1 {
+			margin-top: -50px;
+			animation: scrollNumber1 1.2s linear 1 normal;
+			-moz-animation: scrollNumber1 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber1 1.2s linear 1 normal;
+			-o-animation: scrollNumber1 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll2 {
+			margin-top: -100px;
+			animation: scrollNumber2 1.2s linear 1 normal;
+			-moz-animation: scrollNumber2 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber2 1.2s linear 1 normal;
+			-o-animation: scrollNumber2 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll3 {
+			margin-top: -150px;
+			animation: scrollNumber3 1.2s linear 1 normal;
+			-moz-animation: scrollNumber3 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber3 1.2s linear 1 normal;
+			-o-animation: scrollNumber3 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll4 {
+			margin-top: -200px;
+			animation: scrollNumber4 1.2s linear 1 normal;
+			-moz-animation: scrollNumber4 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber4 1.2s linear 1 normal;
+			-o-animation: scrollNumber4 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll5 {
+			margin-top: -250px;
+			animation: scrollNumber5 1.2s linear 1 normal;
+			-moz-animation: scrollNumber5 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber5 1.2s linear 1 normal;
+			-o-animation: scrollNumber5 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll6 {
+			margin-top: -300px;
+			animation: scrollNumber6 1.2s linear 1 normal;
+			-moz-animation: scrollNumber6 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber6 1.2s linear 1 normal;
+			-o-animation: scrollNumber6 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll7 {
+			margin-top: -350px;
+			animation: scrollNumber7 1.2s linear 1 normal;
+			-moz-animation: scrollNumber7 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber7 1.2s linear 1 normal;
+			-o-animation: scrollNumber7 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll8 {
+			margin-top: -400px;
+			animation: scrollNumber8 1.2s linear 1 normal;
+			-moz-animation: scrollNumber8 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber8 1.2s linear 1 normal;
+			-o-animation: scrollNumber8 1.2s linear 1 normal;
+		}
+
+		.numbers-container .numbers-box .numbers-scroll9 {
+			margin-top: -450px;
+			animation: scrollNumber9 1.2s linear 1 normal;
+			-moz-animation: scrollNumber9 1.2s linear 1 normal;
+			-webkit-animation: scrollNumber9 1.2s linear 1 normal;
+			-o-animation: scrollNumber9 1.2s linear 1 normal;
+		}
+
+		body {
+			font-size: 100px;
+		}
+	</style>
+	<body>
+		<div class="numbers-container">
+			<div class="numbers-box">
+				<span class="numbers-scroll3">
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">1</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">2</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">3</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">4</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">5</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">6</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">7</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">8</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">9</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+				</span>
+			</div>
+			<div class="numbers-box">
+				<span class="numbers-scroll00">
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">1</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">2</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">3</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">4</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">5</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">6</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">7</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">8</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">9</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+				</span>
+			</div>
+			<div class="numbers-box">
+				<span class="numbers-scroll5">
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">1</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">2</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">3</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">4</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">5</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">6</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">7</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">8</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">9</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+				</span>
+			</div>
+			<div class="numbers-box">
+				<span class="numbers-scroll2">
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">1</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">2</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">3</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">4</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">5</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">6</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">7</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">8</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">9</label>
+					<label style="font-size: 40px; color: rgb(255, 118, 38);">0</label>
+				</span>
+			</div>
+		</div>
+	</body>
+	<script>
+		/* import React, {
+			Component
+		} from "react"
+		import "./index.scss"
+		export default class NumbersCount extends Component {
+			constructor(props) {
+				super(props)
+				this.state = {
+					visible: true
+				}
+			}
+			render() {
+				const {
+					showValue
+				} = this.props
+				const numberList = (showValue + "").split("")
+				return <div className = "numbers-container"
+				style = {
+						this.props.numberContainerStyle
+					} > {
+						numberList.map((number, index) => {
+							let scrollClass = ""
+							if (number === "0") {
+								scrollClass = "numbers-scroll0" + Math.ceil(Math.random * 5)
+							} else {
+								scrollClass = "numbers-scroll" + number
+							}
+
+							return <div className = "numbers-box"
+							key = {
+									index
+								} > {
+									showValue > 0 ?
+									<
+									span className = {
+										scrollClass
+									}
+									style = {
+										this.props.numberStyle
+									} >
+									<
+									label > 0 < /label> <
+									label > 1 < /label> <
+									label > 2 < /label> <
+									label > 3 < /label> <
+									label > 4 < /label> <
+									label > 5 < /label> <
+									label > 6 < /label> <
+									label > 7 < /label> <
+									label > 8 < /label> <
+									label > 9 < /label> <
+									label > 0 < /label> <
+									/span> :
+										<
+										span >
+										<
+										label > 0 < /label> <
+										/span>
+								} <
+								/div>
+						})
+					} <
+					/div>
+			}
+		} */
+	</script>
+</html>

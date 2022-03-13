@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>源码来自：http://www.htmleaf.com/Demo/201603203239.html</title>
+		<link rel="stylesheet" type="text/css" href="../css3动画/reset.css" />
+		<style>
+			*,
+			*:after,
+			*:before {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+			}
+
+			body {
+				padding: 0;
+				margin: 0;
+			}
+
+			html {
+				background: rgb(30, 30, 30);
+				height: 100%;
+			}
+
+			#wrapper-sliderTv {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 1100px;
+				height: 545px;
+				overflow: hidden;
+			}
+
+			#sliderTV {
+				position: absolute;
+				top: 50px;
+				left: 100px;
+				width: 900px;
+				height: 500px;
+			}
+
+			.sliderTV__item {
+				width: 300px;
+				height: inherit;
+				padding: 10px;
+			}
+
+			.sliderTV__item img {
+				width: 260px;
+				height: 380px;
+				cursor: pointer;
+			}
+
+			.sliderTV__item h1 {
+				font-size: 20px;
+				text-align: center;
+				color: whitesmoke;
+				position: relative;
+				top: 20px;
+				text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
+			}
+
+			.sliderTV--focus img {
+				border: 5px rgba(228, 228, 255, 1.0) solid;
+				-moz-transition: all .2s ease-in-out;
+				-o-transition: all .2s ease-in-out;
+				-webkit-transition: all .2s ease-in-out;
+				transition: all .2s ease-in-out;
+				-moz-transform: scale(1.1);
+				-ms-transform: scale(1.1);
+				-o-transform: scale(1.1);
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
+				-webkit-box-shadow: 2px 2px 40px -8px rgba(255, 255, 255, 0.6);
+				-moz-box-shadow: 2px 2px 40px -8px rgba(255, 255, 255, 0.6);
+				box-shadow: 2px 2px 40px -8px rgba(255, 255, 255, 0.6);
+			}
+
+			.movie img {
+				width: 280px;
+			}
+
+			.sliderTV__bullets {
+				position: absolute;
+				top: 470px;
+				width: inherit;
+				height: 25px;
+				text-align: center;
+			}
+
+			.sliderTV__bullet {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				margin: 4px;
+				border-radius: 2px;
+				background-color: #fff;
+				-webkit-box-shadow: inset 2px 2px 10px 2px rgba(255, 255, 127, 0.5);
+				-moz-box-shadow: inset 2px 2px 10px 2px rgba(255, 255, 127, 0.5);
+				box-shadow: inset 2px 2px 10px 2px rgba(255, 255, 127, 0.5);
+			}
+
+			.sliderTV__bullet--active {
+				background-color: salmon;
+			}
+
+			.sliderTV__prev,
+			.sliderTV__next {
+				font-size: 120px;
+				color: salmon;
+				cursor: pointer;
+			}
+
+			.sliderTV__prev {
+				position: absolute;
+				top: 110px;
+				left: -100px;
+				width: 50px;
+			}
+
+			.sliderTV__next {
+				position: absolute;
+				top: 110px;
+				left: 950px;
+				width: 50px;
+			}
+
+			#sliderTV__mask-left {
+				position: absolute;
+				top: -50px;
+				left: -100px;
+				width: 100px;
+				height: 550px;
+				background: -moz-linear-gradient(left, rgba(30, 30, 30, 1) 0%, rgba(30, 30, 30, 0) 100%);
+				background: -webkit-linear-gradient(left, rgba(30, 30, 30, 1) 0%, rgba(30, 30, 30, 0) 100%);
+				background: linear-gradient(to right, rgba(30, 30, 30, 1) 0%, rgba(30, 30, 30, 0) 100%);
+			}
+
+			#sliderTV__mask-right {
+				position: absolute;
+				top: -50px;
+				background: -moz-linear-gradient(left, rgba(30, 30, 30, 0) 0%, rgba(30, 30, 30, 1) 100%);
+				background: -webkit-linear-gradient(left, rgba(30, 30, 30, 0) 0%, rgba(30, 30, 30, 1) 100%);
+				background: linear-gradient(to right, rgba(30, 30, 30, 0) 0%, rgba(30, 30, 30, 1) 100%);
+				left: 900px;
+				width: 100px;
+				height: 550px;
+			}
+
+			#help {
+				position: fixed;
+				right: 40px;
+				top: 300px;
+				width: 250px;
+				background-color: #3B3B3B;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				padding: 10px;
+				color: #8A8A8A;
+				-webkit-box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75);
+				box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75);
+				-moz-animation: fadeOut 1s ease-in 15s forwards;
+				-webkit-animation: fadeOut 1s ease-in 15s forwards;
+				-o-animation: fadeOut 1s ease-in 15s forwards;
+				animation: fadeOut 1s ease-in 15s forwards;
+				-webkit-animation-fill-mode: forwards;
+				-moz-animation-fill-mode: forwards;
+				-o-animation-fill-mode: forwards;
+				animation-fill-mode: forwards;
+			}
+
+			@keyframes fadeOut {
+				from {
+					opacity: 1;
+				}
+
+				to {
+					opacity: 0;
+				}
+			}
+
+			@-webkit-keyframes fadeOut {
+				from {
+					opacity: 1;
+				}
+
+				to {
+					opacity: 0;
+				}
+			}
+
+			@-moz-keyframes fadeOut {
+				from {
+					opacity: 1;
+				}
+
+				to {
+					opacity: 0;
+				}
+			}
+
+			#help__input {
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper-sliderTv">
+			<div id="sliderTV" class="sliderTV">
+				<div id="item-0" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png">
+					<h1>Amélie</h1>
+				</div>
+				<div id="item-1" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/7.png">
+					<h1>Django Unchained</h1>
+				</div>
+				<div id="item-2" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/7.png">
+					<h1>Fight Club</h1>
+				</div>
+				<div id="item-3" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png">
+					<h1>Forrest Gump</h1>
+				</div>
+				<div id="item-4" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/7.png">
+					<h1>Inglourious Basterds</h1>
+				</div>
+				<div id="item-5" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/4.png">
+					<h1>Inside Out</h1>
+				</div>
+				<div id="item-6" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/3.png">
+					<h1>Interstellar</h1>
+				</div>
+				<div id="item-7" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/2.png">
+					<h1>Léon: The Professional</h1>
+				</div>
+				<div id="item-8" class="sliderTV__item">
+					<img
+						src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/1.png">
+					<h1>San Andreas</h1>
+				</div>
+				<div id="sliderTV__mask-left"></div>
+				<div id="sliderTV__mask-right"></div>
+				<!-- 左右箭头 -->
+				<div class="sliderTV__prev">&#10096;</div>
+				<div class="sliderTV__next">&#10097;</div>
+			</div>
+		</div>
+		<!-- <div id="help">
+				<h1>Instructions</h1>
+				<p>使用你的键盘左右方向键可以查看前一张和下一张幻灯片，也可以点击屏幕上的左右箭头来切换。</p>
+				<p>在下面的输入框中输入一个数字可以直接跳转到相应的幻灯片上:</p>
+				<p><input id="help__input" type="number" min="0" max="9" value="0" step="1"></p>
+			</div> -->
+
+		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+		<script src="js/horizontal.js"></script>
+		<script src="js/sliderTV.js"></script>
+	</body>
+</html>

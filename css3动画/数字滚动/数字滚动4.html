@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>RollingNumber</title>
+		<style>
+			.input_center {
+				display: block;
+				margin: 50px auto 0;
+			}
+
+			.num_span {
+				border: 1px solid #911004;
+				width: 64px;
+				overflow: hidden;
+				font-size: 20px;
+				height: 20px;
+				margin: 10px auto;
+			}
+
+			.num_span span {
+				float: right;
+				width: 20px;
+				/* 书写模式*/
+				writing-mode: vertical-rl;
+				/* 控制行内字符的旋转*/
+				text-orientation: upright;
+				margin-top: 0em;
+				-webkit-transition: margin-top 1.5s ease-out;
+				-o-transition: margin-top 1.5s ease-out;
+				transition: margin-top 1.5s ease-out;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" class="input_center" id="valueRGB" placeholder="请输入0-255之间的数字">
+		<div class="num_span">
+
+			<span class="right">0123456789</span>
+			<span class="middle">0123456789</span>
+			<span class="left">12</span>
+		</div>
+
+		<script src="../../jquery相关/js/jq.js"></script>
+		<script>
+			function animate_RGB(rgb) {
+				let arr = [];
+				arr.push(parseInt(rgb / 100));
+				arr.push(parseInt(rgb % 100 / 10));
+				arr.push(parseInt(rgb % 10));
+				let $div = $(".num_span");
+				$div.find('.left').css('margin-top', -arr[0] + 1 + 'em')
+				$div.find('.middle').css('margin-top', -arr[1] + 'em')
+				$div.find('.right').css('margin-top', -arr[2] + 'em');
+				if (rgb < 10) {
+					$div.find('.middle').css('margin-top', '1em');
+				}
+			}
+			$("#valueRGB").on("change", function() {
+				let val = parseInt($(this).val());
+				if (val >= 0 && val < 256) {
+					console.log(val);
+					animate_RGB($(this).val());
+				}
+			});
+		</script>
+	</body>
+</html>

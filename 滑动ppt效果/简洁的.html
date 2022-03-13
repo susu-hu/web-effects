@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>源码来自：http://www.htmleaf.com/Demo/201603253263.html</title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		html,
+		body {
+			height: 100%;
+			font-family: 'Helvetica Neue', Arial;
+		}
+
+		.active-slide {}
+
+		.hsldr-nav-region {
+			position: absolute;
+			height: 2px;
+			width: 20px;
+			top: 0px;
+			left: 0px;
+			background-color: #000;
+		}
+
+		.hsldr-nav-wrapper {
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+			left: 50%;
+			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+		}
+
+		.hsldr-nav-marker {
+			content: "";
+			display: inline-block;
+			height: 2px;
+			width: 200px;
+			background-color: #bbb;
+			float: left;
+		}
+
+		.hsldr-container {
+			position: relative;
+			width: 100%;
+			height: 80vh;
+			max-height: 630px;
+			overflow: hidden;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+		}
+
+		.hsldr-container.hsldr-has-nav-bar {
+			height: calc(80vh + 30px);
+		}
+
+		.hsldr-gallery-container {
+			position: relative;
+			left: 0;
+			transition: all 0.5s ease-in-out;
+			overflow: hidden;
+			width: 99999px;
+		}
+
+		.hsldr-image-container {
+			float: left;
+			display: -ms-flexbox;
+			/* TWEENER - IE 10 */
+			display: -webkit-flex;
+			/* NEW - Chrome */
+			display: flex;
+		}
+
+		.hsldr-image-container img {
+			width: auto;
+			height: 80vh;
+			max-height: 600px;
+		}
+
+		.hsldr-container figure,
+		.hsldr-container li {
+			position: relative;
+		}
+
+		.hsldr-container figcaption,
+		.hsldr-container .caption {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			padding: 0;
+			color: #fff;
+			width: 94%;
+			padding: 3%;
+			opacity: 0;
+			text-align: center;
+			transform: translateY(-50%);
+			transition: opacity 0.1s ease-in-out;
+			font-size: 1.6rem;
+			font-weight: 200;
+		}
+
+		.hsldr-image-container:before {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0);
+			content: '';
+			display: block;
+			z-index: 0;
+			transition: background-color 0.3s ease-in-out;
+		}
+
+		.hsldr-container .showcaption:before {
+			background-color: rgba(0, 0, 0, 0.6);
+			z-index: 1;
+		}
+
+		.fade-in {
+			opacity: 1;
+		}
+
+		.info {
+			content: "";
+			display: block;
+			width: 20px;
+			height: 20px;
+			cursor: pointer;
+			visibility: visible;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			opacity: 1;
+			z-index: 2;
+		}
+
+		.info:before {
+			content: "i";
+			width: 15px;
+			height: 15px;
+			display: block;
+			text-align: center;
+			font-family: Georgia;
+			font-style: italic;
+			color: #fff;
+			background-color: rgba(0, 0, 0, 0.1);
+			padding: 2px 3px 5px;
+			border-radius: 2px;
+		}
+
+		.showcaption .info:before,
+		.showcaption .info:after {
+			position: absolute;
+			left: 11px;
+			top: 4px;
+			content: ' ';
+			height: 15px;
+			width: 2px;
+			background-color: #fff;
+			padding: 0;
+		}
+
+		.showcaption .info:before {
+			transform: rotate(45deg);
+		}
+
+		.showcaption .info:after {
+			transform: rotate(-45deg);
+		}
+
+		.hsldr-container .showcaption figcaption,
+		.hsldr-container .showcaption .caption {
+			visibility: visible;
+			opacity: 1;
+			z-index: 1;
+		}
+
+		.hsldr-next,
+		.hsldr-prev {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			width: 15px;
+			height: 30px;
+			background-color: rgba(0, 0, 0, 0.4);
+			color: #fff;
+			transition: background-color 0.3s ease-in-out;
+			padding: 15px 20px;
+			z-index: 4;
+		}
+
+		.hsldr-has-nav-bar .hsldr-next,
+		.hsldr-has-nav-bar .hsldr-prev {
+			top: calc(50% - 15px);
+		}
+
+		.hsldr-next {
+			right: 0;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+
+		.hsldr-next:before,
+		.hsldr-next:after,
+		.hsldr-prev:before,
+		.hsldr-prev:after {
+			width: 15px;
+			height: 2px;
+			background-color: #fff;
+			display: block;
+			content: '';
+			position: relative;
+		}
+
+		.hsldr-next:before {
+			-ms-transform: rotate(45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			-moz-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+			top: 9px;
+			left: 0;
+		}
+
+		.hsldr-next:after {
+			-ms-transform: rotate(-45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(-45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(-45deg);
+			-moz-transform: rotate(-45deg);
+			/* Chrome, Safari, Opera */
+			top: 17px;
+			left: 0;
+		}
+
+		.hsldr-prev {
+			left: 0;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+
+		.hsldr-prev:before {
+			-ms-transform: rotate(-45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(-45deg);
+			/* Chrome, Safari, Opera */
+			-moz-transform: rotate(-45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(-45deg);
+			top: 9px;
+			left: 0;
+		}
+
+		.hsldr-prev:after {
+			-ms-transform: rotate(45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			-moz-transform: rotate(45deg);
+			/* Chrome, Safari, Opera */
+			transform: rotate(45deg);
+			top: 17px;
+			left: 0;
+		}
+
+		.hsldr-next:hover,
+		.hsldr-prev:hover {
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+	</style>
+	<div class="htmleaf-container">
+		<div class="hsldr-container">
+
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				<figcaption>Car in the snow</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/7.png" />
+				<figcaption>People surfing</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/4.png" />
+				<figcaption>Girl with the balloon</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/3.png" />
+				<figcaption>Ice surfing</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/2.png" />
+				<figcaption>Golden hair</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/1.png" />
+				<figcaption>Antartica</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/7.png" />
+				<figcaption>Mofler</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				<figcaption>The hard worker</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/4.png" />
+				<figcaption>Winter lamps</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/2.png" />
+				<figcaption>Winter lamps</figcaption>
+			</figure>
+			<figure>
+				<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/1.png" />
+				<figcaption>Winter lamps</figcaption>
+			</figure>
+
+		</div>
+		<br><br><br>
+		<div class="hsldr-container">
+			<ul>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+					<div class="caption">This is a caption</div>
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+					<div class="caption">This is another caption</div>
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+					<div class="caption">This is one more caption</div>
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+					<div class="caption">This is also a caption</div>
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+				<li>
+					<img src="https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/%E5%A5%BD%E7%9C%8B%E5%9B%BE%E7%89%87/6.png" />
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/jquery.hslider.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//$( ".hsldr-container" ).hslider("navBar:false"); // create slider
+			$(".hsldr-container").hslider({
+				navBar: true,
+				auto: true,
+				delay: 4000
+			});
+		});
+	</script>
+	</body>
+</html>
