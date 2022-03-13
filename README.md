@@ -121,7 +121,11 @@
 108. clip-path实现圆弧进度条
 109. svg实现圆弧进度条
 110. 数字滚动
+111. 滑动幻灯片0001（jq插件，来自jq之家）
 #### 作品截图
+
+滑动幻灯片0001
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/slider0001.gif)
 
  数字滚动
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E7%9A%84.gif)
