@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		:root {
+			--percentage: 0%;
+		}
+
+		body {
+			background-color: #000;
+			margin: 0;
+			height: 300vh;
+		}
+
+		.sticky {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		h1 {
+			font-family: Helvetica;
+			margin: 0;
+			padding: 0;
+			font-size: 48px;
+			color: #fff;
+			letter-spacing: -0.3px;
+
+			background-image: linear-gradient(75deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 33.33%, rgba(255, 255, 255, 0) 66.67%, rgba(255, 255, 255, 0) 100%);
+			background-size: 300% 100%;
+			background-position-x: calc(100% - var(--percentage));
+
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+	</style>
+	<body>
+		<div class="sticky">
+			<h1>Less bezel, more screen.</h1>
+		</div>
+	</body>
+	<script>
+		const h1 = document.querySelector('h1')
+
+		document.addEventListener('scroll', (e) => {
+			let scrolled = document.documentElement.scrollTop / (document.documentElement.scrollHeight - document
+				.documentElement.clientHeight)
+
+			h1.style.setProperty('--percentage', `${scrolled * 100}%`)
+		})
+	</script>
+</html>
