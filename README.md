@@ -122,7 +122,11 @@
 109. svg实现圆弧进度条
 110. 数字滚动
 111. 滑动幻灯片0001（jq插件，来自jq之家）
+112. 数据看板，数据高亮选择
 #### 作品截图
+
+数据看板，数据高亮选择
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E6%95%B0%E6%8D%AE%E7%9C%8B%E6%9D%BF2.png)
 
 滑动幻灯片0001
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/slider0001.gif)
