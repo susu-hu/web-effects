@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<body>
+		<div id="app" class="chatKfPageApp">
+			<router-view></router-view>
+		</div>
+		<template id="chatKfIndex">
+			<div>111</div>
+		</template>
+		<template id="chatBox">
+			<div>222</div>
+		</template>
+	</body>
+	<script>
+		//首页组件
+		var chatKfIndex = {
+			data: function() {
+				return {
+					visitors: {},
+				}
+			},
+			methods: {},
+			created: function() {},
+			template: $("#chatKfIndex").html()
+		};
+		//详情组件
+		var chatKfBox = {
+			data: function() {
+				return {
+					msgList: [],
+					messageContent: "",
+					face: [],
+				}
+			},
+			methods: {
+				init() {
+					alert(this.$parent.socket);
+					alert(this.$route.params.visitorId);
+				},
+			},
+			created: function() {
+				this.init();
+			},
+			template: $("#chatBox").html()
+		};
+		var routes = [{
+				path: '/',
+				component: chatKfIndex
+			}, // 这个表示会默认渲染
+			{
+				path: '/chatKfBox/:visitorId',
+				component: chatKfBox
+			},
+		];
+		var router = new VueRouter({
+			routes: routes
+		})
+
+		new Vue({
+			router,
+			el: '#app',
+			data: function() {
+				return {
+					socket: null,
+				}
+			},
+			created: function() {
+				this.socket = 3;
+			},
+		})
+	</script>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<link rel="stylesheet" href="./css/reset.css">
+<!-- 生产环境版本，优化了尺寸和速度 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<!-- axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- qs -->
+<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+<!-- 封装request -->
+<script src="./js/http.js"></script>
+
+<body>
+	<div id="app" v-cloak>
+		<div class="header flex-row j_b" v-cloak>
+			<div class="flex-row" v-cloak>
+				<div>
+					<div class="flex-row">
+						<div>Month</div>
+						<div class="hd_sel  flex-row j_b" @click="show_month=!show_month" ref="s1">
+							<div>{{current_month}}</div>
+							<img src="./img/down_icon.png" />
+						</div>
+					</div>
+					<div class="hd_e">
+						<div v-show="show_month" class="drop_hd">
+							<div class="drop_hd_item" v-for="(item,index) in month_list"
+								:class="{'drop_hd_ative':current_month==item.name}" :key="index"
+								@click="choseItem(item,index)">{{item.name}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="margin-left: 91px;">
+					<div class="flex-row">
+						<div>Brand</div>
+						<div class="hd_sel  flex-row j_b" @click="show_brand=!show_brand" ref="s2">
+							<div>{{current_brand}}</div>
+							<img src="./img/down_icon.png" />
+						</div>
+					</div>
+					<div class="hd_e">
+						<div v-show="show_brand" class="drop_hd">
+							<div class="drop_hd_item" v-for="(item,index) in brand_list"
+								:class="{'drop_hd_ative':current_brand==item}" :key="index"
+								@click="choseBrand(item,index)">{{item}}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="margin-left: 91px;">
+					<div class="flex-row">
+						<div>GSV Type</div>
+						<div class="hd_sel  flex-row j_b" @click="show_gsv=!show_gsv" ref="s3">
+							<div>{{current_gsv}}</div>
+							<img src="./img/down_icon.png" />
+						</div>
+					</div>
+					<div class="hd_e">
+						<div v-show="show_gsv" class="drop_hd">
+							<div class="drop_hd_item" v-for="(item,index) in gsv_list"
+								:class="{'drop_hd_ative':current_gsv==item}" :key="index" @click="choseGsv(item,index)">
+								{{item}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header_type">
+				<div v-for="(item,index) in type_list" :key="index" class="flex-row" @click="current_type=index">
+					<div class="type_circle" :class="{'type_circle_checked':index==current_type}"></div>
+					<span>{{item.name}}</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="flex" v-cloak>
+				<div class="nav_left">
+					<div class="nav">
+						<img src="img/nav_1.png" class="nav_1" />
+					</div>
+
+				</div>
+				<div class="flex">
+					<template v-for="(item,index) in list_header" :key="index">
+						<div class="inf_box" :style="{background:item.back}" ref="inf_box">
+							<!-- 弹框 -->
+							<div class="pop_ques" v-show="curr_ques==index"
+								:style="{right:curr_ques==4?'50px':'-135px'}">
+								IMS_GSVIMS_GSVIMS_GSVIMS_GSVIMS_GSVIMS_GSVIMS_GSVIMS_GSV
+							</div>
+							<div class="inf_hd flex-row j_c" :style="{background:item.hd_back}">
+								{{item.name}}
+								<img class="inf_ques_icon" src="img/ques.png" @click="showQues(index)" />
+							</div>
+							<div class="inf">
+								<div class="inf1">{{item.total}}</div>
+								<div class="flex-row j_a" v-if="index==0 || index==4">
+									<div class="flex-column">
+										<div class="flex-row m_tb">
+											<div class="i_title">vs Target</div>
+											<div class="i_inf">{{item.target}}%</div>
+										</div>
+										<div class="i_much">{{item.total1}}</div>
+									</div>
+									<div class="flex-column">
+										<div class="flex-row m_tb">
+											<div class="i_title">vs LE</div>
+											<div class="i_inf">{{item.le}}%</div>
+										</div>
+										<div class="i_much">{{item.total2}}</div>
+									</div>
+								</div>
+								<div v-else class="flex-row j_c inf_other">
+									<span>{{index==1?'vs IMS GSV':'vs POS GSV'}}</span>
+									<span>{{item.per}}%</span>
+								</div>
+							</div>
+						</div>
+					</template>
+				</div>
+			</div>
+			<div v-cloak v-for="(item,index) in test_data" :key="index" style="margin-bottom: 8px;">
+				<div class="flex">
+					<div class="nav_left">
+						<div class="title flex-row j_c" @click="item.name=='Brand'?setDefault():''"
+							:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+							{{item.name}}</div>
+					</div>
+					<div class="flex">
+						<div class="record record_title">
+							<div class="re_hd flex-row j_b"
+								:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+								<div class="re_hd_first">MTD ACT</div>
+								<div class="re_hd_last">LE</div>
+								<div class="re_hd_last">ACT vs LE</div>
+							</div>
+							<div class="span"></div>
+						</div>
+						<div class="record record_title">
+							<div class="re_hd flex-row j_b"
+								:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+								<div class="re_hd_first">MTD ACT</div>
+								<div class="re_hd_last">LE</div>
+								<div class="re_hd_last">vs IMS GSV</div>
+							</div>
+							<div class="span"></div>
+						</div>
+						<div class="record record_title">
+							<div class="re_hd flex-row j_b"
+								:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+								<div class="re_hd_first">MTD ACT</div>
+								<div class="re_hd_last">LE</div>
+								<div class="re_hd_last">vs POS GSV</div>
+							</div>
+							<div class="span"></div>
+						</div>
+						<div class="record record_title">
+							<div class="re_hd flex-row j_b"
+								:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+								<div class="re_hd_first">MTD ACT</div>
+								<div class="re_hd_last">LE</div>
+								<div class="re_hd_last">vs POS GSV</div>
+							</div>
+							<div class="span"></div>
+						</div>
+						<div class="record record_title">
+							<div class="re_hd flex-row j_b"
+								:class="{'brand_no':curr_checked!=null&&item.name!='Brand'}">
+								<div class="re_hd_first">MTD ACT</div>
+								<div class="re_hd_last">LE</div>
+								<div class="re_hd_last">ACT vs LE</div>
+							</div>
+							<div class="span"></div>
+						</div>
+					</div>
+
+				</div>
+				<div v-for="(i0,ii) in item.list" :key="ii">
+					<div class="flex">
+						<div class="nav_left">
+							<div class="brand flex-column"
+								@click="item.name=='Brand'&&i0.name!='Total'?checkBrand(i0,ii):''"
+								:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+								<div :class="{'total':i0.name=='Total','next_ative':item.name=='Channel'}">
+									{{i0.name}}
+								</div>
+							</div>
+						</div>
+						<div class="flex">
+							<div class="record" :class="{'record_border':i0.name=='Total'}">
+								<div class="re_box"
+									:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+									<div class="flex-row re_box_item">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="i0.name!='Total'">
+												<div class="pillar_line" :style="{width:Number(i0.mtd_per)+'%'}">
+												</div>
+												<div class="p_p"
+													:style="{width:Number(i0.le_per)+'%',background:i0.gsv_color}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.gsv_act}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.gsv_le}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.gsv_per}}%</div>
+									</div>
+								</div>
+							</div>
+							<div class="record" :class="{'record_border':i0.name=='Total'}">
+								<div class="re_box"
+									:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+									<div class="flex-row re_box_item">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="i0.name!='Total'">
+												<div class="pillar_line" :style="{width:Number(i0.cd_mtd_per)+'%'}">
+												</div>
+												<div class="p_p"
+													:style="{width:Number(i0.cd_le_per)+'%',background:i0.cd_color}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.cd_act}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.cd_le}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.cd_per}}%</div>
+									</div>
+								</div>
+							</div>
+							<div class="record" :class="{'record_border':i0.name=='Total'}">
+								<div class="re_box"
+									:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+									<div class="flex-row re_box_item">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="i0.name!='Total'">
+												<div class="pillar_line" :style="{width:Number(i0.pd_mtd_per)+'%'}">
+												</div>
+												<div class="p_p"
+													:style="{width:Number(i0.pd_le_per)+'%',background:i0.pd_color}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.pd_act}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.pd_le}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.pd_per}}%</div>
+									</div>
+								</div>
+							</div>
+							<div class="record" :class="{'record_border':i0.name=='Total'}">
+								<div class="re_box"
+									:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+									<div class="flex-row re_box_item">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="i0.name!='Total'">
+												<div class="pillar_line" :style="{width:Number(i0.ot_mtd_per)+'%'}">
+												</div>
+												<div class="p_p"
+													:style="{width:Number(i0.ot_le_per)+'%',background:i0.ot_color}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.ot_act}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.ot_le}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.ot_per}}%</div>
+									</div>
+								</div>
+							</div>
+							<div class="record" :class="{'record_border':i0.name=='Total'}">
+								<div class="re_box"
+									:class="{'brand_ative':curr_checked==i0.name&&curr_checked!=null&&item.name=='Brand','brand_no':curr_checked!=i0.name&&curr_checked!=null}">
+									<div class="flex-row re_box_item">
+										<div style="width: 68px;">
+											<div class="pillar" v-if="i0.name!='Total'">
+												<div class="pillar_line" :style="{width:Number(i0.nsv_mtd_per)+'%'}">
+												</div>
+												<div class="p_p"
+													:style="{width:Number(i0.nsv_le_per)+'%',background:i0.nsv_color}">
+												</div>
+											</div>
+										</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.nsv_act}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.nsv_le}}</div>
+										<div class="r_t" :class="{'fweight':i0.name=='Total'}">{{i0.nsv_per}}%</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				name: "",
+				current_month: 'All',
+				current_brand: 'all',
+				current_gsv: "all",
+				show_month: false,
+				month_list: [{
+					name: 'All'
+				},
+				{
+					name: '2022-1'
+				},
+				{
+					name: '2022-2'
+				},
+				],
+				show_brand: false,
+				brand_list: {},
+				show_gsv: false,
+				gsv_list: {},
+				current_type: 0,
+				type_list: [{
+					name: "MTD",
+				},
+				{
+					name: "QTD",
+				},
+				{
+					name: "YTD",
+				},
+				],
+				params: {}, //查询参数
+				curr_ques: null,
+				curr_checked: null,
+				list_header: [],
+				test_data: [{
+					name: 'Brand',
+					list: []
+				},
+				{
+					name: '',
+					list: []
+				},
+				]
+			}
+		},
+		created() {
+			this.name = this.get_query_string('name')
+			this.getData()
+		},
+		methods: {
+			get_query_string(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+				if (r != null) return decodeURI(r[2]);
+				return null;
+			},
+			choseItem(e, index) {
+				this.current_month = e.name;
+				this.show_month = false;
+				this.getData()
+			},
+			choseBrand(e, index) {
+				this.current_brand = e;
+				this.show_brand = false;
+				this.getData();
+			},
+			choseGsv(e, index) {
+				this.current_gsv = e;
+				this.show_gsv = false;
+				this.getData();
+			},
+			showQues(index) {
+				this.curr_ques = index;
+			},
+			checkBrand(e, i) {
+				this.curr_checked = e.name;
+			},
+			setDefault() {
+				this.curr_checked = null;
+			},
+			getData() {
+				get('./data222.json').then((res) => {
+					if (res.code == 200) {
+						this.brand_list = res.data.brandList;
+						this.gsv_list = res.data.gsvType;
+						this.list_header = res.data.one_data;
+						this.test_data[0].list = res.data.two_data;
+						this.test_data[1].name = this.get_query_string('name');
+						this.test_data[1].list = res.data.three_data;
+						this.test_data.forEach(item => {
+							item.list.forEach(i0 => {
+								i0.gsv_color = "#8CD5B1";
+								i0.cd_color = "#F0DE7D";
+								i0.pd_color = "#FDAFD4";
+								i0.ot_color = "#B6B8F8";
+								i0.nsv_color = "#99D6F4";
+							})
+						});
+					}
+				})
+
+			},
+		}
+	})
+
+</script>
+<style type="text/css">
+	.brand_no {
+		background: rgba(142, 142, 142, 0.39) !important;
+	}
+
+	.brand_ative {
+		background: rgba(193, 255, 238, 0.39) !important;
+	}
+
+	.pillar_line {
+		height: 9px;
+		border-right: 1px solid rgba(92, 92, 92);
+		position: absolute;
+		left: 0px;
+		top: 0;
+		z-index: 99;
+	}
+
+	.pop_ques {
+		width: 201px;
+		background: rgba(255, 255, 255);
+		word-wrap: break-word;
+		word-break: break-all;
+		box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
+		border-radius: 6px;
+		padding: 7px 10px;
+		position: absolute;
+		z-index: 9;
+		top: 34px;
+		right: -135px;
+		font-size: 10px;
+		font-family: PingFang SC;
+		font-weight: 500;
+		line-height: 18px;
+		color: #5C5C5C;
+	}
+
+	.next_ative {
+		position: relative;
+	}
+
+	.next_ative::after {
+		content: '';
+		position: absolute;
+		width: 95%;
+		border: 1px solid #FF0000;
+		left: 50%;
+		bottom: 9px;
+		transform: translate(-50%);
+	}
+
+	.inf_ques_icon {
+		cursor: pointer;
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		z-index: 1;
+		right: 12px;
+	}
+
+	.inf_other {
+		margin-top: 30px;
+		color: #5C5C5C;
+	}
+
+	.inf_other span:first-child {
+		font-size: 16px;
+		margin-right: 12px;
+	}
+
+	.inf_other span:last-child {
+		font-size: 20px;
+		font-weight: bold;
+		color: #FC2727;
+	}
+
+	.header_type {
+		padding-right: 38px;
+		cursor: pointer;
+	}
+
+	.header_type .type_circle_checked::after {
+		content: '';
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		background: rgba(67, 67, 67);
+		border-radius: 50%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.header_type .type_circle {
+		position: relative;
+		width: 11px;
+		height: 11px;
+		background: rgba(255, 255, 255, 0.39);
+		border: 1px solid #C6C6C6;
+		border-radius: 50%;
+		flex-shrink: 0;
+		margin-right: 10px;
+	}
+
+	.header_type span {
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 22px;
+		color: rgba(0, 0, 0, 0.65);
+	}
+
+	.drop_hd_ative {
+		background-color: #6CD3A1;
+		color: #fff !important;
+	}
+
+	.drop_hd_item {
+		line-height: 30px;
+		color: #333;
+	}
+
+	.drop_hd {
+		position: absolute;
+		width: 150px;
+		min-height: 30px;
+		box-sizing: border-box;
+		padding: 10px;
+		background: #fff;
+		left: 65px;
+		top: 3px;
+		border-radius: 5px;
+		z-index: 99;
+		box-shadow: 5px 5px 5px #ccc;
+		cursor: pointer;
+	}
+
+	.hd_e {
+		position: relative;
+	}
+
+	.hd_sel img {
+		width: 11px;
+		height: 7px;
+	}
+
+	.hd_sel {
+		margin-left: 12px;
+		min-width: 148px;
+		height: 32px;
+		background: rgba(243, 243, 243);
+		border-radius: 8px;
+		box-sizing: border-box;
+		padding: 0 16px;
+		font-size: 14px;
+		font-weight: 500;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.fweight {
+		font-weight: bold;
+	}
+
+	.re_box_item {
+		height: 34px;
+	}
+
+	.p_p {
+		height: 9px;
+		background: #90DDB8;
+		opacity: 1;
+		border-radius: 0px 1px 1px 0px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+
+	.pillar {
+		width: 55px;
+		height: 9px;
+		position: relative;
+		margin-right: 13px;
+		flex-shrink: 0;
+	}
+
+	.span {
+		width: 309px;
+		height: 0px;
+		border-bottom: 1px solid #707070;
+		opacity: 0.2;
+	}
+
+	.r_t {
+		text-align: center;
+		font-size: 12px;
+		line-height: 22px;
+		color: #5C5C5C;
+		width: 26%;
+	}
+
+	.re_hd_first {
+		width: 50%;
+		text-align: center;
+		padding-left: 50px;
+		box-sizing: border-box;
+	}
+
+	.re_hd_last {
+		width: 25%;
+		text-align: center;
+	}
+
+	.re_hd {
+		height: 36px;
+		font-size: 13px;
+		font-weight: 600;
+		color: rgba(0, 0, 0, 0.65);
+		box-sizing: border-box;
+	}
+
+	.record {
+		overflow: hidden;
+		width: 309px;
+		background: #FFFFFF;
+		margin-right: 20px;
+	}
+
+	.record_border {
+		border-radius: 0 0 8px 8px;
+	}
+
+	.record_title {
+		border-radius: 8px 8px 0 0;
+	}
+
+	.record:last-child {
+		margin-right: 0;
+	}
+
+	.statis {
+		width: 309px;
+		height: 165px;
+		background: #FFFFFF;
+		border-radius: 8px;
+	}
+
+	.i_much {
+		font-size: 20px;
+		font-family: DINOT;
+		font-weight: bold;
+		line-height: 38px;
+		color: #5C5C5C;
+	}
+
+	.i_inf {
+		font-size: 20px;
+		font-family: DINOT;
+		font-weight: bold;
+		line-height: 38px;
+		color: #FC2727;
+	}
+
+	.i_title {
+		font-size: 12px;
+		font-family: PingFang SC;
+		font-weight: 500;
+		line-height: 22px;
+		color: #5C5C5C;
+		margin-right: 8px;
+	}
+
+	.inf1 {
+		font-size: 26px;
+		font-family: DINOT;
+		font-weight: bold;
+		color: #000000;
+		text-align: center;
+	}
+
+	.inf {
+		padding: 18px 0 21px;
+		box-sizing: border-box;
+	}
+
+	.inf_hd {
+		width: 309px;
+		height: 44px;
+		background: #6CD3A1;
+		border-radius: 8px 8px 0px 0px;
+		font-size: 18px;
+		color: #FFFFFF;
+		position: relative;
+	}
+
+	.inf_box {
+		width: 309px;
+		height: 195px;
+		background: linear-gradient(180deg, #E6FFF2 0%, #FFFFFF 100%);
+		border-radius: 8px;
+		margin-bottom: 8px;
+		margin-right: 20px;
+		position: relative;
+	}
+
+	.inf_box:last-child {
+		margin-right: 0;
+	}
+
+	.total {
+		font-size: 12px;
+		font-weight: 600;
+		color: #242625;
+	}
+
+	.total::after {
+		display: none;
+	}
+
+	.brand {
+		line-height: 34px;
+		cursor: pointer;
+	}
+
+	.title {
+		cursor: default;
+		width: 104px;
+		height: 36px;
+		background: #F0F2F5;
+		font-size: 14px;
+		color: rgba(0, 0, 0, 0.65);
+	}
+
+	.nav {
+		width: 104px;
+		height: 203px;
+		background: #FFFFFF;
+		position: relative;
+		text-align: center;
+	}
+
+	.nav_1 {
+		width: 80px;
+		height: 96px;
+		position: absolute;
+		bottom: 57px;
+		left: 0;
+		z-index: 1;
+	}
+
+	.nav_left {
+		width: 104px;
+		background: #FFFFFF;
+		font-size: 12px;
+		font-weight: 600;
+		color: #5C5C5C;
+		margin-right: 20px;
+	}
+
+
+	.header {
+		width: 100%;
+		height: 72px;
+		background: #FFFFFF;
+		margin-bottom: 20px;
+		padding: 0 44px;
+		box-sizing: border-box;
+		font-size: 16px;
+		font-weight: 600;
+		color: #000000;
+		min-width: 1440px;
+	}
+
+	body {
+		background: #F0F2F5;
+	}
+</style>
+
+</html>
