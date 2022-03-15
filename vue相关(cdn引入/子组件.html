@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	</head>
+	<body>
+		<div id="app">
+			<login></login>
+		</div>
+
+		<script>
+			var login = {
+				template: '<h1>{{childMsg}}</h1>',
+				data() {
+					return {
+						childMsg: 'child'
+					}
+				},
+				beforeCreate: function() {
+					debugger;
+					console.log("子组件的beforeCreate")
+				},
+				created: function() {
+					debugger
+					console.log("子组件的created")
+				},
+				beforeMount: function() {
+					debugger
+					console.log("子组件的beforeMount")
+				},
+				mounted: function() {
+					debugger
+					console.log("子组件的mounted")
+				}
+			}
+
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					fatherMsg: "father"
+				},
+				methods: {},
+				components: {
+					login
+				},
+				beforeCreate: function() {
+					debugger
+					console.log("父组件的beforeCreate")
+				},
+				created: function() {
+					debugger
+					console.log("父组件的created")
+				},
+				beforeMount: function() {
+					debugger
+					console.log("父组件的beforeMount")
+				},
+				mounted: function() {
+					debugger
+					console.log("父组件的mounted")
+				},
+			});
+		</script>
+	</body>
+
+</html>

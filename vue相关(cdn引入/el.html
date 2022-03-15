@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box>div {
+            width: 250px;
+            height: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="time0"></div>
+        <div id="time1"></div>
+        <div id="time2"></div>
+        <div id="time3"></div>
+        <div id="time4"></div>
+        <div id="time5"></div>
+        <div id="time6"></div>
+        <div id="time7"></div>
+        <div id="time8"></div>
+        <div id="time9"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let time0 = "2021-04-26T09:35:06+08:00"
+    let time1 = "2021-04-26 09:33:05"
+    let time2 = "2021-04-26T13:42:31+08:00"
+    let time3 = "2021-04-30 12:38:04"
+    let time4 = "2021-04-30 12:38:04"
+    let time5 = "2021-04-30 17:12:35"
+    let time6 = "2021-04-30T18:19:25+08:00"
+    let time7 = "2021-04-29T12:54:13+08:00"
+    let time8 = "2021-04-29T13:25:44+08:00"
+    let time9 = "2021-05-06T14:11:22+08:00"
+    document.getElementById('time0').innerHTML= dateFormat(time0)
+    document.getElementById('time1').innerHTML= dateFormat(time1)
+    document.getElementById('time2').innerHTML= dateFormat(time2)
+    document.getElementById('time3').innerHTML= dateFormat(time3)
+    document.getElementById('time4').innerHTML= dateFormat(time4)
+    document.getElementById('time5').innerHTML= dateFormat(time5)
+    document.getElementById('time6').innerHTML= dateFormat(time6)
+    document.getElementById('time7').innerHTML= dateFormat(time7)
+    document.getElementById('time8').innerHTML= dateFormat(time8)
+    document.getElementById('time9').innerHTML= dateFormat(time9)
+    function dateFormat(time) {
+        if (!time || time === null) {
+            let arr = []
+            return arr
+        }
+        if(time.indexOf('T') == -1){
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isSafari = userAgent.indexOf("Safari") > -1
+                && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器
+            if(isSafari){
+                time = time.replace(/-/g, "/");
+            }
+        }
+        let date = new Date(Date.parse(time));
+        let year = date.getFullYear();
+        let month =
+            date.getMonth() + 1 < 10
+                ? "0" + (date.getMonth() + 1)
+                : date.getMonth() + 1;
+        let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        let hours =
+            date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        let minutes =
+            date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        let seconds =
+            date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+        let a = year + "-" + month + "-" + day + ' ' + hours + ":" + minutes + ":" + seconds;
+        
+        return a
+  }
+
+
+
+</script>
