@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>vue.draggable例子</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <script src="https://www.itxst.com/package/vue/vue.min.js"></script>
+    <script src="https://www.itxst.com/package/sortable/Sortable.min.js"></script>
+    <script src="https://www.itxst.com/package/vuedraggable/vuedraggable.umd.min.js"></script>
+    <style scoped>
+        .item {
+            padding: 6px;
+            background-color: #fdfdfd;
+            border: solid 1px #eee;
+            margin-bottom: 10px;
+            cursor: move;
+        }
+
+            .item:hover {
+                background-color: #f1f1f1;
+                cursor: move;
+            }
+
+        .chosen {
+            border: solid 2px #3089dc !important;
+        }
+    </style>
+</head>
+<body style="padding:10px;">
+    <div id="app">
+        <div>{{drag?'拖拽中':'拖拽停止'}}</div>
+        <draggable v-model="myArray" chosen-class="chosen" force-fallback="true" group="people" animation="1000" @start="onStart" @end="onEnd">
+            <transition-group>
+                <div class="item" v-for="element in myArray" :key="element.id">{{element.name}}</div>
+            </transition-group>
+        </draggable>
+    </div>
+    <script>
+        // 全局注册组件
+        Vue.component('vuedraggable', window.vuedraggable)
+        var app = new Vue({
+            el: '#app',
+            components: {
+                vuedraggable: window.vuedraggable,//当前页面注册组件
+            },
+            data() {
+                return {
+                    drag: false,
+                    myArray: [
+                        { people: 'cn', id: 1, name: 'www.itxst.com' },
+                        { people: 'cn', id: 2, name: 'www.baidu.com' },
+                        { people: 'cn', id: 3, name: 'www.taobao.com' },
+                        { people: 'us', id: 4, name: 'www.google.com' }
+                    ]
+                };
+            },
+            methods: {
+                onStart() {
+                    this.drag = true;
+                },
+                onEnd() {
+                    this.drag = false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
