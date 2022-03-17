@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	​
+	<head>
+		<meta charset="UTF-8">
+		<title>节流</title>
+		<style type="text/css"></style>
+		<script type="text/javascript">
+			window.onload = function() {
+				//模拟ajax请求
+				function ajax(content) {
+					console.log('ajax request ' + content)
+				}
+				function throttle(fun, delay) {
+					let last, deferTimer
+					return function(args) {
+						let that = this
+						let _args = arguments
+						let now = +new Date()
+						if (last && now < last + delay) {
+							clearTimeout(deferTimer)
+							deferTimer = setTimeout(function() {
+								last = now
+								fun.apply(that, _args)
+							}, delay)
+						} else {
+							last = now;
+							fun.apply(that, _args)
+						}
+					}
+				}
+				let throttleAjax = throttle(ajax, 5000)
+
+				let inputThrottle = document.getElementById('throttle')
+				inputThrottle.addEventListener('keyup', function(e) {
+					throttleAjax(e.target.value)
+				})
+			}
+		</script>
+	</head>
+	​
+	<body>
+		<div>
+			加入节流后的输入：
+			<input type="text" name="throttle" id="throttle">
+		</div>
+	</body>
+	​
+</html>
+<!--  什么是节流
+规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，
+如果在同一个单位时间内某事件被触发多次，只有一次能生效
+
+应用场景：
+(1)鼠标连续不断地触发某事件（如点击），只在单位时间内只触发一次；
+
+(2)在页面的无限加载场景下，需要用户在滚动页面时，每隔一段时间发一次 ajax 请求，而不是在用户停下滚动页面操作时才去请求数据；
+
+(3)监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断；-->
+
+<!-- 函数防抖是某一段时间内只执行一次；
+而函数节流是间隔时间执行，不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数。 -->
+
+
+<!-- 防抖是维护一个计时器，规定在delay时间后触发函数，但是在delay时间内再次触发的话，
+都会清除当前的 timer 然后重新设置超时调用，即重新计时。这样一来，只有最后一次操作能被触发。 
+
+节流是通过判断是否到达一定时间来触发函数，若没到规定时间则使用计时器延后，而下一次事件则会重新设定计时器。
+-->

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	​
+	<head>
+		<meta charset="UTF-8">
+		<title>防抖</title>
+		<style type="text/css"></style>
+		<script type="text/javascript">
+			window.onload = function() {
+				//模拟ajax请求
+				function ajax(content) {
+					console.log('ajax request ' + content)
+				}
+				let input = document.getElementById("normal")
+				input.addEventListener('keyup', function(e) {
+					ajax(e.target.value)
+				})
+
+
+				function debounce(fun, delay) {
+					return function(args) {
+						//获取函数的作用域和变量
+						let that = this
+						let _args = args
+						//每次事件被触发，都会清除当前的timeer，然后重写设置超时调用
+						clearTimeout(fun.id)
+						fun.id = setTimeout(function() {
+							fun.call(that, _args)
+						}, delay)
+						console.log(fun.id)
+					}
+				}
+				let debounce11 = document.getElementById("debounce")
+				let debounceAjax = debounce(ajax, 2000)
+				debounce11.addEventListener('keyup', function(e) {
+					debounceAjax(e.target.value)
+				})
+			}
+		</script>
+	</head>
+	​
+	<body>
+		<div>
+			1.没有防抖的输入：浪费请求资源
+			<input type="text" name="normal" id="normal">
+			1.加入防抖后的输入：第一次不会立即执行，只会执行最后一次
+			<input type="text" name="normal" id="debounce">
+		</div>
+	</body>
+	​
+</html>
+<!-- 防抖和节流都是为了解决短时间内大量触发某函数而导致的性能问题，比如触发频率过高导致的响应速度跟不上触发频率，
+出现延迟，假死或卡顿的现象。但二者应对的业务需求不一样，所以实现的原理也不一样 -->
+
+<!-- 什么是防抖：
+在事件被触发n秒后再执行回调函数，如果在这n秒内又被触发，则重新计时。
+ 应用场景
+ (1) 用户在输入框中连续输入一串字符后，只会在输入完后去执行最后一次的查询ajax请求，这样可以有效减少请求次数，节约请求资源；
+ 
+ (2) window的resize、scroll事件，不断地调整浏览器的窗口大小、或者滚动时会触发对应事件，防抖让其只触发一次；
+ 原理：每一次事件被触发，都会清除当前的 timer 然后重新设置超时调用，即重新计时。 这就会导致每一次高频事件都会取消前一次的超时调用，导致事件处理程序不能被触发；
+
+2.只有当高频事件停止，最后一次事件触发的超时调用才能在delay时间后执行；
+加入防抖后，当持续在输入框里输入时，并不会发送请求，只有当在指定时间间隔内没有再输入时，才会发送请求。如果先停止输入，但是在指定间隔内又输入，会重新触发计时
+-->

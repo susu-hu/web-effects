@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<head>
+		<title>标题</title>
+		<style type="text/css">
+			/*CSS样式*/
+		</style>
+	</head>
+
+	<body>
+		<form action="">
+			<input type="text"/>
+			<input type="text" onkeypress="actionOnEnter(event);" />
+		</form>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	function actionOnEnter(evt) {
+		evt = evt ? evt : event;
+		var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+
+		if (charCode == 13 || charCode == 3) {
+			doBusiness();
+		}
+	}
+
+	function doBusiness() {
+		alert("biz");
+	}
+</script>
