@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3 3D翻转Tab切换插件DEMO演示</title>
+	</head>
+	<style>
+		body {
+			background: #F8FFE5;
+		}
+
+		.perspective {
+			-webkit-perspective: 76em;
+			perspective: 76em;
+			-webkit-perspective-origin: 50% 50px;
+			perspective-origin: 50% 50px;
+			width: 494px;
+			margin: 0 auto;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 100;
+			color: #fff;
+			text-align: center;
+		}
+
+		input {
+			display: none;
+		}
+
+		.tab {
+			position: absolute;
+			width: 80px;
+			height: 70px;
+			background: pink;
+			right: 0;
+			line-height: 70px;
+			font-weight: 300;
+		}
+
+		.tab:nth-child(1) {
+			top: -5px;
+			background: #06D6A0;
+		}
+
+		.tab:nth-child(2) {
+			top: 69px;
+			background: #1B9AAA;
+		}
+
+		.tab:nth-child(3) {
+			top: 143px;
+			background: #EF476F;
+		}
+
+		.cube {
+			position: relative;
+			margin: 60px auto;
+			width: 300px;
+			height: 200px;
+			-webkit-transform-origin: 0 100px;
+			transform-origin: 0 100px;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transition: -webkit-transform 0.5s ease-in;
+			transition: -webkit-transform 0.5s ease-in;
+			transition: transform 0.5s ease-in;
+			transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+		}
+
+		.tab-content {
+			width: 300px;
+			height: 200px;
+			position: absolute;
+		}
+
+		.tab-content h1 {
+			font-size: 25px;
+			margin: 75px 0 10px;
+			font-weight: 300;
+		}
+
+		.tab-content p {
+			font-size: 12px;
+		}
+
+		.tab-content:nth-child(2) {
+			-webkit-transform: translateZ(100px);
+			transform: translateZ(100px);
+			background: #1B9AAA;
+		}
+
+		.tab-content:nth-child(1) {
+			-webkit-transform: rotateX(-270deg) translateY(-100px);
+			transform: rotateX(-270deg) translateY(-100px);
+			-webkit-transform-origin: top left;
+			transform-origin: top left;
+			background: #06D6A0;
+		}
+
+		.tab-content:nth-child(3) {
+			-webkit-transform: rotateX(-90deg) translateY(100px);
+			transform: rotateX(-90deg) translateY(100px);
+			-webkit-transform-origin: bottom center;
+			transform-origin: bottom center;
+			background: #EF476F;
+		}
+
+		#tab-top:checked~.cube {
+			-webkit-transform: rotateX(-90deg);
+			transform: rotateX(-90deg);
+		}
+
+		#tab-front:checked~.cube {
+			-webkit-transform: rotateX(0deg);
+			transform: rotateX(0deg);
+		}
+
+		#tab-bottom:checked~.cube {
+			-webkit-transform: rotateX(90deg);
+			transform: rotateX(90deg);
+		}
+
+		/* cyrillic-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxFIzIFKw.woff2) format('woff2');
+			unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+		}
+
+		/* cyrillic */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxMIzIFKw.woff2) format('woff2');
+			unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+		}
+
+		/* greek-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxEIzIFKw.woff2) format('woff2');
+			unicode-range: U+1F00-1FFF;
+		}
+
+		/* greek */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxLIzIFKw.woff2) format('woff2');
+			unicode-range: U+0370-03FF;
+		}
+
+		/* vietnamese */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxHIzIFKw.woff2) format('woff2');
+			unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+		}
+
+		/* latin-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxGIzIFKw.woff2) format('woff2');
+			unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		}
+
+		/* latin */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			src: url(../font/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
+
+		/* cyrillic-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+			unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+		}
+
+		/* cyrillic */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+			unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+		}
+
+		/* greek-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+			unicode-range: U+1F00-1FFF;
+		}
+
+		/* greek */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+			unicode-range: U+0370-03FF;
+		}
+
+		/* vietnamese */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+			unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+		}
+
+		/* latin-ext */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+			unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		}
+
+		/* latin */
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 300;
+			src: url(../font/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
+	</style>
+	<body>
+		<div class="perspective">
+			<label class="tab" for="tab-top">TOP</label>
+			<label class="tab" for="tab-front">FRONT</label>
+			<label class="tab" for="tab-bottom">BOTTOM</label>
+			<input type="radio" name="tabs" id="tab-top">
+			<input type="radio" name="tabs" id="tab-front">
+			<input type="radio" name="tabs" id="tab-bottom">
+			<div class="cube">
+				<div class="tab-content">
+					<h1>TOP CONTENT</h1>
+					<p>THIS IS AWESOME</p>
+				</div>
+				<div class="tab-content">
+					<h1>FRONT CONTENT</h1>
+					<p>THIS IS COOL</p>
+				</div>
+				<div class="tab-content">
+					<h1>BOTTOM CONTENT</h1>
+					<p>THIS IS SWEET</p>
+				</div>
+			</div>
+		</div>
+		<div style="text-align:center;clear:both">
+		</div>
+	</body>
+</html>

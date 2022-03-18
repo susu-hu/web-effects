@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>demo来自:https://www.17sucai.com/pins/demo-show?id=43140&st=F1fVipVHDgx8IhE6uz77_Q&e=1647579981</title>
+	</head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+		* {
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+			font-family: 'Mochiy Pop One', sans-serif;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #ebd8b8;
+		}
+
+		ul {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+		}
+
+		ul li {
+			position: relative;
+			list-style: none;
+		}
+
+		ul li a {
+			font-size: 4em;
+			text-decoration: none;
+			letter-spacing: 2px;
+			line-height: 1em;
+			text-transform: uppercase;
+			color: transparent;
+			-webkit-text-stroke: 1px rgba(0, 85, 127, 0.5);
+		}
+
+		ul li a::before {
+			content: attr(data-text);
+			position: absolute;
+			color: var(--clr);
+			width: 0;
+			overflow: hidden;
+			transition: 1s;
+			border-right: 8px solid var(--clr);
+			-webkit-text-stroke: 1px var(--clr);
+		}
+
+		ul li a:hover::before {
+			width: 100%;
+			filter: drop-shadow(0 0 25px var(--clr))
+		}
+
+		.aaa {
+			display: inline-block;
+			max-width: 300px;
+			height: 50px;
+			line-height: 50px;
+			background-color: pink;
+			border-radius: 25px;
+			box-sizing: border-box;
+			padding: 0 10px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			min-width: 100px;
+			text-align: center;
+		}
+	</style>
+	<body>
+		<ul>
+			<li style="--clr:#aba0e1">
+				<a href="#" data-text="&nbsp;Home">&nbsp;Home&nbsp;</a>
+			</li>
+			<li style="--clr:#222">
+				<a href="#" data-text="&nbsp;About">&nbsp;About&nbsp;</a>
+			</li>
+			<li style="--clr:#ffffff">
+				<a href="#" data-text="&nbsp;Services">&nbsp;Services&nbsp;</a>
+			</li>
+			<li style="--clr:pink">
+				<a href="#" data-text="&nbsp;Blog">&nbsp;Blog&nbsp;</a>
+			</li>
+			<li style="--clr:#94b4dc">
+				<a href="#" data-text="&nbsp;Contact">&nbsp;Contact&nbsp;</a>
+			</li>
+		</ul>
+		<div>
+			<div>
+				<div class="aaa">苏苏小试收到回复是的咖啡和双和水电费是的方各回</div>
+			</div>
+			<div>
+				<div class="aaa">苏苏小苏苏</div>
+			</div>
+			<div>
+				<div class="aaa">苏苏哈哈</div>
+			</div>
+
+
+		</div>
+
+	</body>
+</html>

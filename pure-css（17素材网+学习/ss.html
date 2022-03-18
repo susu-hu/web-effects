@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轻巧可爱的jQuery Tab菜单插件DEMO演示</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {}
+
+		.snap {
+			width: 350px;
+			height: 350px;
+			background: #E85D5E;
+			border-radius: 0 0 30px 30px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			overflow: hidden;
+			box-shadow: 0 10px 90px -2px rgba(0, 0, 0, 0.3);
+			position: relative;
+			margin: 50px auto;
+		}
+
+		.snap .tab-panel {
+			width: 100%;
+			height: 60px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-ms-flex-item-align: end;
+			align-self: flex-end;
+			line-height: 70px;
+			text-align: center;
+			color: #fff;
+			position: relative;
+			z-index: 100;
+		}
+
+		.snap .tab-panel .tab {
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			height: 60px;
+			cursor: pointer;
+		}
+
+		.snap .tab-panel .tab:nth-child(2) {
+			position: relative;
+		}
+
+		.snap .tab-panel .tab:nth-child(2) .camera {
+			content: '';
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			top: -60px;
+			left: 25%;
+			-webkit-transform: translate(, );
+			transform: translate(, );
+			z-index: 10;
+			border: 7px solid #fff;
+			border-radius: 50%;
+		}
+
+		.snap .active {
+			width: 60px;
+			height: 5px;
+			background: #fff;
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			-webkit-transform: translate(-50%, 0);
+			transform: translate(-50%, 0);
+			border-radius: 30px 30px 0 0;
+			z-index: 100;
+		}
+
+		.snap .yellow {
+			width: 100%;
+			height: 100%;
+			background: #ED994D;
+			position: absolute;
+			top: 0;
+			right: -100%;
+			-webkit-transform: translate(, );
+			transform: translate(, );
+		}
+
+		.snap .blue {
+			width: 100%;
+			height: 100%;
+			background: #24CEC2;
+			position: absolute;
+			top: 0;
+			left: -100%;
+			-webkit-transform: translate(, );
+			transform: translate(, );
+		}
+
+		a {
+			text-decoration: none;
+			color: #24CEC2;
+			position: absolute;
+			right: 2vh;
+			bottom: 2vh;
+			-webkit-transform: translate(, );
+			transform: translate(, );
+			-webkit-animation: ls 1s ease-in-out infinite;
+			animation: ls 1s ease-in-out infinite;
+		}
+
+		@-webkit-keyframes ls {
+			50% {
+				letter-spacing: 0.5px;
+			}
+		}
+
+		@keyframes ls {
+			50% {
+				letter-spacing: 0.5px;
+			}
+		}
+
+		/* fallback */
+		@font-face {
+			font-family: 'Material Icons';
+			font-style: normal;
+			font-weight: 400;
+			src: url(../font/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+		}
+
+		.material-icons {
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 24px;
+			line-height: 1;
+			letter-spacing: normal;
+			text-transform: none;
+			display: inline-block;
+			white-space: nowrap;
+			word-wrap: normal;
+			direction: ltr;
+			-webkit-font-feature-settings: 'liga';
+			-webkit-font-smoothing: antialiased;
+		}
+	</style>
+	<body>
+		<div class="snap">
+			<div class="tab-panel">
+				<div class="tab"><i class="material-icons">textsms</i></div>
+				<div class="tab"><i class="material-icons">refresh</i>
+					<div class="camera"></div>
+				</div>
+				<div class="tab"><i class="material-icons">sort</i></div>
+			</div>
+			<div class="active"></div>
+			<div class="blue"></div>
+			<div class="yellow"></div>
+		</div>
+		<div style="text-align:center;clear:both">
+		</div>
+		<script src='static/js/jquery.min.js'></script>
+		<script>
+			var active = $('.active'),
+				firstTab = $('.tab:nth-child(1)'),
+				secondTab = $('.tab:nth-child(2)'),
+				thirdTab = $('.tab:nth-child(3)'),
+				yellowBg = $('.yellow'),
+				blueBg = $('.blue'),
+				snap = $('.snap'),
+				sort = $('.sort');
+
+			firstTab.on('click', function() {
+				active.animate({
+					left: '24%'
+				});
+				secondTab.animate({
+					marginTop: '50px'
+				});
+				yellowBg.animate({
+					right: '-100%'
+				});
+				blueBg.animate({
+					left: '0'
+				});
+				$('.camera').animate({
+					left: '17%'
+				});
+				snap.animate({
+					padding: '0 40px 0 40px'
+				});
+				sort.animate({
+					marginLeft: '20px'
+				});
+			});
+
+			secondTab.on('click', function() {
+				active.animate({
+					left: '50%'
+				});
+				$(this).animate({
+					marginTop: '0'
+				});
+				$('.camera').animate({
+					left: '25%'
+				});
+				yellowBg.animate({
+					right: '-100%'
+				});
+				blueBg.animate({
+					left: '-100%'
+				});
+				snap.animate({
+					padding: '0'
+				});
+				sort.animate({
+					marginLeft: '0'
+				});
+			});
+			thirdTab.on('click', function() {
+				active.animate({
+					left: '75%'
+				});
+				secondTab.animate({
+					marginTop: '50px'
+				});
+				$('.camera').animate({
+					left: '17%'
+				});
+				yellowBg.animate({
+					right: '0'
+				});
+				blueBg.animate({
+					right: '0'
+				});
+				snap.animate({
+					padding: '0 40px 0 40px'
+				});
+				sort.animate({
+					marginLeft: '20px'
+				});
+			});
+		</script>
+	</body>
+</html>

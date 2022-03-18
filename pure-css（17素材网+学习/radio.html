@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3/SVG自定义单选框Radiobox跳跃选择动画DEMO演示</title>
+	</head>
+	<style>
+		body {
+			align-items: center;
+			background: #708fd4;
+			font-family: 'Inconsolata', monospace;
+			height: 100%;
+			justify-content: center;
+			margin: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		.filter {
+			position: absolute;
+			left: -9999px;
+		}
+
+		.burger {
+			display: flex;
+			flex-direction: column;
+
+			padding: 30px;
+		}
+
+		.radios-boxes {
+			display: flex;
+			width: 250px;
+			margin: 0 auto;
+		}
+
+		.radios {
+			display: flex;
+			filter: url('https://www.html5tricks.com/demo/css3-svg-radiobox-animation/css/style.css');
+			flex-direction: column;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.radio {
+			-moz-appearance: none;
+			-ms-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			border-radius: 50%;
+			border: 16px solid #ccc;
+			cursor: pointer;
+			height: 60px;
+			margin: 10px;
+			outline: 0;
+			-webkit-tap-highlight-color: transparent;
+			transition: border-color 800ms;
+			width: 60px;
+		}
+
+		.radio.active {
+			border-color: white;
+		}
+
+		.ball {
+			background: white;
+			border-radius: 50%;
+			height: 34px;
+			left: 23px;
+			pointer-events: none;
+			position: absolute;
+			top: 23px;
+			transform: translateY(-80px);
+			transition: transform 800ms;
+			width: 34px;
+		}
+
+		.ball.pos0 {
+			transform: translateY(0px);
+		}
+
+		.ball.pos1 {
+			transform: translateY(80px);
+		}
+
+		.ball.pos2 {
+			transform: translateY(160px);
+		}
+
+		.ball.pos3 {
+			transform: translateY(240px);
+		}
+
+		.labels {
+			margin-left: 5px;
+		}
+
+		.label {
+			color: #ccc;
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			font-size: 28px;
+			line-height: 50px;
+			padding: 15px 0;
+			-webkit-tap-highlight-color: transparent;
+			transition: color 800ms;
+		}
+
+		.label.active {
+			color: white;
+		}
+
+		/* vietnamese */
+		@font-face {
+			font-family: 'Inconsolata';
+			font-style: normal;
+			font-weight: 400;
+			font-stretch: 100%;
+			src: url(../font/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WRL2l2eY.woff2) format('woff2');
+			unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+		}
+
+		/* latin-ext */
+		@font-face {
+			font-family: 'Inconsolata';
+			font-style: normal;
+			font-weight: 400;
+			font-stretch: 100%;
+			src: url(../font/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WRP2l2eY.woff2) format('woff2');
+			unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		}
+
+		/* latin */
+		@font-face {
+			font-family: 'Inconsolata';
+			font-style: normal;
+			font-weight: 400;
+			font-stretch: 100%;
+			src: url(../font/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WR32lw.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+		}
+	</style>
+
+	<body>
+
+		<div style="text-align:center;clear:both;">
+
+		</div>
+
+		<svg class="filter" version="1.1">
+			<defs>
+				<filter id="gooeyness">
+					<fegaussianblur in="SourceGraphic" stddeviation="8" result="blur"></fegaussianblur>
+					<fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+						result="gooey"></fecolormatrix>
+					<fecomposite in="SourceGraphic" in2="gooey" operator="atop"></fecomposite>
+				</filter>
+			</defs>
+		</svg>
+		<div class="radios-boxes">
+			<div class="radios">
+				<input type="radio" name="radio" id="radio1" class="radio" value="r">
+				<input type="radio" name="radio" id="radio2" class="radio" value="k">
+				<input type="radio" name="radio" id="radio3" class="radio" value="t">
+				<input type="radio" name="radio" id="radio4" class="radio" value="s">
+				<div class="ball"></div>
+			</div>
+			<div class="labels">
+				<label for="radio1" class="label">radio</label>
+				<label for="radio2" class="label">killed</label>
+				<label for="radio3" class="label">the video</label>
+				<label for="radio4" class="label">star</label>
+			</div>
+		</div>
+
+		<script>
+			let radios = document.querySelectorAll('.radio');
+			let labels = document.querySelectorAll('.label');
+			let ball = document.querySelector('.ball');
+			let prevRadio, prevLabel;
+			radios.forEach((radio, index) => {
+				radio.addEventListener('click', function(e) {
+					if (prevRadio) prevRadio.classList.toggle('active');
+					if (prevLabel) prevLabel.classList.toggle('active');
+					radio.classList.toggle('active');
+					prevRadio = radio;
+					labels[index].classList.toggle('active');
+					prevLabel = labels[index];
+					ball.className = `ball pos${index}`;
+				});
+			});
+		</script>
+
+	</body>
+</html>

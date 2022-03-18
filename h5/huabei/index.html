@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-transform" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<!--uc强制竖屏-->
+		<meta name="screen-orientation" content="portrait">
+		<!--QQ强制竖屏-->
+		<meta name="x5-orientation" content="portrait">
+		<meta name="format-detection" content="telephone=no,email=no">
+		<title>花呗先享订单确认</title>
+	</head>
+	<style>
+		/* 100px=====1rem */
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		@media (min-width: 560px) {
+			html {
+				font-size: 54px;
+			}
+		}
+
+		body {
+			background-color: #F5F5F5;
+			padding-bottom: 2.4rem;
+		}
+
+		html {
+			font-size: 13.33333333vw;
+		}
+
+		img {
+			display: block;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.a_c {
+			align-items: center;
+		}
+
+		.col {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.j_c {
+			justify-content: center;
+		}
+
+		.j_b {
+			justify-content: space-between;
+		}
+
+		.head {
+			width: 7.5rem;
+			height: 3.64rem;
+			position: relative;
+			box-sizing: border-box;
+			padding: 0.61rem 0.24rem;
+			margin-bottom: 0.37rem;
+		}
+
+		.head_bg {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: -1;
+			left: 0;
+			top: 0;
+		}
+
+		.head_title {
+			font-size: 0.4rem;
+			color: #FFFFFF;
+			font-weight: 600;
+
+		}
+
+		.address_icon {
+			width: 0.34rem;
+			height: 0.4rem;
+			margin-right: 0.19rem;
+		}
+
+		.head_count {
+			width: 7rem;
+			height: 2.2rem;
+			background: #FFFFFF;
+			border-radius: 0.24rem;
+			margin-top: 0.57rem;
+			color: #666;
+			font-size: 0.34rem;
+		}
+
+		.price {
+			font-family: WoNumbers-Regular;
+			font-size: 0.64rem;
+			color: #333333;
+			font-weight: 600;
+		}
+
+		.price span {
+			font-size: 0.34rem;
+			font-weight: 500;
+		}
+
+		.con {
+			width: 7rem;
+			background: #FFFFFF;
+			border-radius: 0.24rem;
+			box-sizing: border-box;
+			margin: auto;
+			padding: 0.24rem 0;
+		}
+
+		.con_title {
+			padding-bottom: 0.24rem;
+			border-bottom: 1px solid #EEEEEE;
+			font-size: 0.3rem;
+			color: #333333;
+			margin-bottom: 0.24rem;
+		}
+
+		.con_title span {
+			padding-left: 0.24rem;
+			font-weight: 600;
+		}
+
+		.con_text {
+			padding: 0 0.24rem;
+			font-size: 0.28rem;
+		}
+
+		.con_text .key {
+			flex-shrink: 0;
+			color: #666666;
+			flex-shrink: 0;
+		}
+
+		.con_text .value {
+			color: #333333;
+			flex-shrink: 0;
+			word-wrap: break-word;
+			word-break: break-all;
+			display: flex;
+			justify-content: flex-end;
+			width: 4.3rem;
+		}
+
+		.mb20 {
+			margin-bottom: 0.2rem;
+		}
+
+		.tip_box {
+			margin: 0.3rem 0.24rem;
+			padding-bottom: 0.2rem;
+			font-size: 0.26rem;
+			color: #999999;
+			line-height: 0.4rem;
+		}
+
+		.fix_btm {
+			position: fixed;
+			width: 7.5rem;
+			height: 2.3rem;
+			background: #FFFFFF;
+			left: 0;
+			bottom: 0;
+			box-sizing: border-box;
+			z-index: 999;
+			padding: 0.24rem;
+		}
+
+		.check_icon {
+			width: 0.44rem;
+			height: 0.44rem;
+			margin-right: 0.16rem;
+		}
+
+		.btm_text {
+			font-size: 0.3rem;
+			color: #333333;
+		}
+
+		.btm_text span {
+			color: #1677FF;
+		}
+
+		.btm_btn {
+			margin-top: 0.41rem;
+			width: 7rem;
+			height: 0.98rem;
+			background: #1677FF;
+			border-radius: 0.04rem;
+			color: #fff;
+			font-size: 0.36rem;
+			text-align: center;
+			line-height: 0.98rem;
+		}
+
+		.g_info {
+			display: inline-block;
+			max-width: 4rem;
+			height: 0.45rem;
+			line-height: 0.45rem;
+			background-color: #66c0f8;
+			border-radius: 0.25rem;
+			box-sizing: border-box;
+			padding: 0 0.1rem;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			min-width: 1rem;
+			text-align: center;
+			color: #fff;
+		}
+	</style>
+	<body>
+		<div class="head">
+			<img src="img/bg_yellow@2x.png" class="head_bg" />
+			<div class="flex a_c head_title">
+				<img src="img/定位@2x.png" class="address_icon" />
+				<span>联通营业厅（社会渠道门店名称）</span>
+			</div>
+			<div class="head_count col a_c j_c">
+				<p>直降金额</p>
+				<p class="price">100<span>元</span></p>
+			</div>
+		</div>
+		<!-- 订单详情 -->
+		<div class="con">
+			<div class="con_title"><span>订单详情</span></div>
+			<div class="con_text">
+				<div class="flex j_b mb20">
+					<span class="key">商品信息</span>
+					<span class="value"><span class="g_info">苏苏好好</span></span>
+				</div>
+				<div class="flex j_b mb20">
+					<span class="key">订单编号</span>
+					<span class="value">990020391939192929292</span>
+				</div>
+				<div class="flex j_b mb20">
+					<span class="key">花呗冻结金额</span>
+					<span class="value">114.5元</span>
+				</div>
+				<div class="flex j_b mb20">
+					<span class="key">每期花呗账单</span>
+					<span class="value">114.5元</span>
+				</div>
+				<div class="flex j_b mb20">
+					<span class="key">分期期数</span>
+					<span class="value">10</span>
+				</div>
+				<div class="flex j_b mb20">
+					<span class="key">支付方式</span>
+					<span class="value">花呗花呗先享花呗先享花呗先享花花呗先享花呗先享花呗先享花呗先享花呗先享花呗先享花呗先享呗先享花呗先享先享</span>
+				</div>
+			</div>
+		</div>
+		<!-- 温馨提示 -->
+		<div class="tip_box">
+			<p>温馨提示：</p>
+			1.您已知并办理花呗先享业务，每月20日会扣除您的花呗额度并生成花呗账单；<br />
+			2.履约期内若退订业务或欠费离网，将一次性扣除剩余未还本金及违约金；<br />
+			3.客服电话10188或关注微信公众号联通支付客服<br />
+		</div>
+		<!-- 按钮 -->
+		<div class="fix_btm">
+			<div class=" flex a_c">
+				<img src="img/单选-选中@2x.png" class="check_icon" />
+				<p class="btm_text"><strong>点击即同意</strong><span>《全网信用购业务合作协议》</span></p>
+			</div>
+			<div class="btm_btn">我已知晓业务，去支付</div>
+		</div>
+	</body>
+</html>
