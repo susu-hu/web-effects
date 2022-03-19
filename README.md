@@ -130,7 +130,11 @@
 111. 滑动幻灯片0001（jq插件，来自jq之家）
 112. 数据看板，数据高亮选择
 113. box-shadow实现的圆弧loading动画
+114. css实现悬浮图片产生遮罩变形
 #### 作品截图
+
+css实现悬浮图片产生遮罩变形
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/hover--.gif)
 
 box-shadow实现的圆弧loading动画
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/%E5%9C%86%E7%8E%AF-load001.gif)
