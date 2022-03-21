@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<style type="text/css">
+    form{
+        width: 300px;
+        padding: 10px 0px 20px 30px;
+        height:auto;
+        border-radius: 6px;
+        border-left:8px solid #19a049;
+        background:#eee;
+        margin:100px auto;
+    }
+    #user,#pass{
+        padding: 8px;
+        outline: none;
+        background: transparent;
+        border:1px solid #999;
+        margin-top: 5px;
+    }
+    #sub{
+        padding: 6px;
+        outline: none;
+        border:none;
+        background: #19a049;
+        color:#fff;
+        width: 150px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <form action="" method="" onsubmit="return loginBtn_click();">
+        <h3>Log in</h3>
+        <input type="text" name="user" placeholder="user" id="user">
+        <input type="password" name="pass" placeholder="password" id="pass">
+        <input type="checkbox" id="remember" checked><br/><br/>
+        <input type="submit" id="sub">
+    </form>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var strName = localStorage.getItem('keyName');
+        var strPass = localStorage.getItem('keyPass');
+        if(strName){
+            $('#user').val(strName);
+        }if(strPass){
+            $('#pass').val(strPass);
+        }
+
+    });
+
+    function loginBtn_click(){
+            var strName = $('#user').val();
+            var strPass = $('#pass').val();
+            localStorage.setItem('keyName',strName);
+            if($('#remember').is(':checked')){
+                localStorage.setItem('keyPass',strPass);
+            }else{
+                localStorage.removeItem('keyPass');
+            }
+        }
+</script>
+</html>
