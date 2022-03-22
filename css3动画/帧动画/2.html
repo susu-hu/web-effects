@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<style type="text/css">
+			.box {
+				background-image: url("./img/css_sprites.png");
+				width: 200px;
+				height: 200px;
+				background-repeat: no-repeat;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div class="box" id="box" onmouseenter="mousemove()" onmouseleave="mouseleave()"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var style = ''
+		var x = 0
+		var mouseenters = null
+		var mouseleave1 = null 
+		var box = document.getElementById("box"); // 获取节点对象
+		// 进入动画
+		function mousemove(e) {
+			clearInterval(mouseleave1)
+			mouseenters = setInterval(() => {
+				x += 200
+				console.log(x)
+				if (x >= 800) {
+					clearInterval(mouseenters)
+				}
+				box.style.backgroundPositionX = '-' + x + 'px'
+			}, 500)
+		}
+		// 离开
+		function mouseleave(e) {
+			clearInterval(mouseenters)
+			mouseleave1 = setInterval(() => {
+				x -= 200
+				console.log(x)
+				if (x === 0) {
+					clearInterval(mouseleave1)
+				}
+				box.style.backgroundPositionX = '-' + x + 'px'
+			}, 500)
+		}
+	</script>
+</html>

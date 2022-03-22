@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			html body {
+				height: 100%;
+			}
+
+			#box {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 200px;
+				height: 200px;
+				transform: translate(-50%, -50%);
+				background-image: url("./img/css_sprites.png");
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				animation: 4s move infinite steps(4, end);
+				/*整个动画执行时间 执行的动画名 循环关键帧的次数 两个关键帧之间的动画效果*/
+			}
+
+			@keyframes move {
+				from {
+					background-position: 0, 0;
+				}
+
+				to {
+					background-position: -1000px, 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		</div>
+	</body>
+</html>

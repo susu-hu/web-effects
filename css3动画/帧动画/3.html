@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			body {
+				/*给背景颜色更好的看出熊的姿态*/
+				background-color: #222;
+			}
+
+			.bear {
+				/*熊的图片宽度是1600px*/
+				position: relative;
+				overflow: hidden;
+				height: 100px;
+				width: 200px;
+				background-image: url('./img/sp.png');
+				/*不重复出现*/
+				background-repeat: no-repeat;
+				/*bear动画名字 .4s一个周期 steps(8)是8格*200=1600px长度 infinite循环播放*/
+				animation: bear .4s steps(8) infinite;
+			}
+
+			@keyframes bear {
+				0% {
+					background-position: 0 0;
+				}
+
+				100% {
+					background-position: -1600px 0;
+				}
+			}
+
+			.bear2 {
+				/*熊的图片宽度是1600px*/
+				position: relative;
+				overflow: hidden;
+				height: 100px;
+				width: 200px;
+				background-image: url('./img/sp.png');
+				/*不重复出现*/
+				background-repeat: no-repeat;
+				animation: move2 8s ease forwards;
+			}
+
+			@keyframes move2 {
+				0% {
+					left: 0;
+					top: 0;
+				}
+
+				100% {
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+
+			.bear3 {
+				/*熊的图片宽度是1600px*/
+				position: relative;
+				overflow: hidden;
+				height: 100px;
+				width: 200px;
+				background-image: url('./img/sp.png');
+				/*不重复出现*/
+				background-repeat: no-repeat;
+				/*bear动画名字 .4s一个周期 steps(8)是8格*200=1600px长度 infinite循环播放*/
+				animation: bear3 .4s steps(8) infinite, move3 8s ease forwards;
+			}
+
+			@keyframes bear3 {
+				0% {
+					background-position: 0 0;
+				}
+
+				100% {
+					background-position: -1600px 0;
+				}
+			}
+
+			@keyframes move3 {
+				0% {
+					left: 0;
+					top: 0;
+				}
+
+				100% {
+					left: 50%;
+
+					transform: translate(-50% -50%);
+				}
+			}
+				
+			.ttt{
+				/*熊的图片宽度是1600px*/
+					position: relative;
+					overflow: hidden;
+					height: 90px;
+					width: 200px;
+					background-image: url('https://i.postimg.cc/KvHq8dsx/image.png');
+					/*不重复出现*/
+					background-repeat: no-repeat;
+					/*bear动画名字 .4s一个周期 steps(8)是8格*200=1600px长度 infinite循环播放*/
+					/* animation: bear3 .4s steps(8) infinite, move3 8s ease forwards; */
+				k
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bear">
+		</div>
+		<div class="bear2">
+		</div>
+		<div class="bear3">
+		</div>
+		<div class="ttt">
+		</div>
+	</body>
+</html>
