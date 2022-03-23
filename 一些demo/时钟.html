@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<title>Clock</title>
+	</head>
+	<style>
+		.container {
+			width: 500px;
+			height: 500px;
+			border-radius: 50%;
+			background: #000;
+			border: 30px solid #0002fd;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.real_container {
+			border-radius: 50%;
+			position: relative;
+			background: #000;
+		}
+
+		.second_arrow {
+			position: absolute;
+			background: #fdfe08;
+			height: 230px;
+			width: 2px;
+			border-radius: 2px;
+			top: -30px;
+			left: 200px;
+			transform-origin: 50% 100%;
+			/* 转动的中心，底部中间 */
+			z-index: 101;
+		}
+
+		.minute_arrow {
+			position: absolute;
+			height: 180px;
+			width: 60px;
+			top: 20px;
+			left: 200px;
+			transform-origin: 50% 100%;
+			/* 转动的中心，底部中间 */
+			z-index: 102;
+		}
+
+		.hour_arrow {
+			position: absolute;
+			height: 120px;
+			width: 100px;
+			top: 80px;
+			left: 200px;
+			transform-origin: 50% 100%;
+			/* 转动的中心，底部中间 */
+			z-index: 103;
+		}
+
+		.center {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background: #a316c5;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			z-index: 104;
+		}
+
+		.item {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			position: absolute;
+			transform: translate(-50%, -50%);
+			/* 将left和top从左上角算挪到从中心点算 */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 60px;
+			z-index: 100;
+		}
+	</style>
+	<body>
+		<div id="app" class="container">
+			<div class="real_container" :style="{width:width+'px',height:width+'px'}">
+				<div class="second_arrow" :style="{transform: transformSecond}"></div>
+				<img class="minute_arrow" src="minute.png" :style="{transform: transformMinute}">
+				<img class="hour_arrow" src="hour.png" :style="{transform: transformHour}">
+				<div class="center"></div>
+				<div class="item" v-for="row in list" :style="{left: row.x+'px', top: row.y+'px', color: row.color}">
+					{{row.text}}
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data: {
+					width: 400,
+					secondDegree: 360 / 60, //一秒钟 秒针转的角度
+					minuteDegree: 360 / 3600, //一秒钟 分针转的角度
+					hourDegree: 360 / 3600 / 12, //一秒钟 时针转的角度
+					transformSecond: 'translateX(-50%)',
+					transformMinute: 'translateX(-50%)',
+					transformHour: 'translateX(-50%)',
+					list: [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+					color: ['#f40703', '#fd8308', '#f7f404', '#0aac3f', '#1003f3', '#b401e3'],
+					i: 0 //计算当天已经过去多少秒
+				},
+				created() {
+					// 定位时钟表盘上的1-12
+					this.locate()
+					// 获取当前时间，计算当天已经过去多少秒
+					this.getCurrentTime()
+					// 开始运行
+					this.run()
+					// 因为JS中setInterval的不确定性，不能保证一定是每隔一秒执行
+					// 每分钟校准时间
+					this.adjustTime()
+				},
+				methods: {
+					locate() {
+						for (let i = 0; i < this.list.length; i++) {
+							this.list[i] = {
+								text: this.list[i],
+								color: this.color[i % this.color.length]
+							}
+						}
+						const baseX = this.list[0].x = this.width / 2
+						const baseY = this.list[0].y = 0
+						const baseDegree = 360 / this.list.length
+						const radius = this.width / 2
+						for (let i = 1; i < this.list.length; i++) {
+							const item = this.list[i]
+							const degree = baseDegree * i
+							item.x = baseX + Math.sin(2 * Math.PI / 360 * degree) * radius
+							item.y = radius - (baseY + Math.cos(2 * Math.PI / 360 * degree) * radius)
+						}
+					},
+					getCurrentTime() {
+						//计算当天已经过去多少秒
+						const now = new Date()
+						this.i = (now.getHours() % 12) * 3600 + now.getMinutes() * 60 + now.getSeconds()
+					},
+					run() {
+						// 先立即执行一次，然后每隔一秒执行一次
+						this.runInternal()
+						setInterval(() => {
+							this.runInternal()
+						}, 1000)
+					},
+					runInternal() {
+						this.i++
+						const secondDegree = this.secondDegree * this.i % 360
+						const minuteDegree = this.minuteDegree * this.i % 360
+						const hourDegree = this.hourDegree * this.i % 360
+						this.transformSecond = 'translateX(-50%) rotate(' + secondDegree + 'deg)'
+						this.transformMinute = 'translateX(-50%) rotate(' + minuteDegree + 'deg)'
+						this.transformHour = 'translateX(-50%) rotate(' + hourDegree + 'deg)'
+					},
+					adjustTime() {
+						setInterval(() => {
+							this.getCurrentTime()
+						}, 60 * 1000)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

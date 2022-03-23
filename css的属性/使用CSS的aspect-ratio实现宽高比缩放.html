@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		/* 比如宽高比是16:9，那么padding-top = 9 ÷ 16 × 100% = 56.25%*/
+		.aspectratio-container {
+			width: 50vmin;
+			/* 用户根据自己需要设置相应的值 */
+			/* 布局方案可以调整 */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: orange;
+		}
+
+		/* 
+		padding-bottom: calc(100% / (16 / 9));等同于 56.25% 
+		padding-bottom: calc(9 / 16 * 100%);等同于 56.25% 用来撑开aspectratio-container高度 */
+		.aspectratio-container::after {
+			content: "";
+			width: 1px;
+			/* padding-bottom: 56.25%; */
+			padding-bottom: calc(100% / (var(--aspect-ratio)));
+			/*元素的宽高比*/
+			margin: -1px;
+			z-index: -1;
+			height: 0;
+		}
+
+		.aspectratio-content {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+			overflow-y: scroll;
+		}
+
+		/* aspect-ratio可以说是CSS中比较新的一个特性，目前得到主流浏览器支持的不多，但根据宽高比调整元素大小的需求是一直存在的。
+	也就是说，在aspect-ratio还未得到浏览器支持的情况之下 */
+
+		.aspectration111 {
+			width: 30vw;
+			aspect-ratio:16/9;
+			background-color: orange;
+		}
+	</style>
+	<body>
+		<!-- 注意，CSS中的百分比计算是比较复杂的，比如说width和padding-bottom以及padding-top取值为百分比时，它们都是相对于其父元素的width。 -->
+		<div class="aspectratio-container" style="--aspect-ratio: 16/8">
+			1`231sjdfbsdjfsdfskdgfjsk dg
+			<div class="aspectratio-content"></div>
+		</div>
+		<div class="aspectration111"></div>
+	</body>
+</html>
+<!-- 
+ 使用padding-top或padding-bottom来模拟aspect-ratio时，有一个细节需要特别注意，
+ 元素自身的高度height值为0或不显式设置height值。-->

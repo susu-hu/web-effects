@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.spring {
+			--flower1: #dad;
+			width: 500px;
+			aspect-ratio: 1;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background:
+				/* flower */
+				radial-gradient(circle at 20% 60%, gold 1%, #0000 0),
+				radial-gradient(200% 50% at 18% 60%, var(--flower1) 1%, #0000 0),
+				radial-gradient(100% 150% at 20% 58%, var(--flower1) 1%, #0000 0),
+				radial-gradient(circle at 18.5% 59%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 18.5% 61.5%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 21% 61.5%, var(--flower1) 1.75%, #0000 0),
+				radial-gradient(circle at 21.5% 59%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(farthest-side at 100% 60%, #0000 90%, green 0 99.9%, #0000 0) 17.5% 80% / 5% 25% no-repeat,
+				radial-gradient(farthest-side at 50% 100%, green 99.9%, #0000 0) 18.5% 70% / 8% 1.5% no-repeat,
+				radial-gradient(farthest-side at 50% 20%, green 99.9%, #0000 0) 10% 75% / 8% 1.5% no-repeat,
+				/* flower */
+				radial-gradient(circle at 30% 50%, gold 1%, #0000 0),
+				radial-gradient(340% 150% at 30% 50.5%, var(--flower1) 1%, #0000 0),
+				radial-gradient(100% 150% at 30% 48%, var(--flower1) 1%, #0000 0),
+				radial-gradient(circle at 28.5% 49%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 28.5% 51.5%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 31% 51.5%, var(--flower1) 1.75%, #0000 0),
+				radial-gradient(circle at 31.5% 49%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(farthest-side at 0% 55%, #0000 88%, green 0 99.9%, #0000 0) 30.5% 77% / 4% 35% no-repeat,
+				radial-gradient(farthest-side at 50% 0%, green 99.9%, #0000 0) 28.5% 66% / 6% 1.25% no-repeat,
+				/* flower 2 */
+				radial-gradient(circle at 25% 70%, gold 1%, #0000 0),
+				radial-gradient(340% 150% at 25% 70.5%, var(--flower1) 1%, #0000 0),
+				radial-gradient(100% 150% at 25% 68%, var(--flower1) 1%, #0000 0),
+				radial-gradient(circle at 23.5% 69%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 23.5% 71.5%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 26% 71.5%, var(--flower1) 1.75%, #0000 0),
+				radial-gradient(circle at 26.5% 69%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(farthest-side at 0% 75%, #0000 80%, green 0 99.9%, #0000 0) 25.5% 82% / 2% 15% no-repeat,
+				/* flower 4 */
+				radial-gradient(circle at 38% 58%, gold 1%, #0000 0),
+				radial-gradient(350% 180% at 38% 57.75%, var(--flower1) 1%, #0000 0),
+				radial-gradient(circle at 37.5% 55.5%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 37% 60%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 39.25% 60%, var(--flower1) 1.75%, #0000 0),
+				radial-gradient(circle at 39.75% 55.75%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(farthest-side at 100% 70%, #0000 75%, green 0 99.9%, #0000 0) 37.75% 78% / 2% 30% no-repeat,
+				/* flower 5 */
+				radial-gradient(circle at 45% 65%, gold 1%, #0000 0),
+				radial-gradient(350% 200% at 45% 65.5%, var(--flower1) 1%, #0000 0),
+				radial-gradient(100% 150% at 45% 63%, var(--flower1) 1%, #0000 0),
+				radial-gradient(circle at 43.25% 63.5%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 44% 67%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(circle at 46.25% 66.25%, var(--flower1) 1.75%, #0000 0),
+				radial-gradient(circle at 46.75% 63.75%, var(--flower1) 1.5%, #0000 0),
+				radial-gradient(farthest-side at 100% 70%, #0000 75%, green 0 99.9%, #0000 0) 44.5% 80% / 2% 20% no-repeat,
+				/* ground */
+				radial-gradient(100% 20% at 50% 90%, #7c8 45%, #0000 45.25%),
+				radial-gradient(100% 20% at 50% 83%, #7c8 49%, #0000 49.25%),
+				/* sun */
+				radial-gradient(circle at 50% 0%, #0000 20%, #d90c 0 33%, #0000 0) 34.33% 30% / 5% 5% no-repeat,
+				radial-gradient(circle at 32% 26%, #d90c 1%, #0000 0),
+				radial-gradient(circle at 38% 26%, #d90c 1%, #0000 0),
+				radial-gradient(circle at 35% 25%, #fe0 12%, #fd0c 0, #0000 25%),
+				/* cloud */
+				radial-gradient(circle at 50% 68%, #fff 10%, #0000 10.25%),
+				radial-gradient(circle at 66% 70%, #fff 13%, #0000 13.25%),
+				radial-gradient(circle at 76% 75%, #fff 8%, #0000 8.25%),
+				radial-gradient(circle at 26% 78%, #fff 8%, #0000 8.25%),
+				radial-gradient(circle at 37% 70%, #fff 9%, #0000 9.25%),
+				radial-gradient(circle at 50% 60%, #f0f8ff 20%, #0000 20.25%),
+				radial-gradient(circle at 30% 70%, #f0f8ff 12%, #0000 12.25%),
+				radial-gradient(circle at 33% 53%, #f0f8ff 7%, #0000 6.25%),
+				radial-gradient(circle at 16% 73%, #f0f8ff 8%, #0000 8.25%),
+				radial-gradient(circle at 76% 73%, #f0f8ff 14%, #0000 14.25%),
+				radial-gradient(circle at 68% 58%, #f0f8ff 8%, #0000 8.25%),
+				radial-gradient(circle at 66% 80%, #f0f8ff 17%, #0000 17.25%),
+				/* bg */
+				linear-gradient(#def 0 0);
+			box-shadow: 0 0 0 100vmax #def;
+			abackground-color: #f002;
+		}
+
+		@keyframes fly {
+			0% {
+				left: 60%;
+				transform: rotateY(0);
+			}
+
+			50% {
+				left: 30%;
+				transform: rotateY(0);
+			}
+
+			51% {
+				left: 30%;
+				transform: rotateY(180deg);
+			}
+
+			99% {
+				left: 60%;
+				transform: rotateY(180deg);
+			}
+
+			100% {
+				left: 60%;
+				transform: rotateY(0);
+			}
+		}
+
+		.spring::before {
+			content: "";
+			animation: fly 5s infinite;
+			position: absolute;
+			top: 48%;
+			left: 60%;
+			width: 8%;
+			height: 6%;
+			border-radius: 50%;
+			background:
+				radial-gradient(circle at 26% 50%, #000 7%, #0000 0),
+				radial-gradient(circle at 10% 50%, #000 5%, #0000 0),
+				radial-gradient(circle at 50% 0%, #0000 20%, #000 0 60%, #0000 0) 15% 70% / 10% 15% no-repeat,
+				radial-gradient(100% 200% at 0 50%, #0000 40%, #000 0 53%, #0000 0 66%, #000 0 80%, #0000 0 90%, #000 0);
+			background-color: gold;
+			box-shadow: 0 -20px 0 -5px #fffa, 10px -20px 0 -5px #fff, 17px 0 0 -13.5px;
+		}
+	</style>
+	<body>
+		<div class="spring"></div>
+	</body>
+</html>

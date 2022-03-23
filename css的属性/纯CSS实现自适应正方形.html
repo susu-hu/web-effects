@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 100%;
+			height: 100%;
+		}
+
+		.box {
+			width: 100px;
+			height: 400px;
+			border: 1px solid red;
+		}
+
+		.a {
+			word-break: break-all;
+			width: 100%;
+			padding-bottom: 100%;
+			background: orange;
+			box-sizing: border-box;
+			height: 0;
+			max-height: 200px;
+			/* //该方法会导致max height失效 */
+		}
+
+		.b {
+			word-break: break-all;
+			width: 10vw;
+			height: 10vw;
+			background: orange;
+		}
+
+		.c {
+			word-break: break-all;
+			width: 10vh;
+			height: 10vh;
+			background: orange;
+		}
+
+		.d {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.d::after {
+			content: '';
+			display: block;
+			margin-top: 100%;
+			background: orange;
+		}
+
+
+		.square {
+			width: 100%;
+			background: red;
+			overflow: hidden;
+			max-width: 200px;
+		}
+
+		.square:after {
+			content: '';
+			display: block;
+			margin-top: 100%;
+		}
+
+		.square1 {
+			width: 100%;
+			background: orange;
+			max-width: 200px;
+		}
+
+		.square1:after {
+			content: '';
+			display: block;
+			padding-top: 100%;
+		}
+	</style>
+	<body>
+		<!-- padding-bottom ，设置height=0；会导致在元素上设置的max-width属性失效（max-height不收缩）-->
+		<div class="box">
+			<div class="a">12314545454457649586745986745646456452</div>
+		</div>
+		<!--  vw, vh, vmin, vmax。其中 vw 是相对于视口宽度百分比的单位，1vw = 1% viewport width， vh 是相对于视口高度百分比的单位，1vh = 1% viewport height；vmin 是相对当前视口宽高中 较小 的一个的百分比单位，
+		同理 vmax 是相对当前视口宽高中 较大 的一个的百分比单位，缺点：浏览器兼容不好 -->
+		<!-- vw -->
+		<div class="box">
+			<div class="b">12314545454457649586745986745646456452</div>
+		</div>
+		<!-- vh -->
+		<div class="box">
+			<div class="c">12314545454457649586745986745646456452</div>
+		</div>
+		<!-- max-width属性失效的原因是：max-width属性只限制于width，也就是只会对元素的 content width起作用。
+解决方法是：用一个子元素撑开content部分的高度，从而使max-height属性生效。 
+若使用垂直方向上的margin撑开父元素，仅仅设置伪元素是不够的，这涉及到margin collapse外边距合并的概念，由于容器与伪元素在垂直方向发生了外边距合并，
+所以撑开父元素高度并没有出现，解决方法是在父元素上触发BFC：设置overflow:hidden-->
+		<div class="box">
+			<div class="square"></div>
+		</div>
+		<div class="box">
+			<div class="square1"></div>
+		</div>
+	</body>
+</html>
