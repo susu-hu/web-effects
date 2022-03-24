@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>原生js实现图片懒加载</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			ul {
+				overflow: hidden;
+				list-style: none;
+			}
+
+			li {
+				float: left;
+				width: 50%;
+				height: 200px;
+				padding: 10px;
+			}
+
+			li img {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<ul>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/qRRLS16Q/susu0.jpg"></li>
+				<li><img src="" alt="" data-src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"></li>
+			</ul>
+		</div>
+		<script>
+			let timer;
+			// window绑定滚动事件
+			window.addEventListener('scroll', function() {
+				if (timer) {
+					clearTimeout(timer)
+				}
+				timer = setTimeout(() => {
+					lazyRenderImg();
+				}, 300);
+
+				// 遍历所有的img标签
+				// Array.prototype.slice.apply(document.getElementsByTagName('li')).forEach((li) => {
+				// 	let img = li.getElementsByTagName('img')[0];
+				// 	// 判断当前img是否出现在了视野中
+				// 	// 判断当前img是否被加载过了
+				// 	if (checkShow(img) && !isLoaded(img)) {
+				// 		loadImg(img);
+				// 	}
+				// })
+			});
+
+			// 判断img是否出现浏览器视野中
+			function checkShow(img) {
+				let scrollTop = document.documentElement.scrollTop; // 页面向上滚动的高度
+				let windowHeight = window.innerHeight; //浏览器自身高度
+				let offsetTop = img.offsetTop; //目标标签相对于document的高度
+				return (offsetTop > scrollTop && offsetTop < (windowHeight + scrollTop));
+			}
+
+			// 判断是否已经加载过
+			function isLoaded(img) {
+				return img.getAttribute('src') === img.getAttribute('data-src');
+			}
+
+			// 加载图片
+			function loadImg(img) {
+				img.setAttribute('src', img.getAttribute('data-src'));
+			}
+
+			// 第一次进页面加载处于视野中的图片
+			// Array.prototype.slice.apply(document.getElementsByTagName('li')).forEach((li) => {
+			// 	let img = li.getElementsByTagName('img')[0];
+			// 	// 判断当前img是否出现在了视野中
+			// 	// 判断当前img是否被加载过了
+			// 	if (checkShow(img) && !isLoaded(img)) {
+			// 		loadImg(img);
+			// 	}
+			// })
+
+			function lazyRenderImg() {
+				Array.prototype.slice.apply(document.getElementsByTagName('li')).forEach((li) => {
+					let img = li.getElementsByTagName('img')[0];
+					// 判断当前img是否出现在了视野中
+					// 判断当前img是否被加载过了
+					if (checkShow(img) && !isLoaded(img)) {
+						loadImg(img);
+					}
+				})
+			}
+
+			// 第一次进页面加载处于视野中的图片
+			lazyRenderImg();
+		</script>
+	</body>
+</html>
+<!-- 只加载浏览器窗口内的图片，当用户滚动时，再加载更多的图片。这种加载图片的方式叫做图片懒加载，又叫做按需加载或图片的延时加载。
+这样做的好处是：1.可以加快页面首屏渲染的速度；2.节约用户的流量 
+
+原理：1.图片img标签自定义一个属性data-src来存放真实的地址。
+2.当滚动页面时，检查所有的img标签，判断是否出现在事业中，如果出现在视野中，继续进行判断，看齐是否被加载过了，如果没有加载，那就进行加载。
+
+来自：https://www.cnblogs.com/peerless1029/p/10771695.html
+-->
