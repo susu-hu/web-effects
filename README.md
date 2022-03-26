@@ -11,19 +11,17 @@
 
 #### 功能总结
 1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
-博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
 2.  设置不同的border，结合伪元素，得到三角形，梯形，空心箭等样式，本案例列举很多，一次性搞懂叭~
-博客链接：[https://blog.csdn.net/qq_48085286/article/details/119976079](https://blog.csdn.net/qq_48085286/article/details/119976079/)
 3.  鼠标的移出与移入事件，onmouseover+onmouserout
 4.  原生实现图片上传+jq实现+vue实现
 5.  echarts-wordcloud实现词云图
-6.  css的filter属性（滤镜）[https://blog.csdn.net/qq_48085286/article/details/120164101](https://blog.csdn.net/qq_48085286/article/details/120164101)
+6.  css的filter属性（滤镜）
 7.  一些动感的加载动画
 8.  css实现彩虹loading
 9.  原生js实现上拉加载+下拉刷新
 10.  头部渐变色，鼠标悬浮变色
 11.  box-shadow+radial-gradient+border-image+box-reflect四种方法实现矩形四个角圆点
-12.  原生js实现图片上一张下一张点击[https://blog.csdn.net/qq_48085286/article/details/120466108](https://blog.csdn.net/qq_48085286/article/details/120466108)
+12.  原生js实现图片上一张下一张点击
 13.  一个简单的小动画
 14. 一个简单单的渐变动画画画画
 15. 一些卡券样式
@@ -32,21 +30,21 @@
 18. 一个可爱的蛋黄样式的switch按钮（学习案例）
 19. 原生js+three.js等实现一个3d元素周期表（学习案例，尊重原创）
 20. 一个切换的小按钮
-21. 翻转360度的艺术字[https://juejin.cn/post/7014076629437661198](https://juejin.cn/post/7014076629437661198)
+21. 翻转360度的艺术字
 22. 正在输入的文字动画
 23. 一个有趣的404页面
 24. 仿gitee动态的步骤条
 25. 实现一个带圆弧的气泡（类似QQ气泡）
 26. 自定义滚动条样式
 27. 一个渐变色的字体
-28. 一个hover加载边框的按钮[https://juejin.cn/post/7017120184657788936](https://juejin.cn/post/7017120184657788936)
+28. 一个hover加载边框的按钮
 29. 一个炫酷的按钮
 30. 一个hover按钮
 31. clip-path实现一个带有水波纹路文字
-32. background-clip:text实现一个文字[用clip-path实现一个水波纹的字体](https://juejin.cn/post/7018591105910308878)
+32. background-clip:text实现一个文字
 32. 步骤条
-33. 鼠标自定义样式[鼠标自定义样式](https://blog.csdn.net/qq_48085286/article/details/120806388)
-34. [一个弹出框动画](https://blog.csdn.net/qq_48085286/article/details/120835298?spm=1001.2014.3001.5501)
+33. 鼠标自定义样式
+34. 一个弹出框动画
 35. 新增一个垂直步骤条
 36. 新增一个404页面
 37. 自定义验证码输入框+倒计时
@@ -56,7 +54,7 @@
 41. 按钮+1
 42. 一个旋转的3d矩形
 43. 新增一个步骤条
-44. [一个地址选择组件](https://blog.csdn.net/qq_48085286/article/details/120877359)
+44. 一个地址选择组件
 45. 文字超出宽度省略号的4种方式
 46. 原生js实现时钟特效
 47. 按钮+1
