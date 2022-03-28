@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>北京时间</title>
+	</head>
+	<body>
+		<canvas id="mycanvas">该浏览器不支持canvas</canvas>
+		<script>
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+
+			var WIDTH = document.documentElement.clientWidth;
+			var HEIGHT = document.documentElement.clientHeight;
+			canvas.width = WIDTH;
+			canvas.height = HEIGHT;
+			var center = [WIDTH / 2, HEIGHT / 2]; // 表盘中心坐标
+			// 表盘半径
+			if (WIDTH > HEIGHT)
+				var radius = HEIGHT / 2 - 50;
+			else
+				var radius = WIDTH / 2 - 50;
+			// 根据当前时间，求出三根针的角度
+			function calcDegree() {
+				var myDate = new Date();
+				var myTime = myDate.toLocaleTimeString().substring(2, myDate.length); //获取当前时间
+				var t1 = myTime.split(":");
+				t1[0] = Number(t1[0]);
+				t1[1] = Number(t1[1]);
+				t1[2] = Number(t1[2]);
+				var hourDegree = t1[0] % 12 * 30 + 30 * (t1[1] * 60 + t1[2]) / 3600;
+				var minDegree = t1[1] / 60 * 360 + 6 * t1[2] / 60;
+				var secDegree = t1[2] / 60 * 360;
+				return {
+					hourDegree: hourDegree,
+					minDegree: minDegree,
+					secDegree: secDegree
+				}
+			}
+			// 画线的函数，（粗细、颜色、起点、角度、长度）
+			function drawLine(lineWidth, color, startDot, deg, lineLen) {
+				ctx.lineWidth = lineWidth;
+				ctx.beginPath();
+				ctx.moveTo(startDot[0], startDot[1]);
+				ctx.lineTo(startDot[0] + lineLen * Math.sin(deg * Math.PI / 180), startDot[1] - lineLen * Math.cos(deg * Math
+					.PI / 180));
+				ctx.closePath();
+				ctx.strokeStyle = color;
+				ctx.stroke();
+			}
+
+			// 画表盘上不动的地方，就是除了指针以外的部分
+			function drawPan() {
+				// 画圆
+				ctx.beginPath();
+				ctx.lineWidth = 5;
+				ctx.strokeStyle = "gray";
+				ctx.arc(center[0], center[1], radius, 0, 2 * Math.PI);
+				// 画数字
+				ctx.font = radius * 0.1 + "px 方正舒体"; // 设置字体、大小，随半径变化
+				ctx.textAlign = "center"; // 设置水平对齐
+				ctx.textBaseLine = "Bottom"; //设置垂直对齐
+				for (i = 1; i <= 12; i++) {
+					// 获取数字的位置
+					var deg = i % 12 * 30;
+					var numLen = radius * 0.9; //数字所在的半径
+					var x = center[0] + numLen * Math.sin(deg * Math.PI / 180);
+					var y = center[1] - numLen * Math.cos(deg * Math.PI / 180);
+					ctx.fillText(i, x, y);
+				}
+				ctx.stroke();
+			}
+
+			// 写一个函数，根据当前时间画钟
+			function draw() {
+				ctx.clearRect(0, 0, WIDTH, HEIGHT); //清空画布，否则有重影
+				// 画周围的刻度和表盘
+				drawPan();
+				// 获取当前时间的角度
+				t2 = calcDegree();
+				drawLine(7, 'gray', center, t2.hourDegree, radius * 0.4); //画时针
+				drawLine(5, 'gray', center, t2.minDegree, radius * 0.6); //画分针
+				drawLine(3, 'gray', center, t2.secDegree, radius * 0.7); //画秒针
+				requestAnimationFrame(draw);
+			}
+			draw();
+		</script>
+	</body>
+</html>
