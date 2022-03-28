@@ -23,7 +23,7 @@
 			content: "";
 			width: 1px;
 			/* padding-bottom: 56.25%; */
-			padding-bottom: calc(100% / (var(--aspect-ratio)));
+			padding-bottom: calc(100% / (var(--cax)));
 			/*元素的宽高比*/
 			margin: -1px;
 			z-index: -1;
@@ -47,17 +47,37 @@
 
 		.aspectration111 {
 			width: 30vw;
-			aspect-ratio:16/9;
+			aspect-ratio: 16/9;
 			background-color: orange;
+		}
+
+
+		.box {
+			width: 100%;
+			/*防止矩形被里面的内容撑出多余的高度*/
+			height: 0px;
+			/* 16:9padding-bottom:56.25%，4:3padding-bottom:75% */
+			padding-bottom: 56.25%;
+			position: relative;
+			background: pink;
+		}
+
+		.box p {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			color: #666;
 		}
 	</style>
 	<body>
 		<!-- 注意，CSS中的百分比计算是比较复杂的，比如说width和padding-bottom以及padding-top取值为百分比时，它们都是相对于其父元素的width。 -->
-		<div class="aspectratio-container" style="--aspect-ratio: 16/8">
+		<div class="aspectratio-container" style="--cax: 16/10">
 			1`231sjdfbsdjfsdfskdgfjsk dg
 			<div class="aspectratio-content"></div>
 		</div>
 		<div class="aspectration111"></div>
+
+		<div class="box"><p>xixix </p></div>
 	</body>
 </html>
 <!-- 
