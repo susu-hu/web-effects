@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var arr = [1, 4, 6, 89, 8];
+		var a = '苏苏小苏苏';
+		arr.forEach((item, index, arr) => {
+			console.log(item, index, arr)
+			console.log(this.a)
+		}, a)
+
+		const newForEach = function(arr, fn) {
+			let i
+			for (i = 0; i < arr.length; i++) {
+				fn(arr[i], i)
+			}
+		}
+		newForEach(arr, (v, i) => {
+			console.log(v, i)
+		})
+		// js里的原型链prototype，其实Javascript中所有的对象都是Object的实例，
+		// 并继承Object.prototype的属性和方法
+		Array.prototype.newForEach = function(fn) {
+			for (let i = 0; i < this.length; i++) {
+				fn(this[i], i, this)
+			}
+		}
+		arr.newForEach((item, index, arr) => {
+			console.log(item, index, arr)
+		})
+
+
+		var new_Arr = [
+			[1, 2, 4, 6],
+			[2, 4, 7, 8],
+			[8, 9, 10, 11],
+			[9, 12, 13, 15]
+		];
+		console.log(new_Arr)
+		console.log(new_Arr[0][0])
+
+		var list = new Array()
+		for (let i = 0; i < 5; i++) {
+			list[i] = new Array()
+			for (var j = 0; j < 5; j++) {
+				list[i][j] = i;
+			}
+		}
+		console.log(list)
+
+		// 直接再for循环中使用return会报错（函数中使用for可以return）
+		let aa_list = [1, 3, 4, 2]
+		for (let i = 0; i < aa_list.length; i++) {
+			if (aa_list[i] == 4) {
+				console.log(i)
+			}
+		}
+		// /forEach中使用return不会报错，但rerutn并不会生效
+		let bb='susu';
+		function test() {
+			aa_list.forEach((item, index) => {
+				if (item == 4) {
+					return//跟continue一样的效果
+				}
+				console.log('buqiqi', index)
+			},bb)
+		}
+		console.log(test())
+	</script>
+</html>

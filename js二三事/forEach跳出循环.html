@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let strArr = ['a', 'b', 'c', 'd'],
+				i = 0,
+				length = strArr.length;
+			/* for (; i < length; i++) {
+				console.log(strArr[i]); //a
+				if (strArr[i] === 'a') {
+					console.log('不跳出循环')
+				};
+				console.log('xixiix')
+				// break;
+			}; */
+
+			// for (; i < length; i++) {
+			// 	console.log(strArr[i]); //a
+			// 	if (strArr[i] === 'a') {
+			// 		console.log('跳出循环啦啦啦啦')
+			// 	};
+			// 	console.log('xixiix')
+			// 	break;
+			// };
+
+			// strArr.forEach(item => {
+			// 	if (item === 'a') {
+			// 		console.log('跳出循环啦啦啦啦')
+			// 	}
+			// 	console.log('xixiix')
+			// 	// break;---报错
+			// })
+
+			// forEach结合try...catch()可以跳出循环
+
+			try {
+				strArr.forEach(item => {
+					//跳出条件
+					if (item === 'a') {
+						console.log('跳出循环');
+						throw new Error("LoopTerminates1");
+					}
+					console.log(item);
+				})
+
+			} catch (e) {
+				console.log(e)
+				if (e.message !== "LoopTerminates1") throw e;
+			}
+
+			
+		</script>
+	</body>
+</html>

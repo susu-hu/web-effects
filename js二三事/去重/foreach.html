@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// foreach数组去重
+
+		var list = [1, 2, 3, 5, 6, 5, 6, 2];
+		var c_list = [...new Set(list)]
+		var d_list = Array.from(new Set(list))
+		console.log(d_list)
+		console.log(c_list)
+		var new_list = [];
+		list.forEach((item, index) => {
+			list.indexOf(item) == index ? new_list.push(item) : ''
+		})
+		console.log(new_list)
+	</script>
+</html>

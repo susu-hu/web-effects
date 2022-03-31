@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 要知道数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。
+
+		// forEach删除自身元素index不会被重置
+		let arr = [1, 2, 3, 4];
+		arr.forEach((item, index) => {
+			console.log(index)
+			arr.splice(index, 1);
+			console.log('foreach', arr)
+			// forEach在遍历跑完回调函数后，会隐性让index自增,无法改变index
+			// console.log(1); //输出几次？
+		});
+
+		console.log('=============================================')
+		// map删除自身元素index不会被重置
+		let arr1 = [1, 2, 3, 4]
+		arr1.map((item, index) => {
+			console.log(index)
+			arr1.splice(index, 1)
+			console.log('map', arr1)
+		})
+		console.log('=============================================')
+		//for循环index可以被修改
+		let arr2 = [1, 2, 3, 4]
+		for (let i = 0; i < arr2.length; i++) {
+			console.log(i)
+			arr2.splice(i, 1)
+			i--;
+			console.log('for', arr2)
+			console.log(arr2.length == 0 ? '删空了' : "")
+		}
+
+		console.log('=============================================')
+		//扩展运算符 index无法重置
+		let arr3 = [1, 2, 3, 4];
+		[...arr3].forEach((item, index) => {
+			console.log(index)
+			arr3.splice(index, 1);
+			console.log('...', arr3)
+		});
+
+		// 
+		// let arr4 = [1, 2, 3, 4];
+		// arr4.slice().reverse().forEach(function(item, index, arr1) {
+		// 	if (item === 1) {
+		// 		arr4.splice(arr1.length - 1 - index, 1);
+		// 	}
+		// });
+		// console.log(arr4)
+	</script>
+</html>
