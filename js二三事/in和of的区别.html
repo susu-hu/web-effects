@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// for in是ES5标准，遍历key. 
+		// for of是ES6标准， 遍历value.
+		/**for (var key in arr){
+		    console.log(arr[key]);
+		}
+		
+		for (var value of arr){
+		    console.log(value);
+		}*/
+
+		Object.prototype.objCustom = function() {};
+		Array.prototype.arrCustom = function() {};
+		var bb = {
+			a: 1,
+			n: 123
+		}
+		for (let t in bb) {
+			console.log(t)
+		}
+
+		let iterable = [3, 5, 7];
+		iterable.foo = "hello";
+		console.log(iterable)
+		for (let i of iterable) {
+			console.log(i)
+		}
+		for (let i in iterable) {
+			console.log(i)
+		}
+		
+		let ccc=[
+			{
+				name:'ss'
+			
+			},
+			{
+				name:'bb'
+			},
+		]
+		for (let i of ccc) {
+			console.log(i)
+		}
+		
+		
+	</script>
+</html>
