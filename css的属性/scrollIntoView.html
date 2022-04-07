@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>该方法用于建立一个锚点，点击锚点，会跳到相应的内容，且该内容头部与浏览器头部平齐</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<a onClick="onc()">按钮</a>
+		<div style="width:400px; height:400px; border: 1px solid #f00;"></div>
+		<div id="ss" style="border:1px solid #666">
+			<div style="height:900px;">苏苏来了</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//作为一个事件的函数来被调用
+		// scrollIntoView()方法的浏览器有IE、Firefox、Safari 和Opera
+		function onc() {
+			var dd = document.getElementById("ss").scrollIntoView(true); //这个意思其实就是将这个元素到顶部来浏览器窗口的顶部来显示
+		}
+	</script>
+</html>
