@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// i++ 即后加加，原理是：先自增，然后返回自增之前的值
+		// ++i 即前加加，原理是：先自增，然后返回自增后的值
+		// i++ 先赋值自增
+		let a = 0;
+		let b = a++;
+		console.log("a++", b)
+
+		let a0 = 0;
+		for (let i = 0; i < 5; i++) {
+			let c = a0++;
+			console.log(c)
+		}
+
+		// ++i自增在赋
+		let a1 = 0;
+		console.log('++a', ++a1)
+
+		let a2 = 0;
+		for (let i = 0; i < 5; i++) {
+			let c = ++a2;
+			console.log(c)
+		}
+	</script>
+</html>
