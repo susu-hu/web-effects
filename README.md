@@ -126,7 +126,11 @@
 113. box-shadow实现的圆弧loading动画
 114. css实现悬浮图片产生遮罩变形
 115. canvas实现时钟
+116. SVG波浪
 #### 页面部分截图
+
+##### SVG波浪
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/svg%E6%B3%A2%E6%B5%AA.gif)
 
 ##### canvas实现时钟
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-picture/raw/master/web/canvas%E6%97%B6%E9%92%9F.gif)
