@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<script src="js/v3.2.8/vue.global.prod.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+		v-cloak {
+			display: none;
+		}
+	</style>
+	<body>
+		<div id="app" v-cloak title="苏苏小苏苏来啦">
+			{{ counter }}
+		</div>
+		<div id="bind-attribute">
+			<span v-bind:title="message">
+				鼠标悬停几秒钟查看此处动态绑定的提示信息！
+			</span>
+		</div>
+		<script>
+			const App = {
+				data() {
+					return {
+						counter: 12
+					}
+				},
+				mounted() {
+					setInterval(() => {
+						this.counter++; //先赋值，在自增
+					}, 1000)
+				}
+			};
+			Vue.createApp(App).mount('#app');
+			const AttributeBinding = {
+				data() {
+					return {
+						message: 'You loaded this page on ' + new Date().toLocaleString()
+					}
+				},
+				mounted(){
+					console.log(new Date().toDateString())
+					console.log(new Date().toLocaleString())
+					console.log(new Date().getFullYear(),new Date().getMonth(),new Date().getDay())
+					console.log(new Date().getTime())
+				}
+			}
+
+			Vue.createApp(AttributeBinding).mount('#bind-attribute')
+		</script>
+	</body>
+</html>

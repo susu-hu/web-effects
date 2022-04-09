@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let a = new Date()
+		console.log('时间', a)
+		// 年月日
+		console.log('年份2位', a.getYear())
+		console.log('年份4位', a.getFullYear())
+		console.log('月份0-11,0--1月', a.getMonth())
+		console.log('日期1-31', a.getDate())
+		console.log('周几0-6,0---星期天', a.getDay())
+		console.log('获取当前时间(从1970.1.1开始的毫秒数)', a.getTime())
+
+		// 时分秒
+		console.log('时：0-23', a.getHours())
+		console.log('分0-59', a.getMinutes())
+		console.log('秒0-59', a.getSeconds())
+		console.log('获取当前毫秒数(0-999)', a.getMilliseconds())
+
+		// 当前日期
+		console.log('获取当前日期', a.toLocaleDateString()) //日期
+		console.log('获取当前日期', a.toLocaleTimeString()) //时分秒
+		console.log('获取当前日期', a.toLocaleString()) //日期+时分秒
+
+		// 时间的格式化
+		Date.prototype.Format = function(fmt) { 
+			var o = {
+				"M+": this.getMonth() + 1, // 月份
+		 	"d+": this.getDate(), // 日
+				"h+": this.getHours(), // 小时
+				"m+": this.getMinutes(), // 分
+				"s+": this.getSeconds(), // 秒
+				"q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+				"S": this.getMilliseconds() // 毫秒
+			};
+			if (/(y+)/.test(fmt))
+				fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			for (var k in o)
+				if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (
+					("00" + o[k]).substr(("" + o[k]).length)));
+			return fmt;
+		}
+		
+		console.log(new Date().Format("yyyy"))
+		console.log(new Date().Format("MM"))
+		console.log(new Date().Format("dd"))
+		console.log(new Date().Format("yyyy-MM-dd hh:mm:ss"))
+		
+	</script>
+</html>
