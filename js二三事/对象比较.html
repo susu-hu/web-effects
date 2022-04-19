@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let a = {
+				name: '苏苏',
+				age: 12,
+				gender: '女',
+				list: [1, 2, 3]
+			},
+			b = {
+				name: '苏苏',
+				age: 12,
+				gender: '女',
+				aa: 1,
+				kk: '哈哈哈',
+				list: [1, 2, 3]
+			};
+			
+			let map=new Map();
+			map.set('name','名称')
+			map.set('age','年龄')
+			map.set('gender','性别')
+			map.set('aa','参数a')
+			map.set('kk','参数k')
+			map.set('list','参数list')
+			console.log(map)
+			
+
+		// let ccc = Object.keys(a);
+		// console.log(ccc)
+
+		// let kk = [1, 2, 3],
+		// 	ll = [1, 2, 3]
+		// console.log(kk.toString() === ll.toString())
+		// console.log((kk + '') === (ll + ''))
+
+		function finObj(obj1, obj2) {
+			// obj1-后
+			const resultObj = {};
+			Object.keys(obj1).forEach(key => {
+				if ((obj1[key] + "") !== (obj2[key] + "")) {
+					resultObj[key] = obj1[key]
+				}
+			})
+			return resultObj;
+		}
+
+		let ddd = finObj(b, a);
+		console.log(ddd)
+		
+		 finObjCompare: function (obj1, obj2) {
+		    // obj1-后
+		    const resultObj = {};
+		    Object.keys(obj1).forEach(key => {
+		      if (obj1[key] !== obj2[key]) {
+		        resultObj[key] = obj1[key]
+		      }
+		      // if ((obj1[key] + "") !== (obj2[key] + "")) {
+		      //   resultObj[key] = obj1[key]
+		      // }
+		    })
+		    return resultObj;
+		  }
+	</script>
+</html>
