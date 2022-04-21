@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>按钮按压效果</title>
+		<style>
+			.button {
+				width: 150px;
+				height: 50px;
+				display: inline-block;
+				padding: 15px;
+				font-size: 20px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				outline: none;
+				color: #fff;
+				background-color: #008000;
+				border: none;
+				border-radius: 16px;
+				box-shadow: 0 15px #55aa7f;
+				position: relative;
+				overflow: hidden;
+			}
+
+			/* .button:hover {
+				background-color: hotpink;
+			} */
+
+			.button:active {
+				/* background-color: pink; */
+				box-shadow: 0 5px green;
+				transform: translateY(4px);
+			}
+
+
+
+			.btn {
+				width: 100px;
+				height: 40px;
+				border: 1px solid #333;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 40px;
+				font-size: 16px;
+				color: #fff;
+				background-color: #096;
+				margin: 100px auto 20px;
+				cursor: pointer;
+				user-select: none;
+				box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+				transition: .2s;
+			}
+
+			/* 按钮点击效果1 */
+			.btn1 {
+				transform: scale(1);
+			}
+
+			.btn1:active {
+				transform: scale(0.97);
+			}
+
+			:root {
+				background-color: #145066;
+
+				--btn-bg-primary: #8fbc8f;
+				--btn-bg-active: #73b173;
+				--btn-shadow-color: #2e8b57;
+			}
+
+			button {
+				border: none;
+				outline: none;
+				appearance: none;
+				-webkit-appearance: none;
+				cursor: pointer;
+			}
+
+			/* Content */
+			.button1 {
+				font-size: 1.5em;
+				padding: .5em 1em;
+				border-radius: 6px;
+				box-shadow: 0 5px 0 0 var(--btn-shadow-color);
+				background: var(--btn-bg-primary);
+				color: #fff;
+				transition: all .1s ease-out;
+			}
+
+			.button1:hover {
+				background: var(--btn-bg-active);
+				box-shadow: 0 4px 0 0 var(--btn-shadow-color);
+				transform: translateY(1px);
+			}
+
+			.button1:hover:active {
+				box-shadow: 0 1px 0 0 var(--btn-shadow-color);
+				transform: translateY(4px);
+			}
+			.img{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				object-fit: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="button">
+			开始抽奖
+			<!-- <img src="帧动画/img/css_sprites.png" class="img" /> -->
+		</button>
+		<button class="btn">Click Me</button>
+		<button class="button1">Click Me</button>
+	</body>
+</html>

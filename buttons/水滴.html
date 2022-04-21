@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			height: 80vh;
+			display: flex;
+		}
+
+		.switch {
+			margin: auto;
+			padding: 10px;
+			width: 100px;
+			border-radius: 40px;
+			background-color: #d7d7d7;
+		}
+
+		.ball {
+			width: 50px;
+			height: 50px;
+			background-color: rebeccapurple;
+			border-radius: 50%;
+			position: relative;
+			transition: .3s;
+			transform-origin: 120% 50%;
+		}
+
+		.ball::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50px;
+			height: 50px;
+			clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+			background-color: rebeccapurple;
+			border-radius: 50%;
+			transform: scaleX(1.6);
+			transition: .3s;
+		}
+
+		.ball::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50px;
+			height: 50px;
+			clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+			background-color: rebeccapurple;
+			border-radius: 50%;
+			transform: scaleX(1);
+			transition: .3s;
+		}
+
+		button {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+		}
+
+		.ball.check::after {
+			transform: scaleX(1);
+		}
+
+		.ball.check::before {
+			transform: scaleX(1.6);
+		}
+
+		.ball.check {
+			transform: translate(100%);
+		}
+	</style>
+	<body>
+		<div class="switch">
+			<div class="ball"></div>
+		</div>
+
+		<button>click</button>
+	</body>
+	<script>
+		const ball = document.querySelector('.ball')
+		document.querySelector('button').onclick = function() {
+			if (ball.className === 'ball') {
+				document.querySelector('.ball').className = 'ball check'
+			} else {
+				document.querySelector('.ball').className = 'ball'
+			}
+		}
+	</script>
+</html>

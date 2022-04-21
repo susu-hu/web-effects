@@ -14,23 +14,25 @@
 				list: [1, 2, 3]
 			},
 			b = {
-				name: '苏苏',
+				name: '苏苏112',
 				age: 12,
 				gender: '女',
 				aa: 1,
 				kk: '哈哈哈',
 				list: [1, 2, 3]
 			};
-			
-			let map=new Map();
-			map.set('name','名称')
-			map.set('age','年龄')
-			map.set('gender','性别')
-			map.set('aa','参数a')
-			map.set('kk','参数k')
-			map.set('list','参数list')
-			console.log(map)
-			
+
+		let map = new Map();
+		map.set('name', '名称susu啊啊')
+		map.set('age', '年龄')
+		map.set('gender', '性别')
+		map.set('aa', '参数a')
+		map.set('kk', '参数k')
+		map.set('list', '参数list')
+		console.log(map)
+
+
+
 
 		// let ccc = Object.keys(a);
 		// console.log(ccc)
@@ -42,30 +44,120 @@
 
 		function finObj(obj1, obj2) {
 			// obj1-后
+			// const resultList = [];
 			const resultObj = {};
 			Object.keys(obj1).forEach(key => {
 				if ((obj1[key] + "") !== (obj2[key] + "")) {
-					resultObj[key] = obj1[key]
+					resultObj[key] = obj2[key] + '修改为' + obj1[key]
 				}
 			})
 			return resultObj;
+			// return resultList;
 		}
 
 		let ddd = finObj(b, a);
-		console.log(ddd)
-		
-		 finObjCompare: function (obj1, obj2) {
-		    // obj1-后
-		    const resultObj = {};
-		    Object.keys(obj1).forEach(key => {
-		      if (obj1[key] !== obj2[key]) {
-		        resultObj[key] = obj1[key]
-		      }
-		      // if ((obj1[key] + "") !== (obj2[key] + "")) {
-		      //   resultObj[key] = obj1[key]
-		      // }
-		    })
-		    return resultObj;
-		  }
+		// console.log(ddd)
+		Object.keys(ddd).forEach(item => {
+			// console.log(item)
+		})
+
+
+		// let ee = JSON.parse(JSON.stringify(ddd).replace(/name/g, "susu-name"))
+		// console.log(ee)
+
+		let mapObj = {};
+		map.forEach((item, index) => {
+			// console.log(item, index)
+			for (let i in ddd) {
+				if (i == index) {
+					let obj = {
+						[`${item}`]: ddd[i]
+					}
+					Object.assign(mapObj, obj)
+					// console.log(i)
+					// return JSON.parse(JSON.stringify(ddd).replace(/`${i}`/g, item))
+					// console.log(JSON.parse(JSON.stringify(ddd).replace(/`${i}`/g, item)))
+				}
+			}
+		})
+		console.log('------------', mapObj)
+
+		let str = '';
+		for (let i in mapObj) {
+			if (mapObj.hasOwnProperty(i)) {
+				console.log(i, mapObj[i])
+				str += i + "变更:" + mapObj[i] + ','
+			}
+
+		}
+		console.log('----------------', str.substring(0, str.length - 1))
+
+		// finObjCompare: function (obj1, obj2) {
+		//    // obj1-后
+		//    const resultObj = {};
+		//    Object.keys(obj1).forEach(key => {
+		//      if (obj1[key] !== obj2[key]) {
+		//        resultObj[key] = obj1[key]
+		//      }
+		//      // if ((obj1[key] + "") !== (obj2[key] + "")) {
+		//      //   resultObj[key] = obj1[key]
+		//      // }
+		//    })
+		//    return resultObj;
+		//  }
+
+		let ne = [{
+				name: '1',
+			},
+			{
+				name: '2',
+			},
+		];
+		var arr00 = [{
+				id: "600",
+				pId: null,
+				name: "图形的变化"
+			},
+			{
+				id: "630",
+				pId: "600",
+				name: "投影与视图"
+			},
+			{
+				id: "631",
+				pId: "630",
+				name: "投影"
+			},
+			{
+				id: "632",
+				pId: "630",
+				name: "三视图"
+			}
+		];
+		let mm = arr00.map((obj) => {
+			return "'" + obj.id + "'"
+		}).join(",");
+
+		// console.log(ne.join(''))
+		// console.log(mm)
+
+		let reobj = {};
+		for (let key in ddd) {
+			let obj = {
+				[`${key}s`]: ddd[key]
+			}
+			Object.assign(reobj, obj)
+		}
+		// console.log(reobj)
+
+		let obj = {
+			name: '仙女',
+			age: 18,
+			gender: 'female'
+		}
+		//法一：
+		let result = Object.entries(obj);
+		let map11 = new Map(result);
+		console.log(map11);
 	</script>
 </html>

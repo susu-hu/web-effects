@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		:root {
+			--scale: 1
+		}
+
+		body {
+			height: 500vh;
+		}
+
+		div {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 400px;
+			height: 400px;
+			background-image: url('https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF');
+			background-size: calc(100% * var(--scale)) calc(100% * var(--scale));
+			background-position: center center;
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+	<script>
+		const wH = document.body.scrollHeight
+		window.onscroll = function() {
+			document.documentElement.style.setProperty('--scale', 1 + document.documentElement.scrollTop / wH)
+		}
+	</script>
+</html>
