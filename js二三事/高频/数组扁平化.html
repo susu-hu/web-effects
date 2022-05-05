@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	let arr = [
+		[1, 2, , 3, [1, 2, 3, [4, 4]], 4], 1, [1],
+		[
+			[1, [3, 5, [5, 6, 7]]], 2
+		]
+	]
+	console.log(arr)
+	// 扁平化 falt,对浏览器有限制
+	let arr1 = arr.flat(Infinity)
+	console.log(arr1)
+	
+	// toString()+split
+	let arr2 = arr.toString().split(',');
+	console.log(arr2) //每一项都变成了字符串
+	
+	// 递归实现
+	const dep = (arr) => {
+		let new_list = []
+		arr.forEach(item => {
+			if (Array.isArray(item)) {
+				new_list = new_list.concat(dep(item))
+			} else {
+				new_list.push(item)
+			}
+		})
+		return new_list;
+	}
+	console.log(dep(arr))
+	
+	// reduce
+	const flatten = (arr) => {
+		return arr.reduce((prev, curValue) => {
+			return prev.concat(Array.isArray(curValue) ? flatten(curValue) : curValue)
+		}, [])
+	}
+	console.log(flatten(arr))
+	
+	// 扩展运算符实现,用了扩展运算符和 some的方法，两者共同使用
+	const flatsome = (arr) => {
+		while (arr.some(item => Array.isArray(item))) {
+			arr = [].concat(...arr)
+		}
+		return arr
+	}
+	console.log(flatsome(arr))
+	
+	
+	// 正则和 JSON 方法共同处理
+	
+	const flatJson = (arr) => {
+		let str = JSON.stringify(arr);
+		str = str.replace(/(\[|\])/g, '');
+		str = `[${str}]`;
+		return JSON.parse(str);
+	};
+	console.log(flatJson(arr));
+	
+	
+	var arr00 = [1,
+		[0, 1, [1, 2, [4]]],
+		[2, 3],
+		[4, 5]
+	]
+	var arr200 = arr00.reduce((arr, item) => arr.concat(item), [])
+	console.log(arr200) // [0, 1, 2, 3, 4, 5]</script>
+</html>
