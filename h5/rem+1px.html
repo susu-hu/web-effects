@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi" id="metaEle">
+		<meta charset="utf-8">
+		<title>https://www.shuzhiduo.com/A/MyJxPM3AJn/</title>
+	</head>
+	<style>
+		.a {
+			font-size: 1rem;
+			border: 1px solid red;
+		}
+	</style>
+	<body id="docEl">
+		<div class="a">sds</div>
+	</body>
+	<script>
+		var width = window.screen.width
+		var dpr = window.devicePixelRatio;
+		console.log(dpr)
+		var scale = 1 / dpr
+		var fontSize = width / 10 * dpr + 'px'
+		document.getElementsByTagName('html')[0].style.fontSize = fontSize
+		var metaEle = document.getElementById("metaEle") //这个是meta元素
+		metaEle.setAttribute("content", 'user-scalable=no, initial-scale=' + scale + ', maximum-scale=' + scale +
+			', minimum-scale=' + scale)
+
+		// metaEl.setAttribute('content', 'target-densitydpi=device-dpi,user-scalable=no,initial-scale=' + scale +
+		// 	',maximum-scale=' + scale + ', minimum-scale=' + scale);
+		//不通过加入具体设备的白名单，通过此特征检测 docEl.clientWidth == 980 //initial-scale=1不能省，因为上面设置为其他的scale了，需要重置回来
+		if (docEl.clientWidth == 980) {
+			metaEl.setAttribute('content',
+				'target-densitydpi=device-dpi,width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1'
+				);
+		}
+	</script>
+</html>
