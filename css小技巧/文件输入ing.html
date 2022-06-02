@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>文字输入ing</title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+		}
+
+		.typing {
+			white-space: nowrap;
+			overflow: hidden;
+			border-right: 3px solid pink;
+			font-family: monospace;
+			/* 等宽字体 */
+			font-size: 2em;
+		}
+
+		.t0 {
+			width: 38ch;
+			/* 数字0的宽度 */
+			animation: word 4s steps(38) infinite alternate, cursor .5s step-end infinite alternate;
+
+		}
+
+		.t1 {
+			width: 37ch;
+			animation: word 4s steps(37), cursor .5s step-end infinite alternate;
+		}
+
+		.t2 {
+			width: 38ch;
+			animation: word 4s steps(37) infinite, cursor .5s step-end infinite alternate;
+		}
+
+		.t3 {
+			/* 单个中文字符的宽度，是英文字符的2倍 */
+			width: 16ch;
+			animation: word 2s steps(16) infinite, cursor .5s step-end infinite alternate;
+
+		}
+
+
+		@keyframes word {
+			from {
+				width: 0;
+			}
+		}
+
+		@keyframes cursor {
+			50% {
+				border-color: transparent;
+			}
+		}
+	</style>
+	<body>
+		<section>
+			<div class="typing t0">SUSU is Coming,Welcome to susu's blog</div>
+			<div class="typing t1">SUSU is Coming,Welcome to susu's blog</div>
+			<div class="typing t2">SUSU is Coming,Welcome to susu's blog</div>
+			<div class="typing t3">苏苏来了! 你好</div>
+		</section>
+
+	</body>
+	<script></script>
+</html>
