@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考文章：来着掘金https://juejin.cn/post/7089997204252786702</title>
+	</head>
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #222;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+		}
+
+		main {
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		p {
+			text-align: justify;
+			font-family: monospace;
+			font-size: 13px;
+		}
+
+		summary {
+			font-size: 1rem;
+			font-weight: 600;
+			background-color: pink;
+			color: #fff;
+			padding: 1rem 9rem 1rem 1rem;
+			margin-bottom: 1rem;
+			outline: none;
+			border-radius: 0.25rem;
+			cursor: pointer;
+			position: relative;
+		}
+
+		details[open] summary~* {
+			animation: sweep .5s ease-in-out;
+		}
+
+		@keyframes sweep {
+			0% {
+				opacity: 0;
+				margin-top: -10px
+			}
+
+			100% {
+				opacity: 1;
+				margin-top: 0px
+			}
+		}
+
+		details>summary::after {
+			position: absolute;
+			content: "+";
+			right: 20px;
+		}
+
+		details[open]>summary::after {
+			position: absolute;
+			content: "-";
+			right: 20px;
+		}
+
+		details>summary::-webkit-details-marker {
+			display: none;
+		}
+	</style>
+	<body>
+		<main>
+			<details open>
+				<summary>菜单一</summary>
+				<div class="tab-content">
+					<p>这里是文字</p>
+				</div>
+			</details>
+
+			<details>
+				<summary>菜单二</summary>
+				<div class="tab-content">
+					<p>这里是文字</p>
+				</div>
+			</details>
+			<details>
+				<summary>菜单三</summary>
+				<div class="tab-content">
+					<p>这里是文字</p>
+				</div>
+		 </details>
+		</main>
+	</body>
+</html>
