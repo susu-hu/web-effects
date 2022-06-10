@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 如果time2大于time1 返回true 否则 返回false
+
+		function compareTime(time1, time2) {
+			return time_to_sec(time2) - time_to_sec(time1) > 0
+
+		}
+
+		function compareTime1(time1, time2) {
+			let mss = time_to_sec(time2) - time_to_sec(time1);
+			console.log(mss)
+			// s
+			var days = parseInt(mss / (60 * 60 * 24));
+			var hours = parseInt((mss % (60 * 60 * 24)) / (60 * 60));
+			var minutes = parseInt((mss % (60 * 60)) / 60);
+			var seconds = mss % 60;
+			// ms
+			// var days = parseInt(mss / (1000 * 60 * 60 * 24));
+			// var hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			// var minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60));
+			// var seconds = (mss % (1000 * 60)) / 1000;
+			return days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒 ";
+			// //获取年份
+			// var year = new Date(timdedetail).getFullYear();
+			// //获取月份
+			// var month = new Date(timdedetail).getMonth() + 1;
+			// if (month < 10) {
+			// 	month = "0" + month;
+			// }
+			// //获取日
+			// var date = new Date(timdedetail).getDate();
+			// if (date < 10) {
+			// 	date = "0" + date;
+			// }
+			// //获取小时
+			// var h1 = new Date(timdedetail).getHours() < 10 ? '0' + new Date(timdedetail).getHours() : new Date(timdedetail)
+			// 	.getHours();
+			// //获取分钟
+			// var m1 = new Date(timdedetail).getMinutes() < 10 ? '0' + new Date(timdedetail).getMinutes() : new Date(
+			// 	timdedetail).getMinutes() < 10;
+			// //获取秒
+			// var s1 = new Date(timdedetail).getSeconds() < 10 ? '0' + new Date(timdedetail).getSeconds() : new Date(
+			// 	timdedetail).getSeconds();
+			// //组合格式为年-月-日 时：分：秒（2021-07-05 21:21:21）
+			// var starttime = year + "-" + month + "-" + date + " " + h1 + ":" + m1 + ":" + s1;
+			// return starttime;
+
+		}
+
+		//将时分秒转为时间戳
+		function time_to_sec(time) {
+			if (time !== null) {
+				
+				// var s = "";
+				// var hour = time.split(":")[0];
+				// var min = time.split(":")[1];
+				// var sec = time.split(":")[2];
+				// s = Number(hour * 3600) + Number(min * 60) + Number(sec);
+				// return s;
+				var len = time.split(':')
+				if (len.length == 3) {
+					var hour = time.split(':')[0];
+					var min = time.split(':')[1];
+					var sec = time.split(':')[2];
+					return Number(hour * 3600) + Number(min * 60) + Number(sec);
+				}
+				if (len.length == 2) {
+					var min = time.split(':')[0];
+					var sec = time.split(':')[1];
+					return Number(min * 60) + Number(sec);
+				}
+				if (len.length == 1) {
+					var sec = time.split(':')[0];
+					return Number(sec);
+				}
+			}
+		}
+
+		console.log(compareTime('20:00', '19:00'))
+		console.log(compareTime1('00:00:00', '01:59:00'))
+		console.log(compareTime1('21:59', '00:00'))
+		/*求当前时间距离2017-03-25 12:00:00（和女友相遇的时间） 之间的时间差*/
+		function timeElapse() {
+			var a = new Date();
+			var b = new Date(2017, 02, 25, 12, 00, 00); //月份要往前推一个月，理由自己百度
+			a = a.valueOf();
+			b = b.valueOf();
+			var c = a - b;
+			c = new Date(c);
+			var result = c.getFullYear() - 1970 + '年' + (c.getMonth()) + '个月' +
+				(c.getDate() - 1) + '天' + (c.getHours() - 8) + '个小时' + c.getMinutes() + '分钟' + c.getSeconds() + '秒';
+			//天也要往前推一天，小时需要减去8，但是问题是减8后hour会出现负值，
+			if ((c.getHours() - 8) < 0) {
+				result = reCaclute();
+			}
+		}
+		//为解决hour负值，将日期往后推一天,再在之前的基础上加24
+		function reCaclute() {
+			var a = new Date();
+			var b = new Date(2017, 02, 26, 12, 00, 00);
+			a = a.valueOf();
+			b = b.valueOf();
+			var c = a - b;
+			c = new Date(c);
+			var result = c.getFullYear() - 1970 + '年' + (c.getMonth()) + '个月' +
+				(c.getDate() - 1) + '天' + (c.getHours() - 8 + 24) + '个小时' + c.getMinutes() +
+				'分钟' + c.getSeconds() + '秒';
+			return result;
+		}
+
+
+
+		/**
+		 * JS 计算两个时间间隔多久（时分秒）
+		 * @param startTime "2019-10-23 15:27:23"
+		 * @param endTime "2019-10-23 15:27:55"
+		 * @return 1天2时3分5秒
+		 */
+		function twoTimeInterval(startTime, endTime) {
+
+			// 开始时间
+			let d1 = startTime.replace(/\-/g, "/");
+			let date1 = new Date(d1);
+
+			// 结束时间
+			let d2 = endTime.replace(/\-/g, "/");
+			let date2 = new Date(d2);
+
+			// 时间相差秒数
+			let dateDiff = date2.getTime() - date1.getTime();
+
+			// 计算出相差天数
+			let days = Math.floor(dateDiff / (24 * 3600 * 1000));
+
+			// 计算出小时数
+			let residue1 = dateDiff % (24 * 3600 * 1000); // 计算天数后剩余的毫秒数
+			let hours = Math.floor(residue1 / (3600 * 1000));
+
+			// 计算相差分钟数
+			let residue2 = residue1 % (3600 * 1000); // 计算小时数后剩余的毫秒数
+			let minutes = Math.floor(residue2 / (60 * 1000));
+
+			// 计算相差秒数
+			let residue3 = residue2 % (60 * 1000); // 计算分钟数后剩余的毫秒数
+			let seconds = Math.round(residue3 / 1000);
+
+			let returnVal =
+				((days == 0) ? "" : days + "天") +
+				((hours == 0) ? "" : days + "时") +
+				((minutes == 0) ? "" : minutes + "分") +
+				((seconds == 0) ? "" : seconds + "秒");
+
+			return returnVal;
+
+		}
+
+		// 秒转换为时分秒
+		function formatSeconds(value) {
+			var secondTime = parseInt(value); // 秒
+			var minuteTime = 0; // 分
+			var hourTime = 0; // 小时
+			if (secondTime >= 60) {
+				minuteTime = parseInt(secondTime / 60);
+				secondTime = parseInt(secondTime % 60);
+				if (minuteTime >= 60) {
+					hourTime = parseInt(minuteTime / 60);
+					minuteTime = parseInt(minuteTime % 60);
+				}
+			}
+			var result = "" + (parseInt(secondTime) < 10 ? "0" + parseInt(secondTime) : parseInt(secondTime));
+
+			// if (minuteTime > 0) {
+			result = "" + (parseInt(minuteTime) < 10 ? "0" + parseInt(minuteTime) : parseInt(minuteTime)) + ":" + result;
+			// }
+			// if (hourTime > 0) {
+			result = "" + (parseInt(hourTime) < 10 ? "0" + parseInt(hourTime) : parseInt(hourTime)) + ":" + result;
+			// }
+			return result;
+		}
+
+		console.log(formatSeconds(3600))
+
+
+		// 时分秒转化为秒
+		function timeEvent(e) {
+			var time = e;
+			var len = time.split(':')
+			if (len.length == 3) {
+				var hour = time.split(':')[0];
+				var min = time.split(':')[1];
+				var sec = time.split(':')[2];
+				return Number(hour * 3600) + Number(min * 60) + Number(sec);
+			}
+			if (len.length == 2) {
+				var min = time.split(':')[0];
+				var sec = time.split(':')[1];
+				return Number(min * 60) + Number(sec);
+			}
+			if (len.length == 1) {
+				var sec = time.split(':')[0];
+				return Number(sec);
+			}
+
+			// var hour = time.split(':')[0];
+			// var min = time.split(':')[1];
+			// var sec = time.split(':')[2];
+			// return  Number(hour*3600) + Number(min*60) + Number(sec);
+		}
+	</script>
+</html>

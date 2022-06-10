@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			let list = [{
+					name: '55',
+					age: 12,
+					sex: '男',
+					kk: 'kkkk',
+					yy:'yy'
+				},
+				{
+					name: '33',
+					age: 12,
+					sex: '女'
+				},
+				{
+					name: '444',
+					age: 12,
+					sex: '女'
+				},
+			];
+			let params = {
+				ss: '干什么',
+				kk: 'kkkk',
+				yy:'yy'
+			}
+			list.map(item => {
+				return Object.assign(item, params)
+			})
+			console.log(list)
+		</script>
+	</body>
+</html>

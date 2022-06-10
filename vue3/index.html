@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="https://unpkg.com/vue@next"></script>
+	<style></style>
+	<body>
+		<div id="app" >
+			Counter: {{ counter }}
+		</div>
+	</body>
+	<script>
+		const Counter = {
+			data() {
+				return {
+					counter: 0,
+					susu:1
+				}
+			},
+			mounted() {
+				// setInterval(() => {
+				// 	this.counter++
+				// }, 1000)
+				console.log('$options',this.$options)
+				console.log('$data',this.$data)
+				console.log('$props',this.$props)
+				console.log('$el',this.$el)
+				console.log('$parent',this.$parent)
+				console.log('$root',this.$root)
+				console.log('$attrs',this.$attrs)
+			},
+			created(){
+				
+			},
+		}
+		// 每个 Vue 应用都是通过用 createApp 函数创建一个新的应用实例开始
+		// Vue.createApp(Counter).mount('#app')//允许链式
+		const app = Vue.createApp(Counter)
+		const vm = app.mount('#app')
+		console.log(vm)//mount 不返回应用本身。相反，它返回的是根组件实例
+		
+	</script>
+</html>
