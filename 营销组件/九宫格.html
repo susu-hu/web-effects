@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background: rgb(255, 189, 89, .4);
+		}
+
+		img,
+		svg {
+			vertical-align: middle;
+		}
+
+		img {
+			border-style: none;
+		}
+
+		*,
+		:after,
+		:before {
+			box-sizing: border-box;
+		}
+
+		.con {
+			width: 360px;
+			height: 356px;
+			background-size: contain;
+			position: relative;
+		}
+
+		.con::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 360px;
+			height: 72px;
+			background: transparent url(./img/lottery-bg-top.70dc2d9e.png) 50% no-repeat;
+			background-size: contain;
+		}
+
+		.box {
+			position: relative;
+			background: transparent url('img/lottery-bg.42985be1.png') no-repeat;
+			height: 320px;
+			width: 320px;
+			background-size: contain;
+			margin: 36px auto 0;
+		}
+
+		.box-inner {
+			width: 100%;
+			height: 100%;
+			margin-top: 0;
+			padding: 31px 29px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			position: relative;
+		}
+
+		.inner-item {
+			width: 84px;
+			height: 84px;
+			margin-right: 3px;
+			position: relative;
+			margin-bottom: 3px;
+			background: #fefdf7;
+			-webkit-box-shadow: inset 0 0 18px 0 #ffbd59;
+			box-shadow: inset 0 0 18px 0 #ffbd59;
+			border-radius: 13px;
+		}
+
+		.inner-item-icon {
+			width: 100%;
+		}
+
+		.inner-item-draw {
+			cursor: pointer;
+			position: relative;
+			width: 84px;
+			height: 84px;
+			background: url('./img/begin-btn.e5f51a09.png') no-repeat;
+			background-size: 100% 100%;
+		}
+
+		.inner-item-draw::after {
+			z-index: 99;
+			content: " ";
+			position: absolute;
+			right: -27px;
+			bottom: -34px;
+			width: 62px;
+			height: 63px;
+			background: url('./img/shake.png') no-repeat;
+			background-size: contain;
+			-webkit-animation: shake .5s ease-in-out infinite both;
+			animation: shake .5s ease-in-out infinite both;
+		}
+
+		@-webkit-keyframes shake {
+			0% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+
+			50% {
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1)
+			}
+
+			to {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+		}
+
+		@keyframes shake {
+			0% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+
+			50% {
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1)
+			}
+
+			to {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+		}
+	</style>
+	<body>
+		<div class="con">
+			<div class="box">
+				<div class="box-inner">
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item">
+						<div class="inner-item-draw"></div>
+					</div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+					<div class="inner-item"><img src="./img/61800.png" class="inner-item-icon" alt=""></div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
+
+
+	</script>
+</html>
