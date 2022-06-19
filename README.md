@@ -128,7 +128,11 @@
 115. canvas实现时钟
 116. SVG波浪
 117. css动画step（）实现文字打印效果
+118. checkbox选中切换效果
 #### 页面部分截图
+
+##### checkbox选中切换效果
+![输入图片说明](susuImg/checkbox.gif)
 
 ##### css动画step（）实现文字打印效果
 ![输入图片说明](https://gitee.com/susuhhhhhh/css_demos/raw/master/susuImg/typing.gif)
