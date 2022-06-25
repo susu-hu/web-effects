@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<style type="text/css">
+		[v-clock] {
+			display: none;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			<h1>数组：</h1>
+			<ul>items 是源数据数组，而 item 则是被迭代的数组元素的别名</ul>
+			<ul>
+				<li v-for="item in items" :key="item.message">
+					{{ item.message }}
+				</li>
+			</ul>
+			<ul>v-for 还支持一个可选的第二个参数，即当前项的索引</ul>
+			<ul>
+				<li v-for="(item, index) in items">
+					{{ parentMessage }} - {{ index }} - {{ item.message }}
+				</li>
+			</ul>
+			<ul>of 替代 in 作为分隔符，因为它更接近 JavaScript 迭代器的语法</ul>
+			<ul>
+				<li v-for="(item, index) of items">
+					{{ mmm }} - {{ index }} - {{ item.message }}
+				</li>
+			</ul>
+
+			<h1>对象：</h1>
+			<ul>第一个参数是value值</ul>
+			<ul>
+				<li v-for="item in object">
+					{{ item }}
+				</li>
+			</ul>
+			<ul>第二个参数是key值</ul>
+			<ul>
+				<li v-for="(item,key) in object">
+					<p style="white-space:pre">{{key}}: {{ item }}</p>
+				</li>
+			</ul>
+			<ul>第三个参数是索引值</ul>
+			<ul>
+				<li v-for="(item,key,index) in object">
+					<p style="white-space:pre">索引:{{index}} - {{key}}: {{ item }}</p>
+				</li>
+			</ul>
+			<!-- 在遍历对象时，会按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。 -->
+		</div>
+	</body>
+	<script type="text/javascript">
+		/**
+		 * 避免v-for与v-if同时用在同一个元素上面，v-for优先级较高 
+		 * https://cn.vuejs.org/v2/style-guide/#%E9%81%BF%E5%85%8D-v-if-%E5%92%8C-v-for-%E7%94%A8%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%BF%85%E8%A6%81
+		 */
+		var app = new Vue({
+			el: '#app',
+			data: {
+				mmm: "of",
+				parentMessage: 'Parent',
+				items: [{
+						message: 'Foo'
+					},
+					{
+						message: 'Bar'
+					}
+				],
+
+				object: {
+					title: 'How to do lists in Vue',
+					author: 'Jane Doe',
+					publishedAt: '2016-04-10'
+				}
+			},
+			created() {
+				/**
+				 * 数组
+				 */
+				// 只要是可迭代对象，都可以使用 for/of 
+				for (let i of this.items) {
+					console.log(i.message)
+				}
+				//  for/in 写法， 不像for/of 必须是可迭代对象，for/in 可迭代任意对象
+				// 循环迭代对象的属性名。如果是数组，迭代的值是数组的下标索引，和原始那个for是一样的。
+				for (let i in this.items) {
+					console.log(i+'    :   '+this.items[i].message)
+				}
+				/**
+				 * 对象
+				 */
+				// for/in 并不能枚举迭代对象的所有是属性，比如符号属性无法枚举
+				// for/of 和 for/in 写法在定义变量的时候，也可以使用 const 关键字，const 声明的是一次循环迭代期间的常量值。
+				for (let i in this.object) {
+					console.log(i+'    :   '+this.object[i])
+				}
+			}
+		})
+	</script>
+</html>
