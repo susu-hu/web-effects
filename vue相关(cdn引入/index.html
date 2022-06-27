@@ -4,6 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Document</title>
 		<style type="text/css">
+			v-cloak {
+				display: none;
+			}
+
 			* {
 				padding: 0;
 				margin: 0
@@ -37,7 +41,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="app">
+		<div id="app" v-cloak>
 			<div class="top">
 				<ul>
 					<li><a href="javascript:;" @click='tabToggle(tab01Text);'>{{tab01Text}}</a></li>
