@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<title>框架使用示例</title>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+
+			#app {
+				height: 300px;
+				width: 200px;
+				overflow: hidden scroll;
+			}
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<button onclick="alert(123)">按钮</button>
+			<ul>
+				列表
+				<li v-for="(item,key) in list" :key="key">{{item}}</li>
+			</ul>
+		</div>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					// v-for循环的数据数组
+					list: [],
+					// 接口请求回来的完整数据
+					data: [],
+					// 渲染总数
+					total: 0,
+					// 设置每次插入显示的DOM数量，根据情况自己设置
+					once: 20,
+					// 当前已经渲染DOM的总数
+					countOfRender: 0
+				},
+				created() {
+					this.fetchData();
+				},
+				methods: {
+					fetchData() {
+						// 模拟接口请求
+						new Promise((resolve, reject) => {
+							setTimeout(() => {
+								let res = {
+									total: 100000
+								};
+								// res.data = [];
+								// for (let i = 0; i < res.total; i++) {
+								// 	res.data.push(i);
+								// }
+								// resolve(res);
+								let item = {
+									stationDistance: 111,
+									dataTime: "2022-06-15 07:07:07",
+									stationDirection: 1,
+								};
+
+								res.data = [];
+								for (let i = 0; i < res.total; i++) {
+									res.data.push(item);
+								}
+								resolve(res);
+							}, 100);
+						}).then((res) => {
+							// this.list = res;
+							// console.log(this.list)
+							this.data = res.data;
+							this.total = res.total;
+							this.loop();
+						});
+					},
+					loop() {
+						// 用setTimeout模拟懒加载，用requestAnimationFrame提高渲染效率和动画流畅度
+						setTimeout(() => {
+							// 每次只渲染once条数据
+							const temp = [];
+							for (let i = 0; i < this.once; i++) {
+								// 当DOM渲染完就退出
+								if (this.countOfRender >= this.total) return;
+								temp.push(this.data[this.countOfRender]);
+								this.countOfRender += 1;
+							}
+							this.list = this.list.concat(temp);
+							this.loop();
+						}, 500);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="run()">进页面</button>
+	</body>
+	<script>
+		function run() {
+			let res = [];
+			if (res.data.length == 1) {
+				console.log('runrnnn1')
+			} else {
+				console.log('runrnnn2')
+			}
+		}
+		var array = [{
+				"index_id": 119,
+				"area_id": "18335623",
+				"name": "满意度",
+				"value": "100",
+				time: "2022-6-16 05:05:05"
+			},
+			{
+				"index_id": 119,
+				"area_id": "18335624",
+				"name": "满意度",
+				"value": "20",
+				time: "2022-6-16 05:05:06"
+			},
+			{
+				"index_id": 119,
+				"area_id": "18335625",
+				"name": "满意度",
+				"value": "80",
+				time: "2022-6-16 05:05:15"
+			}
+		];
+
+
+		// 最大值
+		console.log(Math.max.apply(Math, this.array.map(item => {
+			return item.time
+		})))
+		// 最小值
+		console.log(Math.min.apply(Math, this.array.map(item => {
+			return new Date(item.time)
+		})))
+		
+		
+		console.log(200==='200')
+		console.log(200=='200')
+	</script>
+</html>
