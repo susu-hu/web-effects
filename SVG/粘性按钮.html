@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		:root {
+			--bg: #1a1e24;
+			--color: #eee;
+			--font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+		}
+
+		.wrapper {
+			padding: 1.5rem 0;
+			-webkit-filter: url('#goo');
+			filter: url('#goo');
+		}
+
+		.button {
+			display: inline-block;
+			text-align: center;
+			background: var(--color);
+			color: var(--bg);
+			font-weight: bold;
+			padding: 1.18em 1.32em 1.03em;
+			line-height: 1;
+			border-radius: 1em;
+			position: relative;
+			min-width: 8.23em;
+			text-decoration: none;
+			font-family: var(--font);
+			font-size: 1.25rem;
+		}
+
+		.button:before,
+		.button:after {
+			width: 4.4em;
+			height: 2.95em;
+			position: absolute;
+			content: "";
+			display: inline-block;
+			background: var(--color);
+			border-radius: 50%;
+			-webkit-transition: -webkit-transform 1s ease;
+			transition: -webkit-transform 1s ease;
+			transition: transform 1s ease;
+			transition: transform 1s ease, -webkit-transform 1s ease;
+			-webkit-transform: scale(0);
+			transform: scale(0);
+			z-index: -1;
+		}
+
+		.button:before {
+			top: -25%;
+			left: 20%;
+		}
+
+		.button:after {
+			bottom: -25%;
+			right: 20%;
+		}
+
+		.button:hover:before,
+		.button:hover:after {
+			-webkit-transform: none;
+			transform: none;
+		}
+
+		/* Demo styles */
+
+		body {
+			width: 100%;
+			height: 100%;
+			min-height: 100vh;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			background: var(--bg)
+		}
+	</style>
+	<body>
+		<div class="wrapper">
+			<a rel="nofollow" rel="noreferrer" class="button" href="#">Hover me!</a>
+		</div>
+
+		<svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="https://www.w3.org/2000/svg"
+			version="1.1">
+			<defs>
+				<filter id="goo">
+					<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+					<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+						result="goo" />
+					<feComposite in="SourceGraphic" in2="goo" operator="atop" />
+				</filter>
+			</defs>
+		</svg>
+	</body>
+</html>
