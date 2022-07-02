@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			height: 100vh;
+			background: #222;
+		}
+
+		#canvas {
+			position: absolute;
+			top: calc(50% - 300px);
+			left: calc(50% - 300px);
+			height: 600px;
+			width: 600px;
+		}
+	</style>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script type="text/javascript">
+		(function(window, document, undefined) {
+			var canvas, ctx, rect, mouse = {
+					x: 0,
+					y: 0
+				},
+				repulsion = 5000;
+			var points = [];
+
+			function distance(x1, y1, x2, y2) {
+				return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+			}
+
+			function mouseMoveHandler(e) {
+				mouse.x = e.clientX - rect.left;
+				mouse.y = e.clientY - rect.top;
+			}
+
+			function createGrid() {
+				var startX = 100,
+					endX = canvas.width - 200,
+					startY = 100,
+					endY = canvas.height - 200,
+					step = 20,
+					xPoints = endX / step,
+					yPoints = endY / step;
+				for (var i = 0; i <= xPoints; i++) {
+					for (var j = 0; j <= yPoints; j++) {
+						points.push({
+							x: (i * step) + startX,
+							y: (j * step) + startY,
+							dx: (i * step) + startX,
+							dy: (j * step) + startY,
+							update: function() {
+								var angle = Math.atan2(this.x - mouse.x, this.y - mouse.y);
+								var dist = repulsion / distance(mouse.x, mouse.y, this.x, this.y);
+								this.x += (Math.sin(angle) * dist) + (this.dx - this.x);
+								this.y += (Math.cos(angle) * dist) + (this.dy - this.y);
+							}
+						});
+					}
+				}
+			}
+
+			function draw() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				for (var i = 0; i < points.length; points[i++].update()) {
+					ctx.beginPath();
+					ctx.fillStyle = 'pink'
+					ctx.moveTo(points[i].x, points[i].y);
+					ctx.arc(points[i].x, points[i].y, 2, 0, Math.PI * 2, true);
+					ctx.fill();
+					ctx.closePath();
+				}
+			}
+
+			function loop() {
+				draw();
+				window.requestAnimationFrame(loop);
+			}
+
+			function init() {
+				canvas = document.getElementById('canvas');
+				canvas.height = 600;
+				canvas.width = 600;
+				ctx = canvas.getContext('2d');
+				rect = canvas.getBoundingClientRect();
+				createGrid();
+				loop();
+			}
+			window.onmousemove = mouseMoveHandler;
+			window.onload = init;
+		})(this, document);
+	</script>
+</html>

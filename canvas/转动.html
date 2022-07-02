@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>来自：https://wow.techbrood.com/fiddle/30870</title>
+	</head>
+	<style type="text/css">
+		body {
+			width: 100vw;
+			height: 100vh;
+			background: #292929;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			overflow: hidden;
+		}
+
+		body .canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		body .toggleClear {
+			color: #ecf0f1;
+			background: none;
+			padding: 10px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+	</style>
+	<body>
+		<div id="canvas" class="canvas"></div>
+		<button id="toggleClear" class="toggleClear">Toggle clear</button>
+	</body>
+	<script type="text/javascript">
+		'use strict';
+
+		function _possibleConstructorReturn(self, call) {
+			if (!self) {
+				throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+			}
+			return call && (typeof call === "object" || typeof call === "function") ? call : self;
+		}
+
+		function _inherits(subClass, superClass) {
+			if (typeof superClass !== "function" && superClass !== null) {
+				throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+			}
+			subClass.prototype = Object.create(superClass && superClass.prototype, {
+				constructor: {
+					value: subClass,
+					enumerable: false,
+					writable: true,
+					configurable: true
+				}
+			});
+			if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ =
+				superClass;
+		}
+
+		function _classCallCheck(instance, Constructor) {
+			if (!(instance instanceof Constructor)) {
+				throw new TypeError("Cannot call a class as a function");
+			}
+		}
+
+		var Vector2 = function() {
+			function Vector2(x, y) {
+				_classCallCheck(this, Vector2);
+
+				this.x = x;
+				this.y = y;
+			}
+
+			Vector2.prototype.getAngle = function getAngle() {
+				return Math.atan2(this.y, this.x);
+			};
+
+			Vector2.prototype.setAngle = function setAngle(angle) {
+				var length = this.getLength();
+				this.x = Math.cos(angle) * length;
+				this.y = Math.sin(angle) * length;
+			};
+
+			Vector2.prototype.getLength = function getLength() {
+				return Math.sqrt(this.x * this.x + this.y * this.y);
+			};
+
+			Vector2.prototype.setLength = function setLength(length) {
+				var angle = this.getAngle();
+				this.x = Math.cos(angle) * length;
+				this.y = Math.sin(angle) * length;
+			};
+
+			return Vector2;
+		}();
+
+		var Planet = function(_Vector) {
+			_inherits(Planet, _Vector);
+
+			function Planet(position, radius, color, speed, direction, orbitDiameter) {
+				_classCallCheck(this, Planet);
+
+				var _this = _possibleConstructorReturn(this, _Vector.call(this, position.x, position.y));
+
+				_this.x += orbitDiameter || 0;
+
+				_this.radius = radius;
+				_this.color = color;
+				_this.velocity = new Vector2(0, 0);
+				_this.velocity.setLength(speed);
+				_this.velocity.setAngle(direction);
+				_this.mass = 0;
+				return _this;
+			}
+
+			Planet.prototype.update = function update() {
+				this.x += this.velocity.x;
+				this.y += this.velocity.y;
+			};
+
+			Planet.prototype.angleTo = function angleTo(planet) {
+				return Math.atan2(planet.y - this.y, planet.x - this.x);
+			};
+
+			Planet.prototype.distanceTo = function distanceTo(planet) {
+				var dx = planet.x - this.x;
+				var dy = planet.y - this.y;
+
+				return Math.sqrt(dx * dx + dy * dy);
+			};
+
+			Planet.prototype.gravitateTo = function gravitateTo(planet) {
+				var gravity = new Vector2(0, 0);
+				var distance = this.distanceTo(planet);
+
+				gravity.setLength(planet.mass / (distance * distance));
+				gravity.setAngle(this.angleTo(planet));
+
+				this.velocity.x += gravity.x;
+				this.velocity.y += gravity.y;
+			};
+
+			return Planet;
+		}(Vector2);
+
+		var Experience = function() {
+			function Experience(container) {
+				_classCallCheck(this, Experience);
+
+				console.clear();
+
+				this.canvas = document.createElement('canvas');
+				container.appendChild(this.canvas);
+				this.context = this.canvas.getContext('2d');
+
+				var fps = 120;
+				this.fpsInterval = 1000 / fps;
+				this.then = Date.now();
+
+				this.planetsNumber = 2000;
+				this.planets = [];
+
+				this.clear = true;
+				this.resize();
+				this.bind();
+				this.init();
+			}
+
+			Experience.prototype.init = function init() {
+				this.star = new Planet(this.center, 100, 'white', 0, 0);
+				this.star.mass = 15000;
+				this.planets.push(this.star);
+
+				this.loop();
+			};
+
+			Experience.prototype.bind = function bind() {
+				window.addEventListener('resize', this.resize.bind(this), false);
+			};
+
+			Experience.prototype.render = function render() {
+				if (this.planets.length < this.planetsNumber) {
+					var speed = Math.random() * 4 + 8;
+					var orbitDiameter = speed * 25;
+					var planet = new Planet({
+						'x': this.star.x,
+						'y': this.star.y
+					}, 5, getRandomColor(), speed, -Math.PI / 2, orbitDiameter);
+					this.planets.push(planet);
+				}
+
+				for (var _iterator = this.planets, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ?
+						_iterator : _iterator[Symbol.iterator]();;) {
+					var _ref;
+
+					if (_isArray) {
+						if (_i >= _iterator.length) break;
+						_ref = _iterator[_i++];
+					} else {
+						_i = _iterator.next();
+						if (_i.done) break;
+						_ref = _i.value;
+					}
+
+					var planet = _ref;
+
+					if (planet.mass === 0) {
+						planet.gravitateTo(this.star);
+						planet.update();
+					}
+
+					this.context.beginPath();
+					this.context.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2, true);
+					this.context.fillStyle = planet.color;
+					this.context.fill();
+					this.context.closePath();
+				}
+			};
+
+			Experience.prototype.loop = function loop() {
+				this.raf = window.requestAnimationFrame(this.loop.bind(this));
+
+				var now = Date.now();
+				var delta = now - this.then;
+
+				if (delta > this.fpsInterval) {
+					if (this.clear === true) {
+						this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+					}
+					this.render();
+					this.then = now;
+				}
+			};
+
+			Experience.prototype.toggleClear = function toggleClear() {
+				this.clear = !this.clear;
+			};
+
+			Experience.prototype.resize = function resize() {
+				this.canvas.width = window.innerWidth;
+				this.canvas.height = window.innerHeight;
+				this.center = {
+					'x': this.canvas.width / 2,
+					'y': this.canvas.height / 2
+				};
+
+				this.reset();
+			};
+
+			Experience.prototype.reset = function reset() {
+				window.cancelAnimationFrame(this.raf);
+				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+				this.loop();
+			};
+
+			return Experience;
+		}();
+
+		var getRandomColor = function getRandomColor() {
+			var value = Math.floor(Math.random() * 255);
+			return '#' + value.toString(16) + value.toString(16) + value.toString(16);
+		};
+
+		var container = document.getElementById('canvas');
+		var experience = new Experience(container);
+
+		var toggleClearButton = document.getElementById('toggleClear');
+		toggleClearButton.addEventListener('click', function(e) {
+			experience.toggleClear();
+		}, false);
+	</script>
+</html>
