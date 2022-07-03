@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			background: pink;
+		}
+
+		.container,
+		.jar,
+		.pencil {
+			position: absolute;
+		}
+
+		.container {
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			width: 200px;
+			height: 300px;
+		}
+
+		.jar {
+			top: 93px;
+			width: 200px;
+			height: 220px;
+			background: #A5C4D4;
+			opacity: 0.5;
+			border: 5px solid #A2B9C4;
+			border-radius: 0 0 20px 20px;
+			border-top: none;
+		}
+
+		.jar:before,
+		.jar:after {
+			position: absolute;
+			content: '';
+			background: #FFF;
+			opacity: 0.5;
+		}
+
+		.jar:before {
+			top: 76px;
+			left: 184px;
+			width: 7px;
+			height: 120px;
+			border-radius: 100px;
+		}
+
+		.jar:after {
+			top: 200px;
+			left: 184px;
+			width: 7px;
+			height: 7px;
+			border-radius: 100%;
+		}
+
+		.pencil {
+			z-index: -1;
+			left: 40px;
+			width: 20px;
+			height: 280px;
+			background: #FFBA49;
+			border-radius: 3px;
+			box-shadow: 0 -5px 0 #A6B0B5, 0 -17px 0 #EF5B5B;
+			transform: rotate(-20deg);
+			transform-origin: bottom;
+		}
+
+		.pencil:before,
+		.pencil:after {
+			position: absolute;
+			content: '';
+		}
+
+		.pencil:before {
+			top: 280px;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 30px solid #B5864D;
+		}
+
+		.pencil:after {
+			top: 295px;
+			left: 5px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 15px solid #000;
+		}
+
+		.pencils .one {
+			left: 15px;
+			transform: rotate(12deg);
+		}
+
+		.pencils .two {
+			left: 30px;
+			transform: rotate(24deg);
+		}
+
+		.pencils .three {
+			left: 45px;
+			transform: rotate(36deg);
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="jar"></div>
+			<div class="pencils">
+				<div class="pencil one"></div>
+				<div class="pencil two"></div>
+				<div class="pencil three"></div>
+			</div>
+		</div>
+	</body>
+</html>
