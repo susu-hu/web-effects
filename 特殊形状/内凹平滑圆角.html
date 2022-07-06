@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body {
+			background-color: #222;
+		}
+
+		.a {
+			margin-top: 50px;
+			width: 300px;
+			height: 80px;
+			background:
+				linear-gradient(90deg, #9c27b0, #9c27b0 110px, transparent 110px, transparent 190px, #9c27b0 190px),
+				linear-gradient(90deg, #9c27b0, #9c27b0);
+
+			/* 	background:
+				linear-gradient(90deg, pink 325px, transparent 325px, transparent 425px, pink 425px),
+				linear-gradient(90deg, pink, pink); */
+			background-size: 100% 20px, 100% 100%;
+			background-position: 0 0, 0 20px;
+			background-repeat: no-repeat;
+			position: relative;
+
+		}
+
+		.a::before {
+			/* top: 0px;
+			position: absolute;
+			content: "";
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			left: 250px;
+			z-index: 99;
+			background: pink;
+			box-shadow: 40px 0 0 #fff, 80px 0 0 pink; */
+			position: absolute;
+			content: "";
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background: #9c27b0;
+			left: 90px;
+			box-shadow: 40px 0 0 #222, 80px 0 0 #9c27b0;
+		}
+
+		/* background: #fff;
+		box-shadow: 40px 0 0 #fff, 80px 0 0 #fff; */
+
+		.b {
+			margin-top: 50px;
+			width: 750px;
+			height: 90px;
+			background:
+				linear-gradient(90deg, pink 295px, transparent 295px, transparent 455px, pink 455px),
+				linear-gradient(90deg, pink, pink);
+			background-size: 100% 20px, 100% 100%;
+			background-position: 0 0, 0 20px;
+			background-repeat: no-repeat;
+			position: relative;
+
+		}
+
+		.b::before {
+			top: 0px;
+			position: absolute;
+			content: "";
+			width: 80px;
+			height: 80px;
+			/* border-radius: 50%; */
+			border-radius: 29%;
+			left: 255px;
+			z-index: 99;
+			background: pink;
+			box-shadow: 80px 0 0 #222, 160px 0 0 pink;
+
+		}
+
+		.g-container {
+			margin-top: 90px;
+			position: relative;
+			width: 300px;
+			height: 100px;
+
+
+		}
+
+		.g-container1::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 1;
+			background: radial-gradient(circle at 50% -10px, transparent 0, transparent 60px, #000 60px, #000 0);
+		}
+
+		.g-content {
+			height: 100px;
+			filter: contrast(20);
+			background-color: #fff;
+			overflow: hidden;
+
+		}
+
+		.g-filter {
+			filter: blur(10px);
+			height: 100px;
+			background: radial-gradient(circle at 50% -10px, transparent 0, transparent 39px, #000 40px, #000);
+		}
+	</style>
+	<body>
+		<div class="a"></div>
+		<div class="b"></div>
+		<div class="g-container">
+			<div class="g-content">
+				<div class="g-filter"></div>
+			</div>
+		</div>
+		
+		
+		<div class="g-container g-container1">
+		    <div class="g-content">
+		        <div class="g-filter"></div>
+		    </div>
+		</div>
+		
+	</body>
+</html>
