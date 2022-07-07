@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let p1 = new Promise((reslove,reject) => {
+			setTimeout(function() {
+				console.log('苏苏-执行1')
+				// reslove('123')
+				reject('err')
+			}, 3000);
+		})
+
+		let p2 = function p2(e) {
+			return new Promise((reslove) => {
+				setTimeout(function() {
+					console.log('苏苏-执行2')
+					reslove(e + '苏苏')
+				}, 400);
+			})
+
+		}
+
+		async function init() {
+			// let a = await p1;
+			// let b = await p2(a);
+			let a = await p1;
+			let b = await p2(a).then(res => {
+				console.log('res', res)
+			});
+			// console.log(b)
+
+			console.log('苏苏小苏苏', )
+		}
+		init()
+	</script>
+</html>
