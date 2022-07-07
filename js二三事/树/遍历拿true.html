@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var arr = [{
+				id: 1,
+				canAccess: false
+			},
+			{
+				id: 2,
+				canAccess: true
+			},
+			{
+				id: 3,
+				canAccess: false,
+				children: [{
+					id: 4,
+					canAccess: true
+				}]
+			},
+			{
+				id: 5,
+				canAccess: false,
+				children: [{
+					id: 6,
+					canAccess: false,
+					children: [{
+						id: 7,
+						canAccess: true
+					}]
+				}]
+			},
+			{
+				id: 8,
+				canAccess: true,
+				children: [{
+					id: 9,
+					canAccess: true,
+					children: [{
+						id: 10,
+						canAccess: false,
+						children: [{
+							id: 11,
+							canAccess: true
+						}]
+					}]
+				}]
+			}
+		]
+
+
+		let ids = ['2', '4', '7', '8', 9, 11];
+		let newArr = []; // 用来接收新id
+		var findCan = function(V) {
+			V.forEach(item => { // 把传入的数组循环遍历
+				if (ids.includes(item.id)) {
+					newArr.push(item); // item.canAccess 为true 把item添加到新数组
+				}
+				if (item.children) {
+					// console.log('有 children', item.children); // 有 children 的话就调用自身 
+					findCan(item.children) // 递归调用自身
+				}
+			})
+		}
+		findCan(arr) // 调用函数
+		console.log(newArr);
+	</script>
+</html>
