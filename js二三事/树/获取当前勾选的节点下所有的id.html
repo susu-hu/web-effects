@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let curr = {
+			"parentId": -1,
+			"name": "用户清单",
+			"id": 0,
+			"children": [{
+					"parentId": 0,
+					"name": "ces(1)",
+					"id": 1,
+					"children": null
+				},
+				{
+					"parentId": 0,
+					"name": "ces(xh)",
+					"id": 300,
+					"children": null
+				},
+				{
+					"parentId": 0,
+					"name": "cesec(qy1)",
+					"id": 301,
+					"children": [{
+						"parentId": 301,
+						"name": "sss(xh)",
+						"id": 500,
+						"children": null
+					}, ]
+				},
+			],
+		};
+		
+		let newArr = []; // 用来接收新id
+		var findCan = function(V) {
+			console.log(V)
+			V.forEach(item => { // 把传入的数组循环遍历
+				if (!item.checked) {
+					newArr.push(item.id);
+				}
+				if (item.children) {
+					findCan(item.children)
+				}
+			})
+		}
+		findCan([curr]) // 调用函数
+		console.log('list', newArr)
+	</script>
+</html>
