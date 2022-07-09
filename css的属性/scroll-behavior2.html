@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>锚点平滑跳转</title>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			nav {
+				width: 50%;
+				height: 50px;
+				text-align: center;
+				position: fixed;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 0;
+				background: green;
+			}
+
+			nav a {
+				display: inline-block;
+				line-height: 50px;
+				color: #FFF;
+				text-decoration: none;
+				padding: 0 30px;
+			}
+
+
+			.box {
+				width: 100%;
+				text-align: center;
+				font-size: 30px;
+				color: #FFF;
+			}
+
+			#box1 {
+				background: #d00;
+			}
+
+			#box2 {
+				background: #42a4ff;
+			}
+
+			#box3 {
+				background: #008080;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<a href="#box1">box1</a>
+			<a href="#box2">box2</a>
+			<a href="#box3">box3</a>
+		</nav>
+
+		<div id="box1" class=" box">box1</div>
+		<div id="box2" class=" box">box2</div>
+		<div id="box3" class=" box">box3</div>
+
+		<script>
+			onload = function() {
+				const _Height = document.documentElement.clientHeight;
+				const Box = document.getElementsByClassName('box');
+
+				for (var i = 0; i < Box.length; i++) {
+					Box[i].style.height = _Height + 'px'
+					Box[i].style.lineHeight = _Height + 'px'
+				}
+
+			}
+		</script>
+	</body>
+</html>

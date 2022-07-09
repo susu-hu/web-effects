@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body,
+		html {
+			padding: 0;
+			margin: 0;
+			scroll-behavior: smooth;
+		}
+
+		.box {
+			height: 100vh;
+			overflow: scroll;
+			scroll-behavior: smooth;
+		}
+
+		.fixed {
+			position: fixed;
+			bottom: 40px;
+			right: 50px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div class="box" id="box">
+			<div style="height: 100vh;background: pink;">
+				欢迎回来！
+			</div>
+			<div style="height: 100vh;background: yellow;">
+				欢迎回来111！
+			</div>
+			<div style="height: 100vh;background: red;">
+				欢迎回来2222！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来333！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来444！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来5566！
+			</div>
+			<div style="height: 60vh;">
+				欢迎回来6666！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来7777！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来8888！
+			</div>
+			<div style="height: 100vh;">
+				欢迎回来999！
+			</div>
+			<div class="fixed" onclick="goBack1()">
+				返回顶部
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function goBack1() {
+			// 当前窗口：
+			// scroll(0, 0)
+			// scrollTo(0, 0)
+			// window.scrollTo(0,0)
+			// scrollTo() 方法可把内容滚动到指定的坐标。
+			// 指定元素
+			let dom=document.getElementById('box');
+			dom.scrollTo(0,0);
+		}
+
+		function goBack() {
+			//把内容滚动指定的像素数（第一个参数是向右滚动的像素数，第二个参数是向下滚动的像素数）
+
+			//向上是负数，向下是正数
+
+			window.scrollBy(0, -100);
+
+			//延时递归调用，模拟滚动向上效果
+
+			scrolldelay = setTimeout('goScrollTop()', 100);
+
+			//获取scrollTop值，声明了DTD的标准网页取document.documentElement.scrollTop，否则取document.body.scrollTop；因为二者只有一个会生效，另一个就恒为0，所以取和值可以得到网页的真正的scrollTop值
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop;
+
+			//判断当页面到达顶部，取消延时代码（否则页面滚动到顶部会无法再向下正常浏览页面）
+
+			if (sTop == 0) clearTimeout(scrolldelay);
+		}
+	</script>
+</html>

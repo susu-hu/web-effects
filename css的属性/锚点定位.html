@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		html,
+		body {
+			scroll-behavior: smooth;
+		}
+
+		.box {
+			width: 200px;
+			height: 100px;
+			border: 1px solid #ddd;
+			overflow: hidden;
+		}
+
+		.list {
+			width: 200px;
+			height: 100px;
+			line-height: 100px;
+			background: #ddd;
+			font-size: 80px;
+			text-align: center;
+		}
+
+		.link {
+			width: 200px;
+			padding-top: 10px;
+			text-align: right;
+		}
+
+		.click {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			border: 1px solid #ccc;
+			background: #f7f7f7;
+			color: #333;
+			font-size: 12px;
+			font-weight: bold;
+			text-align: center;
+			text-decoration: none;
+		}
+
+		.click:hover {
+			background: #eee;
+			color: #345;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="list" id="one">1</div>
+			<div class="list" id="two">2</div>
+			<div class="list" id="three">3</div>
+			<div class="list" id="four">4</div>
+		</div>
+		<div class="link">
+			<a class="click" href="#one">1</a>
+			<a class="click" href="#two">2</a>
+			<a class="click" href="#three">3</a>
+			<a class="click" href="#four">4</a>
+		</div>
+	</body>
+</html>
