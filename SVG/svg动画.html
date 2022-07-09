@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		html {
+			font-size: 16px;
+		}
+
+		body {
+			font-family: sans-serif;
+		}
+
+		.contain {
+			display: flex;
+			justify-content: center;
+			padding: .65rem;
+			box-sizing: border-box;
+		}
+
+		.contain svg {
+			transform: rotate(-90deg);
+		}
+
+		.path {
+			stroke-dashoffset: 1000;
+			animation: run 3s infinite linear;
+		}
+
+		@keyframes run {
+			to {
+				stroke-dashoffset: 0;
+			}
+		}
+	</style>
+	<body>
+		<div class="contain">
+			<svg x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200">
+				<circle class="path" stroke="hotpink" fill="none" stroke-width="5" stroke-dasharray="100" cx="100"
+					cy="100" r="80" />
+			</svg>
+			<svg x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200">
+				<circle class="path" stroke="hotpink" fill="none" stroke-width="5" stroke-dasharray="500" cx="100"
+					cy="100" r="80" />
+			</svg>
+			<svg x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200">
+				<circle class="path" stroke="hotpink" fill="none" stroke-width="5" stroke-dasharray="1000" cx="100"
+					cy="100" r="80" />
+			</svg>
+		</div>
+
+	</body>
+</html>
