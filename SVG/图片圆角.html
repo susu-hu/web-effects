@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.range-txt {
+			color: #999;
+			font-size: 12px;
+		}
+	</style>
+	<body>
+		<strong>这是原图</strong>
+		<p><img src="https://i.postimg.cc/mgsKJGLw/susu1.jpg" width="256" height="191"></p>
+		<strong>这是SVG实现</strong>
+		<p>水平圆角大小：<span class="range-txt"> 0 <input id="radiusH" type="range" min="0" max="128" value="128"> 128</span>
+		</p>
+		<p>垂直圆角大小：<span class="range-txt"> 0 <input id="radiusV" type="range" min="0" max="96" value="96"> 96</span></p>
+		<svg width="256" height="191">
+			<desc>SVG圆角效果</desc>
+			<defs>
+				<pattern id="raduisImage" patternUnits="userSpaceOnUse" width="256" height="191">
+					<image xlink:href="https://i.postimg.cc/mgsKJGLw/susu1.jpg" x="0" y="0" width="256" height="191" />
+				</pattern>
+			</defs>
+			<rect x="0" y="0" width="256" height="191" rx="128" ry="95" fill="url(#raduisImage)"></rect>
+			<!-- 圆形使用下面这个 -->
+			<circle cx="128" cy="95.5" r="95.5" fill="url(#raduisImage)"></circle>
+		</svg>
+
+
+	</body>
+	<script type="text/javascript">
+		var rect = document.getElementsByTagName("rect")[0];
+		if (rect && [].forEach) {
+			["H", "V"].forEach(function(type, index) {
+				var input = document.getElementById("radius" + type);
+				input && input.addEventListener("change", function() {
+					var value = this.value * 1,
+						val_min = this.getAttribute("min"),
+						val_max = this.getAttribute("max");
+					value = value || 0;
+					if (val_min && val_max) {
+						if (value < val_min) value = val_min;
+						if (value > val_max) value = val_max;
+
+						// IE9等不支持range类型的浏览器
+						if (this.type != "range") this.value = value;
+						// 设置水平圆角
+						rect.setAttribute(index ? "ry" : "rx", value);
+					}
+				});
+			});
+		}
+	</script>
+</html>
