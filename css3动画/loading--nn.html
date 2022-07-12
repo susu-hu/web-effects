@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.loading14 {
+			width: 120px;
+			height: 60px;
+			border-radius: 200px 200px 0 0;
+			background: radial-gradient(farthest-side at bottom, pink 0 95%, #0000 0) bottom/0% 0% no-repeat #ddd;
+			-webkit-mask: repeating-radial-gradient(farthest-side at bottom, #0000 0, #000 1px 12%, #0000 calc(12% + 1px) 20%);
+			mask: repeating-radial-gradient(farthest-side at bottom, #0000 0, #000 1px 12%, #0000 calc(12% + 1px) 20%);
+			animation: l5 2s infinite steps(6);
+		}
+
+		@keyframes l5 {
+			100% {
+				background-size: 120% 120%;
+			}
+		}
+
+
+		.loading16 {
+			width: 120px;
+			height: 120px;
+			border-radius: 50%;
+			background: linear-gradient(pink 0 0) bottom/100% 0% no-repeat #ddd;
+			-webkit-mask: linear-gradient(0deg, #000 55%, #0000 0) bottom/100% 18.18%;
+			mask: linear-gradient(0deg, #000 55%, #0000 0) bottom/100% 18.18%;
+			animation: l6 2s infinite steps(7);
+		}
+
+		@keyframes l6 {
+			100% {
+				background-size: 100% 115%;
+			}
+		}
+
+		.loading17 {
+			width: 120px;
+			height: 24px;
+
+			-webkit-mask:radial-gradient(circle  closest-side at bottom, #000 94%, #000) 0 0/25% 100% ,
+				linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat;
+			background: linear-gradient(pink 0 0) 0/0% no-repeat #ddd;
+			animation: l8 2s infinite linear;
+		}
+
+		@keyframes l8 {
+			100% {
+				background-size: 100%;
+			}
+		}
+
+		.loading18 {
+			width: 120px;
+			height: 24px;
+			border-radius: 20px;
+			border: 1px solid pink;
+			position: relative;
+		}
+
+		.loading18::after {
+			content: '';
+			position: absolute;
+			margin: 2px;
+			inset: 0 100% 0 0;
+			border-radius: inherit;
+			background-color: pink;
+			animation: l9 2s infinite;
+		}
+
+		@keyframes l9 {
+			100% {
+				inset: 0;
+			}
+		}
+	</style>
+	<body>
+		<div class="loading14"></div>
+		<div class="loading16"></div>
+		<div class="loading17"></div>
+		<div class="loading18"></div>
+	</body>
+</html>

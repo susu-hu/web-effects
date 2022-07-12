@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>柱状图</title>
+		<!-- 引入echarts.js文件 -->
+		<script src="./js/echarts.js"></script>
+	</head>
+	<style type="text/css">
+		.dv-border-svg-container{
+			background: #222;
+		}
+	</style>
+	<body>
+		<svg width="680" height="240" class="dv-border-svg-container">
+			<defs>
+				<path id="border-box-8-path-5253d59fa5ca41dcadf9a17fa9379186"
+					d="M 2.5, 2.5 L 2.5, 237.5 L 677.5, 237.5 L 677.5, 2.5 L 2.5, 2.5" fill="transparent"></path>
+				<radialGradient id="border-box-8-gradient-5253d59fa5ca41dcadf9a17fa9379186" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#fff" stop-opacity="1"></stop>
+					<stop offset="100%" stop-color="#fff" stop-opacity="0"></stop>
+				</radialGradient>
+				<mask id="border-box-8-mask-5253d59fa5ca41dcadf9a17fa9379186">
+					<circle cx="0" cy="0" r="150" fill="url(#border-box-8-gradient-5253d59fa5ca41dcadf9a17fa9379186)">
+						<animateMotion dur="3s" path="M 2.5, 2.5 L 2.5, 237.5 L 677.5, 237.5 L 677.5, 2.5 L 2.5, 2.5"
+							rotate="auto" repeatCount="indefinite"></animateMotion>
+					</circle>
+				</mask>
+			</defs>
+			<polygon fill="transparent" points="5, 5 675, 5 675 235 5, 235"></polygon>
+			<use stroke-width="1" xlink:href="#border-box-8-path-5253d59fa5ca41dcadf9a17fa9379186" stroke="#235fa7">
+			</use>
+			<use stroke-width="3" xlink:href="#border-box-8-path-5253d59fa5ca41dcadf9a17fa9379186"
+				mask="url(#border-box-8-mask-5253d59fa5ca41dcadf9a17fa9379186)" stroke="#4fd2dd">
+				<animate attributeName="stroke-dasharray" from="0, 1830" to="1830, 0" dur="3s" repeatCount="indefinite">
+				</animate>
+			</use>
+		</svg>
+		<div id="box1" style="width: 600px; height: 400px;"></div>
+		<button id="modify">修改数据</button>
+		<button id="add">增加数据</button>
+		<script>
+			let myCharts = echarts.init(document.querySelector('#box1'))
+			let xDataArr = ['张三', '李四', '王五', '大明', '小明', '大妞', '二妞', '大强']
+			let yDataArr1 = [88, 92, 63, 77, 94, 80, 72, 86]
+			let options = {
+				animation: true, //控制动画示否开启
+				// animationDuration:5000, // 动画的时长，它是以毫秒为单位
+				animationDuration: (arg) => {
+					console.log(arg);
+					return 1000 * arg
+				},
+				animationEasing: 'bounceOut', //缓动动画
+				animationThreshold: 8, //动画元素的阈值
+				xAxis: {
+					type: 'category',
+					data: xDataArr
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [{
+					name: '语文',
+					type: 'bar',
+					markPoint: {
+						data: [{
+								type: 'max',
+								name: '最大值'
+							},
+							{
+								type: 'min',
+								name: '最小值'
+							}
+						]
+					},
+					markLine: {
+						data: [{
+							type: 'average',
+							name: '平均值'
+						}]
+					},
+					data: yDataArr1
+				}],
+			}
+			myCharts.setOption(options)
+			let btnModify = document.querySelector('#modify')
+			btnModify.onclick = function() {
+				let newYDataArr = [68, 32, 99, 77, 94, 80, 72, 86]
+				//setOption 可以设置多次
+				// 新的option 和 旧的option
+				// 新旧option的关系并不是相互覆盖的关系，是相互整合的关系
+				// 我们在设置新的option的时候，只需要考虑到变化的部分就可以
+				let options = {
+					series: [{
+						data: newYDataArr
+					}],
+				}
+				myCharts.setOption(options)
+			}
+			let btnAdd = document.querySelector('#add')
+			btnAdd.onclick = function() {
+				let yDataArr2 = [90, 85, 70, 85, 92, 85, 85, 93]
+				xDataArr.push('小长')
+				yDataArr1.push(90)
+				let options = {
+					legend: {
+						data: [
+							'语文', '数学'
+						]
+					},
+					xAxis: {
+						data: xDataArr
+					},
+					series: [{
+							data: yDataArr1
+						},
+						{
+							name: '数学',
+							type: 'bar',
+							markPoint: {
+								data: [{
+										type: 'max',
+										name: '最大值'
+									},
+									{
+										type: 'min',
+										name: '最小值'
+									}
+								]
+							},
+							markLine: {
+								data: [{
+									type: 'average',
+									name: '平均值'
+								}]
+							},
+							data: yDataArr2
+						}
+					],
+				}
+				myCharts.setOption(options)
+			}
+		</script>
+	</body>
+</html>
