@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			background-color: black;
+		}
+
+		body {
+			display: flex;
+		}
+
+		.g-triangle {
+			position: relative;
+			margin: auto;
+			width: 1px;
+			height: 1px;
+			padding-top: 300px;
+			/* animation: change 10s infinite linear; */
+
+
+		}
+
+		.g-triangle::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			border: 60px solid transparent;
+			border-left: 120px solid #f48;
+			filter: url(#blur);
+		}
+
+		.g-triangle::after {
+			content: "";
+			position: absolute;
+			top: 12px;
+			left: -5px;
+			width: 0;
+			height: 0;
+			border: 60px solid transparent;
+			border-left: 120px solid #f48;
+			transform: scale(.75);
+			filter: blur(8px);
+		}
+
+
+		@keyframes change {
+			100% {
+				filter: hue-rotate(360deg);
+			}
+		}
+	</style>
+	<body>
+		<div class="g-triangle"></div>
+		<svg width="0">
+			<filter id="blur" color-interpolation-filters="sRGB">
+				<feGaussianBlur stdDeviation="10" />
+				<feComponentTransfer>
+					<feFuncA type="table" tableValues="0 0 10" />
+				</feComponentTransfer>
+			</filter>
+		</svg>
+	</body>
+</html>
