@@ -106,6 +106,9 @@
 				}
 				myCharts.setOption(options)
 			}
+			window.addEventListener("resize", () => {
+				myCharts.resize();
+			});
 		</script>
 	</body>
 </html>

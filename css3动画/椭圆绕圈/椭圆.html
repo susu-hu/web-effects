@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			.ellipse {
+				width: 160px;
+				height: 160px;
+				border-radius: 50%;
+				position: absolute;
+				border: 2px #555 solid;
+				transform-style: preserve-3d;
+				transform: rotateZ(90deg) rotateY(70deg);
+			}
+
+			.ellipse .circle {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				position: absolute;
+				background: pink;
+				animation: move 10s linear infinite;
+			}
+
+			.ellipse .circle2 {
+				animation: move2 10s linear infinite;
+			}
+
+			.ellipse .circle3 {
+				animation: move3 10s linear infinite;
+			}
+
+			.ellipse .circle4 {
+				animation: move4 10s linear infinite;
+			}
+
+			@keyframes move {
+				from {
+					transform: rotateZ(0) translateX(80px) rotateZ(0) rotateY(-70deg);
+				}
+
+				to {
+					transform: rotateZ(360deg) translateX(80px) rotateZ(-360deg) rotateY(-70deg);
+				}
+			}
+
+			@keyframes move2 {
+				from {
+					transform: rotateZ(-180deg) translateX(80px) rotateZ(180deg) rotateY(-70deg);
+				}
+
+				to {
+					transform: rotateZ(180deg) translateX(80px) rotateZ(-180deg) rotateY(-70deg);
+				}
+			}
+
+			@keyframes move3 {
+				from {
+					transform: rotateZ(-90deg) translateX(80px) rotateZ(90deg) rotateY(-70deg);
+				}
+
+				to {
+					transform: rotateZ(270deg) translateX(80px) rotateZ(-270deg) rotateY(-70deg);
+				}
+			}
+
+			@keyframes move4 {
+				from {
+					transform: rotateZ(-270deg) translateX(80px) rotateZ(270deg) rotateY(-70deg);
+				}
+
+				to {
+					transform: rotateZ(90deg) translateX(80px) rotateZ(-90deg) rotateY(-70deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ellipse">
+			<div class="circle circle1"></div>
+			<!-- <div class="circle circle2"></div>
+ 			<div class="circle circle3"></div>
+ 			<div class="circle circle4"></div> -->
+		</div>
+	</body>
+</html>
