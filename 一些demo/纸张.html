@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>http://demo.htmleaf.com/1903/201903198265/index.html</title>
+	</head>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Raleway:300,400,900');
+
+		/* Header */
+		.coidea-header {
+			position: fixed;
+			display: block;
+			width: 96%;
+			width: calc(100% - 32px);
+			height: 40px;
+			margin: 0 auto;
+			color: #3498db;
+			text-align: center;
+			bottom: 16px;
+			right: 16px;
+			left: 16px;
+			z-index: 1000;
+		}
+
+		.coidea-header .coidea-links .coidea-icon-back {
+			position: absolute;
+			display: block;
+			width: 24px;
+			height: 24px;
+			padding: 7px;
+			color: rgba(0, 0, 0, 0.75);
+			font-size: 32px;
+			line-height: 34px;
+			font-weight: 900;
+			font-family: 'Raleway', sans-serif;
+			text-decoration: none;
+			outline: 0px none;
+			outline: 0px;
+			transition: all .3s ease;
+			top: 0px;
+			right: 78px;
+			z-index: 2;
+		}
+
+		.coidea-header .coidea-links .coidea-icon-back::before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 34px;
+			height: 34px;
+			top: 7px;
+			left: 20px;
+			border-radius: 0px;
+			background-color: rgba(0, 0, 0, .35);
+		}
+
+		.coidea-header .coidea-links .coidea-icon-back:hover {
+			color: rgba(0, 0, 0, 1);
+		}
+
+		.coidea-header .coidea-links .coidea-icon-github {
+			position: absolute;
+			display: block;
+			width: 24px;
+			height: 24px;
+			padding: 7px;
+			color: rgba(0, 0, 0, 0.75);
+			font-size: 32px;
+			line-height: 34px;
+			font-weight: 900;
+			font-family: 'Raleway', sans-serif;
+			text-decoration: none;
+			outline: 0px none;
+			outline: 0px;
+			transition: all .3s ease;
+			top: 0;
+			right: 16px;
+			z-index: 2;
+		}
+
+		.coidea-header .coidea-links .coidea-icon-github::before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 34px;
+			height: 34px;
+			top: 7px;
+			right: -14px;
+			border-radius: 0px;
+			background-color: rgba(0, 0, 0, .35);
+		}
+
+		.coidea-header .coidea-links .coidea-icon-github:hover {
+			color: rgba(0, 0, 0, 1);
+		}
+
+		.coidea-header .coidea-links .coidea-header {
+			font-family: 'Raleway', sans-serif;
+			display: inline-block;
+			font-size: 14px;
+			font-weight: 300;
+			margin: 0;
+			padding: 17px 0;
+			z-index: 1;
+		}
+
+		@media screen and (max-width: 360px) {
+			.coidea-header .coidea-links .coidea-header {
+				font-size: 12px;
+			}
+		}
+
+		/**
+		 * demo.css
+		 * https://coidea.website
+		 *
+		 * Licensed under the MIT license.
+		 * http://www.opensource.org/licenses/mit-license.php
+		 * 
+		 * Copyright 2018, COIDEA
+		 * https://coidea.website
+		 */
+
+		@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700");
+		@import url("https://fonts.googleapis.com/css?family=Old+Standard+TT:400,700");
+
+		html,
+		body {
+			font-family: "Old Standard TT", serif;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+			font-size: 18px;
+			line-height: 28px;
+		}
+
+		body {
+		 background-color: white;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		strong {
+			font-weight: 700;
+		}
+
+		section.products .navigation {
+			position: fixed;
+			display: block;
+			width: 28px;
+			height: 24px;
+			top: 16px;
+			right: 16px;
+			z-index: 100;
+		}
+
+		section.products .navigation .hamburger {
+			cursor: pointer;
+			width: 26px;
+			height: 18px;
+			position: relative;
+			display: block;
+		}
+
+		section.products .navigation .hamburger .line {
+		 display: block;
+			background: black;
+			width: 26px;
+			height: 2px;
+			position: absolute;
+			right: 0;
+			transition: all 0.4s;
+		}
+
+		section.products .navigation .hamburger .line.line-1 {
+			top: 0;
+			width: 38px;
+		}
+
+		section.products .navigation .hamburger .line.line-2 {
+			top: 50%;
+			width: 32px;
+		}
+
+		section.products .navigation .hamburger .line.line-3 {
+			top: 100%;
+		}
+
+		section.products .navigation .hamburger:hover .line-1,
+		section.products .navigation .hamburger:focus .line-1 {
+			transform: translateY(-1px);
+		}
+
+		section.products .navigation .hamburger:hover .line-3,
+		section.products .navigation .hamburger:focus .line-3 {
+			transform: translateY(1px);
+		}
+
+		section.products .navigation .hamburger.active .line-1 {
+		 transform: translateY(9px) translateX(0) rotate(45deg);
+			width: 26px;
+		}
+
+		section.products .navigation .hamburger.active .line-2 {
+			opacity: 0;
+		}
+
+		section.products .navigation .hamburger.active .line-3 {
+			transform: translateY(-9px) translateX(0) rotate(-45deg);
+		}
+
+		section.products .product {
+			position: absolute;
+			display: block;
+			width: 100%;
+			width: 100vw;
+		 height: 100%;
+			height: 100vh;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			-webkit-box-shadow: 0 -7px 31px rgba(0, 0, 0, 0.15), 0 7px 15px rgba(0, 0, 0, 0.11);
+			box-shadow: 0 -7px 31px rgba(0, 0, 0, 0.15), 0 7px 15px rgba(0, 0, 0, 0.11);
+			transition: box-shadow 0.4s;
+			overflow-y: auto;
+		}
+
+		section.products .product .product-inner {
+			padding: 16px;
+		}
+
+		section.products .product .product-inner h2 {
+			position: absolute;
+			display: block;
+			font-family: "Roboto Condensed", sans-serif;
+			font-size: 16px;
+		 line-height: 34px;
+			font-weight: 700;
+			text-transform: uppercase;
+			margin: 0;
+			padding: 0;
+			z-index: 2;
+			width: 148px;
+		}
+
+		@media screen and (max-width: 768px) {
+			section.products .product .product-inner h2 {
+				width: 120px;
+				transform: rotate(90deg);
+				top: 56px;
+				left: -30px;
+			}
+		}
+
+		section.products .product .product-inner h2 a {
+			color: inherit;
+			text-decoration: none;
+			outline: 0px none;
+			outline: 0px;
+			transition: all 0.4s;
+		}
+
+		section.products .product .product-inner h2 a span {
+			width: 32px;
+			height: 32px;
+			line-height: 34px;
+			font-weight: 300;
+			text-align: center;
+			position: relative;
+			display: inline-block;
+			margin-right: 8px;
+		}
+
+		section.products .product .product-inner h2 a small {
+			font-size: 16px;
+			transition: all 0.4s;
+		}
+
+		section.products .product .product-inner h2 a:hover small {
+			letter-spacing: 2px;
+		}
+
+		@media screen and (max-width: 768px) {
+			section.products .product .product-inner h2 a:hover small {
+				letter-spacing: 0;
+			}
+		}
+
+		section.products .product .product-inner ul {
+			position: absolute;
+			display: block;
+			width: 32px;
+			height: auto;
+			margin: 36px 0 8px;
+			padding: 0;
+			list-style-type: none;
+			overflow: hidden;
+			z-index: 2;
+		}
+
+		@media screen and (max-width: 768px) {
+			section.products .product .product-inner ul {
+				margin: 118px 0 8px;
+			}
+		}
+
+		section.products .product .product-inner ul li {
+			position: relative;
+			display: block;
+			width: 32px;
+			height: auto;
+		}
+
+		section.products .product .product-inner ul li a {
+			position: relative;
+			display: block;
+			width: 28px;
+			height: auto;
+			padding: 8px 0;
+			transition: all 0.4s;
+		}
+
+		section.products .product .product-inner ul li a svg {
+			width: 15px;
+			height: auto;
+			fill: black;
+			margin: 0 auto;
+			display: block;
+			transition: all 0.4s;
+		}
+
+		section.products .product .product-inner ul li a:hover svg#facebook-icon {
+			fill: #3A559F;
+		}
+
+		section.products .product .product-inner ul li a:hover svg#twitter-icon {
+			fill: #50ABF1;
+		}
+
+		section.products .product .product-inner ul li a:hover svg#google-icon {
+			fill: #DD4B39;
+		}
+
+		section.products .product .product-inner ul:hover li a {
+			margin-bottom: 8px;
+		}
+
+		section.products .product .product-inner .product-description {
+			position: relative;
+			display: block;
+			padding: 64px 82px 32px;
+			overflow: hidden;
+		}
+
+		@media screen and (max-width: 992px) {
+			section.products .product .product-inner .product-description {
+				padding: 32px 54px 32px;
+			}
+		}
+
+		section.products .product .product-inner .product-description .product-description-detail {
+			position: relative;
+			display: block;
+			width: 38%;
+			height: auto;
+			overflow: hidden;
+			float: left;
+		}
+
+		@media screen and (max-width: 1360px) {
+			section.products .product .product-inner .product-description .product-description-detail {
+				width: 30%;
+			}
+		}
+
+		@media screen and (max-width: 1140px) {
+			section.products .product .product-inner .product-description .product-description-detail {
+				width: 65%;
+			}
+		}
+
+		@media screen and (max-width: 992px) {
+			section.products .product .product-inner .product-description .product-description-detail {
+				width: 100%;
+			}
+		}
+
+		section.products .product .product-inner .product-description .product-description-links {
+			position: relative;
+			display: block;
+			width: 22%;
+			width: calc(24% - 128px);
+			height: auto;
+			overflow: hidden;
+			float: left;
+			padding: 0 64px;
+		}
+
+		@media screen and (max-width: 1140px) {
+			section.products .product .product-inner .product-description .product-description-links {
+				width: calc(35% - 128px);
+			}
+		}
+
+		@media screen and (max-width: 992px) {
+			section.products .product .product-inner .product-description .product-description-links {
+				width: 100%;
+				padding: 0;
+			}
+		}
+
+		section.products .product .product-inner .product-description .product-description-links .contact-us {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			border-top: 2px solid black;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links .quote {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			border-bottom: 2px solid black;
+			padding: 16px 0;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links .quote svg {
+			position: relative;
+			display: block;
+			font-size: 32px;
+			line-height: 32px;
+			font-weight: 700;
+			width: 32px;
+			height: 32px;
+			fill: black;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links .quote svg:last-child {
+			float: right;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links .quote p {
+			font-size: 14px;
+			line-height: 24px;
+			font-weight: 700;
+			padding: 0 16px;
+			margin: 8px 0;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links ul {
+			position: relative;
+			display: block;
+		 width: 100%;
+			height: auto;
+			margin: 0 !important;
+			padding: 16px 0 !important;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links ul li {
+			position: relative;
+			width: 100%;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links ul li a {
+			width: 100%;
+			height: auto;
+			color: black;
+			font-size: 16px;
+			line-height: 16px;
+			padding: 12px 0 11px;
+		 margin: 0 !important;
+			text-decoration: none;
+			border-bottom: 1px solid black;
+			transition: all 0.4s;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links ul li a:hover {
+			letter-spacing: 2px;
+		}
+
+		section.products .product .product-inner .product-description .product-description-links ul li:last-child a {
+			border: none;
+		}
+
+		section.products .product .product-inner .product-description .product-description-headline {
+			position: relative;
+			display: block;
+			width: 38%;
+			height: auto;
+			overflow: hidden;
+			float: left;
+		}
+
+		@media screen and (max-width: 1360px) {
+			section.products .product .product-inner .product-description .product-description-headline {
+				width: 46%;
+			}
+		}
+
+		@media screen and (max-width: 1140px) {
+			section.products .product .product-inner .product-description .product-description-headline {
+				width: 100%;
+			}
+		}
+
+		section.products .product .product-inner .product-description .product-description-headline h1 {
+			margin: 0;
+			padding: 80px 0;
+			font-family: "Roboto Condensed", sans-serif;
+			font-size: 72px;
+		 line-height: 62px;
+			font-weight: 700;
+			text-transform: uppercase;
+			transform: scaleY(2);
+		}
+
+		@media screen and (max-width: 600px) {
+			section.products .product .product-inner .product-description .product-description-headline h1 {
+				font-size: 36px;
+				line-height: 36px;
+			}
+		}
+
+		@media screen and (max-width: 400px) {
+			section.products .product .product-inner .product-description .product-description-headline h1 {
+				font-size: 18px;
+				line-height: 18px;
+				transform: scaleY(1.4);
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			section.products .product.active .product-inner h2 {
+				transform: rotate(90deg);
+				top: 56px;
+				left: -30px;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			section.products .product.active .product-inner ul {
+				margin: 118px 0 8px;
+		 }
+		}
+
+		section.products .product.duststrom {
+			background-color: #c7eae4;
+			z-index: 1;
+			box-shadow: none !important;
+		}
+
+		section.products .product.duststrom .product-inner h2 span {
+			background-color: black;
+			color: #c7eae4;
+		}
+
+		section.products .product.parrotpink {
+			background-color: #a7e8bd;
+			z-index: 2;
+		}
+
+		section.products .product.parrotpink .product-inner h2 span {
+			background-color: black;
+			color: #a7e8bd;
+		}
+
+		section.products .product.raspberryrose {
+			background-color: #fcbcb8;
+			z-index: 3;
+		}
+
+		section.products .product.raspberryrose .product-inner h2 span {
+			background-color: black;
+			color: #fcbcb8;
+		}
+
+		section.products .product.burgundy {
+			background-color: #efa7a7;
+			z-index: 4;
+		}
+
+		section.products .product.burgundy .product-inner h2 span {
+			background-color: black;
+			color: #efa7a7;
+		}
+
+		section.products .product.zinnwalditebrown {
+			background-color: #ffd972;
+			z-index: 5;
+		}
+
+		section.products .product.zinnwalditebrown .product-inner h2 span {
+			background-color: black;
+			color: #ffd972;
+		}
+
+		section.products .product:hover {
+			-webkit-box-shadow: 0 -15px 31px rgba(0, 0, 0, 0.2), 0 -15px 15px rgba(0, 0, 0, 0.11);
+			box-shadow: 0 -15px 31px rgba(0, 0, 0, 0.15), 0 15px 15px rgba(0, 0, 0, 0.16);
+		}
+	</style>
+	<body>
+		<!-- COIDEA:header START -->
+		<header class="coidea-header">
+			<div class="coidea-links">
+				<a class="coidea-icon-back" href="http://www.htmleaf.com/jQuery/Layout-Interface/201903195570.html"
+					title="返回下载页">B</a>
+				<a class="coidea-icon-github" href="https://github.com/COIDEAwebsite/navigation-in-print-media-style"
+					target="_blank" title="This article on Github">G</a>
+			</div>
+		</header>
+		<!-- COIDEA:header END -->
+
+		<!-- coidea:products START -->
+		<section class="products">
+
+			<!-- coidea:products:navigation START -->
+			<div class="navigation">
+				<div id="hamburger" class="hamburger">
+					<div class="line line-1"></div>
+					<div class="line line-2"></div>
+					<div class="line line-3"></div>
+				</div>
+			</div>
+			<!-- coidea:products:navigation END -->
+
+			<!-- coidea:products:products:product START -->
+			<div class="product duststrom" data-index="0">
+				<div class="product-inner">
+					<h2>
+						<a class="link" href="">
+							<span>01</span><small>Armwear</small>
+						</a>
+					</h2>
+					<ul class="social">
+						<li>
+							<a href="#!">
+								<svg id="facebook-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="facebook"
+											d="M158.081,83.3c0,10.839,0,59.218,0,59.218h-43.385v72.412h43.385v215.183h89.122V214.936h59.805
+                      c0,0,5.601-34.721,8.316-72.685c-7.784,0-67.784,0-67.784,0s0-42.127,0-49.511c0-7.4,9.717-17.354,19.321-17.354
+                      c9.586,0,29.818,0,48.557,0c0-9.859,0-43.924,0-75.385c-25.016,0-53.476,0-66.021,0C155.878-0.004,158.081,72.48,158.081,83.3z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="twitter-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="twitter" d="M381.384,198.639c24.157-1.993,40.543-12.975,46.849-27.876
+                      c-8.714,5.353-35.764,11.189-50.703,5.631c-0.732-3.51-1.55-6.844-2.353-9.854c-11.383-41.798-50.357-75.472-91.194-71.404
+                      c3.304-1.334,6.655-2.576,9.996-3.691c4.495-1.61,30.868-5.901,26.715-15.21c-3.5-8.188-35.722,6.188-41.789,8.067
+                      c8.009-3.012,21.254-8.193,22.673-17.396c-12.27,1.683-24.315,7.484-33.622,15.919c3.36-3.617,5.909-8.025,6.45-12.769
+                      C241.68,90.963,222.563,133.113,207.092,174c-12.148-11.773-22.915-21.044-32.574-26.192
+                      c-27.097-14.531-59.496-29.692-110.355-48.572c-1.561,16.827,8.322,39.201,36.8,54.08c-6.17-0.826-17.453,1.017-26.477,3.178
+                      c3.675,19.277,15.677,35.159,48.169,42.839c-14.849,0.98-22.523,4.359-29.478,11.642c6.763,13.407,23.266,29.186,52.953,25.947
+                      c-33.006,14.226-13.458,40.571,13.399,36.642C113.713,320.887,41.479,317.409,0,277.828
+                      c108.299,147.572,343.716,87.274,378.799-54.866c26.285,0.224,41.737-9.105,51.318-19.39
+                      C414.973,206.142,393.023,203.486,381.384,198.639z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="google-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90px"
+									height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;"
+									xml:space="preserve">
+									<g>
+										<path id="google" d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+                      c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
+                      c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
+                      C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
+                      c-1.295-1.065-3.068-2.479-3.068-5.08c0-2.597,1.773-4.254,3.307-5.789c4.964-3.896,9.933-8.03,9.933-16.77
+                      c0-8.979-5.68-13.704-8.396-15.947h7.334L74.499,0z M64.103,72.279c0,7.322-6.033,12.753-17.385,12.753
+                      c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
+                      c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
+                      c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
+                      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- coidea:products:products:product END -->
+
+			<!-- coidea:products:products:product START -->
+			<div class="product parrotpink" data-index="1">
+				<div class="product-inner">
+					<h2>
+						<a class="link" href="">
+							<span>02</span><small>Dresses</small>
+						</a>
+					</h2>
+					<ul class="social">
+						<li>
+							<a href="#!">
+								<svg id="facebook-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="facebook"
+											d="M158.081,83.3c0,10.839,0,59.218,0,59.218h-43.385v72.412h43.385v215.183h89.122V214.936h59.805
+                      c0,0,5.601-34.721,8.316-72.685c-7.784,0-67.784,0-67.784,0s0-42.127,0-49.511c0-7.4,9.717-17.354,19.321-17.354
+                      c9.586,0,29.818,0,48.557,0c0-9.859,0-43.924,0-75.385c-25.016,0-53.476,0-66.021,0C155.878-0.004,158.081,72.48,158.081,83.3z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="twitter-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="twitter" d="M381.384,198.639c24.157-1.993,40.543-12.975,46.849-27.876
+                      c-8.714,5.353-35.764,11.189-50.703,5.631c-0.732-3.51-1.55-6.844-2.353-9.854c-11.383-41.798-50.357-75.472-91.194-71.404
+                      c3.304-1.334,6.655-2.576,9.996-3.691c4.495-1.61,30.868-5.901,26.715-15.21c-3.5-8.188-35.722,6.188-41.789,8.067
+                      c8.009-3.012,21.254-8.193,22.673-17.396c-12.27,1.683-24.315,7.484-33.622,15.919c3.36-3.617,5.909-8.025,6.45-12.769
+                      C241.68,90.963,222.563,133.113,207.092,174c-12.148-11.773-22.915-21.044-32.574-26.192
+                      c-27.097-14.531-59.496-29.692-110.355-48.572c-1.561,16.827,8.322,39.201,36.8,54.08c-6.17-0.826-17.453,1.017-26.477,3.178
+                      c3.675,19.277,15.677,35.159,48.169,42.839c-14.849,0.98-22.523,4.359-29.478,11.642c6.763,13.407,23.266,29.186,52.953,25.947
+                      c-33.006,14.226-13.458,40.571,13.399,36.642C113.713,320.887,41.479,317.409,0,277.828
+                      c108.299,147.572,343.716,87.274,378.799-54.866c26.285,0.224,41.737-9.105,51.318-19.39
+                      C414.973,206.142,393.023,203.486,381.384,198.639z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="google-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90px"
+									height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;"
+									xml:space="preserve">
+									<g>
+										<path id="google" d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+                      c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
+                      c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
+                      C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
+                      c-1.295-1.065-3.068-2.479-3.068-5.08c0-2.597,1.773-4.254,3.307-5.789c4.964-3.896,9.933-8.03,9.933-16.77
+                      c0-8.979-5.68-13.704-8.396-15.947h7.334L74.499,0z M64.103,72.279c0,7.322-6.033,12.753-17.385,12.753
+                      c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
+                      c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
+                      c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
+                      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- coidea:products:products:product END -->
+
+			<!-- coidea:products:products:product START -->
+			<div class="product raspberryrose" data-index="2">
+				<div class="product-inner">
+					<h2>
+						<a class="link" href="">
+							<span>03</span><small>Ponchos</small>
+						</a>
+					</h2>
+					<ul class="social">
+						<li>
+							<a href="#!">
+								<svg id="facebook-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="facebook"
+											d="M158.081,83.3c0,10.839,0,59.218,0,59.218h-43.385v72.412h43.385v215.183h89.122V214.936h59.805
+                      c0,0,5.601-34.721,8.316-72.685c-7.784,0-67.784,0-67.784,0s0-42.127,0-49.511c0-7.4,9.717-17.354,19.321-17.354
+                      c9.586,0,29.818,0,48.557,0c0-9.859,0-43.924,0-75.385c-25.016,0-53.476,0-66.021,0C155.878-0.004,158.081,72.48,158.081,83.3z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="twitter-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="twitter" d="M381.384,198.639c24.157-1.993,40.543-12.975,46.849-27.876
+                      c-8.714,5.353-35.764,11.189-50.703,5.631c-0.732-3.51-1.55-6.844-2.353-9.854c-11.383-41.798-50.357-75.472-91.194-71.404
+                      c3.304-1.334,6.655-2.576,9.996-3.691c4.495-1.61,30.868-5.901,26.715-15.21c-3.5-8.188-35.722,6.188-41.789,8.067
+                      c8.009-3.012,21.254-8.193,22.673-17.396c-12.27,1.683-24.315,7.484-33.622,15.919c3.36-3.617,5.909-8.025,6.45-12.769
+                      C241.68,90.963,222.563,133.113,207.092,174c-12.148-11.773-22.915-21.044-32.574-26.192
+                      c-27.097-14.531-59.496-29.692-110.355-48.572c-1.561,16.827,8.322,39.201,36.8,54.08c-6.17-0.826-17.453,1.017-26.477,3.178
+                      c3.675,19.277,15.677,35.159,48.169,42.839c-14.849,0.98-22.523,4.359-29.478,11.642c6.763,13.407,23.266,29.186,52.953,25.947
+                      c-33.006,14.226-13.458,40.571,13.399,36.642C113.713,320.887,41.479,317.409,0,277.828
+                      c108.299,147.572,343.716,87.274,378.799-54.866c26.285,0.224,41.737-9.105,51.318-19.39
+                      C414.973,206.142,393.023,203.486,381.384,198.639z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="google-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90px"
+									height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;"
+									xml:space="preserve">
+									<g>
+										<path id="google" d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+                      c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
+                      c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
+                      C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
+                      c-1.295-1.065-3.068-2.479-3.068-5.08c0-2.597,1.773-4.254,3.307-5.789c4.964-3.896,9.933-8.03,9.933-16.77
+                      c0-8.979-5.68-13.704-8.396-15.947h7.334L74.499,0z M64.103,72.279c0,7.322-6.033,12.753-17.385,12.753
+                      c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
+                      c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
+                      c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
+                      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- coidea:products:products:product END -->
+
+			<!-- coidea:products:products:product START -->
+			<div class="product burgundy" data-index="3">
+				<div class="product-inner">
+					<h2>
+						<a class="link" href="">
+							<span>04</span><small>Skirts</small>
+						</a>
+					</h2>
+					<ul class="social">
+						<li>
+							<a href="#!">
+								<svg id="facebook-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="facebook"
+											d="M158.081,83.3c0,10.839,0,59.218,0,59.218h-43.385v72.412h43.385v215.183h89.122V214.936h59.805
+                      c0,0,5.601-34.721,8.316-72.685c-7.784,0-67.784,0-67.784,0s0-42.127,0-49.511c0-7.4,9.717-17.354,19.321-17.354
+                      c9.586,0,29.818,0,48.557,0c0-9.859,0-43.924,0-75.385c-25.016,0-53.476,0-66.021,0C155.878-0.004,158.081,72.48,158.081,83.3z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="twitter-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="twitter" d="M381.384,198.639c24.157-1.993,40.543-12.975,46.849-27.876
+                      c-8.714,5.353-35.764,11.189-50.703,5.631c-0.732-3.51-1.55-6.844-2.353-9.854c-11.383-41.798-50.357-75.472-91.194-71.404
+                      c3.304-1.334,6.655-2.576,9.996-3.691c4.495-1.61,30.868-5.901,26.715-15.21c-3.5-8.188-35.722,6.188-41.789,8.067
+                      c8.009-3.012,21.254-8.193,22.673-17.396c-12.27,1.683-24.315,7.484-33.622,15.919c3.36-3.617,5.909-8.025,6.45-12.769
+                      C241.68,90.963,222.563,133.113,207.092,174c-12.148-11.773-22.915-21.044-32.574-26.192
+                      c-27.097-14.531-59.496-29.692-110.355-48.572c-1.561,16.827,8.322,39.201,36.8,54.08c-6.17-0.826-17.453,1.017-26.477,3.178
+                      c3.675,19.277,15.677,35.159,48.169,42.839c-14.849,0.98-22.523,4.359-29.478,11.642c6.763,13.407,23.266,29.186,52.953,25.947
+                      c-33.006,14.226-13.458,40.571,13.399,36.642C113.713,320.887,41.479,317.409,0,277.828
+                      c108.299,147.572,343.716,87.274,378.799-54.866c26.285,0.224,41.737-9.105,51.318-19.39
+                      C414.973,206.142,393.023,203.486,381.384,198.639z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="google-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90px"
+									height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;"
+									xml:space="preserve">
+									<g>
+										<path id="google" d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+                      c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
+                      c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
+                      C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
+                      c-1.295-1.065-3.068-2.479-3.068-5.08c0-2.597,1.773-4.254,3.307-5.789c4.964-3.896,9.933-8.03,9.933-16.77
+                      c0-8.979-5.68-13.704-8.396-15.947h7.334L74.499,0z M64.103,72.279c0,7.322-6.033,12.753-17.385,12.753
+                      c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
+                      c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
+                      c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
+                      c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- coidea:products:products:product END -->
+
+			<!-- coidea:products:products:product START -->
+			<div class="product zinnwalditebrown active" data-index="4">
+				<div class="product-inner">
+					<h2>
+						<a class="link" href="">
+							<span>05</span><small>Suits</small>
+						</a>
+					</h2>
+					<ul class="social">
+						<li>
+							<a href="#!">
+								<svg id="facebook-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="facebook"
+											d="M158.081,83.3c0,10.839,0,59.218,0,59.218h-43.385v72.412h43.385v215.183h89.122V214.936h59.805
+                      c0,0,5.601-34.721,8.316-72.685c-7.784,0-67.784,0-67.784,0s0-42.127,0-49.511c0-7.4,9.717-17.354,19.321-17.354
+                      c9.586,0,29.818,0,48.557,0c0-9.859,0-43.924,0-75.385c-25.016,0-53.476,0-66.021,0C155.878-0.004,158.081,72.48,158.081,83.3z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="twitter-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="430.113px"
+									height="430.114px" viewBox="0 0 430.113 430.114"
+									style="enable-background:new 0 0 430.113 430.114;" xml:space="preserve">
+									<g>
+										<path id="twitter" d="M381.384,198.639c24.157-1.993,40.543-12.975,46.849-27.876
+                      c-8.714,5.353-35.764,11.189-50.703,5.631c-0.732-3.51-1.55-6.844-2.353-9.854c-11.383-41.798-50.357-75.472-91.194-71.404
+                      c3.304-1.334,6.655-2.576,9.996-3.691c4.495-1.61,30.868-5.901,26.715-15.21c-3.5-8.188-35.722,6.188-41.789,8.067
+                      c8.009-3.012,21.254-8.193,22.673-17.396c-12.27,1.683-24.315,7.484-33.622,15.919c3.36-3.617,5.909-8.025,6.45-12.769
+                      C241.68,90.963,222.563,133.113,207.092,174c-12.148-11.773-22.915-21.044-32.574-26.192
+                      c-27.097-14.531-59.496-29.692-110.355-48.572c-1.561,16.827,8.322,39.201,36.8,54.08c-6.17-0.826-17.453,1.017-26.477,3.178
+                      c3.675,19.277,15.677,35.159,48.169,42.839c-14.849,0.98-22.523,4.359-29.478,11.642c6.763,13.407,23.266,29.186,52.953,25.947
+                      c-33.006,14.226-13.458,40.571,13.399,36.642C113.713,320.887,41.479,317.409,0,277.828
+                      c108.299,147.572,343.716,87.274,378.799-54.866c26.285,0.224,41.737-9.105,51.318-19.39
+                      C414.973,206.142,393.023,203.486,381.384,198.639z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a href="#!">
+								<svg id="google-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="90px"
+									height="90px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;"
+									xml:space="preserve">
+									<g>
+										<path id="google" d="M74.499,0H50.144c-6.382,0-14.421,0.942-21.158,6.49c-5.09,4.374-7.566,10.392-7.566,15.828
+        c0,9.211,7.094,18.546,19.625,18.546c1.182,0,2.477-0.12,3.787-0.235c-0.592,1.413-1.189,2.594-1.189,4.605
+        c0,3.662,1.893,5.902,3.547,8.029c-5.314,0.353-15.249,0.942-22.583,5.428c-6.975,4.143-9.107,10.16-9.107,14.414
+        C15.499,81.846,23.778,90,40.923,90c20.336,0,31.098-11.22,31.098-22.33c0-8.143-4.729-12.164-9.932-16.534l-4.258-3.305
+        c-1.295-1.065-3.068-2.479-3.068-5.08c0-2.597,1.773-4.254,3.307-5.789c4.964-3.896,9.933-8.03,9.933-16.77
+        c0-8.979-5.68-13.704-8.396-15.947h7.334L74.499,0z M64.103,72.279c0,7.322-6.033,12.753-17.385,12.753
+        c-12.648,0-20.809-6.024-20.809-14.405c0-8.393,7.568-11.218,10.166-12.164c4.969-1.656,11.352-1.891,12.414-1.891
+        c1.184,0,1.775,0,2.725,0.115C60.202,63.064,64.103,66.257,64.103,72.279z M54.642,34.249c-1.893,1.886-5.088,3.305-8.045,3.305
+        c-10.164,0-14.772-13.113-14.772-21.023c0-3.072,0.592-6.258,2.598-8.74c1.893-2.362,5.201-3.899,8.277-3.899
+        c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z" />
+									</g>
+								</svg>
+							</a>
+						</li>
+					</ul>
+					<div class="product-description">
+						<div class="product-description-detail">
+							<p><strong>Online media is increasingly influential in fashion. You have a more interesting
+									life if you wear impressive clothes. In a meat-eating world, wearing leather for
+									shoes and clothes and even handbags, the discussion of fur is childish. A girl
+									should be two things: classy and fabulous.</strong></p>
+							<p>If you cut a painter's hands off, he'd still feel the urge to pick up a brush. Clothes
+								mean nothing until someone lives in them. I am not interested in the past, except as the
+								road to the future. There are only three things I can do - make a
+								dress, decorate a house, and entertain people.</p>
+							<p>I try as much as possible to give you a great basic product and what comes out, I feel,
+								is really amazing. I'm used to always deciding everything myself. It's a blessing, but
+								also a terrible defect.</p>
+							<p>The market is like a language, and you have to be able to understand what they're saying.
+								The great thing about fashion is that it always looks forward.</p>
+						</div>
+						<div class="product-description-links">
+							<div class="contact-us">
+								<p>If you cut a painter's hands off, he'd still feel the urge to pick up a brush.
+									Clothes mean nothing until someone lives. </p>
+							</div>
+							<ul>
+								<li>
+									<a href="#!" target="_blank">Live Project</a>
+								</li>
+								<li>
+									<a href="#!" target="_blank">Contact us</a>
+								</li>
+							</ul>
+							<div class="quote">
+								<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23.516px"
+									height="23.516px" viewBox="0 0 23.516 23.516"
+									style="enable-background:new 0 0 23.516 23.516;" xml:space="preserve">
+									<g>
+										<path d="M8.074,0.333c0.594,0,1.504,0.04,2.729,0.118v4.571c-3.721,0-5.578,1.721-5.578,5.163l0.06,2.077h3.856v10.92H0v-11.81
+        C0.001,4.012,2.693,0.333,8.074,0.333z M23.516,5.022V0.451c-1.066-0.078-1.818-0.118-2.254-0.118c-5.381,0-8.07,3.68-8.07,11.04
+        v11.81h9.139v-10.92h-3.857l-0.059-2.077C18.413,6.941,20.116,5.22,23.516,5.022z" />
+									</g>
+								</svg>
+								<p>Nostalgia is a very compli- cated subject for me. I'm attracted by nostalgia but I
+									refuse it.</p>
+								<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23.516px"
+									height="23.516px" viewBox="0 0 23.516 23.516"
+									style="enable-background:new 0 0 23.516 23.516;" xml:space="preserve">
+									<g>
+										<path d="M23.516,0.334v11.811c0,7.359-2.689,11.039-8.072,11.039c-0.594,0-1.504-0.039-2.729-0.117v-4.572
+        c3.721,0,5.578-1.721,5.578-5.161l-0.061-2.077h-3.855V0.334H23.516L23.516,0.334z M1.188,11.254h3.857l0.059,2.078
+        c0,3.244-1.701,4.965-5.104,5.162v4.572c1.067,0.076,1.819,0.115,2.254,0.115c5.381,0,8.072-3.68,8.072-11.039V0.332h-9.14
+        L1.188,11.254L1.188,11.254z" />
+									</g>
+								</svg>
+							</div>
+						</div>
+						<div class="product-description-headline">
+							<h1><span>UX Design & </span><span>Development</span></h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- coidea:products:products:product END -->
+
+		</section>
+		<!-- coidea:products END -->
+		<script src=""></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+		<script src="assets/js/demo.js"></script>
+
+	</body>
+	</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>css3鼠标悬停图片切换动画特效|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+		<style>
+			.demo {
+				padding: 50px 0;
+				background: #fff;
+			}
+
+			.product-grid {
+				font-family: 'Source Sans Pro', sans-serif;
+			}
+
+			.product-grid .product-image {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.product-grid .product-image a.image {
+				display: block;
+			}
+
+			.product-grid .product-image img {
+				width: 100%;
+				height: auto;
+			}
+
+			.product-image .pic-1 {
+				backface-visibility: hidden;
+				transition: all .5s ease 0s;
+			}
+
+			.product-grid .product-image:hover .pic-1 {
+				opacity: 0;
+				transform: translateX(-50%);
+			}
+
+			.product-image .pic-2 {
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transition: all .5s ease 0s;
+			}
+
+			.product-grid .product-image:hover .pic-2 {
+				opacity: 1;
+				left: 0;
+			}
+
+			.product-grid .product-sale-label {
+				color: #fff;
+				background: #b79b6c;
+				font-size: 13px;
+				font-weight: 600;
+				text-align: center;
+				text-transform: uppercase;
+				padding: 5px 10px;
+				border-radius: 3px 10px 10px 3px;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+
+			.product-grid .product-button-group {
+				font-size: 0;
+				width: 100%;
+				opacity: 0;
+				transform: perspective(600px) translateY(15px) rotateX(90deg);
+				transform-origin: bottom center;
+				position: absolute;
+				bottom: 15px;
+				left: 0;
+				transition: all 0.3s ease 0.1s;
+			}
+
+			.product-grid:hover .product-button-group {
+				opacity: 1;
+				transform: translateY(0) rotateX(0);
+			}
+
+			.product-grid .product-button-group a {
+				color: #fff;
+				background: #333;
+				font-size: 12px;
+				font-weight: 600;
+				text-transform: capitalize;
+				text-align: center;
+				width: calc(50% - 4px);
+				padding: 10px 5px;
+				margin: 0 2px;
+				border-radius: 3px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+				display: inline-block;
+				transition: all 0.3s ease 0s;
+			}
+
+			.product-grid .product-button-group a:hover {
+				background-color: #b79b6c;
+			}
+
+			.product-grid .product-content {
+				padding: 12px 0 0;
+				position: relative;
+			}
+
+			.product-grid .title {
+				font-size: 20px;
+				font-weight: 500;
+				text-transform: capitalize;
+				margin: 0 0 5px;
+			}
+
+			.product-grid .title a {
+				color: #333;
+				transition: all 0.5s ease;
+			}
+
+			.product-grid .title a:hover {
+				color: #b79b6c;
+			}
+
+			.product-grid .price {
+				color: #b79b6c;
+				font-size: 18px;
+				font-weight: 600;
+			}
+
+			.product-grid .price span {
+				color: #999;
+				font-size: 17px;
+				font-weight: 500;
+				text-decoration: line-through;
+				margin-right: 2px;
+			}
+
+			.product-grid:hover .price {
+				opacity: 0;
+			}
+
+			.product-grid .add-to-cart {
+				color: #333;
+				font-size: 16px;
+				font-weight: 600;
+				opacity: 0;
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				transition: all 0.3s linear 0s;
+			}
+
+			.product-grid .add-to-cart:hover {
+				color: #b79b6c;
+				text-decoration: underline;
+			}
+
+			.product-grid:hover .add-to-cart {
+				opacity: 1;
+				bottom: 2px;
+			}
+
+			@media screen and (max-width:990px) {
+				.product-grid {
+					margin: 0 0 30px;
+				}
+			}
+
+			.flex-row {
+				display: flex;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="demo">
+
+
+			<div class="row flex-row">
+				<div class="col-md-3 col-sm-6">
+					<div class="product-grid">
+						<div class="product-image">
+							<a href="#" class="image">
+								<img class="pic-1" src="http://demo.htmleaf.com/1912/201912305856/images/img-1.jpg">
+								<img class="pic-2" src="http://demo.htmleaf.com/1912/201912305856/images/img-2.jpg">
+							</a>
+							<div class="product-button-group">
+								<a href="#" class="add-to-wishlist">Add to wishlist</a>
+								<a href="#" class="quick-view">Quick view</a>
+							</div>
+						</div>
+						<div class="product-content">
+							<h3 class="title"><a href="#">Women's Blouse Top</a></h3>
+							<div class="price">$25.00</div>
+							<a href="#" class="add-to-cart">Add to Cart</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="product-grid">
+						<div class="product-image">
+							<a href="#" class="image">
+								<img class="pic-1" src="http://demo.htmleaf.com/1912/201912305856/images/img-3.jpg">
+								<img class="pic-2" src="http://demo.htmleaf.com/1912/201912305856/images/img-4.jpg">
+							</a>
+							<span class="product-sale-label">Sale</span>
+							<div class="product-button-group">
+								<a href="#" class="add-to-wishlist">Add to wishlist</a>
+								<a href="#" class="quick-view">Quick view</a>
+							</div>
+						</div>
+						<div class="product-content">
+							<h3 class="title"><a href="#">Men's Shirt</a></h3>
+							<div class="price"><span>$35.00</span> $28.00</div>
+							<a href="#" class="add-to-cart">Add to Cart</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="product-grid">
+						<div class="product-image">
+							<a href="#" class="image">
+								<img class="pic-1" src="http://demo.htmleaf.com/1912/201912305856/images/img-5.jpg">
+								<img class="pic-2" src="http://demo.htmleaf.com/1912/201912305856/images/img-6.jpg">
+							</a>
+							<span class="product-sale-label">Sale</span>
+							<div class="product-button-group">
+								<a href="#" class="add-to-wishlist">Add to wishlist</a>
+								<a href="#" class="quick-view">Quick view</a>
+							</div>
+						</div>
+						<div class="product-content">
+							<h3 class="title"><a href="#">Women's Shirt</a></h3>
+							<div class="price"><span>$27.00</span> $20.00</div>
+							<a href="#" class="add-to-cart">Add to Cart</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
