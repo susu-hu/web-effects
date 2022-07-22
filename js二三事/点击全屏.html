@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		div {
+			cursor: default;
+		}
+	</style>
+	<body>
+		<div onclick="fullScreen()">全屏</div>
+		<div onclick="exitScreen()">退出全屏</div>
+	</body>
+	<script>
+		function fullScreen() {
+			var de = document.documentElement;
+			if (de.requestFullscreen) {
+				de.requestFullscreen();
+			} else if (de.mozRequestFullScreen) {
+				de.mozRequestFullScreen();
+			} else if (de.webkitRequestFullScreen) {
+				de.webkitRequestFullScreen();
+			}
+		}
+
+		function exitScreen() {
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			} else if (document.mozCancelFullScreen) {
+				document.mozCancelFullScreen();
+			} else if (document.webkitExitFullscreen) {
+				document.webkitExitFullscreen();
+			}
+		}
+	</script>
+</html>
