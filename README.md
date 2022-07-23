@@ -129,7 +129,11 @@
 116. SVG波浪
 117. css动画step（）实现文字打印效果
 118. checkbox选中切换效果
+119. 页面效果——鼠标hover放大图片
 #### 页面部分截图
+
+##### 页面效果——鼠标hover放大图片
+![输入图片说明](susuImg/hover%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87.gif)
 
 ##### checkbox选中切换效果
 ![输入图片说明](susuImg/checkbox.gif)
