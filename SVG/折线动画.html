@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.line-station svg path,
+		.line-station svg polyline {
+			fill: transparent;
+			stroke: #3ABEEB;
+			stroke-linejoin: round;
+		}
+
+		.line-station svg g path,
+		.line-station svg polyline {
+			stroke-dasharray: 1000;
+			stroke-dashoffset: -1000;
+			stroke-width: 3;
+			-webkit-transition: stroke-dashoffset .8s;
+			transition: stroke-dashoffset .8s;
+			animation: strok 1.5s infinite;
+		}
+
+		@keyframes strok {
+			100% {
+				stroke-dashoffset: 0;
+			}
+		}
+
+		/* .line-station.active svg g path,
+		.line-station.active svg polyline {
+		  stroke-dashoffset: 0 ;
+		} */
+
+		body {
+			margin: 0;
+			display: flex;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+
+		}
+	</style>
+	<body>
+		<div class="line-station">
+			<svg version="1.1" id="图层_3" style="height: 6vw;vertical-align: top;" xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 423.5 121.3"
+				enable-background="new 0 0 423.5 121.3" xml:space="preserve">
+				<g>
+					<path d="M419.1 121 h-2.3 V16 c0-4.9-4-8.9-8.9-8.9 H2.2 V4.9">
+					</path>
+				</g>
+			</svg>
+		</div>
+	</body>
+</html>
