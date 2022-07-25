@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://www.cnblogs.com/coco1s/p/14291567.html</title>
+	</head>
+	<link rel="stylesheet" href="../common.css">
+	<style>
+		body {
+			background-image: linear-gradient(45deg, #3d3d3d 8.33%, #000 0, #000 50%, #3d3d3d 0, #3d3d3d 58.33%, #000 0, #000);
+			background-size: 8.49px 8.49px;
+			width: 100%;
+		}
+
+		div {
+			position: relative;
+			width: 140px;
+			height: 64px;
+			margin-bottom: 20px;
+		}
+
+		:root {
+			--borderColor: #ffc0cb;
+		}
+
+		.item-1 {
+			position: relative;
+			border: 1px solid #ffc0cb;
+		}
+
+		.item-1::before,
+		.item-1::after {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			transition: all 1s;
+		}
+
+		.item-1::before {
+			top: -5px;
+			left: -5px;
+			border-top: 1px solid var(--borderColor);
+			border-left: 1px solid var(--borderColor);
+		}
+
+		.item-1::after {
+			right: -5px;
+			bottom: -5px;
+			border-bottom: 1px solid var(--borderColor);
+			border-right: 1px solid var(--borderColor);
+		}
+
+		.item-1:hover::before,
+		.item-1:hover::after {
+			width: calc(100% + 9px);
+			height: calc(100% + 9px);
+		}
+
+		.item-2 {
+			background:
+				linear-gradient(90deg, pink 50%, transparent 0) repeat-x,
+				linear-gradient(90deg, pink 50%, transparent 0) repeat-x,
+				linear-gradient(0deg, pink 50%, transparent 0) repeat-y,
+				linear-gradient(0deg, pink 50%, transparent 0) repeat-y;
+			background-size: 4px 1px, 4px 1px, 1px 4px, 1px 4px;
+			background-position: 0 0, 0 100%, 0 0, 100% 0;
+			cursor: pointer;
+
+		}
+
+		.item-2:hover {
+			animation: linearGradientMove .3s infinite linear;
+		}
+
+		@keyframes linearGradientMove {
+			100% {
+				background-position: 4px 0, -4px 100%, 0 -4px, 100% 4px;
+			}
+		}
+
+		.item-3 {
+			/*  border: 1px solid pink; */
+			outline: 1px solid pink;
+			outline-offset: -1px;
+			transition: all .3s linear;
+			cursor: pointer;
+
+		}
+
+		.item-3:hover {
+			/* border: 1px solid transparent; */
+			outline: 1px solid transparent;
+			background:
+				linear-gradient(90deg, pink 50%, transparent 0) repeat-x,
+				linear-gradient(90deg, pink 50%, transparent 0) repeat-x,
+				linear-gradient(0deg, pink 50%, transparent 0) repeat-y,
+				linear-gradient(0deg, pink 50%, transparent 0) repeat-y;
+			background-size: 4px 1px, 4px 1px, 1px 4px, 1px 4px;
+			background-position: 0 0, 0 100%, 0 0, 100% 0;
+			animation: linearGradientMove .3s infinite linear;
+		}
+
+		.item-4 {
+			overflow: hidden;
+			height: 100px;
+			border-radius: 10px;
+		}
+
+		.item-4::after {
+			animation: rotate 4s linear infinite;
+			content: '';
+			position: absolute;
+			z-index: -2;
+			left: -50%;
+			top: -50%;
+			width: 200%;
+			height: 200%;
+			background-repeat: no-repeat;
+			background-size: 50% 50%, 50% 50%;
+			background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+			background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+		}
+
+		.item-4::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: 6px;
+			top: 6px;
+			width: calc(100% - 12px);
+			height: calc(100% - 12px);
+			background: white;
+			border-radius: 5px;
+			animation: opacityChange 3s infinite alternate;
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(1turn);
+			}
+		}
+
+		@keyframes opacityChange {
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				opacity: 0.5;
+			}
+		}
+
+		.item-5 {
+			height: 100px;
+			border: 8px solid;
+			border-image: linear-gradient(45deg, gold, deeppink) 1;
+			clip-path: inset(0px round 10px);
+			animation: huerotate 6s infinite linear;
+			filter: hue-rotate(360deg);
+		}
+
+		@keyframes huerotate {
+			0% {
+				filter: hue-rotate(0deg);
+			}
+
+			100% {
+				filter: hue-rorate(360deg);
+			}
+		}
+
+		.item-6 {
+			position: relative;
+			z-index: 0;
+			height: 100px;
+			border-radius: 10px;
+			overflow: hidden;
+			padding: 2rem;
+
+
+		}
+
+		.item-6::before {
+			content: '';
+			position: absolute;
+			z-index: -2;
+			left: -50%;
+			top: -50%;
+			width: 200%;
+			height: 200%;
+			background-color: #fff;
+			background-repeat: no-repeat;
+			background-size: 50% 50%;
+			background-position: 0 0;
+			background-image: conic-gradient(#399953, #399953);
+			animation: rotate 4s linear infinite;
+		}
+
+		.item-6::after {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: 6px;
+			top: 6px;
+			width: calc(100% - 12px);
+			height: calc(100% - 12px);
+			background: white;
+			border-radius: 5px;
+			animation: opacityChange 3s infinite alternate;
+		}
+		
+		
+		.item-7 {
+		    position: relative;
+		    margin: auto;
+		    width: 120px;
+		    line-height: 64px;
+		    text-align: center;
+		    color: #fff;
+		    font-size: 20px;
+		    border: 2px solid gold;
+		    border-radius: 10px;
+		    background: gold;
+		    transition: all .3s;
+		    cursor: pointer;
+		
+		}
+		
+		@keyframes clippath {
+		    0%,
+		    100% {
+		        clip-path: inset(0 0 98% 0);
+		    }
+		    
+		    25% {
+		        clip-path: inset(0 98% 0 0);
+		    }
+		    50% {
+		        clip-path: inset(98% 0 0 0);
+		    }
+		    75% {
+		        clip-path: inset(0 0 0 98%);
+		    }
+		}
+		
+		.item-7:hover {
+		    filter: contrast(1.1);
+		}
+		
+		.item-7:active {
+		    filter: contrast(0.9);
+		}
+		
+		.item-7::before,
+		.item-7::after {
+		    content: "";
+		    position: absolute;
+		    top: -10px;
+		    left: -10px;
+		    right: -10px;
+		    bottom: -10px;
+		    border: 2px solid gold;
+		    transition: all .5s;
+		    animation: clippath 3s infinite linear;
+		    border-radius: 10px;
+		}
+		
+		.item-7::after {
+		    animation: clippath 3s infinite -1.5s linear;
+		}
+	</style>
+	<body>
+		<section class="flex-column">
+			<div class="item-1"></div>
+			<div class="item-2"></div>
+			<div class="item-3"></div>
+			<div class="item-4"></div>
+			<div class="item-5"></div>
+			<div class="item-6"></div>
+			<div class="item-7"></div>
+		</section>
+
+	</body>
+</html>
