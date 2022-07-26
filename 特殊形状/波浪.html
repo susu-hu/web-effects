@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		div {
+			position: relative;
+			width: 400px;
+			height: 160px;
+			background: linear-gradient(90deg, #945700 0%, #f49714 100%);
+
+
+		}
+
+		div::before,
+		div::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		div::before {
+			width: 10px;
+			background-image: radial-gradient(circle at -5px 10px, transparent 12px, #fff 13px, #fff 0px);
+			background-size: 20px 20px;
+			background-position: 0 15px;
+		}
+
+		div::after {
+			width: 15px;
+			background-image: radial-gradient(circle at 15px 10px, #fff 12px, transparent 13px, transparent 0px);
+			background-size: 20px 40px;
+			background-position: 0 15px;
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

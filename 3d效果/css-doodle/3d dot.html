@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			position: relative;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			background-color: #000;
+			cursor: pointer;
+		}
+
+		@-webkit-keyframes change {
+			10% {
+				filter: hue-rotate(360deg);
+			}
+		}
+
+		@keyframes change {
+			10% {
+				filter: hue-rotate(360deg);
+			}
+		}
+	</style>
+	<body>
+		<css-doodle grid="25x25">
+			:doodle {
+			@size: 100vw 100vmin;
+
+			}
+			:container {
+			perspective: 900px;
+			transform-style: preserve-3d;
+			transform: rotate3d(@r(-1, 1), @r(-1, 1), @r(-1, 1), @r(360)deg);
+			animation: rotate 20s linear infinite alternate;
+			}
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background: hsl(@rn(1, 250), @rn(10%, 90%), @rn(10%, 90%));
+			clip-path: @shape(
+			points: 6;
+			);
+			transform: rotate3d(@r(-1, 1), @r(-1, 1), @r(-1, 1), @r(360)deg) translate3d(0, 0, 350px) scale(@r(.2,
+			1.5));
+			opacity: .6;
+			animation: breath @r(5, 15)s infinite @r(-15, -30)s alternate @p(linear, ease-in, ease-in-out);
+			@keyframes breath {
+			100% {
+			opacity: 0;
+			transform: rotate3d(@r(-1, 1), @r(-1, 1), @r(-1, 1), @r(360)deg) translate3d(0, 0, 250px) scale(@r(.2,
+			1.5));
+			}
+			}
+			@keyframes rotate {
+			100% {
+			transform: rotate3d(@r(-1, 1), @r(-1, 1), @r(-1, 1), @r(360)deg) translateZ(@r(-100, 100)px);
+			}
+			}
+		</css-doodle>
+	</body>
+	<script src="https://unpkg.com/css-doodle@0.29.0/css-doodle.min.js"></script>
+	<script>
+		const doodle = document.querySelector('css-doodle');
+
+		document.addEventListener('click', function(e) {
+			doodle.update();
+		});
+	</script>
+</html>

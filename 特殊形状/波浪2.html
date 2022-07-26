@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://juejin.cn/post/7124131390177673224</title>
+	</head>
+	<style>
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			display: flex;
+		}
+
+		.g-container {
+			position: relative;
+			margin: auto;
+			width: 380px;
+			padding-top: 100px;
+			filter: contrast(20);
+			background-color: #fff;
+			overflow: hidden;
+		}
+
+		.g-container::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			z-index: 1;
+		}
+
+		.g-inner {
+			position: relative;
+			width: 480px;
+			height: 100px;
+			transform: translate(0, 0);
+			background: radial-gradient(circle at 20px 0, transparent, transparent 20px, #000 21px, #000 40px);
+			background-size: 80px 100%;
+			-webkit-animation: move 1s infinite linear;
+			animation: move 1s infinite linear;
+		}
+
+		@-webkit-keyframes move {
+			100% {
+				transform: translate(-80px, 0);
+			}
+		}
+
+		@keyframes move {
+			100% {
+				transform: translate(-80px, 0);
+			}
+		}
+	</style>
+	<body>
+		<div class="g-container">
+			<div class="g-inner"></div>
+		</div>
+	</body>
+</html>

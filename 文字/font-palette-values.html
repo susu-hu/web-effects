@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>https://www.zhangxinxu.com/wordpress/2022/07/css-font-palette/</title>
+	</head>
+	<style>
+		@font-face {
+			font-family: 'Rocher';
+			src: url(./RocherColorGX.woff2);
+		}
+
+		h4 {
+			font-family: 'Rocher';
+			font-size: 50px;
+		}
+
+		@font-palette-values --Grays {
+			font-family: Rocher;
+			base-palette: 9;
+		}
+
+		@font-palette-values --Purples {
+			font-family: Rocher;
+			base-palette: 6;
+		}
+
+		@font-palette-values --Mint {
+			font-family: Rocher;
+			base-palette: 7;
+		}
+
+		.grays {
+			font-palette: --Grays;
+		}
+
+		.purples {
+			font-palette: --Purples;
+		}
+
+		.mint {
+			font-palette: --Mint;
+		}
+	</style>
+	<body>
+		<h4 class="grays">Color fonts</h4>
+		<h4 class="purples">Color fonts</h4>
+		<h4 class="mint">Color fonts</h4>
+	</body>
+</html>
