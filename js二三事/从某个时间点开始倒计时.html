@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="time"></p>
+	</body>
+	<script>
+		//1、获取将来时间
+		let time1 = '2022-7-27 11:15:00'
+		var preTime = new Date(time1);
+		// 2、封装变化的时间
+		function F1() {
+			// 3、获取当前时间
+			var newTime = new Date();
+			// 4、两者差值为毫秒值
+			var target = preTime - newTime;
+			// 5、换算成秒
+			var time = Math.round(target / 1000)
+			console.log(time)
+			let a = setInterval(F1, 1000);
+			if (time <= 0) {
+				clearInterval(a)
+				time = 0;
+			}
+			document.getElementById("time").innerHTML = "现在距离" + time1 + "还有：" + time + "秒";
+		}
+
+		F1();
+	</script>
+</html>

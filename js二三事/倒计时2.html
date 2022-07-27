@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+	</body>
+	<script type="text/javascript">
+		//今天时间
+		window.setInterval(function() {
+			var nowDate = new Date()
+			//周一时间
+			var tomorrowDate = new Date("2022-7-27 11:26:00")
+			var secStr = nowDate.getTime()
+			var secStr = tomorrowDate.getTime()
+			var sss = tomorrowDate - nowDate;
+			var sec = Math.floor(sss / 1000 % 60);
+			var min = Math.floor(sss / 1000 / 60 % 60);
+			var hour = Math.floor(sss / 1000 / 60 / 60 % 24);
+			var day = Math.floor(sss / 1000 / 60 / 60 / 24 % 24);
+			var yue = Math.floor(sss / 1000 / 60 / 60 / 24)
+			sec = sec < 10 ? "0" + sec : sec;
+			min = min < 10 ? "0" + min : min;
+			hour = hour < 10 ? "0" + hour : hour;
+			day = day < 10 ? "0" + day : day;
+			var shijian = "距离上课还有" + day + "天" + hour + "时" + min + "分" + sec + "秒"
+			document.body.innerHTML = shijian;
+		})
+	</script>
+</html>
