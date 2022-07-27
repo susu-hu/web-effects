@@ -136,7 +136,7 @@
 #### 页面部分截图
 
 ##### 页面效果——鼠标hover缩小图片，展示功能区
-![输入图片说明](susuImg/hover-%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD%E5%8C%BA.gif)
+![输入图片说明](https://gitee.com/susuhhhhhh/css_demos/raw/master/susuImg/hover-%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD%E5%8C%BA.gif)
 
 ##### 页面效果——鼠标hover放大图片
 ![输入图片说明](susuImg/hover%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87.gif)
