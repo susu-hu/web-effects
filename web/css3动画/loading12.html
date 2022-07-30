@@ -4,7 +4,12 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
 	<style type="text/css">
+		body {
+			background: #222;
+		}
+
 		.loading14 {
 			width: 120px;
 			height: 60px;
@@ -42,7 +47,7 @@
 			width: 120px;
 			height: 24px;
 
-			-webkit-mask:radial-gradient(circle  closest-side at bottom, #000 94%, #000) 0 0/25% 100% ,
+			-webkit-mask: radial-gradient(circle closest-side at bottom, #000 94%, #000) 0 0/25% 100%,
 				linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat;
 			background: linear-gradient(pink 0 0) 0/0% no-repeat #ddd;
 			animation: l8 2s infinite linear;
@@ -77,11 +82,72 @@
 				inset: 0;
 			}
 		}
+
+		.loading19 {
+			padding: 40px;
+			box-sizing: border-box;
+		}
+
+		.loading19 .dot {
+			color: white;
+			font-size: 40px;
+			overflow: hidden;
+			color: pink;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			transform: translateZ(0);
+			/* animation：规定完成动画所花费的时间，该属性必须规定，否则动画时长为0，无法播放 */
+			animation: load 1.7s infinite ease, round 1.7s infinite ease;
+		}
+
+		@keyframes load {
+			0% {
+				box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			}
+
+			5%,
+			95% {
+				box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			}
+
+			10%,
+			59% {
+				box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+			}
+
+			20% {
+				box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+			}
+
+			38% {
+				box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+			}
+
+			100% {
+				box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			}
+		}
+
+		@keyframes round {
+			0% {
+				transform: rotate(0deg);
+				/* 开始旋转 div 元素 */
+			}
+
+			100% {
+				transform: rotate(360deg);
+				/* 结束旋转 div 元素 */
+			}
+		}
 	</style>
 	<body>
 		<div class="loading14"></div>
 		<div class="loading16"></div>
 		<div class="loading17"></div>
 		<div class="loading18"></div>
+		<div class="loading19">
+			<div class="dot"></div>
+		</div>
 	</body>
 </html>
