@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 	</head>
 	<body style="height: 100%; width:100%">
-		<div id="chart-panel" style="height: 100%;width: 100%"></div>
+		<div id="chart-panel" style="height: 60%;width: 50%"></div>
 		<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 
@@ -31,7 +31,7 @@
 				100, 200, 300, 400, 300, 200, 100, 100, 200, 300, 400, 300, 200, 100, 100, 200, 300,
 			]; //数据
 			let zoomShow = false;
-			if (dataY.length > 14) {
+			if (dataY.length > 8) {
 				zoomShow = true;
 			} else {
 				zoomShow = false;
@@ -122,7 +122,7 @@
 						type: 'inside',
 						realtime: true,
 						startValue: 0,
-						endValue: 14,
+						endValue: 8,
 						xAxisIndex: [0],
 						bottom: '10',
 						left: '30',
@@ -134,7 +134,7 @@
 					},
 				],
 				series: [{
-						name: "",
+						name: "susu1",
 						type: "pictorialBar",
 						color: "#00eded",
 						symbolSize: [24, 10],
@@ -163,7 +163,46 @@
 						data: dataY,
 					},
 					{
-						name: "111", //头部
+						type: 'bar',
+						data: dataY,
+						barWidth: '24',
+						itemStyle: {
+							normal: {
+								color: new echarts.graphic.LinearGradient(
+									0,
+									0,
+									0,
+									1,
+									[{
+											offset: 0,
+											color: 'rgba(5, 213, 255, 1)', // 0% 处的颜色
+										},
+										{
+											offset: 0.98,
+											color: 'rgba(5, 213, 255, 0)', // 100% 处的颜色
+										},
+									],
+									false
+								),
+								shadowColor: 'rgba(5, 213, 255, 1)',
+								shadowBlur: 4,
+							},
+						},
+						label: {
+							normal: {
+								show: false,
+								lineHeight: 10,
+								formatter: '{c}',
+								position: 'top',
+								textStyle: {
+									color: '#fff',
+									fontSize: 10,
+								},
+							},
+						},
+					},
+					{
+						name: "susu2", //头部
 						type: "pictorialBar",
 						color: "#aaaaff",
 						symbolSize: [24, 10],
@@ -205,45 +244,6 @@
 									1,
 									[{
 											offset: 0,
-											color: 'rgba(5, 213, 255, 1)', // 0% 处的颜色
-										},
-										{
-											offset: 0.98,
-											color: 'rgba(5, 213, 255, 0)', // 100% 处的颜色
-										},
-									],
-									false
-								),
-								shadowColor: 'rgba(5, 213, 255, 1)',
-								shadowBlur: 4,
-							},
-						},
-						label: {
-							normal: {
-								show: true,
-								lineHeight: 10,
-								formatter: '{c}',
-								position: 'top',
-								textStyle: {
-									color: '#fff',
-									fontSize: 10,
-								},
-							},
-						},
-					},
-					{
-						type: 'bar',
-						data: dataY,
-						barWidth: '24',
-						itemStyle: {
-							normal: {
-								color: new echarts.graphic.LinearGradient(
-									0,
-									0,
-									0,
-									1,
-									[{
-											offset: 0,
 											color: 'rgba(255, 7, 40, 1.0)', // 0% 处的颜色
 										},
 										{
@@ -259,7 +259,7 @@
 						},
 						label: {
 							normal: {
-								show: true,
+								show: false,
 								lineHeight: 10,
 								formatter: '{c}',
 								position: 'top',
@@ -273,7 +273,7 @@
 
 
 					{
-						name: "3",
+						name: "susu3",
 						type: "pictorialBar",
 						symbolSize: [24, 10],
 						symbolOffset: [24, -5],
@@ -328,7 +328,7 @@
 						},
 						label: {
 							normal: {
-								show: true,
+								show: false,
 								lineHeight: 10,
 								formatter: '{c}',
 								position: 'top',
