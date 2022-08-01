@@ -11,7 +11,10 @@
 #### 介绍
 分享项目过程中遇见的有趣的css样式+一些基本css样式问题，上传源码，并附每一项内容的博客地址，持续更新，相互学习，并非所有案例皆原创，非原创作品会标出，喜欢的关注，star一下~
 
-#### 功能总结
+#### 数据可视化之echarts~
+1、柱状图多数据-dataZoom滑动缩放
+
+#### 神奇的CSS~
 1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
 2.  设置不同的border，结合伪元素，得到三角形，梯形，空心箭等样式，本案例列举很多，一次性搞懂叭~
 3.  鼠标的移出与移入事件，onmouseover+onmouserout
@@ -133,8 +136,13 @@
 118. checkbox选中切换效果
 119. 页面效果——鼠标hover放大图片
 120. 页面效果——鼠标hover缩小图片，展示功能区
-#### 页面部分截图
 
+#### 数据可视化之echarts部分截图~
+##### 柱状图多数据-dataZoom滑动缩放
+![输入图片说明](web-pictures/echarts-dataZoom.gif)
+
+
+#### 神奇的CSS页面部分截图
 ##### 页面效果——鼠标hover缩小图片，展示功能区
 ![输入图片说明](web-pictures/hover%E5%B1%95%E5%BC%80%E5%8A%9F%E8%83%BD%E5%8C%BA.gif)
 
