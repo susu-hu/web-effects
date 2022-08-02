@@ -272,3 +272,8 @@ button::after {
 .noSelect {
 	-webkit-user-select: none;
 }
+
+
+.mb20{
+	margin-bottom: 20px;
+}
