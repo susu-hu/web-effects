@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function addZero(num) {
+			console.log('11111', num)
+			return num < 10 ? "0" + num : num;
+		}
+
+		function formatDate(value) {
+			// value-----分钟
+			var time = []
+			var day = parseInt(value / 60 / 24);
+			var hour = parseInt(value / 60 % 24);
+			var min = parseInt(value % 60);
+			time[0] = day > 0 ? day : 0;
+			time[1] = hour > 0 ? hour : 0;
+			time[2] = min > 0 ? parseFloat(min) : 0;
+			return time;
+		}
+
+		console.log(formatDate(10));
+
+		function formatDate1(value) {
+			// value-----秒
+			let time = [],
+				day = parseInt(value / 86400),
+				hour = parseInt((value % 86400) / 3600),
+				min = parseInt(((value % 86400) % 3600) / 60),
+				sec = parseInt(((value % 86400) % 3600) % 60);
+			time[0] = day > 0 ? addZero(day) : addZero(0);
+			time[1] = hour > 0 ? addZero(hour) : addZero(0);
+			time[2] = min > 0 ? addZero(min) : addZero(0);
+			time[3] = sec > 0 ? addZero(sec) : addZero(0);
+			return time;
+		}
+		console.log(formatDate1(9));
+	</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		// 使用$&匹配
+		function formatDate1(str) {
+			/*  
+		        replace第一个参数正则
+		
+		        (?<=\/|-|\.|:|\b)\d{1}  用的是后顾，查找 / 或者 - 或者 . 或者 : 或者 单词边界 或者 T 后面的一个数字
+		
+		        \d{1}(?=\/|-|\.|:|\b)   用的是前瞻，查找 / 或者 - 或者 . 或者 : 或者 单词边界  或者 T 前面的一个数字
+		
+		        replace 第二个参数"0$&" 匹配到的字符串前置补0
+		
+		    */
+			console.log(str.replace(/(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/g, "0$&"))
+			return str.replace(/(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/g, "0$&");
+		}
+
+		// 使用$1匹配
+		function formatDate2(str) {
+			/*
+			      replace第一个参数正则和上面的一样
+			      
+			      replace 第二个参数是一个函数，第一个入参就是匹配到的第一个参数，可以在函数内处理补0
+			  */
+			console.log(str.replace(
+				/(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/g,
+				function($1) {
+					return "0" + $1;
+				}
+			))
+			return str.replace(
+				/(?<=\/|-|\.|:|\b|T)\d{1}(?=\/|-|\.|:|\b|T)/g,
+				function($1) {
+					return "0" + $1;
+				}
+			);
+		}
+
+		// 测试
+		formatDate1("2022-3-4 1:2:3"); // 输出 '2022-03-04 01:02:03'
+		formatDate2("2022/3/4"); // 输出 '2022/03/04'
+		formatDate1("2022.3.4"); // 输出 '2022.03.04'
+		formatDate2("2020/8/9T1:2:3"); // 输出 '2020/08/09T01:02:03'
+	</script>
+</html>
