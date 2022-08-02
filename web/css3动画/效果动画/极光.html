@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://cloud.tencent.com/developer/article/1924671</title>
+	</head>
+
+	<style type="text/css">
+		body,
+		html {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			padding: 0;
+			margin: 0;
+		}
+
+		.g-wrap {
+			position: relative;
+			margin: auto;
+			width: 350px;
+			height: 500px;
+			background: skyblue; 
+			/* #0b1a3a; */
+			overflow: hidden;
+		}
+
+		.g-wrap::before {
+			content: "";
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			border-radius: 50%;
+			box-shadow: 0 0 0 0 #fff, 40px 159px 0 0.4px rgba(255, 255, 255, 0.8), 28px 243px 0 0.2px rgba(255, 255, 255, 0.8), 282px 449px 0 0.1px rgba(255, 255, 255, 0.8), 258px 216px 0 0.1px rgba(255, 255, 255, 0.8), 230px 45px 0 0.2px rgba(255, 255, 255, 0.8), 247px 371px 0 0.5px rgba(255, 255, 255, 0.8), 250px 417px 0 0.6px rgba(255, 255, 255, 0.8), 136px 399px 0 0.3px rgba(255, 255, 255, 0.8), 342px 51px 0 0.6px rgba(255, 255, 255, 0.8), 329px 413px 0 0.1px rgba(255, 255, 255, 0.8), 308px 134px 0 0.6px rgba(255, 255, 255, 0.8), 257px 337px 0 0.6px rgba(255, 255, 255, 0.8), 85px 308px 0 0.1px rgba(255, 255, 255, 0.8), 185px 26px 0 0.3px rgba(255, 255, 255, 0.8), 292px 440px 0 0.1px rgba(255, 255, 255, 0.8), 301px 75px 0 0.3px rgba(255, 255, 255, 0.8), 171px 125px 0 0.5px rgba(255, 255, 255, 0.8), 167px 174px 0 0.1px rgba(255, 255, 255, 0.8), 68px 441px 0 0.5px rgba(255, 255, 255, 0.8), 222px 39px 0 0.6px rgba(255, 255, 255, 0.8), 306px 7px 0 0.5px rgba(255, 255, 255, 0.8), 207px 227px 0 0.3px rgba(255, 255, 255, 0.8), 32px 446px 0 0.5px rgba(255, 255, 255, 0.8), 166px 13px 0 0.5px rgba(255, 255, 255, 0.8), 245px 129px 0 0.2px rgba(255, 255, 255, 0.8), 65px 284px 0 0.2px rgba(255, 255, 255, 0.8), 263px 239px 0 0.1px rgba(255, 255, 255, 0.8), 170px 460px 0 0.5px rgba(255, 255, 255, 0.8), 299px 458px 0 0.1px rgba(255, 255, 255, 0.8), 90px 421px 0 0.2px rgba(255, 255, 255, 0.8), 100px 117px 0 0.6px rgba(255, 255, 255, 0.8), 120px 496px 0 0.3px rgba(255, 255, 255, 0.8), 112px 52px 0 0.1px rgba(255, 255, 255, 0.8), 315px 62px 0 0.1px rgba(255, 255, 255, 0.8), 313px 459px 0 0.3px rgba(255, 255, 255, 0.8), 301px 201px 0 0.6px rgba(255, 255, 255, 0.8), 335px 387px 0 0.2px rgba(255, 255, 255, 0.8), 311px 126px 0 0.2px rgba(255, 255, 255, 0.8), 236px 271px 0 0.3px rgba(255, 255, 255, 0.8), 96px 399px 0 0.6px rgba(255, 255, 255, 0.8), 112px 266px 0 0.1px rgba(255, 255, 255, 0.8), 30px 105px 0 0.1px rgba(255, 255, 255, 0.8), 78px 235px 0 0.5px rgba(255, 255, 255, 0.8), 152px 470px 0 0.1px rgba(255, 255, 255, 0.8), 1px 353px 0 0.2px rgba(255, 255, 255, 0.8), 201px 496px 0 0.5px rgba(255, 255, 255, 0.8), 332px 268px 0 0.4px rgba(255, 255, 255, 0.8), 260px 89px 0 0.5px rgba(255, 255, 255, 0.8), 202px 31px 0 0.1px rgba(255, 255, 255, 0.8), 45px 323px 0 0.5px rgba(255, 255, 255, 0.8), 31px 226px 0 0.5px rgba(255, 255, 255, 0.8), 317px 252px 0 0.2px rgba(255, 255, 255, 0.8), 213px 124px 0 0.2px rgba(255, 255, 255, 0.8), 235px 250px 0 0.1px rgba(255, 255, 255, 0.8), 145px 3px 0 0.1px rgba(255, 255, 255, 0.8), 111px 250px 0 0.6px rgba(255, 255, 255, 0.8), 131px 123px 0 0.5px rgba(255, 255, 255, 0.8), 163px 162px 0 0.3px rgba(255, 255, 255, 0.8), 19px 67px 0 0.3px rgba(255, 255, 255, 0.8), 113px 336px 0 0.5px rgba(255, 255, 255, 0.8), 214px 382px 0 0.6px rgba(255, 255, 255, 0.8), 100px 458px 0 0.4px rgba(255, 255, 255, 0.8), 144px 283px 0 0.5px rgba(255, 255, 255, 0.8), 63px 234px 0 0.2px rgba(255, 255, 255, 0.8), 301px 147px 0 0.2px rgba(255, 255, 255, 0.8), 337px 227px 0 0.3px rgba(255, 255, 255, 0.8), 314px 256px 0 0.3px rgba(255, 255, 255, 0.8), 170px 438px 0 0.4px rgba(255, 255, 255, 0.8), 250px 232px 0 0.5px rgba(255, 255, 255, 0.8), 60px 499px 0 0.5px rgba(255, 255, 255, 0.8), 265px 492px 0 0.6px rgba(255, 255, 255, 0.8), 199px 264px 0 0.2px rgba(255, 255, 255, 0.8), 189px 89px 0 0.5px rgba(255, 255, 255, 0.8), 176px 12px 0 0.4px rgba(255, 255, 255, 0.8), 161px 255px 0 0.1px rgba(255, 255, 255, 0.8), 2px 76px 0 0.4px rgba(255, 255, 255, 0.8), 350px 422px 0 0.6px rgba(255, 255, 255, 0.8), 78px 330px 0 0.3px rgba(255, 255, 255, 0.8), 272px 20px 0 0.3px rgba(255, 255, 255, 0.8), 133px 89px 0 0.2px rgba(255, 255, 255, 0.8), 12px 24px 0 0.5px rgba(255, 255, 255, 0.8), 248px 329px 0 0.5px rgba(255, 255, 255, 0.8), 347px 410px 0 0.2px rgba(255, 255, 255, 0.8), 132px 53px 0 0.5px rgba(255, 255, 255, 0.8), 105px 336px 0 0.6px rgba(255, 255, 255, 0.8), 185px 361px 0 0.1px rgba(255, 255, 255, 0.8), 331px 202px 0 0.4px rgba(255, 255, 255, 0.8), 93px 314px 0 0.2px rgba(255, 255, 255, 0.8), 298px 241px 0 0.1px rgba(255, 255, 255, 0.8), 34px 425px 0 0.4px rgba(255, 255, 255, 0.8), 163px 218px 0 0.5px rgba(255, 255, 255, 0.8), 157px 48px 0 0.6px rgba(255, 255, 255, 0.8), 160px 154px 0 0.4px rgba(255, 255, 255, 0.8), 103px 219px 0 0.1px rgba(255, 255, 255, 0.8), 4px 71px 0 0.4px rgba(255, 255, 255, 0.8), 132px 144px 0 0.5px rgba(255, 255, 255, 0.8), 39px 341px 0 0.4px rgba(255, 255, 255, 0.8), 244px 99px 0 0.3px rgba(255, 255, 255, 0.8), 61px 440px 0 0.1px rgba(255, 255, 255, 0.8), 337px 407px 0 0.2px rgba(255, 255, 255, 0.8), 201px 154px 0 0.6px rgba(255, 255, 255, 0.8);
+		}
+
+		.g-aurora {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 200px;
+		}
+
+		.g-aurora::before {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 400px;
+			height: 300px;
+			background: #fff;
+			background: radial-gradient(circle at 100% 100%, transparent 45%, #bd63c1 55%, #53e5a6 65%, transparent 85%);
+			box-shadow: inset 0px 0 30px 0 #0b1a3a;
+			filter: url(#wave);
+			mix-blend-mode: color-dodge;
+			transform: rotate(45deg) scaleX(1.4);
+		}
+
+		@-webkit-keyframes bmove {
+			from {
+				transform: translateZ(10px) translateY(0);
+			}
+
+			to {
+				transform: translateZ(10px) translateY(-80px);
+			}
+		}
+
+		@keyframes bmove {
+			from {
+				transform: translateZ(10px) translateY(0);
+			}
+
+			to {
+				transform: translateZ(10px) translateY(-80px);
+			}
+		}
+
+		@-webkit-keyframes cmove {
+			from {
+				transform: translateZ(-5px) translateY(0);
+			}
+
+			to {
+				transform: translateZ(-5px) translateY(80px);
+			}
+		}
+
+		@keyframes cmove {
+			from {
+				transform: translateZ(-5px) translateY(0);
+			}
+
+			to {
+				transform: translateZ(-5px) translateY(80px);
+			}
+		}
+
+		svg {
+			width: 0;
+			height: 0;
+		}
+	</style>
+	<body>
+		<div class="g-wrap">
+			<div class="g-aurora"></div>
+		</div>
+
+
+		<svg id='blob' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+			<defs>
+				<filter id='wave'>
+					<feturbulence basefrequency='0.00510 0.01099' id='turbulence' numoctaves='3' result='noise'
+						seed='10' />
+					<fedisplacementmap id='displacement' in2='noise' in='SourceGraphic' scale='96' />
+				</filter>
+			</defs>
+		</svg>
+	</body>
+	<script type="text/javascript">
+		var filter = document.querySelector("#turbulence");
+		var frames = 0;
+		var rad = Math.PI / 180;
+
+		function freqAnimation() {
+			bfx = 0.005;
+			bfy = 0.005;
+			frames += .5;
+			bfx += 0.0025 * Math.cos(frames * rad);
+			bfy += 0.0025 * Math.sin(frames * rad);
+
+			bf = bfx.toString() + ' ' + bfy.toString();
+			filter.setAttributeNS(null, 'baseFrequency', bf);
+			window.requestAnimationFrame(freqAnimation);
+		}
+
+		window.requestAnimationFrame(freqAnimation);
+	</script>
+</html>

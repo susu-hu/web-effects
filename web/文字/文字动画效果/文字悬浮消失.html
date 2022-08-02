@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://codepen.io/Chokcoco/pen/wvmqqWa(来自co姐)</title>
+	</head>
+	<style type="text/css">
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			padding: 0;
+			margin: 0;
+			background: #222;
+		}
+
+		p {
+			position: relative;
+			width: 500px;
+			margin: auto;
+			font-size: 24px;
+			line-height: 2;
+			color: #666;
+			cursor: pointer;
+			text-align: justify;
+		}
+
+		.pesudo {
+			position: relative;
+			background: linear-gradient(90deg, transparent, #222 20%, #222);
+			background-size: 0 100%;
+			background-repeat: no-repeat;
+			background-position: 100% 100%;
+			transition: all 1s linear;
+			color: transparent;
+		}
+
+		.word {
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: transparent;
+			color: pink;
+		}
+
+		p:hover .pesudo,
+		p:active .pesudo {
+			background-size: 500% 100%;
+		}
+	</style>
+	<body>
+
+		<p>
+			<a class="word">苏苏就是小苏苏哇哈哈哈哈哈哈哈苏哈好好好哈哈哈哈哈哈哈哈哈哈</a>
+			<a class="pesudo">苏苏就是小苏苏哇哈哈哈哈哈哈哈苏哈好好好哈哈哈哈哈哈哈哈哈哈</a>
+		</p>
+	</body>
+</html>
