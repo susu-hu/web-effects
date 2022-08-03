@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../common.css">
+	</head>
+	<style type="text/css">
+		body {
+			background: #222;
+		}
+
+		.box {
+			width: 300px;
+			height: 300px;
+			transform-style: preserve-3d;
+			animation: run 10s linear infinite;
+		}
+
+		.box>div {
+			width: 300px;
+			height: 300px;
+			position: absolute;
+			opacity: 0.7;
+		}
+
+		.box1 {
+			background-color: pink;
+			transform: rotateX(90deg) translateZ(150px);
+		}
+
+		.box2 {
+			background-color: #fff;
+			transform: rotateX(-90deg) translateZ(150px);
+		}
+
+		.box3 {
+			background-color: pink;
+			transform: rotateY(90deg) translateZ(150px);
+		}
+
+		.box4 {
+			background-color: #fff;
+			transform: rotateY(-90deg) translateZ(150px);
+		}
+
+		.box5 {
+			background-color: pink;
+			transform: translateZ(-150px);
+		}
+
+		.box6 {
+			background-color: #fff;
+			transform: translateZ(150px);
+		}
+
+		@keyframes run {
+			from {
+				transform: rotateX(0) rotateY(0);
+			}
+
+			to {
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+		}
+	</style>
+
+
+	<body>
+		<div class="box">
+			<div class="box1"></div>
+			<div class="box2"></div>
+			<div class="box3"></div>
+			<div class="box4"></div>
+			<div class="box5"></div>
+			<div class="box6"></div>
+		</div>
+	</body>
+</html>

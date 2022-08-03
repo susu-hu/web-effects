@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://www.cnblogs.com/coco1s/p/10448787.html</title>
+	</head>
+	<style>
+		body {
+			padding: 10px;
+		}
+
+		p,
+		span,
+		div {
+			margin-bottom: 20px;
+			padding: 5px;
+		}
+
+		p,
+		span {
+			font-size: 32px;
+			line-height: 70px;
+			box-shadow: 2px 2px 3px 3px darkred;
+			border: 2px solid #999;
+			border-radius: 10px;
+			background: linear-gradient(180deg, #F7CF3A 0%, #FC9704 100%);
+		}
+
+		.box-decoration-break {
+			-webkit-box-decoration-break: clone;
+			box-decoration-break: clone;
+		}
+
+		.box-decoration-break2 {
+			-webkit-box-decoration-break: clone;
+			box-decoration-break: clone;
+			color: #fff;
+			box-shadow: 2px 2px 3px 3px darkred;
+			border-radius: 10px;
+			background: linear-gradient(180deg, #F7CF3A 0%, #FC9704 100%);
+		}
+	</style>
+	<body>
+		<span>苏</br />苏苏</br />苏苏苏</br />苏苏苏苏</br /></span>
+		<p>ABCD <br />EFG <br /> HI<br /> JKLMN</p>
+
+		<span>ABCD <br />EFG <br /> HI<br /> JKLMN</span>
+
+		<div></div>
+
+		<span class="box-decoration-break">ABCD <br />EFG <br /> HI<br /> JKLMN</span>
+
+		<div></div>
+
+		<span>每一行 <br />样式 <br /> 都 <br /> 保持<br /> 完整独立</span>
+
+		<div></div>
+
+		<span class="box-decoration-break2">每一行 <br />样式 <br /> 都 <br /> 保持<br /> 完整独立</span>
+
+
+	</body>
+</html>
+<!-- box-decoration-break: clone 生效样式影响范围
+当然，使用了 box-decoration-break: clone 的元素并非对每一个样式都会生效，只会作用于下列样式：
+background
+border
+border-image
+box-shadow
+clip-path
+margin
+padding
+Syntax -->
