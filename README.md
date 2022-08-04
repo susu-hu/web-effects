@@ -13,6 +13,7 @@
 
 #### 数据可视化之echarts~
 1、柱状图多数据-dataZoom滑动缩放
+2、动态关系图-缩放-拖拽
 
 #### 神奇的CSS~
 1.  细说css的conic-gradient+linear-gradient+radial-gradient，重点在于圆锥渐变，很神奇的一个属性，不过兼容性有点差哈~
@@ -140,6 +141,8 @@
 #### 数据可视化之echarts部分截图~
 ##### 柱状图多数据-dataZoom滑动缩放
 ![输入图片说明](web-pictures/echarts-dataZoom.gif)
+##### 动态关系图-缩放-拖拽
+![输入图片说明](web-pictures/gx%E5%9B%BE.gif)
 
 
 #### 神奇的CSS页面部分截图
