@@ -139,10 +139,11 @@
 120. 页面效果——鼠标hover缩小图片，展示功能区
 
 #### 数据可视化之echarts部分截图~
-##### 柱状图多数据-dataZoom滑动缩放
-![输入图片说明](web-pictures/echarts-dataZoom.gif)
 ##### 动态关系图-缩放-拖拽
-![输入图片说明](web-pictures/gx%E5%9B%BE.gif)
+![输入图片说明](web-pictures/gx.gif)
+
+##### 柱状图多数据-dataZoom滑动缩放
+![输入图片说明](web-pictures/echartsdataZoom.gif)
 
 
 #### 神奇的CSS页面部分截图
