@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://mp.weixin.qq.com/s/bpbldcR8UGABBLRF50c4eQ</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<style type="text/css">
+		span {
+			font-size: 25px;
+			font-weight: bold;
+		}
+
+		span::after {
+			content: '\488'
+		}
+
+
+		p {
+			font-weight: bold;
+			font-size: 20px;
+			color: orange;
+		}
+
+		p::before {
+			position: absolute;
+			content: attr(title);
+			font-size: 200%;
+			text-emphasis: '\488';
+			-webkit-text-fill-color: transparent;
+			letter-spacing: -.5em;
+			text-indent: .25em;
+			pointer-events: none;
+		}
+	</style>
+	<body>
+		<section>
+			<h1>苏҈苏҈就҈是小҈苏҈苏҈！</h1>
+			<h2>苏&#x488;苏&#x488;就&#x488;是&#x488;小&#x488;苏&#x488;苏&#x488;~</h2>
+			<div>
+				<span>苏</span><span>苏</span><span>就</span><span>是</span><span>小</span><span>苏</span><span>苏</span>
+			</div>
+			<p title="苏苏就是小苏苏" style="margin-top: 50px;">苏苏就是小苏苏</p>
+		</section>
+
+
+	</body>
+	<script type="text/javascript">
+		console.log([...'苏苏就是小苏苏'].map(el => `<span>${el}</span>`).join(''))
+	</script>
+</html>
