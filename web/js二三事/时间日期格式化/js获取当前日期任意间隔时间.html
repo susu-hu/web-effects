@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function formateDate(time) {
+			let year = time.getFullYear();
+			let month = time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : (time.getMonth() + 1);
+			let day = time.getDate() < 10 ? '0' + time.getDate() : time.getDate();
+			return year + '-' + month + '-' + day;
+		}
+		/**
+		 * 
+		 * @param dateNow :Date类
+		 * @param intervalDays ：间隔天数
+		 * @param isBefore  ：Boolean,判断在参数date之前，还是之后，
+		 */
+		function getDateRange(dateNow, intervalDays, isBefore = true) {
+			let oneDayTime = 24 * 60 * 60 * 1000
+			let list = []
+			let lastDay = isBefore ? new Date(dateNow.getTime() - intervalDays * oneDayTime) : new Date(dateNow.getTime() +
+				intervalDays * oneDayTime); //获取当天之后
+			list.push(formateDate(lastDay))
+			list.push(formateDate(dateNow))
+			return list;
+		}
+		//获取昨天日期
+		function yesterdayAmount() {
+			let date = new Date()
+			let list = getDateRange(date, 1)
+			return list;
+		}
+		//获取近一周日期
+		function sevenAmount() {
+			let date = new Date();
+			let list = getDateRange(date, 6);
+			return list;
+		}
+		//获取近一个月的日期
+		function thirtyAmout() {
+			let date = new Date();
+			let list = getDateRange(date, 30);
+			return list;
+		}
+
+		console.log(formateDate(new Date()))
+		console.log(yesterdayAmount())
+		console.log(sevenAmount())
+		console.log(thirtyAmout())
+		console.log(getDateRange(new Date(),1,false))
+	</script>
+</html>
