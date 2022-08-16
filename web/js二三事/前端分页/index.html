@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			ul {
+				list-style: none;
+				margin-top: 100px;
+			}
+
+			.list {
+				width: 200px;
+				background-color: pink;
+				border-radius: 10px;
+				color: #fff;
+				margin-top: 10px;
+				text-align: center;
+				margin: 10px auto 0px;
+			}
+
+			.pageBtn {
+				text-align: center;
+			}
+			.pageBtn button{
+				background: #000;
+				color: #fff;
+				border: none;
+				border-radius: 10px;
+				width: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="tabel">
+
+		</ul>
+		<div class="pageBtn">
+			<span>页码：</span>
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+		</div>
+	</body>
+	<script>
+		const tabelList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+		// 当前页码
+		const currentPage = 1
+		// 页面尺寸
+		const pageSize = 5
+		// 截取到相应的页码数据
+		let pageList = []
+
+		const ul = document.getElementById('tabel')
+
+		function List(pageData) {
+			ul.innerHTML = ""
+			// ul绑定数据
+			for (let i = 0; i < pageData.length; i++) {
+				const li = document.createElement("li")
+				li.classList.add("list")
+				li.innerText = pageData[i]
+				ul.appendChild(li)
+			}
+		}
+
+		// 刚开始显示的是第一页，所以先截取第一页的数据
+		pageList = tabelList.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+		List(pageList)
+
+		// 给按钮注册点击事件
+		const btn = document.getElementsByClassName("pageBtn")
+		const li = document.querySelector("li")
+		btn[0].onclick = function(e) {
+			let newpageList = []
+			newCurrentPage = Number(e.target.innerText)
+			newpageList = tabelList.slice((newCurrentPage - 1) * pageSize, newCurrentPage * pageSize)
+			List(newpageList)
+		}
+	</script>
+
+</html>

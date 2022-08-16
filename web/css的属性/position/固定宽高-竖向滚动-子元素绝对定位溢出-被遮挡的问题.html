@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>固定宽高-竖向滚动-子元素绝对定位溢出-被遮挡的问题</title>
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.box {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: 400px;
+			/* width: 450px; */
+			width: 400px;
+			border: 1px solid red;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			/* padding-left: 100px; */
+
+		}
+
+		.item {
+			width: 350px;
+			height: 95px;
+			margin-bottom: 5px;
+			border: 1px solid green;
+			flex-shrink: 0;
+			position: relative;
+		}
+
+		.item:hover .item-pop {
+			display: block;
+		}
+
+		.item-pop {
+			overflow: visible;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: -110px;
+			width: 100px;
+			height: 95px;
+			z-index: 1;
+			background: salmon;
+		}
+
+		::-webkit-scrollbar {
+			width: 5px;
+			height: 5px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: pink;
+			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-track {
+			background-color: #dbeffd;
+			border-radius: 10px;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+			<div class="item">
+				<div class="item-pop"></div>
+			</div>
+		</div>
+	</body>
+</html>
