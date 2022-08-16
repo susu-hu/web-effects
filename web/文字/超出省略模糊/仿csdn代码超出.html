@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<style type="text/css">
+		[v-cloak] {
+			display: none;
+		}
+
+		.box {
+			position: relative;
+		}
+
+		.hideBox {
+			max-height: 300px;
+			overflow-y: hidden;
+		}
+
+		.mask {
+			width: 100%;
+			padding-top: 78px;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+			background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 10;
+		}
+
+		.mask span {
+			display: block;
+			margin: auto;
+			width: 44px;
+			height: 22px;
+			background: #f0f0f5;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			padding-top: 6px;
+			cursor: pointer;
+		}
+
+		.mask span img {
+			cursor: pointer !important;
+			display: block;
+			margin: auto;
+			width: 22px;
+			height: 16px;
+		}
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			<div :class="['box',show?'hideBox':'']">
+				<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com"
+					style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+					<pre class="custom" data-tool="mdnice编辑器"
+						style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span style="display: block; background: url('../img/dot.svg'); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #282c34; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #282c34; border-radius: 5px;">/**<br>&nbsp;*&nbsp;获取当前日期一周内的时间<br>&nbsp;*&nbsp;@param&nbsp;{*}&nbsp;data&nbsp;日期Date<br>&nbsp;*/<br><span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">export</span>&nbsp;const&nbsp;getCurrWeekList&nbsp;=&nbsp;(data)&nbsp;=&gt;&nbsp;{<br>&nbsp;&nbsp;//根据日期获取本周周一~周日的年-月-日<br>&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">let</span>&nbsp;weekList&nbsp;=&nbsp;[],<br>&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;=&nbsp;new&nbsp;Date(data);<br>&nbsp;&nbsp;//获取当前日期为周一的日期<br>&nbsp;&nbsp;date.setDate(date.getDay()&nbsp;==&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"0"</span>&nbsp;?&nbsp;date.getDate()&nbsp;-&nbsp;6&nbsp;:&nbsp;date.getDate()&nbsp;-&nbsp;date.getDay()&nbsp;+&nbsp;1);<br>&nbsp;&nbsp;//&nbsp;push周一数据<br>&nbsp;&nbsp;weekList.push(formateDate(date));<br>&nbsp;&nbsp;console.log(weekList)<br>&nbsp;&nbsp;//push周二以后日期<br>&nbsp;&nbsp;<span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">for</span>&nbsp;(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;6;&nbsp;i++)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;date.setDate(date.getDate()&nbsp;+&nbsp;1);<br>&nbsp;&nbsp;&nbsp;&nbsp;weekList.push(formateDate(date));<br>&nbsp;&nbsp;}<br>&nbsp;&nbsp;<span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">return</span>&nbsp;weekList;<br>}<br>//[<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-08"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-09"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-10"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-11"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-12"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-13"</span>,&nbsp;<span class="hljs-string" style="color: #98c379; line-height: 26px;">"2022-08-14"</span>]<br><br></code></pre>
+				</section>
+				<div class="mask" @click="change" v-show="show">
+					<span><img src="../img/down.png" alt="" title=""></span>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el: "#app",
+
+			data() {
+				return {
+					show: true
+				};
+			},
+			methods: {
+				change() {
+					this.show = !this.show;
+				}
+			}
+		});
+	</script>
+</html>
