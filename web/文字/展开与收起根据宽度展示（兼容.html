@@ -22,10 +22,9 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-align: justify;
-			/* display: flex; */
-			/*   display: -webkit-box;
-		  -webkit-line-clamp: 3;
-		  -webkit-box-orient: vertical; */
+			/* 	display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical; */
 			position: relative;
 			line-height: 1.5;
 			max-height: 4.5em;
@@ -55,10 +54,12 @@
 			font-size: 16px;
 			padding: 0 8px;
 			background: #3F51B5;
-			line-height: 24px;
+			line-height: 26px;
+			height: 26px;
 			border-radius: 4px;
 			color: #fff;
 			cursor: pointer;
+			/* 或者用margin负值*/
 			/* margin-top: -30px; */
 		}
 
@@ -72,7 +73,8 @@
 
 		.exp:checked+.text {
 			max-height: none;
-			max-height: 400px; /*超出最大行高度就可以了*/
+			max-height: 400px;
+			/*超出最大行高度就可以了*/
 		}
 
 		.exp:checked+.text::after {
