@@ -4,10 +4,154 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<style type="text/css">
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 	<body>
+		<div id="app" v-cloak>
+			<div v-for="(item,index) in list" :key="index">
+				<p>{{item.card}}</p>
+				<div v-for="(item1,index1) in item.list" :key="index1">
+					{{item1}}
+				</div>
+			</div>
+		</div>
 	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
+		new Vue({
+			el: "#app",
+
+			data() {
+				return {
+					list: [],
+					listId: [],
+					dd: {
+						card: 1,
+						b: 3,
+					},
+					ff: {
+						card: 1,
+						b: 4444,
+					},
+					kk: {
+						card: 2222,
+						b: 888,
+					},
+					gg: {
+						card: 2222,
+						b: 123912312,
+					}
+				};
+			},
+			created() {
+				this.getSata(this.dd)
+				setTimeout(() => {
+					this.getSata(this.ff)
+				}, 100)
+				setTimeout(() => {
+					this.getSata(this.kk)
+				}, 200)
+				setTimeout(() => {
+					this.getSata(this.gg)
+				}, 300)
+			},
+			methods: {
+				fn(e) {
+					return new Promise((reslove) => {
+						setTimeout(() => {
+							console.log('执行几次呢')
+							let res = {
+								name: 'susu啊哈实打实的撒',
+								card: e
+							}
+							reslove(res)
+						}, 4000)
+					})
+				},
+				async getSata(e) {
+					let cc = '';
+					console.log('步骤一', e)
+					// cc = await fn(); //放到这里没问题
+					let count = 0;
+					// setTimeout(() => {
+					console.log('步骤2', this.list)
+					this.list.forEach(item => {
+						if (item.card == e.card) {
+							// console.log('====', item)
+							item.list.unshift({
+								name: e.b,
+								cc: '',
+							})
+							count++;
+						}
+					})
+					// listId.forEach(item => {
+					// 	if (item.card == e.card) count++;
+					// })
+					// }, 0)
+					if (count == 0) {
+						// listId.push({
+						// 	card: e.card
+						// })
+						this.list.unshift({
+							card: e.card,
+							cc: '',
+							list: [{
+								name: e.b,
+								cc: ''
+							}]
+						});
+						cc = await this.fn(e.card); //要把这句话放在这里执行
+						console.log('步骤3', cc)
+						console.log('步骤4', this.list)
+
+						this.list.forEach(item => {
+							if (item.card == cc.card) {
+								item.cc = cc.name;
+								item.list.forEach(item => {
+									item.cc = cc.name;
+								})
+							}
+						})
+						console.log('最终的结果', this.list)
+
+						// list.unshift({
+						// 	card: e.card,
+						// 	cc: cc,
+						// 	list: [{
+						// 		name: e.b,
+						// 		cc: cc
+						// 	}]
+						// });
+						// console.log('unshift', list)
+					}
+
+					// cc = await fn();
+					// list.forEach(async item => {
+					// 	let cc = await fn();
+					// 	// item.cc = cc;
+					// 	// item.list.forEach(item => {
+					// 	// 	item.cc = cc;
+					// 	// })
+					// 	// console.log(item)
+					// 	// fn().then((res) => {
+					// 	// 	console.log(res)
+					// 	// 	item.cc = res;
+					// 	// })
+					// })
+					// setTimeout(() => {
+					// console.log('步骤5', list)
+					// }, 0)
+
+				}
+			}
+		});
+
 		let list = [];
+		let listId = [];
 		// 测试数据
 		let dd = {
 				card: 1,
@@ -21,49 +165,26 @@
 				card: 2222,
 				b: 888,
 			};
-		async function getSata(e) {
-			console.log(e)
-			let ccc = await fn();
-			let count = 0;
-			list.forEach(item => {
-				if (item.card == e.card) {
-					console.log(item)
-					item.list.unshift({
-						name: e.b,
-						cc: item.cc
-					})
-					count++;
-				}
-			})
-			if (count == 0) {
-				// let ccc = await fn();//要把这句话放在这里执行
-				// console.log(ccc)
-				list.unshift({
-					card: e.card,
-					cc: ccc,
-					list: [{
-						name: e.b,
-						cc: ccc
-					}]
-				})
-				console.log('unshift', list)
-			}
-			console.log(list)
-		}
-		getSata(dd)
-		setTimeout(() => {
-			getSata(ff)
-		}, 100)
+
+		// getSata(dd)
+		// setTimeout(() => {
+		// 	getSata(ff)
+		// }, 100)
 		// setTimeout(() => {
 		// 	getSata(kk)
 		// }, 200)
 
-		function fn() {
-			return new Promise((reslove) => {
-				setTimeout(() => {
-					reslove('susu啊哈实打实的撒')
-				}, 4000)
-			})
-		}
+		// function fn(e) {
+		// 	return new Promise((reslove) => {
+		// 		setTimeout(() => {
+		// 			console.log('执行几次呢')
+		// 			let res = {
+		// 				name: 'susu啊哈实打实的撒',
+		// 				card: e
+		// 			}
+		// 			reslove(res)
+		// 		}, 4000)
+		// 	})
+		// }
 	</script>
 </html>

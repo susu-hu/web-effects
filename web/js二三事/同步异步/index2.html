@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+	</body>
+	<script type="text/javascript">
+		// console.log('script start');
+
+		// setTimeout(function() {
+		// 	console.log('setTimeout');
+		// }, 0);
+
+		// Promise.resolve()
+		// 	.then(function() {
+		// 		console.log('promise1');
+		// 	})
+		// 	.then(function() {
+		// 		console.log('promise2');
+		// 	});
+
+		// console.log('script end');
+		setTimeout(() => {
+			console.log('timeout 1')
+			Promise.resolve().then(() => {
+				console.log('timeout 1 >> Promise 1')
+			})
+		}, 0)
+		async function Say() {
+			console.log('Say Hello')
+			await Promise.resolve()
+			console.log('Say GoodBye')
+		}
+
+		// setTimeout(() => {
+		// 	console.log('timeout 2')
+		// 	Promise.resolve().then(() => {
+		// 		console.log('timeout 2 >> Promise 1')
+		// 	})
+		// }, 0)
+		Promise.resolve().then(() => {
+			console.log('Main >> Promise 1')
+		})
+		Promise.resolve().then(() => {
+			console.log('Main >> Promise 2')
+		})
+		Promise.resolve().then(() => {
+			console.log('Main >> Promise 3')
+		})
+
+		Say()
+		console.log('Main >> Bonjour!')
+		console.log('Main >> Bonjour!1111212121')
+	</script>
+</html>
