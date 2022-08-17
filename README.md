@@ -144,6 +144,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 118. checkbox选中切换效果
 - [x] 119. 页面效果——鼠标hover放大图片
 - [x] 120. 页面效果——鼠标hover缩小图片，展示功能区
+- [x] 121. 底部渐变色阴影展开与收起
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -154,6 +155,10 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+
+##### 底部渐变色阴影展开与收起
+![输入图片说明](web-pictures/%E5%BA%95%E9%83%A8%E9%98%B4%E5%BD%B1%E5%B1%95%E5%BC%80%E4%B8%8E%E6%94%B6%E8%B5%B7.gif)
+
 ##### 页面效果——鼠标hover缩小图片，展示功能区
 ![输入图片说明](web-pictures/hover1.gif)
 
