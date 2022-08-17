@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		let list = [];
+		// 测试数据
+		let dd = {
+				card: 1,
+				b: 3,
+			},
+			ff = {
+				card: 1,
+				b: 4444,
+			},
+			kk = {
+				card: 2222,
+				b: 888,
+			};
+		async function getSata(e) {
+			console.log(e)
+			let ccc = await fn();
+			let count = 0;
+			list.forEach(item => {
+				if (item.card == e.card) {
+					console.log(item)
+					item.list.unshift({
+						name: e.b,
+						cc: item.cc
+					})
+					count++;
+				}
+			})
+			if (count == 0) {
+				// let ccc = await fn();//要把这句话放在这里执行
+				// console.log(ccc)
+				list.unshift({
+					card: e.card,
+					cc: ccc,
+					list: [{
+						name: e.b,
+						cc: ccc
+					}]
+				})
+				console.log('unshift', list)
+			}
+			console.log(list)
+		}
+		getSata(dd)
+		setTimeout(() => {
+			getSata(ff)
+		}, 100)
+		// setTimeout(() => {
+		// 	getSata(kk)
+		// }, 200)
+
+		function fn() {
+			return new Promise((reslove) => {
+				setTimeout(() => {
+					reslove('susu啊哈实打实的撒')
+				}, 4000)
+			})
+		}
+	</script>
+</html>

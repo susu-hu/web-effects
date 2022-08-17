@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//获取当前时间的小时之间24小时的时列表
+		let nows = new Date();
+		hourArr = getLastDayHour(nows, 24);
+
+		function getLastDayHour(d, s) {
+			var result = [];
+			d.setHours(d.getHours()) // 获取到当前小时
+			for (var i = 0; i < s; i++) {
+				d.setHours(d.getHours() - 1); // 每次循环一次 月份值减1
+				var h = d.getHours();
+				result.push(h);
+			}
+			return result.reverse();
+		}
+		console.log(hourArr)
+	</script>
+</html>
