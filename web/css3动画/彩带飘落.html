@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../common.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<style>
+		.download__logo {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			width: 400px;
+			height: 400px;
+		}
+
+		.download__logo .shape {
+			position: absolute
+		}
+
+		.download__logo .shape-quadrilateral {
+			width: 20px;
+			height: 12px;
+			background-color: #48b7f5;
+			-webkit-clip-path: polygon(25% 55%, 100% 0, 100% 100%, 0 100%);
+			clip-path: polygon(25% 55%, 100% 0, 100% 100%, 0 100%);
+
+			/* transform: translate3d(4.405px, 143.054px, 0px) rotate(0.1425deg) rotateY(1.2499deg) rotateX(2.4733deg) scale(0.8118, 0.811828);
+			background: pink;
+			opacity: .86; */
+		}
+
+		.download__logo .shape-circle {
+			width: 15px;
+			height: 15px;
+			background-color: #60c959;
+			-webkit-clip-path: circle(50% at 50% 50%);
+			clip-path: circle(50% at 50% 50%)
+		}
+
+		.download__logo .shape-rhombus {
+			width: 15px;
+			height: 20px;
+			background-color: #f178b6;
+			-webkit-clip-path: polygon(50% 0, 100% 33%, 50% 100%, 0 33%);
+			clip-path: polygon(50% 0, 100% 33%, 50% 100%, 0 33%)
+		}
+
+		.download__logo-animation {
+			position: absolute;
+			bottom: 22px;
+			left: 50%;
+			-webkit-transform: translateX(-50%);
+			transform: translateX(-50%);
+			width: 160%;
+			height: 110%;
+			z-index: -1;
+			/* overflow: hidden; */
+			border-radius: 45%
+		}
+
+
+		/* ------------------------ */
+		@-webkit-keyframes lds-ellipsis1 {
+			0% {
+				-webkit-transform: scale(0);
+				transform: scale(0)
+			}
+
+			100% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+		}
+
+		@keyframes lds-ellipsis1 {
+			0% {
+				-webkit-transform: scale(0);
+				transform: scale(0)
+			}
+
+			100% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+		}
+
+		@-webkit-keyframes lds-ellipsis3 {
+			0% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+
+			100% {
+				-webkit-transform: scale(0);
+				transform: scale(0)
+			}
+		}
+
+		@keyframes lds-ellipsis3 {
+			0% {
+				-webkit-transform: scale(1);
+				transform: scale(1)
+			}
+
+			100% {
+				-webkit-transform: scale(0);
+				transform: scale(0)
+			}
+		}
+
+		@-webkit-keyframes lds-ellipsis2 {
+			0% {
+				-webkit-transform: translate(0, 0);
+				transform: translate(0, 0)
+			}
+
+			100% {
+				-webkit-transform: translate(19px, 0);
+				transform: translate(19px, 0)
+			}
+		}
+
+		@keyframes lds-ellipsis2 {
+			0% {
+				-webkit-transform: translate(0, 0);
+				transform: translate(0, 0)
+			}
+
+			100% {
+				-webkit-transform: translate(19px, 0);
+				transform: translate(19px, 0)
+			}
+		}
+
+		.loading {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			display: inline-block;
+			width: 64px;
+			height: 40px
+		}
+
+		.loading div {
+			position: absolute;
+			top: 15.5px;
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			background: #fff;
+			-webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
+			animation-timing-function: cubic-bezier(0, 1, 1, 0)
+		}
+
+		.loading.dark div {
+			background: #000
+		}
+
+		.loading div:nth-child(1) {
+			left: 6px;
+			-webkit-animation: lds-ellipsis1 .6s infinite;
+			animation: lds-ellipsis1 .6s infinite
+		}
+
+		.loading div:nth-child(2) {
+			left: 6px;
+			-webkit-animation: lds-ellipsis2 .6s infinite;
+			animation: lds-ellipsis2 .6s infinite
+		}
+
+		.loading div:nth-child(3) {
+			left: 26px;
+			-webkit-animation: lds-ellipsis2 .6s infinite;
+			animation: lds-ellipsis2 .6s infinite
+		}
+
+		.loading div:nth-child(4) {
+			left: 45px;
+			-webkit-animation: lds-ellipsis3 .6s infinite;
+			animation: lds-ellipsis3 .6s infinite
+		}
+		
+		/* transform: translate3d(4.405px, 143.054px, 0px) rotate(0.1425deg) rotateY(1.2499deg) rotateX(2.4733deg) scale(0.8118, 0.811828);
+		background: pink;
+		opacity: .86; */
+	</style>
+	<body>
+		<div id="app" v-cloak>
+			<div class="download__logo">
+				<div class="download__logo-animation" style="perspective: 600px;">
+					<template v-for="(item,index) in 20">
+						<div class="shape shape-quadrilateral" > </div>
+						<div class="shape shape-circle"></div>
+						<div class="shape shape-rhombus"></div>
+					</template>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+
+			},
+
+			methods: {
+
+			}
+		})
+	</script>
+</html>

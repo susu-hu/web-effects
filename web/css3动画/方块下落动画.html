@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../common.css">
+	<style>
+		body {
+			background: #222;
+		}
+
+		section {
+			overflow: hidden;
+			position: relative;
+			height: 200px;
+			width: 400px;
+		}
+
+		.box {
+
+			width: 50px;
+
+			height: 50px;
+
+			background: pink;
+
+			transform: rotate(45deg);
+
+			position: absolute;
+			/* border-radius: 50%; */
+
+			box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+
+		}
+
+		.box1 {
+
+			left: calc(50% - 25px);
+
+			top: calc(100% - 75px);
+
+			animation: box1 cubic-bezier(1, 0, 0.45, 1.4) 2s 1;
+
+		}
+
+		.box2 {
+
+			left: calc(50% - 65px);
+
+			top: calc(100% - 115px);
+
+			animation: box2 cubic-bezier(1, 0, 0.45, 1.4) 2.5s 1;
+
+		}
+
+		.box3 {
+
+			left: calc(50% + 15px);
+
+			top: calc(100% - 115px);
+
+			animation: box3 cubic-bezier(1, 0, 0.45, 1.4) 3s 1;
+
+		}
+
+		.box4 {
+
+			left: calc(50% + 55px);
+
+			top: calc(100% - 155px);
+
+			animation: box4 cubic-bezier(1, 0, 0.45, 1.4) 3.5s 1;
+
+		}
+
+		.box5 {
+
+			left: calc(50% - 105px);
+
+			top: calc(100% - 155px);
+
+			animation: box5 cubic-bezier(1, 0, 0.45, 1.4) 4s 1;
+
+		}
+
+		.box6 {
+
+			left: calc(50% - 25px);
+
+			top: calc(100% - 155px);
+
+			animation: box6 cubic-bezier(1, 0, 0.45, 1.4) 4.5s 1;
+
+		}
+
+		@keyframes box1 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 75px);
+
+			}
+
+		}
+
+		@keyframes box2 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 115px);
+
+			}
+
+		}
+
+		@keyframes box3 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 115px);
+
+			}
+
+		}
+
+		@keyframes box4 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 155px);
+
+			}
+
+		}
+
+		@keyframes box5 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 155px);
+
+			}
+
+		}
+
+		@keyframes box6 {
+
+			from {
+
+				top: -100px;
+
+			}
+
+			to {
+
+				top: calc(100% - 155px);
+
+			}
+
+		}
+	</style>
+
+	<body>
+		<section>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box6"></div>
+		</section>
+	</body>
+</html>
