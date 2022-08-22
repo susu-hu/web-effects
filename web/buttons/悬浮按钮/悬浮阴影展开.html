@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../common.css">
+	<style>
+		body {
+			background: #222;
+		}
+
+		div {
+			width: 200px;
+			height: 60px;
+			background: orange;
+			font-size: 24px;
+			line-height: 60px;
+			text-align: center;
+			border-radius: 30px;
+			color: white;
+			text-shadow: 0 1px 0 orange;
+			cursor: pointer;
+			position: relative;
+			overflow: hidden;
+			margin-top: 50px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-mz-user-select: none;
+			user-select: none;
+		}
+
+		div::after {
+			content: ' ';
+			display: block;
+			background: rgba(255, 255, 255, .2);
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			border-radius: 30px;
+
+			transition: transform 0.3s ease;
+			-webkit-transition: -webkit-transform 0.3s ease;
+		}
+
+		div:hover:after {
+			transform: scale(1, 1);
+			-webkit-transform: scale(1, 1);
+		}
+
+		.a::after {
+			transform: scale(0, 1);
+			-webkit-transform: scale(0, 1);
+		}
+
+		.b::after {
+			transform: scale(0, 0);
+			-webkit-transform: scale(0, 0);
+		}
+
+		.c::after {
+			transform: scale(1, 0);
+			-webkit-transform: scale(1, 0);
+		}
+	</style>
+	<body>
+		<section>
+			<div class="a">苏苏</div>
+			<div class="b">苏苏</div>
+			<div class="c">苏苏</div>
+		</section>
+
+	</body>
+</html>
