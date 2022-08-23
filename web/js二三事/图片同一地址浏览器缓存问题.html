@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		img {
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+	<body>
+		<img src="" id="img" alt="" />
+	</body>
+	<script type="text/javascript">
+		function getImg() {
+			let img = document.getElementById('img');
+			img.setAttribute('src', 'https://s3.bmp.ovh/imgs/2022/07/27/85dabf1d5821a98b.png' + '?t=' + (+new Date()))
+		}
+		getImg()
+	</script>
+</html>
