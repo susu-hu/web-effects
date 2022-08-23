@@ -12,33 +12,25 @@
 		}
 
 		:root {
-			--color: orange;
-			--dashColor:red;
+			--color: rgba(255, 85, 0, 1);
+			--dashColor: rgba(255, 85, 0, 0.5);
+			--boxColor: rgba(255, 85, 0, 0.8);
+			--boxColor2: rgba(255, 85, 0, 0.9);
 		}
 
 
 		.box {
 			perspective: 1000px;
 			perspective-origin: 50% 50%;
-			/* 	height: 100%;
-			top: 5%;
-			position: absolute;
-			left: 50%;
-			margin-left: -100px */
 		}
 
 		.box-wrap {
 			height: 200px;
 			width: 200px;
 			margin: auto;
-			position: absolute;
+			position: relative;
 			transform-style: preserve-3d;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			animation: turn 8s infinite;
-			animation-timing-function: linear
+			animation: turn 8s linear infinite;
 		}
 
 		.box-wrap:after,
@@ -66,8 +58,7 @@
 			position: absolute;
 			box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 			border-radius: 100%;
-			border: dashed 1.5px rgba(0, 255, 255, 0.1);
-			animation-timing-function: linear
+			border: dashed 1.5px var(--dashColor);
 		}
 
 		.circle:before {
@@ -77,9 +68,8 @@
 			width: 8px;
 			border-radius: 100%;
 			background-color: #fff;
-			box-shadow: 0 0 10px #C1FFFD, 0 0 15px #7CFFFF, 0 0 30px #36FFFF, 0 0 40px #0FF;
-			animation: electrons 3s infinite;
-			animation-timing-function: linear
+			box-shadow: 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color);
+			animation: electrons 3s linear infinite;
 		}
 
 		.circle:after {
@@ -93,13 +83,12 @@
 			left: 50%;
 			margin-top: -4px;
 			margin-left: -4px;
-			box-shadow: 0 0 10px #000, 0 0 15px #64FFF9, 0 0 30px #0FF
+			box-shadow: 0 0 10px #000, 0 0 15px var(--boxColor), 0 0 30px var(--color);
 		}
 
 		.circle_0 {
 			transform: translateZ(0px) rotateY(0deg) rotateX(0deg);
-			animation: rotate_0 1.8s infinite;
-			animation-timing-function: linear;
+			animation: rotate_0 1.8s linear infinite;
 			height: 300px;
 			width: 300px;
 			top: -50px;
@@ -117,8 +106,7 @@
 
 		.circle_1 {
 			transform: translateZ(0px) rotateY(90deg) rotateX(0deg);
-			animation: rotate_1 1.8s infinite;
-			animation-timing-function: linear;
+			animation: rotate_1 1.8s linear infinite;
 			height: 300px;
 			width: 300px;
 			top: -50px;
@@ -136,8 +124,7 @@
 
 		.circle_2 {
 			transform: translateZ(0px) rotateY(45deg) rotateX(0deg);
-			animation: rotate_2 1.2s infinite;
-			animation-timing-function: linear
+			animation: rotate_2 1.2s linear infinite;
 		}
 
 		.circle_2:before {
@@ -151,8 +138,7 @@
 
 		.circle_3 {
 			transform: translateZ(0px) rotateY(135deg) rotateX(0deg);
-			animation: rotate_3 1.2s infinite;
-			animation-timing-function: linear
+			animation: rotate_3 1.2s linear infinite;
 		}
 
 		.circle_3:before {
@@ -166,8 +152,7 @@
 
 		.circle_4 {
 			transform: rotateX(90deg) rotateY(-30deg) translateZ(0px) translateY(0px);
-			animation: rotate_4 .5s infinite;
-			animation-timing-function: linear;
+			animation: rotate_4 .5s linear infinite;
 			height: 100px;
 			width: 100px;
 			top: 50px;
@@ -185,8 +170,7 @@
 
 		.circle_5 {
 			transform: rotateX(90deg) rotateY(45deg) translateZ(0px) translateY(0px);
-			animation: rotate_5 .5s infinite;
-			animation-timing-function: linear;
+			animation: rotate_5 .5s linear infinite;
 			height: 100px;
 			width: 100px;
 			top: 50px;
@@ -232,68 +216,68 @@
 		@keyframes rotate_0 {
 			0% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(0deg) rotateZ(0deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			50% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(0deg) rotateZ(180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 1)
+				border: dashed 1.5px var(--color)
 			}
 
 			100% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(0deg) rotateZ(360deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 		}
 
 		@keyframes rotate_1 {
 			0% {
 				transform: translateZ(0px) rotateY(90deg) rotateX(0deg) rotateZ(0deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			50% {
 				transform: translateZ(0px) rotateY(90deg) rotateX(0deg) rotateZ(-180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 1)
+				border: dashed 1.5px var(--color)
 			}
 
 			100% {
 				transform: translateZ(0px) rotateY(90deg) rotateX(0deg) rotateZ(-360deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 		}
 
 		@keyframes rotate_2 {
 			0% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(135deg) rotateZ(0deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			50% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(135deg) rotateZ(180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 1)
+				border: dashed 1.5px var(--color)
 			}
 
 			100% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(135deg) rotateZ(360deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 		}
 
 		@keyframes rotate_3 {
 			0% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(45deg) rotateZ(0deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			50% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(45deg) rotateZ(-180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 1)
+				border: dashed 1.5px var(--color)
 			}
 
 			100% {
 				transform: translateZ(0px) rotateY(0deg) rotateX(45deg) rotateZ(-360deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 		}
 
@@ -305,7 +289,7 @@
 
 			50% {
 				transform: rotateX(90deg) rotateY(-30deg) translateZ(0px) translateY(0px) rotateZ(180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			100% {
@@ -317,12 +301,12 @@
 		@keyframes rotate_5 {
 			0% {
 				transform: rotateX(90deg) rotateY(45deg) translateZ(0px) translateY(0px) rotateZ(0deg);
-				border: dashed 1.5px rgba(255, 255, 255, 1)
+				border: dashed 1.5px rrgba(255, 255, 255, 1)
 			}
 
 			50% {
 				transform: rotateX(90deg) rotateY(45deg) translateZ(0px) translateY(0px) rotateZ(-180deg);
-				border: dashed 1.5px rgba(0, 255, 255, 0.1)
+				border: dashed 1.5px var(--dashColor)
 			}
 
 			100% {
