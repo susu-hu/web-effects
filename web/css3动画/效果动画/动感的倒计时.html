@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参考链接：https://mp.weixin.qq.com/s/MkdSVj_6j_oZfzBW_1JBxQ</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<style type="text/css">
+		@property --t {
+			syntax: '<integer>';
+			inherits: false;
+			initial-value: 0;
+		}
+
+		@counter-style stop {
+			system: cyclic;
+			symbols: "Go~";
+			range: infinite 0;
+		}
+
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			display: grid;
+			place-content: center;
+		}
+
+		count-down {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: Consolas, Monaco, monospace;
+			font-size: 120px;
+		}
+
+		count-down::after {
+			--t: 5;
+			--dur: 1;
+			counter-reset: time var(--t);
+			content: counter(time, stop);
+			animation: count calc(var(--t) * var(--dur) * 1s) steps(var(--t)) forwards,
+				shark calc(var(--dur) * 1s) calc(var(--dur) * .8s) calc(var(--t));
+		}
+
+		@keyframes count {
+			to {
+				--t: 0;
+			}
+		}
+
+		@keyframes shark {
+			0% {
+				opacity: 1;
+				transform: scale(1);
+			}
+
+			20% {
+				opacity: 0;
+				transform: scale(0.4);
+			}
+		}
+	</style>
+	<body>
+	</body>
+</html>
