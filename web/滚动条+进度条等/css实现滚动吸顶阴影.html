@@ -8,6 +8,8 @@
 		body {
 			padding: 0;
 			margin: 0;
+			background: #222;
+			color: #fff;
 		}
 
 		* {
@@ -17,14 +19,15 @@
 		header {
 			padding: 10px;
 			position: sticky;
-			background: #fff;
+			background: #222;
+			color: #fff;
 			top: 0;
 			z-index: 1;
 		}
 
 		.shadow::before {
 			content: '';
-			box-shadow: 0 0 10px 1px #333;
+			box-shadow: 0 0 10px 1px #fff;
 			position: fixed;
 			width: 100%;
 			/* fixed 定位在不设置 top 或者 left 值时，仍然位于原先位置，但是会在这个位置固定下来 */
@@ -34,7 +37,7 @@
 			content: '';
 			width: 100%;
 			height: 30px;
-			background: linear-gradient(to bottom, #fff 50%, transparent);
+			background: linear-gradient(to bottom, #222 50%, transparent);
 			position: absolute;
 			/* absolute定位在不设置 top 或者 left 值时，仍然位于原先位置，也会跟随内容滚动 */
 		}

@@ -26,7 +26,7 @@
 			place-content: center;
 		}
 
-		count-down {
+		susu {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -34,13 +34,20 @@
 			font-size: 120px;
 		}
 
-		count-down::after {
+		susu::after {
 			--t: 5;
 			--dur: 1;
 			counter-reset: time var(--t);
 			content: counter(time, stop);
+			/* content: counter(time, cjk-decimal); */
+			/*中日韩十进制数*/
 			animation: count calc(var(--t) * var(--dur) * 1s) steps(var(--t)) forwards,
 				shark calc(var(--dur) * 1s) calc(var(--dur) * .8s) calc(var(--t));
+		}
+
+		/* 重新运行 */
+		susu:active::after {
+			animation: none;
 		}
 
 		@keyframes count {
@@ -50,7 +57,9 @@
 		}
 
 		@keyframes shark {
-			0% {
+
+			/* 放大缩小 */
+			/* 0% {
 				opacity: 1;
 				transform: scale(1);
 			}
@@ -58,9 +67,31 @@
 			20% {
 				opacity: 0;
 				transform: scale(0.4);
+			} 
+			
+			21%{
+				opacity: 0;
+				transform: scale(5);
+			}
+			*/
+			/* 位移的动画 */
+			0% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			20% {
+				opacity: 0;
+				transform: translateY(100px);
+			}
+
+			21% {
+				opacity: 0;
+				transform: translateY(-100px);
 			}
 		}
 	</style>
 	<body>
+		<susu style="--t: 5"></susu>
 	</body>
 </html>
