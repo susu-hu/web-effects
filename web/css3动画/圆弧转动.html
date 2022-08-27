@@ -1,0 +1,179 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-08-27 23:23:32
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-08-28 01:05:51
+ * @FilePath: \css_demos\web\css3动画\圆弧转动.html
+ * @Description: 圆弧转动动画
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆弧转动</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    :root {
+        --color: orange;
+        --lineColor: rgba(102, 163, 224, .2);
+    }
+
+    body {
+        background: #222;
+        overflow: hidden;
+    }
+
+    section {
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+
+    section::before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        border-radius: 100%;
+        border-top: 1px solid orange;
+        /* border-bottom: 1px solid orange; */
+        top: 50%;
+        left: 50%;
+        margin-top: -5px;
+        margin-left: -5px;
+        animation: turn 1s infinite linear;
+        filter:
+            drop-shadow(0 0 2px var(--color)) drop-shadow(0 0 5px var(--color)) drop-shadow(0 0 10px var(--color)) drop-shadow(0 0 20px var(--color));
+    }
+
+    /* section::after {
+        content: '';
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 100%;
+        background-color: #fff;
+        top: 50%;
+        left: 50%;
+        margin-top: -3px;
+        margin-left: -3px;
+    } */
+
+    .box,
+    .box::after,
+    .box::before {
+        border: 2px solid var(--lineColor);
+        ;
+        border-left: 2px solid var(--color);
+        border-right: 2px solid var(--color);
+        border-radius: 50%;
+    }
+
+    .box::after,
+    .box::before {
+        position: absolute;
+        content: '';
+        left: 50%;
+        top: 50%;
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        animation: turn 1s linear infinite;
+        transform-origin: 50% 50%;
+    }
+
+    .box::before {
+        width: 180px;
+        height: 180px;
+        margin-top: -90px;
+        margin-left: -90px;
+        /* animation: turn 1s linear infinite reverse; */
+        /* 伪元素将继承父元素的动画，设置动画reverse，反向变换，可实现木有动画的效果,或重写动画效果 */
+        animation: turn2 1.25s linear infinite;
+    }
+
+    .box::after {
+        width: 160px;
+        height: 160px;
+        margin-top: -80px;
+        margin-left: -80px;
+        animation: turn 1.5s linear infinite;
+    }
+
+    .box-circle,
+    .box-circle1,
+    .box-circle2 {
+        border: 2px solid var(--color);
+        opacity: .9;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform-origin: 50% 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        transform-origin: 50% 50%;
+        animation: rotate 3s linear infinite;
+    }
+
+    .box-circle {
+        animation-delay: 0.2s;
+        /* transform: translate(-50%, -50%) rotate3D(1, 0, 0, -120deg); */
+    }
+
+    .box-circle1 {
+        animation-delay: 1.2s;
+        /* transform: translate(-50%, -50%) rotate3D(0.5, 0.5, 1, -260deg); */
+    }
+
+    .box-circle2 {
+        animation-delay: 2.2s;
+    }
+
+    @keyframes turn {
+        100% {
+            transform: rotateZ(-1turn);
+        }
+    }
+
+    @keyframes turn2 {
+        100% {
+            transform: rotateZ(1turn);
+        }
+    }
+
+    @keyframes rotate {
+        100% {
+            border: none;
+            border-top: 2px solid var(--color);
+            border-bottom: 2px solid var(--color);
+            transform: translate(-50%, -50%) rotate3D(.5, 0.5, 0.5, -720deg);
+        }
+    }
+
+    @keyframes deep {
+        100% {
+            transform: scale(2);
+        }
+    }
+</style>
+
+<body>
+    <section>
+        <div class="box"></div>
+        <div class="box-circle"></div>
+        <div class="box-circle1"></div>
+        <div class="box-circle2"></div>
+        <div class="shine"></div>
+    </section>
+</body>
+
+</html>
