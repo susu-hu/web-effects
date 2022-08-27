@@ -147,6 +147,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 121. 底部渐变色阴影展开与收起
 - [x] 122. 三个半圆弧绕圈动画
 - [x] 123. 多圆环绕圈动画
+- [x] 124. 倒计时动画
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -157,6 +158,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 倒计时动画
+![输入图片说明](web-pictures/daojishi.gif)
 ##### 多圆环绕圈动画
 ![输入图片说明](web-pictures/threeRotate.gif)
 ##### 三个半圆弧绕圈动画
