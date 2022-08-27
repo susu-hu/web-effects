@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<style type="text/css">
+		body {
+			background: #222;
+		}
+
+
+		div {
+			--color: orange;
+			width: 200px;
+			height: 200px;
+			border-top: 5px solid orange;
+			border-radius: 50%;
+			/* box-shadow: 0 0 5px orange; */
+			filter:
+				drop-shadow(0 0 2px var(--color)) 
+				drop-shadow(0 0 5px var(--color)) 
+				drop-shadow(0 0 10px var(--color)) 
+				drop-shadow(0 0 20px var(--color));
+
+			/* filter: drop-shadow(0 0 5px #000); */
+			/* box-shadow 属性在元素的整个框后面创建一个矩形阴影, 而 drop-shadow() 过滤器则是创建一个符合图像本身形状(alpha 通道)的阴影 */
+			 transform: rotate(-15deg);
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<style type="text/css">
+		body,
+		html {
+
+			background: #222;
+			overflow: hidden;
+		}
+
+		div {
+			position: relative;
+			margin: auto;
+			width: 200px;
+			height: 200px;
+			--color: orange;
+		}
+
+		div::before,
+		div::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			border-radius: 50%;
+			border-top: 10px solid #fff;
+			filter: drop-shadow(0 0 2px var(--color)) drop-shadow(0 0 5px var(--color)) drop-shadow(0 0 10px var(--color)) drop-shadow(0 0 20px var(--color));
+			-webkit-animation: rotate 3s infinite linear;
+			animation: rotate 3s infinite linear;
+		}
+
+		div::after {
+			--color: pink;
+			-webkit-animation-delay: -1.5s;
+			animation-delay: -1.5s;
+		}
+
+		@-webkit-keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

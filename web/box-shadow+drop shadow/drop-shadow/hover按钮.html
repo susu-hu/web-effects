@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../common.css" />
+	<style type="text/css">
+		body {
+			background: #222222;
+			overflow: hidden;
+		}
+
+		.container {
+			position: relative;
+			width: 240px;
+			height: 80px;
+			margin: auto;
+		}
+
+		.container .hover-text {
+			position: absolute;
+			top: 30px;
+			left: 30px;
+			line-height: 80px;
+			width: 240px;
+			color: #fff;
+			font-size: 24px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.container:hover .rect {
+			stroke-dasharray: 640px;
+			stroke-dashoffset: 0;
+		}
+
+		.rect {
+			--color: orange;
+			fill: none;
+			stroke-width: 3;
+			stroke-linejoin: round;
+			stroke: #fff;
+			stroke-dasharray: 640px;
+			stroke-dashoffset: 640px;
+			border-radius: 20px;
+			transition: all 0.5s ease-in-out;
+			filter: drop-shadow(0 0 2px var(--color)) drop-shadow(0 0 4px var(--color)) drop-shadow(0 0 8px var(--color)) drop-shadow(0 0 12px var(--color));
+		}
+	</style>
+	<body>
+		<div class="container">
+			<svg width="300" height="140" OK xmlns="http://www.w3.org/2000/svg">
+				<rect x="30" y="30" class="rect" height="80px" width="240px"></rect>
+			</svg>
+			<div class="hover-text">苏苏就是小苏苏呀</div>
+		</div>
+	</body>
+</html>
