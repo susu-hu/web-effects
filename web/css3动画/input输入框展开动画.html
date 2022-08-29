@@ -1,0 +1,86 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-08-29 18:59:59
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-08-29 19:53:02
+ * @FilePath: \css_demos\web\css3动画\input输入框展开动画.html
+ * @Description: input输入框展开动画
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input输入框展开动画</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    body {
+        overflow: hidden;
+        background: #222;
+    }
+
+    div {
+        position: relative;
+    }
+
+    input {
+        padding: 0 40px 0 20px;
+        width: 160px;
+        height: 38px;
+        font-size: 14px;
+        border: 1px solid #eee;
+        border-radius: 40px;
+        background: #eee;
+        transition: width .5s;
+        -moz-transition: width .5s;
+        -webkit-transition: width .5s;
+        -o-transition: width .5s;
+        transition-delay: .1s;
+        -moz-transition-delay: .1s;
+        -webkit-transition-delay: .1s;
+        -o-transition-delay: .1s;
+    }
+
+    span {
+        position: absolute;
+        top: 4px;
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        color: #969696;
+        text-align: center;
+        background: #222;
+        border-radius: 50%;
+        font-size: 15px;
+    }
+
+    input:focus {
+        transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -webkit-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        width: 280px;
+        outline: none;
+        box-shadow: none;
+    }
+
+    input:focus+span {
+        background-color: pink;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div>
+        <input type="text" />
+        <span>搜</span>
+    </div>
+
+</body>
+
+</html>
