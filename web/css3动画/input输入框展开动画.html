@@ -9,78 +9,257 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>input输入框展开动画</title>
-</head>
-<link rel="stylesheet" href="../common.css">
-<style>
-    body {
-        overflow: hidden;
-        background: #222;
-    }
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>input输入框展开动画</title>
+	</head>
+	<link rel="stylesheet" href="../common.css">
+	<style>
+		.mb20 {
+			margin-bottom: 20px;
+		}
 
-    div {
-        position: relative;
-    }
+		body {
+			overflow: hidden;
+			background: #222;
+		}
 
-    input {
-        padding: 0 40px 0 20px;
-        width: 160px;
-        height: 38px;
-        font-size: 14px;
-        border: 1px solid #eee;
-        border-radius: 40px;
-        background: #eee;
-        transition: width .5s;
-        -moz-transition: width .5s;
-        -webkit-transition: width .5s;
-        -o-transition: width .5s;
-        transition-delay: .1s;
-        -moz-transition-delay: .1s;
-        -webkit-transition-delay: .1s;
-        -o-transition-delay: .1s;
-    }
+		.input-box {
+			position: relative;
+			display: inline-block;
+		}
 
-    span {
-        position: absolute;
-        top: 4px;
-        right: 5px;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        padding: 0;
-        color: #969696;
-        text-align: center;
-        background: #222;
-        border-radius: 50%;
-        font-size: 15px;
-    }
+		.input {
+			padding: 0 40px 0 20px;
+			width: 160px;
+			height: 38px;
+			font-size: 14px;
+			border: 1px solid #eee;
+			border-radius: 40px;
+			background: #eee;
+			transition: width .5s;
+			-moz-transition: width .5s;
+			-webkit-transition: width .5s;
+			-o-transition: width .5s;
+			transition-delay: .1s;
+			-moz-transition-delay: .1s;
+			-webkit-transition-delay: .1s;
+			-o-transition-delay: .1s;
+		}
 
-    input:focus {
-        transition-delay: 0s;
-        -moz-transition-delay: 0s;
-        -webkit-transition-delay: 0s;
-        -o-transition-delay: 0s;
-        width: 280px;
-        outline: none;
-        box-shadow: none;
-    }
+		.span {
+			position: absolute;
+			top: 4px;
+			right: 5px;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			padding: 0;
+			color: #969696;
+			text-align: center;
+			background: #222;
+			border-radius: 50%;
+			font-size: 15px;
+			cursor: pointer;
+		}
 
-    input:focus+span {
-        background-color: pink;
-        color: #fff;
-    }
-</style>
+		.input:focus {
+			transition-delay: 0s;
+			-moz-transition-delay: 0s;
+			-webkit-transition-delay: 0s;
+			-o-transition-delay: 0s;
+			width: 280px;
+			outline: none;
+			box-shadow: none;
+		}
 
-<body>
-    <div>
-        <input type="text" />
-        <span>搜</span>
-    </div>
+		.input:focus+.span {
+			background-color: pink;
+			color: #fff;
+		}
 
-</body>
+		/* 第二个 */
+
+		.btn-box {
+			color: #fff;
+			width: auto;
+			border-radius: 25px;
+			min-width: 50px;
+			height: 50px;
+			line-height: 50px;
+			display: inline-block;
+			position: relative;
+			overflow: hidden;
+			background-image: linear-gradient(315deg, #6772FF 0, #00F9E5 100%);
+			background-size: 104% 104%;
+			cursor: pointer;
+			/* position: absolute;
+			right: 60px; */
+
+		}
+
+		.btn-box span {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			font-size: 18px;
+			cursor: pointer;
+		}
+
+		.btn-box input {
+			display: inline-block;
+			background: 0 0;
+			border: none;
+			color: #fff;
+			padding-left: 20px;
+			line-height: 50px !important;
+			height: 50px;
+			box-sizing: border-box;
+			vertical-align: 4px;
+			font-size: 16px;
+			width: 50px;
+			transition: all .3s ease-in-out;
+		}
+
+		.btn-box:hover input {
+			display: inline-block;
+			width: 160px;
+			padding-right: 50px
+		}
+
+		.btn-box:hover input ::-webkit-input-placeholder {
+			opacity: .8;
+			color: #FFF
+		}
+
+		.btn-box input:not(:placeholder-shown) {
+			display: inline-block;
+			width: 160px;
+			padding-right: 50px
+		}
+
+
+		input::-moz-placeholder,
+		textarea::-moz-placeholder {
+			color: #999;
+			font-size: 10px;
+		}
+
+		input::-webkit-input-placeholder,
+		textarea::-webkit-input-placeholder {
+			color: #999;
+			font-size: 10px;
+		}
+
+		/* 第三个 */
+		.input-box2 {
+			position: relative;
+			width: 160px;
+			height: 40px;
+			margin-top: 10px;
+		}
+			
+		.input-box2 input {
+			width: 100%;
+			height: 100%;
+			border: none;
+			font-size: 17px;
+			border-bottom: 1px solid #afaebd;
+			color: #fff;
+		}
+
+		.input-box2 input:focus~label,
+		.input-box2 input:valid~label {
+			transform: translateY(-25px);
+			font-size: 15px;
+			color: #ffaa7f;
+			font-style:oblique;
+		}
+
+		.input-box2 label {
+			position: absolute;
+			bottom: 10px;
+			left: 0px;
+			color: #afaebd;
+			pointer-events: none;
+			transition: all 0.3s ease;
+		}
+
+		.input-box2 .line {
+			position: absolute;
+			bottom: 0px;
+			height: 2px;
+			width: 100%;
+			background-color: #ffaa7f;
+			transform: scaleX(0);
+			transition: all 0.3s ease;
+		}
+
+		.input-box2 input:focus~.line,
+		.input-box2 input:valid~.line {
+			transform: scaleX(1);
+		}
+
+		/* ::-webkit-input-placeholder {
+			text-overflow: ellipsis
+		}
+		
+		@keyframes highlight {
+		
+			0%,
+			100% {
+				background-color: transparent
+			}
+		
+			20%,
+			80% {
+				background-color: #D4D9FF
+			}
+		}
+		
+		:focus:not(:focus-visible) {
+			outline: 0
+		}
+		
+		input:focus,
+		textarea:focus {
+			outline: 0
+		}
+		
+		input::-ms-clear {
+			display: none
+		} */
+	</style>
+
+	<body>
+		<div>
+			<section>
+				<div class=" input-box mb20">
+					<input type="text" class="input" />
+					<span class="span">搜</span>
+				</div>
+			</section>
+			<section>
+				<div class="btn-box mb20">
+					<span>搜</span>
+					<input type="text" placeholder=" " />
+				</div>
+			</section>
+			<section>
+				<div class="input-box2" data-label='苏苏小苏苏'>
+					<input type="text" required/>
+					<!-- required 属性规定必需在提交之前填写输入字段。 -->
+					<div class="line"></div>
+					<label>苏苏小苏苏</label>
+				</div>
+			</section>
+		</div>
+
+	</body>
 
 </html>
