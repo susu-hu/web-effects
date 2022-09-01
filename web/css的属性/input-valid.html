@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>input中的required/focus/valid/invalid(CSS :valid 选择器)</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+	<style type="text/css">
+		body {
+			background-color: #222;
+		}
+
+		input:invalid {
+			border: 1px solid red;
+		}
+
+		input:valid {
+			border: 1px solid blueviolet;
+		}
+		input:focus{
+			border: none;
+			outline: 0;
+		}
+	</style>
+	<body>
+		<input type="text" maxlength="11" placeholder="请输入手机号码" pattern="^1[3456789]\d{9}$" required>
+	</body>
+</html>
+<!-- 
+:required
+必须，那input不能为空的意思。
+:valid
+有效，即当填写的内容符合要求的时候触发。
+:invalid
+无效，即当填写的内容不符合要求的时候触发。
+:valid 选择器在表单元素的值需要根据指定条件验证时设置指定样式。
+:invalid 选择器用于在表单元素中的值是非法时设置指定样式。
+ 注意: :valid 选择器只作用于能指定区间值的元素，例如 input 元素中的 min 和 max 属性，及正确的 email 字段, 合法的数字字段等。
+
+ required 属性是一个布尔属性。
+ required 属性规定必需在提交表单之前填写输入字段。
+ ：required 属性适用于下面的 input 类型：text、search、url、tel、email、password、date pickers、number、checkbox、radio 和 file-->
