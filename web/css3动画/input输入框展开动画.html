@@ -173,15 +173,15 @@
 			color: #fff;
 		}
 
-		.input-box2 input:focus~label,
-		.input-box2 input:valid~label {
+		.input-box2 input:focus~span,
+		.input-box2 input:valid~span {
 			transform: translateY(-25px);
-			font-size: 15px;
+			font-size: 12px;
 			color: #ffaa7f;
 			font-style:oblique;
 		}
 
-		.input-box2 label {
+		.input-box2 span {
 			position: absolute;
 			bottom: 10px;
 			left: 0px;
@@ -251,11 +251,11 @@
 				</div>
 			</section>
 			<section>
-				<div class="input-box2" data-label='苏苏小苏苏'>
+				<div class="input-box2" data-span='苏苏小苏苏'>
 					<input type="text" required/>
 					<!-- required 属性规定必需在提交之前填写输入字段。 -->
 					<div class="line"></div>
-					<label>苏苏小苏苏</label>
+					<span>请输入搜索内容</span>
 				</div>
 			</section>
 		</div>
