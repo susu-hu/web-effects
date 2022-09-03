@@ -1,3 +1,20 @@
+.oval {
+  width: 320px;
+  height: 120px;
+  border-radius: 100%;
+  border: 1px solid orange;
+  position: relative;
+}
+.circle-dot {
+  width: 20px;
+  height: 20px;
+  left: 150px;
+  top: 50px;
+  background: orange;
+  border-radius: 100%;
+  position: absolute;
+  animation: move 10s linear infinite;
+}
 body {
   background: #222;
 }
@@ -12,11 +29,7 @@ body {
   height: 250px;
   border-radius: 50%;
   border: 2px solid var(--color);
-  /* transform   : rotate3d(1, 0, 0, 110deg); */
-  transform: rotateX(110deg);
-  /* transform   : scale(1, 0.4); */
   position: relative;
-  /* animation   : rotate .5s linear infinite; */
   transform-style: preserve-3d;
 }
 .circle-inner {

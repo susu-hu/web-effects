@@ -1,3 +1,48 @@
+// @a   椭圆x轴半径(长半径)
+// @b   椭圆y轴半径(短半径)
+// @s   坐标点的数目(数目越大，动画越精细)
+// @d   圆点半径
+.create-oval(@a, @b, @type, @color) {
+    width          : @a*2 ;
+    height         : @b*2;
+    border-radius  : 100%;
+    border         : 1px @type @color;
+    transform-style: preserve-3d;
+}
+
+.create-dot(@a, @b, @d, @color) {
+    width          : @d * 2;
+    height         : @d * 2;
+    left           : @a - @d;
+    top            : @b - @d;
+    background     : @color;
+    border-radius  : 100%;
+    position       : absolute;
+    transform-style: preserve-3d;
+    box-shadow     : 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color);
+    transform      : translate(@a, 0px);
+}
+
+.create-animation(@index, @s, @a, @b) {
+    .loop(@index, @s, @a, @b)
+}
+
+.loop(@index, @s, @a, @b) when (@index < @s+1) {
+    .loop((@index + 1), @s, @a, @b);
+    @keyframeSel: @index * 100%/@s;
+
+    @{keyframeSel} {
+        transform: translate(@a*cos(360deg/@s*@index), @b*sin(360deg/@s*@index));
+    }
+}
+
+.create-keyframes(@name, @index, @s, @a, @b) {
+    @keyframes @name {
+        .create-animation(@index, @s, @a, @b)
+    }
+}
+
+
 body {
     background: #222;
 }
@@ -10,78 +55,85 @@ body {
 }
 
 
-.circle {
-    width          : 280px;
-    height         : 250px;
-    border-radius  : 50%;
-    border         : 2px solid var(--color);
-    /* transform   : rotate3d(1, 0, 0, 110deg); */
-    transform      : rotateX(110deg);
-    /* transform   : scale(1, 0.4); */
-    position       : relative;
-    /* animation   : rotate .5s linear infinite; */
-    transform-style: preserve-3d;
+.oval {
+    .create-oval(160px, 60px, solid, orange);
+    position: relative;
 }
+
+.oval::after {
+    content: '';
+    .create-dot(160px, 60px, 5px, orange);
+    animation: move 10s linear infinite;
+    .create-keyframes(move, 0, 20, 160px, 60px);
+}
+
 
 .circle-inner {
-    position       : absolute;
-    top            : 50%;
-    left           : 50%;
-    width          : 220px;
-    height         : 160px;
-    border-radius  : 50%;
-    border         : 2px dashed var(--color);
-    /* transform   : translate(-50%, -50%) rotate3d(1, 0, 0, 20deg); */
-    /* transform   : translate(-50%, -50%) rotateX(20deg); */
-    transform      : translate(-50%, -50%);
-    transform-style: preserve-3d;
-}
-
-
-/* .circle:before {
-    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -4px;
-    margin-top: -12px;
-    height: 24px;
-    width: 8px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color);
-    animation: electrons 3s linear infinite;
-} */
-.diam {
-    position        : absolute;
-    /* top          : 50%;
-    left            : 50%; */
-    margin-left     : -4px;
-    /* margin-top   : -12px;
-    height          : 24px; */
-    /* margin-top   : -4px; */
-    height          : 18px;
-    width           : 18px;
-    border-radius   : 50%;
-    background-color: #fff;
-    /* box-shadow   : 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color); */
-    animation       : electrons 10s linear infinite;
-    /* transform    : scale(1, 2.5); */
+    .create-oval(140px, 50px, dashed, orange);
+    top : calc(60px - 50px);
+    left: calc(160px - 140px);
 
-    top   : 0;
-    left  : 0;
-    right : 0;
-    bottom: 0;
-    margin: auto;
 }
 
-@keyframes electrons {
+.circle-inner::after {
+    content: '';
+    .create-dot(140px, 50px, 4px, orange);
+    animation: move1 10s 1s linear infinite;
+    .create-keyframes(move1, 0, 20, 140px, 50px);
+}
 
-    0% {
-        transform: rotateZ(0) translateX(140px) rotateZ(0) rotateX(-110deg);
-    }
 
-    100% {
-        transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateX(-110deg);
-    }
+.circle-inner1 {
+    position: absolute;
+    .create-oval(120px, 40px, solid, orange);
+    top : calc(60px - 40px);
+    left: calc(160px - 120px);
+
+}
+
+.circle-inner1::after {
+    content: '';
+    .create-dot(120px, 40px, 3px, orange);
+    animation: move2 10s 2s linear infinite;
+    .create-keyframes(move2, 0, 20, 120px, 40px);
+}
+
+
+.rotate90 {
+    transform: rotate(90deg);
+}
+
+.dima,
+.dima::after {
+    position        : absolute;
+    top             : 50%;
+    left            : 50%;
+    height          : 8px;
+    width           : 8px;
+    border-radius   : 100%;
+    background-color: #fff;
+    box-shadow      : 0 0 10px #000, 0 0 15px var(--color), 0 0 30px var(--color);
+    top             : 50%;
+    left            : 50%;
+    margin-top      : -4px;
+    margin-left     : -4px;
+}
+
+.dima::after {
+    content  : '';
+    transform: rotateX(90deg);
+}
+
+.dima1 {
+    position        : absolute;
+    height          : 8px;
+    width           : 8px;
+    border-radius   : 100%;
+    background-color: #fff;
+    top             : 50%;
+    left            : 50%;
+    margin-top      : -4px;
+    margin-left     : -4px;
+    box-shadow      : 0 0 10px #000, 0 0 15px var(--boxColor), 0 0 30px var(--color);
 }

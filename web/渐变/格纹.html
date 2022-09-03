@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .patterns {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 15px solid white;
+    }
+
+    .plaid {
+        margin: 15px;
+    }
+
+    .plaid:nth-child(1) {
+        background: repeating-linear-gradient(to right, #998aff80 0 16%, transparent 0 28%), repeating-linear-gradient(#8ae8ff80 0 17%, transparent 0 28%);
+    }
+
+    .plaid:nth-child(2) {
+        background: repeating-linear-gradient(45deg, transparent 0 8%, #fffeb580 0 14%), repeating-linear-gradient(-45deg, #ffffff80 0 6%, #ff6eff50 0 14%), repeating-linear-gradient(-45deg, transparent 0 2%, #3850eb50 0 4%);
+    }
+
+    .plaid:nth-child(3) {
+        background: repeating-linear-gradient(#9cffe480 0 5%, transparent 0 13.6%), repeating-linear-gradient(to right, #ffd49c80 0 10%, #ffffff80 0 13.6%);
+    }
+
+    .plaid:nth-child(4) {
+        background: repeating-linear-gradient(45deg, #ff8a8d80 0 3%, transparent 0 6%), repeating-linear-gradient(-45deg, #3850eb50 0 3%, #ffffff80 0 6%);
+    }
+
+    .plaid:nth-child(5) {
+        background: repeating-linear-gradient(45deg, transparent 0 10%, #9cffe480 0 12%), repeating-linear-gradient(-45deg, transparent 0 12%, #ff8a8d80 0 20%), linear-gradient(45deg, transparent 0 10%, #8ae8ff80 0 25%, transparent 0 45%, #8ae8ff80 0 55%, transparent 0 70%, #8ae8ff80 0 100%);
+    }
+
+    .plaid:nth-child(6) {
+        background: repeating-linear-gradient(to right, #ffffff80 0 15%, #9cffe480 0 45%), repeating-linear-gradient(transparent 0 15%, #3850eb50 0 45%), repeating-linear-gradient(to right, transparent 0 20%, #3850eb50 0 25%);
+    }
+
+    .plaid:nth-child(7) {
+        background: repeating-linear-gradient(45deg, #8ae8ff80 0 5%, transparent 0 15%), repeating-linear-gradient(-45deg, #ff6eff50 0 12%, #ffffff80 0 25%), repeating-linear-gradient(#8ae8ff80 0 12%, #ffffff80 0 25%);
+    }
+
+    .plaid:nth-child(8) {
+        background: repeating-linear-gradient(to right, #ffffff80 0 10%, transparent 0 20%), repeating-linear-gradient(#8ae8ff80 0 7%, transparent 0 10%), linear-gradient(to right, #3850eb50 0 70%, #ffd49c80 0 100%);
+    }
+</style>
+
+<body>
+
+    <div class="patterns">
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"> </div>
+        <div class="plaid"></div>
+    </div>
+</body>
+
+</html>
