@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>css3 翻牌 以及css3边缘锯齿问题</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .brandsShow {
+            width: 1200px;
+            height: 620px;
+            margin: 0 auto;
+        }
+
+        .brandsShow ul {
+            margin-left: -20px;
+            width: 1225px;
+            height: auto;
+        }
+
+        .brandsShow ul li {
+            float: left;
+            display: inline;
+            width: 283px;
+            height: 424px;
+        }
+
+        .flip-container {
+            perspective: 1000;
+            -webkit-perspective: 1000px;
+            /*父类容器中  perspective  子类允许透视*/
+            -moz-perspective: 1000px;
+            -ms-perspective: 1000px;
+            -o-perspective: 1000px;
+            perspective: 1000px;
+            margin: 0px auto;
+            float: left;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+
+        .flip-container,
+        .front,
+        .back {
+            width: 283px;
+            height: 424px;
+        }
+
+        .front,
+        .back {
+            backface-visibility: hidden;
+            overflow: hidden;
+            -webkit-transition: .8s ease-out;
+            transition: .8s ease-out;
+            -webkit-transform-style: preserve-3d;
+            /* 子类保留3d动画结果*/
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*动画元素最好绝对位置*/
+        }
+
+        .front img,
+        .back img {
+            width: 283px;
+            height: 424px;
+        }
+
+        .front {
+            z-index: 2;
+            /*起始设置层  hover时候改变*/
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+
+        .back {
+            z-index: 1;
+            /*起始设置层  hover时候改变*/
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            -ms-transform: rotateY(-180deg);
+            -o-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+        }
+
+
+
+        .flipper {
+            -webkit-transition: transform .8s ease-in-out;
+            -moz-transition: transform .8s ease-in-out;
+            -ms-transition: transform .5s ease-in-out;
+            -o-transition: transform .5s ease-in-out;
+            transition: transform .5s ease-in-out;
+
+            -webkit-transform-style: preserve-3d;
+            /*使其子类变换后得以保留 3d转换后的位置*/
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            display: block;
+            position: relative;
+        }
+
+
+        .flip-container:hover .back {
+            -webkit-transform: rotateY(0deg);
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            -o-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            z-index: 2;
+        }
+
+        .flip-container:hover .front {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            z-index: 10;
+        }
+    </style>
+
+
+    <ul style=" margin-top:30px;">
+        <li class="flip-container  " ontouchstart="this.classList.toggle('hover');">
+            <a class="flipper">
+                <div class="front " style="outline:1px solid transparent; overflow:hidden">前面</div>
+                <div class="back ">后面</div>
+            </a>
+        </li>
+
+        <li class="flip-container  " ontouchstart="this.classList.toggle('hover');">
+            <a href="brandLi.html" class="flipper">
+                <div class="front " style="outline:1px solid transparent;background:blue; overflow:hidden; color:#fff;">
+                    前面</div>
+                <div class="back " style="outline:1px solid transparent;background:#333; color:#fff">后面</div>
+            </a>
+        </li>
+    </ul>
+
+</body>
+
+</html>

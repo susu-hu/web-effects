@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>
+		参考链接：https://yddmgirl.github.io/2017/08/09/animation%E6%B2%BF%E6%A4%AD%E5%9C%86%E8%BD%A8%E9%81%93%E8%BF%90%E5%8A%A8/
+	</title>
+	<style>
+		.ellipse {
+			width: 160px;
+			height: 160px;
+			border-radius: 50%;
+			position: absolute;
+			border: 2px orange solid;
+			transform-style: preserve-3d;
+			transform: rotateZ(90deg) rotateY(70deg);
+		}
+
+		.ellipse .circle {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			/* 垂直居中一： */
+			/* top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto; */
+			/* 垂直居中二： */
+			top: calc(80px - 10px);
+			left: calc(80px - 10px);
+			/* 垂直居中三： */
+			/* top: 50%;
+			left: 50%;
+			margin-top: -10px;
+			margin-left: -10px; */
+			position: absolute;
+			background: pink;
+			animation: move 10s linear infinite;
+		}
+
+		.ellipse .circle2 {
+			animation: move2 10s linear infinite;
+		}
+
+		.ellipse .circle3 {
+			animation: move3 10s linear infinite;
+		}
+
+		.ellipse .circle4 {
+			animation: move4 10s linear infinite;
+		}
+
+		@keyframes move {
+			from {
+				transform: rotateZ(0) translateX(80px) rotateZ(0) rotateY(-70deg);
+			}
+
+			to {
+				transform: rotateZ(360deg) translateX(80px) rotateZ(-360deg) rotateY(-70deg);
+			}
+		}
+
+		@keyframes move2 {
+			from {
+				transform: rotateZ(-180deg) translateX(80px) rotateZ(180deg) rotateY(-70deg);
+			}
+
+			to {
+				transform: rotateZ(180deg) translateX(80px) rotateZ(-180deg) rotateY(-70deg);
+			}
+		}
+
+		@keyframes move3 {
+			from {
+				transform: rotateZ(-90deg) translateX(80px) rotateZ(90deg) rotateY(-70deg);
+			}
+
+			to {
+				transform: rotateZ(270deg) translateX(80px) rotateZ(-270deg) rotateY(-70deg);
+			}
+		}
+
+		@keyframes move4 {
+			from {
+				transform: rotateZ(-270deg) translateX(80px) rotateZ(270deg) rotateY(-70deg);
+			}
+
+			to {
+				transform: rotateZ(90deg) translateX(80px) rotateZ(-90deg) rotateY(-70deg);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="ellipse">
+		<div class="circle circle1"></div>
+		<!-- <div class="circle circle2"></div>
+ 			<div class="circle circle3"></div>
+ 			<div class="circle circle4"></div> -->
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .animate-icon {
+        width: 200px;
+        height: 200px;
+        background: #2A2A2A;
+    }
+
+    /* 压缩div高度，将正圆变为椭圆 */
+    .flat {
+        transform: scaleY(0.375);
+    }
+
+    .circle-outer {
+        position: relative;
+        left: 20px;
+        top: 70px;
+    }
+
+    .circle-outer .content {
+        width: 160px;
+        height: 160px;
+        border-radius: 80px;
+        /* 圆锥渐变 */
+        background: conic-gradient(fuchsia, pink, orange, gold, snow);
+        /* 将圆中心“掏空”变成圆环 */
+        --mask: radial-gradient(closest-side, transparent 94%, black 94%);
+        -webkit-mask-image: var(--mask);
+        mask-image: var(--mask);
+        animation: spin 4s linear infinite;
+    }
+
+    .circle-inner {
+        position: relative;
+        left: 40px;
+        top: -72px;
+    }
+
+    .circle-inner .content {
+        width: 120px;
+        height: 120px;
+        border-radius: 60px;
+        background: conic-gradient(blue 40%, teal 72%, cyan 88%, blue);
+        --mask: radial-gradient(closest-side, transparent 94%, black 94%);
+        -webkit-mask-image: var(--mask);
+        mask-image: var(--mask);
+        animation: spin-r 4s linear infinite;
+    }
+
+    .circle-ball {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background: snow;
+        animation:
+            animX 2s cubic-bezier(0.36, 0, 0.64, 1) -1s infinite alternate,
+            animY 2s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate,
+            spin-ball 4s cubic-bezier(0.36, 0, 0.64, 1) 0s infinite alternate;
+    }
+
+    .circle-pie {
+        position: absolute;
+        top: 200px;
+        left: 58px;
+    }
+
+    .circle-pie .content {
+        position: absolute;
+        opacity: 0.6;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background: radial-gradient(seagreen 30%, limegreen 80%, lime);
+    }
+
+    .pie-spin .content {
+        background: conic-gradient(lime 10%, mediumseagreen 30%, forestgreen 80%, lime);
+    }
+
+    .pie0 {
+        top: -188px;
+    }
+
+    /* 设置圆盘逆时针旋转，不透明度动态变化
+    （圆盘们浮动在下方叠起时变得更透明，否则变不透明） */
+    .pie-spin .pie0 {
+        animation:
+            spin-r 4s infinite,
+            pie-opa 4s infinite;
+    }
+
+    .pie1 {
+        top: -240px;
+    }
+
+    /* 非最底层的圆盘需设置上下浮动动画 */
+    .pie-spin .pie1 {
+        animation:
+            spin-r 4s infinite,
+            pie-opa 4s infinite,
+            pie-ani1 4s infinite;
+    }
+
+    .pie2 {
+        top: -293px;
+    }
+
+    .pie-spin .pie2 {
+        animation:
+            spin-r 4s infinite,
+            pie-opa 4s infinite,
+            pie-ani2 4s infinite;
+    }
+
+    .pie3 {
+        top: -345px;
+    }
+
+    .pie-spin .pie3 {
+        animation:
+            spin-r 4s infinite,
+            pie-opa 4s infinite,
+            pie-ani3 4s infinite;
+    }
+
+    .pie4 {
+        top: -397px;
+    }
+
+    .pie-spin .pie4 {
+        animation:
+            spin-r 4s infinite,
+            pie-opa 4s infinite,
+            pie-ani4 4s infinite;
+    }
+
+    /* 顺时针旋转动画 */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* 逆时针旋转动画 */
+    @keyframes spin-r {
+        0% {
+            transform: rotate(360deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    /* 圆点横向运动变化，需根据真实效果调整参数 */
+    @keyframes animX {
+        0% {
+            left: 24px;
+        }
+
+        100% {
+            left: 178px;
+        }
+    }
+
+    /* 圆点纵向运动变化，需根据真实效果调整参数 */
+    @keyframes animY {
+        0% {
+            top: 122px;
+        }
+
+        100% {
+            top: 182px;
+        }
+    }
+
+    /* 圆点尺寸运动变化，实现转动时近大远小的效果 */
+    @keyframes spin-ball {
+        0% {
+            transform: scale(0.64);
+        }
+
+        50% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(0.64);
+        }
+    }
+
+    /* 圆盘不透明度变化效果 */
+    @keyframes pie-opa {
+        0% {
+            opacity: 0.3;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+
+        100% {
+            opacity: 0.3;
+        }
+    }
+
+    /* 圆盘浮动效果：由于圆盘大小相同、层叠的距离也相同，
+    非最底层的圆盘样式可以动态生成以减少重复代码 */
+    @keyframes pie-ani1 {
+        0% {
+            top: -198px;
+        }
+
+        30% {
+            top: -240px;
+        }
+
+        70% {
+            top: -240px;
+        }
+
+        100% {
+            top: -198px;
+        }
+    }
+
+    @keyframes pie-ani2 {
+        0% {
+            top: -208px;
+        }
+
+        30% {
+            top: -293px;
+        }
+
+        70% {
+            top: -293px;
+        }
+
+        100% {
+            top: -208px;
+        }
+    }
+
+    @keyframes pie-ani3 {
+        0% {
+            top: -218px;
+        }
+
+        30% {
+            top: -345px;
+        }
+
+        70% {
+            top: -345px;
+        }
+
+        100% {
+            top: -218px;
+        }
+    }
+
+    @keyframes pie-ani4 {
+        0% {
+            top: -228px;
+        }
+
+        30% {
+            top: -397px;
+        }
+
+        70% {
+            top: -397px;
+        }
+
+        100% {
+            top: -228px;
+        }
+    }
+</style>
+
+<body>
+    <div class="animate-icon">
+        <!-- 外侧圆环div -->
+        <div class="flat circle-outer">
+            <div class="content"></div>
+        </div>
+
+        <!-- 内侧圆环div -->
+        <div class="flat circle-inner">
+            <div class="content"></div>
+        </div>
+
+        <!-- 外侧轨迹圆点 -->
+        <div class="circle-ball"></div>
+
+        <!-- 层叠圆盘，当这个div有pie-spin类时进行动画 -->
+        <div class="flat circle-pie pie-spin">
+            <div class="content pie0"></div>
+            <div class="content pie1"></div>
+            <div class="content pie2"></div>
+            <div class="content pie3"></div>
+            <div class="content pie4"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

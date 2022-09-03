@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    body {
+        background: #222;
+    }
+
+    .earth-wrap {
+        left: 0.96rem;
+        top: 0.705rem;
+        width: 7.7rem;
+        height: 7.7rem;
+        background: radial-gradient(circle at 100px 100px, #5cabff, #000);
+        background-size: 100% 100%;
+        border-radius: 50%;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+    }
+
+    .earth-wrap .ring {
+        position: absolute;
+        top: -0.4rem;
+        left: -0.8rem;
+        width: 9.6rem;
+        height: 9.6rem;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        transform: rotateZ(60deg) rotateY(75deg);
+        -webkit-transform: rotateZ(60deg) rotateY(75deg);
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+    }
+
+    .earth-wrap .ring.ring1 {
+        transform: rotateZ(60deg) rotateY(75deg);
+        -webkit-transform: rotateZ(60deg) rotateY(75deg);
+    }
+
+    .earth-wrap .ring.ring2 {
+        top: -0.6rem;
+        transform: rotateZ(0deg) rotateY(75deg);
+        -webkit-transform: rotateZ(0deg) rotateY(75deg);
+    }
+
+    .earth-wrap .ring.ring3 {
+        top: -0.6rem;
+        transform: rotateZ(30deg) rotateY(75deg);
+        -webkit-transform: rotateZ(30deg) rotateY(75deg);
+    }
+
+    .earth-wrap .ring.ring4 {
+        top: -0.6rem;
+        transform: rotateZ(120deg) rotateY(75deg);
+        -webkit-transform: rotateZ(120deg) rotateY(75deg);
+    }
+
+    .earth-wrap .ring.ring5 {
+        top: -0.6rem;
+        transform: rotateZ(150deg) rotateY(75deg);
+        -webkit-transform: rotateZ(150deg) rotateY(75deg);
+    }
+
+    .earth-wrap .circle {
+        width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        animation: move 20s linear infinite;
+        box-shadow: 10px 0 16px #01fdfe, 10px 10px 16px #01fdfe, 0 10px 16px #01fdfe, 0 0 16px #01fdfe;
+    }
+
+    .earth-wrap .circle.circle2 {
+        animation: move2 20s linear infinite;
+    }
+
+    .earth-wrap .circle.circle3 {
+        animation: move3 20s linear infinite;
+    }
+
+    .earth-wrap .circle .circle4 {
+        animation: move4 20s linear infinite;
+    }
+
+    @keyframes move {
+        from {
+            transform: rotateZ(0) translateX(4.8rem) rotateZ(0) rotateY(-75deg);
+        }
+
+        to {
+            transform: rotateZ(360deg) translateX(4.8rem) rotateZ(-360deg) rotateY(-75deg);
+        }
+    }
+
+    @keyframes move2 {
+        from {
+            transform: rotateZ(-180deg) translateX(4.8rem) rotateZ(180deg) rotateY(-75deg);
+        }
+
+        to {
+            transform: rotateZ(180deg) translateX(4.8rem) rotateZ(-180deg) rotateY(-75deg);
+        }
+    }
+
+    @keyframes move3 {
+        from {
+            transform: rotateZ(-90deg) translateX(4.8rem) rotateZ(90deg) rotateY(-75deg);
+        }
+
+        to {
+            transform: rotateZ(270deg) translateX(4.8rem) rotateZ(-270deg) rotateY(-75deg);
+        }
+    }
+
+    @keyframes move4 {
+        from {
+            transform: rotateZ(-270deg) translateX(4.8rem) rotateZ(270deg) rotateY(-75deg);
+        }
+
+        to {
+            transform: rotateZ(90deg) translateX(4.8rem) rotateZ(-90deg) rotateY(-75deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="earth-wrap">
+        <div class="ring ring1">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+        </div>
+        <div class="ring ring2">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+        </div>
+        <div class="ring ring3">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+        </div>
+        <div class="ring ring4">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+        </div>
+        <div class="ring ring5">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

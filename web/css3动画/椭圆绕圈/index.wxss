@@ -1,0 +1,77 @@
+body {
+  background: #222;
+}
+:root {
+  --color: #ffa500;
+  --dashColor: rgba(255, 165, 0, 0.5);
+  --boxColor: rgba(255, 165, 0, 0.8);
+  --boxColor2: rgba(255, 165, 0, 0.9);
+}
+.circle {
+  width: 280px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid var(--color);
+  /* transform   : rotate3d(1, 0, 0, 110deg); */
+  transform: rotateX(110deg);
+  /* transform   : scale(1, 0.4); */
+  position: relative;
+  /* animation   : rotate .5s linear infinite; */
+  transform-style: preserve-3d;
+}
+.circle-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px dashed var(--color);
+  /* transform   : translate(-50%, -50%) rotate3d(1, 0, 0, 20deg); */
+  /* transform   : translate(-50%, -50%) rotateX(20deg); */
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+/* .circle:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -4px;
+    margin-top: -12px;
+    height: 24px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color);
+    animation: electrons 3s linear infinite;
+} */
+.diam {
+  position: absolute;
+  /* top          : 50%;
+    left            : 50%; */
+  margin-left: -4px;
+  /* margin-top   : -12px;
+    height          : 24px; */
+  /* margin-top   : -4px; */
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  /* box-shadow   : 0 0 10px var(--dashColor), 0 0 15px var(--boxColor), 0 0 30px var(--boxColor2), 0 0 40px var(--color); */
+  animation: electrons 10s linear infinite;
+  /* transform    : scale(1, 2.5); */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+@keyframes electrons {
+  0% {
+    transform: rotateZ(0) translateX(140px) rotateZ(0) rotateX(-110deg);
+  }
+  100% {
+    transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg) rotateX(-110deg);
+  }
+}
