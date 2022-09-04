@@ -150,16 +150,18 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 124. 倒计时动画
 - [x] 125. 圆环绕圈-月牙
 - [x] 126. input-focus宽度过渡动画
+- [x] 127. 椭圆圆点绕圈动画
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
 ![输入图片说明](web-pictures/echarts2.gif)
-
 ##### 柱状图多数据-dataZoom滑动缩放
 ![输入图片说明](web-pictures/echarts1.gif)
 
 
 #### 神奇的CSS页面部分截图
+##### 椭圆圆点绕圈动画
+![输入图片说明](web-pictures/tuoyuan1.gif)
 #####  input-focus宽度过渡动画
 ![输入图片说明](web-pictures/input1.gif)
 ##### 圆环绕圈-月牙
