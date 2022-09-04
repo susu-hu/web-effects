@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://juejin.cn/post/6987043290444988424#comment</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    /* @function getPlanetRotate($rotateValue) {
+        @return rotate(45deg) scaleY(0.5) rotate(#{$rotateValue});
+    } */
+
+
+    /* // 自转球体 keyframes
+    @function getSelfRotate($rotateValue) {
+        @return rotate(#{$rotateValue}) scaleY(2) rotate(-45deg) scale(1)) translateX(50px);
+        // 这里 translateX 是为了修正球的位置，使之尽量保持在轨道上运动
+    } */
+
+    :root {
+        --planet-rotate-step: 72deg;
+        /* 72 = 360 / 5 */
+    }
+
+    @keyframes planet-rotate {
+        0% {
+            transform: rotate(45deg) scaleY(0.5) rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(45deg) scaleY(0.5) rotate(360deg);
+        }
+    }
+
+
+
+
+    @keyframes planet-rotate-1 {
+        0% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(0deg + var(--planet-rotate-step) * 1));
+        }
+
+        100% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(360deg + var(--planet-rotate-step) * 1));
+        }
+    }
+
+    @keyframes planet-rotate-2 {
+        0% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(0deg + var(--planet-rotate-step) * 2));
+        }
+
+        100% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(360deg + var(--planet-rotate-step) * 2));
+        }
+    }
+
+    @keyframes planet-rotate-3 {
+        0% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(0deg + var(--planet-rotate-step) * 3));
+        }
+
+        100% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(360deg + var(--planet-rotate-step) * 3));
+        }
+
+    }
+
+    @keyframes planet-rotate-4 {
+        0% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(0deg + var(--planet-rotate-step) * 4));
+        }
+
+        100% {
+            transform: rotate(45deg) scaleY(0.5) rotate(calc(360deg + var(--planet-rotate-step) * 4));
+        }
+
+    }
+
+    /* 自转动 */
+    @keyframes self-rotate {
+        0% {
+            transform: rotate(0deg) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+
+        100% {
+            transform: rotate(-360deg) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+    }
+
+    @keyframes self-rotate-1 {
+        0% {
+            transform: rotate(calc(0deg - var(--planet-rotate-step) * 1)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+
+        100% {
+            transform: rotate(calc(-360deg - var(--planet-rotate-step) * 1)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+    }
+
+    @keyframes self-rotate-2 {
+        0% {
+            transform: rotate(calc(0deg - var(--planet-rotate-step) * 2)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+
+        100% {
+            transform: rotate(calc(-360deg - var(--planet-rotate-step) * 2)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+    }
+
+    @keyframes self-rotate-3 {
+        0% {
+            transform: rotate(calc(0deg - var(--planet-rotate-step) * 3)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+
+        100% {
+            transform: rotate(calc(-360deg - var(--planet-rotate-step) * 3)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+    }
+
+    @keyframes self-rotate-4 {
+        0% {
+            transform: rotate(calc(0deg - var(--planet-rotate-step) * 4)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+
+        100% {
+            transform: rotate(calc(-360deg - var(--planet-rotate-step) * 4)) scaleY(2) rotate(-45deg) scale(1) translateX(50px);
+        }
+    }
+
+
+    .circleBox {
+        /* $planet-rotate-speed: 30s; */
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        transform-style: preserve-3d;
+        border-radius: 50%;
+        color: #fff;
+    }
+
+    .circleBoxItem {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 200px;
+        top: -30px;
+        left: calc(50% - 100px);
+
+    }
+
+    .ball {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 1px dashed #fff;
+        background-color: orange;
+        margin-right: 20px;
+    }
+
+    .circleBox:nth-child(1) {
+        border: 2px solid #fff;
+        animation: planet-rotate 5s linear infinite;
+
+    }
+
+    .circleBox:nth-child(1) .circleBoxItem {
+        animation: self-rotate 5s linear infinite;
+    }
+
+    .circleBox:nth-child(2) {
+        animation: planet-rotate-1 5s linear infinite;
+
+    }
+
+    .circleBox:nth-child(2) .circleBoxItem {
+        animation: self-rotate-1 5s linear infinite;
+    }
+
+    .circleBox:nth-child(3) {
+        animation: planet-rotate-2 5s linear infinite;
+
+    }
+
+    .circleBox:nth-child(3) .circleBoxItem {
+        animation: self-rotate-2 5s linear infinite;
+    }
+
+
+    .circleBox:nth-child(4) {
+        animation: planet-rotate-3 5s linear infinite;
+
+    }
+
+    .circleBox:nth-child(4) .circleBoxItem {
+        animation: self-rotate-3 5s linear infinite;
+    }
+
+
+    .circleBox:nth-child(5) {
+        animation: planet-rotate-4 5s linear infinite;
+
+    }
+
+    .circleBox:nth-child(5) .circleBoxItem {
+        animation: self-rotate-4 5s linear infinite;
+    }
+</style>
+
+<body>
+    <div class="circleBox">
+        <div class="circleBoxItem">
+            <div class="ball"></div>
+            <div>苏苏</div>
+        </div>
+    </div>
+    <div class="circleBox">
+        <div class="circleBoxItem">
+            <div class="ball"></div>
+            <div>苏苏</div>
+        </div>
+    </div>
+    <div class="circleBox">
+        <div class="circleBoxItem">
+            <div class="ball"></div>
+            <div>苏苏</div>
+        </div>
+    </div>
+    <div class="circleBox">
+        <div class="circleBoxItem">
+            <div class="ball"></div>
+            <div>苏苏</div>
+        </div>
+    </div>
+    <div class="circleBox">
+        <div class="circleBoxItem">
+            <div class="ball"></div>
+            <div>苏苏</div>
+        </div>
+    </div>
+</body>
+
+</html>

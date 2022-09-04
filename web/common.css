@@ -1,14 +1,14 @@
 /*全局通用样式*/
 :root {
-	--pink: #ffc0cb;
-	--white: #fff;
-	--red: #e54d42;
-	--orange: #f37b1d;
-	--yellow: #fbbd08;
-	--olive: #8dc63f;
-	--green: #39b54a;
-	--grey: #8799a3;
-	--black: #333333;
+	--pink    : #ffc0cb;
+	--white   : #fff;
+	--red     : #e54d42;
+	--orange  : #f37b1d;
+	--yellow  : #fbbd08;
+	--olive   : #8dc63f;
+	--green   : #39b54a;
+	--grey    : #8799a3;
+	--black   : #333333;
 	--darkGray: #666666;
 }
 
@@ -25,16 +25,15 @@
 @charset "utf-8";
 
 * {
-	margin: 0;
+	margin : 0;
 	padding: 0;
 }
 
 
 html,
 body {
-	width: 100%;
+	width : 100%;
 	height: 100%;
-
 }
 
 * html body {
@@ -51,14 +50,16 @@ body {
 }
 
 body {
-	color: #333;
-	background: #ffffff;
-	font-size: 16px;
-	font-family: Microsoft Yahei, SimSun, Helvetica;
-	display: flex;
-	height: 100vh;
-	align-items: center;
+	color          : #333;
+	background     : #ffffff;
+	font-size      : 16px;
+	font-family    : Microsoft Yahei, SimSun, Helvetica;
+	display        : flex;
+	height         : 100vh;
+	align-items    : center;
 	justify-content: center;
+	background     : #222;
+	overflow       : hidden;
 }
 
 body,
@@ -79,7 +80,7 @@ table,
 td,
 tr,
 ul {
-	margin: 0;
+	margin : 0;
 	padding: 0;
 }
 
@@ -94,8 +95,8 @@ select {
 
 textarea {
 	box-sizing: border-box;
-	resize: none;
-	outline: none;
+	resize    : none;
+	outline   : none;
 	box-shadow: none;
 	appearance: none;
 }
@@ -110,7 +111,7 @@ button {
 
 a {
 	text-decoration: none;
-	cursor: pointer !important;
+	cursor         : pointer !important;
 }
 
 
@@ -123,15 +124,15 @@ a {
 
 
 .flex-row {
-	display: flex;
+	display       : flex;
 	flex-direction: row;
-	align-items: center;
+	align-items   : center;
 }
 
 .flex-column {
-	display: flex;
+	display       : flex;
 	flex-direction: column;
-	align-items: center;
+	align-items   : center;
 }
 
 .j_c {
@@ -147,12 +148,12 @@ a {
 }
 
 .flex {
-	display: flex;
+	display    : flex;
 	align-items: flex-start;
 }
 
 .col {
-	display: flex;
+	display       : flex;
 	flex-direction: column;
 }
 
@@ -174,14 +175,14 @@ a {
 
 
 a {
-	color: inherit;
-	text-decoration: none;
-	display: block;
-	border: none;
+	color                      : inherit;
+	text-decoration            : none;
+	display                    : block;
+	border                     : none;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-	user-select: none;
-	-moz-user-focus: none;
-	-moz-user-select: none;
+	user-select                : none;
+	-moz-user-focus            : none;
+	-moz-user-select           : none;
 }
 
 a,
@@ -192,20 +193,20 @@ a:link,
 a:focus {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-tap-highlight-color: transparent;
-	outline: none;
-	background: none;
-	text-decoration: none;
+	outline                    : none;
+	background                 : none;
+	text-decoration            : none;
 }
 
 input {
 	background: none;
-	outline: none;
-	border: none;
+	outline   : none;
+	border    : none;
 }
 
 ul,
 li {
-	padding: 0;
+	padding   : 0;
 	list-style: none;
 }
 
@@ -219,14 +220,14 @@ li {
 /*  去掉button的默认样式*/
 
 button {
-	border: none;
+	border          : none;
 	background-color: transparent;
-	outline: none;
+	outline         : none;
 }
 
 button::after {
 	outline: none;
-	border: none;
+	border : none;
 }
 
 .button-hover {
@@ -239,16 +240,16 @@ button::after {
 .text_ellipsis {
 	/*宽度自定义*/
 	text-overflow: ellipsis;
-	white-space: nowrap !important;
-	overflow: hidden;
+	white-space  : nowrap !important;
+	overflow     : hidden;
 }
 
 /* 多行文字换行 */
 
 .line_ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
+	overflow          : hidden;
+	text-overflow     : ellipsis;
+	display           : -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical
 }
@@ -256,11 +257,11 @@ button::after {
 /* 背景图片 */
 .bg_img {
 	position: absolute;
-	z-index: -1;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
+	z-index : -1;
+	width   : 100%;
+	height  : 100%;
+	left    : 0;
+	top     : 0;
 }
 
 /*禁用长触弹出的下载图片菜单*/
@@ -274,6 +275,6 @@ button::after {
 }
 
 
-.mb20{
+.mb20 {
 	margin-bottom: 20px;
 }
