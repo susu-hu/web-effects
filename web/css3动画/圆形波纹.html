@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    body {
+        background-color: #222;
+        overflow: hidden;
+    }
+
+    .box {
+        background-color: orange;
+        height: 100px;
+        width: 100px;
+        border-radius: 100%;
+        position: relative;
+    }
+
+    .circle {
+        position: absolute;
+        background-color: inherit;
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        opacity: 0.8;
+        -webkit-animation: wave 2s ease-out infinite;
+        animation: wave 2s ease-out infinite;
+    }
+
+    .circle:nth-of-type(1) {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .circle:nth-of-type(2) {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    .circle:nth-of-type(3) {
+        -webkit-animation-delay: -1.5s;
+        animation-delay: -1.5s;
+    }
+
+    @-webkit-keyframes wave {
+        100% {
+            transform: scale(1.75);
+            opacity: 0;
+        }
+    }
+
+    @keyframes wave {
+        100% {
+            transform: scale(1.75);
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</body>
+
+</html>
