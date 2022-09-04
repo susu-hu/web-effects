@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+</head>
+<style>
+    body {
+        height: 100vh;
+        overflow: hidden;
+        background: #222;
+    }
+
+    html {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .moon {
+        position: absolute;
+        left: 5em;
+        top: 7em;
+        font-size: 2rem;
+        height: 5em;
+        width: 5em;
+        border-radius: 100%;
+        box-shadow: 0 0 90px #f7ecae;
+        background: #f7ecae;
+    }
+
+    .moon-pit {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .item {
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 50%;
+        background: #e5d286;
+        box-shadow: 0px 0px 10px #e5d286;
+        filter: blur(3px);
+        display: block;
+        position: absolute;
+    }
+
+    .item:nth-child(1) {
+        width: 1.5em;
+        left: 40%;
+        top: -2%;
+    }
+
+    .item:nth-child(2) {
+        left: 60%;
+        top: 40%;
+    }
+
+    .item:nth-child(3) {
+        left: 23%;
+        top: 40%;
+    }
+
+    .item:nth-child(4) {
+        width: 1.2em;
+        left: 80%;
+        top: 70%;
+        transform: rotate(-35deg);
+    }
+
+    .item:nth-child(5) {
+        width: 1.2em;
+        left: 20%;
+        top: 90%;
+        transform: rotate(15deg);
+    }
+
+    .item:nth-child(6) {
+        width: 1.2em;
+        height: 0.8em;
+        left: 18%;
+        top: 17%;
+        transform: rotate(15deg);
+    }
+
+    .item:nth-child(7) {
+        width: 1em;
+        height: 1em;
+        left: 43%;
+        top: 56%;
+
+    }
+
+    .item:nth-child(8) {
+        width: 1.3em;
+        height: 1.3em;
+        left: 40%;
+        top: 40%;
+        transform: rotate(15deg);
+    }
+
+    .item:nth-child(9) {
+        width: .3em;
+        height: .3em;
+        left: 80%;
+        top: 34%;
+    }
+
+    .item:nth-child(10) {
+        width: .3em;
+        height: .3em;
+        left: 10%;
+        top: 64%;
+    }
+
+    @keyframes orbit {
+        0% {
+            transform: rotateZ(0deg)
+        }
+
+        100% {
+            transform: rotateZ(360deg)
+        }
+    }
+
+    .moon::before,
+    .moon::after {
+        position: absolute;
+        top: 200%;
+        left: -1000%;
+        display: block;
+        height: 200rem;
+        width: 200rem;
+        content: '';
+        border-radius: 50%;
+        z-index: -1;
+        animation: orbit 300s infinite linear;
+        box-shadow: -40rem -106rem 1rem -99.5rem #fff6, -40rem -106rem 1px -99.65rem #c568, -32rem -96rem 1.5rem -99.5rem #ffe8, -32rem -96rem 1px -99.9rem #ffc9, -31rem -110rem 1.5rem -99.5rem #ffe6, -31rem -110rem 1px -99.9rem #ffc6, -11rem -115rem 1.5rem -99.5rem #ffe8, -11rem -115rem 1px -99.9rem #ffc6, 11rem -105rem 1.5rem -99.5rem #ffe6, 11rem -105rem 1px -99.9rem #ffc6, -11rem -135rem 1.5rem -99.5rem #ffe4, -11rem -135rem 1px -99.9rem #ffc5, 31rem -115rem 1.5rem -99.5rem #ffe6, 31rem -115rem 1px -99.9rem #ffc6, -51rem -115rem 1.5rem -99.5rem #ffe9, -51rem -115rem 1px -99.9rem #ffc6, 21rem -125rem 1.5rem -99.5rem #ffe6, 21rem -125rem 1px -99.9rem #ffc6, 5rem -115rem 1.5rem -99.5rem #ffe9, 5rem -115rem 1px -99.9rem #ffc6, -96rem -32rem 1.5rem -99.5rem #ffe8, -96rem -32rem 1px -99.9rem #ffc9, -110rem -31rem 1.5rem -99.5rem #ffe6, -110rem -31rem 1px -99.9rem #ffc6, -115rem -11rem 1.5rem -99.5rem #ffe8, -115rem -11rem 1px -99.9rem #ffc6, -105rem 11rem 1.5rem -99.5rem #ffe6, -105rem 11rem 1px -99.9rem #ffc6, -135rem -11rem 1.5rem -99.5rem #ffe4, -135rem -11rem 1px -99.9rem #ffc5, -115rem 31rem 1.5rem -99.5rem #ffe6, -115rem 31rem 1px -99.9rem #ffc6, -115rem -51rem 1.5rem -99.5rem #ffe9, -115rem -51rem 1px -99.9rem #ffc6, -125rem 21rem 1.5rem -99.5rem #ffe6, -125rem 21rem 1px -99.9rem #ffc6, -115rem 5rem 1.5rem -99.5rem #ffe9, -115rem 5rem 1px -99.9rem #ffc6, 96rem 32rem 1.5rem -99.5rem #ffe8, 96rem 32rem 1px -99.9rem #ffc9, 110rem 31rem 1.5rem -99.5rem #ffe6, 110rem 31rem 1px -99.9rem #ffc6, 115rem 11rem 1.5rem -99.5rem #ffe8, 115rem 11rem 1px -99.9rem #ffc6, 105rem -11rem 1.5rem -99.5rem #ffe6, 105rem -11rem 1px -99.9rem #ffc6, 135rem 11rem 1.5rem -99.5rem #ffe4, 135rem 11rem 1px -99.9rem #ffc5, 115rem -31rem 1.5rem -99.5rem #ffe6, 115rem -31rem 1px -99.9rem #ffc6, 115rem 51rem 1.5rem -99.5rem #ffe9, 115rem 51rem 1px -99.9rem #ffc6, 125rem -21rem 1.5rem -99.5rem #ffe6, 125rem -21rem 1px -99.9rem #ffc6, 115rem -5rem 1.5rem -99.5rem #ffe9, 115rem -5rem 1px -99.9rem #ffc6, -21rem -125rem 1.5rem -99.5rem #ffe8, -21rem -125rem 1px -99.9rem #ffc6, -61rem -105rem 1.5rem -99.5rem #ffe3, -61rem -105rem 1px -99.9rem #ffc6, -61rem -95rem 1.5rem -99.5rem #ffe4, -61rem -95rem 1px -99.9rem #ffc6, -71rem -75rem 1.5rem -99.5rem #ffe7, -71rem -75rem 1px -99.9rem #ffc6, -55rem -85rem 1.5rem -99.5rem #ffe6, -55rem -85rem 1px -99.9rem #ffc6, -125rem -21rem 1.5rem -99.5rem #ffe8, -125rem -21rem 1px -99.9rem #ffc6, -105rem -61rem 1.5rem -99.5rem #ffe3, -105rem -61rem 1px -99.9rem #ffc6, -95rem -61rem 1.5rem -99.5rem #ffe4, -95rem -61rem 1px -99.9rem #ffc6, 75rem 71rem 1.5rem -99.5rem #ffe7, 75rem 71rem 1px -99.9rem #ffc6, 85rem 55rem 1.5rem -99.5rem #ffe6, 85rem 55rem 1px -99.9rem #ffc6, 125rem 21rem 1.5rem -99.5rem #ffe8, 125rem 21rem 1px -99.9rem #ffc6, 105rem 61rem 1.5rem -99.5rem #ffe3, 105rem 61rem 1px -99.9rem #ffc6, 95rem 61rem 1.5rem -99.5rem #ffe4, 95rem 61rem 1px -99.9rem #ffc6, 75rem 71rem 1.5rem -99.5rem #ffe7, 75rem 71rem 1px -99.9rem #ffc6, 85rem 55rem 1.5rem -99.5rem #ffe6, 85rem 55rem 1px -99.9rem #ffc6, 32rem 96rem 1.5rem -99.5rem #ffe8, 32rem 96rem 1px -99.9rem #ffc9, 31rem 110rem 1.5rem -99.5rem #ffe6, 31rem 110rem 1px -99.9rem #ffc6, 11rem 115rem 1.5rem -99.5rem #ffe8, 11rem 115rem 1px -99.9rem #ffc6, -11rem 105rem 1.5rem -99.5rem #ffe6, -11rem 105rem 1px -99.9rem #ffc6, 11rem 135rem 1.5rem -99.5rem #ffe4, 11rem 135rem 1px -99.9rem #ffc5, -31rem 115rem 1.5rem -99.5rem #ffe6, -31rem 115rem 1px -99.9rem #ffc6, 51rem 115rem 1.5rem -99.5rem #ffe9, 51rem 115rem 1px -99.9rem #ffc6, -21rem 125rem 1.5rem -99.5rem #ffe6, -21rem 125rem 1px -99.9rem #ffc6, -5rem 115rem 1.5rem -99.5rem #ffe9, -5rem 115rem 1px -99.9rem #ffc6, 21rem 125rem 1.5rem -99.5rem #ffe8, 21rem 125rem 1px -99.9rem #ffc6, 61rem 105rem 1.5rem -99.5rem #ffe3, 61rem 105rem 1px -99.9rem #ffc6, 61rem 95rem 1.5rem -99.5rem #ffe4, 61rem 95rem 1px -99.9rem #ffc6, 71rem 75rem 1.5rem -99.5rem #ffe7, 71rem 75rem 1px -99.9rem #ffc6, 55rem 85rem 1.5rem -99.5rem #ffe6, 55rem 85rem 1px -99.9rem #ffc6
+    }
+
+    .moon::after {
+        opacity: .35;
+        animation-delay: -100s;
+        animation-duration: 600s;
+        top: 10vh
+    }
+
+    #myContent {
+        color: #fff;
+        width: 400px;
+        height: 400px;
+        font-size: 18px;
+        line-height: 36px;
+        text-align: center;
+        position: absolute;
+        left: 40%;
+        top: 10em;
+    }
+</style>
+
+<body>
+    <div class="moon">
+        <div class="moon-pit">
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+            <span class="item"></span>
+        </div>
+    </div>
+    <div id="myContent"></div>
+    <div id="contentToWrite" style="display:none;"><br></div>
+    <script>
+        let charIndex = -1;
+        let stringLength = 0;
+        let inputText;
+        let currentStyle = 'inline';
+
+        function writeContent(init) {
+            if (init) {
+                inputText = document.getElementById('contentToWrite').innerHTML;
+            }
+            if (charIndex == -1) {
+                charIndex = 0;
+                stringLength = inputText.length;
+            }
+            let initString = document.getElementById('myContent').innerHTML;
+            initString = initString.replace(/<SPAN.*$/gi, "");
+            let theChar = inputText.charAt(charIndex);
+            let nextFourChars = inputText.substr(charIndex, 4);
+            if (nextFourChars == '<BR>' || nextFourChars == '<br>') {
+                theChar = '<BR>';
+                charIndex += 3;
+            }
+            initString = initString + theChar + "<SPAN id='blink'>_</SPAN>";
+            document.getElementById('myContent').innerHTML = initString;
+            charIndex = charIndex / 1 + 1;
+            if (charIndex % 2 == 1) {
+                document.getElementById('blink').style.display = 'none';
+            } else {
+                document.getElementById('blink').style.display = 'inline';
+            }
+            console.log(charIndex, stringLength);
+            if (charIndex <= stringLength) {
+                setTimeout("writeContent(false)", 140);
+            } else {
+                blinkSpan();
+            }
+        }
+        function blinkSpan() {
+            if (currentStyle == 'inline') {
+                currentStyle = 'none';
+            } else {
+                currentStyle = 'inline';
+            }
+            document.getElementById('blink').style.display = currentStyle;
+        }
+        writeContent(true);
+    </script>
+</body>
+
+</html>

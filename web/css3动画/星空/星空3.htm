@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        background: #222;
+    }
+
+    @keyframes flash {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    span:hover {
+        transform: scale(3, 3) rotate(180deg) !important;
+        transition: all 1s;
+    }
+
+    span {
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+        position: fixed;
+        animation: flash 2s linear infinite;
+        border-radius: 50%;
+        background: pink;
+    }
+</style>
+
+<body>
+    <span></span>
+</body>
+<script>
+
+    const screenW = document.documentElement.clientWidth;
+    const screenH = document.documentElement.clientHeight;
+    for (let i = 0; i < 150; i++) {
+        const span = document.createElement('span');
+        document.body.appendChild(span);
+        const x = parseInt(Math.random() * screenW);
+        const y = parseInt(Math.random() * screenH);
+        span.style.left = x + 'px';
+        span.style.top = y + 'px';
+        span.style.zIndex = "0";
+        const scale = Math.random() * 1.5;
+        span.style.transform = 'scale(' + scale + ', ' + scale + ')';
+        const rate = Math.random() * 1.5;
+        span.style.animationDelay = rate + 's';
+    }
+</script>
+
+</html>

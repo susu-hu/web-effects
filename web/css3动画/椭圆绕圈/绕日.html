@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    body {
+        background: #222;
+    }
+
+    .container {
+        width: 640px;
+        height: 640px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sun {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background-color: yellow;
+        box-shadow: 0px 0px 60px #fff, 0 0 70px #fff;
+    }
+
+    /* 定义变量 */
+    .earth {
+        --diameter: 30rem;
+        --duration: 36.5;
+    }
+
+    .moon {
+        --diameter: 8rem;
+        --duration: 2.7;
+        top: 10px;
+        right: 10px;
+    }
+
+    .earth,
+    .moon {
+        position: absolute;
+        width: calc(var(--diameter));
+        height: calc(var(--diameter));
+        border-radius: 50%;
+        border-style: solid solid none none;
+        border-color: silver transparent;
+        border-width: 0.1rem;
+        animation: move calc(var(--duration)*1s) linear infinite;
+    }
+
+    @keyframes move {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    /* 定义变量 */
+    .earth::before {
+        --diameter: 3rem;
+        --color: turquoise;
+        --top: 2.8rem;
+        --right: 2.8rem;
+    }
+
+    .moon::before {
+        --diameter: 1.3rem;
+        --color: white;
+        --top: 0.8rem;
+        --right: -0.2rem;
+    }
+
+    /* 画地球和月亮 */
+    .earth::before,
+    .moon::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background-color: turquoise;
+        top: calc(var(--top));
+        right: calc(var(--right));
+        width: calc(var(--diameter));
+        height: calc(var(--diameter));
+        background-color: var(--color);
+    }
+</style>
+
+<body>
+    <section class="container">
+        <div class="sun"></div>
+        <div class="earth">
+            <div class="moon"></div>
+        </div>
+    </section>
+</body>
+
+</html>

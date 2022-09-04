@@ -1,0 +1,42 @@
+#start1 {
+    .mixin(700);
+    width          : 1px;
+    height         : 1px;
+    animation      : animStar 50s linear infinite;
+    animation-delay: -10s;
+}
+
+// start2生成了长2px，宽2px的星星200个
+#start2 {
+    .mixin(200);
+    width          : 2px;
+    height         : 2px;
+    animation      : animStar 100s linear infinite;
+    animation-delay: -8s;
+}
+
+// start3生成了长3px，宽3px的星星100个
+#start3 {
+    .mixin(100);
+    width          : 3px;
+    height         : 3px;
+    animation      : animStar 150s linear infinite;
+    animation-delay: -5s;
+}
+
+// 动画效果如下
+@keyframes animStar {
+    from {
+        transform: translateY(0px)
+    }
+
+    to {
+        transform: translateY(-2000px)
+    }
+}
+
+// 首先定义个mixin函数，参数是@n, 条件是只有@n > 0的时候才执行函数里的代码
+.mixin(@n) when(@n > 0) {
+    box-shadow+: ~`Math.round(Math.random() * 2000) + 'px'+ ' '+Math.round(Math.random() * 2000) + 'px #FFF'`;
+    .mixin((@n - 1));
+}
