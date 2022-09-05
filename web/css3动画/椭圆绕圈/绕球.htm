@@ -1,0 +1,155 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-09-05 23:06:13
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-09-06 00:17:35
+ * @FilePath: \css_demos\web\css3动画\椭圆绕圈\绕球.htm
+ * @Description: 地球绕圈
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球绕圈</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    body {
+        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    }
+
+    .ball {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 50%;
+        position: relative;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        background: url('http://hop.ie/balls/images/world-map-one-color.png') repeat-x;
+        background-size: auto 100%;
+        -webkit-animation: move-map 30s infinite linear;
+        -moz-animation: move-map 30s infinite linear;
+        -o-animation: move-map 30s infinite linear;
+        -ms-animation: move-map 30s infinite linear;
+        animation: move-map 30s infinite linear;
+    }
+
+    .ball:before {
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
+        z-index: 2;
+    }
+
+    .ball:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        -webkit-filter: blur(0);
+        filter: blur(0);
+        opacity: 0.7;
+        background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%);
+    }
+
+    .ball .shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+        -webkit-transform: rotateX(90deg) translateZ(-150px);
+        -moz-transform: rotateX(90deg) translateZ(-150px);
+        -ms-transform: rotateX(90deg) translateZ(-150px);
+        -o-transform: rotateX(90deg) translateZ(-150px);
+        transform: rotateX(90deg) translateZ(-150px);
+        z-index: -1;
+    }
+
+    .stage {
+        width: 300px;
+        height: 300px;
+        display: inline-block;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        -o-perspective: 1200px;
+        perspective: 1200px;
+        -webkit-perspective-origin: 50% 50%;
+        -moz-perspective-origin: 50% 50%;
+        -ms-perspective-origin: 50% 50%;
+        -o-perspective-origin: 50% 50%;
+        perspective-origin: 50% 50%;
+    }
+
+    @-moz-keyframes move-map {
+        0% {
+            background-position: -849px 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    @-webkit-keyframes move-map {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: -849px 0;
+        }
+    }
+
+
+    @-o-keyframes move-map {
+        0% {
+            background-position: -849px 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    @-ms-keyframes move-map {
+        0% {
+            background-position: -849px 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    @keyframes move-map {
+        0% {
+            background-position: -849px 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+</style>
+
+<body>
+    <section class="stage">
+        <figure class="ball"><span class="shadow"></span></figure>
+    </section>
+</body>
+
+</html>
