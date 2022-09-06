@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>横向模糊匹配</title>
+</head>
+<style>
+  body {
+    font-size: 12px;
+    line-height: 25px;
+    color: #333;
+  }
+</style>
+
+<body>
+  横向模糊指的是，一个正则可匹配的字符串的长度不是固定的，可以是多种情况的。
+</body>
+<script>
+  var regex = /ab{2,5}c/; //{m,n}，表示连续出现最少 m 次，最多 n 次;第一个字符是 "a"，接下来是 2 到 5 个字符 "b"，最后是字符 "c"。
+  console.log(regex.test("abc"));
+  console.log(regex.test("abbc"));
+  console.log(regex.test("abbbc"));
+  console.log(regex.test("abbbbc"));
+  console.log(regex.test("abbbbbc"));
+  console.log(regex.test("abbbbbbc"));
+
+
+  var regex1 = /ab{2,5}c/g;//其中 g 是正则的一个修饰符。表示全局匹配，即，在目 标字符串中按顺序找到满足匹配模式的所有子串，强调的是“所有”，而不只是“第一个” 。g 是单词 global 的首字母。
+  var string = "abc abbc abbbc abbbbc abbbbbc abbbbbbc";
+  console.log( string.match(regex1) );
+  // => ["abbc", "abbbc", "abbbbc", "abbbbbc"]
+</script>
+
+</html>
