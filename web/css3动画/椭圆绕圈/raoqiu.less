@@ -2,61 +2,69 @@
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   }
 
-  section {
-    width: 200px;
-    height: 200px;
+  .i-b {
     display: inline-block;
-    -webkit-perspective: 1200px;
-    -moz-perspective: 1200px;
-    -ms-perspective: 1200px;
-    -o-perspective: 1200px;
-    perspective: 1200px;
-    -webkit-perspective-origin: 50% 50%;
-    -moz-perspective-origin: 50% 50%;
-    -ms-perspective-origin: 50% 50%;
-    -o-perspective-origin: 50% 50%;
-    perspective-origin: 50% 50%;
-    position: relative;
+  }
+
+  .p-3d {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
   }
 
   .ball {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
+    &:extend(.i-b);
+    // Extend 是一个 Less 伪类，它将它所放置的选择器与匹配它所引用的选择器合并。
+    width: 200px;
+    height: 200px;
     margin: 0;
     border-radius: 50%;
     position: relative;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
     background: #e6be74;
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+    &:extend(.p-3d);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
+      z-index: 2;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+      //.trans-all(translateX(82px) rotateX(97deg) translateZ(-105px) rotateY(-35deg));--perspective
+      .trans-all(translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg));
+      z-index: -1;
+      //-moz代表火狐的内核，-ms代表IE内核，-webkit代表chrome、safari内核，-o代表opera
+      //-ms- IE 、-o- Opera、 -webkit- Chrome、Safari 、-moz- Firefox
+    }
   }
 
-  .ball:before {
-    content: "";
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
+  .trans-all(@content) {
+    -webkit-transform: @content;
+    -moz-transform: @content;
+    -ms-transform: @content;
+    -o-transform: @content;
+    transform: @content;
+  }
+
+  .line {
     border-radius: 50%;
-    box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
-    z-index: 2;
-  }
-
-  .ball:after {
-    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-    -webkit-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-    -moz-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-    -ms-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-    -o-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-    transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-    z-index: -1;
+    border: 3px solid #5c5c6d;
+    transform: rotateZ(60deg) rotateY(105deg);
+    -webkit-transform: rotateZ(60deg) rotateY(105deg);
+    &:extend(.p-3d);
   }
 
   .create-circleLine(@a, @b) {
@@ -66,18 +74,10 @@
     top: 50%;
     margin-left: -@a;
     margin-top: -@b;
-    border-radius: 50%;
-    position: absolute;
-    border: 3px solid #5c5c6d;
-    transform: rotateZ(60deg) rotateY(105deg);
-    -webkit-transform: rotateZ(60deg) rotateY(105deg);
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
+    &:extend(.line);
   }
 
-  .create-circle(@a, @b, @color, @aname) {
-    width: @a;
-    height: @b;
+  .dot-center {
     border-radius: 50%;
     position: absolute;
     top: 0;
@@ -85,9 +85,16 @@
     right: 0;
     bottom: 0;
     margin: auto;
+  }
+
+  .create-circle(@a, @b, @color, @aname) {
+    content: '';
+    width: @a;
+    height: @b;
     background: @color;
     filter: drop-shadow(10px 10px 10px @color);
     animation: @aname 20s linear infinite;
+    &:extend(.dot-center);
   }
 
   .create-keyframes(@name, @z, @z1, @radius, @y) {
@@ -108,47 +115,51 @@
 
   .circle-line1 {
     .create-circleLine(200px, 200px);
+
+    &::before {
+      .create-circle(10px, 10px, #d87093, move);
+      transform: rotateZ(0deg) translateX(200px) rotateZ(-0deg) rotateY(-105deg);
+      .create-keyframes(move, 0deg, 360deg, 200px, 105deg);
+    }
+
+    &::after {
+      .create-circle(10px, 10px, #ad4eda, move4);
+      transform: rotateZ(180deg) translateX(200px) rotateZ(-180deg) rotateY(-105deg);
+      .create-keyframes(move4, -180deg, 180deg, 200px, 105deg);
+    }
+
   }
 
   .circle-line2 {
     .create-circleLine(250px, 250px);
+
+    &::before {
+      .create-circle(10px, 10px, #87ceeb, move2);
+      .create-keyframes(move2, 0deg, 360deg, 250px, 105deg);
+
+    }
+
+    &::after {
+      .create-circle(10px, 10px, #48dbbb, move5);
+      .create-keyframes(move5, -180deg, 180deg, 250px, 105deg);
+
+    }
   }
 
   .circle-line3 {
     .create-circleLine(160px, 160px);
+
+    &::before {
+      .create-circle(10px, 10px, #e44818, move3);
+      .create-keyframes(move3, 0deg, 360deg, 160px, 105deg);
+    }
+
+    &::after {
+      .create-circle(10px, 10px, #4396ce, move6);
+      .create-keyframes(move6, -180deg, 180deg, 160px, 105deg);
+    }
+
   }
-
-
-  .circle-line1 .circle-1 {
-    .create-circle(10px, 10px, #d87093, move);
-    .create-keyframes(move, 0deg, 360deg, 200px, 105deg);
-  }
-
-  .circle-line1 .circle-2 {
-    .create-circle(10px, 10px, #ad4eda, move4);
-    .create-keyframes(move4, -180deg, 180deg, 200px, 105deg);
-  }
-
-  .circle-line2 .circle-1 {
-    .create-circle(10px, 10px, #87ceeb, move2);
-    .create-keyframes(move2, 0deg, 360deg, 250px, 105deg);
-  }
-
-  .circle-line2 .circle-2 {
-    .create-circle(10px, 10px, #48dbbb, move5);
-    .create-keyframes(move5, -180deg, 180deg, 250px, 105deg);
-  }
-
-  .circle-line3 .circle-1 {
-    .create-circle(10px, 10px, #e44818, move3);
-    .create-keyframes(move3, 0deg, 360deg, 160px, 105deg);
-  }
-
-  .circle-line3 .circle-2 {
-    .create-circle(10px, 10px, #4396ce, move6);
-    .create-keyframes(move6, -180deg, 180deg, 160px, 105deg);
-  }
-
 
   //   /* 第一轨道 */
   //   @keyframes move {
