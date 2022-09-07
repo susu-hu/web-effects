@@ -1,0 +1,172 @@
+  body {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  }
+
+  section {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    -o-perspective: 1200px;
+    perspective: 1200px;
+    -webkit-perspective-origin: 50% 50%;
+    -moz-perspective-origin: 50% 50%;
+    -ms-perspective-origin: 50% 50%;
+    -o-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+    position: relative;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .ball {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 50%;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background: #e6be74;
+  }
+
+  .ball:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
+    z-index: 2;
+  }
+
+  .ball:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+    -webkit-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
+    -moz-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
+    -ms-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
+    -o-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
+    transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
+    z-index: -1;
+  }
+
+  .create-circleLine(@a, @b) {
+    width: @a*2 ;
+    height: @b*2;
+    left: 50%;
+    top: 50%;
+    margin-left: -@a;
+    margin-top: -@b;
+    border-radius: 50%;
+    position: absolute;
+    border: 3px solid #0a0a1f;
+    transform: rotateZ(60deg) rotateY(105deg);
+    -webkit-transform: rotateZ(60deg) rotateY(105deg);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .create-circle(@a, @b, @color, @aname) {
+    width: @a;
+    height: @b;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: @color;
+    filter: drop-shadow(10px 10px 10px @color);
+    animation: @aname 20s linear infinite;
+  }
+
+  .create-keyframes(@name, @z, @z1, @radius, @y) {
+    @keyframes @name {
+      .create-animation(@z, @z1, @radius, @y)
+    }
+  }
+
+  .create-animation(@z, @z1, @radius, @y) {
+    from {
+      transform: rotateZ(@z) translateX(@radius) rotateZ(-@z) rotateY(-@y);
+    }
+
+    to {
+      transform: rotateZ(@z1) translateX(@radius) rotateZ(-@z1) rotateY(-@y);
+    }
+  }
+
+  .circle-line1 {
+    .create-circleLine(200px, 200px);
+  }
+
+  .circle-line2 {
+    .create-circleLine(250px, 250px);
+  }
+
+  .circle-line3 {
+    .create-circleLine(160px, 160px);
+  }
+
+
+  .circle-line1 .circle-1 {
+    .create-circle(10px, 10px, #d87093, move);
+    .create-keyframes(move, 0deg, 360deg, 200px, 105deg);
+  }
+
+  .circle-line1 .circle-2 {
+    .create-circle(10px, 10px, #ad4eda, move4);
+    .create-keyframes(move4, -180deg, 180deg, 200px, 105deg);
+  }
+
+  .circle-line2 .circle-1 {
+    .create-circle(10px, 10px, #87ceeb, move2);
+    .create-keyframes(move2, 0deg, 360deg, 250px, 105deg);
+  }
+
+  .circle-line2 .circle-2 {
+    .create-circle(10px, 10px, #48dbbb, move5);
+    .create-keyframes(move5, -180deg, 180deg, 250px, 105deg);
+  }
+
+  .circle-line3 .circle-1 {
+    .create-circle(10px, 10px, #e44818, move3);
+    .create-keyframes(move3, 0deg, 360deg, 160px, 105deg);
+  }
+
+  .circle-line3 .circle-2 {
+    .create-circle(10px, 10px, #4396ce, move6);
+    .create-keyframes(move6, -180deg, 180deg, 160px, 105deg);
+  }
+
+
+  //   /* 第一轨道 */
+  //   @keyframes move {
+  //     from {
+  //       transform: rotateZ(0) translateX(200px) rotateZ(0) rotateY(-105deg);
+  //     }
+
+  //     to {
+  //       transform: rotateZ(360deg) translateX(200px) rotateZ(-360deg) rotateY(-105deg);
+  //     }
+  //   }
+
+  //   @keyframes move4 {
+  //     from {
+  //       transform: rotateZ(-180deg) translateX(200px) rotateZ(180deg) rotateY(-105deg);
+  //     }
+
+  //     to {
+  //       transform: rotateZ(180deg) translateX(200px) rotateZ(-180deg) rotateY(-105deg);
+  //     }
+  //   }

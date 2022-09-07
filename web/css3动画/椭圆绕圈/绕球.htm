@@ -1,8 +1,8 @@
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-09-05 23:06:13
- * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-09-07 00:38:18
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2022-09-07 11:03:07
  * @FilePath: \css_demos\web\css3动画\椭圆绕圈\绕球.htm
  * @Description: 地球绕圈
 -->
@@ -10,124 +10,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>地球绕圈</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地球绕圈</title>
 </head>
 <link rel="stylesheet" href="../../common.css">
-<style>
-    body {
-        background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    }
-
-    .ball {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        border-radius: 50%;
-        position: relative;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        /* background: radial-gradient(circle at 50% 80%, #81e8f6, #76deef 10%, #055194 66%, #062745 100%); */
-        background: rgb(230, 190, 116);
-
-    }
-
-    .ball:before {
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        box-shadow: -40px 10px 70px 10px rgba(0, 0, 0, 0.5) inset;
-        z-index: 2;
-    }
-
-    .ball:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-        -webkit-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-        -moz-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-        -ms-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-        -o-transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-        transform: translateX(64px) rotateX(90deg) translateZ(-113px) rotateY(-30deg);
-        z-index: -1;
-    }
-
-    .stage {
-        width: 200px;
-        height: 200px;
-        display: inline-block;
-        -webkit-perspective: 1200px;
-        -moz-perspective: 1200px;
-        -ms-perspective: 1200px;
-        -o-perspective: 1200px;
-        perspective: 1200px;
-        -webkit-perspective-origin: 50% 50%;
-        -moz-perspective-origin: 50% 50%;
-        -ms-perspective-origin: 50% 50%;
-        -o-perspective-origin: 50% 50%;
-        perspective-origin: 50% 50%;
-        position: relative;
-        transform-style: preserve-3d;
-        -webkit-transform-style: preserve-3d;
-    }
-
-    @keyframes move-map {
-        0% {
-            background-position: -849px 0;
-        }
-
-        100% {
-            background-position: 0 0;
-        }
-    }
-
-    .circle {
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        left: 50%;
-        top: 50%;
-        margin-left: -200px;
-        margin-top: -200px;
-        border-radius: 50%;
-        border: 3px solid #0a0a1f;
-        transform: rotateZ(60deg) rotateY(105deg);
-        -webkit-transform: rotateZ(60deg) rotateY(105deg);
-        transform-style: preserve-3d;
-        -webkit-transform-style: preserve-3d;
-    }
-
-    .circle2 {
-        width: 500px;
-        height: 500px;
-        margin-left: -250px;
-        margin-top: -250px;
-    }
-
-    .circle3 {
-        width: 320px;
-        height: 320px;
-        margin-left: -160px;
-        margin-top: -160px;
-    }
-</style>
+<link rel="stylesheet/less" href="./raoqiu.less" />
 
 <body>
-    <section class="stage">
-        <div class="circle"></div>
-        <div class="circle circle2"></div>
-        <div class="circle circle3"></div>
-        <div class="ball"> </div>
-    </section>
+  <section>
+    <div class="ball"></div>
+    <div class="circle-line1">
+      <span class="circle-1"></span>
+      <span class="circle-2"></span>
+    </div>
+    <div class="circle-line2">
+      <span class="circle-1"></span>
+      <span class="circle-2"></span>
+    </div>
+    <div class="circle-line3">
+      <span class="circle-1"></span>
+      <span class="circle-2"></span>
+    </div>
+  </section>
 </body>
+<script src="../../less.1.7.3.js"></script>
 
 </html>
