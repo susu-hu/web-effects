@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/Chokcoco/pen/yLjeJoz</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  body {
+    background: #fff;
+  }
+
+  div {
+    position: relative;
+    margin: auto;
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
+    color: #000;
+    box-shadow: 200px 20px 0 70px, 160px 20px 0 70px, 85px 10px 0 0 #fff, 85px -10px 0 0 #fff, 65px 0;
+  }
+
+  div::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: 200px;
+    width: 20px;
+    height: 340px;
+    border-radius: inherit;
+    box-shadow: 0 0 0 8px #fff;
+    background: #000;
+    transform: rotate(-50deg);
+  }
+
+  div::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 340px;
+    width: 70px;
+    height: 130px;
+    border-radius: inherit;
+    background: #000;
+    -webkit-mask: linear-gradient(45deg, transparent 0, transparent 30px, #000 30px, #000), linear-gradient(135deg, transparent 0, transparent 30px, #000 30px, #000), linear-gradient(-90deg, #000, #000, 20px, transparent 20px, transparent 25px, #000 25px, #000);
+    mask: linear-gradient(45deg, transparent 0, transparent 30px, #000 30px, #000), linear-gradient(135deg, transparent 0, transparent 30px, #000 30px, #000), linear-gradient(-90deg, #000, #000, 20px, transparent 20px, transparent 25px, #000 25px, #000);
+    -webkit-mask-composite: source-in;
+    mask-composite: source-in;
+  }
+</style>
+
+<body>
+  <div></div>
+</body>
+
+</html>

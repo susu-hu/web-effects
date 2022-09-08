@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  substring: 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。 <br />
+  substr:方法返回一个字符串中从指定位置开始到指定字符数的字符。 <br />
+  <br /> <br />
+  substring()和substr()之间的区别 <br />
+  方法substring()和substr()方法之间有一个微妙的区别，你应该小心不要让他们困惑。 <br />
+  如果substring()方法的参数表示起始索引和结束索引，则substr()方法参数表示要包含在结果字符串中的起始索引和字符长度。 <br />
+
+</body>
+<script>
+  var text = 'Mozilla';
+  console.log(text.substring(2, 5)); // => "zil"
+  console.log(text.substr(2, 3)); // => "zil"
+</script>
+
+</html>

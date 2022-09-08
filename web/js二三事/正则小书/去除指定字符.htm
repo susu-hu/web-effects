@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>去除指定字符</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*去除前缀
+  /susu
+  */
+  let str = '/susu/elec/deviceStock/getList';
+
+  //方法一：substring: 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。
+  let f1 = str.substring(5, str.length);
+  console.log('1', f1)
+
+  // 方法二:slice
+  let f2 = str.slice(5, str.length);
+  console.log('2', f2)
+
+  // 方法3:replace
+  let f3 = str.replace(/\/susu/, '')
+  console.log('3', f3)
+
+  // 方法4:substr:方法返回一个字符串中从指定位置开始到指定字符数的字符。
+  let f4 = str.substr(5, str.length - 5);
+  console.log('4', f4)
+
+  // 方法5：split +shift拼接
+  let f5 = str.split('/');
+  f5.shift();
+  f5.shift();
+  f5 = '/' + f5.join('/')
+  console.log('5', f5)
+</script>
+
+</html>
