@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading动画+2</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    :root {
+        --color: orange;
+        --width: 4px;
+    }
+
+    .box {
+        width: 120px;
+        height: 130px;
+        position: relative;
+        animation: circle 2s infinite ease-in-out;
+    }
+
+    .box span {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 4px solid var(--color);
+        border-radius: 50%;
+        left: calc(50% - 15px);
+        top: calc(50% - 15px);
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+
+    .box span:nth-child(1) {
+        animation-name: rotate1;
+    }
+
+    .box span:nth-child(2) {
+        animation-name: rotate2;
+    }
+
+    .box span:nth-child(3) {
+        animation-name: rotate3;
+    }
+
+    .box span:nth-child(4) {
+        animation-name: rotate4;
+    }
+
+    @keyframes rotate1 {
+        50% {
+            transform: translate(150%, 150%) scale(1.5, 1.5);
+            border-radius: 0%;
+        }
+    }
+
+    @keyframes rotate2 {
+        50% {
+            transform: translate(-150%, 150%) scale(1.5, 1.5);
+            border-radius: 0%;
+        }
+    }
+
+    @keyframes rotate3 {
+        50% {
+            transform: translate(-150%, -150%) scale(1.5, 1.5);
+            border-radius: 0%;
+        }
+    }
+
+    @keyframes rotate4 {
+        50% {
+            transform: translate(150%, -150%) scale(1.5, 1.5);
+            border-radius: 0%;
+        }
+    }
+
+    @keyframes circle {
+        50% {
+            transform: rotate(90eg);
+        }
+
+        100% {
+            transform: rotate(180deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+
+</html>
