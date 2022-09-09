@@ -16,81 +16,67 @@
   根据type将相同的数据分组
   */
   let arr = [{
-      id: 1,
-      name: '小明',
-      type: '1',
-      typeName: '分类1'
-    },
-    {
-      id: 2,
-      name: '大明',
-      type: '1',
-      typeName: '分类1'
-    },
-    {
-      id: 3,
-      name: '中明',
-      type: '2',
-      typeName: '分类2'
+    id: 1,
+    name: '小明',
+    type: '1',
+    typeName: '分类1'
+  },
+  {
+    id: 2,
+    name: '大明',
+    type: '1',
+    typeName: '分类1'
+  },
+  {
+    id: 3,
+    name: '中明',
+    type: '2',
+    typeName: '分类2'
 
-    },
-    {
-      id: 4,
-      name: '小明',
-      type: '3',
-      typeName: '分类3'
-    },
-    {
-      id: 5,
-      name: '雷明',
-      type: '3',
-      typeName: '分类3'
+  },
+  {
+    id: 4,
+    name: '小明',
+    type: '3',
+    typeName: '分类3'
+  },
+  {
+    id: 5,
+    name: '雷明',
+    type: '3',
+    typeName: '分类3'
 
-    },
-    {
-      id: 6,
-      name: '小明',
-      type: '3',
-      typeName: '分类3'
-    },
-    {
-      id: 7,
-      name: '出明',
-      type: '2',
-      typeName: '分类2'
-    },
-    {
-      id: 8,
-      name: '中明',
-      type: '1',
-      typeName: '分类1'
-    },
-    {
-      id: 9,
-      name: '出明',
-      type: '4',
-      typeName: '分类4'
-    },
-    {
-      id: 10,
-      name: '雷明',
-      type: '4',
-      typeName: '分类4'
-    },
-  ];
-  // list
-  let b = [{
-      type: '1',
-      key: 'susu',
-    },
-    {
-      type: '1',
-      key: 'susuyahh ',
-    },
-    {
-      type: '2',
-      key: 'sdfsdfnsjdhfs ',
-    }
+  },
+  {
+    id: 6,
+    name: '小明',
+    type: '3',
+    typeName: '分类3'
+  },
+  {
+    id: 7,
+    name: '出明',
+    type: '2',
+    typeName: '分类2'
+  },
+  {
+    id: 8,
+    name: '中明',
+    type: '1',
+    typeName: '分类1'
+  },
+  {
+    id: 9,
+    name: '出明',
+    type: '4',
+    typeName: '分类4'
+  },
+  {
+    id: 10,
+    name: '雷明',
+    type: '4',
+    typeName: '分类4'
+  },
   ];
   function sortClass(sortData) {
     const groupBy = (array, f) => {
@@ -110,25 +96,25 @@
     return sorted;
   };
   let a = sortClass(arr);
-  console.log(a)
+  console.log('a', a)
 
 
 
   // -----------------------------------
   var map = {},
-    dest = [];
+    bbbb = [];
   for (var i = 0; i < arr.length; i++) {
     var ai = arr[i];
     if (!map[ai.type]) {
-      dest.push({
+      bbbb.push({
         type: ai.type,
         name: ai.name,
         data: [ai]
       });
       map[ai.type] = ai;
     } else {
-      for (var j = 0; j < dest.length; j++) {
-        var dj = dest[j];
+      for (var j = 0; j < bbbb.length; j++) {
+        var dj = bbbb[j];
         if (dj.type == ai.type) {
           dj.data.push(ai);
           break;
@@ -136,39 +122,37 @@
       }
     }
   }
-  console.log(dest);
-
-
+  console.log('bbbb', bbbb);
 
 
   // -----------------------------------
   let list = [{
-      name: '张三',
-      id: 1
-    },
-    {
-      name: '李四',
-      id: 2
-    },
-    {
-      name: '王五',
-      id: 3
-    },
-    {
-      name: '张三',
-      id: 4
-    },
-    {
-      name: '李四',
-      id: 5
-    }
+    name: '张三',
+    id: 1
+  },
+  {
+    name: '李四',
+    id: 2
+  },
+  {
+    name: '王五',
+    id: 3
+  },
+  {
+    name: '张三',
+    id: 4
+  },
+  {
+    name: '李四',
+    id: 5
+  }
   ];
 
-  let newList = []
+  let cccc = []
   list.forEach(item => {
-    let newName = newList.find((i) => i.name == item.name)
+    let newName = cccc.find((i) => i.name == item.name)
     if (!newName) {
-      newList.push({
+      cccc.push({
         name: item.name,
         ids: [item.id]
       })
@@ -176,10 +160,10 @@
       newName.ids.push(item.id)
     }
   })
-  console.log(newList)
+  console.log('cccc', cccc)
   // ------------------------在JavaScript中对相同数字进行分组
   const arr1 = [-1, -2, -1, 0, -1, -2, -1, -2, -1, 0, 1, 0];
-  const positiveClusters = arr1 => {
+  const pcard = arr1 => {
     return arr1.reduce((acc, val, ind) => {
       if (val >= 0 && (arr1[ind + 1] < 0 || typeof arr1[ind + 1] === 'undefined')) {
         acc++;
@@ -187,64 +171,7 @@
       return acc;
     }, 0);
   };
-  console.log(positiveClusters(arr1));
-  // --------------------------
-  const listData = [{
-      firstName: "Rick",
-      lastName: "Sanchez",
-      size: 18
-    },
-    {
-      firstName: "Morty",
-      lastName: "Smith",
-      size: 6
-    },
-    {
-      firstName: "Jerry",
-      lastName: "Smith",
-      size: 3
-    },
-    {
-      firstName: "Beth",
-      lastName: "Smith",
-      size: 0
-    },
-    {
-      firstName: "Summer",
-      lastName: "Smith",
-      size: 0
-    },
-    {
-      firstName: "Rick",
-      lastName: "Sanchez",
-      size: 18
-    },
-    {
-      firstName: "Morty",
-      lastName: "Smith",
-      size: 6
-    },
-  ];
-  // 一、普通写法
-  const sortClass1 = (sortData) => {
-    const groupBy = (array, f) => {
-      let groups = {};
-      array.forEach((o) => {
-        let group = JSON.stringify(f(o));
-        groups[group] = groups[group] || [];
-        groups[group].push(o);
-      });
-      return Object.keys(groups).map((group) => {
-        return groups[group];
-      });
-    };
-    const sorted = groupBy(sortData, (item) => {
-      return item.lastName; // 返回需要分组的对象
-    });
-    return sorted;
-  };
-  // 分组后
-  console.log(sortClass1(listData));
+  // console.log(pcard(arr1));
   // 二、TS 写法
   // const sortClass = (sortData: ListDataItem[]) => {
   //   const groupBy = (array: ListDataItem[], f: Function) => {
@@ -265,11 +192,6 @@
   //   });
   //   return sorted;
   // };
-
-  // // 分组前
-  // console.log(listData);
-  // // 分组后
-  // console.log(sortClass(listData));
 </script>
 
 </html>
