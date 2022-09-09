@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading动画+1</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    :root {
+        --color: orange;
+        --width: 4px;
+    }
+
+    .box {
+        height: 200px;
+        width: 200px;
+        position: relative;
+    }
+
+    .box span {
+        border-radius: 50%;
+        position: absolute;
+        border: var(--width) solid transparent;
+        border-top-color: var(--color);
+        border-left-color: var(--color);
+        animation: roate 2s infinite;
+        /* box-shadow: 2px 2px 2px #d88c29 inset; */
+    }
+
+    .box span:nth-child(1) {
+        height: 200px;
+        width: 200px;
+        top: calc(50% - 100px);
+        left: calc(50% - 100px);
+        animation-delay: calc(200ms* var(--n));
+    }
+
+    .box span:nth-child(2) {
+        height: 160px;
+        width: 160px;
+        top: calc(50% - 80px);
+        left: calc(50% - 80px);
+        animation-delay: calc(200ms * var(--n));
+    }
+
+    .box span:nth-child(3) {
+        height: 120px;
+        width: 120px;
+        top: calc(50% - 60px);
+        left: calc(50% - 60px);
+        animation-delay: calc(200ms * var(--n));
+    }
+
+    .box span:nth-child(4) {
+        height: 80px;
+        width: 80px;
+        top: calc(50% - 40px);
+        left: calc(50% - 40px);
+        animation-delay: calc(200ms * var(--n));
+    }
+
+    .box span:nth-child(5) {
+        height: 40px;
+        width: 40px;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+        animation-delay: calc(200ms * var(--n));
+    }
+
+    @keyframes roate {
+        50% {
+            transform: rotate(360deg) scale(0.7);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <span style="--n:4"></span>
+        <span style="--n:3"></span>
+        <span style="--n:2"></span>
+        <span style="--n:1"></span>
+        <span style="--n:0"></span>
+    </div>
+</body>
+
+</html>
