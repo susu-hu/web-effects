@@ -152,8 +152,9 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 126. input-focus宽度过渡动画
 - [x] 127. 椭圆圆点绕圈动画
 - [x] 128. 椭圆围绕球体转动
-- [x] 129. loading动画+1
-- [x] 130. loading动画+2
+- [x] 129. loading动画01
+- [x] 130. loading动画02
+- [x] 131. loading动画03
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -163,9 +164,11 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
-##### loading动画+2
+##### loading动画03
+![输入图片说明](web-pictures/loading03.gif)
+##### loading动画02
 ![输入图片说明](web-pictures/loading02.gif)
-##### loading动画+1
+##### loading动画01
 ![输入图片说明](web-pictures/loading01.gif)
 ##### 椭圆围绕球体转动
 ![输入图片说明](web-pictures/raoqiu.gif)
