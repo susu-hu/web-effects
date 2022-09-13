@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loading05</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root {
+    --color: orange;
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    background: var(--color);
+    border-radius: 10px;
+    animation: rotate 2s linear infinite;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: perspective(200px) rotateX(0deg) rotateY(0deg);
+    }
+
+    50% {
+      transform: perspective(200px) rotateX(-180deg) rotateY(0deg);
+    }
+
+    100% {
+      transform: perspective(200px) rotateX(-180deg) rotateY(-180deg);
+    }
+  }
+</style>
+
+<body>
+  <div></div>
+</body>
+
+</html>
