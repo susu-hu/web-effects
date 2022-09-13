@@ -72,18 +72,38 @@
   }
   console.log(groupByKey('groupCode', arr, 'groupName'))
   // map处理
-  function groupByMap(arr, f) {
+  function groupByMap(arr, f, keyId, keyName) {
+    let result = [];
     //初始化 Map, 用来存储键值对
     let map = new Map()
-    arr.forEach(function (obj) {
+    arr.forEach(function(obj) {
       //根据传入的函数，对数组中的每一个对象产生一个 key值，并将key值相等的对象分为一组
       let key = f(obj)
       map.set(key, (map.get(key) || []))
       map.get(key).push(obj)
     });
-    return map
+    // console.log(map.entries())
+    //map-转数组
+    // 法一：
+    let arr1 = Array.from(map);
+    // 法2：
+    // console.log([...map]);
+    // // 法3：
+    // let arr1 = [];
+    // for (var key of map) {
+    //   arr1.push(key);
+    // }
+    // console.log('arr1', arr1);
+    arr1.forEach(item => {
+      result.push({
+        [keyId]: item[0],
+        [keyName]: item[1][0][keyName],
+        list: item[1]
+      })
+    })
+    return result;
   }
-  console.log(groupByMap(arr, item => item.groupCode))
+  console.log(groupByMap(arr, item => item.groupCode, 'groupCode', 'groupName'))
 </script>
 
 </html>
