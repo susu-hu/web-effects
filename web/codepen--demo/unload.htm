@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/wheatup/pen/XLmzbe</title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+    font: inherit;
+  }
+
+  html {
+    overflow: hidden;
+    color: #333;
+    font-size: 62.5%;
+  }
+
+  @media screen and (max-width: 480px) {
+    html {
+      font-size: 50%;
+    }
+  }
+
+  html body {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #444, #222);
+    overflow: hidden;
+    font-family: "Rubik", sans-serif;
+  }
+
+  .Confirm {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72rem;
+    max-width: 100%;
+    min-width: 34rem;
+    max-height: 100%;
+    height: 46rem;
+    background-color: #ccc;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 5px -3px rgba(0, 0, 0, 0.2);
+  }
+
+  .Confirm-Header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 0 0 4rem;
+    margin: 0 1rem;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+
+  .Confirm-Header-Button {
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 1rem;
+    flex: 0 0 auto;
+    transition: background-color 0.3s;
+  }
+
+  .Confirm-Header-Button:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+
+  .Confirm-Header-Button_Close {
+    background-color: #a43;
+  }
+
+  .Confirm-Header-Button_Close:hover {
+    background-color: #c85a48;
+  }
+
+  .Confirm-Header-Button_Maximize {
+    background-color: #cb3;
+  }
+
+  .Confirm-Header-Button_Maximize:hover {
+    background-color: #d6c95c;
+  }
+
+  .Confirm-Header-Button_Minimize {
+    background-color: #6a4;
+  }
+
+  .Confirm-Header-Button_Minimize:hover {
+    background-color: #81c061;
+  }
+
+  .Confirm-Header-Title {
+    margin: 0;
+    padding: 0;
+    transform: translateX(50%);
+    margin-right: 50%;
+    margin-left: auto;
+  }
+
+  .Confirm-Body {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    margin: 2rem 4rem;
+  }
+
+  .Confirm-Body-Title {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 5%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .Confirm-Body-Button,
+  .Confirm-Body-Button:link,
+  .Confirm-Body-Button:visited {
+    color: #fff;
+    border-radius: 1rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    min-width: 10rem;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .Confirm-Body-Button_Delete {
+    background-color: #a43;
+  }
+
+  .Confirm-Body-Button_Delete:hover {
+    background-color: #c85a48;
+  }
+
+  .Confirm-Body-Button_Cancel {
+    background-color: #6a4;
+  }
+
+  .Confirm-Body-Button_Cancel:hover {
+    background-color: #81c061;
+  }
+
+  .Boi {
+    --happiness: 0.9;
+    --derp: 1;
+    --px: 0.5;
+    --py: 0.5;
+    width: 22rem;
+    max-width: 100%;
+    height: 22rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: radial-gradient(#f7e0b2, #eb5);
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0;
+    align-self: center;
+    flex: 0 0 auto;
+    border: solid 2px #ecb23e;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .Boi,
+  .Boi * {
+    position: absolute;
+  }
+
+  .Boi::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, #5a8, rgba(85, 170, 136, 0));
+    opacity: calc(1 - var(--happiness));
+  }
+
+  .Boi-Blush {
+    width: 20%;
+    height: 10%;
+    background-color: rgba(255, 100, 100, 0.3);
+    border: 3px solid rgba(255, 100, 100, 0.3);
+    top: calc(45% + var(--py) * 10%);
+    border-radius: 100%;
+    opacity: calc(var(--happiness) * var(--happiness) * 0.9 + 0.1);
+  }
+
+  .Boi-Blush_L {
+    left: calc(7% + var(--px) * 2%);
+  }
+
+  .Boi-Blush_R {
+    right: calc(9% - var(--px) * 2%);
+  }
+
+  .Boi-Eye {
+    width: calc(26% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #f6f6f6;
+    border-radius: 100%;
+    top: calc(25% + var(--py) * 10%);
+    overflow: hidden;
+  }
+
+  .Boi-Eye_L {
+    left: calc(18% + var(--px) * 4%);
+  }
+
+  .Boi-Eye_L::after {
+    transform: translate(calc((var(--px) + var(--derp) * 0.5) * 100%), calc((var(--py) + var(--derp) * 0.5) * 100%));
+  }
+
+  .Boi-Eye_R {
+    right: calc(22% - var(--px) * 4%);
+  }
+
+  .Boi-Eye_R::after {
+    transform: translate(calc((var(--px) + var(--derp) * -0.3) * 100%), calc((var(--py) + var(--derp) * -0.3) * 100%));
+  }
+
+  .Boi-Eye::after {
+    content: "";
+    display: block;
+    background-color: #421;
+    width: calc(55% - var(--happiness) * 10%);
+    height: calc(55% - var(--happiness) * 10%);
+    border-radius: 100%;
+  }
+
+  .Boi-Mouth {
+    width: calc(51% - var(--happiness) * 2%);
+    height: calc(26% - var(--happiness) * 2%);
+    background-color: #a33;
+    border-radius: calc((1 - var(--happiness)) * 10em) calc((1 - var(--happiness)) * 10em) calc(var(--happiness) * 16em) calc(var(--happiness) * 16em);
+    top: calc(57.5% + var(--py) * 5%);
+    left: calc(47.5% + var(--px) * 5%);
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 3px solid #962d2d;
+    /* fix safari overflow breach */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .Boi-Mouth::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 0;
+    left: 50%;
+    background-color: white;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .Boi-Mouth::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    left: 10%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20rem 20rem 0 0;
+  }
+</style>
+
+<body>
+  <section class="Confirm">
+    <div class="Confirm-Header">
+      <a class="Confirm-Header-Button Confirm-Header-Button_Close" href="javascript: void(0)"></a>
+      <a class="Confirm-Header-Button Confirm-Header-Button_Minimize" href="javascript: void(0)"></a>
+      <a class="Confirm-Header-Button Confirm-Header-Button_Maximize" href="javascript: void(0)"></a>
+      <h1 class="Confirm-Header-Title">Confirm uninstall</h1>
+    </div>
+    <div class="Confirm-Body">
+      <h2 class="Confirm-Body-Title">Are you sure you want to remove Boi from your pc?</h2>
+      <figure class="Boi">
+        <div class="Boi-Blush Boi-Blush_L"></div>
+        <div class="Boi-Blush Boi-Blush_R"></div>
+        <div class="Boi-Eye Boi-Eye_L"></div>
+        <div class="Boi-Eye Boi-Eye_R"></div>
+        <div class="Boi-Mouth"></div>
+      </figure>
+      <a class="Confirm-Body-Button Confirm-Body-Button_Cancel" href="javascript: void(0)">Cancel</a>
+      <a class="Confirm-Body-Button Confirm-Body-Button_Delete" href="javascript: void(0)">Uninstall</a>
+    </div>
+  </section>
+</body>
+<script>
+  const confirm = document.querySelector('.Confirm');
+  const boi = document.querySelector('.Boi');
+  const btnDelete = document.querySelector('.Confirm-Body-Button_Delete');
+  const btnCancel = document.querySelector('.Confirm-Body-Button_Cancel');
+  const current = {
+    happiness: 0.9,
+    derp: 1,
+    px: 0.5,
+    py: 0.5
+  };
+  const target = {
+    ...current
+  };
+
+  confirm.addEventListener('mousemove', onMouseMove);
+  confirm.addEventListener('mouseleave', onMouseLeave);
+
+  function onMouseMove({
+    clientX: x,
+    clientY: y
+  }) {
+    let dx1 = x - btnDelete.getBoundingClientRect().x - btnDelete.getBoundingClientRect().width * 0.5;
+    let dy1 = y - btnDelete.getBoundingClientRect().y - btnDelete.getBoundingClientRect().height * 0.5;
+    let dx2 = x - btnCancel.getBoundingClientRect().x - btnCancel.getBoundingClientRect().width * 0.5;
+    let dy2 = y - btnCancel.getBoundingClientRect().y - btnCancel.getBoundingClientRect().height * 0.5;
+    let px = (x - confirm.getBoundingClientRect().x) / confirm.getBoundingClientRect().width;
+    let py = (y - confirm.getBoundingClientRect().y) / confirm.getBoundingClientRect().height;
+    let distDelete = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+    let distCancel = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+    let happiness = Math.pow(distDelete / (distCancel + distDelete), 0.75);
+
+    target.happiness = happiness;
+    target.derp = 0;
+    target.px = px;
+    target.py = py;
+  }
+
+  function onMouseLeave() {
+    target.happiness = 0.9;
+    target.derp = 1;
+    target.px = 0.5;
+    target.py = 0.5;
+  }
+
+  function update() {
+    for (let prop in target) {
+      if (target[prop] === current[prop]) {
+        continue;
+      } else if (Math.abs(target[prop] - current[prop]) < 0.01) {
+        current[prop] = target[prop];
+      } else {
+        current[prop] += (target[prop] - current[prop]) * 0.1;
+      }
+      boi.style.setProperty(`--${prop}`, current[prop]);
+    }
+    requestAnimationFrame(update);
+  }
+  update();
+</script>
+
+</html>

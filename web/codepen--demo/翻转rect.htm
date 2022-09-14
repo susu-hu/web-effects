@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/wheatup/pen/ExmeaQV</title>
+</head>
+<style>
+  body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #ddd;
+  }
+
+  main {
+    --speed: 4s;
+    --size: 20rem;
+    --camera: -30rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 80rem;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(var(--camera));
+  }
+
+  main .node {
+    transform-style: preserve-3d;
+  }
+
+  main .node.move {
+    position: absolute;
+    transform: translateY(calc(var(--camera) * -1));
+  }
+
+  main .node.rotate {
+    -webkit-animation: rotateA var(--speed) ease-in both infinite;
+    animation: rotateA var(--speed) ease-in both infinite;
+  }
+
+  main .node.A {
+    transform-origin: 100% 100%;
+    -webkit-animation-name: rotateA;
+    animation-name: rotateA;
+  }
+
+  main .node.B {
+    transform-origin: 100% 0%;
+    -webkit-animation-name: rotateB;
+    animation-name: rotateB;
+  }
+
+  main .node.C {
+    transform-origin: 0% 0%;
+    -webkit-animation-name: rotateC;
+    animation-name: rotateC;
+  }
+
+  main .node.D {
+    transform-origin: 0% 100%;
+    -webkit-animation-name: rotateD;
+    animation-name: rotateD;
+  }
+
+  main .cube {
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  main .cube .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(198, 255, 58, 0.3);
+    border: solid 2px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main .cube .face[data-face=front] {
+    transform: translate3D(0, 0, calc(var(--size) * 0.5));
+    transform-style: preserve-3d;
+  }
+
+  main .cube .face[data-face=front]::before {
+    content: "LOADING";
+    font-size: calc(var(--size) * 0.125);
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+    transform: translate3d(0, 0, calc(var(--size) * -0.25));
+  }
+
+  main .cube .face[data-face=back] {
+    transform: translate3D(0, 0, calc(var(--size) * -0.5));
+  }
+
+  main .cube .face[data-face=left] {
+    transform: translate3D(calc(var(--size) * -0.5), 0, 0) rotateY(-90deg);
+  }
+
+  main .cube .face[data-face=right] {
+    transform: translate3D(calc(var(--size) * 0.5), 0, 0) rotateY(90deg);
+  }
+
+  main .cube .face[data-face=top] {
+    transform: translate3D(0, calc(var(--size) * -0.5), 0) rotateX(90deg);
+  }
+
+  main .cube .face[data-face=bottom] {
+    transform: translate3D(0, calc(var(--size) * 0.5), 0) rotateX(-90deg);
+  }
+
+  @-webkit-keyframes rotateA {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    25% {
+      transform: translate3D(calc(var(--size) * -1), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(calc(var(--size) * -1), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @keyframes rotateA {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    25% {
+      transform: translate3D(calc(var(--size) * -1), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(calc(var(--size) * -1), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @-webkit-keyframes rotateB {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    25% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    50% {
+      transform: translate3D(0, var(--size), 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(0, var(--size), 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @keyframes rotateB {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    25% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    50% {
+      transform: translate3D(0, var(--size), 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(0, var(--size), 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @-webkit-keyframes rotateC {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    50% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    75% {
+      transform: translate3D(var(--size), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(var(--size), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @keyframes rotateC {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    50% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    75% {
+      transform: translate3D(var(--size), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+
+    100% {
+      transform: translate3D(var(--size), 0, 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @-webkit-keyframes rotateD {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    75% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    100% {
+      transform: translate3D(0, calc(var(--size) * -1), 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+
+  @keyframes rotateD {
+    0% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    75% {
+      transform: translate3D(0, 0, 0) rotate3D(0, 0, 1, 0deg);
+    }
+
+    100% {
+      transform: translate3D(0, calc(var(--size) * -1), 0) rotate3D(0, 0, 1, 90deg);
+    }
+  }
+</style>
+
+<body>
+  <main>
+    <div class="node move">
+      <div class="node rotate A">
+        <div class="node rotate B">
+          <div class="node rotate C">
+            <div class="node rotate D">
+              <figure class="cube">
+                <div class="face" data-face="front"></div>
+                <div class="face" data-face="back"></div>
+                <div class="face" data-face="left"></div>
+                <div class="face" data-face="right"></div>
+                <div class="face" data-face="top"></div>
+                <div class="face" data-face="bottom"></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>

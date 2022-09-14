@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loading07</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root {
+    --l: 100px;
+    --border: orange;
+  }
+
+  .cube {
+    transform-style: preserve-3d;
+    transform: rotateX(-35deg) rotateY(30deg);
+    position: relative;
+    width: var(--l);
+    height: var(--l);
+  }
+
+  .rect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--border);
+    transform-style: preserve-3d;
+  }
+
+
+
+
+  .front {
+    transform: translateZ(calc(var(--l) * 0.5));
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--l) * 0.5));
+  }
+
+
+  .top {
+    transform: rotateX(90deg) translateZ(calc(var(--l) * 0.5));
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ(calc(var(--l) * 0.5));
+  }
+
+  .right {
+    transform: rotateY(90deg) translateZ(calc(var(--l) * 0.5));
+  }
+
+  .back {
+    transform: translateZ(-calc(var(--l) * 0.5));
+  }
+</style>
+
+<body>
+  <div class="cube">
+    <div class="top rect"></div>
+    <div class="right rect"></div>
+    <div class="bottom rect"></div>
+    <div class="left rect"></div>
+    <div class="front rect"></div>
+    <div class="back rect"></div>
+  </div>
+</body>
+
+</html>

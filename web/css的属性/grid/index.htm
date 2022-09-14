@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grid</title>
+</head>
+<style>
+  *,
+  *::before,
+  *::after {
+    font-family: inherit;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 62.5%;
+  }
+
+  html body {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a,
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+</style>
+
+
+
+<style>
+  body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #131417;
+  }
+
+  main {
+    --color: orange;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(17.7vmin), 1fr));
+    gap: 2vmin;
+    padding: 2vmin;
+  }
+
+  main span {
+    display: block;
+    position: relative;
+    background-color: black;
+    border-radius: 4px;
+    -webkit-animation: beep 2s linear calc(var(--dist) * 5ms) infinite both;
+    animation: beep 2s linear calc(var(--dist) * 5ms) infinite both;
+  }
+
+  main span::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  @-webkit-keyframes beep {
+    0% {
+      background-color: black;
+      box-shadow: 0 0 0 black;
+    }
+
+    10% {
+      background-color: var(--color);
+      box-shadow: 0 0 0.4em var(--color);
+    }
+
+    50% {
+      background-color: black;
+      box-shadow: 0 0 0 black;
+    }
+  }
+
+  @keyframes beep {
+    0% {
+      background-color: black;
+      box-shadow: 0 0 0 black;
+    }
+
+    10% {
+      background-color: var(--color);
+      box-shadow: 0 0 0.4em var(--color);
+    }
+
+    50% {
+      background-color: black;
+      box-shadow: 0 0 0 black;
+    }
+  }
+</style>
+
+<body translate="no">
+  <main>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </main>
+</body>
+<script>
+  const main = document.querySelector('main');
+  const getDistance = () => {
+    const [centerX, centerY] = [window.innerWidth * .5, window.innerHeight * .5];
+    [...main.children].forEach(e => {
+      let {
+        x,
+        y,
+        width,
+        height
+      } = e.getBoundingClientRect();
+      if (y > window.innerHeight) {
+        e.style.display = 'none';
+      } else {
+        e.style.display = 'block';
+      }
+      x += width * .5;
+      y += height * .5;
+      const dist = ((centerX - x) ** 2 + (centerY - y) ** 2) ** .5;
+      e.style.setProperty('--dist', dist);
+    });
+  }
+
+  getDistance();
+  window.addEventListener('resize', getDistance);
+</script>
+
+</html>

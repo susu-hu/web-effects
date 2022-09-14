@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正方体</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .cube {
+    font-size: 100px;
+    transform-style: preserve-3d;
+    /*调整角度，使六个角度都可以被看到*/
+    transform: rotateX(-35deg) rotateY(30deg);
+    position: relative;
+  }
+
+  /*为第一面设置一些简单的样式*/
+  .side {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    /* background: orange; */
+    border: 1px solid orange;
+    color: white;
+    text-align: center;
+    line-height: 2em;
+  }
+
+  .front {
+    transform: translateZ(1em);
+  }
+
+  .bottom {
+    transform: rotateX(-90deg) translateZ(1em);
+  }
+
+
+  .top {
+    transform: rotateX(90deg) translateZ(1em);
+  }
+
+  .left {
+    transform: rotateY(-90deg) translateZ(1em);
+  }
+
+  .right {
+    transform: rotateY(90deg) translateZ(1em);
+  }
+
+  .back {
+    transform: translateZ(-1em);
+  }
+</style>
+
+<body>
+  <div class="cube">
+    <div class="side front">1</div>
+    <div class="side back">6</div>
+    <div class="side right">4</div>
+    <div class="side left">3</div>
+    <div class="side top">5</div>
+    <div class="side bottom">2</div>
+  </div>
+</body>
+
+</html>

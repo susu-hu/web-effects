@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/wheatup/pen/KKKJJyo</title>
+</head>
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    font-family: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: "Alata", sans-serif;
+  }
+
+  html body {
+    font-size: 1.6rem;
+    position: relative;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #d9d9d9;
+  }
+
+  .panel {
+    position: relative;
+    width: 24rem;
+    height: 36rem;
+    background-color: #eee;
+    border-radius: 2px;
+    border-width: 1rem 0.6rem 0.3rem 0.6rem;
+    border-style: solid;
+    border-color: #fff #ccc #aaa #ddd;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 7px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .panel::before,
+  .panel::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: solid 1rem #bbb;
+    background-color: #777;
+    border-width: 1.1rem 0 1.1rem;
+    border-radius: 1.5rem;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.5), 0px -1px 0px 0px rgba(255, 255, 255, 0.5);
+  }
+
+  .panel::before {
+    transform: rotate(30deg);
+  }
+
+  .panel::after {
+    transform: rotate(-10deg);
+  }
+
+  .panel input {
+    display: none;
+  }
+
+  .panel label {
+    display: block;
+    position: relative;
+    background-color: #aaa;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    height: 10rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3) inset;
+    border-style: solid;
+    border-width: 3px 2px 4px 2px;
+    border-color: #aaa #999 #ddd #999;
+  }
+
+  .panel label::before,
+  .panel label::after {
+    content: "";
+    display: block;
+    position: absolute;
+  }
+
+  .panel label::before {
+    transition: all 0.2s;
+    width: 95%;
+    height: 5rem;
+    background-color: #ccc;
+    border-style: solid;
+    border-width: 0.5rem 2px 2rem 2px;
+    border-color: #eee #aaa #888 #ddd;
+    top: 0;
+    box-shadow: 0px 2.5rem 2px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+  .panel label::after {
+    transition: bottom 0.2s;
+    content: "ON";
+    bottom: 6.2rem;
+    transform: translateY(5rem);
+    color: #af7;
+    z-index: 3;
+    opacity: 0.75;
+    text-shadow: 0px 0px 0.7rem #bf9, 0px 0px 2rem #bf9;
+  }
+
+  .panel .overlay {
+    transition: background-color 0.3s 0.1s, opacity 0.3s 0.1s;
+    position: fixed;
+    display: block;
+    width: 110vw;
+    height: 110vh;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.75;
+    background-color: #081020;
+  }
+
+  @supports (mix-blend-mode: darken) {
+    .panel .overlay {
+      mix-blend-mode: darken;
+    }
+  }
+
+  .panel #switch:checked~label {
+    background-color: #c9c9c9;
+    border-color: #aaa #999 #a5a5a5 #999;
+    box-shadow: 0px 5px 4px 2px rgba(0, 0, 0, 0.1) inset, 0px 2rem 0px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  .panel #switch:checked~label::before {
+    top: 4.5rem;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+    border-width: 2rem 2px 0.5rem 2px;
+  }
+
+  .panel #switch:checked~label::after {
+    content: "OFF";
+    bottom: 0.9rem;
+    color: #b87;
+    z-index: 0;
+    opacity: 1;
+    text-shadow: none;
+    transform: translateY(-5rem);
+  }
+
+  .panel #switch:checked~.overlay {
+    opacity: 0;
+  }
+
+  @supports (mix-blend-mode: darken) {
+    .panel #switch:checked~.overlay {
+      opacity: 0.9;
+      background-color: #fffcf3;
+    }
+  }
+</style>
+
+<body>
+  <main>
+    <section class="panel">
+      <input id="switch" checked="checked" type="checkbox" />
+      <label for="switch"></label>
+      <div class="overlay"></div>
+    </section>
+  </main>
+</body>
+
+</html>
