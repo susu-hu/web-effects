@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json-excel表格数据</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    div {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        background: pink;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div onclick="downloadFile()">下载数据</div>
+</body>
+<script>
+    const download = (data, fileName) => {
+        const a = document.createElement('a');
+        const res = data.map(v => {
+            return Object.values(v).join('\t')
+        }).join('\n');
+        a.href = URL.createObjectURL(new Blob([res]));
+        a.setAttribute('download', fileName);
+        a.click();
+    }
+    const downloadFile = () => {
+        download([
+            {
+                id: '编号',
+                name: "名称"
+            },
+            {
+                id: '1',
+                name: "苏苏小苏苏1"
+            },
+            {
+                id: '2',
+                name: "苏苏小苏苏2"
+            },
+            {
+                id: '3',
+                name: "苏苏小苏苏3"
+            },
+            {
+                id: '4',
+                name: "苏苏小苏苏4"
+            },
+            {
+                id: '5',
+                name: "苏苏小苏苏5"
+            },
+        ], '数据下载.xls')
+    }
+</script>
+
+</html>
