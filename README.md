@@ -155,6 +155,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 129. loading动画01
 - [x] 130. loading动画02
 - [x] 131. loading动画03
+- [x] 132. tabbar凹凸选中动画
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -164,6 +165,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### tabbar凹凸选中动画
+![输入图片说明](web-pictures/tabbar01.gif)
 ##### loading动画03
 ![输入图片说明](web-pictures/loading03.gif)
 ##### loading动画02
