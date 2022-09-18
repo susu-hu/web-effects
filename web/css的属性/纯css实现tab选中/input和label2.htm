@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .tabs {
+        position: relative;
+        width: 100%;
+        height: 314px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .tab-pane {
+        display: inline-block;
+    }
+
+    .tabs input[type="radio"] {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    .tab-item {
+        display: block;
+        height: 33px;
+        line-height: 33px;
+        cursor: pointer;
+        padding: 0 10px;
+    }
+
+    .tabs input[type="radio"]:checked+.tab-item {
+        border-bottom: 3px solid green;
+        color: rgb(14, 14, 14);
+    }
+
+    .tab-content {
+        position: absolute;
+        border-top: 1px solid #eee;
+        padding: 20px;
+        left: 0;
+        top: 36px;
+        bottom: 0;
+        right: 0;
+        background: #fff;
+    }
+
+    .tabs input[type="radio"]:checked+.tab-item+.tab-content {
+        z-index: 1;
+    }
+</style>
+
+<body>
+    <div class="tabs">
+        <div class="tab-pane">
+            <input type="radio" name="tab" id="tab01" checked />
+            <label class="tab-item" for="tab01">tab01</label>
+            <div class="tab-content">111</div>
+        </div>
+        <div class="tab-pane">
+            <input type="radio" name="tab" id="tab02" />
+            <label class="tab-item" for="tab02">tab02</label>
+            <div class="tab-content">222</div>
+        </div>
+        <div class="tab-pane">
+            <input type="radio" name="tab" id="tab03" />
+            <label class="tab-item" for="tab03">tab03</label>
+            <div class="tab-content">333</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

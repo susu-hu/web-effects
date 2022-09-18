@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css实现tab选中</title>
+    <!-- CSS3中引入了一个新的伪类:target，当用户和页面进行某些交互时会触发;因为锚点会将选中的元素滚动到页面最上面，每次切换位置都要移动，体验极差 -->
+</head>
+<style>
+    dd {
+        padding: 5px;
+        /*隐藏Tab的内容*/
+        display: none;
+        border-radius: 5px;
+        margin-top: 20px
+    }
+
+    dd:target {
+        position: absolute;
+        /*显示Tab的内容*/
+        display: block;
+    }
+
+    /*给Tab以及相应的内容设置相同的背景色*/
+    .tab-a,
+    .content-a {
+        background: #CCFF00;
+    }
+
+    .tab-b,
+    .content-b {
+        background: #CCFFFF;
+    }
+
+    .tab-c,
+    .content-c {
+        background: #FFFF00;
+    }
+
+    .tab-d,
+    .content-d {
+        background: #FFCCFF;
+    }
+</style>
+
+<body>
+    <dl>
+        <dt class="tab-a first"><a href="#a">Tab A</a></dt>
+        <dd id="a" class="content-a">
+            Content A
+        </dd>
+        <dt class="tab-b"><a href="#b">Tab B</a></dt>
+        <dd id="b" class="content-b">
+            Content B
+        </dd>
+        <dt class="tab-c"><a href="#c">Tab C</a></dt>
+        <dd id="c" class="content-c">
+            Content C
+        </dd>
+        <dt class="tab-d"><a href="#d">Tab D</a></dt>
+        <dd id="d" class="content-d">
+            Content D
+        </dd>
+    </dl>
+</body>
+
+</html>

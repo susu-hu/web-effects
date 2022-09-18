@@ -1,0 +1,110 @@
+<!--
+    * @Author: susu 1628469970@qq.com
+    *利用label和radio的绑定关系和radio选中时的:checked来实现效果
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 清样式，如果是项目中，不推荐使用通配符来清样式，建议使用标签清样式，通配符清样式会增加页面压力 */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 宽度为屏宽的一半，高度为屏高的一半，然后居中 */
+    .box {
+        width: 50vw;
+        height: 50vh;
+        margin: 0 auto;
+    }
+
+    /* 清除li样式 */
+    ul,
+    li {
+        list-style: none;
+    }
+
+    /* 将ul相对定位，目的是让内容的div绝对定位时相对ul定位，否则会相对body定位 */
+    /* ul弹性盒，目的是让li横着排，也可以将li浮动或者转行内块 */
+    ul {
+        position: relative;
+        display: flex;
+    }
+
+    /* 将三个li宽度平分，高度60px */
+    li {
+        flex: 1;
+        height: 60px;
+    }
+
+    /* input隐藏 */
+    input {
+        display: none;
+    }
+
+    /* 设置input的下一个节点label的样式 */
+    input+label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #ccc;
+        font-size: 18px;
+        text-align: center;
+        line-height: 60px;
+        color: #333;
+    }
+
+    /* 设置div内容的基础样式 隐藏内容div*/
+    input+label+div {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 60px;
+    }
+
+    /* input选中状态时候对应的label的样式 */
+    input:checked+label {
+        background: #333333;
+        color: #fff;
+    }
+
+    /* input选中时候显示对应的div */
+    input:checked+label+div {
+        display: block;
+    }
+
+    .tab-box {
+        width: 50vw;
+        height: 300px;
+        background-color: orange;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <input type="radio" name="check" id="active1" checked>
+                <label for="active1">1</label>
+                <div class="tab-box">1111</div>
+            </li>
+            <li>
+                <input type="radio" name="check" id="active2"><label for="active2">2</label>
+                <div class="tab-box">22222</div>
+            </li>
+            <li>
+                <input type="radio" name="check" id="active3"><label for="active3">3</label>
+                <div class="tab-box">33333</div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

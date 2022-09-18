@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #tab_content {
+        height: 190px;
+        overflow: hidden;
+    }
+
+    /*给每个Tab Content定高度，需要与容器保持一致*/
+    #tab_content .content {
+        padding: 5px;
+        border-radius: 5px;
+        height: 190px;
+        overflow: hidden;
+    }
+</style>
+
+<body>
+    <ul id="tab_nv">
+        <li class="tab-a"><a href="#a2">Tab A</a></li>
+        <li class="tab-b"><a href="#b2">Tab B</a></li>
+        <li class="tab-c"><a href="#c2">Tab C</a></li>
+        <li class="tab-d"><a href="#d2">Tab D</a></li>
+    </ul>
+    <div id="tab_content">
+        <div id="a2" class="content content-a">
+            Content A
+        </div>
+        <div id="b2" class="content content-b">
+            Content B
+        </div>
+        <div id="c2" class="content content-c">
+            Content C
+        </div>
+        <div id="d2" class="content  content-d">
+            Content D
+        </div>
+    </div>
+</body>
+
+</html>
