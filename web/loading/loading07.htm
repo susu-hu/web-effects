@@ -20,9 +20,10 @@
     position: relative;
     width: var(--l);
     height: var(--l);
+    animation: rotate 2s infinite linear;
   }
 
-  .rect {
+  .cube .rect {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -33,43 +34,97 @@
   }
 
 
-
-
-  .front {
+  .cube .front {
+    /* border-color: #77da1b; */
     transform: translateZ(calc(var(--l) * 0.5));
   }
 
-  .bottom {
+  .cube .bottom {
+    /* border-color: #1545ad; */
     transform: rotateX(-90deg) translateZ(calc(var(--l) * 0.5));
   }
 
-
-  .top {
+  .cube .top {
+    /* border-color: red; */
     transform: rotateX(90deg) translateZ(calc(var(--l) * 0.5));
   }
 
-  .left {
+  .cube .left {
+    /* border-color: #18b4a7; */
     transform: rotateY(-90deg) translateZ(calc(var(--l) * 0.5));
   }
 
-  .right {
+  .cube .right {
+    /* border-color: #510f77; */
     transform: rotateY(90deg) translateZ(calc(var(--l) * 0.5));
   }
 
-  .back {
-    transform: translateZ(-calc(var(--l) * 0.5));
+  .cube .back {
+    /* border-color: #fff; */
+    transform: translateZ(calc(var(--l) * (-0.5)));
+    /*  transform: translateZ(-calc(var(--l) * 0.5)); */
+  }
+
+  /* @keyframes rotate {
+    0% {
+      transform: rotateX(-35deg) rotateY(30deg);
+    }
+
+    100% {
+      transform: rotateX(-35deg) rotateY(130deg);
+    }
+  } */
+  .cube2 {
+    position: relative;
+    width: var(--l);
+    height: var(--l);
+    margin-top: 50px;
+  }
+
+  .cube2 .rect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--border);
+    transform-style: preserve-3d;
+    transform: rotateZ(45deg) skew(-12deg, -12deg);
+  }
+
+  .cube2 .top {
+    transform: rotateZ(45deg) skew(-12deg, -12deg);
+  }
+
+  .cube2 .right {
+    transform: rotateZ(110deg) skew(-12deg, -12deg) translateY(-100px);
+  }
+
+  .cube2 .bottom {
+    transform: rotateZ(356deg) skew(-12deg, -12deg) translateX(100px) translateY(180px);
   }
 </style>
 
 <body>
-  <div class="cube">
-    <div class="top rect"></div>
-    <div class="right rect"></div>
-    <div class="bottom rect"></div>
-    <div class="left rect"></div>
-    <div class="front rect"></div>
-    <div class="back rect"></div>
-  </div>
+  <section>
+    <div class="cube">
+      <div class="top rect"></div>
+      <div class="right rect"></div>
+      <div class="bottom rect"></div>
+      <div class="left rect"></div>
+      <div class="front rect"></div>
+      <div class="back rect"></div>
+    </div>
+    <div class="cube2">
+      <div class="top rect"></div>
+      <div class="right rect"></div>
+      <div class="bottom rect"></div>
+      <div class="left rect"></div>
+      <div class="front rect"></div>
+      <div class="back rect"></div>
+    </div>
+  </section>
+
 </body>
 
 </html>

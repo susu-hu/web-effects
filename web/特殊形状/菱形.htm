@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菱形</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        width: 120px;
+        height: 100px;
+        background-color: #1a5c88;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        transition: 1s clip-path;
+        position: relative;
+    }
+
+    .box span {
+        position: absolute;
+        color: #fff;
+        left: 40px;
+        top: 40px;
+    }
+
+    .box1 {
+        height: 100px;
+        width: 100px;
+        transform: rotateZ(45deg)skew(-12deg, -12deg);
+        background-color: #1a5c88;
+        margin-left: 100px;
+        position: relative;
+    }
+
+    .box1 span {
+        position: absolute;
+        transform: rotate(-45deg)skew(0deg, 0deg);
+        display: inline-block;
+        position: absolute;
+        left: 27px;
+        top: 31px;
+        width: 60px;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <span>菱形</span>
+    </div>
+
+    <div class="box1">
+        <span>菱形</span>
+    </div>
+</body>
+
+</html>
