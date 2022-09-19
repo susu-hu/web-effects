@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .a {
+        padding-bottom: constant(safe-area-inset-bottom);
+        /*兼容 IOS<11.2*/
+        padding-bottom: env(safe-area-inset-bottom);
+        /*兼容 IOS>11.2*/
+    }
+</style>
+
+<body>
+
+</body>
+<script>
+    let isIosMobile = !!window.navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    console.log(isIosMobile)
+    /***
+     * 苹果官方推荐：使用env()，constant()来适配，env()和constant()，是IOS11新增特性，用于设定安全区域与边界的距离
+        safe-area-inset-left：安全区域距离左边边界的距离
+        safe-area-inset-right：安全区域距离右边边界的距离
+        safe-area-inset-top：安全区域距离顶部边界的距离
+        safe-area-inset-bottom ：安全距离底部边界的距离
+     * */
+    /**
+     * 针对于env()和constant()函数有两个必要的使用前提：
+     * 1、网页需设置viewport-fit=cover
+        2、小程序viewport-fit默认是cover
+        3、IOS11.2之前使用constant()函数，IOS11.2之后使用env()
+        4、注意：env()和constant()需要同时存在，且constant()在前
+        5.在IOS11.2系统以前，可以使用constant()函数，但是在IOS11.2系统以后，这个函数就被废弃了，被env()函数替代了
+     * */
+</script>
+
+</html>
