@@ -1,0 +1,3191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>按钮合集参考链接：https://codepen.io/aaroniker/pen/BaZJMjv</title>
+</head>
+<style>
+  main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  main>div {
+    padding: 30px 50px;
+    width: 33%;
+    align-self: center;
+    justify-self: center;
+  }
+
+  main .like-button {
+    --color: #2B3044;
+    --color-hover: #2B3044;
+    --color-active: #fff;
+    --icon: #BBC1E1;
+    --icon-hover: #8A91B4;
+    --icon-active: #fff;
+    --background: #fff;
+    --background-hover: #fff;
+    --background-active: #362A89;
+    --border: #E1E6F9;
+    --border-active: #362A89;
+    --shadow: rgba(0, 17, 119, 0.025);
+    display: block;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    background: none;
+    padding: 8px 20px 8px 20px;
+    border-radius: 6px;
+    line-height: 27px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+    color: var(--color);
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color .2s linear;
+  }
+
+  main .like-button.dark {
+    --color: #F6F8FF;
+    --color-hover: #F6F8FF;
+    --color-active: #fff;
+    --icon: #8A91B4;
+    --icon-hover: #BBC1E1;
+    --icon-active: #fff;
+    --background: #2B3044;
+    --background-hover: #171827;
+    --background-active: #275EFE;
+    --border: transparent;
+    --border-active: transparent;
+    --shadow: rgba(0, 17, 119, 0.16);
+  }
+
+  main .like-button:hover {
+    --icon: var(--icon-hover);
+    --color: var(--color-hover);
+    --background: var(--background-hover);
+    --border-width: 2px;
+  }
+
+  main .like-button:active {
+    --scale: .95;
+  }
+
+  main .like-button:not(.liked):hover {
+    --hand-rotate: 8;
+    --hand-thumb-1: -12deg;
+    --hand-thumb-2: 36deg;
+  }
+
+  main .like-button.liked {
+    --span-x: 2px;
+    --span-d-o: 1;
+    --span-d-x: 0;
+    --icon: var(--icon-active);
+    --color: var(--color-active);
+    --border: var(--border-active);
+    --background: var(--background-active);
+  }
+
+  main .like-button:before {
+    content: '';
+    min-width: 103px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    transition: background .2s linear, transform .2s, box-shadow .2s linear;
+    transform: scale(var(--scale, 1)) translateZ(0);
+    background: var(--background);
+    box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border), 0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
+  }
+
+  main .like-button .hand {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px 0 0 0;
+    background: var(--icon);
+    position: relative;
+    margin: 10px 8px 0 0;
+    transform-origin: -5px -1px;
+    transition: transform .25s, background .2s linear;
+    transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
+  }
+
+  main .like-button .hand:before,
+  main .like-button .hand:after {
+    content: '';
+    background: var(--icon);
+    position: absolute;
+    transition: background .2s linear, box-shadow .2s linear;
+  }
+
+  main .like-button .hand:before {
+    left: -5px;
+    bottom: 0;
+    height: 12px;
+    width: 4px;
+    border-radius: 1px 1px 0 1px;
+  }
+
+  main .like-button .hand:after {
+    right: -3px;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 0 2px 2px 0;
+    background: var(--icon);
+    box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon), -1.5px 12px 0 var(--icon);
+    transform: scaleY(0.6825);
+    transform-origin: 0 0;
+  }
+
+  main .like-button .hand .thumb {
+    background: var(--icon);
+    width: 10px;
+    height: 4px;
+    border-radius: 2px;
+    transform-origin: 2px 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform .25s, background .2s linear;
+    transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg)) translateZ(0);
+  }
+
+  main .like-button .hand .thumb:before {
+    content: '';
+    height: 4px;
+    width: 7px;
+    border-radius: 2px;
+    transform-origin: 2px 2px;
+    background: var(--icon);
+    position: absolute;
+    left: 7px;
+    top: 0;
+    transition: transform .25s, background .2s linear;
+    transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
+  }
+
+  main .like-button .hand,
+  main .like-button span {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  main .like-button .hand span,
+  main .like-button span span {
+    opacity: var(--span-d-o, 0);
+    transition: transform .25s, opacity .2s linear;
+    transform: translateX(var(--span-d-x, 4px)) translateZ(0);
+  }
+
+  main .like-button>span {
+    transition: transform .25s;
+    transform: translateX(var(--span-x, 4px)) translateZ(0);
+  }
+
+  main .star-button {
+    --button-label-x: 24px;
+    --button-label-success-opacity: 0;
+    --button-star-scale: 0.75;
+    --button-star-greyscale: 85%;
+    --button-star-hue: 170deg;
+    --button-star-opacity: 0.45;
+    --button-star-add-opacity: 0;
+    --button-star-add-y: 16px;
+    --button-star-current-opacity: 1;
+    --button-star-current-y: 0px;
+    --button-star-new-opacity: 0;
+    --button-star-new-y: 16px;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background-color: #2B3044;
+    color: #fff;
+    border-radius: 6px;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    box-shadow: inset 0 0 0 1px #35373f, 0px 1px 3px rgba(52, 54, 63, 0.1), 0px 4px 10px rgba(52, 54, 63, 0.15);
+    transition: transform 0.15s;
+    transform: translateZ(0);
+  }
+
+  main .star-button:active {
+    transform: scale(0.985, 0.98) translateZ(0);
+  }
+
+  main .star-button canvas {
+    display: block;
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    z-index: 1;
+    left: -176px;
+    top: -84px;
+    pointer-events: none;
+    filter: Grayscale(var(--button-star-greyscale)) hue-rotate(var(--button-star-hue));
+    transform: scale(var(--button-star-scale));
+    transform-origin: 50% 52%;
+    opacity: var(--button-star-opacity);
+  }
+
+  main .star-button .label {
+    width: 90px;
+    padding: 10px 0;
+    transform: translateZ(0);
+  }
+
+  main .star-button .label .default {
+    display: block;
+    transform: translateX(var(--button-label-x));
+  }
+
+  main .star-button .label .default .success {
+    opacity: var(--button-label-success-opacity);
+  }
+
+  main .star-button .number {
+    padding: 10px 0;
+    width: 44px;
+    position: relative;
+    transform: translateZ(0);
+  }
+
+  main .star-button .number:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    bottom: 1px;
+    width: 1px;
+    background-color: #35373f;
+  }
+
+  main .star-button .number .current {
+    color: #8a8d9b;
+    opacity: var(--button-star-current-opacity);
+    transform: translateY(var(--button-star-current-y));
+    transition: color 0.2s;
+    display: block;
+  }
+
+  main .star-button .number .new {
+    opacity: var(--button-star-new-opacity);
+    transform: translateY(var(--button-star-new-y));
+    color: #fbfaaa;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: block;
+  }
+
+  main .star-button .number .add {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    opacity: var(--button-star-add-opacity);
+    transform: translateY(var(--button-star-add-y));
+    pointer-events: none;
+    color: #d0d0db;
+    display: block;
+  }
+
+  main .dl-button {
+    --c-color: #fff;
+    --c-background: #2B3044;
+    --c-light: #FCBB33;
+    --c-light-shine: linear-gradient(90deg, rgba(252, 187, 51, 0.9), rgba(252, 187, 51, 0));
+    --c-base: #0D6E9D;
+    --c-wheel: #0D6E9D;
+    --c-wheel-inner: #004e71;
+    --c-wheel-dot: #fff;
+    --c-back: #F2F6FE;
+    --c-back-logo-background: #000;
+    --c-back-inner: #2790C3;
+    --c-front: #F2F6FE;
+    --c-front-shadow: #CDD1D9;
+    --c-window: #000;
+    --c-box: #DCB97A;
+    --rotate: 0deg;
+    --y: 0px;
+    --scale: 1;
+    --default-o: 1;
+    --success-o: 0;
+    --success-offset: 16px;
+    --truck-y: 0px;
+    --truck-base-x: -186px;
+    --truck-wrapper-y: 70px;
+    --light-opacity: 1;
+    --box-x: 0px;
+    --box-y: 0px;
+    --box-r: 0deg;
+    padding: 15px 0;
+    width: 260px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    border: none;
+    outline: none;
+    background: var(--c-background);
+    color: var(--c-color);
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transform-style: preserve-3d;
+    transform: translateY(var(--y)) rotateX(var(--rotate)) scale(var(--scale)) translateZ(0);
+  }
+
+  main .dl-button:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: var(--c-background);
+    height: 4px;
+    border-radius: 2px;
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+    transform-origin: 0 100%;
+    transform: rotateX(90deg);
+  }
+
+  main .dl-button .default,
+  main .dl-button .success {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    opacity: var(--o, var(--default-o));
+  }
+
+  main .dl-button .success {
+    --o: var(--success-o);
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+  }
+
+  main .dl-button .success svg {
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: top;
+    fill: none;
+    margin: 5px 0 0 8px;
+    stroke: var(--c-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: var(--success-offset);
+  }
+
+  main .dl-button .truck-wrapper {
+    position: absolute;
+    pointer-events: none;
+    top: -140px;
+    left: -20px;
+    right: -40px;
+    bottom: 0px;
+    overflow: hidden;
+    transform: translateY(var(--truck-wrapper-y)) rotateX(90deg);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60px, black);
+    mask-image: linear-gradient(to right, transparent 0%, black 60px, black);
+  }
+
+  main .dl-button .truck-wrapper .truck {
+    position: absolute;
+    top: 24px;
+    left: 70px;
+    width: 72px;
+    height: 60px;
+    transform: translate3d(var(--truck-base-x), calc(var(--truck-y)), 0);
+  }
+
+  main .dl-button .truck-wrapper .truck:before,
+  main .dl-button .truck-wrapper .truck:after {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: var(--l, 25px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: inset 0 0 0 3px var(--c-wheel), inset 0 0 0 6px var(--c-wheel-inner);
+    background: var(--c-wheel-dot);
+    transform: translateY(calc(var(--truck-y) * -1)) translateZ(0);
+  }
+
+  main .dl-button .truck-wrapper .truck:after {
+    --l: 85px;
+  }
+
+  main .dl-button .truck-wrapper .truck .wheel,
+  main .dl-button .truck-wrapper .truck .wheel:before {
+    position: absolute;
+    bottom: var(--b, -9px);
+    left: var(--l, 6px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--c-wheel);
+    transform: translateZ(0);
+  }
+
+  main .dl-button .truck-wrapper .truck .wheel {
+    transform: translateY(calc(var(--truck-y) * -1)) translateZ(0);
+  }
+
+  main .dl-button .truck-wrapper .truck .wheel:before {
+    --l: 60px;
+    --b: 0;
+    content: '';
+  }
+
+  main .dl-button .truck-wrapper .truck .light {
+    position: absolute;
+    right: -41px;
+    bottom: 3px;
+    width: 4px;
+    height: 3px;
+    border-radius: 1px 0 0 1px;
+    background: var(--c-light);
+  }
+
+  main .dl-button .truck-wrapper .truck .light:before,
+  main .dl-button .truck-wrapper .truck .light:after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: -6px;
+    display: block;
+    width: 40px;
+    height: 19px;
+    background: var(--c-light-shine);
+    opacity: var(--light-opacity);
+    clip-path: polygon(0 6px, 100% 0, 100% 80%, 0 9px);
+  }
+
+  main .dl-button .truck-wrapper .truck .light:after {
+    left: -8px;
+    clip-path: polygon(11px 4px, 100% 0, 100% 80%, 11px 11px);
+  }
+
+  main .dl-button .truck-wrapper .truck .front,
+  main .dl-button .truck-wrapper .truck .back,
+  main .dl-button .truck-wrapper .truck .box {
+    position: absolute;
+  }
+
+  main .dl-button .truck-wrapper .truck .back {
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 75px;
+    height: 45px;
+    border-radius: 3px 3px 0 0;
+    background: var(--c-back-inner);
+  }
+
+  main .dl-button .truck-wrapper .truck .back:before,
+  main .dl-button .truck-wrapper .truck .back:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .dl-button .truck-wrapper .truck .back:before {
+    left: 17px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    border-radius: 0 2px 0 0;
+    background: var(--c-back);
+  }
+
+  main .dl-button .truck-wrapper .truck .back:after {
+    border-radius: 2px;
+    width: 116px;
+    height: 4px;
+    left: -2px;
+    bottom: -4px;
+    background: var(--c-base);
+  }
+
+  main .dl-button .truck-wrapper .truck .back .shadow {
+    height: 44px;
+    width: 14px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  main .dl-button .truck-wrapper .truck .back .box {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 54px;
+    bottom: 0;
+    z-index: 2;
+    border-radius: 1px;
+    overflow: hidden;
+    transform-origin: 0 100%;
+    transform: translate(var(--box-x), var(--box-y)) rotate(var(--box-r));
+    background: var(--c-box);
+  }
+
+  main .dl-button .truck-wrapper .truck .back .box:before,
+  main .dl-button .truck-wrapper .truck .back .box:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .dl-button .truck-wrapper .truck .back .box:before {
+    content: '';
+    background: rgba(255, 255, 255, 0.2);
+    left: 0;
+    right: 0;
+    top: 6px;
+    height: 1px;
+  }
+
+  main .dl-button .truck-wrapper .truck .back .logo {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    left: 37px;
+    top: 10px;
+    width: 21px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--c-back-logo-background);
+  }
+
+  main .dl-button .truck-wrapper .truck .back .logo svg {
+    display: block;
+    position: absolute;
+    left: -9px;
+    top: 3px;
+    transform: translateX(-1%);
+  }
+
+  main .dl-button .truck-wrapper .truck .front {
+    left: 75px;
+    bottom: 0;
+    height: 33px;
+    width: 37px;
+    clip-path: polygon(55% 0, 72% 44%, 100% 58%, 100% 100%, 0 100%, 0 0);
+    background: linear-gradient(84deg, var(--c-front-shadow) 0%, var(--c-front-shadow) 10%, var(--c-front) 12%, var(--c-front) 100%);
+  }
+
+  main .dl-button .truck-wrapper .truck .front:before {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 12px;
+    left: 11px;
+    top: 3px;
+    clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
+    background: var(--c-window);
+  }
+
+  main .pay-button {
+    --c-color: #fff;
+    --c-background: #2B3044;
+    --c-light: #FCBB33;
+    --c-light-shine: linear-gradient(90deg, rgba(252, 187, 51, 0.9), rgba(252, 187, 51, 0));
+    --c-base: #0D6E9D;
+    --c-wheel: #0D6E9D;
+    --c-wheel-inner: #004e71;
+    --c-wheel-dot: #fff;
+    --c-back: #F2F6FE;
+    --c-back-inner: #2790C3;
+    --c-front: #F2F6FE;
+    --c-front-shadow: #CDD1D9;
+    --c-window: #000;
+    --rotate: 0deg;
+    --y: 0px;
+    --scale: 1;
+    --default-o: 1;
+    --success-o: 0;
+    --success-offset: 16px;
+    --truck-y: 0px;
+    --truck-base-x: 16px;
+    --truck-wrapper-y: 70px;
+    --light-opacity: 0;
+    padding: 15px 0;
+    width: 260px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    border: none;
+    outline: none;
+    background: var(--c-background);
+    color: var(--c-color);
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transform-style: preserve-3d;
+    transform: translateY(var(--y)) rotateX(var(--rotate)) scale(var(--scale)) translateZ(0);
+  }
+
+  main .pay-button:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: var(--c-background);
+    height: 4px;
+    border-radius: 2px;
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+    transform-origin: 0 100%;
+    transform: rotateX(90deg);
+  }
+
+  main .pay-button .default,
+  main .pay-button .success {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    opacity: var(--o, var(--default-o));
+  }
+
+  main .pay-button .success {
+    --o: var(--success-o);
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+  }
+
+  main .pay-button .success svg {
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: top;
+    fill: none;
+    margin: 5px 0 0 8px;
+    stroke: var(--c-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: var(--success-offset);
+  }
+
+  main .pay-button .truck-wrapper {
+    position: absolute;
+    pointer-events: none;
+    top: -140px;
+    left: -100px;
+    right: -40px;
+    bottom: 0px;
+    overflow: hidden;
+    transform: translateY(var(--truck-wrapper-y)) rotateX(90deg);
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 60px, black);
+    mask-image: linear-gradient(to left, transparent 0%, black 60px, black);
+  }
+
+  main .pay-button .truck-wrapper .truck {
+    position: absolute;
+    top: 24px;
+    left: 100px;
+    width: 72px;
+    height: 60px;
+    transform: translate3d(var(--truck-base-x), calc(var(--truck-y)), 0);
+  }
+
+  main .pay-button .truck-wrapper .truck:before,
+  main .pay-button .truck-wrapper .truck:after {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: var(--l, 25px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: inset 0 0 0 3px var(--c-wheel), inset 0 0 0 6px var(--c-wheel-inner);
+    background: var(--c-wheel-dot);
+    transform: translateY(calc(var(--truck-y) * -1)) translateZ(0);
+  }
+
+  main .pay-button .truck-wrapper .truck:after {
+    --l: 85px;
+  }
+
+  main .pay-button .truck-wrapper .truck .wheel,
+  main .pay-button .truck-wrapper .truck .wheel:before {
+    position: absolute;
+    bottom: var(--b, -9px);
+    left: var(--l, 6px);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--c-wheel);
+    transform: translateZ(0);
+  }
+
+  main .pay-button .truck-wrapper .truck .wheel {
+    transform: translateY(calc(var(--truck-y) * -1)) translateZ(0);
+  }
+
+  main .pay-button .truck-wrapper .truck .wheel:before {
+    --l: 60px;
+    --b: 0;
+    content: '';
+  }
+
+  main .pay-button .truck-wrapper .truck .light {
+    position: absolute;
+    right: -41px;
+    bottom: 3px;
+    width: 4px;
+    height: 3px;
+    border-radius: 1px 0 0 1px;
+    background: var(--c-light);
+  }
+
+  main .pay-button .truck-wrapper .truck .light:before,
+  main .pay-button .truck-wrapper .truck .light:after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: -6px;
+    display: block;
+    width: 40px;
+    height: 19px;
+    background: var(--c-light-shine);
+    opacity: var(--light-opacity);
+    clip-path: polygon(0 6px, 100% 0, 100% 80%, 0 9px);
+  }
+
+  main .pay-button .truck-wrapper .truck .light:after {
+    left: -8px;
+    clip-path: polygon(11px 4px, 100% 0, 100% 80%, 11px 11px);
+  }
+
+  main .pay-button .truck-wrapper .truck .front,
+  main .pay-button .truck-wrapper .truck .back,
+  main .pay-button .truck-wrapper .truck .box {
+    position: absolute;
+  }
+
+  main .pay-button .truck-wrapper .truck .back {
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 75px;
+    height: 45px;
+    border-radius: 3px 3px 0 0;
+    background: var(--c-back-inner);
+  }
+
+  main .pay-button .truck-wrapper .truck .back:before,
+  main .pay-button .truck-wrapper .truck .back:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .pay-button .truck-wrapper .truck .back:before {
+    left: 17px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    border-radius: 0 2px 0 0;
+    background: var(--c-back);
+  }
+
+  main .pay-button .truck-wrapper .truck .back:after {
+    border-radius: 2px;
+    width: 116px;
+    height: 4px;
+    left: -2px;
+    bottom: -4px;
+    background: var(--c-base);
+  }
+
+  main .pay-button .truck-wrapper .truck .back .shadow {
+    height: 44px;
+    width: 14px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+    z-index: 3;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  main .pay-button .truck-wrapper .truck .back svg {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    left: 38px;
+    top: 10px;
+  }
+
+  main .pay-button .truck-wrapper .truck .back svg.icon {
+    top: 30px;
+    right: 20px;
+    z-index: 2;
+    left: auto;
+  }
+
+  main .pay-button .truck-wrapper .truck .front {
+    left: 75px;
+    bottom: 0;
+    height: 33px;
+    width: 37px;
+    clip-path: polygon(55% 0, 72% 44%, 100% 58%, 100% 100%, 0 100%, 0 0);
+    background: linear-gradient(84deg, var(--c-front-shadow) 0%, var(--c-front-shadow) 10%, var(--c-front) 12%, var(--c-front) 100%);
+  }
+
+  main .pay-button .truck-wrapper .truck .front:before {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 12px;
+    left: 11px;
+    top: 3px;
+    clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
+    background: var(--c-window);
+  }
+
+  main .publish-button {
+    --color: #fff;
+    --icon-color: #fff;
+    --background-default: #2B3044;
+    --text-normal-o: 1;
+    --text-normal-y: 0px;
+    --text-progress-o: 0;
+    --text-progress-y: -8px;
+    --text-done-o: 0;
+    --text-done-y: -8px;
+    --icon-arrow-offset: 0px;
+    --icon-arrow-y: 0px;
+    --icon-cloud-y: 0px;
+    --icon-tick-offset: 11px;
+    --icon-line-offset: 21px;
+    --icon-circle-scale: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    padding: 10px 20px 10px 16px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    color: var(--color);
+    background: var(--background, var(--background-default));
+  }
+
+  main .publish-button .icon {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    position: relative;
+    margin-right: 8px;
+  }
+
+  main .publish-button .icon:before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    opacity: .25;
+    border-radius: 50%;
+    background: var(--icon-color);
+    transform: scale(var(--icon-circle-scale)) translateZ(0);
+  }
+
+  main .publish-button .icon svg {
+    display: block;
+    width: 20px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  main .publish-button .icon svg.cloud {
+    fill: var(--icon-color);
+    fill-opacity: .25;
+    transform: translateY(var(--icon-cloud-y)) translateZ(0);
+  }
+
+  main .publish-button .icon svg:not(.cloud) {
+    fill: none;
+    stroke: var(--icon-color);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  main .publish-button .icon svg:not(.cloud) path.line,
+  main .publish-button .icon svg:not(.cloud) path.arrow {
+    transform: translateY(var(--icon-arrow-y)) translateZ(0);
+  }
+
+  main .publish-button .icon svg:not(.cloud) path.line {
+    stroke-dasharray: 13px;
+    stroke-dashoffset: var(--icon-line-offset);
+  }
+
+  main .publish-button .icon svg:not(.cloud) path.arrow {
+    stroke-dasharray: 4px;
+    stroke-dashoffset: var(--icon-arrow-offset);
+  }
+
+  main .publish-button .icon svg:not(.cloud) path.tick {
+    stroke-dasharray: 11px;
+    stroke-dashoffset: var(--icon-tick-offset);
+  }
+
+  main .publish-button .text {
+    position: relative;
+  }
+
+  main .publish-button .text span {
+    display: block;
+    opacity: var(--o, var(--text-normal-o));
+    transform: translateY(var(--y, var(--text-normal-y))) translateZ(0);
+  }
+
+  main .publish-button .text span:not(.normal) {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  main .publish-button .text span.progress {
+    --o: var(--text-progress-o);
+    --y: var(--text-progress-y);
+  }
+
+  main .publish-button .text span.done {
+    --o: var(--text-done-o);
+    --y: var(--text-done-y);
+  }
+
+  main .progress-button {
+    position: relative;
+    width: 212px;
+    height: 62px;
+  }
+
+  main .progress-button:hover .main-btn {
+    opacity: .25;
+  }
+
+  main .progress-button .main-btn {
+    width: inherit;
+    height: inherit;
+    opacity: .15;
+    transition: 250ms;
+  }
+
+  main .progress-button .main-btn rect {
+    width: 210px;
+    height: 60px;
+    transition: 250ms;
+  }
+
+  main .progress-button .progress-area,
+  main .progress-button .complete-area {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #1578ff;
+    user-select: none;
+    opacity: 1;
+  }
+
+  main .progress-button .progress-area .area-left,
+  main .progress-button .complete-area .area-left {
+    display: flex;
+  }
+
+  main .progress-button .progress-area .area-left svg,
+  main .progress-button .complete-area .area-left svg {
+    margin-right: 1rem;
+    opacity: 0;
+  }
+
+  main .progress-button .progress-area .area-left span,
+  main .progress-button .complete-area .area-left span {
+    width: 50px;
+    text-align: right;
+  }
+
+  main .progress-button .progress-area .area-right,
+  main .progress-button .complete-area .area-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    border-left: 1px solid #1578ff44;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  main .progress-button .progress-area .area-right:hover,
+  main .progress-button .complete-area .area-right:hover {
+    height: 40px;
+    transition: 250ms height;
+  }
+
+  main .progress-button .progress-area .area-right:hover svg,
+  main .progress-button .complete-area .area-right:hover svg {
+    opacity: 1;
+  }
+
+  main .progress-button .progress-area .area-right svg,
+  main .progress-button .complete-area .area-right svg {
+    opacity: .5;
+    transition: 250ms;
+  }
+
+  main .progress-button .progress-area .area-right .btn-play,
+  main .progress-button .complete-area .area-right .btn-play {
+    position: absolute;
+    transform: translateY(40px);
+  }
+
+  main .progress-button .complete-area {
+    justify-content: space-around;
+    display: none;
+  }
+
+  main .progress-button .complete-area svg {
+    width: 40px;
+    height: 20px;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid #fff6;
+  }
+
+  main .progress-button .complete-area svg path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 6px;
+    opacity: 0;
+  }
+
+  main .progress-button .complete-area span {
+    color: #fffd;
+    padding-bottom: 1px;
+    opacity: 0;
+  }
+
+  main .progress-button .frame-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+  }
+
+  main .progress-button .frame-btn rect {
+    width: 210px;
+    height: 60px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  main .truck-button {
+    --color: #fff;
+    --background: #2B3044;
+    --tick: #16BF78;
+    --base: #0D0F18;
+    --wheel: #2B3044;
+    --wheel-inner: #646B8C;
+    --wheel-dot: #fff;
+    --back: #6D58FF;
+    --back-inner: #362A89;
+    --back-inner-shadow: #2D246B;
+    --front: #A6ACCD;
+    --front-shadow: #535A79;
+    --front-light: #FFF8B1;
+    --window: #2B3044;
+    --window-shadow: #404660;
+    --street: #646B8C;
+    --street-fill: #404660;
+    --box: #DCB97A;
+    --box-shadow: #B89B66;
+    padding: 12px 0;
+    width: 172px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    border: none;
+    outline: none;
+    color: var(--color);
+    background: var(--background);
+    border-radius: var(--br, 6px);
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx, 0deg)) translateZ(0);
+    transition: transform 0.5s, border-radius 0.3s linear var(--br-d, 0s);
+  }
+
+  main .truck-button:before,
+  main .truck-button:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6px;
+    display: block;
+    background: var(--b, var(--street));
+    transform-origin: 0 100%;
+    transform: rotateX(90deg) scaleX(var(--sy, 1));
+  }
+
+  main .truck-button:after {
+    --sy: var(--progress, 0);
+    --b: var(--street-fill);
+  }
+
+  main .truck-button .default,
+  main .truck-button .success {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    opacity: var(--o, 1);
+    transition: opacity .3s;
+  }
+
+  main .truck-button .success {
+    --o: 0;
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+  }
+
+  main .truck-button .success svg {
+    width: 12px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: top;
+    fill: none;
+    margin: 7px 0 0 4px;
+    stroke: var(--tick);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: var(--offset, 16px);
+    transition: stroke-dashoffset .4s ease .45s;
+  }
+
+  main .truck-button .truck {
+    position: absolute;
+    width: 72px;
+    height: 28px;
+    transform: rotateX(90deg) translate3d(var(--truck-x, 4px), calc(var(--truck-y-n, -26) * 1px), 12px);
+  }
+
+  main .truck-button .truck:before,
+  main .truck-button .truck:after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: var(--l, 18px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: inset 0 0 0 2px var(--wheel), inset 0 0 0 4px var(--wheel-inner);
+    background: var(--wheel-dot);
+    transform: translateY(calc(var(--truck-y) * -1px)) translateZ(0);
+  }
+
+  main .truck-button .truck:after {
+    --l: 54px;
+  }
+
+  main .truck-button .truck .wheel,
+  main .truck-button .truck .wheel:before {
+    position: absolute;
+    bottom: var(--b, -6px);
+    left: var(--l, 6px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--wheel);
+    transform: translateZ(0);
+  }
+
+  main .truck-button .truck .wheel {
+    transform: translateY(calc(var(--truck-y) * -1px)) translateZ(0);
+  }
+
+  main .truck-button .truck .wheel:before {
+    --l: 35px;
+    --b: 0;
+    content: '';
+  }
+
+  main .truck-button .truck .front,
+  main .truck-button .truck .back,
+  main .truck-button .truck .box {
+    position: absolute;
+  }
+
+  main .truck-button .truck .back {
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 47px;
+    height: 28px;
+    border-radius: 1px 1px 0 0;
+    background: linear-gradient(68deg, var(--back-inner) 0%, var(--back-inner) 22%, var(--back-inner-shadow) 22.1%, var(--back-inner-shadow) 100%);
+  }
+
+  main .truck-button .truck .back:before,
+  main .truck-button .truck .back:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .truck-button .truck .back:before {
+    left: 11px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    border-radius: 0 1px 0 0;
+    background: var(--back);
+  }
+
+  main .truck-button .truck .back:after {
+    border-radius: 1px;
+    width: 73px;
+    height: 2px;
+    left: -1px;
+    bottom: -2px;
+    background: var(--base);
+  }
+
+  main .truck-button .truck .front {
+    left: 47px;
+    bottom: -1px;
+    height: 22px;
+    width: 24px;
+    -webkit-clip-path: polygon(55% 0, 72% 44%, 100% 58%, 100% 100%, 0 100%, 0 0);
+    clip-path: polygon(55% 0, 72% 44%, 100% 58%, 100% 100%, 0 100%, 0 0);
+    background: linear-gradient(84deg, var(--front-shadow) 0%, var(--front-shadow) 10%, var(--front) 12%, var(--front) 100%);
+  }
+
+  main .truck-button .truck .front:before,
+  main .truck-button .truck .front:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .truck-button .truck .front:before {
+    width: 7px;
+    height: 8px;
+    background: #fff;
+    left: 7px;
+    top: 2px;
+    -webkit-clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
+    background: linear-gradient(59deg, var(--window) 0%, var(--window) 57%, var(--window-shadow) 55%, var(--window-shadow) 100%);
+  }
+
+  main .truck-button .truck .front:after {
+    width: 3px;
+    height: 2px;
+    right: 0;
+    bottom: 3px;
+    background: var(--front-light);
+  }
+
+  main .truck-button .truck .box {
+    width: 13px;
+    height: 13px;
+    right: 56px;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 1px;
+    overflow: hidden;
+    transform: translate(calc(var(--box-x, -24) * 1px), calc(var(--box-y, -6) * 1px)) scale(var(--box-s, 0.5));
+    opacity: var(--box-o, 0);
+    background: linear-gradient(68deg, var(--box) 0%, var(--box) 50%, var(--box-shadow) 50.2%, var(--box-shadow) 100%);
+    background-size: 250% 100%;
+    background-position-x: calc(var(--bx, 0) * 1%);
+  }
+
+  main .truck-button .truck .box:before,
+  main .truck-button .truck .box:after {
+    content: '';
+    position: absolute;
+  }
+
+  main .truck-button .truck .box:before {
+    content: '';
+    background: rgba(255, 255, 255, 0.2);
+    left: 0;
+    right: 0;
+    top: 6px;
+    height: 1px;
+  }
+
+  main .truck-button .truck .box:after {
+    width: 6px;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    background: var(--back);
+    transform: translateX(calc(var(--hx, 0) * 1px));
+  }
+
+  main .truck-button.animation {
+    --rx: -90deg;
+    --br: 0;
+  }
+
+  main .truck-button.animation .default {
+    --o: 0;
+  }
+
+  main .truck-button.animation.done {
+    --rx: 0deg;
+    --br: 5px;
+    --br-d: .2s;
+  }
+
+  main .truck-button.animation.done .success {
+    --o: 1;
+    --offset: 0;
+  }
+
+  main .delete-button {
+    --background: #2B3044;
+    --background-hover: #2B3044;
+    --text: #fff;
+    --shadow: rgba(0, 9, 61, .2);
+    --paper: #5C86FF;
+    --paper-lines: #fff;
+    --trash: #E1E6F9;
+    --trash-lines: #BBC1E1;
+    --check: #fff;
+    --check-background: #5C86FF;
+    position: relative;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    min-width: 142px;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    display: flex;
+    color: var(--text);
+    background: var(--btn, var(--background));
+    box-shadow: 0 var(--shadow-y, 4px) var(--shadow-blur, 8px) var(--shadow);
+    transform: scale(var(--scale, 1));
+    transition: transform .3s, box-shadow .3s, background .3s;
+  }
+
+  main .delete-button span {
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 500;
+    opacity: var(--span-opacity, 1);
+    transform: translateX(var(--span-x, 0)) translateZ(0);
+    transition: transform 0.4s ease var(--span-delay, 0.2s), opacity 0.3s ease var(--span-delay, 0.2s);
+  }
+
+  main .delete-button .trash {
+    display: block;
+    position: relative;
+    left: -8px;
+    transform: translate(var(--trash-x, 0), var(--trash-y, 1px)) translateZ(0) scale(var(--trash-scale, 0.64));
+    transition: transform .5s;
+  }
+
+  main .delete-button .trash:before,
+  main .delete-button .trash:after {
+    content: '';
+    position: absolute;
+    height: 8px;
+    width: 2px;
+    border-radius: 1px;
+    background: var(--icon, var(--trash));
+    bottom: 100%;
+    transform-origin: 50% 6px;
+    transform: translate(var(--x, 3px), 2px) scaleY(var(--sy, 0.7)) rotate(var(--r, 0deg));
+    transition: transform .4s, background .3s;
+  }
+
+  main .delete-button .trash:before {
+    left: 1px;
+  }
+
+  main .delete-button .trash:after {
+    right: 1px;
+    --x: -3px;
+  }
+
+  main .delete-button .trash .top {
+    position: absolute;
+    overflow: hidden;
+    left: -4px;
+    right: -4px;
+    bottom: 100%;
+    height: 40px;
+    z-index: 1;
+    transform: translateY(2px);
+  }
+
+  main .delete-button .trash .top:before,
+  main .delete-button .trash .top:after {
+    content: '';
+    position: absolute;
+    border-radius: 1px;
+    background: var(--icon, var(--trash));
+    width: var(--w, 12px);
+    height: var(--h, 2px);
+    left: var(--l, 8px);
+    bottom: var(--b, 5px);
+    transition: background .3s, transform .4s;
+  }
+
+  main .delete-button .trash .top:after {
+    --w: 28px;
+    --h: 2px;
+    --l: 0;
+    --b: 0;
+    transform: scaleX(var(--trash-line-scale, 1));
+  }
+
+  main .delete-button .trash .top .paper {
+    width: 14px;
+    height: 18px;
+    background: var(--paper);
+    left: 7px;
+    bottom: 0;
+    border-radius: 1px;
+    position: absolute;
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+
+  main .delete-button .trash .top .paper:before,
+  main .delete-button .trash .top .paper:after {
+    content: '';
+    width: var(--w, 10px);
+    height: 2px;
+    border-radius: 1px;
+    position: absolute;
+    left: 2px;
+    top: var(--t, 2px);
+    background: var(--paper-lines);
+    transform: scaleY(0.7);
+    box-shadow: 0 9px 0 var(--paper-lines);
+  }
+
+  main .delete-button .trash .top .paper:after {
+    --t: 5px;
+    --w: 7px;
+  }
+
+  main .delete-button .trash .box {
+    width: 20px;
+    height: 25px;
+    border: 2px solid var(--icon, var(--trash));
+    border-radius: 1px 1px 4px 4px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    transition: border-color .3s;
+  }
+
+  main .delete-button .trash .box:before,
+  main .delete-button .trash .box:after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: var(--h, 20px);
+    top: 0;
+    left: var(--l, 50%);
+    background: var(--b, var(--trash-lines));
+  }
+
+  main .delete-button .trash .box:before {
+    border-radius: 2px;
+    margin-left: -2px;
+    transform: translateX(-3px) scale(0.6);
+    box-shadow: 10px 0 0 var(--trash-lines);
+    opacity: var(--trash-lines-opacity, 1);
+    transition: transform .4s, opacity .4s;
+  }
+
+  main .delete-button .trash .box:after {
+    --h: 16px;
+    --b: var(--paper);
+    --l: 1px;
+    transform: translate(-0.5px, -16px) scaleX(0.5);
+    box-shadow: 7px 0 0 var(--paper), 14px 0 0 var(--paper), 21px 0 0 var(--paper);
+  }
+
+  main .delete-button .trash .check {
+    padding: 4px 3px;
+    border-radius: 50%;
+    background: var(--check-background);
+    position: absolute;
+    left: 2px;
+    top: 24px;
+    opacity: var(--check-opacity, 0);
+    transform: translateY(var(--check-y, 0)) scale(var(--check-scale, 0.2));
+    transition: transform var(--check-duration, 0.2s) ease var(--check-delay, 0s), opacity var(--check-duration-opacity, 0.2s) ease var(--check-delay, 0s);
+  }
+
+  main .delete-button .trash .check svg {
+    width: 8px;
+    height: 6px;
+    display: block;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-dasharray: 9px;
+    stroke-dashoffset: var(--check-offset, 9px);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--check);
+    transition: stroke-dashoffset 0.4s ease var(--checkmark-delay, 0.4s);
+  }
+
+  main .delete-button.delete {
+    --span-opacity: 0;
+    --span-x: 16px;
+    --span-delay: 0s;
+    --trash-x: 46px;
+    --trash-y: 2px;
+    --trash-scale: 1;
+    --trash-lines-opacity: 0;
+    --trash-line-scale: 0;
+    --icon: #fff;
+    --check-offset: 0;
+    --check-opacity: 1;
+    --check-scale: 1;
+    --check-y: 16px;
+    --check-delay: 1.7s;
+    --checkmark-delay: 2.1s;
+    --check-duration: .55s;
+    --check-duration-opacity: .3s;
+  }
+
+  main .delete-button.delete .trash:before,
+  main .delete-button.delete .trash:after {
+    --sy: 1;
+    --x: 0;
+  }
+
+  main .delete-button.delete .trash:before {
+    --r: 40deg;
+  }
+
+  main .delete-button.delete .trash:after {
+    --r: -40deg;
+  }
+
+  main .delete-button.delete .trash .top .paper {
+    animation: paper 1.5s linear forwards .5s;
+  }
+
+  main .delete-button.delete .trash .box:after {
+    animation: cut 1.5s linear forwards .5s;
+  }
+
+  main .delete-button.delete,
+  main .delete-button:hover {
+    --btn: var(--background-hover);
+    --shadow-y: 5px;
+    --shadow-blur: 9px;
+  }
+
+  main .delete-button:active {
+    --shadow-y: 2px;
+    --shadow-blur: 5px;
+    --scale: .94;
+  }
+
+  @keyframes paper {
+
+    10%,
+    100% {
+      opacity: 1;
+    }
+
+    20% {
+      transform: translateY(-16px);
+    }
+
+    40% {
+      transform: translateY(0);
+    }
+
+    70%,
+    100% {
+      transform: translateY(24px);
+    }
+  }
+
+  @keyframes cut {
+
+    0%,
+    40% {
+      transform: translate(-0.5px, -16px) scaleX(0.5);
+    }
+
+    100% {
+      transform: translate(-0.5px, 24px) scaleX(0.5);
+    }
+  }
+
+  main .favorite-button {
+    --background-default: #313440;
+    --text-color-default: #FAFBFF;
+    --star-color-default: #62677C;
+    --star-face-color-default: #1F2128;
+    --star-color-active: #F6C206;
+    --star-face-color-active: #845901;
+    --star-hole: #16181E;
+    --star-hole-inner: #20232C;
+    --button-y: 0px;
+    --star-y: 0px;
+    --star-scale: 1;
+    --star-rotate: 0deg;
+    --star-hole-scale: 0;
+    --star-face-scale: 1;
+    --text-x: 0px;
+    --text-o: 1;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    min-width: 125px;
+    padding: 12px 24px 12px 16px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    color: var(--text-color-default);
+    transform: translateY(var(--button-y)) translateZ(0);
+  }
+
+  main .favorite-button:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    transition: transform .2s;
+    transform: scale(var(--background-scale-x, 1), var(--background-scale-y, 1)) translateZ(0);
+    background: var(--background-default);
+  }
+
+  main .favorite-button:active {
+    --background-scale-x: .98;
+    --background-scale-y: .96;
+  }
+
+  main .favorite-button span {
+    display: block;
+    opacity: var(--text-o);
+    transform: translateX(var(--text-x));
+  }
+
+  main .favorite-button .icon {
+    width: 36px;
+    height: 119px;
+    display: flex;
+    pointer-events: none;
+    position: relative;
+    clip-path: ellipse(150% 50% at 50% 50%);
+    margin: -100px 2px 0 -8px;
+  }
+
+  main .favorite-button .icon:before {
+    content: '';
+    margin-top: auto;
+    display: block;
+    width: 36px;
+    height: 12px;
+    background: var(--star-hole);
+    box-shadow: inset 0 3px 0 0 var(--star-hole-inner);
+    border-radius: 100px / 30px;
+    transform: scale(var(--star-hole-scale));
+    transform-origin: 50% 100%;
+  }
+
+  main .favorite-button .icon .star {
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    left: 8px;
+    bottom: 0;
+    transform: translateY(var(--star-y)) rotate(var(--star-rotate)) scale(var(--star-scale));
+    border-radius: var(--star-radius, 0px);
+    background: var(--star-color, var(--star-color-default));
+    clip-path: var(--star-clip, polygon(10px 0, 13px 6px, 20px 7px, 15px 12px, 16px 19px, 10px 15px, 4px 19px, 5px 12px, 0 7px, 7px 6px));
+    transition: clip-path .2s, border-radius .2s, background .2s;
+  }
+
+  main .favorite-button .icon .star:before,
+  main .favorite-button .icon .star:after {
+    content: '';
+    position: absolute;
+    background: var(--star-face-color, var(--star-face-color-default));
+    transition: background .2s, box-shadow .2s;
+  }
+
+  main .favorite-button .icon .star:before {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    left: 7px;
+    top: 8px;
+    box-shadow: 4px 0 0 0 var(--star-face-color, var(--star-face-color-default));
+    transform: scaleY(var(--star-face-scale));
+  }
+
+  main .favorite-button .icon .star:after {
+    width: 4px;
+    height: 2px;
+    border-radius: var(--star-face-radius, 2px 2px 0 0);
+    left: 8px;
+    top: 11px;
+    transition: border-radius .2s;
+  }
+
+  main .favorite-button.star-round {
+    --star-clip: polygon(10px 0, 20px 0, 20px 7px, 20px 12px, 20px 19px, 10px 19px, 0 19px, 0 12px, 0 7px, 0 0);
+    --star-radius: 50%;
+  }
+
+  main .favorite-button.active {
+    --star-color: var(--star-color-active);
+    --star-face-color: var(--star-face-color-active);
+    --star-face-radius: 0 0 2px 2px;
+  }
+
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: inherit;
+  }
+
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  @media (max-width: 750px) {
+    main {
+      flex-direction: column;
+    }
+
+    main>div {
+      padding: 10px 0;
+    }
+  }
+</style>
+
+<body>
+  <main>
+    <div>
+      <button class="publish-button">
+        <div class="icon">
+          <svg class="cloud" viewBox="0 0 20 24">
+            <path d="M18.3385 10.5888C18.364 10.6828 18.415 10.7769 18.415 10.8709C18.4706 11.1525 18.499 11.4387 18.5 11.7258C18.497 11.9925 18.4714 12.2584 18.4235 12.5208C18.4065 12.6063 18.364 12.6832 18.364 12.7687C18.322 12.9366 18.2709 13.1021 18.211 13.2645L18.109 13.5124C18.0342 13.6772 17.949 13.8371 17.854 13.9911L17.735 14.1792C17.7228 14.2031 17.7086 14.226 17.6925 14.2476L17.65 14.2903C17.2541 14.8211 16.7408 15.252 16.1507 15.5488C15.5605 15.8455 14.9098 16 14.25 16H11.7H8.3H5.75C5.09021 16 4.43948 15.8455 3.84934 15.5488C3.25921 15.252 2.74588 14.8211 2.35 14.2903L2.3075 14.2305C2.29145 14.2089 2.27723 14.186 2.265 14.1621L2.146 13.974C2.051 13.82 1.96582 13.6601 1.891 13.4953L1.789 13.2474C1.72909 13.085 1.67801 12.9195 1.636 12.7516C1.619 12.6661 1.5765 12.5892 1.5765 12.5037C1.52957 12.247 1.50398 11.9867 1.5 11.7258C1.50364 11.453 1.53209 11.1812 1.585 10.9137C1.602 10.8196 1.6615 10.7256 1.6615 10.6316C1.70084 10.4657 1.75198 10.3028 1.8145 10.1443C1.857 10.0417 1.8995 9.95622 1.9675 9.82799C2.0355 9.69977 2.1035 9.56299 2.1715 9.45186C2.2395 9.34073 2.3075 9.2467 2.3925 9.14412C2.4775 9.04153 2.571 8.92186 2.656 8.82782C2.741 8.73379 2.8345 8.65685 2.928 8.57137L3.2425 8.30637L3.5485 8.04991C3.66862 7.97598 3.79357 7.91029 3.9225 7.8533L4.254 7.69942C4.39284 7.64771 4.53479 7.60488 4.679 7.5712C4.79324 7.5374 4.90969 7.51169 5.0275 7.49426L5.1805 7.45152C5.52733 6.4437 6.17792 5.56967 7.04172 4.95105C7.90552 4.33244 8.93957 4 10 4C11.0604 4 12.0945 4.33244 12.9583 4.95105C13.8221 5.56967 14.4727 6.4437 14.8195 7.45152L15.015 7.54555C15.1328 7.56298 15.2493 7.58869 15.3635 7.62249C15.5077 7.65617 15.6497 7.699 15.7885 7.75071L16.12 7.90459C16.2489 7.96158 16.3739 8.02727 16.494 8.1012L16.8 8.30637L17.1145 8.58846C17.208 8.67395 17.293 8.74234 17.3865 8.84492C17.48 8.9475 17.65 9.09283 17.65 9.16121C17.65 9.2296 17.752 9.28944 17.8285 9.40912C17.905 9.5288 17.9815 9.67412 18.0325 9.78525C18.0835 9.89638 18.143 9.99896 18.1855 10.1015C18.248 10.2601 18.2992 10.4229 18.3385 10.5888Z" />
+          </svg>
+          <svg viewBox="0 0 20 24">
+            <path class="line" d="M10 23V10" />
+            <path class="arrow" d="M10 10L7.5 12.5" />
+            <path class="arrow" d="M10 10L12.5 12.5" />
+            <path class="tick" d="M6.5 10.5L9 13L13.5 7.5" />
+          </svg>
+        </div>
+        <div class="text">
+          <span class="normal">Publish</span>
+          <span class="progress">Loading</span>
+          <span class="done">Done</span>
+        </div>
+      </button>
+    </div>
+    <div>
+      <button class="star-button">
+        <canvas></canvas>
+        <div class="label">
+          <span class="default">Star<span class="success">red</span></span>
+        </div>
+        <div class="number">
+          <span class="current">31</span>
+          <span class="new">32</span>
+          <div class="add">+1</div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r110/examples/js/loaders/DRACOLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r110/examples/js/loaders/GLTFLoader.js"></script>
+      </button>
+    </div>
+    <div>
+      <button class="like-button dark">
+        <div class="hand">
+          <div class="thumb"></div>
+        </div>
+        <span>Like<span>d</span></span>
+      </button>
+    </div>
+    <div>
+      <button class="truck-button">
+        <span class="default">Complete Order</span>
+        <span class="success">
+          Order Placed
+          <svg viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <div class="truck">
+          <div class="wheel"></div>
+          <div class="back"></div>
+          <div class="front"></div>
+          <div class="box"></div>
+        </div>
+      </button>
+    </div>
+    <div>
+      <button class="delete-button">
+        <div class="trash">
+          <div class="top">
+            <div class="paper"></div>
+          </div>
+          <div class="box"></div>
+          <div class="check">
+            <svg viewBox="0 0 8 6">
+              <polyline points="1 3.4 2.71428571 5 7 1"></polyline>
+            </svg>
+          </div>
+        </div>
+        <span>Delete Item</span>
+      </button>
+    </div>
+    <div>
+      <button class="favorite-button">
+        <div class="icon">
+          <div class="star"></div>
+        </div>
+        <span>Favorite</span>
+      </button>
+    </div>
+
+    <div>
+      <button class="pay-button">
+        <span class="default">Yeah, I want that</span>
+        <span class="success">
+          Redirected
+          <svg viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <div class="truck-wrapper">
+          <div class="truck">
+            <div class="wheel"></div>
+            <div class="back">
+              <div class="shadow"></div>
+              <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.62501 21.0936L10.308 16.8437L10.3521 16.6082C10.385 16.4034 10.4919 16.2161 10.6528 16.0812C10.8138 15.9463 11.0191 15.8719 11.2308 15.8719H11.7732C12.6772 15.8719 13.5078 15.7771 14.2419 15.5902C15.0252 15.391 15.7219 15.0807 16.3124 14.6686C16.9386 14.2316 17.4645 13.6667 17.8758 12.99C18.3096 12.2761 18.6282 11.4165 18.8228 10.4354C18.9947 9.56915 19.0269 8.79361 18.9189 8.1301C18.8045 7.42918 18.5293 6.8311 18.1012 6.35202C17.8415 6.06183 17.5093 5.81041 17.1137 5.60471L17.1044 5.59978L17.1042 5.58857C17.2423 4.72384 17.2371 4.00253 17.0884 3.3816C16.9391 2.75932 16.6367 2.19935 16.1633 1.67007C15.1825 0.573412 13.3986 0.0172424 10.8613 0.0172424H3.89303C3.6601 0.0172424 3.43403 0.099032 3.25683 0.247598C3.07962 0.396164 2.96225 0.602543 2.92571 0.828416L0.0242078 18.8833C-0.00228154 19.048 0.0459017 19.2154 0.156426 19.3418C0.266951 19.4688 0.427714 19.5417 0.597612 19.5417H4.92063L4.91675 19.5618L4.61989 21.4092C4.59705 21.5528 4.63907 21.6984 4.73521 21.8087C4.83135 21.9192 4.97133 21.9828 5.1193 21.9828H8.74515C8.94862 21.9828 9.14569 21.9113 9.30029 21.7816C9.45489 21.6518 9.55765 21.4719 9.58939 21.2749L9.62501 21.0936Z" fill="#27346A" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.14155 5.61211C7.18745 5.32596 7.37447 5.0918 7.62635 4.97326C7.74098 4.91948 7.86886 4.88945 8.00291 4.88945H13.465C14.1121 4.88945 14.7155 4.93113 15.2672 5.0183C15.4247 5.04317 15.578 5.07185 15.7271 5.10435C15.8762 5.13684 16.0207 5.17291 16.1607 5.21325C16.2308 5.23319 16.2996 5.25426 16.3674 5.27644C16.6382 5.36473 16.8903 5.4687 17.1223 5.58926C17.3959 3.87795 17.1205 2.7134 16.1772 1.65865C15.1386 0.49746 13.2624 0 10.8619 0H3.89363C3.40312 0 2.98545 0.350239 2.90895 0.825739L0.00745146 18.8806C-0.0498661 19.2369 0.230784 19.5589 0.59821 19.5589H4.9L7.14155 5.61211Z" fill="#27346A" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1219 5.58917C17.1011 5.71981 17.078 5.85269 17.0506 5.98961C16.132 10.6193 12.9879 12.22 8.97251 12.22H6.92781C6.4373 12.22 6.02306 12.5704 5.94656 13.0459L4.60268 21.4066C4.55267 21.7181 4.79815 22 5.11945 22H8.74553C9.17461 22 9.53998 21.6937 9.60689 21.2775L9.64251 21.0967L10.3255 16.8463L10.3696 16.6115C10.4365 16.1954 10.8019 15.8891 11.231 15.8891H11.7733C15.2861 15.8891 18.0367 14.4886 18.8405 10.4385C19.1762 8.74625 19.0026 7.33364 18.1146 6.34052C17.846 6.04025 17.5117 5.79174 17.1219 5.58917Z" fill="#2790C3" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1605 5.21323C16.0205 5.1729 15.876 5.13682 15.7268 5.10433C15.5777 5.07184 15.4245 5.04315 15.2669 5.01828C14.7152 4.93111 14.1119 4.88943 13.4647 4.88943H8.00267C7.86863 4.88943 7.74075 4.91946 7.62611 4.97324C7.37424 5.09178 7.18721 5.32595 7.14131 5.6121L5.98035 12.8351L5.94678 13.046C6.02328 12.5705 6.43752 12.22 6.92803 12.22H8.97273C12.9882 12.22 16.1322 10.6194 17.0509 5.98967C17.0783 5.85276 17.1013 5.71988 17.1221 5.58924C16.8901 5.46868 16.638 5.36471 16.3672 5.27642C16.2993 5.25424 16.2306 5.23318 16.1605 5.21323Z" fill="#1F264F" />
+              </svg>
+              <svg class="icon" width="13" height="13" viewBox="0 0 13 13" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.686523 3.6696C0.686523 2.74484 1.43619 1.99518 2.36094 1.99518H4.51495C5.26141 1.99518 5.95849 2.36824 6.37255 2.98934L6.38654 3.01032C6.80061 3.63142 7.49768 4.00448 8.24414 4.00448H11.0121C11.9369 4.00448 12.6865 4.75414 12.6865 5.6789V9.75337C12.6865 10.6781 11.9369 11.4278 11.0121 11.4278H2.36094C1.43619 11.4278 0.686523 10.6781 0.686523 9.75337V3.6696Z" />
+              </svg>
+              <svg class="icon" width="13" height="13" viewBox="0 0 13 13" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.59157 12.0715C9.08477 10.7909 11.6916 8.18155 11.6916 5.57219C11.6916 2.74491 9.39966 0.452942 6.57238 0.452942C3.74509 0.452942 1.45312 2.74491 1.45312 5.57219C1.45312 8.18155 4.05998 10.7909 5.55318 12.0715C6.14618 12.5801 6.99857 12.5801 7.59157 12.0715ZM6.57257 7.40049C7.58231 7.40049 8.40087 6.58193 8.40087 5.57219C8.40087 4.56244 7.58231 3.74388 6.57257 3.74388C5.56282 3.74388 4.74426 4.56244 4.74426 5.57219C4.74426 6.58193 5.56282 7.40049 6.57257 7.40049Z" />
+              </svg>
+              <svg class="icon" width="13" height="13" viewBox="0 0 13 13" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.62062 0.757893L1.93512 6.69646C1.71662 6.97339 1.91682 7.37691 2.27272 7.37691H5.53868C5.68442 7.37691 5.80257 7.4937 5.80257 7.63778L5.80257 12.1719C5.80257 12.5733 6.31785 12.7476 6.56786 12.4307L11.2534 6.49214C11.4719 6.2152 11.2717 5.81169 10.9158 5.81169L7.64979 5.81169C7.50405 5.81169 7.3859 5.6949 7.3859 5.55082V1.01674C7.3859 0.615298 6.87063 0.441017 6.62062 0.757893Z" />
+              </svg>
+              <svg class="icon" width="12" height="12" viewBox="0 0 12 12" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.24784 1.00269C7.41809 1.03459 6.64049 1.35146 6.02993 1.87976L6 1.90653L5.97057 1.8798C5.32607 1.32223 4.49561 1.00003 3.61433 1.00003C1.61877 1.00003 0 2.63184 0 4.63507C0 6.41626 1.02322 8.06903 2.69417 9.60096C3.25904 10.1188 3.86492 10.5897 4.47699 11.0082L4.72424 11.1743C5.0008 11.3567 5.23339 11.4984 5.39787 11.5914C5.58475 11.6954 5.78882 11.75 5.99955 11.75C6.21191 11.75 6.42094 11.6944 6.60538 11.589C6.82023 11.467 7.1372 11.2713 7.52184 11.0083C8.13408 10.5896 8.73999 10.1189 9.30494 9.60105C10.9765 8.06904 12 6.41632 12 4.63507C12.0012 2.63228 10.3824 1.00003 8.3866 1.00003L8.24784 1.00269Z" />
+              </svg>
+            </div>
+            <div class="front"></div>
+            <div class="light"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div>
+      <button class="dl-button">
+        <span class="default">&#68;ownload</span>
+        <span class="success">
+          &#68;ownload Done
+          <svg viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <div class="truck-wrapper">
+          <div class="truck">
+            <div class="wheel"></div>
+            <div class="back">
+              <div class="shadow"></div>
+              <div class="logo">
+                <svg width="40" height="45" viewBox="0 0 40 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.8383 5.61481C20.7936 4.64191 19.1997 4.6419 18.155 5.61481L14.178 9.31858C13.6251 9.83349 13.6251 10.7252 14.178 11.2401L18.155 14.9439C19.1997 15.9168 20.7936 15.9168 21.8383 14.9439L25.8153 11.2402C26.3682 10.7252 26.3682 9.8335 25.8153 9.31858L21.8383 5.61481Z" fill="#20D8F9" />
+                  <g filter="url(#filter0_dddddd)">
+                    <path d="M15.5918 8.0018L18.1549 10.3888C19.1996 11.3617 20.7935 11.3617 21.8382 10.3888L24.4013 8.0018L21.8382 5.61481C20.7935 4.64191 19.1996 4.6419 18.1549 5.61481L15.5918 8.0018Z" fill="white" />
+                  </g>
+                  <path d="M21.8383 1.15366C20.7936 0.180755 19.1997 0.180753 18.155 1.15366L14.178 4.85742C13.6251 5.37234 13.6251 6.26408 14.178 6.779L18.155 10.4828C19.1997 11.4557 20.7936 11.4557 21.8383 10.4828L25.8153 6.779C26.3682 6.26408 26.3682 5.37234 25.8153 4.85743L21.8383 1.15366Z" fill="white" />
+                  <defs>
+                    <filter id="filter0_dddddd" x="0.00846195" y="4.88513" width="39.9761" height="40.0372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="0.504208" />
+                      <feGaussianBlur stdDeviation="0.215615" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0851008 0" />
+                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="1.21168" />
+                      <feGaussianBlur stdDeviation="0.518154" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0729119 0" />
+                      <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="2.28149" />
+                      <feGaussianBlur stdDeviation="0.975638" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0530192 0" />
+                      <feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="4.06979" />
+                      <feGaussianBlur stdDeviation="1.74037" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0381988 0" />
+                      <feBlend mode="normal" in2="effect3_dropShadow" result="effect4_dropShadow" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="7.6121" />
+                      <feGaussianBlur stdDeviation="3.25517" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.0435211 0" />
+                      <feBlend mode="normal" in2="effect4_dropShadow" result="effect5_dropShadow" />
+                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="18.2205" />
+                      <feGaussianBlur stdDeviation="7.79167" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
+                      <feBlend mode="normal" in2="effect5_dropShadow" result="effect6_dropShadow" />
+                      <feBlend mode="normal" in="SourceGraphic" in2="effect6_dropShadow" result="shape" />
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
+              <div class="box"></div>
+            </div>
+            <div class="front"></div>
+            <div class="light"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div>
+      <div class="progress-button">
+        <svg class="main-btn" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <rect fill="#fff" stroke="#1578ff" stroke-width="2" x="1" y="1" rx="10" ry="10" />
+        </svg>
+        <svg class="frame-btn" xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <rect fill="none" stroke="#1578ff" stroke-width="2" stroke-dasharray="525" stroke-dashoffset="525" x="1" y="1" rx="10" ry="10" />
+        </svg>
+        <div class="progress-area">
+          <div class="area-left">
+            <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 3C17.1 3 16.5 3.6 16.5 4.5V8.25C16.5 9.15 17.1 9.75 18 9.75C18.9 9.75 19.5 9.15 19.5 8.25V4.5C19.5 3.6 18.9 3 18 3Z" fill="#1578ff" />
+              <path d="M10.0504 12.1504C10.3504 12.4504 10.8004 12.6004 11.1004 12.6004C11.4004 12.6004 11.8504 12.4504 12.1504 12.1504C12.7504 11.5504 12.7504 10.6504 12.1504 10.0504L9.45039 7.35039C8.85039 6.75039 7.95039 6.75039 7.35039 7.35039C6.75039 7.95039 6.75039 8.85039 7.35039 9.45039L10.0504 12.1504Z" fill="#1578ff" />
+              <path d="M9.75 18C9.75 17.1 9.15 16.5 8.25 16.5H4.5C3.6 16.5 3 17.1 3 18C3 18.9 3.6 19.5 4.5 19.5H8.25C9 19.5 9.75 18.9 9.75 18Z" fill="#1578ff" />
+              <path d="M10.0508 23.8504L7.50078 26.4004C6.90078 27.0004 6.90078 27.9004 7.50078 28.5004C7.80078 28.8004 8.25078 28.9504 8.55078 28.9504C8.85078 28.9504 9.30078 28.8004 9.60078 28.5004L12.1508 25.9504C12.7508 25.3504 12.7508 24.4504 12.1508 23.8504C11.5508 23.2504 10.6508 23.2504 10.0508 23.8504Z" fill="#1578ff" />
+              <path d="M18 26.25C17.1 26.25 16.5 26.85 16.5 27.75V31.5C16.5 32.4 17.1 33 18 33C18.9 33 19.5 32.4 19.5 31.5V27.75C19.5 27 18.9 26.25 18 26.25Z" fill="#1578ff" />
+              <path d="M25.9504 23.8504C25.3504 23.2504 24.4504 23.2504 23.8504 23.8504C23.2504 24.4504 23.2504 25.3504 23.8504 25.9504L26.4004 28.5004C26.7004 28.8004 27.1504 28.9504 27.4504 28.9504C27.7504 28.9504 28.2004 28.8004 28.5004 28.5004C29.1004 27.9004 29.1004 27.0004 28.5004 26.4004L25.9504 23.8504Z" fill="#1578ff" />
+              <path d="M31.5 16.5H27.75C26.85 16.5 26.25 17.1 26.25 18C26.25 18.9 26.85 19.5 27.75 19.5H31.5C32.4 19.5 33 18.9 33 18C33 17.1 32.4 16.5 31.5 16.5Z" fill="#1578ff" />
+              <path d="M24.9004 12.5998C25.3504 12.5998 25.6504 12.4498 25.9504 12.1498L28.5004 9.5998C29.1004 8.9998 29.1004 8.0998 28.5004 7.4998C27.9004 6.8998 27.0004 6.8998 26.4004 7.4998L23.8504 10.0498C23.2504 10.6498 23.2504 11.5498 23.8504 12.1498C24.1504 12.4498 24.6004 12.5998 24.9004 12.5998Z" fill="#1578ff" />
+            </svg>
+            <span>0 %</span>
+          </div>
+          <div class="area-right">
+            <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="btn-pause">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 6C6.97843 6 6 6.97843 6 8.25V27.75C6 29.0216 6.97843 30 8.25 30H10.65C11.7358 30 12.7805 29.0469 12.9 27.8353V8.25C12.9 6.97843 11.9216 6 10.65 6H8.25ZM3 8.25C3 5.32157 5.32157 3 8.25 3H10.65C13.5784 3 15.9 5.32157 15.9 8.25V27.9C15.9 27.9384 15.8985 27.9768 15.8956 28.015C15.6906 30.6796 13.4492 33 10.65 33H8.25C5.32157 33 3 30.6784 3 27.75V8.25Z" fill="#ff542b" />
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M25.3496 6C24.078 6 23.0996 6.97843 23.0996 8.25V27.75C23.0996 29.0216 24.078 30 25.3496 30H27.7496C29.0613 30 29.9996 28.982 29.9996 27.9V8.25C29.9996 6.97843 29.0212 6 27.7496 6H25.3496ZM20.0996 8.25C20.0996 5.32157 22.4212 3 25.3496 3H27.7496C30.678 3 32.9996 5.32157 32.9996 8.25V27.9C32.9996 30.718 30.6379 33 27.7496 33H25.3496C22.4212 33 20.0996 30.6784 20.0996 27.75V8.25Z" fill="#ff542b" />
+            </svg>
+            <svg width="18" height="18" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="btn-play">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M3 7.33761C3 2.58639 8.08368 0.177285 12.0217 2.27008C12.0446 2.28222 12.0671 2.29495 12.0893 2.30826L30.0453 13.0771C33.9849 15.2998 33.9849 20.6354 30.0453 22.8581L12.0893 33.627L12.0701 33.6383C8.06754 35.9588 3 33.3067 3 28.7474V7.33761ZM10.5822 4.90258C8.33198 3.73209 6 5.21176 6 7.33761V28.7474C6 30.7729 8.36369 32.3115 10.5566 31.048L28.5205 20.2745C28.5334 20.2667 28.5465 20.2591 28.5597 20.2518C30.4801 19.1775 30.4801 16.7578 28.5597 15.6835C28.5521 15.6792 28.5445 15.6749 28.537 15.6705C28.5315 15.6673 28.526 15.6641 28.5205 15.6608L10.5822 4.90258Z" fill="#1578ff" />
+            </svg>
+          </div>
+        </div>
+        <div class="complete-area">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.71 28.57">
+            <path class="tick-1" fill="none" stroke="#ffff" stroke-dasharray="52" stroke-dashoffset="52" d="M2,12.42,16.14,26.57,34.71,2" />
+          </svg>
+          <span>Done</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.4.0/dist/gsap.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/MotionPathPlugin.min.js"></script>
+<script>
+  document.querySelectorAll('.truck-button').forEach(button => {
+    button.addEventListener('click', e => {
+
+      e.preventDefault();
+
+      let box = button.querySelector('.box'),
+        truck = button.querySelector('.truck');
+
+      if (!button.classList.contains('done')) {
+
+        if (!button.classList.contains('animation')) {
+
+          button.classList.add('animation');
+
+          gsap.to(button, {
+            '--box-s': 1,
+            '--box-o': 1,
+            duration: .3,
+            delay: .5
+          });
+
+          gsap.to(box, {
+            x: 0,
+            duration: .4,
+            delay: .7
+          });
+
+          gsap.to(button, {
+            '--hx': -5,
+            '--bx': 50,
+            duration: .18,
+            delay: .92
+          });
+
+          gsap.to(box, {
+            y: 0,
+            duration: .1,
+            delay: 1.15
+          });
+
+          gsap.set(button, {
+            '--truck-y': 0,
+            '--truck-y-n': -26
+          });
+
+          gsap.to(button, {
+            '--truck-y': 1,
+            '--truck-y-n': -25,
+            duration: .2,
+            delay: 1.25,
+            onComplete() {
+              gsap.timeline({
+                onComplete() {
+                  button.classList.add('done');
+                }
+              }).to(truck, {
+                x: 0,
+                duration: .4
+              }).to(truck, {
+                x: 40,
+                duration: 1
+              }).to(truck, {
+                x: 20,
+                duration: .6
+              }).to(truck, {
+                x: 96,
+                duration: .4
+              });
+              gsap.to(button, {
+                '--progress': 1,
+                duration: 2.4,
+                ease: "power2.in"
+              });
+            }
+          });
+
+        }
+
+      } else {
+        button.classList.remove('animation', 'done');
+        gsap.set(truck, {
+          x: 4
+        });
+        gsap.set(button, {
+          '--progress': 0,
+          '--hx': 0,
+          '--bx': 0,
+          '--box-s': .5,
+          '--box-o': 0,
+          '--truck-y': 0,
+          '--truck-y-n': -26
+        });
+        gsap.set(box, {
+          x: -24,
+          y: -6
+        });
+      }
+
+    });
+  });
+
+  document.querySelectorAll('.delete-button').forEach(button => button.addEventListener('click', e => {
+    if (!button.classList.contains('delete')) {
+      button.classList.add('delete');
+      setTimeout(() => button.classList.remove('delete'), 3200);
+    }
+    e.preventDefault();
+  }));
+
+  document.querySelectorAll('.favorite-button').forEach(button => {
+    button.addEventListener('click', e => {
+      e.preventDefault()
+
+      if (button.classList.contains('animated')) {
+        return
+      }
+      button.classList.add('animated')
+
+      gsap.to(button, {
+        keyframes: [{
+          '--star-y': '-36px',
+          duration: .3,
+          ease: 'power2.out'
+        }, {
+          '--star-y': '48px',
+          '--star-scale': .4,
+          duration: .325,
+          onStart() {
+            button.classList.add('star-round')
+          }
+        }, {
+          '--star-y': '-64px',
+          '--star-scale': 1,
+          duration: .45,
+          ease: 'power2.out',
+          onStart() {
+            button.classList.toggle('active')
+            setTimeout(() => button.classList.remove('star-round'), 100)
+          }
+        }, {
+          '--star-y': '0px',
+          duration: .45,
+          ease: 'power2.in'
+        }, {
+          '--button-y': '3px',
+          duration: .11
+        }, {
+          '--button-y': '0px',
+          '--star-face-scale': .65,
+          duration: .125
+        }, {
+          '--star-face-scale': 1,
+          duration: .15
+        }],
+        clearProps: true,
+        onComplete() {
+          button.classList.remove('animated')
+        }
+      })
+
+      gsap.to(button, {
+        keyframes: [{
+          '--star-hole-scale': .8,
+          duration: .5,
+          ease: 'elastic.out(1, .75)'
+        }, {
+          '--star-hole-scale': 0,
+          duration: .2,
+          delay: .2
+        }]
+      })
+
+      gsap.to(button, {
+        '--star-rotate': '360deg',
+        duration: 1.55,
+        clearProps: true
+      })
+    })
+  })
+
+  const {
+    to,
+    set,
+    from,
+    fromTo,
+    registerPlugin
+  } = gsap
+
+  registerPlugin(MotionPathPlugin);
+
+  document.querySelectorAll('.pay-button').forEach(button => {
+    button.addEventListener('pointerdown', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': .975,
+        duration: .15
+      })
+    })
+    button.addEventListener('pointerup', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': 1,
+        duration: .15
+      })
+    })
+    button.addEventListener('pointerleave', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': 1,
+        duration: .15
+      })
+    })
+    button.addEventListener('click', e => {
+
+      e.preventDefault()
+
+      button.classList.add('animating')
+
+      if (button.classList.contains('done')) {
+        to(button, {
+          '--success-o': 0,
+          duration: .15
+        })
+        to(button, {
+          '--default-o': 1,
+          duration: .4,
+          clearProps: true,
+          onComplete() {
+            button.classList.remove('animating', 'done')
+          }
+        })
+        return
+      }
+
+      to(button, {
+        '--rotate': '-90deg',
+        '--y': '25px',
+        '--default-o': 0,
+        duration: .2
+      })
+
+      to(button, {
+        keyframes: [{
+          '--light-opacity': 1,
+          duration: .3,
+          delay: .15,
+          onComplete() {
+            from(button.querySelectorAll('.icon'), {
+              stagger: .2,
+              opacity: 0,
+              duration: .15
+            })
+            set(button.querySelectorAll('.icon'), {
+              x: gsap.utils.random(-100, -80),
+              y: gsap.utils.random(-80, -60)
+            })
+            to(button.querySelectorAll('.icon'), {
+              stagger: .2,
+              duration: .5,
+              motionPath: {
+                path: [{
+                  x: gsap.utils.random(-60, -40),
+                  y: gsap.utils.random(-10, -30),
+                }, {
+                  x: 0,
+                  y: 0
+                }],
+                curviness: .5
+              },
+              rotation: `-=${gsap.utils.random(-720, 720)}`,
+            })
+          }
+        }, {
+          '--truck-y': '1px',
+          duration: .1,
+          delay: .2
+        }, {
+          '--truck-y': '0px',
+          duration: .1
+        }, {
+          '--truck-y': '1px',
+          duration: .1,
+        }, {
+          '--truck-y': '0px',
+          duration: .1
+        }, {
+          '--truck-y': '1px',
+          duration: .1,
+        }, {
+          '--truck-y': '0px',
+          duration: .1
+        }, {
+          '--truck-y': '1px',
+          duration: .1
+        }, {
+          '--truck-y': '0px',
+          duration: .1
+        }],
+        onComplete() {
+          to(button, {
+            keyframes: [{
+              '--truck-base-x': '-4px',
+              duration: .4
+            }, {
+              '--truck-base-x': '60px',
+              duration: 1
+            }, {
+              '--truck-base-x': '20px',
+              duration: .6
+            }, {
+              '--truck-base-x': '300px',
+              duration: .4
+            }],
+            onComplete() {
+              button.classList.add('done')
+              button.classList.remove('animating')
+              to(button, {
+                keyframes: [{
+                  '--rotate': '0deg',
+                  '--y': '0px',
+                  duration: .2
+                }, {
+                  '--success-offset': '0px',
+                  '--success-o': 1,
+                  duration: .2
+                }]
+              })
+            }
+          })
+        }
+      })
+
+    })
+  })
+
+  document.querySelectorAll('.dl-button').forEach(button => {
+    button.addEventListener('pointerdown', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': .975,
+        duration: .15
+      })
+    })
+    button.addEventListener('pointerup', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': 1,
+        duration: .15
+      })
+    })
+    button.addEventListener('pointerleave', e => {
+      if (button.classList.contains('animating')) {
+        return
+      }
+      to(button, {
+        '--scale': 1,
+        duration: .15
+      })
+    })
+    button.addEventListener('click', e => {
+
+      e.preventDefault()
+
+      button.classList.add('animating')
+
+      if (button.classList.contains('done')) {
+        to(button, {
+          '--success-o': 0,
+          duration: .15
+        })
+        to(button, {
+          '--default-o': 1,
+          duration: .4,
+          clearProps: true,
+          onComplete() {
+            button.classList.remove('animating', 'done')
+          }
+        })
+        return
+      }
+
+      to(button, {
+        '--rotate': '-90deg',
+        '--y': '25px',
+        '--default-o': 0,
+        duration: .2
+      })
+
+      to(button, {
+        keyframes: [{
+          '--truck-base-x': '-4px',
+          duration: .5
+        }, {
+          '--truck-base-x': '0px',
+          duration: .2
+        }, {
+          '--truck-base-x': '60px',
+          '--box-x': '-60px',
+          duration: .5,
+          onStart() {
+            setTimeout(() => {
+              to(button, {
+                keyframes: [{
+                  '--box-y': '10px',
+                  '--box-r': '-8deg',
+                  duration: .2
+                }, {
+                  '--box-r': '0deg',
+                  duration: .2
+                }]
+              })
+            }, 200)
+          }
+        }, {
+          '--truck-base-x': '56px',
+          '--box-x': '-56px',
+          duration: .4
+        }, {
+          '--light-opacity': 0,
+          duration: .3,
+          delay: .2
+        }],
+        onComplete() {
+          setTimeout(() => {
+            button.classList.add('done')
+            button.classList.remove('animating')
+            to(button, {
+              keyframes: [{
+                '--rotate': '0deg',
+                '--y': '0px',
+                duration: .2
+              }, {
+                '--success-offset': '0px',
+                '--success-o': 1,
+                duration: .2
+              }]
+            })
+          }, 500)
+        }
+      })
+
+    })
+  })
+
+  document.querySelectorAll(".star-button").forEach((button) => {
+    const width = 400;
+    const height = 200;
+
+    const canvas = button.querySelector("canvas");
+
+    const addLight = (x, y, z, i, s) => {
+      const light = new THREE.PointLight(0xffffff, i);
+      light.position.set(x, y, z);
+      s.add(light);
+    };
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      context: canvas.getContext("webgl2"),
+      antialias: true,
+      alpha: true,
+    });
+
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(4);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width / height, 4, 100);
+
+    camera.position.set(0, 0, 30);
+
+    addLight(0, 1, 5, 0.2, scene);
+    addLight(0, 2, 0, 0.3, scene);
+    addLight(5, 0, 1, 0.2, scene);
+    addLight(-5, 0, 1, 0.2, scene);
+    addLight(3, 0, 5, 0.6, scene);
+
+    scene.add(new THREE.AmbientLight(0xffffff));
+
+    const loader = new THREE.GLTFLoader();
+
+    loader.setCrossOrigin("anonymous");
+    loader.setDRACOLoader(new THREE.DRACOLoader());
+
+    loader.load(
+      "https://assets.codepen.io/165585/star-default.glb",
+      function(data) {
+        const object = data.scene;
+        object.position.set(0, -0.5, 0);
+        scene.add(object);
+
+        let scaleTween, rotateTweenXZ, rotateTweenY, rotateTweenZ;
+
+        button.addEventListener("pointerenter", () => {
+          if (button.classList.contains("active")) {
+            return;
+          }
+
+          scaleTween = gsap.to(button, {
+            "--button-star-scale": 1,
+            ease: "elastic.out(1, .75)",
+            duration: 0.5,
+          });
+          gsap.to(button, {
+            "--button-star-greyscale": "0%",
+            "--button-star-hue": "0deg",
+            "--button-star-opacity": 1,
+            duration: 0.15,
+          });
+
+          rotateTweenXZ = gsap.to(object.rotation, {
+            duration: 0.25,
+            x: THREE.Math.degToRad(4),
+            z: THREE.Math.degToRad(12),
+            ease: "none",
+          });
+
+          rotateTweenY = gsap.to(object.rotation, {
+            duration: 1.5,
+            y: THREE.Math.degToRad(360),
+            ease: "none",
+            repeat: -1,
+          });
+
+          rotateTweenZ = gsap.to(object.rotation, {
+            duration: 4.5,
+            keyframes: [{
+                ease: "none",
+                z: THREE.Math.degToRad(5),
+              },
+              {
+                ease: "none",
+                z: THREE.Math.degToRad(12),
+              },
+            ],
+            repeat: -1,
+          });
+        });
+
+        button.addEventListener("pointerleave", () => {
+          if (button.classList.contains("active")) {
+            return;
+          }
+
+          scaleTween.kill();
+          rotateTweenXZ.kill();
+          rotateTweenY.kill();
+          rotateTweenZ.kill();
+          gsap.to(button, {
+            "--button-star-scale": 0.75,
+            "--button-star-greyscale": "85%",
+            "--button-star-hue": "170deg",
+            "--button-star-opacity": 0.45,
+            duration: 0.2,
+          });
+          gsap.to(object.rotation, {
+            duration: 0.3,
+            x: THREE.Math.degToRad(0),
+            y: THREE.Math.degToRad(0),
+            z: THREE.Math.degToRad(0),
+          });
+        });
+
+        button.addEventListener("click", () => {
+          if (button.classList.contains("active")) {
+            gsap.to(button, {
+              "--button-label-x": "24px",
+              "--button-label-success-opacity": 0,
+              "--button-star-opacity": 0.45,
+              "--button-star-current-opacity": 1,
+              "--button-star-current-y": "0px",
+              "--button-star-new-opacity": 0,
+              "--button-star-new-y": "16px",
+              duration: 0.25,
+              clearProps: true,
+              onComplete() {
+                button.classList.remove("active");
+              },
+            });
+            return;
+          }
+          scaleTween.kill();
+          rotateTweenY.kill();
+
+          button.classList.add("active");
+
+          gsap.to(button, {
+            "--button-star-current-opacity": 0,
+            "--button-star-current-y": "-16px",
+            "--button-star-new-opacity": 1,
+            "--button-star-new-y": "0px",
+            "--button-star-add-opacity": 1,
+            duration: 0.25,
+            delay: 0.5,
+          });
+
+          gsap.to(button, {
+            "--button-label-x": "0px",
+            "--button-label-success-opacity": 1,
+            duration: 0.25,
+            delay: 0.2,
+          });
+
+          gsap.to(button, {
+            "--button-star-add-opacity": 0,
+            duration: 0.2,
+            delay: 0.75,
+          });
+
+          gsap.to(button, {
+            "--button-star-add-y": "-8px",
+            duration: 0.5,
+            delay: 0.5,
+          });
+
+          gsap.to(button, {
+            "--button-star-scale": 1,
+            "--button-star-greyscale": "0%",
+            "--button-star-hue": "0deg",
+            "--button-star-opacity": 1,
+            duration: 0.15,
+          });
+
+          gsap.to(object.rotation, {
+            duration: 0.4,
+            y: THREE.Math.degToRad(0),
+          });
+
+          gsap.to(object.position, {
+            duration: 0.7,
+            motionPath: {
+              path: [{
+                  x: 0,
+                  y: -0.5,
+                },
+                {
+                  x: 5.45,
+                  y: -5,
+                },
+                {
+                  x: 10.9,
+                  y: -0.5,
+                },
+                {
+                  x: 7,
+                  y: 7,
+                },
+              ],
+              curviness: 1.2,
+            },
+            ease: "sine.in",
+          });
+
+          gsap.to(button, {
+            "--button-star-opacity": 0,
+            duration: 0.1,
+            delay: 0.6,
+            onComplete() {
+              object.rotation.x = THREE.Math.degToRad(0);
+              object.rotation.y = THREE.Math.degToRad(0);
+              object.rotation.z = THREE.Math.degToRad(0);
+              object.position.set(0, -0.5, 0);
+              gsap.set(button, {
+                "--button-star-scale": 0.75,
+                "--button-star-greyscale": "85%",
+                "--button-star-hue": "170deg",
+                "--button-star-opacity": 0,
+              });
+            },
+          });
+        });
+      }
+    );
+
+    const render = () => {
+      requestAnimationFrame(render);
+
+      renderer.render(scene, camera);
+    };
+
+    render();
+  });
+
+  document.querySelectorAll('.like-button').forEach(button => {
+
+    button.addEventListener('click', e => {
+      button.classList.toggle('liked');
+      if (button.classList.contains('liked')) {
+        gsap.fromTo(button, {
+          '--hand-rotate': 8
+        }, {
+          ease: 'none',
+          keyframes: [{
+            '--hand-rotate': -45,
+            duration: .16,
+            ease: 'none'
+          }, {
+            '--hand-rotate': 15,
+            duration: .12,
+            ease: 'none'
+          }, {
+            '--hand-rotate': 0,
+            duration: .2,
+            ease: 'none',
+            clearProps: true
+          }]
+        });
+      }
+    })
+
+  });
+
+  // publish-button start
+  const publishLoadingTime = 5000
+  const resetTime = 5000
+
+  document.querySelectorAll('.publish-button').forEach(button => {
+    let tweenHover = to(button, {
+        paused: true,
+        keyframes: [{
+          '--icon-arrow-y': '-2px',
+          '--icon-line-offset': '23px',
+          duration: .15
+        }, {
+          '--icon-arrow-y': '0px',
+          '--icon-line-offset': '21px',
+          duration: .3
+        }]
+      }),
+      interval;
+
+    button.addEventListener('pointerenter', e => {
+      if (button.classList.contains('animated')) {
+        return
+      }
+      tweenHover.restart()
+      interval = setInterval(() => tweenHover.restart(), 1000)
+    });
+
+    button.addEventListener('pointerleave', e => clearInterval(interval))
+
+    button.addEventListener('click', e => {
+      e.preventDefault()
+
+      if (button.classList.contains('animated')) {
+        return
+      }
+      button.classList.add('animated')
+
+      let text = button.querySelector('.text'),
+        normal = text.querySelector('.normal'),
+        progress = text.querySelector('.progress'),
+        done = text.querySelector('.done'),
+        normalWidth = normal.offsetWidth
+
+      clearInterval(interval)
+      tweenHover.pause()
+
+      let cloud = button.querySelector('.cloud'),
+        cloudInterval,
+        clone = cloud.cloneNode(true)
+
+      gsap.to(button, {
+        '--icon-cloud-y': '32px',
+        duration: .15
+      })
+
+      cloudInterval = setInterval(() => {
+        createCloud(clone, button.querySelector('.icon'))
+      }, 400)
+
+      let tweenArrow = fromTo(button, {
+        '--icon-arrow-y': '0px',
+        '--icon-line-offset': '21px',
+        duration: .15
+      }, {
+        repeat: -1,
+        keyframes: [{
+          '--icon-arrow-y': '-6px',
+          '--icon-line-offset': '24px',
+          duration: .6,
+        }, {
+          '--icon-arrow-y': '0px',
+          '--icon-line-offset': '21px',
+          duration: .85,
+          ease: 'power2.out'
+        }]
+      })
+
+      to(button, {
+        onStart() {
+          to(text, {
+            width: progress.offsetWidth,
+            duration: .15
+          })
+        },
+        '--text-normal-o': 0,
+        '--text-normal-y': '8px',
+        duration: .25
+      })
+
+      to(button, {
+        '--text-progress-o': 1,
+        '--text-progress-y': '0px',
+        duration: .3,
+        delay: .1
+      })
+
+      setTimeout(() => {
+        tweenArrow.pause()
+        clearInterval(cloudInterval)
+        to(button, {
+          onStart() {
+            to(text, {
+              width: done.offsetWidth,
+              duration: .15
+            })
+          },
+          '--text-progress-o': 0,
+          '--text-progress-y': '8px',
+          duration: .25
+        })
+        to(button, {
+          duration: .25,
+          keyframes: [{
+            '--icon-line-offset': '13px'
+          }, {
+            '--icon-arrow-offset': '4px'
+          }]
+        })
+        to(button, {
+          '--text-done-o': 1,
+          '--text-done-y': '0px',
+          duration: .3,
+          delay: .1
+        })
+        to(button, {
+          '--icon-tick-offset': '0px',
+          duration: .25,
+          delay: .3
+        })
+        to(button, {
+          '--icon-circle-scale': 1,
+          duration: .7,
+          delay: .2,
+          ease: 'elastic.out(1, .75)'
+        })
+        setTimeout(() => {
+          reset(button, normalWidth, text)
+        }, resetTime)
+      }, publishLoadingTime)
+    })
+  })
+
+  function createCloud(node, parent) {
+    let elem = node.cloneNode(true)
+    parent.appendChild(elem)
+    set(elem, {
+      x: gsap.utils.random(-8, 8),
+      y: -36
+    })
+    to(elem, {
+      y: 36,
+      duration: gsap.utils.random(.4, 1.5),
+      onComplete() {
+        elem.remove()
+      }
+    })
+  }
+
+  function reset(button, normalWidth, text) {
+    to(button, {
+      onStart() {
+        to(text, {
+          width: normalWidth,
+          duration: .15,
+          clearProps: true
+        })
+      },
+      '--text-done-o': 0,
+      '--text-done-y': '8px',
+      duration: .25
+    })
+    fromTo(button, {
+      '--text-normal-y': '-8px'
+    }, {
+      '--text-normal-o': 1,
+      '--text-normal-y': '0px',
+      duration: .3,
+      delay: .1
+    })
+    to(button, {
+      keyframes: [{
+        '--icon-tick-offset': '11px',
+        '--icon-circle-scale': 0,
+        '--icon-arrow-y': '0px',
+        duration: .2
+      }, {
+        '--icon-cloud-y': '0px',
+        '--icon-line-offset': '21px',
+        duration: .2
+      }, {
+        '--icon-arrow-offset': '0px',
+        duration: .15
+      }],
+      clearProps: true,
+      onComplete() {
+        button.classList.remove('animated')
+      }
+    })
+  }
+  // publish-button end
+
+  // progress-button start
+  const buttonArea = document.querySelector('.btn-area')
+  const progressArea = document.querySelector('.progress-area')
+  const completeArea = document.querySelector('.complete-area')
+  const mainBtn = document.querySelector('.main-btn rect')
+  const frameBtn = document.querySelector('.frame-btn rect')
+  const loadingIcon = document.querySelector('.progress-area .area-left svg')
+  const loadingProgress = document.querySelector('.progress-area .area-left span')
+  const loadingBtn = document.querySelector('.progress-area .area-right')
+  const pauseBtn = document.querySelector('.progress-area .area-right .btn-pause')
+  const playBtn = document.querySelector('.progress-area .area-right .btn-play')
+  const tick1 = document.querySelector('.complete-area .tick-1')
+  const tick2 = document.querySelector('.complete-area .tick-2')
+  const doneText = document.querySelector('.complete-area span')
+
+  let loadingTime = 5500
+  let progress = {
+    value: '0 %'
+  }
+  let loadingStatus = true
+
+  anime({
+    targets: loadingIcon,
+    opacity: [0, 1],
+    duration: 750,
+    easing: 'easeOutQuad'
+  })
+
+  let aniLoadingIcon = anime({
+    targets: loadingIcon,
+    rotateZ: 360,
+    duration: 2000,
+    loop: true,
+    easing: 'linear'
+  })
+
+  anime({
+    targets: loadingProgress,
+    translateY: ['15px', '0'],
+    opacity: [0, 1],
+    delay: 250,
+    duration: 750,
+    easing: 'easeOutQuart'
+  })
+
+  anime({
+    targets: loadingBtn,
+    translateY: ['15px', '0'],
+    opacity: [0, 1],
+    delay: 350,
+    duration: 1000,
+    easing: 'easeOutQuart'
+  })
+
+  let aniProgress = anime({
+    targets: progress,
+    value: '100 %',
+    duration: loadingTime,
+    easing: 'cubicBezier(.5, .05, .3, .9)',
+    delay: 1000,
+    round: 1,
+    update: function() {
+      loadingProgress.innerHTML = JSON.stringify(progress.value).replace(/^"(.*)"$/, '$1')
+    }
+  })
+
+  let aniFrameBtn = anime({
+    targets: frameBtn,
+    strokeDashoffset: [525, 0],
+    duration: loadingTime,
+    easing: 'cubicBezier(.5, .05, .3, .9)',
+    delay: 1000,
+    complete: function() {
+      completeLoading()
+    }
+  })
+
+  loadingBtn.addEventListener('click', () => {
+    if (loadingStatus) {
+      aniLoadingIcon.pause()
+      aniProgress.pause()
+      aniFrameBtn.pause()
+      pauseBtn.style.transform = 'translateY(-40px)'
+      playBtn.style.transform = 'translateY(0px)'
+      loadingStatus = false
+    } else {
+      aniLoadingIcon.play()
+      aniProgress.play()
+      aniFrameBtn.play()
+      pauseBtn.style.transform = 'translateY(0px)'
+      playBtn.style.transform = 'translateY(40px)'
+      loadingStatus = true
+    }
+
+  })
+
+  function completeLoading() {
+    anime({
+      targets: loadingIcon,
+      translateX: [0, -20],
+      opacity: [1, 0],
+      duration: 500,
+      delay: 0,
+      easing: 'easeInQuad'
+    })
+
+    anime({
+      targets: loadingProgress,
+      translateY: [0, -20],
+      opacity: [1, 0],
+      duration: 500,
+      delay: 250,
+      easing: 'easeInQuad'
+    })
+
+    anime({
+      targets: loadingBtn,
+      translateY: [0, -20],
+      opacity: [1, 0],
+      duration: 500,
+      delay: 500,
+      easing: 'easeInQuad',
+      complete: function() {
+        progressArea.style.display = 'none'
+        completeArea.style.display = 'flex'
+      }
+    })
+
+    anime({
+      targets: frameBtn,
+      fill: ['#f5f9fe', '#1578ff'],
+      duration: 500,
+      delay: 750,
+      easing: 'easeInQuad'
+    })
+
+    anime({
+      targets: tick1,
+      strokeDashoffset: [52, 0],
+      opacity: [0, 1],
+      duration: 500,
+      easing: 'cubicBezier(.5, .05, .3, .9)',
+      delay: 1000
+    })
+
+    anime({
+      targets: tick2,
+      strokeDashoffset: [52, 0],
+      opacity: [0, 1],
+      duration: 500,
+      easing: 'cubicBezier(.5, .05, .3, .9)',
+      delay: 1250
+    })
+
+    anime({
+      targets: doneText,
+      opacity: [0, 1],
+      translateY: ['25', '0'],
+      duration: 1000,
+      easing: 'easeOutQuad',
+      delay: 1250
+    })
+  }
+</script>
+
+</html>

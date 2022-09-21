@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>霓虹灯文字</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  :root {
+    --c1: orange;
+    --c2: pink;
+    --c3: skyblue;
+    --c4: #64c6df;
+  }
+
+
+  .text {
+    font-size: 64px;
+    font-weight: bold;
+    text-transform: uppercase;
+    fill: none;
+    stroke-width: 2px;
+    stroke-dasharray: 90 310;
+    animation: stroke 6s infinite linear;
+  }
+
+  .text-1 {
+    stroke: var(--c1);
+    text-shadow: 0 0 5px var(--c1);
+    animation-delay: -1.5s;
+  }
+
+  .text-2 {
+    stroke: var(--c2);
+    text-shadow: 0 0 5px var(--c2);
+    animation-delay: -3s;
+  }
+
+  .text-3 {
+    stroke: var(--c3);
+    text-shadow: 0 0 5px var(--c3);
+    animation-delay: -4.5s;
+  }
+
+  .text-4 {
+    stroke: var(--c4);
+    text-shadow: 0 0 5px var(--c4);
+    animation-delay: -6s;
+  }
+
+  @keyframes stroke {
+    100% {
+      stroke-dashoffset: -400;
+    }
+  }
+</style>
+
+<body>
+  <!-- <svg width="100%" height="100">
+    <text text-anchor="middle" x="50%" y="50%" class="text">
+      苏苏就是小苏苏
+    </text>
+  </svg> -->
+  <svg width="100%" height="100">
+    <text text-anchor="middle" x="50%" y="50%" class="text text-1">
+      susu
+    </text>
+    <text text-anchor="middle" x="50%" y="50%" class="text text-2">
+      susu
+    </text>
+    <text text-anchor="middle" x="50%" y="50%" class="text text-3">
+      susu
+    </text>
+    <text text-anchor="middle" x="50%" y="50%" class="text text-4">
+      susu
+    </text>
+  </svg>
+</body>
+
+</html>
