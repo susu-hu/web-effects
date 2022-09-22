@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .mask {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s;
+  }
+
+  .mask.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dialog {
+    position: absolute;
+    /* position: fixed; */
+    background-color: #fff;
+    z-index: 1011;
+    overflow: hidden;
+    padding: 0 24px;
+  }
+
+  .bottom {
+    transform: translateY(100%);
+    transition: transform .3s;
+    width: 100%;
+    min-height: 200px;
+    max-height: 60%;
+    left: 0;
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .bottom.show,
+  .top.show {
+    transform: translateY(0);
+  }
+
+  .top {
+    transform: translateY(-100%);
+    transition: transform .3s;
+    width: 100%;
+    min-height: 200px;
+    max-height: 60%;
+    left: 0;
+    top: 0;
+    border-radius: 0px 0px 10px 10px;
+  }
+
+
+  .left {
+    transform: translateX(-100%);
+    transition: transform .3s;
+    height: 100%;
+    min-width: 200px;
+    max-width: 70%;
+    left: 0;
+    top: 0;
+    border-radius: 0px 10px 10px 0px;
+  }
+
+  .left.show,
+  .right.show {
+    transform: translateX(0);
+  }
+
+  .right {
+    transform: translateX(100%);
+    transition: transform .3s;
+    height: 100%;
+    min-width: 200px;
+    max-width: 70%;
+    right: 0;
+    top: 0;
+    border-radius: 10px 0px 0px 10px;
+  }
+
+
+  p {
+    cursor: pointer;
+
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid orange;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  a:nth-last-child(1) {
+    margin-right: 0;
+  }
+
+  section {
+    width: 350px;
+    height: 700px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+</style>
+
+<body>
+  <section class="flex-column j_c">
+    <div class="flex-row">
+      <p class="item" style="--n:0">上</p>
+      <p class="item" style="--n:1">下</p>
+      <p class="item" style="--n:2">左</p>
+      <p class="item" style="--n:3">右</p>
+    </div>
+    <div class="mask" id="mask"></div>
+    <div class="dialog top"></div>
+    <div class="dialog bottom"></div>
+    <div class="dialog left"></div>
+    <div class="dialog right"></div>
+  </section>
+</body>
+<script>
+  const list = document.querySelectorAll('.item'),
+    mask = document.getElementById('mask'),
+    dialog = document.querySelectorAll('.dialog');
+  list.forEach((item, index) => {
+    item.addEventListener('click', clickActive);
+  })
+
+  function clickActive() {
+    mask.classList.add('show');
+    let index = this.style.getPropertyValue('--n').trim();
+    dialog[index].classList.add('show');
+  }
+
+  mask.addEventListener('click', () => {
+    mask.classList.remove('show');
+    dialog.forEach(item => {
+      item.classList.remove('show');
+    })
+  });
+</script>
+
+</html>

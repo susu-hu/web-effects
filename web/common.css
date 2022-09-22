@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*全局通用样式*/
 :root {
 	--pink    : #ffc0cb;
@@ -22,7 +23,6 @@
 	display: none !important;
 }
 
-@charset "utf-8";
 
 * {
 	margin : 0;
@@ -50,8 +50,6 @@ body {
 }
 
 body {
-	color          : #333;
-	background     : #ffffff;
 	font-size      : 16px;
 	font-family    : Microsoft Yahei, SimSun, Helvetica;
 	display        : flex;
@@ -60,6 +58,7 @@ body {
 	justify-content: center;
 	background     : #222;
 	overflow       : hidden;
+	color : #fff;
 }
 
 body,
@@ -272,6 +271,7 @@ button::after {
 /*禁用长触选择文字等功能*/
 .noSelect {
 	-webkit-user-select: none;
+	user-select: none;
 }
 
 
