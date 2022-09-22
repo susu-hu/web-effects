@@ -1,12 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hover盒子折角</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hover盒子折角:参考链接：https://24ways.org/2009/css-animations(该页面hover效果）</title>
 </head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root {
+    --w: 250px;
+    --h: 250px;
+    --color: #555d6d;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px 20px;
+    background: orange;
+    background-color: var(--color);
+    width: var(--w);
+    height: var(--h);
+    box-shadow: 2px 3px 3px rgba(189, 168, 158, 0.25);
+    overflow: hidden;
+  }
+
+  .box-header {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .box-header-title {
+    padding-right: 72px;
+  }
+
+  .box-header img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+  }
+
+  .box-header picture {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+
+  .box-header picture:after,
+  .box-header picture:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 72px;
+    width: 72px;
+  }
+
+  .box-header picture:before {
+    z-index: 1;
+    background-image: linear-gradient(to top right, var(--color), var(--color) 50%, transparent 0, transparent);
+  }
+
+  .box-header picture:after {
+    background: url(../img/纸.svg) -8px 0 no-repeat;
+    background-size: 888px 72px;
+  }
+
+
+
+  .box:hover .box-header img {
+    transform: scale(1.2);
+    transform-origin: bottom left;
+  }
+
+
+  .box:hover .box-header picture::after {
+    z-index: 1;
+    animation: corner-forward 0.15s steps(10) forwards;
+  }
+
+
+  @keyframes corner-forward {
+    0% {
+      background-position: -8px;
+    }
+
+    100% {
+      background-position: -816px;
+    }
+  }
+</style>
+
 <body>
-    
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="880" height="190">
+    <path fill="#f6f6f6" d="M7 0h73v73L7 0z" />
+    <path fill="#e6e6e9" d="M87 0l65.8 7.2L160 73 87 0z" />
+    <path fill="#dadae0" d="M167 0l57.88 14.4L240 73 167 0z" />
+    <path fill="#cfcfd6" d="M247 0l50.68 21.6L320 73 247 0z" />
+    <path fill="#c3c3cc" d="M327 0l44.2 28.8L400 73 327 0z" />
+    <path fill="#990029" d="M488-1l28.8 44.2L561 72 488-1z" />
+    <path fill="#b3002f" d="M568-1l21.6 51.4L641 72 568-1z" />
+    <path fill="#cc0036" d="M648-1l14.4 58.6L721 72 648-1z" />
+    <path fill="#e6003c" d="M728-1l7.2 65.8L801 72 728-1z" />
+    <path fill="#f04" d="M808-1v73h73L808-1z" />
+  </svg> -->
+  <article class="box">
+    <header class="box-header">
+      <h3 class="box-header-title ">
+        苏苏就是小苏苏
+      </h3>
+      <picture>
+        <img src="https://s3.bmp.ovh/imgs/2022/07/27/85dabf1d5821a98b.png" alt="">
+      </picture>
+    </header>
+  </article>
 </body>
+
 </html>

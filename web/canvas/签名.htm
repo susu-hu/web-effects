@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://juejin.cn/post/7126772018912952327(来自掘金)</title>
+</head>
+<style>
+  html,
+  body {
+    margin: 0;
+  }
+
+  .container {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    padding: 20px;
+  }
+
+  .canvas-body {
+    width: calc(80vw);
+    height: calc(80vh);
+    margin: 20px auto;
+  }
+
+  #sign {
+    background-color: #f3f5f7;
+    border-radius: 4px;
+    border: 1px dashed #0F6BFF;
+  }
+
+  #img {
+    margin: 20px;
+    border-radius: 4px;
+    background-color: #f3f5f7;
+    display: none;
+  }
+
+  #img.show {
+    display: inline-block;
+  }
+
+  .btns {
+    width: calc(80vw - 40px);
+    text-align: right;
+    margin: 0 auto;
+  }
+
+  @media screen and (orientation: portrait) {
+    .qrcode {
+      display: none;
+    }
+  }
+</style>
+<script type="text/javascript" src="https://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="canvas-body" class="canvas-body">
+      <canvas id="sign" style="width: 100%; height: 100%;"></canvas>
+      <div class="qrcode">
+        扫码签名
+        <div id="qrcode"></div>
+      </div>
+    </div>
+    <div class="btns">
+      <button id="reset">重置</button>
+      <button id="showImg">生成图片</button>
+    </div>
+  </div>
+  <div id="img">
+
+  </div>
+  <script>
+    let canvasBody = document.getElementById('canvas-body');
+    let canvas = document.getElementById('sign');
+    let reset = document.getElementById('reset');
+    let showImg = document.getElementById('showImg');
+    let img = document.getElementById('img');
+    canvas.width = canvasBody.clientWidth;
+    canvas.height = canvasBody.clientHeight;
+    let ctx = canvas.getContext('2d');
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = '#333';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    let isDrawing = false;
+    let dataURL = '';
+    let initX;
+    let initY;
+    // 事件监听
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      initX = e.offsetX;
+      initY = e.offsetY
+    });
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+
+    // 绘制
+    function draw(e) {
+      if (!isDrawing) return
+      ctx.beginPath();
+      // 起点
+      ctx.moveTo(initX, initY);
+      // 终点
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      initX = e.offsetX;
+      initY = e.offsetY
+    }
+
+    function clear() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (dataURL) {
+        dataURL = '';
+        img.innerHTML = '';
+        img.classList.remove('show');
+      }
+    }
+
+    function canvasToBase64() {
+      dataURL = canvas.toDataURL();
+      // let oGrayImg = new Image();
+      // oGrayImg.src = dataURL;
+      // img.classList.add('show');
+      // img.appendChild(oGrayImg)
+      alert(`${dataURL}`)
+    }
+
+    reset.addEventListener('click', clear);
+    showImg.addEventListener('click', canvasToBase64);
+  </script>
+  <script>
+    let qrcode = new QRCode(document.getElementById('qrcode'), {
+      width: 96,
+      height: 96
+    })
+
+    qrcode.makeCode('https://canvas-sign.vercel.app/');
+  </script>
+</body>
+
+</html>

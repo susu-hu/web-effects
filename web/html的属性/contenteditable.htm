@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contenteditable</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .box {
+    border: 1px solid rosybrown;
+    padding: 30px;
+    color: #ffff;
+  }
+</style>
+
+<body>
+  <section>
+    <div contenteditable="true" class="box">
+    </div>
+    <input type="text" placeholder="请输入">
+  </section>
+</body>
+<!-- contentEditablehtml中的一个属性。设置html的contentEditable="true"时，即可开启该元素的编辑模式。 -->
+<!-- html中 <p contentEditable="true">;
+js 中 document.all("txt").contentEditable =true; -->
+</html>

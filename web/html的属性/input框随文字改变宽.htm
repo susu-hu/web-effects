@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  input {
+    padding: 8px;
+    min-width: 50px;
+    border: 1px solid orange;
+    color: #fff;
+  }
+</style>
+
+<body>
+  <input type="text" id="textbox" placeholder="..." />
+</body>
+<script>
+  // 常见一个辅助元素
+  const fakeEle = document.createElement('div');
+
+  // 隐藏辅助元素
+  fakeEle.style.position = 'absolute';
+  fakeEle.style.left = '-9999px';
+  fakeEle.style.visibility = 'hidden';
+  fakeEle.style.whiteSpace = 'nowrap';
+
+  // 获取输入框元素的样式
+  const textboxEle = document.getElementById('textbox');
+  const styles = window.getComputedStyle(textboxEle);
+
+  // 将输入框的字体样式赋给辅助元素
+  fakeEle.style.font = styles.font;
+
+  // 将辅助元素添加到页面
+  document.body.appendChild(fakeEle);
+
+  const setWidth = function() {
+    const string = textboxEle.value || textboxEle.getAttribute('placeholder') || '';
+    fakeEle.innerHTML = string.replace(/\s/g, `&nbsp;`);
+
+    // 获取辅助元素的样式
+    const fakeEleStyles = window.getComputedStyle(fakeEle);
+
+    // 将辅助元素的宽度赋给输入框元素
+    textboxEle.style.width = fakeEleStyles.width;
+  };
+
+  setWidth();
+
+  // 监听输入框元素内容变化，输入框宽度跟随文字内容数量适配
+  textboxEle.addEventListener('input', function(e) {
+    setWidth();
+  });
+</script>
+
+</html>
