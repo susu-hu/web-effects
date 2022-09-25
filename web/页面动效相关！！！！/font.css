@@ -3,9 +3,9 @@
     font-family: 'iconfont';
     /* Project id 3655600 */
     src        :
-        url('//at.alicdn.com/t/c/font_3655600_s9yflwtj1u8.woff2?t=1663513710232') format('woff2'),
-        url('//at.alicdn.com/t/c/font_3655600_s9yflwtj1u8.woff?t=1663513710232') format('woff'),
-        url('//at.alicdn.com/t/c/font_3655600_s9yflwtj1u8.ttf?t=1663513710232') format('truetype');
+        url('//at.alicdn.com/t/c/font_3655600_i9u0iz9i3xq.woff2?t=1664119267364') format('woff2'),
+        url('//at.alicdn.com/t/c/font_3655600_i9u0iz9i3xq.woff?t=1664119267364') format('woff'),
+        url('//at.alicdn.com/t/c/font_3655600_i9u0iz9i3xq.ttf?t=1664119267364') format('truetype');
 }
 
 .iconfont {
@@ -54,4 +54,16 @@
 
 .icon-susushiwutubiao00-66:before {
     content: "\e61c";
+}
+
+.icon-susuAdd:before {
+    content: "\e715;";
+}
+
+.icon-susuAdd1:before {
+    content: "\e652;";
+}
+
+.icon-susuAdd2:before {
+    content: "\e657;";
 }

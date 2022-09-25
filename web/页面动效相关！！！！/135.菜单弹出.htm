@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜单弹出</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="./font.css">
+<style>
+    section {
+        width: 200px;
+        height: 200px;
+        background: #bd9d62;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .icon {
+        font-size: 35px;
+        transition: all 0.5s;
+    }
+
+    .box {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.5s;
+        position: absolute;
+        top: calc(100px - 30px);
+        left: calc(100px - 30px);
+        background: #222;
+    }
+
+    .box.active span {
+        transform: rotate(135deg);
+    }
+
+    li {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        top: calc(35px - 20px);
+        left: calc(100px - 20px);
+        transition: all 0.5s;
+    }
+
+    /* li:nth-child(1) {
+        transform: rotate(45deg) translateX(50px);
+    }
+
+    li:nth-child(2) {
+        transform: rotate(90deg) translateX(80px);
+
+    }
+
+    li:nth-child(3) {
+        transform: rotate(135deg);
+    } */
+</style>
+
+<body>
+    <section>
+        <div class="box">
+            <span class="iconfont icon">&#xe715;</span>
+        </div>
+        <div>
+            <li style="--n:0">
+                <span class="iconfont icon">&#xe698;</span>
+            </li>
+            <li style="--n:1">
+                <span class="iconfont icon">&#xe611;</span>
+            </li>
+            <li style="--n:2">
+                <span class="iconfont icon">&#xe65e;</span>
+            </li>
+            <li style="--n:3">
+                <span class="iconfont icon">&#xe65c;</span>
+            </li>
+            <li style="--n:4">
+                <span class="iconfont icon">&#xe698;</span>
+            </li>
+            <li style="--n:5">
+                <span class="iconfont icon">&#xe65e;</span>
+            </li>
+            <li style="--n:6">
+                <span class="iconfont icon">&#xe698;</span>
+            </li>
+            <li style="--n:7">
+                <span class="iconfont icon">&#xe65c;</span>
+            </li>
+        </div>
+
+        <div class="bxo-active"></div>
+    </section>
+
+
+</body>
+<script>
+    let m = document.querySelector('.box');
+    m.onclick = function () {
+        // menu.classList.toggle('active');
+        m.classList.toggle('active')
+    }
+</script>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://codepen.io/aaroniker/pen/bGbxyxL</title>
+</head>
+<style>
+    .tabbar {
+        --primary: #275EFE;
+        --background: #fff;
+        --inactive: #99A3BA;
+        --shadow: rgba(18, 22, 33, .24);
+        --line: #CDD9ED;
+        background: var(--background);
+        box-shadow: 0 1px 4px -1px var(--shadow);
+        border-radius: 5px 5px 21px 21px;
+        width: 360px;
+        -webkit-tap-highlight-color: transparent;
+        overflow: hidden;
+    }
+
+    .tabbar ul {
+        --x: 54px;
+        margin: 0;
+        padding: 0 12px;
+        list-style: none;
+        display: grid;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .tabbar ul:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--x);
+        background: var(--primary);
+        width: 60px;
+        margin-left: -30px;
+        height: 40px;
+    }
+
+    .tabbar ul li {
+        position: relative;
+    }
+
+    .tabbar ul li:before,
+    .tabbar ul li:after {
+        content: "";
+        background: var(--background);
+        height: 44px;
+        width: 84px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -42px;
+    }
+
+    .tabbar ul li:before {
+        border-radius: 0 48% 0 0;
+    }
+
+    .tabbar ul li:after {
+        border-radius: 48% 0 0 0;
+    }
+
+    .tabbar ul li a {
+        padding: 20px 0;
+        display: block;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+        color: var(--primary);
+        transition: transform 0.2s ease;
+    }
+
+    .tabbar ul li a:active {
+        transform: scale(0.9);
+    }
+
+    .tabbar ul li a:before,
+    .tabbar ul li a:after {
+        content: "";
+        top: 0;
+        left: 50%;
+        position: absolute;
+        background: var(--primary);
+        border-radius: 1px;
+        width: 2px;
+        margin-left: -1px;
+        transform-origin: 50% 0;
+        transform: translateY(-14px) scaleX(0.6);
+    }
+
+    .tabbar ul li a:before {
+        height: 8px;
+    }
+
+    .tabbar ul li a:after {
+        height: 4px;
+    }
+
+    .tabbar ul li a div {
+        background: var(--inactive);
+        width: 24px;
+        height: 24px;
+        margin: 0 auto 4px auto;
+    }
+
+    .tabbar ul li a div:before {
+        --y: -100%;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: translateY(var(--y));
+        position: absolute;
+        transition: transform 0.4s linear;
+        background: var(--primary);
+    }
+
+    .tabbar ul li a span {
+        display: block;
+        font-weight: 500;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.36s linear;
+    }
+
+    .tabbar ul li.active:before {
+        -webkit-animation: before 1.1s ease;
+        animation: before 1.1s ease;
+    }
+
+    .tabbar ul li.active:after {
+        -webkit-animation: after 1.1s ease;
+        animation: after 1.1s ease;
+    }
+
+    .tabbar ul li.active a {
+        -webkit-animation: bounce 0.9s linear 0.3s;
+        animation: bounce 0.9s linear 0.3s;
+    }
+
+    .tabbar ul li.active a:before {
+        -webkit-animation: drop 0.4s linear 0.1s forwards;
+        animation: drop 0.4s linear 0.1s forwards;
+    }
+
+    .tabbar ul li.active a:after {
+        -webkit-animation: drop 0.5s linear 0.13s forwards;
+        animation: drop 0.5s linear 0.13s forwards;
+    }
+
+    .tabbar ul li.active a div:before {
+        --y: 0;
+        transition-delay: 0.3s;
+    }
+
+    .tabbar ul li.active a span {
+        opacity: 1;
+        transition-delay: 0.38s;
+    }
+
+    .tabbar ul li.calendar a div {
+        -webkit-mask-box-image: url("https://aaroniker.me/feather-icons/calendar.svg");
+        -webkit-mask: url("https://aaroniker.me/feather-icons/calendar.svg");
+        mask: url("https://aaroniker.me/feather-icons/calendar.svg");
+    }
+
+    .tabbar ul li.files a div {
+        -webkit-mask-box-image: url("https://aaroniker.me/feather-icons/file.svg");
+        -webkit-mask: url("https://aaroniker.me/feather-icons/file.svg");
+        mask: url("https://aaroniker.me/feather-icons/file.svg");
+    }
+
+    .tabbar ul li.notification a div {
+        -webkit-mask-box-image: url("https://aaroniker.me/feather-icons/bell.svg");
+        -webkit-mask: url("https://aaroniker.me/feather-icons/bell.svg");
+        mask: url("https://aaroniker.me/feather-icons/bell.svg");
+    }
+
+    .tabbar ul li.settings a div {
+        -webkit-mask-box-image: url("https://aaroniker.me/feather-icons/settings.svg");
+        -webkit-mask: url("https://aaroniker.me/feather-icons/settings.svg");
+        mask: url("https://aaroniker.me/feather-icons/settings.svg");
+    }
+
+    @-webkit-keyframes bounce {
+        40% {
+            transform: translateY(9px);
+        }
+
+        55% {
+            transform: translateY(-1px);
+        }
+
+        70% {
+            transform: translateY(4px);
+        }
+    }
+
+    @keyframes bounce {
+        40% {
+            transform: translateY(9px);
+        }
+
+        55% {
+            transform: translateY(-1px);
+        }
+
+        70% {
+            transform: translateY(4px);
+        }
+    }
+
+    @-webkit-keyframes drop {
+        50% {
+            transform: translateY(10px) scaleY(1.2) scaleX(0.5);
+        }
+
+        100% {
+            transform: translateY(20px) scaleY(0) scaleX(0.5);
+        }
+    }
+
+    @keyframes drop {
+        50% {
+            transform: translateY(10px) scaleY(1.2) scaleX(0.5);
+        }
+
+        100% {
+            transform: translateY(20px) scaleY(0) scaleX(0.5);
+        }
+    }
+
+    @-webkit-keyframes before {
+
+        45%,
+        55% {
+            transform: translateX(-41px);
+        }
+    }
+
+    @keyframes before {
+
+        45%,
+        55% {
+            transform: translateX(-41px);
+        }
+    }
+
+    @-webkit-keyframes after {
+
+        45%,
+        55% {
+            transform: translateX(41px);
+        }
+    }
+
+    @keyframes after {
+
+        45%,
+        55% {
+            transform: translateX(41px);
+        }
+    }
+
+    html {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+        box-sizing: inherit;
+    }
+
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        font-family: "Roboto", Arial;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #EEF4FF;
+    }
+
+    body .dribbble {
+        position: fixed;
+        display: block;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    body .dribbble img {
+        display: block;
+        height: 28px;
+    }
+</style>
+
+<body>
+
+    <nav class="tabbar">
+        <ul>
+            <li class="active calendar"><a href="">
+                    <div></div><span>Events</span>
+                </a></li>
+            <li class=" files"><a href="">
+                    <div></div><span>Files</span>
+                </a></li>
+            <li class=" notification"><a href="">
+                    <div></div><span>Notification</span>
+                </a></li>
+            <li class=" settings"><a href="">
+                    <div></div><span>Settings</span>
+                </a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

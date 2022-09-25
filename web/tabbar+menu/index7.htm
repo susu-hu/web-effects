@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接:https://codepen.io/milanraring/pen/rNawpaM</title>
+</head>
+<style>
+    .tabs {
+        --background: #FFFFFF;
+        --grey: #C9CBD5;
+        --primary: #4E29F0;
+        --primary-light: #725AFC;
+        --secondary: #FFD100;
+        --width: 300px;
+        --height: 75px;
+        --border-radius: var(--height);
+        background: var(--background);
+        width: var(--width);
+        height: var(--height);
+        padding: 0;
+        position: relative;
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        overflow: hidden;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .tabs label {
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .tabs label::before {
+        content: "";
+        height: 4px;
+        width: 4px;
+        border-radius: 0% 100% 50% 50%/0% 50% 50% 100%;
+        transform: scale(1, 1) rotate(45deg);
+        transform-origin: 50% 50%;
+        background: var(--primary-light);
+        display: block;
+        position: absolute;
+        top: -30px;
+    }
+
+    .tabs label svg {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tabs label svg .icon {
+        fill: var(--grey);
+    }
+
+    .tabs label svg .icon-border {
+        fill: #FFFFFF;
+        opacity: 0;
+    }
+
+    .tabs label svg .icon-fill {
+        opacity: 0;
+    }
+
+    .tabs input {
+        display: none;
+    }
+
+    .tabs input:checked+label::before {
+        -webkit-animation: drop-animation 0.35s ease-in both;
+        animation: drop-animation 0.35s ease-in both;
+    }
+
+    .tabs input:checked+label svg {
+        -webkit-animation: stretch-animation 0.5s ease-out 0.3s;
+        animation: stretch-animation 0.5s ease-out 0.3s;
+    }
+
+    .tabs input:checked+label svg .icon-border {
+        -webkit-animation: clip-animation-border 0.5s ease 0.3s forwards;
+        animation: clip-animation-border 0.5s ease 0.3s forwards;
+    }
+
+    .tabs input:checked+label svg .icon-fill {
+        -webkit-animation: clip-animation 0.5s ease 0.3s forwards;
+        animation: clip-animation 0.5s ease 0.3s forwards;
+    }
+
+    @-webkit-keyframes stretch-animation {
+        25% {
+            transform: scale3d(0.9, 1.2, 1);
+            margin-top: 10px;
+        }
+
+        75% {
+            transform: scale3d(1.1, 0.95, 1);
+        }
+    }
+
+    @keyframes stretch-animation {
+        25% {
+            transform: scale3d(0.9, 1.2, 1);
+            margin-top: 10px;
+        }
+
+        75% {
+            transform: scale3d(1.1, 0.95, 1);
+        }
+    }
+
+    @-webkit-keyframes drop-animation {
+        70% {
+            transform: scale(1, 2) rotate(45deg);
+            top: -7px;
+        }
+
+        100% {
+            transform: scale(1.5, 0.5) rotate(45deg);
+            top: 3px;
+        }
+    }
+
+    @keyframes drop-animation {
+        70% {
+            transform: scale(1, 2) rotate(45deg);
+            top: -7px;
+        }
+
+        100% {
+            transform: scale(1.5, 0.5) rotate(45deg);
+            top: 3px;
+        }
+    }
+
+    @-webkit-keyframes clip-animation {
+        from {
+            opacity: 1;
+            -webkit-clip-path: circle(0% at 50% -20%);
+            clip-path: circle(0% at 50% -20%);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-clip-path: circle(110% at top);
+            clip-path: circle(110% at top);
+        }
+    }
+
+    @keyframes clip-animation {
+        from {
+            opacity: 1;
+            -webkit-clip-path: circle(0% at 50% -20%);
+            clip-path: circle(0% at 50% -20%);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-clip-path: circle(110% at top);
+            clip-path: circle(110% at top);
+        }
+    }
+
+    @-webkit-keyframes clip-animation-border {
+        from {
+            opacity: 1;
+            -webkit-clip-path: circle(20% at 50% -20%);
+            clip-path: circle(20% at 50% -20%);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-clip-path: circle(130% at top);
+            clip-path: circle(130% at top);
+        }
+    }
+
+    @keyframes clip-animation-border {
+        from {
+            opacity: 1;
+            -webkit-clip-path: circle(20% at 50% -20%);
+            clip-path: circle(20% at 50% -20%);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-clip-path: circle(130% at top);
+            clip-path: circle(130% at top);
+        }
+    }
+
+    body {
+        background: #eeeef5;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body .socials {
+        position: fixed;
+        display: block;
+        left: 20px;
+        bottom: 20px;
+    }
+
+    body .socials>a {
+        display: block;
+        width: 30px;
+        opacity: 0.2;
+        transform: scale(var(--scale, 0.8));
+        transition: transform 0.3s cubic-bezier(0.38, -0.12, 0.24, 1.91);
+    }
+
+    body .socials>a:hover {
+        --scale: 1;
+    }
+</style>
+
+<body>
+    <div class="tabs">
+        <!-- TAB 1 -->
+        <input type="radio" name="tab" id="tab-01" checked />
+        <label for="tab-01">
+            <svg>
+                <use xlink:href="#icon-01" class="icon" />
+                <use xlink:href="#icon-01" class="icon-border" />
+                <use xlink:href="#icon-01-fill" class="icon-fill" />
+            </svg>
+        </label>
+        <!-- TAB 2 -->
+        <input type="radio" name="tab" id="tab-02" />
+        <label for="tab-02">
+            <svg>
+                <use xlink:href="#icon-02" class="icon" />
+                <use xlink:href="#icon-02" class="icon-border" />
+                <use xlink:href="#icon-02-fill" class="icon-fill" />
+            </svg>
+        </label>
+        <!-- TAB 3 -->
+        <input type="radio" name="tab" id="tab-03" />
+        <label for="tab-03">
+            <svg>
+                <use xlink:href="#icon-03" class="icon" />
+                <use xlink:href="#icon-03" class="icon-border" />
+                <use xlink:href="#icon-03-fill" class="icon-fill" />
+            </svg>
+        </label>
+        <!-- TAB 4 -->
+        <input type="radio" name="tab" id="tab-04" />
+        <label for="tab-04">
+            <svg>
+                <use xlink:href="#icon-04" class="icon" />
+                <use xlink:href="#icon-04" class="icon-border" />
+                <use xlink:href="#icon-04-fill" class="icon-fill" />
+            </svg>
+        </label>
+    </div>
+
+
+    <!-- SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-01">
+            <path
+                d="M25.81,11.94,24.75,3a3.3,3.3,0,0,0-3.18-3H4.43A3.3,3.3,0,0,0,1.25,3L.19,11.94A7.8,7.8,0,0,0,0,13.68v9.25A3,3,0,0,0,2.85,26H11V19a2,2,0,0,1,4,0v7h8.15A3,3,0,0,0,26,22.93V13.68A7.8,7.8,0,0,0,25.81,11.94Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-01-fill">
+            <path fill="var(--primary)"
+                d="M25.81,11.94,24.75,3a3.3,3.3,0,0,0-3.18-3H21A19.48,19.48,0,0,1,1.5,19C1,19,.5,19,0,18.92v4A3,3,0,0,0,2.85,26H11V19a2,2,0,0,1,4,0v7h8.15A3,3,0,0,0,26,22.93V13.68A7.8,7.8,0,0,0,25.81,11.94Z" />
+            <path fill="var(--secondary)"
+                d="M13,19h0a2,2,0,0,1,2,2v5a0,0,0,0,1,0,0H11a0,0,0,0,1,0,0V21A2,2,0,0,1,13,19Z" />
+            <path fill="var(--primary-light)"
+                d="M1.5,19A19.48,19.48,0,0,0,21,0H4.43A3.3,3.3,0,0,0,1.25,3L.19,11.94A7.8,7.8,0,0,0,0,13.68v5.24C.5,19,1,19,1.5,19Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-02">
+            <path
+                d="M13,0A13,13,0,0,0,3.14,21.45a2.67,2.67,0,0,0-.72,1.83A2.71,2.71,0,0,0,4.85,26v0H13A13,13,0,0,0,13,0ZM8,8h4a2,2,0,0,1,0,4H8A2,2,0,0,1,8,8Zm9,11H8a2,2,0,0,1,0-4h9a2,2,0,0,1,0,4Zm0-7a2,2,0,1,1,2-2A2,2,0,0,1,17,12Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-02-fill">
+            <rect fill="var(--secondary)" x="6" y="15" width="13" height="4" rx="2" />
+            <path fill="var(--primary)"
+                d="M20.74,2.57a19.45,19.45,0,0,1-2.12,6.27A2,2,0,0,1,19,10a2,2,0,0,1-2,2,1.85,1.85,0,0,1-.48-.07A19.49,19.49,0,0,1,13.3,15H17a2,2,0,0,1,0,4H8a1.94,1.94,0,0,1-1.48-.68,19.37,19.37,0,0,1-5,.68h0a12.87,12.87,0,0,0,1.66,2.45,2.67,2.67,0,0,0-.72,1.83A2.71,2.71,0,0,0,4.85,26v0H13A13,13,0,0,0,20.74,2.57Z" />
+            <path fill="var(--primary-light)"
+                d="M13,0A13,13,0,0,0,1.48,19h0a19.37,19.37,0,0,0,5-.68A2,2,0,0,1,6,17a2,2,0,0,1,2-2h5.3a19.49,19.49,0,0,0,3.22-3.07,2,2,0,1,1,2.1-3.09,19.45,19.45,0,0,0,2.12-6.27A12.94,12.94,0,0,0,13,0ZM12,12H8A2,2,0,0,1,8,8h4a2,2,0,0,1,0,4Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-03">
+            <path
+                d="M23.15,0,15,1V9a2,2,0,0,1-4,0V1.1L2.85,0A3,3,0,0,0,0,3.07V22.93A3,3,0,0,0,2.85,26l8.74-1.18a9.08,9.08,0,0,1,2.27,0L23.15,26A3,3,0,0,0,26,22.93V3.07A3,3,0,0,0,23.15,0Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-03-fill">
+            <path fill="var(--secondary)" d="M13.86,1.19a9.08,9.08,0,0,1-2.27,0L11,1.1V7a2,2,0,0,0,4,0V1Z" />
+            <path fill="var(--primary)"
+                d="M23.15,0,21,.28A19.48,19.48,0,0,1,1.5,19C1,19,.5,19,0,18.92v4A3,3,0,0,0,2.85,26l8.74-1.18a9.08,9.08,0,0,1,2.27,0L23.15,26A3,3,0,0,0,26,22.93V3.07A3,3,0,0,0,23.15,0Z" />
+            <path fill="var(--primary-light)"
+                d="M1.5,19A19.48,19.48,0,0,0,21,.28L15,1V9a2,2,0,0,1-4,0V1.1L2.85,0A3,3,0,0,0,0,3.07V18.92C.5,19,1,19,1.5,19Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-04">
+            <path
+                d="M26,13A13,13,0,1,0,3.14,21.45a2.67,2.67,0,0,0-.72,1.83A2.7,2.7,0,0,0,4.86,26l0,0H20.56l0,0c.11,0,.22,0,.33,0a2.72,2.72,0,0,0,2.72-2.72,2.67,2.67,0,0,0-.72-1.83A12.93,12.93,0,0,0,26,13ZM11,13a2,2,0,0,1-4,0V12a2,2,0,0,1,4,0Zm8,0a2,2,0,0,1-4,0V12a2,2,0,0,1,4,0Z" />
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="icon-04-fill">
+            <rect fill="var(--secondary)" x="7" y="11" width="4" height="4" rx="2" />
+            <rect fill="var(--secondary)" x="15" y="11" width="4" height="4" rx="2" />
+            <path fill="var(--primary)"
+                d="M26,13A13,13,0,0,0,20.74,2.57a19.32,19.32,0,0,1-2.93,7.6A2,2,0,0,1,19,12v1a2,2,0,0,1-3.93.49A19.45,19.45,0,0,1,1.5,19h0a12.87,12.87,0,0,0,1.66,2.45,2.67,2.67,0,0,0-.72,1.83A2.7,2.7,0,0,0,4.86,26l0,0H20.56l0,0c.11,0,.22,0,.33,0a2.72,2.72,0,0,0,2.72-2.72,2.67,2.67,0,0,0-.72-1.83A12.93,12.93,0,0,0,26,13Z" />
+            <path fill="var(--primary-light)"
+                d="M13,0A13,13,0,0,0,1.48,19h0a19.45,19.45,0,0,0,13.57-5.51A2,2,0,0,1,15,13V12a2,2,0,0,1,2.81-1.83,19.32,19.32,0,0,0,2.93-7.6A12.94,12.94,0,0,0,13,0ZM11,13a2,2,0,0,1-4,0V12a2,2,0,0,1,4,0Z" />
+        </symbol>
+    </svg>
+
+    <!--- ## DRIBBBLE + TWITTER ############# -->
+    <div class="socials">
+        <a class="dribbble" href="https://dribbble.com/shots/9325107-Tabbar-animation-CodePen" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 32">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="black"
+                    d="M16 0C7.16703 0 0 7.16703 0 16C0 24.833 7.16703 32 16 32C24.8156 32 32 24.833 32 16C32 7.16703 24.8156 0 16 0ZM26.5683 7.37527C28.4772 9.70065 29.6226 12.6681 29.6573 15.8785C29.2061 15.7918 24.6941 14.872 20.1475 15.4447C20.0434 15.2191 19.9566 14.9761 19.8525 14.7332C19.5748 14.0738 19.2625 13.397 18.9501 12.7549C23.9826 10.7072 26.2733 7.75705 26.5683 7.37527ZM16 2.36009C19.4707 2.36009 22.6464 3.66161 25.0586 5.7961C24.8156 6.14317 22.7505 8.90239 17.8915 10.7245C15.6529 6.61171 13.1714 3.24512 12.7896 2.72451C13.8134 2.48156 14.8894 2.36009 16 2.36009ZM10.1866 3.64425C10.551 4.13015 12.9805 7.5141 15.2538 11.5401C8.86768 13.2408 3.22777 13.2061 2.62039 13.2061C3.50542 8.9718 6.36876 5.44902 10.1866 3.64425ZM2.32538 16.0174C2.32538 15.8785 2.32538 15.7397 2.32538 15.6009C2.9154 15.6182 9.54447 15.705 16.3644 13.6573C16.7636 14.4208 17.128 15.2017 17.4751 15.9826C17.3015 16.0347 17.1106 16.0868 16.9371 16.1388C9.89154 18.4121 6.14317 24.6247 5.8308 25.1453C3.6616 22.7332 2.32538 19.5228 2.32538 16.0174ZM16 29.6746C12.8416 29.6746 9.92625 28.5987 7.61822 26.7939C7.86117 26.2907 10.6377 20.9458 18.3427 18.256C18.3774 18.2386 18.3948 18.2386 18.4295 18.2213C20.3557 23.2017 21.1367 27.3839 21.3449 28.5813C19.6963 29.2928 17.8915 29.6746 16 29.6746ZM23.6182 27.3319C23.4794 26.4989 22.7505 22.5076 20.9631 17.5965C25.2495 16.9197 28.9978 18.0304 29.4664 18.1866C28.8764 21.987 26.6898 25.2668 23.6182 27.3319Z"
+                    fill="#EA4C89"></path>
+            </svg></a>
+        <a class="twitter" href="https://twitter.com/MilanRaring" target="_blank"><svg
+                xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 72 72">
+                <path fill="black"
+                    d="M67.812 16.141a26.246 26.246 0 0 1-7.519 2.06 13.134 13.134 0 0 0 5.756-7.244 26.127 26.127 0 0 1-8.313 3.176A13.075 13.075 0 0 0 48.182 10c-7.229 0-13.092 5.861-13.092 13.093 0 1.026.118 2.021.338 2.981-10.885-.548-20.528-5.757-26.987-13.679a13.048 13.048 0 0 0-1.771 6.581c0 4.542 2.312 8.551 5.824 10.898a13.048 13.048 0 0 1-5.93-1.638c-.002.055-.002.11-.002.162 0 6.345 4.513 11.638 10.504 12.84a13.177 13.177 0 0 1-3.449.457c-.846 0-1.667-.078-2.465-.231 1.667 5.2 6.499 8.986 12.23 9.09a26.276 26.276 0 0 1-16.26 5.606A26.21 26.21 0 0 1 4 55.976a37.036 37.036 0 0 0 20.067 5.882c24.083 0 37.251-19.949 37.251-37.249 0-.566-.014-1.134-.039-1.694a26.597 26.597 0 0 0 6.533-6.774z">
+                </path>
+            </svg></a>
+    </div>
+</body>
+
+</html>
