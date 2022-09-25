@@ -13,13 +13,30 @@
     section {
         width: 200px;
         height: 200px;
-        background: #bd9d62;
-        border-radius: 50%;
         position: relative;
     }
 
+    .container {
+        width: 200px;
+        height: 200px;
+        background: #bd9d62;
+        border-radius: 50%;
+        position: relative;
+        opacity: 0;
+        transform: scale(0);
+        visibility: hidden;
+        transition: all 0.5s;
+    }
+
+    .container.active {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+
+    }
+
     .icon {
-        font-size: 35px;
+        font-size: 28px;
         transition: all 0.5s;
     }
 
@@ -45,14 +62,11 @@
     li {
         width: 40px;
         height: 40px;
-        /* border: 1px solid red; */
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        /* top: calc(35px - 20px);
-        left: calc(100px - 20px); */
         top: calc(100px - 20px);
         left: calc(100px - 20px);
         transition: all 0.5s;
@@ -61,15 +75,38 @@
 
     li span {
         transform: rotate(calc(-45deg * var(--n)));
+        transition: all 0.5s;
+    }
+
+    .box-active {
+        position: absolute;
+        width: 100px;
+        height: 1px;
+        background: transparent;
+        pointer-events: none;
+        transition: all 0.5s;
+        transform-origin: right;
+        left: calc(50% + 2.5px);
+    }
+
+    .box-active::before {
+        content: '';
+        position: absolute;
+        top: -27.5px;
+        left: 72px;
+        width: 55px;
+        height: 55px;
+        background: #000;
+        box-shadow: 0 0 0 6px orange;
+        border-radius: 50%;
+        transition: all 0.5s;
+        /* opacity: 0; */
     }
 </style>
 
 <body>
     <section>
-        <div class="box">
-            <span class="iconfont icon">&#xe715;</span>
-        </div>
-        <div>
+        <div class="container">
             <li style="--n:0">
                 <span class="iconfont icon">&#xe698;</span>
             </li>
@@ -95,18 +132,28 @@
                 <span class="iconfont icon">&#xe65c;</span>
             </li>
         </div>
-
-        <div class="bxo-active"></div>
+        <div class="box">
+            <span class="iconfont icon">&#xe715;</span>
+        </div>
+        <div class="box-active"></div>
     </section>
-
-
 </body>
 <script>
-    let m = document.querySelector('.box');
+    let m = document.querySelector('.box'), c = document.querySelector('.container'), ls = document.querySelectorAll('li');
+    console.log(ls)
     m.onclick = function () {
-        // menu.classList.toggle('active');
+        c.classList.toggle('active');
         m.classList.toggle('active')
     }
+    const clickActive = function () {
+        ls.forEach(item => {
+            item.classList.remove('active');
+        })
+        this.classList.add('active')
+    }
+    ls.forEach(item => {
+        item.addEventListener('click', clickActive);
+    })
 </script>
 
 </html>
