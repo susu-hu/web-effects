@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        background: #fff;
+        height: 400px;
+        width: 400px;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    div>div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100px;
+        height: 100px;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background: orange;
+        border-radius: 50%;
+    }
+
+    div>div:nth-child(1) {
+        transform: translate(-50%, -50%) rotate(0deg) translate(-125px);
+    }
+
+    div>div:nth-child(2) {
+        transform: translate(-50%, -50%) rotate(72deg) translate(-125px);
+    }
+
+    div>div:nth-child(3) {
+        transform: translate(-50%, -50%) rotate(144deg) translate(-125px);
+    }
+
+    div>div:nth-child(4) {
+        transform: translate(-50%, -50%) rotate(216deg) translate(-125px);
+    }
+
+    div>div:nth-child(5) {
+        transform: translate(-50%, -50%) rotate(288deg) translate(-125px);
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+
+</html>

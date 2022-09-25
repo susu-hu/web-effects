@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .circle-layout {
+        --primary-color: #2B87D1;
+        --border-width: 2px;
+        --dot-r: 3px;
+        font-weight: bold;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+
+    .circle-layout::before,
+    .circle-layout>* {
+        width: var(--d);
+        height: var(--d);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .circle-layout::before {
+        content: attr(tag);
+        background: var(--primary-color);
+        color: #FFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --d: 60px;
+    }
+
+    .circle-layout>:not([tag]) {
+        --d: calc(var(--r) * 2 - var(--border-width));
+        border: var(--border-width) solid var(--primary-color);
+    }
+
+    .circle-layout>[tag] {
+        --tx: 0;
+        --ty: 0;
+        --tpad: 0px;
+        background: var(--primary-color);
+        --d: calc(var(--dot-r) * 2);
+        transform:
+            translate(-50%, -50%) rotate(var(--angle)) translate(var(--r)) rotate(calc(var(--angle) * -1));
+    }
+
+    .circle-layout>[tag]::before {
+        content: attr(tag);
+        padding: var(--tpad);
+        position: absolute;
+        transform: translate(calc(var(--d) - (var(--d) + 100%) * var(--tx)),
+                calc(var(--d) - (var(--d) + 100%) * var(--ty)));
+    }
+</style>
+
+<body>
+    <div tag="前端" class="circle-layout">
+        <div style="--r: 60px"></div>
+        <div style="--r: 110px; border-style: dashed"></div>
+        <div tag="css" style="--r: 60px; --angle: -90deg; --tx: 0.5; --ty: 1"></div>
+        <div tag="js" style="--r: 60px; --angle: 0deg; --tx: 0; --ty: 0.5"></div>
+        <div tag="html" style="--r: 60px; --angle: 90deg; --tx: 0.5; --ty: 0"></div>
+        <div tag="react" style="--r: 110px; --angle: -135deg; --tx: 1; --ty: 1"></div>
+        <div tag="vue" style="--r: 110px; --angle: 45deg; --tx: 0; --ty: 0"></div>
+        <div tag="angular" style="--r: 110px; --angle: 135deg; --tx: 1; --ty: 0"></div>
+    </div>
+</body>
+
+</html>
