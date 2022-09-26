@@ -68,6 +68,10 @@
         background: #222;
     }
 
+    .box span {
+        transform: scale(1.5);
+    }
+
     .box.active span {
         transform: rotate(135deg);
     }
@@ -87,10 +91,7 @@
         transform: rotate(calc(45deg * var(--n))) translateX(-70px);
     }
 
-    li span {
-        transform: rotate(calc(-45deg * var(--n)));
-        transition: all 0.5s;
-    }
+
 
     .box-active {
         position: absolute;
@@ -115,10 +116,26 @@
         transform: rotate(calc(45deg * var(--n))) translateX(-95px);
     }
 
+    li span {
+        transform: rotate(calc(-45deg * var(--n)));
+        transition: all 0.5s;
+    }
+
+    li.active span {
+        animation: scale 1s ease-in-out;
+    }
+
     li.active~.box-active {
         transform: rotate(calc(45deg * var(--n))) translateX(-95px);
         opacity: 1;
         visibility: visible;
+
+    }
+
+    @keyframes scale {
+        100% {
+            transform: scale(1.9);
+        }
     }
 </style>
 
