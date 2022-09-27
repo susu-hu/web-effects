@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>渐变画铅笔 参考链接：http://www.bootstrapmb.com/item/9135</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  html,
+  body {
+    --bg: #222;
+    --black: black;
+    --white: white;
+    --pink: #eca3a2;
+    --gray: #c7d5e1;
+    --d-yellow: #f7c457;
+    --m-yellow: #fbcb66;
+    --yellow: #fbd878;
+    --cream: #f9eee1;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+    margin: 0;
+    height: 50vh;
+    font-size: 1.3vw;
+    position: relative;
+    background-color: var(--white);
+    animation: draw 7s infinite linear;
+
+  }
+
+  @keyframes draw {
+
+    100% {
+
+      transform: rotate(360deg);
+
+    }
+
+  }
+
+  div::before {
+
+    content: "";
+    position: absolute;
+    width: 27em;
+    height: 27em;
+    border-radius: 50%;
+    border: .5em solid;
+    border-color: var(--black) var(--black) transparent transparent;
+    transform: rotate(45.5deg);
+
+  }
+
+  div::after {
+
+    content: "";
+    width: 5.2em;
+    height: 28.7em;
+    position: absolute;
+    left: calc(50% - 2.7em);
+    border-radius: 1em 1em 0 0;
+    background-repeat: no-repeat;
+
+    background-image:
+
+      linear-gradient(to top, var(--pink) 100%, transparent 0),
+      linear-gradient(to top, var(--gray) 100%, transparent 0),
+      linear-gradient(to right, var(--d-yellow) 33.33%, var(--m-yellow) 0, var(--m-yellow) 66.66%, var(--yellow) 0),
+      linear-gradient(73.5deg, var(--white) 13.1%, var(--cream) 14.1%, var(--cream) 28%, transparent 29%),
+      linear-gradient(-73.2deg, var(--white) 13.1%, var(--cream) 14.1%, var(--cream) 28%, transparent 29%),
+      linear-gradient(var(--cream) 100%, transparent 0),
+      linear-gradient(73.5deg, transparent 13.1%, var(--black) 14.1%, var(--black) 28%, transparent 29%),
+      linear-gradient(-73.2deg, transparent 13.1%, var(--black) 14.1%, var(--black) 28%, transparent 29%);
+
+
+    background-size:
+
+      100% 12.5%,
+      100% 14%,
+      100% 56.3%,
+      100% 76.3%,
+      100% 76.3%,
+      42% 66.3%,
+      26.9% 98%,
+      26.9% 98%;
+
+    background-position:
+
+      0 0,
+      0 14%,
+      0 30%,
+      0 50%,
+      0 50%,
+      50% 50%,
+      33% 28%,
+      66% 28%;
+
+  }
+
+
+  @media screen and (max-width: 36em) {
+    body {
+      font-size: 2.8vw;
+    }
+  }
+</style>
+
+<body>
+  <div></div>
+</body>
+
+</html>

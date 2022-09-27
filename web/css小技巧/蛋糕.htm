@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：http://www.bootstrapmb.com/item/12814</title>
+</head>
+<style>
+  :root {
+    --zoom: 100;
+    --animation-speed: 150;
+    --animation-state: running;
+    --float-duration: 1.4s;
+    --tilt-duration: 1.2s;
+    --slide-duration: .6s;
+    --slide-max-exposure: 72%;
+    --mass: 10.5rem;
+    --cake-initial-position: 46%;
+    --cake-end-position: 50%;
+    --cake-tilt: -2deg;
+    --cake-initial-shadow: .8;
+    --cake-end-shadow: 1;
+    --cake-shadow-rotate: 40deg;
+    --cake-shadow-offset: 230rem;
+    --cake-shadow-blur: 15rem
+  }
+
+  @-webkit-keyframes cake-shadow {
+    to {
+      transform: var(--shadow-transform) scale(var(--cake-end-shadow))
+    }
+  }
+
+  @keyframes cake-shadow {
+    to {
+      transform: var(--shadow-transform) scale(var(--cake-end-shadow))
+    }
+  }
+
+  @-webkit-keyframes cake-float {
+    to {
+      top: var(--cake-end-position)
+    }
+  }
+
+  @keyframes cake-float {
+    to {
+      top: var(--cake-end-position)
+    }
+  }
+
+  @-webkit-keyframes cake-tilt {
+    to {
+      transform: rotate(var(--cake-tilt))
+    }
+  }
+
+  @keyframes cake-tilt {
+    to {
+      transform: rotate(var(--cake-tilt))
+    }
+  }
+
+  :root {
+    --unit: 1vmin;
+    --available-screen-min: 665;
+    --px: calc(var(--zoom) *(var(--unit) / var(--available-screen-min)));
+    --clip-path-top: polygon(75% 21%, 91.7% 59%, 100% 100%, 0 100%, 55.3% 0);
+    --clip-path-side: polygon(0% .3%, 100% 1.2%, 93.7% 91%, 5.6% 98.4%)
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    touch-action: none;
+    background-color: #fff
+  }
+
+  * {
+    font-size: calc(1 * var(--px))
+  }
+
+  label {
+    font-size: 0 !important
+  }
+
+  .slide,
+  .slide div,
+  .slide div::before,
+  .slide div::after {
+    transform-style: preserve-3d;
+    background-repeat: no-repeat
+  }
+
+  label {
+    order: 2
+  }
+
+  input {
+    order: 1
+  }
+
+  input[type="radio"] {
+    border-width: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important
+  }
+
+  #controls {
+    position: absolute;
+    font-size: 0;
+    z-index: 500;
+    left: 50%;
+    bottom: max(6rem, 90px);
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    place-content: center
+  }
+
+  #controls label {
+    --diameter: max(64rem, 28px);
+    cursor: pointer;
+    position: relative;
+    width: var(--diameter);
+    height: var(--diameter);
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    transform: scale(1);
+    transition: all cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms;
+    -webkit-tap-highlight-color: transparent
+  }
+
+  #controls label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--p-color-1);
+    transform: scale(var(--s, 0.8));
+    transition: inherit;
+    box-shadow: var(--sb, 0 0 0 0 transparent), 0 0 0 0 transparent
+  }
+
+  @media(orientation:landscape) {
+    #controls {
+      --landscape-factor: 1;
+      left: 30rem;
+      bottom: 50%;
+      transform: translateY(50%);
+      width: auto;
+      height: 100%;
+      flex-direction: column
+    }
+  }
+
+  @media(orientation:portrait) {
+    #controls label {
+      margin-inline: 3rem !important
+    }
+  }
+
+  label:nth-of-type(1) {
+    --p-color-2: hsl(42, 100%, 91%);
+    --p-color-1: hsl(3, 74%, 28%)
+  }
+
+  label:nth-of-type(2) {
+    --p-color-1: hsl(24, 100%, 56%);
+    --p-color-2: hsl(29, 88%, 77%)
+  }
+
+  label:nth-of-type(3) {
+    --p-color-2: #ffe6a3;
+    --p-color-1: hsl(18, 100%, 71%)
+  }
+
+  label:nth-of-type(4) {
+    --p-color-1: hsl(18, 62%, 27%);
+    --p-color-2: hsl(19, 62%, 37%)
+  }
+
+  label:nth-of-type(5) {
+    --p-color-1: hsl(274, 45%, 40%);
+    --p-color-2: hsl(21, 41%, 87%)
+  }
+
+  label:nth-of-type(6) {
+    --p-color-1: hsl(157, 24%, 29%);
+    --p-color-2: hsl(42, 84%, 78%)
+  }
+
+  main,
+  .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+  }
+
+  .slide {
+    transition: all ease-out calc(var(--slide-duration) *(100 / var(--animation-speed)));
+    transition-delay: calc(var(--slide-duration) *(100 / var(--animation-speed)));
+    -webkit-clip-path: circle(0% at center);
+    clip-path: circle(0% at center)
+  }
+
+  .flavor:nth-of-type(1):checked~main>div:nth-of-type(1),
+  .flavor:nth-of-type(2):checked~main>div:nth-of-type(2),
+  .flavor:nth-of-type(3):checked~main>div:nth-of-type(3),
+  .flavor:nth-of-type(4):checked~main>div:nth-of-type(4),
+  .flavor:nth-of-type(5):checked~main>div:nth-of-type(5),
+  .flavor:nth-of-type(6):checked~main>div:nth-of-type(6) {
+    transition-delay: 0ms;
+    -webkit-clip-path: circle(var(--slide-max-exposure) at center);
+    clip-path: circle(var(--slide-max-exposure) at center);
+    z-index: 100
+  }
+
+  .flavor:checked~#controls label {
+    opacity: .6
+  }
+
+  .flavor:nth-of-type(1):checked~#controls label:nth-of-type(1),
+  .flavor:nth-of-type(2):checked~#controls label:nth-of-type(2),
+  .flavor:nth-of-type(3):checked~#controls label:nth-of-type(3),
+  .flavor:nth-of-type(4):checked~#controls label:nth-of-type(4),
+  .flavor:nth-of-type(5):checked~#controls label:nth-of-type(5),
+  .flavor:nth-of-type(6):checked~#controls label:nth-of-type(6) {
+    --s: 1;
+    --sb: inset 0 0 0 max(2rem, 2px) rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    margin-block: calc(var(--landscape-factor, 0) * 19rem)
+  }
+
+  .flavor:nth-of-type(1):focus-visible~#controls label:nth-of-type(1)::before,
+  .flavor:nth-of-type(2):focus-visible~#controls label:nth-of-type(2)::before,
+  .flavor:nth-of-type(3):focus-visible~#controls label:nth-of-type(3)::before,
+  .flavor:nth-of-type(4):focus-visible~#controls label:nth-of-type(4)::before,
+  .flavor:nth-of-type(5):focus-visible~#controls label:nth-of-type(5)::before,
+  .flavor:nth-of-type(6):focus-visible~#controls label:nth-of-type(6)::before {
+    box-shadow: var(--sb), 0 0 9rem 1rem var(--p-color-1)
+  }
+
+  .pastry,
+  .shadow {
+    position: absolute;
+    left: 50%
+  }
+
+  .slide-redvelvet {
+    background-color: #ffcdb2;
+    --color-shadow: #e8ab8a
+  }
+
+  .slide-cheese {
+    background-image: radial-gradient(circle at center, #fff1ea, #e8dad3);
+    --color-shadow: #d4c2ba
+  }
+
+  .slide-strawberry {
+    background-color: #ffc2a4;
+    --color-shadow: rgba(255, 97, 82, 0.3)
+  }
+
+  .slide-chocolate {
+    background-color: hsl(34, 47%, 86%);
+    --color-shadow: hsl(35, 46%, 76%)
+  }
+
+  .slide-blueberry {
+    background-color: white;
+    --color-shadow: hsl(0, 0%, 72%)
+  }
+
+  .slide-lemon {
+    background: #eee;
+    --color-shadow: hsl(0, 0%, 70%)
+  }
+
+  .pastry {
+    background-color: blue;
+    border-radius: 50%;
+    top: var(--cake-initial-position);
+    width: var(--mass);
+    height: var(--mass);
+    transform: rotate(0);
+    -webkit-animation: cake-float ease-in-out calc(var(--float-duration) *(100 / var(--animation-speed))) alternate infinite, cake-tilt ease calc(var(--tilt-duration) *(100 / var(--animation-speed))) alternate infinite;
+    animation: cake-float ease-in-out calc(var(--float-duration) *(100 / var(--animation-speed))) alternate infinite, cake-tilt ease calc(var(--tilt-duration) *(100 / var(--animation-speed))) alternate infinite;
+    -webkit-animation-play-state: var(--animation-state);
+    animation-play-state: var(--animation-state)
+  }
+
+  .shadow {
+    top: calc(50%+var(--cake-shadow-offset));
+    width: 280rem;
+    height: 75rem;
+    border-radius: 50%;
+    background: var(--color-shadow);
+    --shadow-transform: translate(-50%, -50%) rotateX(var(--cake-shadow-rotate));
+    transform: var(--shadow-transform) scale(var(--cake-initial-shadow));
+    filter: blur(var(--cake-shadow-blur));
+    -webkit-animation: cake-shadow ease-in-out calc(var(--float-duration) *(100 / var(--animation-speed))) alternate infinite;
+    animation: cake-shadow ease-in-out calc(var(--float-duration) *(100 / var(--animation-speed))) alternate infinite;
+    -webkit-animation-play-state: var(--animation-state);
+    animation-play-state: var(--animation-state)
+  }
+
+  .slide .top {
+    position: absolute;
+    left: -166.2rem;
+    bottom: 7.5rem;
+    width: 347.6rem;
+    height: 140rem;
+    transform: rotate(-18.5deg);
+    transform-origin: left bottom
+  }
+
+  .slide-redvelvet .top::before,
+  .slide-redvelvet .top::after,
+  .slide-redvelvet .fruit::before,
+  .slide-redvelvet .fruit::after,
+  .slide-redvelvet .fruit .cream::before,
+  .slide-redvelvet .fruit .cream::after,
+  .slide-redvelvet .cherry-base::before,
+  .slide-redvelvet .cherry-base::after,
+  .slide-redvelvet .cherry-base .gloss::before,
+  .slide-redvelvet .cherry-base .gloss::after,
+  .slide-redvelvet .side::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-redvelvet .cherry-top,
+  .slide-redvelvet .fruit,
+  .slide-redvelvet .fruit .cream,
+  .slide-redvelvet .cherry-base,
+  .slide-redvelvet .side,
+  .slide-redvelvet .side .border,
+  .slide-redvelvet .side .stripes,
+  .slide-redvelvet .side .cream {
+    position: absolute
+  }
+
+  .slide-redvelvet .side .border,
+  .slide-redvelvet .side .stripes,
+  .slide-redvelvet .side .cream {
+    left: 0
+  }
+
+  .slide-redvelvet .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(hsl(45, 100%, 85%), hsl(2, 79.7%, 29%)), linear-gradient(hsl(45, 100%, 95%), hsl(45, 100%, 93%));
+    background-size: 100% 6rem, 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-redvelvet .top::after {
+    right: 61rem;
+    top: 46rem;
+    width: 159rem;
+    height: 77rem;
+    background-color: hsl(22, 83.3%, 92.9%);
+    transform: rotate(1deg);
+    filter: blur(16rem);
+    border-radius: 50%
+  }
+
+  .slide-redvelvet .cherry-top {
+    left: 85rem;
+    top: 27rem;
+    width: 53rem;
+    height: 77rem;
+    border-radius: 50%;
+    transform: rotate(14deg);
+    box-shadow: -4rem 0 0 0 hsl(2.7, 73.7%, 29.8%), -6rem 0 0 0 hsla(349, 82%, 49%, 0.1)
+  }
+
+  .slide-redvelvet .fruit {
+    right: 65rem;
+    top: -26rem;
+    width: 164rem;
+    height: 158rem;
+    transform: rotate(18.5deg) scale(1.1);
+    z-index: 5
+  }
+
+  .slide-redvelvet .fruit::before {
+    left: 25rem;
+    bottom: 8rem;
+    width: 122rem;
+    height: 56rem;
+    border-radius: 50%;
+    background-color: hsl(45, 100%, 90%);
+    z-index: -1;
+    filter: blur(7rem)
+  }
+
+  .slide-redvelvet .fruit::after {
+    left: 49rem;
+    bottom: 52rem;
+    width: 66rem;
+    height: 29rem;
+    border-radius: 50%;
+    box-shadow: 0 11rem 0 10rem hsl(45, 100%, 96%)
+  }
+
+  .slide-redvelvet .fruit .cream {
+    left: 27rem;
+    bottom: 15rem;
+    width: 112rem;
+    height: 57rem;
+    background: hsl(45, 100%, 93%);
+    box-shadow: 0 0 0 1px hsla(24, 71%, 85%, 0.1);
+    border-radius: 50%
+  }
+
+  .slide-redvelvet .fruit .cream::before {
+    left: 13rem;
+    bottom: 20rem;
+    width: 82rem;
+    height: 50rem;
+    background: hsl(46, 100%, 96%);
+    border-radius: 50%
+  }
+
+  .slide-redvelvet .fruit .cream::after {
+    left: 4rem;
+    bottom: 9rem;
+    width: 96rem;
+    height: 50rem;
+    background: hsl(46, 100%, 96%);
+    border-radius: 50%
+  }
+
+  .slide-redvelvet .cherry-base {
+    left: 54rem;
+    bottom: 45rem;
+    width: 57rem;
+    height: 50rem
+  }
+
+  .slide-redvelvet .cherry-base::before {
+    left: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(5.9, 71.7%, 44.3%);
+    transform: rotate(-24deg);
+    box-shadow: 0 0 0 1px hsla(349, 82%, 51%, 0.1)
+  }
+
+  .slide-redvelvet .cherry-base::after {
+    right: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(5.9, 71.7%, 44.3%);
+    transform: rotate(24deg);
+    box-shadow: 0 0 0 1px hsla(349, 82%, 51%, 0.1)
+  }
+
+  .slide-redvelvet .cherry-base .gloss {
+    position: relative;
+    z-index: 2
+  }
+
+  .slide-redvelvet .cherry-base .gloss::before {
+    left: 20rem;
+    top: 16rem;
+    width: 33rem;
+    height: 16rem;
+    background-color: transparent;
+    border-radius: 50%;
+    transform: rotate(-18deg);
+    filter: blur(2rem);
+    box-shadow: 1px 7px 0 0 hsl(5.9, 71.7%, 57.3%)
+  }
+
+  .slide-redvelvet .cherry-base .gloss::after {
+    left: 12rem;
+    top: 7rem;
+    width: 11rem;
+    height: 14rem;
+    background-color: hsl(5.9, 71.7%, 57.3%);
+    border-radius: 50%;
+    transform: rotate(41deg);
+    filter: blur(2rem)
+  }
+
+  .slide-redvelvet .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to left, hsl(7, 99%, 64%), hsl(7, 99%, 68%));
+    background-size: 100% 100%
+  }
+
+  .slide-redvelvet .side .border {
+    top: 0;
+    width: 101%;
+    height: 34rem;
+    background-image: linear-gradient(0deg, hsl(3, 74%, 33%), hsl(3, 74%, 24%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 12rem 5rem hsl(3, 74%, 33%)
+  }
+
+  .slide-redvelvet .side .stripes {
+    top: 98rem;
+    width: 100%;
+    height: 83rem;
+    background-image: linear-gradient(90deg, hsl(6, 72%, 46%), hsl(6, 72%, 38%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 5rem 3rem hsl(6, 72%, 41%)
+  }
+
+  .slide-redvelvet .side .cream {
+    bottom: 21rem;
+    width: 100%;
+    height: 33rem;
+    background-image: linear-gradient(90deg, hsl(6, 72%, 46%), hsl(6, 72%, 38%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 18rem 4rem hsl(6, 72%, 37%);
+    transform-origin: bottom right;
+    transform: rotate(-3deg)
+  }
+
+  .slide-redvelvet .side::after {
+    left: 2rem;
+    top: 44rem;
+    width: 2rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: hsla(5.9, 71.7%, 41.6%, 0.37);
+    box-shadow: 337rem 39rem 0 0rem currentColor, 111rem 21rem 0 1rem currentColor, 2rem 178rem 0 0rem currentColor, 305rem 182rem 0 1rem currentColor, 0rem 24rem 0 0rem currentColor, 315rem 97rem 0 0rem currentColor, 71rem 120rem 0 1rem currentColor, 49rem 260rem 0 1rem currentColor, 40rem 42rem 0 0rem currentColor, 266rem 102rem 0 1rem currentColor, 166rem 30rem 0 1rem currentColor, 367rem 295rem 0 1rem currentColor, 256rem 113rem 0 1rem currentColor, 93rem 271rem 0 0rem currentColor, 128rem 27rem 0 0rem currentColor, 46rem 158rem 0 0rem currentColor, 75rem 215rem 0 1rem currentColor, 171rem 210rem 0 0rem currentColor, 306rem 28rem 0 0rem currentColor, 352rem 111rem 0 1rem currentColor, 147rem 83rem 0 0rem currentColor, 163rem 184rem 0 1rem currentColor, 175rem 143rem 0 0rem currentColor, 190rem 288rem 0 0rem currentColor, 73rem 99rem 0 1rem currentColor, 208rem 267rem 0 0rem currentColor, 162rem 198rem 0 0rem currentColor, 204rem 282rem 0 0rem currentColor, 213rem 215rem 0 1rem currentColor, 166rem 10rem 0 1rem currentColor, 322rem 77rem 0 1rem currentColor, 242rem 46rem 0 0rem currentColor, 328rem 133rem 0 0rem currentColor, 275rem 188rem 0 1rem currentColor, 137rem 33rem 0 1rem currentColor, 324rem 118rem 0 0rem currentColor, 342rem 180rem 0 0rem currentColor, 303rem 161rem 0 0rem currentColor, 270rem 102rem 0 1rem currentColor, 15rem 162rem 0 1rem currentColor, 116rem 6rem 0 1rem currentColor, 311rem 287rem 0 0rem currentColor, 183rem 134rem 0 1rem currentColor, 168rem 161rem 0 1rem currentColor, 8rem 20rem 0 0rem currentColor, 358rem 86rem 0 0rem currentColor, 324rem 259rem 0 1rem currentColor, 23rem 24rem 0 1rem currentColor, 272rem 50rem 0 0rem currentColor, 83rem 201rem 0 1rem currentColor, 298rem 190rem 0 0rem currentColor, 232rem 289rem 0 1rem currentColor, 32rem 132rem 0 0rem currentColor, 38rem 107rem 0 1rem currentColor, 178rem 228rem 0 1rem currentColor, 206rem 58rem 0 0rem currentColor, 247rem 13rem 0 0rem currentColor, 80rem 255rem 0 0rem currentColor, 221rem 185rem 0 1rem currentColor, 245rem 56rem 0 1rem currentColor, 15rem 281rem 0 1rem currentColor, 170rem 57rem 0 1rem currentColor, 94rem 115rem 0 1rem currentColor, 202rem 191rem 0 0rem currentColor, 222rem 227rem 0 0rem currentColor, 128rem 35rem 0 0rem currentColor, 335rem 161rem 0 1rem currentColor, 58rem 175rem 0 1rem currentColor, 8rem 63rem 0 1rem currentColor, 365rem 293rem 0 0rem currentColor, 300rem 263rem 0 1rem currentColor, 239rem 13rem 0 1rem currentColor, 155rem 267rem 0 1rem currentColor, 351rem 145rem 0 0rem currentColor, 34rem 295rem 0 0rem currentColor, 70rem 33rem 0 0rem currentColor, 360rem 173rem 0 1rem currentColor, 147rem 283rem 0 1rem currentColor, 26rem 207rem 0 1rem currentColor, 42rem 290rem 0 1rem currentColor, 113rem 186rem 0 1rem currentColor, 167rem 177rem 0 1rem currentColor, 318rem 228rem 0 1rem currentColor, 36rem 0rem 0 1rem currentColor, 95rem 121rem 0 1rem currentColor, 97rem 11rem 0 0rem currentColor, 48rem 39rem 0 0rem currentColor, 281rem 179rem 0 1rem currentColor, 179rem 178rem 0 1rem currentColor, 130rem 64rem 0 1rem currentColor, 365rem 154rem 0 0rem currentColor, 89rem 98rem 0 0rem currentColor, 7rem 3rem 0 1rem currentColor, 94rem 194rem 0 1rem currentColor, 80rem 98rem 0 1rem currentColor, 265rem 295rem 0 0rem currentColor, 51rem 250rem 0 1rem currentColor, 218rem 124rem 0 1rem currentColor, 299rem 145rem 0 0rem currentColor, 47rem 238rem 0 1rem currentColor, 45rem 55rem 0 0rem currentColor, 275rem 297rem 0 0rem currentColor, 309rem 33rem 0 1rem currentColor, 305rem 192rem 0 0rem currentColor, 248rem 291rem 0 1rem currentColor, 193rem 95rem 0 1rem currentColor, 60rem 295rem 0 1rem currentColor, 175rem 223rem 0 1rem currentColor, 361rem 138rem 0 0rem currentColor, 95rem 223rem 0 1rem currentColor, 331rem 209rem 0 0rem currentColor, 96rem 91rem 0 0rem currentColor, 268rem 225rem 0 1rem currentColor, 114rem 284rem 0 0rem currentColor, 115rem 200rem 0 0rem currentColor, 350rem 93rem 0 0rem currentColor, 26rem 132rem 0 1rem currentColor, 182rem 12rem 0 0rem currentColor, 290rem 265rem 0 0rem currentColor, 297rem 44rem 0 0rem currentColor
+  }
+
+  .slide-cheese .top::before,
+  .slide-cheese .top::after,
+  .slide-cheese .side::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-cheese .side,
+  .slide-cheese .side .border,
+  .slide-cheese .side .stripes,
+  .slide-cheese .side .cream {
+    position: absolute
+  }
+
+  .slide-cheese .side .border,
+  .slide-cheese .side .stripes,
+  .slide-cheese .side .cream {
+    left: 0
+  }
+
+  .slide-cheese .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(90deg, #fcae6d, #ffaf5a), linear-gradient(0deg, #ffa960, #ffad56);
+    background-size: 100% 23rem, 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-cheese .top::after {
+    right: 61rem;
+    top: 46rem;
+    width: 159rem;
+    height: 77rem;
+    background-color: hsl(24, 100%, 56%);
+    transform: rotate(1deg);
+    filter: blur(16rem);
+    border-radius: 50%
+  }
+
+  .slide-cheese .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to left, #fcd2aa, #fde0c6);
+    background-size: 100% 100%
+  }
+
+  .slide-cheese .side .border {
+    top: 0;
+    width: 101%;
+    height: 34rem;
+    background-image: linear-gradient(0deg, #ffa960, #ffad56);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 12rem 5rem hsl(29, 100%, 68%)
+  }
+
+  .slide-cheese .side .stripes {
+    top: 98rem;
+    width: 100%;
+    height: 83rem;
+    background-image: linear-gradient(to right, hsl(29, 88%, 80%), hsl(29, 88%, 74%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 17rem 0rem hsl(29, 88%, 78%)
+  }
+
+  .slide-cheese .side .cream {
+    bottom: 21rem;
+    width: 100%;
+    height: 33rem;
+    background-image: linear-gradient(to right, hsl(29, 88%, 80%), hsl(29, 88%, 74%));
+    background-size: 100% 100%;
+    box-shadow: 0 0 17rem 0rem hsl(29, 88%, 78%);
+    transform-origin: bottom right;
+    transform: rotate(-3deg)
+  }
+
+  .slide-cheese .side::after {
+    left: 2rem;
+    top: 44rem;
+    width: 2rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: hsl(29, 87%, 73%);
+    box-shadow: 333rem 78rem 0 1rem currentColor, 231rem 252rem 0 1rem currentColor, 347rem 143rem 0 0rem currentColor, 259rem 243rem 0 1rem currentColor, 330rem 162rem 0 1rem currentColor, 75rem 157rem 0 1rem currentColor, 197rem 124rem 0 0rem currentColor, 90rem 202rem 0 1rem currentColor, 144rem 227rem 0 0rem currentColor, 312rem 104rem 0 1rem currentColor, 173rem 278rem 0 0rem currentColor, 96rem 99rem 0 0rem currentColor, 262rem 264rem 0 0rem currentColor, 36rem 118rem 0 1rem currentColor, 134rem 203rem 0 1rem currentColor, 158rem 226rem 0 1rem currentColor, 174rem 133rem 0 0rem currentColor, 329rem 13rem 0 0rem currentColor, 229rem 121rem 0 0rem currentColor, 121rem 79rem 0 0rem currentColor, 78rem 167rem 0 0rem currentColor, 155rem 96rem 0 0rem currentColor, 304rem 231rem 0 1rem currentColor, 139rem 226rem 0 0rem currentColor, 36rem 290rem 0 0rem currentColor, 200rem 287rem 0 1rem currentColor, 6rem 74rem 0 1rem currentColor, 60rem 3rem 0 1rem currentColor, 294rem 40rem 0 0rem currentColor, 349rem 145rem 0 1rem currentColor, 344rem 48rem 0 1rem currentColor, 311rem 170rem 0 0rem currentColor, 209rem 181rem 0 1rem currentColor, 148rem 143rem 0 0rem currentColor, 189rem 147rem 0 0rem currentColor, 340rem 265rem 0 0rem currentColor, 51rem 118rem 0 1rem currentColor, 244rem 175rem 0 1rem currentColor, 81rem 121rem 0 1rem currentColor, 93rem 159rem 0 1rem currentColor, 318rem 211rem 0 0rem currentColor, 331rem 107rem 0 0rem currentColor, 114rem 102rem 0 0rem currentColor, 26rem 17rem 0 0rem currentColor, 154rem 170rem 0 0rem currentColor, 298rem 94rem 0 0rem currentColor, 191rem 5rem 0 1rem currentColor, 73rem 150rem 0 1rem currentColor, 192rem 174rem 0 1rem currentColor, 168rem 281rem 0 1rem currentColor, 134rem 264rem 0 1rem currentColor, 275rem 248rem 0 0rem currentColor, 121rem 144rem 0 0rem currentColor, 338rem 88rem 0 1rem currentColor, 170rem 96rem 0 0rem currentColor, 117rem 87rem 0 0rem currentColor, 30rem 84rem 0 1rem currentColor, 33rem 209rem 0 0rem currentColor, 329rem 283rem 0 1rem currentColor, 18rem 294rem 0 0rem currentColor, 72rem 20rem 0 0rem currentColor, 101rem 8rem 0 1rem currentColor, 312rem 178rem 0 1rem currentColor, 298rem 22rem 0 1rem currentColor, 24rem 15rem 0 0rem currentColor, 180rem 68rem 0 1rem currentColor, 249rem 71rem 0 1rem currentColor, 207rem 116rem 0 0rem currentColor, 30rem 28rem 0 1rem currentColor, 303rem 109rem 0 1rem currentColor, 112rem 199rem 0 0rem currentColor, 336rem 297rem 0 1rem currentColor, 277rem 286rem 0 1rem currentColor, 241rem 207rem 0 1rem currentColor, 253rem 190rem 0 1rem currentColor, 186rem 220rem 0 0rem currentColor, 98rem 275rem 0 1rem currentColor, 134rem 261rem 0 1rem currentColor, 286rem 248rem 0 1rem currentColor, 163rem 297rem 0 1rem currentColor, 312rem 296rem 0 0rem currentColor, 116rem 175rem 0 1rem currentColor, 250rem 114rem 0 1rem currentColor, 12rem 8rem 0 0rem currentColor, 41rem 120rem 0 1rem currentColor, 210rem 191rem 0 1rem currentColor, 16rem 70rem 0 1rem currentColor, 53rem 235rem 0 1rem currentColor, 125rem 284rem 0 0rem currentColor, 266rem 7rem 0 0rem currentColor, 339rem 282rem 0 1rem currentColor, 37rem 288rem 0 1rem currentColor, 98rem 176rem 0 0rem currentColor, 184rem 16rem 0 0rem currentColor, 347rem 110rem 0 0rem currentColor, 187rem 217rem 0 0rem currentColor, 71rem 272rem 0 1rem currentColor, 81rem 51rem 0 1rem currentColor, 108rem 27rem 0 1rem currentColor, 346rem 280rem 0 0rem currentColor, 170rem 164rem 0 1rem currentColor, 134rem 30rem 0 0rem currentColor, 229rem 0rem 0 1rem currentColor, 315rem 160rem 0 0rem currentColor, 243rem 291rem 0 0rem currentColor, 41rem 186rem 0 1rem currentColor, 248rem 239rem 0 0rem currentColor, 82rem 137rem 0 1rem currentColor, 27rem 273rem 0 0rem currentColor, 324rem 168rem 0 1rem currentColor, 343rem 79rem 0 1rem currentColor, 52rem 95rem 0 0rem currentColor, 261rem 66rem 0 1rem currentColor, 18rem 81rem 0 0rem currentColor, 81rem 176rem 0 1rem currentColor, 118rem 133rem 0 0rem currentColor, 224rem 155rem 0 0rem currentColor, 230rem 298rem 0 1rem currentColor, 309rem 64rem 0 1rem currentColor, 176rem 234rem 0 1rem currentColor
+  }
+
+  .slide-strawberry {
+    --clip-path-cream: polygon(34% 96%, 54% 97%, 78% 91%, 92% 76%, 92% 62%, 88% 56%, 79% 49%, 65% 37%, 52% 28%, 45% 23%, 45% 11%, 58% 5%, 41% 5%, 23% 24%, 21% 31%, 21% 41%, 7% 52%, 13% 73%);
+    --clip-path-leaf: polygon(36% 80%, 15% 75%, 36% 71%, 25% 48%, 46% 62%, 32% 22%, 56% 41%, 61% 23%, 71% 48%, 83% 33%, 81% 48%, 57% 59%, 44% 69%);
+    --clip-path-fruit: polygon(72.08% 92.52%, 63.46% 97.91%, 46.67% 94.8%, 43.53% 94.38%, 22.88% 79.75%, 6.15% 60.44%, 2.15% 31.4%, 17.71% 14.63%, 32.36% 4.68%, 56.94% 3.2%, 86.6% 16.39%, 98.62% 37.47%, 93.11% 59.37%, 78.51% 85.24%)
+  }
+
+  .slide-strawberry .top::before,
+  .slide-strawberry .fruit::before,
+  .slide-strawberry .fruit .base::before,
+  .slide-strawberry .fruit .base::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-strawberry .top .cream,
+  .slide-strawberry .top .cream div,
+  .slide-strawberry .fruit,
+  .slide-strawberry .fruit .base,
+  .slide-strawberry .side,
+  .slide-strawberry .side .border,
+  .slide-strawberry .side .cream,
+  .slide-strawberry .side .stripes,
+  .slide-strawberry .stripe1,
+  .slide-strawberry .stripe2,
+  .slide-strawberry .stripe3,
+  .slide-strawberry .stripe4 {
+    position: absolute
+  }
+
+  .slide-strawberry .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(to right, #fff5d4, #fff3c3), linear-gradient(to right, #fff5d4, hsl(45, 100%, 84%));
+    background-size: 100% 23rem, 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-strawberry .top .cream {
+    right: 32rem;
+    top: -3rem;
+    width: 111rem;
+    height: 111rem;
+    background-color: #e3cda2;
+    transform: rotate(20deg);
+    -webkit-clip-path: var(--clip-path-cream);
+    clip-path: var(--clip-path-cream)
+  }
+
+  .slide-strawberry .top .cream div {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+  }
+
+  .slide-strawberry .top .cream .shade1 {
+    background-color: #e7d5b2;
+    -webkit-clip-path: polygon(37% 98%, 57% 100%, 80% 94%, 87% 73%, 88% 60%, 88% 33%, 54% 21%, 38% 20%, 12% 32%, 3% 50%);
+    clip-path: polygon(37% 98%, 57% 100%, 80% 94%, 87% 73%, 88% 60%, 88% 33%, 54% 21%, 38% 20%, 12% 32%, 3% 50%)
+  }
+
+  .slide-strawberry .top .cream .shade2 {
+    background-color: #f9edcd;
+    -webkit-clip-path: polygon(27% 96%, 67% 81%, 76% 62%, 76% 48%, 46% 22%, 35% 17%, 25% 32%);
+    clip-path: polygon(27% 96%, 67% 81%, 76% 62%, 76% 48%, 46% 22%, 35% 17%, 25% 32%)
+  }
+
+  .slide-strawberry .top .cream .shade3 {
+    background-color: #f9f8df;
+    -webkit-clip-path: polygon(31% 80%, 51% 71%, 62% 56%, 53% 44%, 44% 28%, 48% 11%, 62% 6%, 36% 0, 21% 28%, 14% 69%);
+    clip-path: polygon(31% 80%, 51% 71%, 62% 56%, 53% 44%, 44% 28%, 48% 11%, 62% 6%, 36% 0, 21% 28%, 14% 69%)
+  }
+
+  .slide-strawberry .top .cream .shade4 {
+    background-color: #fbf1d8;
+    -webkit-clip-path: polygon(16% 66%, 34% 54%, 38% 21%, 29% 11%, 20% 28%);
+    clip-path: polygon(16% 66%, 34% 54%, 38% 21%, 29% 11%, 20% 28%)
+  }
+
+  .slide-strawberry .top .cream .shade5 {
+    background-color: #f0e4c6;
+    -webkit-clip-path: polygon(31% 79%, 50% 73.76%, 62.17% 55.59%, 54% 44%, 46% 57%, 28.66% 73.44%, 25.83% 62%, 33.83% 48.78%, 28% 32%, 37.17% 19.24%, 41% 45%);
+    clip-path: polygon(31% 79%, 50% 73.76%, 62.17% 55.59%, 54% 44%, 46% 57%, 28.66% 73.44%, 25.83% 62%, 33.83% 48.78%, 28% 32%, 37.17% 19.24%, 41% 45%)
+  }
+
+  .slide-strawberry .fruit {
+    left: 149rem;
+    top: 10rem;
+    width: 95rem;
+    height: 108rem
+  }
+
+  .slide-strawberry .fruit::before {
+    left: -2rem;
+    top: -17rem;
+    width: 77rem;
+    height: 77rem;
+    background-image: linear-gradient(82deg, #e7d657, hsl(52, 69%, 46%));
+    background-repeat: repeat;
+    background-size: 10px 100%;
+    -webkit-clip-path: var(--clip-path-leaf);
+    clip-path: var(--clip-path-leaf);
+    transform: rotate(21deg)
+  }
+
+  .slide-strawberry .fruit .base {
+    left: 8rem;
+    top: 23rem;
+    width: 80rem;
+    height: 84rem;
+    background-image: linear-gradient(hsl(354.2, 100%, 57.6%) 0 0);
+    -webkit-clip-path: var(--clip-path-fruit);
+    clip-path: var(--clip-path-fruit);
+    padding: 1px;
+    box-sizing: border-box
+  }
+
+  .slide-strawberry .fruit .base::before {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 40%, #ff966a 5%, #f2402e 75%);
+    -webkit-clip-path: inherit;
+    clip-path: inherit;
+    display: block
+  }
+
+  .slide-strawberry .fruit .base::after {
+    left: 40rem;
+    top: -3rem;
+    width: 2rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.67);
+    box-shadow: 1rem 20rem 0 0 currentColor, 16rem 22rem 0 0 currentColor, -13rem 22rem 0 0 currentColor, -26rem 30rem 0 0 currentColor, 27rem 26rem 0 0 currentColor, 1rem 34rem 0 0 currentColor, 16rem 37rem 0 0 currentColor, -13rem 37rem 0 0 currentColor, -26rem 44rem 0 0 currentColor, 27rem 38rem 0 0 currentColor, 1rem 48rem 0 0 currentColor, 16rem 48rem 0 0 currentColor, -13rem 52rem 0 0 currentColor, -8rem 66rem 0 0 currentColor, 8rem 63rem 0 0 currentColor, 2rem 72rem 0 0 currentColor
+  }
+
+  .slide-strawberry .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to right, #ffebae, #ffe39d);
+    background-size: 100% 100%
+  }
+
+  .slide-strawberry .side .border,
+  .slide-strawberry .side .cream,
+  .slide-strawberry .side .stripes {
+    left: 0
+  }
+
+  .slide-strawberry .side .border {
+    top: 0;
+    width: 101%;
+    height: 34rem;
+    background-image: linear-gradient(to right, hsl(50, 100%, 88%), hsl(45, 100%, 86%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 0 2rem hsl(45, 100%, 76%)
+  }
+
+  .slide-strawberry .side .cream {
+    bottom: 54rem;
+    width: 100%;
+    height: 33rem;
+    background-image: linear-gradient(to right, hsl(51, 100%, 90%), hsl(45, 100%, 84%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 17rem 0rem hsl(45, 100%, 78%);
+    transform-origin: bottom right;
+    transform: rotate(-2deg)
+  }
+
+  .slide-strawberry .side .stripes {
+    top: 98rem;
+    width: 100%;
+    height: 83rem;
+    background-image: linear-gradient(to right, hsl(51, 100%, 90%), hsl(45, 100%, 84%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 17rem 0rem hsl(45, 100%, 78%)
+  }
+
+  .slide-strawberry .stripe1 {
+    left: 28rem;
+    top: 13rem;
+    width: 79rem;
+    height: 58rem;
+    background: radial-gradient(circle at 47% 87%, #ff966a 21%, #f2402e 75%);
+    -webkit-clip-path: polygon(25% 0, 67% 20%, 90% 58%, 100% 100%, 0 100%, 5% 50%);
+    clip-path: polygon(25% 0, 67% 20%, 90% 58%, 100% 100%, 0 100%, 5% 50%)
+  }
+
+  .slide-strawberry .stripe2 {
+    left: 117rem;
+    top: 13rem;
+    width: 79rem;
+    height: 58rem;
+    background: radial-gradient(circle at 47% 106%, #ff966a 21%, #f2402e 75%);
+    -webkit-clip-path: polygon(19% 0, 59% 14%, 90% 58%, 100% 100%, 0 100%, 2% 50%);
+    clip-path: polygon(19% 0, 59% 14%, 90% 58%, 100% 100%, 0 100%, 2% 50%)
+  }
+
+  .slide-strawberry .stripe3 {
+    left: 202rem;
+    top: 16rem;
+    width: 68rem;
+    height: 54rem;
+    background: radial-gradient(circle at 62% 98%, #ff966a 21%, #f2402e 75%);
+    -webkit-clip-path: polygon(13% 0, 41% 8%, 84% 58%, 100% 100%, 0 100%, 0% 50%);
+    clip-path: polygon(13% 0, 41% 8%, 84% 58%, 100% 100%, 0 100%, 0% 50%)
+  }
+
+  .slide-strawberry .stripe4 {
+    left: 276rem;
+    top: 16rem;
+    width: 64rem;
+    height: 54rem;
+    background: radial-gradient(circle at 9% 87%, #ff966a 21%, #f2402e 75%);
+    -webkit-clip-path: polygon(15% 0, 50% 21%, 83% 58%, 100% 100%, 0 100%, 0% 50%);
+    clip-path: polygon(15% 0, 50% 21%, 83% 58%, 100% 100%, 0 100%, 0% 50%)
+  }
+
+  .slide-chocolate .fruit,
+  .slide-chocolate .cherry-top,
+  .slide-chocolate .cherry-base,
+  .slide-chocolate .fruit .cream,
+  .slide-chocolate .side,
+  .slide-chocolate .side .border,
+  .slide-chocolate .side .stripes,
+  .slide-chocolate .side .cream {
+    position: absolute
+  }
+
+  .slide-chocolate .fruit::before,
+  .slide-chocolate .fruit::after,
+  .slide-chocolate .cherry-base::before,
+  .slide-chocolate .cherry-base::after,
+  .slide-chocolate .cherry-base .gloss::before,
+  .slide-chocolate .cherry-base .gloss::after,
+  .slide-chocolate .fruit .cream::before,
+  .slide-chocolate .fruit .cream::after,
+  .slide-chocolate .top::before,
+  .slide-chocolate .top::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-chocolate .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(hsl(24, 76%, 27%) 0 0), linear-gradient(hsl(23, 87%, 22%) 0 0);
+    background-size: 100% 7rem, 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-chocolate .top::after {
+    right: 61rem;
+    top: 46rem;
+    width: 159rem;
+    height: 77rem;
+    background-color: hsl(19, 63%, 34%);
+    transform: rotate(1deg);
+    filter: blur(16rem)
+  }
+
+  .slide-chocolate .fruit {
+    right: 8rem;
+    top: -47rem;
+    width: 164rem;
+    height: 158rem;
+    transform: rotate(18.5deg) scale(1.16);
+    z-index: 5
+  }
+
+  .slide-chocolate .fruit::before {
+    left: 25rem;
+    bottom: 8rem;
+    width: 122rem;
+    height: 56rem;
+    border-radius: 50%;
+    background-color: hsla(25, 95%, 16%, 0.6);
+    z-index: -1;
+    filter: blur(2rem)
+  }
+
+  .slide-chocolate .fruit::after {
+    left: 51rem;
+    bottom: 52rem;
+    width: 63rem;
+    height: 29rem;
+    border-radius: 50%;
+    box-shadow: 0 11rem 0 10rem hsl(45, 100%, 96%)
+  }
+
+  .slide-chocolate .cherry-top {
+    left: 85rem;
+    top: 27rem;
+    width: 53rem;
+    height: 77rem;
+    border-radius: 50%;
+    transform: rotate(14deg);
+    box-shadow: -4rem 0 0 0 hsl(349, 82%, 46%), -6rem 0 0 0 hsla(349, 82%, 49%, 0.1)
+  }
+
+  .slide-chocolate .cherry-base {
+    left: 54rem;
+    bottom: 45rem;
+    width: 57rem;
+    height: 50rem
+  }
+
+  .slide-chocolate .cherry-base::before {
+    left: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(349, 82%, 49%);
+    transform: rotate(-24deg);
+    box-shadow: 0 0 0 1px hsla(349, 82%, 51%, 0.1)
+  }
+
+  .slide-chocolate .cherry-base::after {
+    right: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(349, 82%, 51%);
+    transform: rotate(24deg);
+    box-shadow: 0 0 0 1px hsla(349, 82%, 51%, 0.1)
+  }
+
+  .slide-chocolate .cherry-base .gloss {
+    position: relative;
+    z-index: 2
+  }
+
+  .slide-chocolate .cherry-base .gloss::before {
+    left: 20rem;
+    top: 16rem;
+    width: 33rem;
+    height: 16rem;
+    border-radius: 50%;
+    transform: rotate(-18deg);
+    filter: blur(2rem);
+    box-shadow: 0 7px 0 0 hsla(349.6, 100%, 73.9%, 0.68)
+  }
+
+  .slide-chocolate .cherry-base .gloss::after {
+    left: 12rem;
+    top: 7rem;
+    width: 11rem;
+    height: 14rem;
+    background-color: hsl(349.3, 100%, 76.9%);
+    border-radius: 50%;
+    transform: rotate(41deg);
+    filter: blur(2rem)
+  }
+
+  .slide-chocolate .fruit .cream,
+  .slide-chocolate .fruit .cream::before,
+  .slide-chocolate .fruit .cream::after,
+  .slide-chocolate .top::after {
+    border-radius: 50%
+  }
+
+  .slide-chocolate .fruit .cream {
+    left: 27rem;
+    bottom: 15rem;
+    width: 112rem;
+    height: 57rem;
+    background: hsl(24, 71%, 85%);
+    box-shadow: 0 0 0 1px hsla(24, 71%, 85%, 0.1)
+  }
+
+  .slide-chocolate .fruit .cream::before {
+    left: 13rem;
+    bottom: 20rem;
+    width: 82rem;
+    height: 50rem;
+    background: hsl(46, 100%, 96%)
+  }
+
+  .slide-chocolate .fruit .cream::after {
+    left: 4rem;
+    bottom: 9rem;
+    width: 96rem;
+    height: 50rem;
+    background: hsl(46, 100%, 96%)
+  }
+
+  .slide-chocolate .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to left, hsl(19, 62%, 34%), hsl(19, 62%, 38%));
+    background-size: 100% 100%
+  }
+
+  .slide-chocolate .side .border,
+  .slide-chocolate .side .stripes,
+  .slide-chocolate .side .cream {
+    left: 0
+  }
+
+  .slide-chocolate .side .border {
+    top: 0;
+    width: 101%;
+    height: 34rem;
+    background-image: linear-gradient(0deg, hsl(26, 88%, 18%), hsl(26, 88%, 16%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 12rem 5rem hsl(26, 88%, 18%)
+  }
+
+  .slide-chocolate .side .stripes {
+    top: 98rem;
+    width: 100%;
+    height: 83rem;
+    background-image: linear-gradient(90deg, hsl(19, 61.9%, 27.1%), hsl(18.9, 62%, 25.1%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 12rem 5rem hsl(18.9, 62%, 26.1%)
+  }
+
+  .slide-chocolate .side .cream {
+    bottom: 21rem;
+    width: 100%;
+    height: 33rem;
+    background-image: linear-gradient(90deg, hsl(19, 61.9%, 27.1%), hsl(18.9, 62%, 25.1%));
+    background-size: 100% 100%;
+    background-position: 0 0;
+    box-shadow: 0 0 17rem 0rem hsl(18.9, 62%, 26.1%);
+    transform-origin: bottom right;
+    transform: rotate(-3deg)
+  }
+
+  .slide-blueberry .fruit,
+  .slide-blueberry .cherry-top,
+  .slide-blueberry .cherry-base,
+  .slide-blueberry .fruit .cream,
+  .slide-blueberry .side,
+  .slide-blueberry .side .border,
+  .slide-blueberry .side .stripes,
+  .slide-blueberry .side .cream {
+    position: absolute
+  }
+
+  .slide-blueberry .fruit::before,
+  .slide-blueberry .fruit::after,
+  .slide-blueberry .cherry-base::before,
+  .slide-blueberry .cherry-base::after,
+  .slide-blueberry .fruit .cream::before,
+  .slide-blueberry .fruit .cream::after,
+  .slide-blueberry .top::before,
+  .slide-blueberry .top::after,
+  .slide-blueberry .side .stripes::before,
+  .slide-blueberry .side .stripes::after,
+  .slide-blueberry .cherry-base .gloss::before,
+  .slide-blueberry .cherry-base .gloss::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-blueberry .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(to left, hsl(290, 54%, 37%), hsl(293, 38%, 44%));
+    background-size: 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-blueberry .top::after {
+    right: 75rem;
+    top: 68rem;
+    width: 159rem;
+    height: 77rem;
+    background-color: hsl(290, 54%, 53%);
+    transform: rotate(1deg);
+    filter: blur(16rem);
+    border-radius: 50%
+  }
+
+  .slide-blueberry .fruit {
+    right: 23rem;
+    top: -40rem;
+    width: 164rem;
+    height: 158rem;
+    transform: rotate(18.5deg) scale(1.4);
+    z-index: 5
+  }
+
+  .slide-blueberry .fruit::before {
+    left: 25rem;
+    bottom: 11rem;
+    width: 117rem;
+    height: 44rem;
+    border-radius: 50%;
+    background-color: hsl(291.9, 41%, 42.5%);
+    z-index: -1;
+    filter: blur(2rem)
+  }
+
+  .slide-blueberry .fruit::after {
+    left: 51rem;
+    bottom: 55rem;
+    width: 60rem;
+    height: 29rem;
+    border-radius: 50%;
+    box-shadow: 0 11rem 0 10rem hsl(45, 100%, 96%)
+  }
+
+  .slide-blueberry .cherry-top {
+    left: 85rem;
+    top: 27rem;
+    width: 53rem;
+    height: 77rem;
+    border-radius: 50%;
+    transform: rotate(14deg);
+    box-shadow: -4rem 0 0 0 hsl(349, 82%, 46%), -6rem 0 0 0 hsla(349, 82%, 49%, 0.1)
+  }
+
+  .slide-blueberry .cherry-base {
+    left: 56rem;
+    bottom: 45rem;
+    width: 50rem;
+    height: 50rem
+  }
+
+  .slide-blueberry .cherry-base::before {
+    left: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(273.9, 44.7%, 40.4%);
+    transform: rotate(-24deg);
+    box-shadow: 0 0 0 1px hsla(349, 82%, 51%, 0.1)
+  }
+
+  .slide-blueberry .cherry-base::after {
+    right: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(273.9, 44.7%, 40.4%);
+    transform: rotate(24deg);
+    box-shadow: 0 0 0 1px hsla(273.9, 44.7%, 40.4%, 0.1)
+  }
+
+  .slide-blueberry .cherry-base .gloss {
+    position: relative;
+    z-index: 2
+  }
+
+  .slide-blueberry .cherry-base .gloss::before {
+    left: 14rem;
+    top: 16rem;
+    width: 33rem;
+    height: 16rem;
+    background-color: transparent;
+    border-radius: 50%;
+    transform: rotate(-18deg);
+    filter: blur(2rem);
+    box-shadow: 0 7rem 0 0 hsl(273.9, 44.7%, 49.4%)
+  }
+
+  .slide-blueberry .cherry-base .gloss::after {
+    left: 12rem;
+    top: 7rem;
+    width: 11rem;
+    height: 14rem;
+    background-color: hsl(273.9, 44.7%, 53.4%);
+    border-radius: 50%;
+    transform: rotate(41deg);
+    filter: blur(2rem)
+  }
+
+  .slide-blueberry .fruit .cream,
+  .slide-blueberry .fruit .cream::before,
+  .slide-blueberry .fruit .cream::after,
+  .slide-blueberry .side .border,
+  .slide-blueberry .side .stripes::before,
+  .slide-blueberry .side .cream {
+    border-radius: 50%
+  }
+
+  .slide-blueberry .fruit .cream {
+    left: 27rem;
+    bottom: 15rem;
+    width: 112rem;
+    height: 57rem;
+    background: linear-gradient(hsl(24, 71%, 94%), hsl(24, 71%, 85%));
+    box-shadow: 0 0 0 1px hsla(24, 71%, 85%, 0.1)
+  }
+
+  .slide-blueberry .fruit .cream::before {
+    left: 13rem;
+    bottom: 20rem;
+    width: 82rem;
+    height: 50rem;
+    background: linear-gradient(hsl(45, 100%, 96%), hsl(45, 100%, 77%))
+  }
+
+  .slide-blueberry .fruit .cream::after {
+    left: 4rem;
+    bottom: 9rem;
+    width: 96rem;
+    height: 50rem;
+    background: linear-gradient(hsl(45, 100%, 96%), hsl(45, 100%, 93%))
+  }
+
+  .slide-blueberry .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to right, hsl(19, 42%, 90%), hsl(19, 42%, 80%));
+    background-size: 100% 100%
+  }
+
+  .slide-blueberry .side .border {
+    left: -84rem;
+    top: -68rem;
+    width: 160%;
+    height: 110rem;
+    background-image: linear-gradient(to left, hsl(290, 54%, 28%), hsl(290, 54%, 50%));
+    background-size: 100% 100%;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 0 3rem hsla(290, 54%, 37%, 0.1)
+  }
+
+  .slide-blueberry .side .stripes {
+    left: 0;
+    top: 109rem;
+    width: 100%;
+    height: 83rem;
+    background-image: linear-gradient(hsl(274, 45%, 29%) 0 0);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform: rotate(-5deg)
+  }
+
+  .slide-blueberry .side .stripes::before {
+    left: -39rem;
+    top: -25rem;
+    width: 521rem;
+    height: 117rem;
+    background-image: linear-gradient(to right, hsl(274, 45%, 30%), hsl(274, 45%, 44%))
+  }
+
+  .slide-blueberry .side .stripes::after {
+    left: -37rem;
+    top: 74rem;
+    width: 454rem;
+    height: 44rem;
+    border-radius: 47% 53% 34% 66% / 30% 69% 31% 70%;
+    background-image: linear-gradient(to right, hsl(19, 42%, 90%), hsl(19, 42%, 80%))
+  }
+
+  .slide-blueberry .side .stripes::before,
+  .slide-blueberry .side .stripes::after {
+    box-shadow: 0 0 0 1px hsla(274, 45%, 30%, 0.1)
+  }
+
+  .slide-blueberry .side .cream {
+    left: -4rem;
+    bottom: 22rem;
+    width: 156%;
+    height: 77rem;
+    box-shadow: 0 0 12rem -2rem hsla(8, 52%, 9%, 1);
+    transform-origin: bottom right;
+    transform: rotate(-4deg);
+    background: hsl(8, 52%, 9%)
+  }
+
+  .slide-lemon .fruit,
+  .slide-lemon .cherry-top,
+  .slide-lemon .cherry-base,
+  .slide-lemon .fruit .cream,
+  .slide-lemon .side,
+  .slide-lemon .side .border,
+  .slide-lemon .side .stripes,
+  .slide-lemon .leaves {
+    position: absolute
+  }
+
+  .slide-lemon .fruit::before,
+  .slide-lemon .fruit::after,
+  .slide-lemon .cherry-base::before,
+  .slide-lemon .cherry-base::after,
+  .slide-lemon .top::before,
+  .slide-lemon .top::after,
+  .slide-lemon .fruit .cream::before,
+  .slide-lemon .fruit .cream::after,
+  .slide-lemon .cherry-base .gloss::before,
+  .slide-lemon .cherry-base .gloss::after,
+  .slide-lemon .leaves::before,
+  .slide-lemon .leaves::after {
+    content: "";
+    position: absolute
+  }
+
+  .slide-lemon .top::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 126rem;
+    background-image: linear-gradient(to left, hsl(99, 32%, 58%), hsl(99, 32%, 58%));
+    background-size: 100% 100%;
+    background-position: left bottom;
+    -webkit-clip-path: var(--clip-path-top);
+    clip-path: var(--clip-path-top)
+  }
+
+  .slide-lemon .top::after {
+    right: 75rem;
+    top: 68rem;
+    width: 159rem;
+    height: 77rem;
+    background-color: hsl(97, 33%, 68%);
+    transform: rotate(1deg);
+    filter: blur(16rem);
+    border-radius: 50%
+  }
+
+  .slide-lemon .fruit {
+    right: 2rem;
+    top: -43rem;
+    width: 164rem;
+    height: 158rem;
+    transform: rotate(18.5deg) scale(1.25);
+    z-index: 5
+  }
+
+  .slide-lemon .fruit::before {
+    left: 25rem;
+    bottom: 11rem;
+    width: 117rem;
+    height: 44rem;
+    border-radius: 50%;
+    background-color: hsl(99, 32%, 58%);
+    z-index: -1;
+    filter: blur(2rem)
+  }
+
+  .slide-lemon .fruit::after {
+    left: 51rem;
+    bottom: 55rem;
+    width: 60rem;
+    height: 29rem;
+    border-radius: 50%;
+    box-shadow: 0 11rem 0 10rem hsl(45, 100%, 96%)
+  }
+
+  .slide-lemon .cherry-base {
+    left: 56rem;
+    bottom: 45rem;
+    width: 50rem;
+    height: 50rem
+  }
+
+  .slide-lemon .cherry-base::before {
+    left: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(44.1, 100%, 93.3%);
+    transform: rotate(-24deg);
+    box-shadow: 0 0 0 1px hsl(45, 100%, 96.1%)
+  }
+
+  .slide-lemon .cherry-base::after {
+    right: 0;
+    top: 0;
+    width: 44rem;
+    height: 50rem;
+    border-radius: 50%;
+    background: hsl(44.5, 100%, 93.9%);
+    transform: rotate(24deg);
+    box-shadow: 0 0 0 1px hsl(45, 100%, 96.1%)
+  }
+
+  .slide-lemon .fruit .cream,
+  .slide-lemon .fruit .cream::before,
+  .slide-lemon .fruit .cream::after,
+  .slide-lemon .cherry-base .gloss::before,
+  .slide-lemon .cherry-base .gloss::after {
+    border-radius: 50%
+  }
+
+  .slide-lemon .fruit .cream {
+    left: 27rem;
+    bottom: 15rem;
+    width: 112rem;
+    height: 57rem;
+    background: linear-gradient(hsl(24, 71%, 94%), hsl(44, 100%, 94.1%));
+    box-shadow: 0 0 0 1px hsla(24, 71%, 85%, 0.1)
+  }
+
+  .slide-lemon .fruit .cream::before {
+    left: 13rem;
+    bottom: 20rem;
+    width: 82rem;
+    height: 50rem;
+    background: linear-gradient(hsl(45, 100%, 96%), hsl(45, 100%, 77%))
+  }
+
+  .slide-lemon .fruit .cream::after {
+    left: 4rem;
+    bottom: 9rem;
+    width: 96rem;
+    height: 50rem;
+    background: linear-gradient(hsl(45, 100%, 96%), hsl(45, 100%, 93%))
+  }
+
+  .slide-lemon .cherry-base .gloss {
+    position: relative;
+    z-index: 2;
+    opacity: .7
+  }
+
+  .slide-lemon .cherry-base .gloss::before {
+    left: 14rem;
+    top: 16rem;
+    width: 33rem;
+    height: 16rem;
+    transform: rotate(-18deg);
+    filter: blur(2rem);
+    box-shadow: 0 7rem 0 0 hsl(0, 0%, 100%)
+  }
+
+  .slide-lemon .cherry-base .gloss::after {
+    left: 12rem;
+    top: 7rem;
+    width: 11rem;
+    height: 14rem;
+    background-color: hsl(300, 100%, 99.8%);
+    transform: rotate(41deg);
+    filter: blur(2rem)
+  }
+
+  .slide-lemon .side {
+    left: -165.9rem;
+    top: 2.2rem;
+    width: 368.2rem;
+    height: 300rem;
+    transform: rotateX(49.8deg) rotateY(-27.1deg) skewX(6.4deg) rotateZ(4deg);
+    transform-origin: left top;
+    -webkit-clip-path: var(--clip-path-side);
+    clip-path: var(--clip-path-side);
+    background-image: linear-gradient(to right, hsl(41, 85%, 87%), hsl(41, 85%, 77%));
+    background-size: 100% 100%
+  }
+
+  .slide-lemon .side .border {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100rem;
+    background-image: linear-gradient(hsl(99, 32%, 58%) 6%, hsl(157, 24%, 29%) 85%);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    transform-origin: bottom right;
+    transform: rotate(0.8deg);
+    box-shadow: 0 0 0 3rem hsla(290, 54%, 37%, 0.1)
+  }
+
+  .slide-lemon .side .stripes {
+    --mi: url("data:image/svg+xml,%3Csvg width='900' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' height='160' viewBox='0 455 900 20'%3E%3Cpath d='M0 487L21.5 482.2C43 477.3 86 467.7 128.8 473.7C171.7 479.7 214.3 501.3 257.2 495.2C300 489 343 455 385.8 443.3C428.7 431.7 471.3 442.3 514.2 454.2C557 466 600 479 642.8 486.5C685.7 494 728.3 496 771.2 486.2C814 476.3 857 454.7 878.5 443.8L900 433' fill='none' stroke-linecap='round' stroke-linejoin='miter' stroke='%230066FF' stroke-width='94'/%3E%3C/svg%3E");
+    --mp: -92rem 0;
+    --ms: auto 100%;
+    left: 0;
+    top: 125rem;
+    width: 100%;
+    height: 80rem;
+    background-image: linear-gradient(to right, hsl(99, 32%, 58%), hsl(157, 24%, 29%) 63%);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    mask-image: var(--mi);
+    mask-position: var(--mp);
+    mask-size: var(--ms);
+    -webkit-mask-image: var(--mi);
+    -webkit-mask-position: var(--mp);
+    -webkit-mask-size: var(--ms)
+  }
+
+  .slide-lemon .side .cream {
+    --mi: url("data:image/svg+xml,%3Csvg viewBox='0 0 900 600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1'%3E%3Crect x='0' y='0' fill='%23fff'%3E%3C/rect%3E%3Cpath d='M0 413L50 396C100 379 200 345 300 339.8C400 334.7 500 358.3 600 360.3C700 362.3 800 342.7 850 332.8L900 323L900 601L850 601C800 601 700 601 600 601C500 601 400 601 300 601C200 601 100 601 50 601L0 601Z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+    --mp: 0 -119rem;
+    --ms: auto 237rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 156%;
+    height: 86rem;
+    background: linear-gradient(to top, hsl(99, 32%, 58%), hsl(157, 24%, 29%) 80%);
+    mask-image: var(--mi);
+    mask-position: var(--mp);
+    mask-size: var(--ms);
+    -webkit-mask-image: var(--mi);
+    -webkit-mask-position: var(--mp);
+    -webkit-mask-size: var(--ms)
+  }
+
+  .slide-lemon .leaves {
+    right: 142rem;
+    top: 10rem;
+    width: 10rem;
+    height: 10rem
+  }
+
+  .slide-lemon .leaves::before {
+    left: 12rem;
+    top: 4rem;
+    background-color: hsl(145, 25%, 30%);
+    transform: translate(-50%, -50%) scale(0.7) rotate(-44deg) skewY(-30deg);
+    width: 83rem;
+    height: 96rem;
+    border-radius: 25% 9% 32% 4%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle at -14% -12%, transparent 50%, #8cb774 53%, transparent 0);
+    background-size: 100% 100%;
+    background-position: 15rem 3rem
+  }
+
+  .slide-lemon .leaves::after {
+    left: -22rem;
+    top: 25rem;
+    background-color: hsl(99, 32%, 58%);
+    transform: translate(-50%, -50%) scale(0.5) rotate(-88deg) skewX(-15deg) skewY(-18deg);
+    width: 113rem;
+    height: 121rem;
+    border-radius: 24% 9% 27% 7%;
+    box-shadow: -7rem 6rem 8rem 2rem hsla(151.7, 22.8%, 31%, 0.56), 0 0 0 4rem hsla(152, 23%, 31%, 0.1);
+    background-image: radial-gradient(circle at -14% -12%, transparent 50%, hsl(145, 25%, 30%) 53%, transparent 0);
+    background-size: 100% 100%;
+    background-position: 22rem 7rem
+  }
+</style>
+
+<body>
+
+  <body><input class="flavor" type="radio" name="flavor" id="redvelvet"><input class="flavor" type="radio" name="flavor" id="cheese"><input class="flavor" type="radio" name="flavor" id="strawberry" checked=""><input class="flavor" type="radio" name="flavor" id="chocolate"><input class="flavor" type="radio" name="flavor" id="blueberry"><input class="flavor" type="radio" name="flavor" id="lemon">
+    <main>
+      <div class="slide slide-redvelvet">
+        <div class="pastry">
+          <div class="top">
+            <div class="fruit">
+              <div class="cream"></div>
+              <div class="cherry-top"></div>
+              <div class="cherry-base">
+                <div class="gloss"></div>
+              </div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes"></div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <div class="slide slide-cheese">
+        <div class="pastry">
+          <div class="top"></div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes"></div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <div class="slide slide-strawberry">
+        <div class="pastry">
+          <div class="top">
+            <div class="cream">
+              <div class="shade1"></div>
+              <div class="shade2"></div>
+              <div class="shade3"></div>
+              <div class="shade4"></div>
+              <div class="shade5"></div>
+            </div>
+            <div class="fruit">
+              <div class="base"></div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes">
+              <div class="stripe1"></div>
+              <div class="stripe2"></div>
+              <div class="stripe3"></div>
+              <div class="stripe4"></div>
+            </div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <div class="slide slide-chocolate">
+        <div class="pastry">
+          <div class="top">
+            <div class="fruit">
+              <div class="cream"></div>
+              <div class="cherry-top"></div>
+              <div class="cherry-base">
+                <div class="gloss"></div>
+              </div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes"></div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <div class="slide slide-blueberry">
+        <div class="pastry">
+          <div class="top">
+            <div class="fruit">
+              <div class="cream"></div>
+              <div class="cherry-base">
+                <div class="gloss"></div>
+              </div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes"></div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+      <div class="slide slide-lemon">
+        <div class="pastry">
+          <div class="top">
+            <div class="leaves"></div>
+            <div class="fruit">
+              <div class="cream"></div>
+              <div class="cherry-base">
+                <div class="gloss"></div>
+              </div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="border"></div>
+            <div class="stripes"></div>
+            <div class="cream"></div>
+          </div>
+        </div>
+        <div class="shadow"></div>
+      </div>
+    </main>
+    <div id="controls"><label for="redvelvet">Redvelvet</label><label for="cheese">Cheese Pastry</label><label for="strawberry">Strawberry Pastry</label><label for="chocolate">Chocolate Pastry</label><label for="blueberry">Blueberry Pastry</label><label for="lemon">Lemon Pastry</label></div>
+  </body>
+</body>
+</html>
