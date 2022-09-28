@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>http://www.bootstrapmb.com/item/3706</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: #ff9e21;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Roboto', sans-serif;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .radio {
+        background: #1e1e1e;
+        border-radius: 50px;
+        padding: 10px 15px;
+        color: #626262;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        width: 245px;
+        font-size: 21px;
+        position: relative;
+        transition: all .5s ease-in-out;
+        margin-bottom: 20px;
+    }
+
+    .radio.off {
+        background: #fff;
+    }
+
+    .radio.off .bar {
+        background: #ccc;
+        left: 136px;
+    }
+
+    .radio.off label[for='on'] {
+        color: #626262;
+    }
+
+    .radio.off label[for='off'] {
+        color: #000;
+    }
+
+    .radio .wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 50px;
+        overflow: hidden;
+        position: relative;
+        height: 40px;
+    }
+
+    .radio input {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .radio label {
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .radio label[for='on'] {
+        margin-left: 10px;
+        color: #000;
+    }
+
+    .radio label[for='off'] {
+        margin-right: 10px;
+    }
+
+    .radio #on {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .radio #off {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .radio .bar {
+        position: absolute;
+        left: -90px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        background: #fff;
+        height: 40px;
+        width: 200px;
+        border-radius: 50px;
+        transition: all .5s ease-in-out;
+    }
+
+    .checkbox {
+        background: #1e1e1e;
+        border-radius: 100px;
+        padding: 10px 15px;
+        color: #626262;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        width: 245px;
+        font-size: 21px;
+        position: relative;
+        transition: all .5s ease-in-out;
+        overflow: hidden;
+        background-clip: content-box;
+        margin-bottom: 20px;
+    }
+
+    .checkbox input {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .checkbox label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .checkbox .on {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #1e1e1e;
+        text-align: right;
+        color: #fff;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        border-radius: 100px;
+        z-index: 2;
+    }
+
+    .checkbox .on span {
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        -webkit-transform: translateX(0) translateY(-50%);
+        transform: translateX(0) translateY(-50%);
+        transition: all 500ms ease-in-out;
+        transition-delay: 200ms;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .checkbox .off {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        text-align: right;
+        color: #000;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        border-radius: 100px;
+        z-index: 1;
+        background-clip: content-box;
+    }
+
+    .checkbox .off span {
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        -webkit-transform: translateX(0) translateY(-50%);
+        transform: translateX(0) translateY(-50%);
+        transition: all 500ms ease-in-out;
+        transition-delay: 200ms;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .switcher {
+        padding: 10px 15px;
+        color: #626262;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 35px;
+        width: 80px;
+        font-size: 21px;
+        position: relative;
+        transition: all .5s ease-in-out;
+        overflow: hidden;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    .switcher input {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .switcher .left {
+        position: absolute;
+        top: 20px;
+        left: 22px;
+        width: 16px;
+        height: 16px;
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        border-radius: 50%;
+        background: #fff;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .switcher .right {
+        content: '';
+        position: absolute;
+        top: 20px;
+        -webkit-transform: scale(12);
+        transform: scale(12);
+        right: 20px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        z-index: 1;
+        background: #1e1e1e;
+        pointer-events: none;
+    }
+
+    .switcher label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        z-index: 10;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="radio">
+        <div class="wrap"><input type="radio" id="on" name="radio"><label for="on">ON</label><input type="radio"
+                id="off" name="radio"><label for="off">OFF</label>
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div class="checkbox"><input type="checkbox" id="checkbox" checked="" name="checkbox"><label for="checkbox"></label>
+        <div class="on" style="z-index: 2; transform: translateX(0%);"><span>ON</span></div>
+        <div class="off" style="z-index: 1; transform: translateX(-100%);"><span>OFF</span></div>
+    </div>
+    <div class="switcher"><input type="checkbox" id="switcher" name="switcher"><label for="switcher"></label><span
+            class="left" style="transform: scale(1); z-index: 9;"></span><span class="right"
+            style="z-index: 7; transform: scale(12);"></span></div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("body").on("click", "#off", function () {
+            $(".radio").addClass("off")
+        });
+        $("body").on("click", "#on", function () {
+            $(".radio").removeClass("off")
+        });
+        anime({
+            targets: ".checkbox .on",
+            translateX: "0",
+            zIndex: {
+                value: [1, 2],
+                round: true
+            },
+            duration: 0
+        });
+        anime({
+            targets: ".checkbox .off",
+            translateX: "-100%",
+            zIndex: {
+                value: [2, 1],
+                round: true
+            },
+            duration: 0
+        });
+        var e = true;
+        $("body").on("click", ".checkbox label", function () {
+            if (e) {
+                $(".checkbox").toggleClass("active");
+                e = false;
+                if ($(".checkbox").hasClass("active")) {
+                    $(".checkbox").prop("checked", false);
+                    anime({
+                        targets: ".checkbox .off",
+                        zIndex: {
+                            value: [1, 2],
+                            round: true
+                        },
+                        duration: 0
+                    });
+                    anime({
+                        targets: ".checkbox .on",
+                        zIndex: {
+                            value: [2, 1],
+                            round: true
+                        },
+                        duration: 0
+                    });
+                    anime({
+                        targets: ".checkbox .off",
+                        translateX: "0%",
+                        duration: 500,
+                        easing: "easeInOutQuad",
+                        complete: function () {
+                            anime({
+                                targets: ".checkbox .on",
+                                translateX: "100%",
+                                duration: 0
+                            });
+                            e = true
+                        }
+                    })
+                } else {
+                    $(".checkbox").prop("checked", true);
+                    anime({
+                        targets: ".checkbox .on",
+                        zIndex: {
+                            value: [1, 2],
+                            round: true
+                        },
+                        duration: 0
+                    });
+                    anime({
+                        targets: ".checkbox .off",
+                        zIndex: {
+                            value: [2, 1],
+                            round: true
+                        },
+                        duration: 0
+                    });
+                    anime({
+                        targets: ".checkbox .on",
+                        translateX: "0%",
+                        duration: 500,
+                        easing: "easeInOutQuad",
+                        complete: function () {
+                            anime({
+                                targets: ".checkbox .off",
+                                translateX: "-100%",
+                                duration: 0
+                            });
+                            e = true
+                        }
+                    })
+                }
+            }
+        });
+        var f = 2;
+        var d = true;
+        $("body").on("click", ".switcher label", function () {
+            if (d) {
+                d = false;
+                $(".switcher").toggleClass("active");
+                f++;
+                if ($(".switcher").hasClass("active")) {
+                    anime({
+                        targets: ".switcher .left",
+                        scale: 12,
+                        duration: 500,
+                        easing: "easeInOutQuad",
+                        complete: function () {
+                            anime({
+                                targets: ".switcher .right",
+                                scale: 0,
+                                zIndex: {
+                                    value: [f, f++],
+                                    round: true
+                                },
+                                duration: 0
+                            });
+                            anime({
+                                targets: ".switcher .right",
+                                scale: 1,
+                                duration: 700,
+                                complete: function () {
+                                    d = true
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    anime({
+                        targets: ".switcher .right",
+                        scale: 12,
+                        duration: 500,
+                        easing: "easeInOutQuad",
+                        complete: function () {
+                            anime({
+                                targets: ".switcher .left",
+                                scale: 0,
+                                zIndex: {
+                                    value: [f, f++],
+                                    round: true
+                                },
+                                duration: 0
+                            });
+                            anime({
+                                targets: ".switcher .left",
+                                scale: 1,
+                                duration: 700,
+                                complete: function () {
+                                    d = true
+                                }
+                            })
+                        }
+                    })
+                }
+            }
+        })
+    });
+</script>
+
+</html>
