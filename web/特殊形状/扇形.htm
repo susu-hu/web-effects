@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扇形</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .s-box {
+        width: 130px;
+        height: 130px;
+        background: transparent;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .s-box span {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        transform-origin: bottom center;
+    }
+
+    .s-box span:nth-child(1) {
+        transform: translate(-50%, 0) rotate(322.25deg);
+        border-width: 65px 44.2569px 0 44.2569px;
+        border-color: #0FD8E1 transparent transparent transparent;
+    }
+
+    .s-box span:nth-child(2) {
+        transform: translate(-50%, 0) rotate(390.75deg);
+        border-width: 65px 44.2569px 0 44.2569px;
+        border-color: #0FD8E1 transparent transparent transparent;
+    }
+
+    .sector {
+        width: 182px;
+        height: 182px;
+        border-radius: 50%;
+        background: conic-gradient(transparent 20.83%, #B10F78 20.83% 97.22%, transparent 76.39%);
+    }
+</style>
+
+<body>
+    <section class="flex-column">
+        <svg width="166" height="166">
+            <path d="M 50.57 159.40 A 83 83 0 1 0 83.00 0.00 L 83 83 Z" fill="#802610"></path>
+        </svg>
+        <svg width="132" height="132">
+            <path d="M 0.36 72.90 A 66 66 0 1 0 123.72 34.00 L 66 66 Z" fill="#802610"></path>
+        </svg>
+        <!-- 三角模拟 -->
+        <div class="s-box">
+            <span></span>
+            <span></span>
+        </div>
+        <!--  conic-gradient 支持性非常差，谨慎使用。-->
+        <div class="sector"></div>
+    </section>
+</body>
+
+</html>
