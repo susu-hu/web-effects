@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解决12px以下的文字</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    p {
+        font-size: 10px;
+    }
+</style>
+
+<body>
+    <section>
+        <p>苏苏小苏苏</p>
+        <svg width="195.6162109375" height="11.52" fill="#fff">
+            <text dominant-baseline="baseline" font-size="10" y="9.52" style="line-height: 1; vertical-align: middle;">
+                苏苏小苏苏 - susu
+            </text>
+        </svg>
+    </section>
+</body>
+
+</html>
+<!-- 使用 transform: scale() 设置后占位区域并没有改变，难以调节对齐方式。
+使用 canvas 无法选中文字（也可以解决，但不如 svg 简洁） -->

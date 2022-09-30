@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background: #333333;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box::after {
+        content: "";
+        height: 150%;
+        width: 25px;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: .6;
+        filter: blur(6px);
+        animation: move 1s infinite ease-out;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    @keyframes move {
+        0% {
+            transform: translate(-200px, -200px) rotate(45deg);
+        }
+
+        100% {
+            transform: translate(200px, 200px) rotate(45deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <img src="https://s3.bmp.ovh/imgs/2022/07/27/85dabf1d5821a98b.png" alt="">
+    </div>
+
+</body>
+
+</html>

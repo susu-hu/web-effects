@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    :root {
+        --bg: #222;
+    }
+
+    body {
+        background: var(--bg);
+    }
+
+    .sticky-box {
+        background: var(--bg);
+        overflow: hidden;
+        width: 600px;
+        height: 200px;
+    }
+
+    .box {
+        width: 600px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--bg);
+        filter: blur(10px) contrast(30);
+    }
+
+    .ball1,
+    .ball2 {
+        width: 80px;
+        height: 80px;
+        background: skyblue;
+        position: absolute;
+        animation: ball 10s infinite;
+        border-radius: 100%;
+    }
+
+    .ball2 {
+        animation-delay: -2s;
+    }
+
+    @keyframes ball {
+        0% {
+            transform: translateX(-100px);
+        }
+
+        50% {
+            transform: translateX(100px);
+        }
+
+        100% {
+            transform: translateX(-100px);
+        }
+    }
+</style>
+
+<body>
+    <div class="sticky-box">
+        <div class="box">
+            <div class="ball1"></div>
+            <div class="ball2"></div>
+        </div>
+    </div>
+</body>
+
+</html>
