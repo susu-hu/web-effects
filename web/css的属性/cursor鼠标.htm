@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cursor鼠标</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    div {
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+        background: pink;
+        margin-right: 20px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 15px;
+        color: #333;
+        cursor: auto;
+    }
+
+    div:nth-child(2) {
+        cursor: pointer;
+    }
+
+    div:nth-child(3) {
+        cursor: default;
+    }
+
+    div:nth-child(4) {
+        cursor: none;
+    }
+
+    div:nth-child(5) {
+        cursor: help;
+    }
+
+    div:nth-child(6) {
+        cursor: progress;
+    }
+
+    div:nth-child(7) {
+        cursor: cell;
+    }
+
+    div:nth-child(8) {
+        cursor: crosshair;
+    }
+
+    div:nth-child(9) {
+        cursor: alias;
+    }
+
+    div:nth-child(10) {
+        cursor: copy;
+    }
+
+    div:nth-child(11) {
+        cursor: not-allowed;
+    }
+
+    div:nth-child(12) {
+        cursor: grabbing;
+    }
+</style>
+
+<body>
+    <div>auto</div>
+    <div>pointer</div>
+    <div>default</div>
+    <div>none</div>
+    <div>help</div>
+    <div>progress</div>
+    <div>cell</div>
+    <div>crosshair</div>
+    <div>alias</div>
+    <div>copy</div>
+    <div>not-allowed</div>
+    <div>grabbing</div>
+</body>
+
+</html>
