@@ -1,0 +1,61 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-10-06 22:20:03
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-10-06 22:38:48
+ * @FilePath: \css_demos\web\特殊形状\平行四边形彩带边框.htm
+ * @Description: 平行四边形彩带边框
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平行四边形彩带边框</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        width: 300px;
+        background: repeating-linear-gradient(-45deg,
+                #6d1d1d,
+                #6d1d1d 10px,
+                #fff 10px,
+                #fff 20px,
+                #16b2daf3 20px,
+                #16b2daf3 30px,
+                #fff 30px,
+                #fff 40px) -30px -30px/180% 180%;
+        padding: 5px;
+        transition: all .5s;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: default;
+    }
+
+    .box-con {
+        padding: 10px;
+        color: #333;
+        letter-spacing: 3px;
+        background: #fff;
+
+    }
+
+    .box:hover {
+        box-shadow: 1px 3px 8px rgba(255, 255, 255, 0.5);
+        background-position: 0 0;
+        border-radius: 0px;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="box-con">
+            苏苏就是小苏苏哇哈哈哈哈哈苏苏就是小苏苏哇哈哈哈哈哈苏苏就是小苏苏哇哈哈哈哈哈
+        </div>
+    </div>
+</body>
+
+</html>
