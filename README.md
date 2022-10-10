@@ -161,6 +161,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 135. 圆形菜单弹出动画
 - [x] 136. border-radius变形
 - [x] 137. 音频loading动画
+- [x] 137. lottie动画的实现（JSON数据来自阿里巴巴矢量图标库）
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -170,6 +171,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### lottie动画的实现（JSON数据来自阿里巴巴矢量图标库）
+![输入图片说明](web-pictures/demo138.gif)
 ##### 音频loading动画
 ![输入图片说明](web-pictures/demo137.gif)
 ##### border-radius变形
