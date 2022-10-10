@@ -1,0 +1,46 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-10-10 23:25:50
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-10-11 00:06:26
+ * @FilePath: \css_demos\web\动画库\lottie\index.htm
+ * @Description: lottie动画
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie一个适用于Web，Android，iOS，React Native和Windows 的移动库，它可以使用Bodymovin解析以json格式导出的Adobe After
+        Effects动画，并在移动设备上进行本地渲染！</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    #box {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+
+<body>
+    <div id="box"></div>
+</body>
+<script src="./lottie.min.js"></script>
+<!-- https://github.com/airbnb/lottie-web/blob/master/build/player/lottie.min.js -->
+<script src="./json/data.js"></script>
+<script>
+    let dataJson = json.ani;
+    const box = document.getElementById('box');
+    const animation = lottie.loadAnimation({
+        container: box,
+        renderer: "svg", // 渲染方式:svg：支持交互、不会失帧、canvas、html：支持3D，支持交互
+        loop: true, // 循环播放，默认：true
+        autoplay: true, // 自动播放 ，默认true
+        animationData: dataJson,//优先级更高
+        // path: 'https://labs.nearpod.com/bodymovin/demo/markus/halloween/markus.json'
+    });
+</script>
+
+</html>
