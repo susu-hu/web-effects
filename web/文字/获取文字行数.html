@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<style>
-		.txt{
-			width: 200px;
-		}
-		
-		#box{
-		            width:200px;
-		            height:200px;
-		            position:relative;
-		            perspective:500;
-		            -webkit-perspective:500;
-		        }
-		        #box div{
-		            position:absolute;
-		            top:0;
-		            left:0;
-		            width:100%;
-		            height:100%;
-		            background:.#fff;
-		            -webkit-perspective:10000;
-		            backface-visibility:hidden;
-		            -webkit-transition: all 2s;
-		            -moz-transition: all 2s;
-		            -ms-transition: all 2s;
-		            -o-transition: all 2s;
-		        }
-		        #box .front{
-		            background:#f00;
-		        }
-		        #box .back{
-		            background:#00f;
-		            -webkit-transform:rotateY(-180deg);
-		        }
-		        #box:hover .front{
-		            -webkit-transform:rotateY(-180deg);
-		        }
-		        #box:hover .back{
-		            -webkit-transform:rotateY(-360deg);
-		        }
-	</style>
-	<body>
-		<div class="txt" style="line-height:30px">
-			<p>苏苏苏苏苏苏闪电发货多少分十多个方式东方故事多福多寿复合式电风扇咖啡店圣诞节是的红色的看</p>
-			我是文字<br>
-			我是文字<br>
-			我是文字<br>
-			我是文字<br>
-			我是文字<br>
-		</div>
-		
-		<div id="box">
-		    <div class="front">正面</div>
-		    <div class="back">反面</div>
-		</div>
-	</body>
-	<script src="../商城相关/js/jq.js"></script>
-	<script>
-		//高度/行高=文本行数
-		var rowNum = Math.round($(".txt").height() / parseFloat($(".txt").css('line-height')));
-		console.log("当前有" + rowNum + "行");
-	</script>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<style>
+	.txt {
+		width: 200px;
+	}
+
+	#box {
+		width: 200px;
+		height: 200px;
+		position: relative;
+		perspective: 500;
+		-webkit-perspective: 500;
+	}
+
+	#box div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		-webkit-perspective: 10000;
+		backface-visibility: hidden;
+		-webkit-transition: all 2s;
+		-moz-transition: all 2s;
+		-ms-transition: all 2s;
+		-o-transition: all 2s;
+	}
+
+	#box .front {
+		background: #f00;
+	}
+
+	#box .back {
+		background: #00f;
+		-webkit-transform: rotateY(-180deg);
+	}
+
+	#box:hover .front {
+		-webkit-transform: rotateY(-180deg);
+	}
+
+	#box:hover .back {
+		-webkit-transform: rotateY(-360deg);
+	}
+</style>
+
+<body>
+	<div class="txt" style="line-height:30px">
+		<p>苏苏苏苏苏苏闪电发货多少分十多个方式东方故事多福多寿复合式电风扇咖啡店圣诞节是的红色的看</p>
+		我是文字<br>
+		我是文字<br>
+		我是文字<br>
+		我是文字<br>
+		我是文字<br>
+	</div>
+
+	<div id="box">
+		<div class="front">正面</div>
+		<div class="back">反面</div>
+	</div>
+</body>
+<script src="../商城相关/js/jq.js"></script>
+<script>
+	//高度/行高=文本行数
+	var rowNum = Math.round($(".txt").height() / parseFloat($(".txt").css('line-height')));
+	console.log("当前有" + rowNum + "行");
+</script>
+
 </html>
