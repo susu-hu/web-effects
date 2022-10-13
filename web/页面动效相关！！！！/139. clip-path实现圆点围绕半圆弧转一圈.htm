@@ -1,0 +1,97 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-10-13 22:59:59
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-10-13 23:16:02
+ * @FilePath: \css_demos\web\页面动效相关！！！！\138. clip-path实现圆点围绕半圆弧转一圈.htm
+ * @Description: 139. clip-path实现圆点围绕半圆弧转一圈
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>139. clip-path实现圆点围绕半圆弧转一圈</title>
+    <!-- clip-path 属性使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。可以指定一些特定形状。
+    https://www.runoob.com/cssref/pr-clip-path.html -->
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .container-box {
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+    }
+
+    .container-box:nth-child(1) {
+        margin-right: 40px;
+    }
+
+    .container-box .box-circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: url("./img/bg.png") no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 11;
+    }
+
+    .box-circle.clip-path {
+        -webkit-clip-path: polygon(100% 0, 100% 86%, 50% 50%, 0% 86%, 0 0);
+        clip-path: polygon(100% 0, 100% 86%, 50% 50%, 0% 86%, 0 0);
+    }
+
+    .container-box .box-circle .box-dot {
+        width: 190px;
+        height: 190px;
+        border: 8px solid transparent;
+        border-radius: 50%;
+        position: absolute;
+        left: calc(50% - 95px);
+        top: calc(50% - 95px);
+        animation: rotate 3s infinite linear;
+    }
+
+    .container-box .box-circle .box-dot::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: url("./img/dot.png") no-repeat;
+        background-size: 100% 100%;
+        top: 114px;
+        left: -7px;
+        z-index: 11;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate3D(0, 0, 1, 0);
+        }
+
+        100% {
+            transform: rotate3D(0, 0, 1, 360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="container-box">
+        <div class="box-circle">
+            <div class="box-dot"></div>
+        </div>
+    </div>
+    <div class="container-box">
+        <div class="box-circle clip-path">
+            <div class="box-dot"></div>
+        </div>
+    </div>
+</body>
+
+</html>

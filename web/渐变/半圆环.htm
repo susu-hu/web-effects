@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    div {
+        margin: auto;
+        position: relative;
+        width: 300px;
+        height: 300px;
+        display: flex;
+    }
+
+    div::before,
+    div::after {
+        content: "";
+    }
+
+    div::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        background: conic-gradient(from 135deg, transparent, transparent 0.25turn, #03a9f4 0.27turn, #03a9f4 0.98turn, transparent 1turn);
+        -webkit-mask: radial-gradient(transparent 145px, #000 145.5px, #000);
+        mask: radial-gradient(transparent 145px, #000 145.5px, #000);
+        transform: scale(0.98);
+    }
+
+    div::after {
+        position: absolute;
+        top: 0;
+        left: calc(50% - 6px);
+        width: 12px;
+        height: 150px;
+        background: radial-gradient(circle at center 6px, deeppink, deeppink 6px, transparent 6px, transparent);
+        transform-origin: bottom center;
+        -webkit-animation: rotate 10s infinite alternate;
+        animation: rotate 2s infinite alternate;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(130deg);
+        }
+
+        100% {
+            transform: rotate(-130deg);
+        }
+    }
+</style>
+
+<body>
+    <div></div>
+</body>
+
+</html>
