@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接:https://codepen.io/jsmask/pen/bGEyWLK</title>
+
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  body {
+    background-color: #000;
+  }
+
+  :root {
+    --main-color: rgb(255, 255, 255);
+  }
+
+  .loader {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    background-color: #222;
+    filter: blur(4px) contrast(20);
+    overflow: hidden;
+  }
+
+  .loader>.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    border: 10px solid var(--main-color);
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: 100%;
+  }
+
+  .loader>.box::before {
+    content: "Loading Loading Loading";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--main-color);
+    font-size: 60px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    white-space: nowrap;
+    transform: translate(100%, -50%);
+    animation: marquee 4.25s infinite linear;
+    text-shadow: 0px 60px 10px rgba(255, 255, 255, 0.6);
+  }
+
+  .loader>.box::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -20px;
+    width: 40px;
+    height: 30px;
+    background: var(--main-color);
+    border-radius: 50%;
+    transform-origin: 50% -100px;
+    transform: rotateZ(90deg);
+    animation: rotate 8s 0.2s infinite linear;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate(-34%, -50%);
+    }
+
+    to {
+      transform: translate(-68%, -50%);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateZ(0deg);
+    }
+
+    to {
+      transform: rotateZ(360deg);
+    }
+  }
+</style>
+
+<body>
+  <div class="loader">
+    <div class="box"></div>
+  </div>
+</body>
+
+</html>
