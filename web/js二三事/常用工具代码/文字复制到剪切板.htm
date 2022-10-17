@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字复制</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 文字复制到剪切板
+    const copyText = async (e) => await navigator.clipboard.writeText(e);
+    copyText('苏苏就是小苏苏哈哈哈')
+
+    // 获取当前选中的文本
+    const getSelectionText = () => {
+        window.getSelection().toString()
+    }
+    console.log(getSelectionText())
+
+</script>
+
+</html>
