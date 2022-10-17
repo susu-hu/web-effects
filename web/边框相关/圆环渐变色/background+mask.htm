@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考:https://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    :root {
+        --bg: #222;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: linear-gradient(0deg, orange 0%, red 100%);
+        position: relative;
+    }
+
+    .circle::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background-color: var(--bg);
+        /* 背景色不透明 */
+    }
+
+    .circle2 {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: linear-gradient(0deg, orange 0%, red 100%);
+        -webkit-mask: radial-gradient(transparent, transparent 90px, #000 90px);
+        mask: radial-gradient(transparent 90px, #000 90px);
+        /* 背景透明 */
+    }
+</style>
+
+<body>
+    <section>
+        <div class="circle" style="margin-bottom:40px"></div>
+        <div class="circle2"></div>
+
+    </section>
+
+</body>
+
+</html>

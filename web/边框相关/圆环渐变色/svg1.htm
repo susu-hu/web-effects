@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    circle {
+        stroke-width: 50px;
+        fill: none;
+        stroke-dasharray: 1069px;
+        /* 灰色进度槽 */
+        stroke: #f0f1f5;
+    }
+
+    /* 渐变进度条 */
+    .circle-bar {
+        /* stroke-dashoffset慢慢变小，进度条就会慢慢出现 */
+        stroke-dashoffset: 106.9px;
+        stroke: url(#gradient);
+    }
+</style>
+
+<body>
+    <svg width="440" height="440" viewBox="0 0 440 440">
+        <defs>
+            <linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient">
+                <stop offset="0%" stop-color="#e52c5c"></stop>
+                <stop offset="100%" stop-color="#ab5aea"></stop>
+            </linearGradient>
+        </defs>
+        <circle cx="220" cy="220" r="170" class="circle-track"></circle>
+        <circle cx="220" cy="220" r="170" transform="rotate(-90 220 220)" class="circle-bar"></circle>
+        <text class="text" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">
+            90%
+        </text>
+    </svg>
+</body>
+
+</html>
