@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clip-path​生成圆角</title>
+
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    :root {
+        --bg: #222;
+    }
+
+    .border-image-clip-path {
+        width: 200px;
+        height: 100px;
+        margin: auto;
+        border: 10px solid;
+        border-image: linear-gradient(45deg, gold, deeppink) 1;
+        clip-path: inset(0px round 10px);
+        animation: huerotate 6s infinite linear;
+        filter: hue-rotate(360deg);
+    }
+
+    @keyframes huerotate {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+
+        100% {
+            filter: hue-rorate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="border-image-clip-path"></div>
+</body>
+
+</html>
+
+<!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path 
+    clip-path: inset() 是矩形裁剪
+    inset() 的用法有多种，在这里​​inset(0 round 10px)​​​ 可以理解为，
+    实现一个父容器大小（完全贴合，垂直水平居中于父容器）且​​border-radius: 10px​​ 的容器，
+    将这个元素之外的所有东西裁剪掉（即不可见）-->

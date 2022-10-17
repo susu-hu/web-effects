@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    body {
+        color: orange;
+    }
+
+    .container {
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        margin-right: 20px;
+    }
+
+    .borders {
+        border-radius: 99px;
+    }
+
+    .example1.out {
+        padding: 4px;
+        background: linear-gradient(to right, red, blue);
+    }
+
+    .example1 .in {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+    }
+
+    .example2 {
+        border: 4px solid transparent;
+        position: relative;
+        background-color: #fff;
+        background-clip: padding-box;
+    }
+
+    .example2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        margin: -4px;
+        border-radius: 99px;
+        background: linear-gradient(to right, red, blue);
+    }
+
+    .example3 {
+        border: 4px solid transparent;
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+        background-image: linear-gradient(to right, #fff, #fff), linear-gradient(to right, #8f41e9, #578aef);
+    }
+
+    .example4 {
+        position: relative;
+        border: 10px solid;
+        border-image: linear-gradient(to right, #8f41e9, #578aef) 1;
+        clip-path: inset(0 round 10px);
+    }
+</style>
+
+<body>
+    <div class='container'>
+        <!--  方法1  -->
+        <div class="example1 box out borders">
+            <div class="in borders">两层元素</div>
+        </div>
+        <!--  方法2  -->
+        <div class="example2 box borders ">伪元素</div>
+        <!--  方法3  -->
+        <div class="example3 box borders">多属性值</div>
+        <!--  clip-path  -->
+        <div class="example4 box ">clip-path</div>
+    </div>
+</body>
+
+</html>

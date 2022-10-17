@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-clip 参考链接：https://codepen.io/Chokcoco/pen/OJVNEvj</title>
+    <!-- 使用 ​​background-clip: content-box​​​ 以及 ​​background-clip: border-box​
+        用到了 ​​background-clip: border-box​​​，所以还需要 ​​background-origin: border-box​​ 使图案完整显示​ -->
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    :root {
+        --bg: #222;
+    }
+
+    div {
+        width: 200px;
+        height: 200px;
+        border: solid 5px transparent;
+        border-radius: 50%;
+        /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
+        background-image: linear-gradient(var(--bg), var(--bg)),
+            linear-gradient(to right, orange, red);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        /* 背景裁切的时候，第一个背景需要从内容区域开始裁切，因此设置为content-box；第二个背景需要作为渐变边框，因此需要从边框处开始裁切 */
+    }
+</style>
+
+<body>
+    <div></div>
+</body>
+
+</html>
