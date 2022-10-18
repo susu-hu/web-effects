@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>温度计</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<link rel="stylesheet" href="../common.css">
+<style>
+    v-cloak {
+        display: none;
+    }
+
+    .container-box {
+        position: relative;
+    }
+
+    .container-box .box-pan {
+        background: url("./img/therm-bg.png") no-repeat;
+        background-size: 100% 100%;
+        width: 83px;
+        height: 203px;
+        position: absolute;
+        left: calc(50% - 42px);
+        top: -10px;
+        z-index: 1;
+    }
+
+    .container-box .box-pan::before {
+        content: "";
+        width: 4px;
+        height: 105px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.12) 100%);
+        border-radius: 2px;
+        opacity: 0.31;
+        position: absolute;
+        right: 35px;
+        top: 21px;
+        z-index: 13;
+    }
+
+    .container-box .box-pan::after {
+        content: "";
+        position: absolute;
+        left: 30px;
+        top: 15px;
+        width: 6px;
+        height: 119px;
+        border-radius: 20px 0 20px 10px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0) 100%);
+        z-index: 13;
+    }
+
+    .container-box .box-pan .box-shadow {
+        position: absolute;
+        width: 23px;
+        height: 29px;
+        background: url("./img/therm-shadow.png") no-repeat;
+        background-size: 100% 100%;
+        bottom: 32px;
+        left: 20px;
+        z-index: 13;
+    }
+
+    .container-box .box-pan .bottom-circle {
+        position: absolute;
+        width: 70px;
+        height: 0px;
+        overflow: hidden;
+        bottom: 2px;
+        left: calc(50% - 35px);
+        filter: blur(1px);
+        z-index: 11;
+        transition: all 2.5s;
+        transition-delay: 0.8s;
+    }
+
+    .container-box .box-pan .bottom-circle.trans {
+        height: 45px;
+    }
+
+    .container-box .box-pan .bottom-circle.active {
+        height: 75px;
+    }
+
+    .container-box .box-pan .bottom-circle::after {
+        content: "";
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(90deg, #fde44d 0%, #e8a901 100%);
+        box-shadow: 0px 1px 5px 3px #f4ca2b;
+        position: absolute;
+        left: calc(50% - 30px);
+        bottom: 10px;
+        border-radius: 50%;
+    }
+
+    .container-box .box-pan .bottom-center {
+        width: 36px;
+        height: 135px;
+        position: absolute;
+        bottom: 60px;
+        left: calc(50% - 18px);
+        filter: blur(1px);
+        z-index: 10;
+    }
+
+    .container-box .box-pan .bottom-center .active {
+        width: 100%;
+        height: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, #fde44d 0%, #e8a901 100%);
+        transition: all 2.5s;
+        transition-delay: 2.2s;
+    }
+
+    .container-box .box-pan .bottom-center .active .bottom-warn {
+        width: 42px;
+        height: 0;
+        background: linear-gradient(180deg, #e80000 0%, rgba(254, 100, 100, 0) 100%);
+        filter: blur(1px);
+        position: absolute;
+        top: 0;
+        left: calc(50% - 21px);
+        z-index: 11;
+        transition: all 2.5s;
+        transition-delay: 2.2s;
+    }
+
+    .container-box .box-pan .bottom-center .trans {
+        height: calc(var(--per) * 100%);
+        box-shadow: 0px 1px 5px 3px #f4ca2b;
+    }
+
+    .container-box .box-pan .bottom-center .trans .bottom-warn {
+        height: calc(135px * var(--per));
+        box-shadow: 0px -5px 5px 0px rgba(231, 0, 0, 0.74);
+    }
+
+    .container-box .box-pan .bottom-center .br {
+        border-radius: 16px 16px 0 0;
+    }
+
+    .container-box .box-line {
+        width: 90px;
+        font-size: 12px;
+        margin-bottom: 30px;
+        height: 1px;
+        padding-right: 90px;
+        position: relative;
+    }
+
+    .container-box .box-line .left {
+        position: absolute;
+        left: -10px;
+        width: 19px;
+        height: 1px;
+        opacity: 0.9;
+        border: 1px dashed rgba(255, 255, 255, 0.39);
+    }
+
+    .container-box .box-line .left::after {
+        content: attr(data-num);
+        position: absolute;
+        top: -10px;
+        left: -35px;
+        text-align: right;
+        min-width: 25px;
+    }
+
+    .container-box .box-line .right {
+        position: absolute;
+        right: -10px;
+        width: 19px;
+        height: 1px;
+        opacity: 0.9;
+        border: 1px dashed rgba(255, 255, 255, 0.39);
+    }
+
+    .container-box .box-line .right::before {
+        content: attr(data-num);
+        position: absolute;
+        top: -10px;
+        right: -35px;
+        text-align: left;
+        min-width: 25px;
+    }
+</style>
+<!-- 底盘css -->
+<style>
+    .box {
+        width: 83px;
+        height: 203px;
+        position: relative;
+    }
+
+    .box::before {
+        content: '';
+        position: absolute;
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        background: rgb(121, 111, 111);
+        bottom: 0px;
+    }
+
+    .box::after {
+        content: '';
+        position: absolute;
+        width: 44px;
+        height: 203px;
+        border-radius: 22px;
+        background: rgb(121, 111, 111);
+        bottom: 0px;
+        left: calc(50% - 22px);
+        z-index: -1;
+    }
+
+    .box-inner {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+        border: 1px solid #91908C;
+        position: absolute;
+        left: calc(50% - 33px);
+        bottom: 8px;
+        background: #2A2719;
+        z-index: 2;
+
+    }
+
+    .box-inner::after {
+        content: '';
+        width: 28px;
+        height: 50px;
+        background: #2A2719;
+        position: absolute;
+        left: calc(50% - 14px);
+        bottom: 20px;
+    }
+
+    .box-inner-line {
+        position: absolute;
+        width: 30px;
+        height: 170px;
+        border-radius: 15px;
+        bottom: 25px;
+        border: 1px solid #91908C;
+        left: calc(50% - 15px);
+        background: #2A2719;
+        z-index: 1;
+    }
+</style>
+
+<body>
+    <section>
+        <div id="app" v-cloak>
+            <div class="container-box">
+                <div v-for="(item, index) in stepList" :key="index" class="box-line">
+                    <div class="left" :data-num="item"></div>
+                    <div class="right" :data-num="item"></div>
+                </div>
+                <div class="box-pan">
+                    <!-- 底盘 -->
+                    <!-- <div class="box">
+                        <div class="box-inner"></div>
+                        <div class="box-inner-line"></div>
+                    </div> -->
+                    <div class="box-shadow"></div>
+                    <div :class="[
+                      'bottom-circle',
+                      show && (data.value >= 0 ? 'active' : 'trans'),
+                    ]"></div>
+                    <div class="bottom-center" v-show="data.value >= 0">
+                        <div :class="['active', currPer >= 1 && 'br', show && 'trans']"
+                            :style="{ '--per': currPer < 1 ? currPer : 1 }">
+                            <div :class="['bottom-warn', currPer >= 1 && 'br']" v-show="data.value > data.warn"
+                                :style="{ '--per': warnPer < 1 ? warnPer : 1 }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box" style="margin-top: 80px;">
+            <div class="box-inner"></div>
+            <div class="box-inner-line"></div>
+        </div>
+    </section>
+
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            warnPer: 0,
+            currPer: 0,
+            data: {
+                max: 100,
+                min: 0,
+                value: 80,
+                warn: 40
+            },
+            stepList: [],
+            show: false
+        },
+        methods: {
+        },
+        created() {
+            let { data, stepList } = this, step = parseInt(data.max) / 4;
+            for (let i = 0; i < 5; i++) {
+                this.stepList.unshift(step * i);
+            }
+            this.currPer = parseInt(data.value) / parseInt(data.max);
+            if (parseInt(data.value) > parseInt(data.warn)) {
+                this.warnPer =
+                    (parseInt(data.value) - parseInt(data.warn)) /
+                    parseInt(data.max);
+            }
+        },
+        mounted() {
+            setTimeout(() => {
+                this.show = true
+            }, 100);
+        }
+    })
+</script>
+
+</html>
