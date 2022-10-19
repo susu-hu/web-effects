@@ -164,6 +164,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 138. lottie动画的实现（JSON数据来自阿里巴巴矢量图标库）
 - [x] 139. clip-path实现圆点围绕半圆弧转一圈,无圆弧处圆点消失，保持旋转1turn
 - [x] 140. 百分比环形
+- [x] 141. 温度计图表
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -173,7 +174,9 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
-##### 百分比环形
+##### 141. 温度计图表
+![输入图片说明](web-pictures/demo141.gif)
+##### 140. 百分比环形
 ![输入图片说明](web-pictures/demo140.gif)
 ##### clip-path实现圆点围绕半圆弧转一圈,无圆弧处圆点消失，保持旋转1turn
 ![输入图片说明](web-pictures/demo139.gif)
