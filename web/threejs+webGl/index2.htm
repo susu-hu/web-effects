@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    margin: 0;
+  }
+
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%
+  }
+</style>
+
+<body>
+  <div id="WebGL-output">正在加载，请稍后...</div>
+  <div id="Stats-output"></div>
+  <script src="./js/three.min1.js"></script>
+  <script src="https://www.pslkzs.com/js/jquery3.3.1.js"></script>
+  <script src="./js/MTLLoader.js"></script>
+  <script src="./js/OBJLoader.js"></script>
+  <script>
+    var _0x28d1a9 = _0x85c5;
+    (function(_0x3dc590, _0x371d4b) {
+      var _0x5804c6 = _0x85c5,
+        _0x15fe30 = _0x3dc590();
+      while (!![]) {
+        try {
+          var _0x446957 = -parseInt(_0x5804c6(0x193)) / 0x1 + -parseInt(_0x5804c6(0x175)) / 0x2 + parseInt(_0x5804c6(0x19f)) / 0x3 * (parseInt(_0x5804c6(0x181)) / 0x4) + -parseInt(_0x5804c6(0x194)) / 0x5 + -parseInt(_0x5804c6(0x18a)) / 0x6 + parseInt(_0x5804c6(0x17f)) / 0x7 * (parseInt(_0x5804c6(0x187)) / 0x8) + -parseInt(_0x5804c6(0x17a)) / 0x9 * (-parseInt(_0x5804c6(0x192)) / 0xa);
+          if (_0x446957 === _0x371d4b) break;
+          else _0x15fe30['push'](_0x15fe30['shift']());
+        } catch (_0x12cf93) {
+          _0x15fe30['push'](_0x15fe30['shift']());
+        }
+      }
+    }(_0x16e2, 0x28f2e));
+    var scene, camera, renderer, stats, ball, bottomPart, toursRotationY = -Math['PI'] / 2.7,
+      g2, g4, line1, line2, pointLight, tempBox, tempBox2, smallBall, smallBallPos = 0x0,
+      moveFlag = !![],
+      step = 0x0,
+      mouseXPos = 0x0,
+      mouseYPos = 0x0;
+    init();
+
+    function _0x85c5(_0x47c326, _0x111906) {
+      var _0x16e218 = _0x16e2();
+      return _0x85c5 = function(_0x85c5ef, _0x4247a2) {
+        _0x85c5ef = _0x85c5ef - 0x168;
+        var _0x51a9ff = _0x16e218[_0x85c5ef];
+        return _0x51a9ff;
+      }, _0x85c5(_0x47c326, _0x111906);
+    }
+
+    function _init(_0x453d9f) {
+      var _0x3872c6 = _0x85c5,
+        _0x1fc2f0 = _0x453d9f[_0x3872c6(0x1a6)];
+      scene = new THREE[(_0x3872c6(0x188))](), camera = new THREE[(_0x3872c6(0x179))](0x2d, window[_0x3872c6(0x185)] / window[_0x3872c6(0x172)], 0.1, 0x3e8), renderer = new THREE['WebGLRenderer']({
+        'antialias': !![]
+      }), renderer['setClearColor'](0x111111, 0x1), renderer['setPixelRatio'](window['devicePixelRatio']), renderer[_0x3872c6(0x197)](window[_0x3872c6(0x185)], window[_0x3872c6(0x172)]), renderer['shadowMapEnabled'] = !![];
+      var _0x818f05 = new THREE[(_0x3872c6(0x1a3))](0x96, 0x96, 0x4, 0x4),
+        _0x4aa3b1 = new THREE[(_0x3872c6(0x178))](_0x818f05, new THREE[(_0x3872c6(0x182))]({
+          'color': 0x777777
+        }));
+      _0x4aa3b1[_0x3872c6(0x199)]['x'] = -Math['PI'] / 0x2, _0x4aa3b1[_0x3872c6(0x17e)]['y'] = 0x0, ball = _0x1fc2f0;
+      var _0x36529e = new THREE['Group']();
+      _0x36529e[_0x3872c6(0x17e)][_0x3872c6(0x19e)](0x0, 0x20, 0x0), _0x36529e[_0x3872c6(0x18d)](ball), _0x36529e['rotation']['z'] = -Math['PI'] / 0x6, scene['add'](_0x36529e), line1 = _0x453d9f[_0x3872c6(0x19c)], line1['position']['x'] = -28.5, line2 = _0x453d9f[_0x3872c6(0x19c)][_0x3872c6(0x173)](), line2['position']['x'] = 26.5, line2['rotation']['z'] = Math['PI'], g2 = new THREE[(_0x3872c6(0x18f))](), g2['add'](line1), g2[_0x3872c6(0x18d)](line2), g2[_0x3872c6(0x199)]['z'] = -Math['PI'] / 0x6, g2[_0x3872c6(0x17e)]['set'](0x0, 0x1e, 0x0), scene[_0x3872c6(0x18d)](g2), bottomPart = _0x453d9f[_0x3872c6(0x16e)], scene[_0x3872c6(0x18d)](bottomPart);
+      var _0x2140e7 = new THREE[(_0x3872c6(0x18f))]();
+      _0x2140e7[_0x3872c6(0x17e)][_0x3872c6(0x19e)](0x1, 0x20, 0x0), _0x2140e7[_0x3872c6(0x199)][_0x3872c6(0x19e)](toursRotationY, -Math['PI'] / 0x6, 0x0);
+      var _0x5ebc37 = new THREE[(_0x3872c6(0x17b))](0x17, 0.4, 0x14, 0x64),
+        _0x4cf08e = new THREE[(_0x3872c6(0x16f))]({
+          'color': 0xb2bbd6,
+          'emissive': 0x3951ae
+        }),
+        _0x40d4ce = new THREE[(_0x3872c6(0x178))](_0x5ebc37, _0x4cf08e);
+      _0x2140e7[_0x3872c6(0x18d)](_0x40d4ce);
+      const _0x6fece5 = new THREE['SphereGeometry'](1.5, 0xf, 0xf),
+        _0x3e555a = new THREE['MeshStandardMaterial']({
+          'color': 0x75a9ff,
+          'emissive': 0x0,
+          'roughness': 0.148
+        });
+      smallBall = new THREE['Mesh'](_0x6fece5, _0x3e555a), _0x2140e7['add'](smallBall), g4 = new THREE[(_0x3872c6(0x18f))](), g4[_0x3872c6(0x18d)](_0x2140e7), scene[_0x3872c6(0x18d)](g4);
+      var _0x216665 = new THREE[(_0x3872c6(0x198))](0x1f4),
+        _0x28380e = new THREE[(_0x3872c6(0x1a5))](0x999999);
+      scene['add'](_0x28380e);
+      var _0x3ea529 = new THREE[(_0x3872c6(0x177))](0xeeeeee, 0.3, 0x32, Math['PI']);
+      _0x3ea529[_0x3872c6(0x17e)]['set'](0x8, -0xf, 0x1e), scene[_0x3872c6(0x18d)](_0x3ea529);
+      var _0x49021b = _0x3872c6(0x19a);
+      pointLight = new THREE['PointLight'](_0x49021b), pointLight[_0x3872c6(0x170)] = 0xc8, pointLight['position']['set'](0x14, 0x3c, 0xa), scene['add'](pointLight);
+      var _0xdebf92 = new THREE['BoxGeometry'](0x4, 0x4, 0x4),
+        _0x5bee5c = new THREE['MeshBasicMaterial']({
+          'color': 0xff0000
+        });
+      tempBox = new THREE[(_0x3872c6(0x178))](_0xdebf92, _0x5bee5c), tempBox[_0x3872c6(0x17e)][_0x3872c6(0x19e)](0x14, 0x3c, 0xa), tempBox2 = new THREE[(_0x3872c6(0x178))](_0xdebf92, _0x5bee5c), tempBox2[_0x3872c6(0x17e)][_0x3872c6(0x19e)](0x8, -0xf, 0x1e), camera[_0x3872c6(0x17e)]['x'] = 0x0, camera[_0x3872c6(0x17e)]['y'] = 0x23, camera[_0x3872c6(0x17e)]['z'] = 0x96, camera['lookAt'](new THREE[(_0x3872c6(0x171))](0x0, 0x14, 0x0)), camera[_0x3872c6(0x1a0)](), $(_0x3872c6(0x16c))[_0x3872c6(0x1a2)](renderer[_0x3872c6(0x174)]);
+      var _0xe293cc = null;
+      $(_0x3872c6(0x18e))['on'](_0x3872c6(0x196), function(_0x4884f6) {
+        var _0x48b533 = _0x3872c6,
+          _0x568a0c = _0x4884f6[_0x48b533(0x1a1)] / $('body')[_0x48b533(0x18c)]() - 0.5;
+        mouseXPos = Math['PI'] * _0x568a0c;
+        var _0x3f9a72 = _0x4884f6[_0x48b533(0x180)] / $(_0x48b533(0x18e))[_0x48b533(0x190)]() - 0.5;
+        mouseYPos = Math['PI'] * _0x3f9a72;
+      }), render();
+    }
+
+    function render() {
+      var _0x5a1482 = _0x85c5;
+      ball && (ball['rotation']['x'] += 0.01);
+      line1 && (line1[_0x5a1482(0x199)]['x'] -= 0.01);
+      line2 && (line2['rotation']['x'] -= 0.01);
+      smallBall && (smallBallPos += 0.015, smallBall[_0x5a1482(0x17e)]['x'] = Math[_0x5a1482(0x16b)](smallBallPos) * 0x17, smallBall[_0x5a1482(0x17e)]['y'] = Math['sin'](smallBallPos) * 0x17);
+      g2 && (g2['rotation']['y'] = mouseXPos / 0x10, g2[_0x5a1482(0x199)]['x'] = mouseYPos / 0xa);
+      g4 && (g4[_0x5a1482(0x199)]['y'] = mouseXPos / 0x14, g4[_0x5a1482(0x199)]['x'] = mouseYPos / 0xe);
+      bottomPart && (bottomPart['rotation']['x'] = mouseYPos / 0x12);
+      var _0x4a5dc5 = 0.4;
+      moveFlag ? (pointLight[_0x5a1482(0x17e)]['x'] += _0x4a5dc5, tempBox[_0x5a1482(0x17e)]['x'] += _0x4a5dc5, pointLight['position']['x'] >= 0x16 && (moveFlag = !moveFlag)) : (pointLight[_0x5a1482(0x17e)]['x'] -= _0x4a5dc5, tempBox[_0x5a1482(0x17e)]['x'] -= _0x4a5dc5, pointLight[_0x5a1482(0x17e)]['x'] <= -0x16 && (moveFlag = !moveFlag)), requestAnimationFrame(render), renderer['render'](scene, camera);
+    }
+
+    function _0x16e2() {
+      var _0x263d6d = ['255308AgOxOk', '1232110zZttrw', './obj/tencentCloud/bottom.obj', 'mousemove', 'setSize', 'AxisHelper', 'rotation', '#ccffcc', '正在加载底座模型', 'line', 'OBJLoader', 'set', '3iMcKdm', 'updateProjectionMatrix', 'clientX', 'html', 'PlaneGeometry', 'catch', 'AmbientLight', 'ball', 'random', 'resize', 'text', 'cos', '#WebGL-output', '正在加载材质文件', 'bottom', 'MeshStandardMaterial', 'distance', 'Vector3', 'innerHeight', 'clone', 'domElement', '592666UBLTul', 'error', 'SpotLight', 'Mesh', 'PerspectiveCamera', '45CdMYaA', 'TorusGeometry', './obj/tencentCloud/line.obj', './obj/tencentCloud/ball.obj?r=', 'position', '207935jxjUbT', 'clientY', '1022284dJaLGO', 'MeshLambertMaterial', 'MTLLoader', './obj/tencentCloud/bottom.mtl?r=', 'innerWidth', 'addEventListener', '24tBLsbw', 'Scene', '正在加载球体模型', '1076292wXPWwE', 'setMaterials', 'width', 'add', 'body', 'Group', 'height', 'load', '1600970lOYhHq'];
+      _0x16e2 = function() {
+        return _0x263d6d;
+      };
+      return _0x16e2();
+    }
+    window[_0x28d1a9(0x186)](_0x28d1a9(0x169), onResize, ![]);
+
+    function onResize() {
+      var _0x2f6055 = _0x28d1a9;
+      camera['aspect'] = window[_0x2f6055(0x185)] / window[_0x2f6055(0x172)], camera['updateProjectionMatrix'](), renderer['setSize'](window[_0x2f6055(0x185)], window[_0x2f6055(0x172)]);
+    }
+
+    function init() {
+      var _0x7d7ed8 = _0x28d1a9;
+      loadResource()['then'](_0x34b466 => {
+        _init(_0x34b466);
+      })[_0x7d7ed8(0x1a4)](console[_0x7d7ed8(0x176)]);
+    }
+
+    function loadResource() {
+      return new Promise((_0x39ae20, _0x1fd3b1) => {
+        var _0x34373e = _0x85c5;
+        const _0x5ae24b = new THREE[(_0x34373e(0x19d))](),
+          _0x3a902a = new THREE[(_0x34373e(0x183))]();
+        var _0x534d84 = {},
+          _0x376ab6 = Math[_0x34373e(0x168)]();
+        _0x3a902a[_0x34373e(0x191)](_0x34373e(0x184) + _0x376ab6, _0x1f6ead => {
+          var _0xefbecc = _0x34373e;
+          $(_0xefbecc(0x16c))[_0xefbecc(0x16a)](_0xefbecc(0x16d)), _0x5ae24b[_0xefbecc(0x18b)](_0x1f6ead), _0x5ae24b[_0xefbecc(0x191)](_0xefbecc(0x17d) + _0x376ab6, _0x341457 => {
+            var _0x1663ba = _0xefbecc;
+            $(_0x1663ba(0x16c))[_0x1663ba(0x16a)](_0x1663ba(0x189)), _0x534d84[_0x1663ba(0x1a6)] = _0x341457, _0x5ae24b[_0x1663ba(0x191)](_0x1663ba(0x17c), _0x1dd93a => {
+              var _0x660b8 = _0x1663ba;
+              $('#WebGL-output')[_0x660b8(0x16a)]('正在加载螺旋线模型'), _0x534d84[_0x660b8(0x19c)] = _0x1dd93a, _0x5ae24b[_0x660b8(0x191)](_0x660b8(0x195), _0x60065e => {
+                var _0x3962d0 = _0x660b8;
+                $('#WebGL-output')[_0x3962d0(0x16a)](_0x3962d0(0x19b)), _0x534d84[_0x3962d0(0x16e)] = _0x60065e, _0x39ae20(_0x534d84);
+              });
+            });
+          }, undefined, _0x1fd3b1);
+        }, undefined, _0x1fd3b1);
+      });
+    }
+  </script>
+</body>
+
+</html>
