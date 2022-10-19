@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://wow.techbrood.com/fiddle/44397</title>
+</head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+    .frame {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 400px;
+        margin-top: -200px;
+        margin-left: -200px;
+        border-radius: 2px;
+        box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background: #37474F;
+        /* fallback for old browsers */
+
+        color: #333;
+        font-family: 'Open Sans', Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .thermostat {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        left: -100px;
+        background: #F2F2F2;
+        border-radius: 50%;
+        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+    .thermostat:hover .control .indicator {
+        background: #FFD600;
+        transform: rotate(-40deg);
+        -webkit-transform: rotate(-40deg);
+    }
+
+    .thermostat:hover .control .room_temp {
+        opacity: 0;
+        transform: translateX(-50px) scale(0.5);
+        -webkit-transform: translateX(-50px) scale(0.5);
+    }
+
+    .thermostat:hover .control .room_temp_onhover {
+        opacity: 1;
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+    }
+
+    .thermostat .ring {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        top: 10px;
+        left: 10px;
+        background: #12c2e9;
+        /* fallback for old browsers */
+        /* Chrome 10-25, Safari 5.1-6 */
+
+        background: linear-gradient(to left, #f64f59, #c471ed, #12c2e9);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        border-radius: 50%;
+        box-shadow: inset 2px 4px 4px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .thermostat .ring .overlay {
+        position: absolute;
+        width: 125px;
+        height: 125px;
+        top: 24%;
+        left: 50%;
+        background: #F2F2F2;
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        border-radius: 0 0px 75px 0px;
+    }
+
+    .thermostat .control {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        top: 30px;
+        left: 30px;
+        background: #455A64;
+        border-radius: 50%;
+        box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+        z-index: 6;
+    }
+
+    .thermostat .control .indicator {
+        position: absolute;
+        width: 2px;
+        height: 12px;
+        top: 1px;
+        left: 50%;
+        background: #64DD17;
+        -webkit-transform-origin: 0 65px;
+        transform-origin: 0 65px;
+        -webkit-transform: rotate(-50deg);
+        transform: rotate(-50deg);
+        transition: all .5s ease-out;
+    }
+
+    .thermostat .control .outside_temp {
+        position: absolute;
+        top: 18px;
+        left: 4px;
+        right: 0;
+        text-align: center;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FAFAFA;
+    }
+
+    .thermostat .control .room_temp {
+        position: absolute;
+        top: 34px;
+        left: 0px;
+        right: 0;
+        text-align: center;
+        font-weight: 400;
+        font-size: 60px;
+        line-height: 60px;
+        color: #64DD17;
+        letter-spacing: -8px;
+        padding-right: 12px;
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        transition: all .3s ease-out;
+    }
+
+    .thermostat .control span {
+        position: absolute;
+        top: 0;
+        right: 40px;
+        font-size: 20px;
+        line-height: 34px;
+        padding: 0 0 0 7px;
+    }
+
+    .thermostat .room_temp_onhover {
+        position: absolute;
+        top: 34px;
+        left: 0px;
+        right: 0;
+        text-align: center;
+        font-weight: 400;
+        font-size: 60px;
+        line-height: 60px;
+        letter-spacing: -6px;
+        padding-right: 2px;
+        opacity: 0;
+        color: #FFD600;
+        transform: translateX(-50px) scale(0.5);
+        -webkit-transform: translateX(-50px) scale(0.5);
+    }
+
+    .thermostat .room_temp_onhover span {
+        right: 40px;
+    }
+
+    .thermostat .room {
+        position: absolute;
+        bottom: 25px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FAFAFA;
+    }
+</style>
+
+<body>
+    <div class="frame">
+        <div class="center">
+            <div class="thermostat">
+                <div class="ring">
+                    <div class="overlay"></div>
+                </div>
+                <div class="control">
+                    <div class="indicator"></div>
+                    <div class="outside_temp">23°</div>
+                    <div class="room_temp">19<span>°</span>
+                    </div>
+                    <div class="room_temp_onhover">21<span>°</span>
+                    </div>
+                    <div class="room">Bedroom</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

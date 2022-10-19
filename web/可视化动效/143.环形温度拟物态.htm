@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：http://www.100sucai.com/demos.php?id=1637289807</title>
+</head>
+<style>
+    :root {
+        --font-color: #222;
+        --bg-color: #f2f3f7;
+        --button-bg-color: #f2f3f7;
+        --button-shadow:
+            -6px -6px 8px rgba(255, 255, 255, 0.9),
+            5px 5px 8px rgba(0, 0, 0, 0.07);
+    }
+
+    [data-theme="dark"] {
+        --font-color: #fff;
+        --bg-color: #181818;
+        --button-bg-color: #121212;
+        --button-shadow:
+            -2px -2px 4px rgba(255, 255, 255, 0.05),
+            0 0 10px 10px rgba(255, 255, 255, 0.005),
+            2px 2px 8px rgba(60, 60, 60, 0.1);
+    }
+
+    html {
+        box-sizing: border-box;
+        font-size: 18px;
+        font-family: 'Roboto', sans-serif;
+        color: var(--font-color);
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        background-color: #f2f2f2;
+    }
+
+    .color-cool {
+        color: #077dfe;
+    }
+
+    .color-warm {
+        color: #ff7a00;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 25px;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    @media screen and (min-width: 800px) {
+        .container {
+            flex-direction: row;
+        }
+    }
+
+    .app-container {
+        background-color: var(--bg-color);
+        border-radius: 40px;
+        box-shadow: -2px -2px 4px 0px #ffffff, 50px 50px 50px 0px rgba(0, 0, 0, 0.25);
+        display: block;
+        flex: 1;
+        min-height: 500px;
+        max-width: 350px;
+        margin-bottom: 25px;
+        overflow: hidden;
+        padding: 30px;
+    }
+
+    .app-top-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .app-heading {
+        color: var(--font-color);
+        display: block;
+        flex: 1;
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0;
+        text-align: center;
+    }
+
+    button {
+        border: 0;
+    }
+
+    button:focus {
+        border: none;
+        outline: 0 !important;
+        outline-style: none;
+    }
+
+    .button {
+        color: var(--font-color);
+        position: relative;
+        border-radius: 15px;
+        background: var(--button-bg-color);
+        font-weight: 700;
+        transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: var(--button-shadow);
+        cursor: pointer;
+    }
+
+    .button.button-link {
+        color: #067CF8;
+        display: block;
+        font-size: 17px;
+        margin: 30px 0 0;
+        padding: 20px 0;
+        width: 100%;
+    }
+
+    .button.button-small {
+        color: #6D6E74;
+        font-size: 22px;
+        line-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .button.button-large {
+        display: flex;
+        font-size: 20px;
+        flex-direction: column;
+        padding: 15px;
+        text-align: left;
+        width: 45%;
+    }
+
+    .button.button-large svg {
+        margin-bottom: 40px;
+        width: 30px;
+    }
+
+    .button-dial {
+        border-radius: 50%;
+        display: flex;
+        height: 270px;
+        margin: 35px auto;
+        align-items: center;
+        justify-content: center;
+        width: 270px;
+    }
+
+    .button-dial-top {
+        background: var(--button-bg-color);
+        box-shadow: var(--button-shadow);
+        border-radius: 50%;
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        text-align: center;
+        z-index: 5;
+    }
+
+    .button-dial-label {
+        color: #067CF8;
+        font-size: 28px;
+        fill: #067CF8;
+        position: relative;
+        z-index: 10;
+    }
+
+    .button-dial-spoke {
+        background-color: rgba(96, 171, 254, 0.6);
+        display: block;
+        height: 2px;
+        width: 83%;
+        position: absolute;
+        margin: 0 auto;
+        z-index: 5;
+        top: 50%;
+    }
+
+    .button-dial-spoke:nth-child(2) {
+        transform: rotate(30deg);
+    }
+
+    .button-dial-spoke:nth-child(3) {
+        transform: rotate(60deg);
+    }
+
+    .button-dial-spoke:nth-child(4) {
+        transform: rotate(90deg);
+    }
+
+    .button-dial-spoke:nth-child(5) {
+        transform: rotate(120deg);
+    }
+
+    .button-dial-spoke:nth-child(6) {
+        transform: rotate(150deg);
+    }
+
+    .button-block {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 24px;
+        width: 100%;
+    }
+
+    .button-block span {
+        font-size: 16px;
+    }
+
+    .subtle {
+        color: #6D6E74;
+    }
+
+    .flex-button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="app-container">
+            <div class="app-top-bar">
+                <button class="button button-small">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="app-heading">Weather Stats</h1>
+            </div>
+            <div class="app-content">
+                <button class="button button-block">
+                    <span class="subtle">Period</span> <span>Last 30 days</span>
+                    <div class="button button-small"><i class="fas fa-chevron-right"></i></div>
+                </button>
+                <div class="button button-dial">
+
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+
+                    <div class="button-dial-top"></div>
+                    <div class="button-dial-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100"
+                            xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M60.333,68.349V11.111C60.333,4.984,55.349,0,49.222,0c-6.126,0-11.111,4.984-11.111,11.111v57.237   c-4.15,3.323-6.667,8.397-6.667,13.874c0,9.802,7.975,17.777,17.777,17.777C59.024,100,67,92.024,67,82.223   C67,76.746,64.482,71.672,60.333,68.349z M44.778,48.363h4.444v-4.444h-4.444V35.03h4.444v-4.444h-4.444v-8.889h4.444v-4.444   h-4.444v-6.142c0-2.455,1.99-4.444,4.444-4.444c2.455,0,4.445,1.989,4.445,4.444v41.111h-8.889V48.363z" />
+                            </g>
+                        </svg>
+                        7&deg;F
+                    </div>
+                </div>
+                <div class="flex-button-container">
+                    <button class="button button-large">
+                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="snowflake"
+                            class="color-cool" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor"
+                                d="M440.1 355.2l-39.2-23 34.1-9.3c8.4-2.3 13.4-11.1 11.1-19.6l-4.1-15.5c-2.2-8.5-10.9-13.6-19.3-11.3L343 298.2 271.2 256l71.9-42.2 79.7 21.7c8.4 2.3 17-2.8 19.3-11.3l4.1-15.5c2.2-8.5-2.7-17.3-11.1-19.6l-34.1-9.3 39.2-23c7.5-4.4 10.1-14.2 5.8-21.9l-7.9-13.9c-4.3-7.7-14-10.3-21.5-5.9l-39.2 23 9.1-34.7c2.2-8.5-2.7-17.3-11.1-19.6l-15.2-4.1c-8.4-2.3-17 2.8-19.3 11.3l-21.3 81-71.9 42.2v-84.5L306 70.4c6.1-6.2 6.1-16.4 0-22.6l-11.1-11.3c-6.1-6.2-16.1-6.2-22.2 0l-24.9 25.4V16c0-8.8-7-16-15.7-16h-15.7c-8.7 0-15.7 7.2-15.7 16v46.1l-24.9-25.4c-6.1-6.2-16.1-6.2-22.2 0L142.1 48c-6.1 6.2-6.1 16.4 0 22.6l58.3 59.3v84.5l-71.9-42.2-21.3-81c-2.2-8.5-10.9-13.6-19.3-11.3L72.7 84c-8.4 2.3-13.4 11.1-11.1 19.6l9.1 34.7-39.2-23c-7.5-4.4-17.1-1.8-21.5 5.9l-7.9 13.9c-4.3 7.7-1.8 17.4 5.8 21.9l39.2 23-34.1 9.1c-8.4 2.3-13.4 11.1-11.1 19.6L6 224.2c2.2 8.5 10.9 13.6 19.3 11.3l79.7-21.7 71.9 42.2-71.9 42.2-79.7-21.7c-8.4-2.3-17 2.8-19.3 11.3l-4.1 15.5c-2.2 8.5 2.7 17.3 11.1 19.6l34.1 9.3-39.2 23c-7.5 4.4-10.1 14.2-5.8 21.9L10 391c4.3 7.7 14 10.3 21.5 5.9l39.2-23-9.1 34.7c-2.2 8.5 2.7 17.3 11.1 19.6l15.2 4.1c8.4 2.3 17-2.8 19.3-11.3l21.3-81 71.9-42.2v84.5l-58.3 59.3c-6.1 6.2-6.1 16.4 0 22.6l11.1 11.3c6.1 6.2 16.1 6.2 22.2 0l24.9-25.4V496c0 8.8 7 16 15.7 16h15.7c8.7 0 15.7-7.2 15.7-16v-46.1l24.9 25.4c6.1 6.2 16.1 6.2 22.2 0l11.1-11.3c6.1-6.2 6.1-16.4 0-22.6l-58.3-59.3v-84.5l71.9 42.2 21.3 81c2.2 8.5 10.9 13.6 19.3 11.3L375 428c8.4-2.3 13.4-11.1 11.1-19.6l-9.1-34.7 39.2 23c7.5 4.4 17.1 1.8 21.5-5.9l7.9-13.9c4.6-7.5 2.1-17.3-5.5-21.7z">
+                            </path>
+                        </svg>
+                        Cool
+                    </button>
+                    <button class="button button-large">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fire-alt"
+                            class="color-warm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor"
+                                d="M323.56 51.2c-20.8 19.3-39.58 39.59-56.22 59.97C240.08 73.62 206.28 35.53 168 0 69.74 91.17 0 209.96 0 281.6 0 408.85 100.29 512 224 512s224-103.15 224-230.4c0-53.27-51.98-163.14-124.44-230.4zm-19.47 340.65C282.43 407.01 255.72 416 226.86 416 154.71 416 96 368.26 96 290.75c0-38.61 24.31-72.63 72.79-130.75 6.93 7.98 98.83 125.34 98.83 125.34l58.63-66.88c4.14 6.85 7.91 13.55 11.27 19.97 27.35 52.19 15.81 118.97-33.43 153.42z">
+                            </path>
+                        </svg>
+                        Warm
+                    </button>
+                </div>
+                <button class="button button-link">
+                    Update Settings
+                </button>
+            </div>
+        </div>
+        <div class="app-container" data-theme="dark">
+            <div class="app-top-bar">
+                <button class="button button-small">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h1 class="app-heading">Weather Stats</h1>
+            </div>
+            <div class="app-content">
+                <button class="button button-block">
+                    <span class="subtle">Period</span> <span>Last 30 days</span>
+                    <div class="button button-small"><i class="fas fa-chevron-right"></i></div>
+                </button>
+                <div class="button button-dial">
+
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+                    <span class="button-dial-spoke"></span>
+
+                    <div class="button-dial-top"></div>
+                    <div class="button-dial-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100"
+                            xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M60.333,68.349V11.111C60.333,4.984,55.349,0,49.222,0c-6.126,0-11.111,4.984-11.111,11.111v57.237   c-4.15,3.323-6.667,8.397-6.667,13.874c0,9.802,7.975,17.777,17.777,17.777C59.024,100,67,92.024,67,82.223   C67,76.746,64.482,71.672,60.333,68.349z M44.778,48.363h4.444v-4.444h-4.444V35.03h4.444v-4.444h-4.444v-8.889h4.444v-4.444   h-4.444v-6.142c0-2.455,1.99-4.444,4.444-4.444c2.455,0,4.445,1.989,4.445,4.444v41.111h-8.889V48.363z" />
+                            </g>
+                        </svg>
+                        7&deg;F
+                    </div>
+                </div>
+                <div class="flex-button-container">
+                    <button class="button button-large">
+                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="snowflake"
+                            class="color-cool" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor"
+                                d="M440.1 355.2l-39.2-23 34.1-9.3c8.4-2.3 13.4-11.1 11.1-19.6l-4.1-15.5c-2.2-8.5-10.9-13.6-19.3-11.3L343 298.2 271.2 256l71.9-42.2 79.7 21.7c8.4 2.3 17-2.8 19.3-11.3l4.1-15.5c2.2-8.5-2.7-17.3-11.1-19.6l-34.1-9.3 39.2-23c7.5-4.4 10.1-14.2 5.8-21.9l-7.9-13.9c-4.3-7.7-14-10.3-21.5-5.9l-39.2 23 9.1-34.7c2.2-8.5-2.7-17.3-11.1-19.6l-15.2-4.1c-8.4-2.3-17 2.8-19.3 11.3l-21.3 81-71.9 42.2v-84.5L306 70.4c6.1-6.2 6.1-16.4 0-22.6l-11.1-11.3c-6.1-6.2-16.1-6.2-22.2 0l-24.9 25.4V16c0-8.8-7-16-15.7-16h-15.7c-8.7 0-15.7 7.2-15.7 16v46.1l-24.9-25.4c-6.1-6.2-16.1-6.2-22.2 0L142.1 48c-6.1 6.2-6.1 16.4 0 22.6l58.3 59.3v84.5l-71.9-42.2-21.3-81c-2.2-8.5-10.9-13.6-19.3-11.3L72.7 84c-8.4 2.3-13.4 11.1-11.1 19.6l9.1 34.7-39.2-23c-7.5-4.4-17.1-1.8-21.5 5.9l-7.9 13.9c-4.3 7.7-1.8 17.4 5.8 21.9l39.2 23-34.1 9.1c-8.4 2.3-13.4 11.1-11.1 19.6L6 224.2c2.2 8.5 10.9 13.6 19.3 11.3l79.7-21.7 71.9 42.2-71.9 42.2-79.7-21.7c-8.4-2.3-17 2.8-19.3 11.3l-4.1 15.5c-2.2 8.5 2.7 17.3 11.1 19.6l34.1 9.3-39.2 23c-7.5 4.4-10.1 14.2-5.8 21.9L10 391c4.3 7.7 14 10.3 21.5 5.9l39.2-23-9.1 34.7c-2.2 8.5 2.7 17.3 11.1 19.6l15.2 4.1c8.4 2.3 17-2.8 19.3-11.3l21.3-81 71.9-42.2v84.5l-58.3 59.3c-6.1 6.2-6.1 16.4 0 22.6l11.1 11.3c6.1 6.2 16.1 6.2 22.2 0l24.9-25.4V496c0 8.8 7 16 15.7 16h15.7c8.7 0 15.7-7.2 15.7-16v-46.1l24.9 25.4c6.1 6.2 16.1 6.2 22.2 0l11.1-11.3c6.1-6.2 6.1-16.4 0-22.6l-58.3-59.3v-84.5l71.9 42.2 21.3 81c2.2 8.5 10.9 13.6 19.3 11.3L375 428c8.4-2.3 13.4-11.1 11.1-19.6l-9.1-34.7 39.2 23c7.5 4.4 17.1 1.8 21.5-5.9l7.9-13.9c4.6-7.5 2.1-17.3-5.5-21.7z">
+                            </path>
+                        </svg>
+                        Cool
+                    </button>
+                    <button class="button button-large">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fire-alt"
+                            class="color-warm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor"
+                                d="M323.56 51.2c-20.8 19.3-39.58 39.59-56.22 59.97C240.08 73.62 206.28 35.53 168 0 69.74 91.17 0 209.96 0 281.6 0 408.85 100.29 512 224 512s224-103.15 224-230.4c0-53.27-51.98-163.14-124.44-230.4zm-19.47 340.65C282.43 407.01 255.72 416 226.86 416 154.71 416 96 368.26 96 290.75c0-38.61 24.31-72.63 72.79-130.75 6.93 7.98 98.83 125.34 98.83 125.34l58.63-66.88c4.14 6.85 7.91 13.55 11.27 19.97 27.35 52.19 15.81 118.97-33.43 153.42z">
+                            </path>
+                        </svg>
+                        Warm
+                    </button>
+                </div>
+                <button class="button button-link">
+                    Update Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+
+</script>
+
+</html>
