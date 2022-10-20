@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文字渐变色</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  /* 1 */
+  span {
+    background: linear-gradient(to right, red, orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* background-clip 属性 规定背景的绘制区域 */
+    color: transparent;
+    font-size: 30px;
+  }
+
+  /* 2 */
+  h1 {
+    position: relative;
+    color: orange;
+  }
+
+  h1:before {
+    content: attr(text);
+    position: absolute;
+    z-index: 10;
+    color: red;
+    -webkit-mask: linear-gradient(to left, orange, transparent);
+    mask: linear-gradient(to left, orange, transparent);
+  }
+</style>
+
+<body>
+  <span>苏苏小苏苏</span>
+  <h1 text="苏苏小苏苏">苏苏小苏苏</h1>
+</body>
+
+</html>

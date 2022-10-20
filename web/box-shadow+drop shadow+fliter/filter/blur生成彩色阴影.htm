@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://github.com/chokcoco/iCSS/issues/39</title>
+</head>
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Righteous);
+
+  .container {
+    width: 200px;
+    margin: 20px auto;
+  }
+
+  .avator {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: url("https://s3.bmp.ovh/imgs/2022/07/27/6289fe4ab016c74a.png") no-repeat center center;
+    background-size: 100% 100%;
+  }
+
+  .avator::after {
+    content: "";
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    transform: scale(0.95);
+    z-index: -1;
+    -webkit-animation: filterChange 10s infinite linear;
+    animation: filterChange 10s infinite linear;
+  }
+
+  p {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 28px;
+    font-family: Righteous;
+  }
+
+  @-webkit-keyframes filterChange {
+    0% {
+      top: 0;
+      filter: blur(0) brightness(101%) opacity(1);
+    }
+
+    40% {
+      top: 10%;
+      filter: blur(0) brightness(101%) opacity(1);
+    }
+
+    80% {
+      top: 10%;
+      filter: blur(10px) brightness(80%) opacity(0.8);
+    }
+
+    100% {
+      top: 10%;
+      filter: blur(10px) brightness(80%) opacity(0.8);
+    }
+  }
+
+  @keyframes filterChange {
+    0% {
+      top: 0;
+      filter: blur(0) brightness(101%) opacity(1);
+    }
+
+    40% {
+      top: 10%;
+      filter: blur(0) brightness(101%) opacity(1);
+    }
+
+    80% {
+      top: 10%;
+      filter: blur(10px) brightness(80%) opacity(0.8);
+    }
+
+    100% {
+      top: 10%;
+      filter: blur(10px) brightness(80%) opacity(0.8);
+    }
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="avator"></div>
+    <p>bulr shadow</p>
+  </div>
+</body>
+
+</html>

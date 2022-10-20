@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-10-13 22:59:59
  * @LastEditors: 胡苏珍 1628469970@qq.com
- * @LastEditTime: 2022-10-19 13:46:06
+ * @LastEditTime: 2022-10-20 14:21:36
  * @FilePath: \css_demos\web\页面动效相关！！！！\138. clip-path实现圆点围绕半圆弧转一圈.htm
  * @Description: 139. clip-path实现圆点围绕半圆弧转一圈
 -->
@@ -72,8 +72,26 @@
     background-origin: border-box;
     background-clip: content-box, border-box;
     border: solid 5px transparent;
-    /* filter: blur(1px); */
   }
+
+  .container-box:nth-child(3) .box-circle::after {
+    content: '';
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 94px);
+    top: calc(50% - 94px);
+    /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
+    background-image: linear-gradient(var(--bg), var(--bg)),
+      linear-gradient(to right, #1DEEF2, #F3C954);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: solid 5px transparent;
+    filter: blur(4px) brightness(80%) opacity(.8);
+    z-index: -1;
+  }
+
 
 
   .container-box:nth-child(3) .box-circle .box-dot {
