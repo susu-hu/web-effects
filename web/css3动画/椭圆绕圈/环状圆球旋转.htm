@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    @keyframes spin {
+        to {
+            transform: rotateY(-360deg);
+        }
+    }
+
+    @keyframes show {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes flicker-on-2 {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        15% {
+            opacity: 0;
+        }
+
+        30% {
+            opacity: 1;
+        }
+
+        55% {
+            opacity: 1;
+        }
+
+        57% {
+            opacity: 0;
+        }
+
+        75% {
+            opacity: 0;
+        }
+
+        76% {
+            opacity: 1;
+        }
+
+        99% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+    .scene {
+        position: absolute;
+        width: 25rem;
+        height: 25rem;
+        perspective: 100rem;
+        animation: flicker-on-2 1000ms linear 1500ms forwards;
+        opacity: 0;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        transform: rotateX(-8deg) rotateY(0deg);
+        transform-style: preserve-3d;
+    }
+
+    .globe {
+        position: relative;
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        animation: spin 25s 0ms linear infinite;
+    }
+
+    .ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: .3rem;
+        border-style: dotted;
+        border-radius: 50%;
+        color: orange;
+        animation: show 0.75s forwards ease-in-out;
+        opacity: 0;
+    }
+
+    .ring:nth-child(1) {
+        transform: rotateY(4deg);
+    }
+
+    .ring:nth-child(2) {
+        transform: rotateY(30deg);
+    }
+
+    .ring:nth-child(3) {
+        transform: rotateY(56deg);
+    }
+
+    .ring:nth-child(4) {
+        transform: rotateY(82deg);
+    }
+
+    .ring:nth-child(5) {
+        transform: rotateY(108deg);
+    }
+
+    .ring:nth-child(6) {
+        transform: rotateY(134deg);
+    }
+
+    .ring:nth-child(7) {
+        transform: rotateY(160deg);
+    }
+
+    .ring:nth-child(8) {
+        transform: rotateY(4deg) rotateX(75deg) scale(2);
+        border-style: dashed;
+    }
+
+    .ring:nth-child(9) {
+        transform: rotateY(4deg) rotateX(75deg) scale(1.75);
+        border-style: solid;
+    }
+
+    .ring:nth-child(10) {
+        transform: rotateY(4deg) rotateX(75deg) scale(1.5);
+        border-style: dashed;
+    }
+</style>
+
+<body>
+    <div class="scene">
+        <div class="wrapper">
+            <div class="globe"><span class="ring"></span><span class="ring"></span><span class="ring"></span><span
+                    class="ring"></span><span class="ring"></span><span class="ring"></span><span
+                    class="ring"></span><span class="ring"></span><span class="ring"></span><span class="ring"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
