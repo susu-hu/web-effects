@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接:http://www.bootstrapmb.com/item/11822</title>
+</head>
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Shadows+Into+Light';
+
+    html,
+    body {
+        height: 100%
+    }
+
+    body {
+        font-family: "Shadows Into Light", cursive
+    }
+
+    .title {
+        margin: 0;
+        position: relative;
+        top: -100px;
+        font-size: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        color: #ff2c63
+    }
+
+    .title.title-2 {
+        top: auto;
+        bottom: -70px;
+        color: #444
+    }
+
+    .main-content {
+        position: relative
+    }
+
+    .avocode-wrap {
+        position: absolute;
+        top: 30%;
+        transform: translateY(50%);
+        left: 0;
+        right: 0;
+        width: 700px;
+        margin: 0 auto;
+        text-align: center
+    }
+
+    .avocode-wrap:after {
+        content: "";
+        background: #000;
+        width: 70%;
+        height: 10px;
+        display: block;
+        margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: 0 5px 12px 0 rgba(74, 74, 74, 0.6)
+    }
+
+    .avocode-wrap:before {
+        content: "";
+        background: #000;
+        width: 20px;
+        height: 10px;
+        display: inline-block;
+        border-radius: 30px;
+        position: absolute;
+        bottom: 0;
+        left: 75px;
+        box-shadow: 0 5px 12px 0 rgba(74, 74, 74, 0.6)
+    }
+
+    .egg {
+        display: inline-block;
+        width: 230px;
+        height: 305px;
+        margin: 20px auto 0;
+        -webkit-border-radius: 63px 63px 63px 63px/108px 108px 72px 72px;
+        border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+        -webkit-box-shadow: 0 0 20px #D5D3D3, 0px 0 20px #D5D3D3;
+        -moz-box-shadow: 0 0 20px #D5D3D3, 0px 0 20px #D5D3D3;
+        background: #a2ff66;
+        box-shadow: 0 0 0 10px #080808, inset 0 0 20px 20px #25e552;
+        position: relative;
+        overflow: hidden
+    }
+
+    .egg.happy {
+        margin-left: -25px
+    }
+
+    .egg.happy .face {
+        background: #DAA04E;
+        box-shadow: inset -14px 0 0 0 #ad7a31
+    }
+
+    .egg.happy .line {
+        left: 24px;
+        transform: rotate(117deg)
+    }
+
+    .egg.happy .line>span:first-child {
+        margin-right: 4px;
+        width: 15px
+    }
+
+    .egg.happy .line>span:last-child {
+        width: 30px
+    }
+
+    .egg.smile {
+        animation: shake 4s ease-in-out infinite
+    }
+
+    .egg.smile:after {
+        content: "";
+        background: rgba(65, 181, 45, 0.3);
+        display: block;
+        width: 325px;
+        height: 325px;
+        border-radius: 50%;
+        position: absolute;
+        right: -247px;
+        top: -15px
+    }
+
+    .egg .line {
+        position: absolute;
+        top: 65px;
+        transform: rotate(117deg);
+        left: 13px
+    }
+
+    .egg .line.line1 {
+        top: 139px;
+        z-index: 11;
+        left: 50px;
+        transform: rotate(130deg)
+    }
+
+    .egg .line.line1 span:first-child {
+        margin-right: 2px;
+        background: #e6c496
+    }
+
+    .egg .line.line1 span:last-child {
+        width: 18px;
+        background: #e6c496
+    }
+
+    .egg .line>span {
+        width: 40px;
+        height: 12px;
+        background: #fff;
+        display: inline-block;
+        border-radius: 30px
+    }
+
+    .egg .line>span:first-child {
+        margin-right: 4px;
+        width: 20px
+    }
+
+    .face {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        background: -moz-linear-gradient(270deg, #a0fe65 0, #a0fe65 1%, #62ec56 88%, #5aea55 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a0fe65), color-stop(1%, #a0fe65), color-stop(88%, #62ec56), color-stop(100%, #5aea55));
+        background: -webkit-linear-gradient(270deg, #a0fe65 0, #a0fe65 1%, #62ec56 88%, #5aea55 100%);
+        background: -o-linear-gradient(270deg, #a0fe65 0, #a0fe65 1%, #62ec56 88%, #5aea55 100%);
+        background: -ms-linear-gradient(270deg, #a0fe65 0, #a0fe65 1%, #62ec56 88%, #5aea55 100%);
+        background: linear-gradient(180deg, #83f961 0, #95fd64 1%, #62ec56 88%, #5aea55 100%);
+        border-radius: 50%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: 42px
+    }
+
+    .happy {
+        animation: shake-reverse 5s ease-in-out infinite
+    }
+
+    .happy .face {
+        z-index: 1
+    }
+
+    .happy .eye.left:before {
+        background: #ae7d42
+    }
+
+    .happy .eye.right:before {
+        content: "";
+        background: #ae7d42;
+        width: 15px;
+        height: 15px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        top: 22px;
+        right: -10px
+    }
+
+    @keyframes shake {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        50% {
+            transform: rotate(12deg)
+        }
+
+        100% {
+            transform: rotate(0deg)
+        }
+    }
+
+    @keyframes shake-reverse {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        50% {
+            transform: rotate(-9deg)
+        }
+
+        100% {
+            transform: rotate(0deg)
+        }
+    }
+
+    .eye {
+        width: 19px;
+        height: 19px;
+        background: #000;
+        display: inline-block;
+        border-radius: 50%;
+        margin-top: 50px
+    }
+
+    .eye.left {
+        margin-right: 30px
+    }
+
+    .eye.left:before {
+        content: "";
+        background: #1bbc38;
+        width: 15px;
+        height: 15px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        top: 22px;
+        left: -10px
+    }
+
+    .eye.right:before {
+        content: "";
+        background: #1bbc38;
+        width: 15px;
+        height: 15px;
+        display: block;
+        border-radius: 50%;
+        position: relative;
+        top: 22px;
+        right: -10px
+    }
+
+    .smile .mouth {
+        width: 4px;
+        height: 14px;
+        background-color: transparent;
+        border: 4px solid #080808;
+        border-radius: 50%;
+        border-right-color: transparent;
+        transform: scale(1.3) rotate(-90deg);
+        margin: 0 auto;
+        background: 0;
+        box-shadow: none
+    }
+
+    .mouth {
+        width: 30px;
+        height: 15px;
+        display: block;
+        border: 3px solid #000;
+        border-radius: 0 0 20px 20px;
+        margin: 10px auto;
+        background: #f96d85;
+        box-shadow: inset 0 0 3px 2px #000
+    }
+
+    .face-shadow {
+        width: 150px;
+        height: 150px;
+        background: #75ec44;
+        display: block;
+        position: absolute;
+        bottom: 35px;
+        left: 52px;
+        border-radius: 50%;
+        z-index: 0
+    }
+
+    .star {
+        width: 70px;
+        height: 50px;
+        background: url("https://cssanimation.rocks/images/posts/steps/twitter_fave.png") no-repeat;
+        top: 0;
+        position: absolute;
+        left: 10%;
+        z-index: 12;
+        -webkit-animation: play .8s steps(55) infinite;
+        -moz-animation: play .8s steps(55) infinite;
+        -ms-animation: play .8s steps(55) infinite;
+        -o-animation: play .8s steps(55) infinite;
+        animation: play .8s steps(55) infinite
+    }
+
+    .star.star2 {
+        left: auto;
+        right: 10%;
+        animation-delay: 1s
+    }
+
+    .star.star3 {
+        left: auto;
+        top: 200px;
+        right: 5%;
+        animation-delay: 1.5s
+    }
+
+    .star.star4 {
+        top: 71%;
+        animation-delay: 2s;
+        left: 0
+    }
+
+    @-webkit-keyframes play {
+        from {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: -3519px
+        }
+    }
+
+    @-moz-keyframes play {
+        from {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: -3519px
+        }
+    }
+
+    @-ms-keyframes play {
+        from {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: -3519px
+        }
+    }
+
+    @-o-keyframes play {
+        from {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: -3519px
+        }
+    }
+
+    @keyframes play {
+        from {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: -3519px
+        }
+    }
+
+    .sparkle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        background-color: #ff8052
+    }
+
+    .sparkle .circle-1 {
+        position: absolute;
+        top: -25px;
+        right: -25px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%
+    }
+
+    .sparkle .circle-1:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%
+    }
+
+    .sparkle .circle-2 {
+        position: absolute;
+        bottom: -25px;
+        right: -25px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%
+    }
+
+    .sparkle .circle-2:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%
+    }
+
+    .sparkle-2 {
+        top: 0;
+        left: 12px;
+        transform: scale(0.5)
+    }
+
+    .sparkle-3 {
+        top: 70px;
+        left: 10px;
+        transform: scale(0.3);
+        background-color: #ffd150
+    }
+
+    .sparkle-4 {
+        top: 80px;
+        left: 50px;
+        transform: scale(0.5)
+    }
+
+    .sparkle-5 {
+        top: 70px;
+        right: 85px;
+        transform: scale(0.5);
+        background-color: #ffd150
+    }
+
+    .plus {
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 30px;
+        border-radius: 5px
+    }
+
+    .plus:before {
+        content: "";
+        position: absolute;
+        height: 10px;
+        width: 30px;
+        border-radius: 5px
+    }
+
+    .plus.plus-1 {
+        top: -60px;
+        left: 21%;
+        background-color: #48befe;
+        transform: scale(0.6)
+    }
+
+    .plus.plus-1:before {
+        top: 10px;
+        left: -10px;
+        background-color: #48befe
+    }
+
+    .plus.plus-2 {
+        top: 160px;
+        right: 10px;
+        background-color: #ffdb01;
+        transform: scale(0.8)
+    }
+
+    .plus.plus-2:before {
+        top: 10px;
+        left: -10px;
+        background-color: #ffdb01
+    }
+
+    .cool-circle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%
+    }
+
+    .cool-circle.cool-circle-1 {
+        top: 50%;
+        box-shadow: 0 0 0 5px #ff2c63
+    }
+
+    .cool-circle.cool-circle-2 {
+        top: 40%;
+        right: 74px;
+        box-shadow: 0 0 0 5px #2ee752;
+        width: 15px;
+        height: 15px
+    }
+
+    .dot {
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        left: 50%;
+        background: #63ec56
+    }
+
+    .dot.dot-1 {
+        top: 4%;
+        left: 45%;
+        background: #ffd150;
+        width: 15px;
+        height: 16px
+    }
+</style>
+
+<body>
+    <section class="main-content">
+        <div class="avocode-wrap">
+            <div class="egg smile">
+                <div class="face"><span class="eye left"></span><span class="eye right"></span><span
+                        class="mouth"></span></div>
+                <div class="line"><span></span><span></span></div>
+            </div>
+            <div class="egg happy">
+                <div class="face"><span class="eye left"></span><span class="eye right"></span><span
+                        class="mouth"></span></div><span class="face-shadow"></span>
+                <div class="line"><span></span><span></span></div>
+                <div class="line line1"><span></span><span></span></div>
+            </div>
+            <div class="star star2"></div>
+            <div class="star star4"></div>
+            <div class="sparkle">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+            </div>
+            <div class="sparkle sparkle-2">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+            </div>
+            <div class="sparkle sparkle-3">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+            </div>
+            <div class="sparkle sparkle-4">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+            </div>
+            <div class="sparkle sparkle-5">
+                <div class="circle-1"></div>
+                <div class="circle-2"></div>
+            </div>
+            <div class="plus plus-1"></div>
+            <div class="plus plus-2"></div>
+            <div class="cool-circle cool-circle-1"></div>
+            <div class="cool-circle cool-circle-2"></div>
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+        </div>
+    </section>
+</body>
+
+</html>
