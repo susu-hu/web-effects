@@ -1,253 +1,229 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<style>
-		.a {
-			color: #f30;
-			text-decoration: none;
-			background: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E);
-			background-size: 20px auto;
-			animation: waveMove 1s infinite linear;
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<style>
+	svg {
+		transform: rotate(-0.05deg);
+	}
+
+	circle {
+		transition: stroke-dasharray .2s;
+	}
+
+	.time-count-x {
+		line-height: 1.5;
+		position: relative;
+	}
+
+	.time-second {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		margin-top: -.75em;
+		text-align: center;
+		font-size: 100px;
+	}
+
+
+
+	.wrap {
+		width: 64px;
+		height: 64px;
+		position: relative;
+	}
+
+	.outer {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: url(https://www.zhangxinxu.com/study/201404/icon-spin-s.png) no-repeat;
+		animation: spin 800ms infinite linear;
+	}
+
+	.inner,
+	.inner2 {
+		position: absolute;
+		width: 38px;
+		height: 38px;
+		border-radius: 40px;
+		overflow: hidden;
+		left: 13px;
+		top: 13px;
+	}
+
+	.inner {
+		opacity: 1;
+		background-color: #89abdd;
+		animation: second-half-hide 1.6s steps(1, end) infinite;
+	}
+
+	.inner2 {
+		opacity: 0;
+		background-color: #4b86db;
+		animation: second-half-show 1.6s steps(1, end) infinite;
+	}
+
+	.spiner,
+	.filler,
+	.masker {
+		position: absolute;
+		width: 50%;
+		height: 100%;
+	}
+
+	.spiner {
+		border-radius: 40px 0 0 40px;
+		background-color: #4b86db;
+		transform-origin: right center;
+		animation: spin 800ms infinite linear;
+		left: 0;
+		top: 0;
+	}
+
+	.filler {
+		border-radius: 0 40px 40px 0;
+		background-color: #4b86db;
+		animation: second-half-hide 800ms steps(1, end) infinite;
+		left: 50%;
+		top: 0;
+		opacity: 1;
+	}
+
+	.masker {
+		border-radius: 40px 0 0 40px;
+		background-color: #89abdd;
+		animation: second-half-show 800ms steps(1, end) infinite;
+		left: 0;
+		top: 0;
+		opacity: 0;
+	}
+
+	.inner2 .spiner,
+	.inner2 .filler {
+		background-color: #89abdd;
+	}
+
+	.inner2 .masker {
+		background-color: #4b86db;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(360deg);
 		}
 
-		@keyframes waveMove {
-			0% {
-				background-position: 0 100%;
-			}
-
-			100% {
-				background-position: -20px 100%;
-			}
+		100% {
+			transform: rotate(0deg);
 		}
+	}
 
-		svg {
-			transform: rotate(-0.05deg);
-		}
-
-		circle {
-			transition: stroke-dasharray .2s;
-		}
-
-		.time-count-x {
-			line-height: 1.5;
-			position: relative;
-		}
-
-		.time-second {
-			position: absolute;
-			top: 50%;
-			left: 0;
-			right: 0;
-			margin-top: -.75em;
-			text-align: center;
-			font-size: 100px;
-		}
-
-
-
-		.wrap {
-			width: 64px;
-			height: 64px;
-			position: relative;
-		}
-
-		.outer {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background: url(https://www.zhangxinxu.com/study/201404/icon-spin-s.png) no-repeat;
-			animation: spin 800ms infinite linear;
-		}
-
-		.inner,
-		.inner2 {
-			position: absolute;
-			width: 38px;
-			height: 38px;
-			border-radius: 40px;
-			overflow: hidden;
-			left: 13px;
-			top: 13px;
-		}
-
-		.inner {
+	@keyframes second-half-hide {
+		0% {
 			opacity: 1;
-			background-color: #89abdd;
-			animation: second-half-hide 1.6s steps(1, end) infinite;
 		}
 
-		.inner2 {
+		50%,
+		100% {
 			opacity: 0;
-			background-color: #4b86db;
-			animation: second-half-show 1.6s steps(1, end) infinite;
+		}
+	}
+
+	@keyframes second-half-show {
+		0% {
+			opacity: 0;
 		}
 
-		.spiner,
-		.filler,
-		.masker {
-			position: absolute;
-			width: 50%;
-			height: 100%;
-		}
-
-		.spiner {
-			border-radius: 40px 0 0 40px;
-			background-color: #4b86db;
-			transform-origin: right center;
-			animation: spin 800ms infinite linear;
-			left: 0;
-			top: 0;
-		}
-
-		.filler {
-			border-radius: 0 40px 40px 0;
-			background-color: #4b86db;
-			animation: second-half-hide 800ms steps(1, end) infinite;
-			left: 50%;
-			top: 0;
+		50%,
+		100% {
 			opacity: 1;
 		}
-
-		.masker {
-			border-radius: 40px 0 0 40px;
-			background-color: #89abdd;
-			animation: second-half-show 800ms steps(1, end) infinite;
-			left: 0;
-			top: 0;
-			opacity: 0;
-		}
-
-		.inner2 .spiner,
-		.inner2 .filler {
-			background-color: #89abdd;
-		}
-
-		.inner2 .masker {
-			background-color: #4b86db;
-		}
-
-		@keyframes spin {
-			0% {
-				transform: rotate(360deg);
-			}
-
-			100% {
-				transform: rotate(0deg);
-			}
-		}
-
-		@keyframes second-half-hide {
-			0% {
-				opacity: 1;
-			}
-
-			50%,
-			100% {
-				opacity: 0;
-			}
-		}
-
-		@keyframes second-half-show {
-			0% {
-				opacity: 0;
-			}
-
-			50%,
-			100% {
-				opacity: 1;
-			}
-		}
+	}
 
 
-		circle {
-			-webkit-transition: stroke-dasharray .25s;
-			transition: stroke-dasharray .25s;
-		}
-	</style>
-	<body>
-		<div class="a">测试</div>
-		<div id="timeCountX" class="time-count-x">
-			<svg width="440" height="440" viewBox="0 0 440 440" class="center">
-				<defs>
-					<linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient1">
-						<stop offset="0%" stop-color="#e52c5c"></stop>
-						<stop offset="100%" stop-color="#ab5aea"></stop>
-					</linearGradient>
-					<linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient2">
-						<stop offset="0%" stop-color="#4352f3"></stop>
-						<stop offset="100%" stop-color="#ab5aea"></stop>
-					</linearGradient>
-				</defs>
-				<g transform="matrix(0,-1,1,0,0,440)">
-					<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#f0f1f5" fill="none"
-						stroke-dasharray="1069 1069"></circle>
-					<circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient1')" fill="none"
-						stroke-dasharray="1069 1069"></circle>
-					<circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient2')" fill="none"
-						stroke-dasharray="534.5 1069"></circle>
-				</g>
-			</svg>
-			<span id="timeSecond" class="time-second"></span>
-		</div>
+	circle {
+		-webkit-transition: stroke-dasharray .25s;
+		transition: stroke-dasharray .25s;
+	}
+</style>
 
-		<div class="wrap">
-			<div class="outer"></div>
-			<div class="inner">
-				<div class="spiner"></div>
-				<div class="filler"></div>
-				<div class="masker"></div>
-			</div>
-			<div class="inner2">
-				<div class="spiner"></div>
-				<div class="filler"></div>
-				<div class="masker"></div>
-			</div>
-		</div>
-
-
-		<svg width="440" height="440" viewbox="0 0 440 440">
-			<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
-			<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#00A5E0" fill="none"
-				transform="matrix(0,-1,1,0,0,440)" stroke-dasharray="0 1069"></circle>
+<body>
+	<div id="timeCountX" class="time-count-x">
+		<svg width="440" height="440" viewBox="0 0 440 440" class="center">
+			<defs>
+				<linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient1">
+					<stop offset="0%" stop-color="#e52c5c"></stop>
+					<stop offset="100%" stop-color="#ab5aea"></stop>
+				</linearGradient>
+				<linearGradient x1="1" y1="0" x2="0" y2="0" id="gradient2">
+					<stop offset="0%" stop-color="#4352f3"></stop>
+					<stop offset="100%" stop-color="#ab5aea"></stop>
+				</linearGradient>
+			</defs>
+			<g transform="matrix(0,-1,1,0,0,440)">
+				<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#f0f1f5" fill="none"
+					stroke-dasharray="1069 1069"></circle>
+				<circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient1')" fill="none"
+					stroke-dasharray="1069 1069"></circle>
+				<circle cx="220" cy="220" r="170" stroke-width="50" stroke="url('#gradient2')" fill="none"
+					stroke-dasharray="534.5 1069"></circle>
+			</g>
 		</svg>
-		<p>拖我：<input id="range" type="range" min="0" max="100" value="0" style="width:300px;"></p>
-	</body>
-	<script>
-		if (window.addEventListener) {
-			var range = document.querySelector("#range"),
-				circle = document.querySelectorAll("circle")[1];
-			if (range && circle) {
-				range.addEventListener("change", function() {
-					var percent = this.value / 100,
-						perimeter = Math.PI * 2 * 170;
-					circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
-				});
-			}
-		}
-	</script>
-	<svg width="200" height="200" viewPort="0 0 200 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+		<span id="timeSecond" class="time-second"></span>
+	</div>
 
-		<line stroke-dasharray="5, 5" x1="10" y1="10" x2="190" y2="10" />
-		<line stroke-dasharray="5, 10" x1="10" y1="30" x2="190" y2="30" />
-		<line stroke-dasharray="10, 5" x1="10" y1="50" x2="190" y2="50" />
-		<line stroke-dasharray="5, 1" x1="10" y1="70" x2="190" y2="70" />
-		<line stroke-dasharray="1, 5" x1="10" y1="90" x2="190" y2="90" />
-		<line stroke-dasharray="0.9" x1="10" y1="110" x2="190" y2="110" />
-		<line stroke-dasharray="15, 10, 5" x1="10" y1="130" x2="190" y2="130" />
-		<line stroke-dasharray="15, 10, 5, 10" x1="10" y1="150" x2="190" y2="150" />
-		<line stroke-dasharray="15, 10, 5, 10, 15" x1="10" y1="170" x2="190" y2="170" />
-		<line stroke-dasharray="5, 5, 1, 5" x1="10" y1="190" x2="190" y2="190" />
+	<div class="wrap">
+		<div class="outer"></div>
+		<div class="inner">
+			<div class="spiner"></div>
+			<div class="filler"></div>
+			<div class="masker"></div>
+		</div>
+		<div class="inner2">
+			<div class="spiner"></div>
+			<div class="filler"></div>
+			<div class="masker"></div>
+		</div>
+	</div>
 
-		<style>
-			<![CDATA[
-			line {
-				stroke: black;
-				stroke-width: 2;
-			}
-			]]>
-		</style>
+
+	<svg width="440" height="440" viewbox="0 0 440 440">
+		<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
+		<circle cx="220" cy="220" r="170" stroke-width="50" stroke="#00A5E0" fill="none"
+			transform="matrix(0,-1,1,0,0,440)" stroke-dasharray="0 1069"></circle>
 	</svg>
+	<p>拖我：<input id="range" type="range" min="0" max="100" value="0" style="width:300px;"></p>
+</body>
+<script>
+	if (window.addEventListener) {
+		var range = document.querySelector("#range"),
+			circle = document.querySelectorAll("circle")[1];
+		if (range && circle) {
+			range.addEventListener("change", function () {
+				var percent = this.value / 100,
+					perimeter = Math.PI * 2 * 170;
+				circle.setAttribute('stroke-dasharray', perimeter * percent + " " + perimeter * (1 - percent));
+			});
+		}
+	}
+</script>
+<svg width="200" height="200" viewPort="0 0 200 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+	<line stroke-dasharray="5, 5" x1="10" y1="10" x2="190" y2="10" />
+	<line stroke-dasharray="5, 10" x1="10" y1="30" x2="190" y2="30" />
+	<line stroke-dasharray="10, 5" x1="10" y1="50" x2="190" y2="50" />
+	<line stroke-dasharray="5, 1" x1="10" y1="70" x2="190" y2="70" />
+	<line stroke-dasharray="1, 5" x1="10" y1="90" x2="190" y2="90" />
+	<line stroke-dasharray="0.9" x1="10" y1="110" x2="190" y2="110" />
+	<line stroke-dasharray="15, 10, 5" x1="10" y1="130" x2="190" y2="130" />
+	<line stroke-dasharray="15, 10, 5, 10" x1="10" y1="150" x2="190" y2="150" />
+	<line stroke-dasharray="15, 10, 5, 10, 15" x1="10" y1="170" x2="190" y2="170" />
+	<line stroke-dasharray="5, 5, 1, 5" x1="10" y1="190" x2="190" y2="190" />
+
+</svg>
+
 </html>

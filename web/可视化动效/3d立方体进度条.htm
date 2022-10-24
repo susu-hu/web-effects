@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://csscoco.com/inspiration/#/./3d/3d-cuber-progress-bar</title>
+</head>
+<style>
+    @property --per {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 0%;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, #EEEFED, #F9E3E9);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .perspective {
+        transform-style: preserve-3d;
+        perspective: 520px;
+        transform: rotateX(15deg);
+    }
+
+    .demo-cube {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        margin: auto;
+        margin-top: -30px;
+    }
+
+    .demo-cube .cube {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 100px;
+        transform-style: preserve-3d;
+        transform-origin: 50px 50px;
+        transform: translate(-50%, -50%) rotateX(-33.5deg);
+    }
+
+    .demo-cube .cube li {
+        position: absolute;
+        display: block;
+        width: 300px;
+        height: 100px;
+    }
+
+    .demo-cube .cube .top {
+        transform: rotateX(90deg) translateZ(50px);
+    }
+
+    .demo-cube .cube .bottom {
+        transform: rotateX(-90deg) translateZ(50px);
+    }
+
+    .demo-cube .cube .front {
+        transform: translateZ(50px);
+    }
+
+    .demo-cube .cube .back {
+        transform: rotateX(-180deg) translateZ(50px);
+    }
+
+    .percentage .cube .top,
+    .percentage .cube .front,
+    .percentage .cube .bottom,
+    .percentage .cube .back {
+        background: linear-gradient(90deg, rgba(156, 39, 176, 0.3), rgba(255, 34, 109, 0.8) 70%, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0.6));
+    }
+
+    .colorful {
+        -webkit-animation: hueRotate 10s infinite linear;
+        animation: hueRotate 10s infinite linear;
+    }
+
+    .colorful .cube .top,
+    .colorful .cube .front,
+    .colorful .cube .bottom,
+    .colorful .cube .back {
+        background: linear-gradient(90deg, rgba(40, 101, 127, 0.9), rgba(133, 165, 181, 0.5) 85%, rgba(255, 255, 255, 0.6) 85%, rgba(255, 255, 255, 0.6));
+    }
+
+    .pink .cube .top,
+    .pink .cube .front,
+    .pink .cube .bottom,
+    .pink .cube .back {
+        background: linear-gradient(90deg, rgba(255, 217, 34, 0.6), rgba(255, 34, 109, 0.8) var(--per), rgba(255, 34, 109, 0.1) var(--per), rgba(255, 34, 109, 0.1));
+        -webkit-animation: perChange 6s infinite;
+        animation: perChange 6s infinite;
+    }
+
+    @-webkit-keyframes perChange {
+        0% {
+            --per: 0%;
+        }
+
+        90%,
+        to {
+            --per: 80%;
+        }
+    }
+
+    @keyframes perChange {
+        0% {
+            --per: 0%;
+        }
+
+        90%,
+        to {
+            --per: 80%;
+        }
+    }
+
+    @-webkit-keyframes hueRotate {
+        0% {
+            filter: hue-rotate(0);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    @keyframes hueRotate {
+        0% {
+            filter: hue-rotate(0);
+        }
+
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="demo-cube perspective percentage">
+        <ul class="cube">
+            <li class="top"></li>
+            <li class="bottom"></li>
+            <li class="front"></li>
+            <li class="back"></li>
+        </ul>
+    </div>
+
+    <div class="demo-cube perspective colorful">
+        <ul class="cube">
+            <li class="top"></li>
+            <li class="bottom"></li>
+            <li class="front"></li>
+            <li class="back"></li>
+        </ul>
+    </div>
+
+    <div class="demo-cube perspective pink">
+        <ul class="cube">
+            <li class="top"></li>
+            <li class="bottom"></li>
+            <li class="front"></li>
+            <li class="back"></li>
+        </ul>
+    </div>
+</body>
+
+</html>

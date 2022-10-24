@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考：https://codepen.io/Chokcoco/pen/VwzzVEV 参考文章:https://mp.weixin.qq.com/s/jkGbnaWJd8iJVCouUNbG9Q</title>
+</head>
+<style>
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background: #222;
+    }
+
+    .g-container {
+        position: relative;
+        margin: auto;
+        width: 200px;
+        height: 200px;
+    }
+
+    .g-progress {
+        position: relative;
+        margin: auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: conic-gradient(#FFCDB2 0, #FFCDB2 25%, #B5838D 25%, #B5838D);
+        -webkit-mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+        mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+    }
+
+    .g-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .g-circle::before,
+    .g-circle::after {
+        content: "";
+        position: absolute;
+        top: 90px;
+        left: 90px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #FFCDB2;
+        z-index: 1;
+    }
+
+    .g-circle::before {
+        transform: translate(0, -90px);
+    }
+
+    .g-circle::after {
+        transform: rotate(90deg) translate(0, -90px);
+    }
+</style>
+
+<body>
+    <div class="g-progress"></div>
+    <div class="g-container">
+        <div class="g-progress"></div>
+        <div class="g-circle"></div>
+    </div>
+
+</body>
+
+</html>
