@@ -165,6 +165,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 139. clip-path实现圆点围绕半圆弧转一圈,无圆弧处圆点消失，保持旋转1turn
 - [x] 140. 百分比环形
 - [x] 141. 温度计图表
+- [x] 142. loading动画+1
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -174,6 +175,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 142.loading动画+1
+![输入图片说明](web-pictures/demo142.gif)
 ##### 141. 温度计图表
 ![输入图片说明](web-pictures/demo141.gif)
 ##### 140. 百分比环形
