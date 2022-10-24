@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    html,
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .container {
+        position: fixed;
+        z-index: 100;
+        background-color: rgba(45, 255, 196, 0.1);
+        border-radius: 30px;
+        -webkit-box-shadow: 0px 0px 126px 45px rgba(45, 255, 196, 0.9);
+        -moz-box-shadow: 0px 0px 126px 45px rgba(45, 255, 196, 0.9);
+        box-shadow: 0px 0px 126px 45px rgba(45, 255, 196, 0.9);
+    }
+
+    .container-box {
+        width: 300px;
+        font-size: 20px;
+        background-color: #18191f;
+        color: orange;
+        box-shadow: 2px 2px 2px #00000080, 10px 1px 12px #00000080,
+            2px 2px 10px #00000080, 2px 2px 3px #00000080, inset 2px 2px 10px #00000080,
+            inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
+            inset 2px 2px 10px #00000080;
+        border-radius: 30px;
+        padding: 20px;
+        animation: animate 3s linear infinite;
+        text-shadow: 0 0 50px orange, 0 0 100px orange, 0 0 150px orange,
+            0 0 200px orange;
+        line-height: 50px;
+    }
+
+    @keyframes animate {
+        from {
+            filter: hue-rotate(0deg);
+        }
+
+        to {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+    .btn {
+        background: #18191f;
+        color: orange;
+        font-family: serif;
+        box-shadow: 2px 2px 2px #00000080, 10px 1px 12px #00000080,
+            2px 2px 10px #00000080, 2px 2px 3px #00000080, inset 2px 2px 10px #00000080,
+            inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
+            inset 2px 2px 10px #00000080;
+        animation: animate 3s linear infinite;
+        text-shadow: 0 0 50px orange, 0 0 100px orange, 0 0 150px orange,
+            0 0 200px orange;
+        border-radius: 28px;
+        padding: 8px 30px;
+    }
+</style>
+
+<body>
+    <canvas id="box"></canvas>
+</body>
+<script>
+    let width = document.getElementById("box").width = screen.availWidth;
+    let height = document.getElementById("box").height = screen.availHeight;
+
+    let context = document.getElementById("box").getContext("2d");
+    let arr = Array(Math.ceil(width / 10)).fill(0);
+    let str = "susu is xiaosusu".split("");
+
+    function rain() {
+        context.fillStyle = "rgba(0, 0, 0, 0.1)";
+        context.fillRect(0, 0, width, height);
+        context.fillStyle = "orange";
+        arr.forEach(function (value, index) {
+            context.fillText(str[Math.floor(Math.random() * str.length)], index * 10, value + 10);
+            context.font = Math.random() * 20 + 'px Arial';
+            arr[index] = value >= height || value > 10000 * Math.random() ? 0 : value + 10;
+        });
+    }
+
+    setInterval(rain, 36);
+
+
+    let textPrint = "";
+    let i = 0;
+    let textCurrent = "";
+    let timerPrint = null;
+    function print() {
+        if (i < textPrint.length) {
+            textCurrent = textPrint.substring(0, i++) + "_";
+            // document.getElementById("box").innerHTML = textCurrent;
+        } else {
+            // document.getElementById("box").innerHTML = textPrint;
+            clearInterval(timerPrint)
+        }
+    }
+
+    timerPrint = setInterval(print, 200);
+
+</script>
+
+</html>
