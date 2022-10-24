@@ -1,8 +1,8 @@
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-10-13 22:59:59
- * @LastEditors: 胡苏珍 1628469970@qq.com
- * @LastEditTime: 2022-10-20 14:21:36
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-10-25 00:35:15
  * @FilePath: \css_demos\web\页面动效相关！！！！\138. clip-path实现圆点围绕半圆弧转一圈.htm
  * @Description: 139. clip-path实现圆点围绕半圆弧转一圈
 -->
@@ -47,78 +47,6 @@
     z-index: 11;
   }
 
-  .container-box:nth-child(3) .box-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    position: absolute;
-    left: calc(50% - 100px);
-    top: calc(50% - 100px);
-    z-index: 11;
-    background: none;
-  }
-
-  .container-box:nth-child(3) .box-circle::before {
-    content: '';
-    width: 188px;
-    height: 188px;
-    border-radius: 50%;
-    position: absolute;
-    left: calc(50% - 94px);
-    top: calc(50% - 94px);
-    /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
-    background-image: linear-gradient(var(--bg), var(--bg)),
-      linear-gradient(to right, #1DEEF2, #F3C954);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    border: solid 5px transparent;
-  }
-
-  .container-box:nth-child(3) .box-circle::after {
-    content: '';
-    width: 188px;
-    height: 188px;
-    border-radius: 50%;
-    position: absolute;
-    left: calc(50% - 94px);
-    top: calc(50% - 94px);
-    /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
-    background-image: linear-gradient(var(--bg), var(--bg)),
-      linear-gradient(to right, #1DEEF2, #F3C954);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    border: solid 5px transparent;
-    filter: blur(4px) brightness(80%) opacity(.8);
-    z-index: -1;
-  }
-
-
-
-  .container-box:nth-child(3) .box-circle .box-dot {
-    width: 188px;
-    height: 188px;
-    border: 5px solid transparent;
-    border-radius: 50%;
-    position: absolute;
-    left: calc(50% - 94px);
-    top: calc(50% - 94px);
-    animation: rotate 3s infinite linear;
-    /* animation: none !important; */
-  }
-
-  .container-box:nth-child(3) .box-circle .box-dot::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: url("./img/dot.png") no-repeat;
-    background-size: 100% 100%;
-    top: 119px;
-    left: -7px;
-    z-index: 11;
-  }
-
-
 
   .box-circle.clip-path {
     -webkit-clip-path: polygon(100% 0, 100% 86%, 50% 50%, 0% 86%, 0 0);
@@ -157,24 +85,140 @@
       transform: rotate3D(0, 0, 1, 360deg);
     }
   }
+
+  .container-box-ex {
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+
+  .container-box-ex .box-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: calc(50% - 100px);
+    z-index: 11;
+    background: none;
+  }
+
+  .container-box-ex .box-circle::before {
+    content: '';
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 94px);
+    top: calc(50% - 94px);
+    /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
+    background-image: linear-gradient(var(--bg), var(--bg)),
+      linear-gradient(to right, #1DEEF2, #F3C954);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: solid 5px transparent;
+  }
+
+  .container-box-ex .box-circle::after {
+    content: '';
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 94px);
+    top: calc(50% - 94px);
+    /* 这里需要设置两个背景，第一个背景是内容区域的背景，另一个是实现渐变边框的背景 */
+    background-image: linear-gradient(var(--bg), var(--bg)),
+      linear-gradient(to right, #1DEEF2, #F3C954);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border: solid 5px transparent;
+    filter: blur(4px) brightness(80%) opacity(.8);
+    z-index: -1;
+  }
+
+  /* .container-box-ex .box-circle .circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .container-box-ex .box-circle .circle::before {
+    content: '';
+    position: absolute;
+    top: 145px;
+    left: 18px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1DEEF2;
+    z-index: 1;
+  } */
+
+  .container-box-ex .box-circle .box-dot-line {
+    width: 188px;
+    height: 188px;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    position: absolute;
+    left: calc(50% - 94px);
+    top: calc(50% - 94px);
+    animation: rotate 3s infinite linear;
+  }
+
+  .container-box-ex .box-circle .box-dot-line .box-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 129px;
+    left: 4px;
+    z-index: 11;
+    background: #F3C954;
+    border-radius: 50%;
+    filter: blur(1px);
+    box-shadow: 0px 1px 2px 2px #f4ca2b;
+  }
+
+  .container-box-ex .box-circle .box-dot-line .box-dot::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    left: calc(50% - 2px);
+    top: calc(50% - 2px);
+    filter: blur(2px);
+    box-shadow: 0px 1px 1px 1px #fff;
+  }
 </style>
 
 <body>
-  <div class="container-box">
-    <div class="box-circle">
-      <div class="box-dot"></div>
+  <section>
+    <div class="flex-row">
+      <div class="container-box">
+        <div class="box-circle">
+          <div class="box-dot"></div>
+        </div>
+      </div>
+      <div class="container-box">
+        <div class="box-circle clip-path">
+          <div class="box-dot"></div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="container-box">
-    <div class="box-circle clip-path">
-      <div class="box-dot"></div>
+    <div class="container-box-ex">
+      <div class="box-circle clip-path">
+        <!-- <div class="circle"></div> -->
+        <div class="box-dot-line">
+          <div class="box-dot"></div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="container-box">
-    <div class="box-circle clip-path">
-      <div class="box-dot"></div>
-    </div>
-  </div>
+  </section>
+
+
 </body>
 
 </html>
