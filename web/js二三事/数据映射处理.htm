@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let XData = 0, YData = 0, ZData = 0;
+    const n = {
+        paramValue: [
+            {
+                name: "X",
+                data: {
+                    value: 1
+                }
+            },
+            {
+                name: "Y",
+                data: {
+                    value: 34
+                }
+            },
+            {
+                name: "Z",
+                data: {
+                    value: 4343
+                }
+            },
+        ]
+    }
+    const getItem = (e, data) => {
+        return data.paramValue.find((i) => i.name == e).data.value;
+    }
+    XData = getItem('X', n);
+    YData = getItem('Y', n);
+    ZData = getItem('Z', n);
+    console.log(XData)
+    console.log(YData)
+    console.log(ZData)
+    // const rf = {
+    //     XData: "X",
+    //     YData: "Y",
+    //     ZData: "Z",
+    // };
+    // Object.keys(rf).forEach((item) => {
+    //     console.log(item);
+    //     console.log(n.paramValue.find((i) => i.name == rf[item]).data.value)
+    // });
+
+</script>
+
+</html>
