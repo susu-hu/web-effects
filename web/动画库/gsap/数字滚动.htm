@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../common.css">
+<style>
+  body {
+    font-family: "Nova Square", cursive;
+  }
+
+  #numbers {
+    font-size: 50px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    color: orange;
+  }
+
+  input {
+    width: 300px;
+    height: 60px;
+    border: 1px solid #fff;
+    color: #ffff;
+    font-size: 30px;
+  }
+</style>
+
+<body>
+  <section>
+    <div id="numbers">0</div>
+    <input type="text" id="input" onkeyup="inputonblur(this)" />
+  </section>
+</body>
+<script>
+  let numData = {
+      value: 0
+    },
+    endScore = 0,
+    inputBox = document.getElementById('input'),
+    numBox = document.getElementById("numbers");
+
+  const countNumber = (e) => {
+    gsap.to(numData, {
+      value: e,
+      roundProps: "value",
+      onUpdate: () => {
+        numBox.innerHTML = numData.value;
+      },
+      duration: 1
+    });
+  };
+  const inputonblur = (e) => {
+    countNumber(e.value)
+  }
+</script>
+
+</html>

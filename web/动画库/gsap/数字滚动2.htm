@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../common.css">
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 5rem;
+    position: relative;
+    cursor: pointer;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+    user-select: none;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <h1 id="number">0</h1>
+  </div>
+</body>
+<script>
+  const numberElement = document.getElementById('number');
+  const numberValue = {
+    value: 0,
+    endValue: 100
+  };
+  const numberTween = gsap
+    .timeline({
+      repeat: -1
+    })
+    .to(numberValue, {
+      value: numberValue.endValue,
+      duration: 5,
+      roundProps: 'value',
+      ease: 'power2.inOut',
+      onUpdate: () => {
+        numberElement.innerHTML = numberValue.value;
+      },
+    })
+    .to(numberValue, {
+      value: 0,
+      duration: 5,
+      roundProps: 'value',
+      ease: 'power2.inOut',
+      onUpdate: () => {
+        numberElement.innerHTML = numberValue.value;
+      },
+    });
+
+  numberElement.addEventListener('click', () => {
+    gsap.isTweening(numberValue) ? numberTween.pause() : numberTween.play();
+  });
+</script>
+
+</html>
