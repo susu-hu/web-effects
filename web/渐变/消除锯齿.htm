@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://codepen.io/Chokcoco/pen/JjZodQW</title>
+</head>
+<style>
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    :root {
+        --deg: 37deg;
+        --c1: #441212;
+        --c2: orange;
+        --line-width: 0.5px;
+    }
+
+    .normal,
+    .gradient,
+    .antialiasing {
+        margin: auto;
+        width: 500px;
+        height: 100px;
+        background: linear-gradient(var(--deg), var(--c1) 50%, var(--c2) 50%, var(--c2) 0);
+    }
+
+    .gradient {
+        background: linear-gradient(var(--deg), var(--c1), var(--c1) calc(50% - var(--line-width)), var(--c2) calc(50% + var(--line-width)), var(--c2) 0);
+    }
+
+    .antialiasing {
+        position: relative;
+    }
+
+    .antialiasing::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(var(--deg), transparent, transparent calc(50% - var(--line-width)), var(--c1) calc(50% - var(--line-width)), var(--c2) calc(50% + var(--line-width)), transparent calc(50% + var(--line-width)), transparent);
+    }
+</style>
+
+<body>
+    <div class="normal"></div>
+    <div class="gradient"></div>
+    <div class="antialiasing"></div>
+</body>
+
+</html>
