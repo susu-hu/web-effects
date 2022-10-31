@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    .box {
+        background: #eee;
+        padding: 20px;
+        width: 500px;
+        color: #333;
+    }
+
+    .box .coupon {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .box .coupon>div {
+        padding: 10px 20px;
+        border-radius: 12px;
+    }
+
+    .box .coupon .coupon-intro {
+        position: relative;
+        background: #fff;
+        flex: 3;
+    }
+
+    .box .coupon .coupon-intro ul {
+        color: #333;
+        padding-left: 20px;
+    }
+
+    .box .coupon .coupon-intro:after {
+        content: " ";
+        border: 2px dashed #eee;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: -2px;
+        z-index: 2;
+    }
+
+    .box .coupon .coupon-value {
+        display: flex;
+        flex: 1;
+        position: relative;
+        background: #efac37;
+        color: #333;
+        font-size: 38px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box .coupon .coupon-value:before {
+        content: " ";
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        border-radius: 100%;
+        background: #eee;
+    }
+
+    .box .coupon .coupon-value:after {
+        content: " ";
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        bottom: -12px;
+        left: -12px;
+        border-radius: 100%;
+        background: #eee;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="coupon ">
+            <div class="coupon-intro">
+                <h4>优惠券优惠券</h4>
+                <ul>
+                    <li>限双十一使用</li>
+                    <li>限XXX XXX XXX使用</li>
+                </ul>
+            </div>
+            <div class="coupon-value">
+                ￥199
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
