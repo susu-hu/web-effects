@@ -166,6 +166,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 140. 百分比环形
 - [x] 141. 温度计图表
 - [x] 142. loading动画+1
+- [x] 143. gsap数字滚动
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -175,6 +176,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 143. gsap数字滚动
+![输入图片说明](web-pictures/demo143.gif)
 ##### 142.loading动画+1
 ![输入图片说明](web-pictures/demo142.gif)
 ##### 141. 温度计图表
