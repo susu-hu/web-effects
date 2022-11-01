@@ -1,441 +1,445 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-height: 100vh;
-			padding: 50px 0;
-			background-color: #222;
-		}
 
-		.circle01 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			/* background-color:#ff6810 ; */
-			/* background:radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left; */
-			background: radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left/300px 100% no-repeat;
-			/* -webkit-mask: radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left/300px 100% no-repeat; */
-			border-radius: 10px;
-		}
+<head>
+	<meta charset="utf-8">
+	<title>参考链接：https://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/</title>
+</head>
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+		padding: 50px 0;
+		background-color: #222;
+	}
 
-		.mb20 {
-			margin-bottom: 20px;
-		}
+	.circle01 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		/* background-color:#ff6810 ; */
+		/* background:radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left; */
+		background: radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left/300px 100% no-repeat;
+		/* -webkit-mask: radial-gradient(circle at 150px 100px, transparent 10px, #ff6810 0) top left/300px 100% no-repeat; */
+		border-radius: 10px;
+	}
 
-		.circle01_top {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0) top left/300px 100% no-repeat;
-		}
+	.mb20 {
+		margin-bottom: 20px;
+	}
 
-		.circle01_left {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 0 50px, transparent 10px, #ff6810 0) top left;
-		}
+	.circle01_top {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0) top left/300px 100% no-repeat;
+	}
 
-		.circle01_right {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 300px 50px, transparent 10px, #ff6810 0) top left;
-		}
+	.circle01_left {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 0 50px, transparent 10px, #ff6810 0) top left;
+	}
 
-		.circle01_d1 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) -10px;
-		}
+	.circle01_right {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 300px 50px, transparent 10px, #ff6810 0) top left;
+	}
 
-		.circle01_d2 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			overflow: hidden;
-			background: radial-gradient(circle at 10px, transparent 5px, #ff6810 0px);
-			/* background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) top left/84px; */
-			/* background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) top left/21px; */
-		}
+	.circle01_d1 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) -10px;
+	}
 
-		.circle01_d3 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 10px, transparent 5px, #ff6810 0) top left/300px 20px;
-		}
+	.circle01_d2 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		overflow: hidden;
+		background: radial-gradient(circle at 10px, transparent 5px, #ff6810 0px);
+		/* background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) top left/84px; */
+		/* background: radial-gradient(circle at 10px, transparent 10px, #ff6810 0) top left/21px; */
+	}
 
-		.circle01_d4 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			border-radius: 10px;
-			background: radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0);
-		}
+	.circle01_d3 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 10px, transparent 5px, #ff6810 0) top left/300px 20px;
+	}
 
-		.circle01_d5 {
-			width: 300px;
-			height: 100px;
-			border-radius: 10px;
-			background: radial-gradient(circle at 0 0, transparent 10px, red 0), radial-gradient(circle at right 0, transparent 10px, red 0), radial-gradient(circle at 0 100%, transparent 10px, red 0), radial-gradient(circle at right 100%, transparent 10px, red 0);
-			/* -webkit-mask-composite: source-in;
+	.circle01_d4 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		border-radius: 10px;
+		background: radial-gradient(circle at 150px 0, transparent 10px, #ff6810 0);
+	}
+
+	.circle01_d5 {
+		width: 300px;
+		height: 100px;
+		border-radius: 10px;
+		background: radial-gradient(circle at 0 0, transparent 10px, red 0), radial-gradient(circle at right 0, transparent 10px, red 0), radial-gradient(circle at 0 100%, transparent 10px, red 0), radial-gradient(circle at right 100%, transparent 10px, red 0);
+		/* -webkit-mask-composite: source-in;
 			background: linear-gradient(45deg, #44C9A1, #48e5a4); */
-		}
+	}
 
-		.circle02 {
-			width: 300px;
-			height: 100px;
-			border-radius: 10px;
-			position: relative;
-			background: radial-gradient(circle at right top, transparent 10px, #ff6810 0) top left / 60px 51% no-repeat,
-				radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) bottom left /60px 51% no-repeat,
-				radial-gradient(circle at left top, transparent 10px, #eeeeee 0) top right /240px 51% no-repeat,
-				radial-gradient(circle at left bottom, transparent 10px, #eeeeee 0) bottom right /240px 51% no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle02 {
+		width: 300px;
+		height: 100px;
+		border-radius: 10px;
+		position: relative;
+		background: radial-gradient(circle at right top, transparent 10px, #ff6810 0) top left / 60px 51% no-repeat,
+			radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) bottom left /60px 51% no-repeat,
+			radial-gradient(circle at left top, transparent 10px, #eeeeee 0) top right /240px 51% no-repeat,
+			radial-gradient(circle at left bottom, transparent 10px, #eeeeee 0) bottom right /240px 51% no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle02::after {
-			content: '';
-			height: 80px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 60px;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
+	.circle02::after {
+		content: '';
+		height: 80px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 60px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
 
-		.circle03 {
-			border-radius: 10px;
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) top right / 50% 60px no-repeat,
-				radial-gradient(circle at left bottom, transparent 10px, #ff6810 0) top left / 50% 60px no-repeat,
-				radial-gradient(circle at right top, transparent 10px, #eeeeee 0) bottom right / 50% 40px no-repeat,
-				radial-gradient(circle at left top, transparent 10px, #eeeeee 0) bottom left / 50% 40px no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle03 {
+		border-radius: 10px;
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) top right / 50% 60px no-repeat,
+			radial-gradient(circle at left bottom, transparent 10px, #ff6810 0) top left / 50% 60px no-repeat,
+			radial-gradient(circle at right top, transparent 10px, #eeeeee 0) bottom right / 50% 40px no-repeat,
+			radial-gradient(circle at left top, transparent 10px, #eeeeee 0) bottom left / 50% 40px no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle03::after {
-			content: '';
-			width: 280px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 60px;
-			margin: auto;
-		}
+	.circle03::after {
+		content: '';
+		width: 280px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 60px;
+		margin: auto;
+	}
 
-		.circle04 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: #ff6810;
-			margin-top: 4px;
+	.circle04 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: #ff6810;
+		margin-top: 4px;
 
-		}
+	}
 
-		.circle04::after {
-			content: '';
-			position: absolute;
-			height: 2px;
-			width: 100%;
-			left: 0;
-			top: -2px;
-			background-image: linear-gradient(to right, #ff6810 2px, transparent 2px, transparent),
-				radial-gradient(4px circle at 4px 0px, transparent 2px, #ff6810 2px);
-			background-size: 6px 2px;
-		}
+	.circle04::after {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 100%;
+		left: 0;
+		top: -2px;
+		background-image: linear-gradient(to right, #ff6810 2px, transparent 2px, transparent),
+			radial-gradient(4px circle at 4px 0px, transparent 2px, #ff6810 2px);
+		background-size: 6px 2px;
+	}
 
-		.circle05 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: #ff6810;
-		}
+	.circle05 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: #ff6810;
+	}
 
-		.circle05::after {
-			content: '';
-			position: absolute;
-			height: 4px;
-			width: 100%;
-			left: 0;
-			bottom: -4px;
-			background-image: linear-gradient(to right, #ff6810 4px, transparent 4px, transparent),
-				radial-gradient(8px circle at 8px 4px, transparent 4px, #ff6810 4px);
-			background-size: 12px 4px;
-		}
+	.circle05::after {
+		content: '';
+		position: absolute;
+		height: 4px;
+		width: 100%;
+		left: 0;
+		bottom: -4px;
+		background-image: linear-gradient(to right, #ff6810 4px, transparent 4px, transparent),
+			radial-gradient(8px circle at 8px 4px, transparent 4px, #ff6810 4px);
+		background-size: 12px 4px;
+	}
 
-		.circle06 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: #ff6810;
-			margin-left: 4px;
+	.circle06 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: #ff6810;
+		margin-left: 4px;
 
-		}
+	}
 
-		.circle06::after {
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 2px;
-			top: 0;
-			left: -2px;
-			background-image: linear-gradient(to bottom, #ff6810 2px, transparent 2px, transparent),
-				radial-gradient(4px circle at 0px 4px, transparent 2px, #ff6810 2px);
-			background-size: 2px 6px;
-		}
+	.circle06::after {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		top: 0;
+		left: -2px;
+		background-image: linear-gradient(to bottom, #ff6810 2px, transparent 2px, transparent),
+			radial-gradient(4px circle at 0px 4px, transparent 2px, #ff6810 2px);
+		background-size: 2px 6px;
+	}
 
-		.circle07 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: #ff6810;
-			margin-right: 12px;
+	.circle07 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: #ff6810;
+		margin-right: 12px;
 
-		}
+	}
 
-		.circle07::after {
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 6px;
-			top: 0;
-			right: -6px;
-			background-image: linear-gradient(to bottom, #ff6810 6px, transparent 6px, transparent),
-				radial-gradient(12px circle at 6px 12px, transparent 6px, #ff6810 6px);
-			background-size: 6px 18px;
-		}
+	.circle07::after {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 6px;
+		top: 0;
+		right: -6px;
+		background-image: linear-gradient(to bottom, #ff6810 6px, transparent 6px, transparent),
+			radial-gradient(12px circle at 6px 12px, transparent 6px, #ff6810 6px);
+		background-size: 6px 18px;
+	}
 
-		.circle08 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: radial-gradient(circle at right top, transparent 10px, #ff6810 0) top left / 60px 51% no-repeat,
-				radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) bottom left /60px 51% no-repeat,
-				radial-gradient(circle at left top, transparent 10px, #eeeeee 0) 60px 0/230px 51% no-repeat,
-				radial-gradient(circle at left bottom, transparent 10px, #eeeeee 0) 60px 50px /230px 51% no-repeat,
-				radial-gradient(circle at 10px 50px, transparent 10px, #eeeeee 0) 290px 0/10px 100px no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle08 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: radial-gradient(circle at right top, transparent 10px, #ff6810 0) top left / 60px 51% no-repeat,
+			radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) bottom left /60px 51% no-repeat,
+			radial-gradient(circle at left top, transparent 10px, #eeeeee 0) 60px 0/230px 51% no-repeat,
+			radial-gradient(circle at left bottom, transparent 10px, #eeeeee 0) 60px 50px /230px 51% no-repeat,
+			radial-gradient(circle at 10px 50px, transparent 10px, #eeeeee 0) 290px 0/10px 100px no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle08::after {
-			content: '';
-			height: 80px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 60px;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
+	.circle08::after {
+		content: '';
+		height: 80px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 60px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
 
-		.circle09 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) 148px 0 / 152px 60px no-repeat,
-				radial-gradient(circle at left bottom, transparent 10px, #ff6810 0) top left / 150px 60px no-repeat,
-				radial-gradient(circle at right top, transparent 10px, #eeeeee 0) 148px 60px / 152px 30px no-repeat,
-				radial-gradient(circle at left top, transparent 10px, #eeeeee 0) 0 60px / 150px 30px no-repeat,
-				radial-gradient(circle at 150px 10px, transparent 10px, #eeeeee 0) bottom left/300px 10px no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle09 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: radial-gradient(circle at right bottom, transparent 10px, #ff6810 0) 148px 0 / 152px 60px no-repeat,
+			radial-gradient(circle at left bottom, transparent 10px, #ff6810 0) top left / 150px 60px no-repeat,
+			radial-gradient(circle at right top, transparent 10px, #eeeeee 0) 148px 60px / 152px 30px no-repeat,
+			radial-gradient(circle at left top, transparent 10px, #eeeeee 0) 0 60px / 150px 30px no-repeat,
+			radial-gradient(circle at 150px 10px, transparent 10px, #eeeeee 0) bottom left/300px 10px no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle09::after {
-			content: '';
-			width: 280px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 60px;
-			margin: auto;
-		}
+	.circle09::after {
+		content: '';
+		width: 280px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 60px;
+		margin: auto;
+	}
 
-		.circle10 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: radial-gradient(circle at right top, transparent 9px, #ff6810 0) top left / 60px 51% no-repeat,
-				radial-gradient(circle at right bottom, transparent 9px, #ff6810 0) bottom left /60px 51% no-repeat,
-				radial-gradient(circle at left top, transparent 9px, #eeeeee 0) top right /240px 51% no-repeat,
-				radial-gradient(circle at left bottom, transparent 9px, #eeeeee 0) bottom right /240px 51% no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle10 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: radial-gradient(circle at right top, transparent 9px, #ff6810 0) top left / 60px 51% no-repeat,
+			radial-gradient(circle at right bottom, transparent 9px, #ff6810 0) bottom left /60px 51% no-repeat,
+			radial-gradient(circle at left top, transparent 9px, #eeeeee 0) top right /240px 51% no-repeat,
+			radial-gradient(circle at left bottom, transparent 9px, #eeeeee 0) bottom right /240px 51% no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle10::before {
-			content: '';
-			height: 82px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 60px;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
+	.circle10::before {
+		content: '';
+		height: 82px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 60px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
 
-		.circle10::after {
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 2px;
-			top: 0;
-			right: -2px;
-			background-image: linear-gradient(to bottom, #eeeeee 2px, transparent 2px, transparent),
-				radial-gradient(4px circle at 2px 4px, transparent 2px, #eeeeee 2px);
-			background-size: 2px 6px;
-		}
+	.circle10::after {
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 2px;
+		top: 0;
+		right: -2px;
+		background-image: linear-gradient(to bottom, #eeeeee 2px, transparent 2px, transparent),
+			radial-gradient(4px circle at 2px 4px, transparent 2px, #eeeeee 2px);
+		background-size: 2px 6px;
+	}
 
-		.circle11 {
-			width: 300px;
-			height: 100px;
-			position: relative;
-			background: radial-gradient(circle at right bottom, transparent 9px, #ff6810 0) top right / 51% 60px no-repeat,
-				radial-gradient(circle at left bottom, transparent 9px, #ff6810 0) top left / 51% 60px no-repeat,
-				radial-gradient(circle at right top, transparent 9px, #eeeeee 0) bottom right / 51% 40px no-repeat,
-				radial-gradient(circle at left top, transparent 9px, #eeeeee 0) bottom left / 51% 40px no-repeat;
-			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
-		}
+	.circle11 {
+		width: 300px;
+		height: 100px;
+		position: relative;
+		background: radial-gradient(circle at right bottom, transparent 9px, #ff6810 0) top right / 51% 60px no-repeat,
+			radial-gradient(circle at left bottom, transparent 9px, #ff6810 0) top left / 51% 60px no-repeat,
+			radial-gradient(circle at right top, transparent 9px, #eeeeee 0) bottom right / 51% 40px no-repeat,
+			radial-gradient(circle at left top, transparent 9px, #eeeeee 0) bottom left / 51% 40px no-repeat;
+		filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .2));
+	}
 
-		.circle11::before {
-			content: '';
-			width: 282px;
-			border: 1px dashed #fff;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 60px;
-			margin: auto;
-		}
+	.circle11::before {
+		content: '';
+		width: 282px;
+		border: 1px dashed #fff;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 60px;
+		margin: auto;
+	}
 
-		.circle11::after {
-			content: '';
-			position: absolute;
-			height: 2px;
-			width: 100%;
-			left: 0;
-			bottom: -2px;
-			background-image: linear-gradient(to right, #eeeeee 2px, transparent 2px, transparent),
-				radial-gradient(4px circle at 4px 2px, transparent 2px, #eeeeee 2px);
-			background-size: 6px 2px;
-		}
+	.circle11::after {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 100%;
+		left: 0;
+		bottom: -2px;
+		background-image: linear-gradient(to right, #eeeeee 2px, transparent 2px, transparent),
+			radial-gradient(4px circle at 4px 2px, transparent 2px, #eeeeee 2px);
+		background-size: 6px 2px;
+	}
 
-		.radial-gradient {
-			position: relative;
-			width: 262px;
-			height: 262px;
-			border-radius: 50%;
-			background: linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0, linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%, repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
-			background-size: 50% 100%, 100% 50%, 100% 100%;
-		}
+	.radial-gradient {
+		position: relative;
+		width: 262px;
+		height: 262px;
+		border-radius: 50%;
+		background: linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0, linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%, repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+		background-size: 50% 100%, 100% 50%, 100% 100%;
+	}
 
-		.radial-gradient:after {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin: -35px;
-			border: solid 1px #d9a388;
-			width: 68px;
-			height: 68px;
-			border-radius: 50%;
-			box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
-			background: #b5ac9a;
-			content: '';
-		}
+	.radial-gradient:after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -35px;
+		border: solid 1px #d9a388;
+		width: 68px;
+		height: 68px;
+		border-radius: 50%;
+		box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
+		background: #b5ac9a;
+		content: '';
+	}
 
-		.circle13 {
+	.circle13 {
 
-			width: 300px;
-			height: 100px;
-			background: #da5b33;
-			position: relative;
-		}
+		width: 300px;
+		height: 100px;
+		background: #da5b33;
+		position: relative;
+	}
 
-		.circle13:after {
-			content: '';
-			position: absolute;
-			height: 10px;
-			left: 0;
-			right: 0;
-			bottom: -10px;
-			background: radial-gradient(20px 15px ellipse at top, #da5b33 10px, transparent 11px);
-			background-size: 20px 10px;
+	.circle13:after {
+		content: '';
+		position: absolute;
+		height: 10px;
+		left: 0;
+		right: 0;
+		bottom: -10px;
+		background: radial-gradient(20px 15px ellipse at top, #da5b33 10px, transparent 11px);
+		background-size: 20px 10px;
 
-		}
-		
-		.wrap {
-		  position: relative;
-		  margin: 0 auto;
-		  width: 300px;
-		  height: 100px;
-		  border-radius: 4px;
-		  background: radial-gradient(circle at 0px 100%, #fff 10px, #0898ea 11px) top left / 51% 50% no-repeat,
-		    radial-gradient(circle at 100% 100%, #fff 10px, #0898ea 11px) top right / 51% 50% no-repeat,
-		    radial-gradient(circle at 0 0, #fff 10px, #0898ea 11px) bottom left / 51% 50% no-repeat,
-		    radial-gradient(circle at 100% 0%, #fff 10px, #0898ea 11px) bottom right / 51% 50% no-repeat;
-		}
-		.wrap::after {
-		  content: '';
-		  position: absolute;
-		  left: 11px;
-		  top: calc(50% - 1px);
-		  bottom: calc(50% + 1px);
-		  right: 11px;
-		  height: 2px;
-		  background: #0898ea;
-		}
-	</style>
-	<body>
-		<section>
-			<div class="circle01 mb20"></div>
-			<div class="circle01_top mb20"></div>
-			<div class="circle01_left mb20"></div>
-			<div class="circle01_right mb20"></div>
-			<div class="circle01_d1 mb20"></div>
-			<div class="circle01_d2 mb20"></div>
-			<div class="circle01_d3 mb20"></div>
-			<div class="circle01_d4 mb20"></div>
-			<div class="circle01_d5 mb20"></div>
-			<div class="circle01_d6 mb20"></div>
+	}
 
-			<div class="circle02 mb20"></div>
-			<div class="circle03 mb20"></div>
-			<div class="circle04 mb20"></div>
-			<div class="circle05 mb20"></div>
-			<div class="circle06 mb20"></div>
-			<div class="circle07 mb20"></div>
+	.wrap {
+		position: relative;
+		margin: 0 auto;
+		width: 300px;
+		height: 100px;
+		border-radius: 4px;
+		background: radial-gradient(circle at 0px 100%, #fff 10px, #0898ea 11px) top left / 51% 50% no-repeat,
+			radial-gradient(circle at 100% 100%, #fff 10px, #0898ea 11px) top right / 51% 50% no-repeat,
+			radial-gradient(circle at 0 0, #fff 10px, #0898ea 11px) bottom left / 51% 50% no-repeat,
+			radial-gradient(circle at 100% 0%, #fff 10px, #0898ea 11px) bottom right / 51% 50% no-repeat;
+	}
 
-			<div class="circle08 mb20"></div>
-			<div class="circle09 mb20"></div>
-			<div class="circle10 mb20"></div>
-			<div class="circle11 mb20"></div>
-			<div class="circle12 mb20"></div>
-			<div class="circle13 mb20"></div>
+	.wrap::after {
+		content: '';
+		position: absolute;
+		left: 11px;
+		top: calc(50% - 1px);
+		bottom: calc(50% + 1px);
+		right: 11px;
+		height: 2px;
+		background: #0898ea;
+	}
+</style>
 
-			<div class="radial-gradient mb20"></div>
-			
-			<div class="wrap"></div>
-		</section>
-	</body>
+<body>
+	<section>
+		<div class="circle01 mb20"></div>
+		<div class="circle01_top mb20"></div>
+		<div class="circle01_left mb20"></div>
+		<div class="circle01_right mb20"></div>
+		<div class="circle01_d1 mb20"></div>
+		<div class="circle01_d2 mb20"></div>
+		<div class="circle01_d3 mb20"></div>
+		<div class="circle01_d4 mb20"></div>
+		<div class="circle01_d5 mb20"></div>
+		<div class="circle01_d6 mb20"></div>
+
+		<div class="circle02 mb20"></div>
+		<div class="circle03 mb20"></div>
+		<div class="circle04 mb20"></div>
+		<div class="circle05 mb20"></div>
+		<div class="circle06 mb20"></div>
+		<div class="circle07 mb20"></div>
+
+		<div class="circle08 mb20"></div>
+		<div class="circle09 mb20"></div>
+		<div class="circle10 mb20"></div>
+		<div class="circle11 mb20"></div>
+		<div class="circle12 mb20"></div>
+		<div class="circle13 mb20"></div>
+
+		<div class="radial-gradient mb20"></div>
+
+		<div class="wrap"></div>
+	</section>
+</body>
+
 </html>

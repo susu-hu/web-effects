@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://segmentfault.com/a/1190000015705604</title>
+</head>
+<style>
+    body {
+
+        background: #222;
+    }
+
+    .wrap {
+        width: 600px;
+    }
+
+    .coupon {
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .coupon-left {
+        float: left;
+        width: 150px;
+        height: 150px;
+        position: relative;
+    }
+
+    .coupon-left::before {
+        content: '';
+        position: absolute;
+        top: -210px;
+        display: block;
+        right: -210px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 200px solid orange;
+        clip: rect(auto, auto, 285px, auto);
+    }
+
+    .coupon-left::after {
+        content: '';
+        position: absolute;
+        bottom: -210px;
+        display: block;
+        right: -210px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 200px solid orange;
+        clip: rect(135px, auto, auto, auto);
+    }
+
+    .coupon-con {
+        float: left;
+        width: 350px;
+        height: 150px;
+        position: relative;
+    }
+
+    .coupon-con::before {
+        content: '';
+        position: absolute;
+        top: -410px;
+        display: block;
+        left: -410px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 400px solid #fff;
+        clip: rect(0, auto, 485px, 410px);
+    }
+
+    .coupon-con::after {
+        content: '';
+        position: absolute;
+        bottom: -410px;
+        display: block;
+        left: -410px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 400px solid #fff;
+        clip: rect(335px, auto, auto, 410px);
+    }
+
+    /* 2 */
+
+    .wrap2 {
+        width: 600px;
+    }
+
+    .wrap2 .coupon2 {
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .wrap2 .coupon-left2 {
+        float: left;
+        width: 150px;
+        height: 150px;
+        position: relative;
+    }
+
+    .wrap2 .coupon-left2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: radial-gradient(circle at right top, transparent 10px, orange 10px, orange 10px)
+    }
+
+    .wrap2 .coupon-left2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: radial-gradient(circle at right bottom, transparent 10px, orange 10px, orange 10px)
+    }
+
+    .wrap2 .coupon-con2 {
+        float: left;
+        width: 350px;
+        height: 150px;
+        position: relative;
+    }
+
+    .wrap2 .coupon-con2::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: radial-gradient(circle at left top, transparent 10px, orange 10px, #fff 10px)
+    }
+
+    .wrap2 .coupon-con2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: radial-gradient(circle at left bottom, transparent 10px, orange 10px, #fff 10px)
+    }
+</style>
+
+
+<body>
+    <div class="wrap">
+        <div class="coupon">
+            <div class="coupon-left"></div>
+            <div class="coupon-con"></div>
+        </div>
+    </div>
+
+    <div class="wrap2">
+        <div class="coupon2">
+            <div class="coupon-left2"></div>
+            <div class="coupon-con2"></div>
+        </div>
+    </div>
+</body>
+
+</html>
