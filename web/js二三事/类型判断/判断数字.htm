@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 建议使用typeof + isNaN
+  function isNumber1(e) {
+    return typeof e === 'number' && !isNaN(e);
+  }
+  console.log('isNumber1', isNumber1('--'))
+  console.log('isNumber1', isNumber1(123))
+  console.log('isNumber1', isNumber1([1]))
+  console.log('isNumber1', isNumber1(['123']))
+  console.log('isNumber1', isNumber1(null))
+  console.log('isNumber1', isNumber1(''))
+  console.log('isNumber1', isNumber1(' '))
+  console.log('----------------------------------------')
+
+  // 建议使用typeof + constructor
+  function isNumber3(e) {
+    return typeof e === 'number' && e.constructor == Number;
+  }
+  console.log('isNumber3', isNumber3('--'))
+  console.log('isNumber3', isNumber3(123))
+  console.log('isNumber3', isNumber3([1]))
+  console.log('isNumber3', isNumber3(['123']))
+  console.log('isNumber3', isNumber3(null))
+  console.log('isNumber3', isNumber3(''))
+  console.log('isNumber3', isNumber3(' '))
+  console.log('----------------------------------------')
+
+  function isNumber(val) {
+    // isNaN()函数 把空串 空格 以及NUll 按照0来处理 所以先去除，    
+    if (val === "" || val == null) {
+      return false;
+    }
+    if (!isNaN(val)) {
+      //对于空数组和只有一个数值成员的数组或全是数字组成的字符串，isNaN返回false，--数组能被Number函数转成数值
+      //更准确写法是if(!isNaN(val) && typeof val === 'number' )
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  console.log(isNumber('--'))
+  console.log(isNumber(123))
+  console.log(isNumber([1]))
+  console.log(isNumber(['123']))
+  console.log(isNumber(null))
+  console.log(isNumber(''))
+  console.log(isNumber(' '))
+
+
+
+  console.log('----------------------------------------')
+  // 使用parseFloat()函数
+  function isNumber2(e) {
+    return parseFloat(e).toString() == "NaN"
+  }
+  console.log('isNumber2', isNumber2('--'))
+  console.log('isNumber2', isNumber2(123))
+  console.log('isNumber2', isNumber2([1]))
+  console.log('isNumber2', isNumber2(['123']))
+  console.log('isNumber2', isNumber2(null))
+  console.log('isNumber2', isNumber2(''))
+  console.log('isNumber2', isNumber2(' '))
+  console.log('----------------------------------------')
+</script>
+
+</html>
