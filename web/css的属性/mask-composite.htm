@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://codepen.io/susu-hu/pen/RwJaRxK?fileGuid=kDGWvXGxTXG6KrrQ</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .content {
+        width: 300px;
+        height: 150px;
+        margin: auto;
+        -webkit-mask: linear-gradient(red, red) 75px 0/100px 100px, linear-gradient(red, red) 125px 100%/100px 100px;
+        mask: linear-gradient(red, red) 75px 0/100px 100px, linear-gradient(red, red) 125px 100%/100px 100px;
+        -webkit-mask-composite: source-in;
+        mask-composite: source-in;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        background-color: orange;
+    }
+
+    .c {
+        position: absolute;
+        margin: auto;
+        width: 300px;
+        height: 150px;
+        pointer-events: none;
+    }
+
+    .c1,
+    .c2 {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        border: 1px dashed pink;
+        display: flex;
+        align-items: center;
+        color: orange;
+        justify-content: center;
+    }
+
+    .c1 {
+        left: 75px;
+        text-indent: -120px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)
+    }
+
+    .c2 {
+        right: 75px;
+        bottom: 0;
+        text-indent: 200px;
+    }
+
+    .sel {
+        pointer-events: all;
+        position: absolute;
+        top: 0;
+        transform: translateY(-100%);
+        white-space: nowrap;
+        padding: 10px;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <div class="content" id="con"></div>
+    <div class="c">
+        <div class="c1">source</div>
+        <div class="c2">destination</div>
+        <div class="sel">
+            <label>-webkit-mask-composite</label>
+            <select id="select">
+                <option>unset</option>
+                <option>clear</option>
+                <option>copy</option>
+                <option>source-over</option>
+                <option>source-in</option>
+                <option>source-out</option>
+                <option>source-atop</option>
+                <option>destination-over</option>
+                <option>destination-in</option>
+                <option>destination-out</option>
+                <option>destination-atop</option>
+                <option>xor</option>
+            </select>
+        </div>
+    </div>
+</body>
+<script>
+    select.onchange = function () {
+        con.style.webkitMaskComposite = this.value
+    }
+</script>
+
+</html>
+<!-- 
+    -webkit-mask-composite: clear; /*清除，不显示任何遮罩*/
+    -webkit-mask-composite: copy; /*只显示上方遮罩，不显示下方遮罩*/
+    -webkit-mask-composite: source-over; 
+    -webkit-mask-composite: source-in; /*只显示重合的地方*/
+    -webkit-mask-composite: source-out; /*只显示上方遮罩，重合的地方不显示*/
+    -webkit-mask-composite: source-atop;
+    -webkit-mask-composite: destination-over;
+    -webkit-mask-composite: destination-in; /*只显示重合的地方*/
+    -webkit-mask-composite: destination-out;/*只显示下方遮罩，重合的地方不显示*/
+    -webkit-mask-composite: destination-atop;
+    -webkit-mask-composite: xor; /*只显示不重合的地方*/
+ -->

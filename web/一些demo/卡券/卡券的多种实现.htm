@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考链接：https://segmentfault.com/a/1190000039742398</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    :root {
+        --c1: orange;
+        --c2: #ff2e63;
+        --c3: #a33b55;
+        --c4: #ffe2e2;
+        --c5: #bbded6;
+        --c6: #ffde7d;
+        --c7: #eeeeee;
+        --c8: #a8edea;
+        --c9: #fed6e3;
+    }
+
+    body {
+        overflow: auto !important;
+    }
+
+    .card {
+        width: 300px;
+        height: 150px;
+        border-radius: 20px;
+        background: linear-gradient(45deg, var(--c1), var(--c2));
+        margin-bottom: 20px;
+    }
+
+    .card1 {
+        -webkit-mask: radial-gradient(circle at 0, transparent 15px, red 0);
+        mask: radial-gradient(circle at 0, transparent 15px, red 0);
+        /* 半径为15px的透明半圆 */
+    }
+
+    .card2 {
+        -webkit-mask: radial-gradient(circle at 0, transparent 15px, red 0), radial-gradient(circle at right, transparent 15px, red 0);
+        mask: radial-gradient(circle at 0, transparent 15px, red 0), radial-gradient(circle at right, transparent 15px, red 0);
+        -webkit-mask-composite: source-in;
+        mask-composite: source-in;
+        /*只显示重合的地方*/
+    }
+
+    .card3 {
+        /* 两个凹角错开，修改尺寸和位置，禁止平铺 */
+        -webkit-mask: radial-gradient(circle at 0, transparent 15px, red 0), radial-gradient(circle at right, transparent 15px, red 0);
+        mask: radial-gradient(circle at 0, transparent 15px, red 0), radial-gradient(circle at right, transparent 15px, red 0);
+        -webkit-mask-size: 51%;
+        /*避免出现缝隙*/
+        -webkit-mask-position: 0, 100%;
+        /*一个居左一个居右*/
+        -webkit-mask-repeat: no-repeat;
+    }
+
+    .card4 {
+        position: relative;
+        background: none;
+        /* mask写在这里会导致边框有虚线 */
+    }
+
+    .card4::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        /* 透明颜色可以用16进制缩写比如#0000 --transparent*/
+        -webkit-mask: radial-gradient(circle at 0px 0, transparent 20px, red 0),
+            radial-gradient(circle at right 0, transparent 20px, red 0),
+            radial-gradient(circle at 0 100%, transparent 20px, red 0),
+            radial-gradient(circle at right 100%, transparent 20px, red 0);
+        /*4个角落各放一个圆*/
+        -webkit-mask-composite: source-in;
+        /*chrome*/
+        mask-composite: intersect;
+        /*Firefox*/
+        background: linear-gradient(45deg, var(--c1), var(--c2));
+    }
+
+    /* 平铺 */
+    .card5 {
+        /* 向左平移自身的一半，默认的repeat特性 */
+        /* -webkit-mask: radial-gradient(circle at 10px 50px, transparent 10px, red 0);
+        -webkit-mask-position: -10px; */
+        /* 或者 */
+        -webkit-mask: radial-gradient(circle at 10px 50px, transparent 10px, red 0) -10px;
+    }
+
+    .card6 {
+        /* -webkit-mask: radial-gradient(circle at 20px 20px, transparent 20px, red 0);
+        -webkit-mask-position: -20px -20px; */
+        /* 或者 */
+        -webkit-mask: radial-gradient(circle at 20px 20px, transparent 20px, red 0) -20px -20px;
+    }
+
+    .card7 {
+        -webkit-mask: radial-gradient(circle at 20px 20px, #0000 20px, red 0) -20px -20px / 50%;
+        /* -webkit-mask: radial-gradient(circle at 20px 20px, #0000 20px, red 0);
+        -webkit-mask-position: -20px -20px;
+        -webkit-mask-size: 50%; */
+    }
+
+    .card8 {
+        /* -webkit-mask: radial-gradient(circle at 10px, #0000 10px, red 0);
+        -webkit-mask-position: -10px;
+        -webkit-mask-size: 100% 30px; */
+        -webkit-mask: radial-gradient(circle at 10px, transparent 10px, red 0) -10px / 100% 30px;
+        border-radius: 0;
+    }
+
+    .card9 {
+        -webkit-mask-box-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60.031' height='60.031' viewBox='0 0 60.031 60.031'%3E%3Cpath data-name='椭圆 1' d='M55.186 30.158a4.965 4.965 0 0 0 4.841 4.959V40A20.063 20.063 0 0 0 40 60.027H20.129A20.065 20.065 0 0 0 .065 40H0v-4.888c.054 0 .1.016.158.016a4.973 4.973 0 1 0 0-9.945c-.054 0-.1.014-.158.015v-5.074h.065A20.066 20.066 0 0 0 20.131.058v-.065H40v.065a20.065 20.065 0 0 0 20.027 20.064v5.07a4.965 4.965 0 0 0-4.841 4.966z' fill-rule='evenodd'/%3E%3C/svg%3E") 20;
+        -webkit-mask-box-image-repeat: round;
+    }
+
+    .card10 {
+        -webkit-mask-box-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60.031' height='60.031' viewBox='0 0 60.031 60.031'%3E%3Cpath data-name='椭圆 1' d='M40 60.027H20.129A20.065 20.065 0 0 0 .065 40H0V20.127h.065A20.066 20.066 0 0 0 20.131.061v-.065H40v.065a20.065 20.065 0 0 0 20.027 20.064V40A20.063 20.063 0 0 0 40 60.027z' fill-rule='evenodd'/%3E%3C/svg%3E") 20;
+    }
+</style>
+
+<body>
+    <section>
+        <div class="card card1"></div>
+        <div class="card card2"></div>
+        <div class="card card3"></div>
+        <div class="card card4"></div>
+        <div class="card card5"></div>
+        <div class="card card6"></div>
+        <div class="card card7"></div>
+        <div class="card card8"></div>
+        <div class="card card9"></div>
+        <div class="card card10"></div>
+    </section>
+</body>
+
+</html>
+<!-- 
+    CSS mask一定是这类布局最完美的实现方式
+    需要CSS radial-gradient绘制图形的技巧
+    尽可能采用repeat来重复相同的元素
+    多种形状叠加时需要灵活运用mask-composite
+    也可以采用图片来代替CSS渐变，需要使用mask-border
+ -->
