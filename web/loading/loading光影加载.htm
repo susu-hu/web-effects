@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  h1 {
+    color: #000;
+    font-size: 8em;
+    display: flex;
+  }
+
+  h1 span {
+    animation: animate 1s linear infinite;
+  }
+
+  h1 span:nth-child(1) {
+    animation-delay: 0;
+  }
+
+  h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+
+  h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+
+  h1 span:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+
+  h1 span:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+
+  h1 span:nth-child(8) {
+    animation-delay: 0.7s;
+  }
+
+  h1 span:nth-child(9) {
+    animation-delay: 0.8s;
+  }
+
+  h1 span:nth-child(10) {
+    animation-delay: 0.9s;
+  }
+
+  @keyframes animate {
+
+    0%,
+    100% {
+      color: #fff;
+      filter: blur(3px);
+      text-shadow: 0 0 10px orange,
+        0 0 20px orange,
+        0 0 40px orange,
+        0 0 80px orange,
+        0 0 120px orange,
+        0 0 240px orange,
+        0 0 320px orange,
+        0 0 480px orange,
+        0 0 600px orange,
+        0 0 720px orange;
+    }
+
+    25%,
+    75% {
+      color: #000;
+      filter: blur(0);
+      text-shadow: none;
+    }
+  }
+</style>
+
+<body>
+  <h1>
+    <span>S</span>
+    <span>u</span>
+    <span>S</span>
+    <span>u</span>
+    <span>i</span>
+    <span>s</span>
+    <span>s</span>
+    <span>u</span>
+    <span>s</span>
+    <span>u</span>
+  </h1>
+
+</body>
+
+</html>
