@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://mp.weixin.qq.com/s/T980vJnghik7foi5_7jrJw</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .avator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: bisque;
+    color: rgb(250, 84, 28);
+    white-space: nowrap;
+    margin-bottom: 20px;
+  }
+
+  .avator-inner {
+    position: relative;
+  }
+
+  .avator-inner::before {
+    content: attr(alt);
+    visibility: hidden;
+    font-size: 40px;
+  }
+
+  .avator-container {
+    position: absolute;
+    inset: 0;
+    container-type: inline-size;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avator-container span {
+    font-size: calc(24px - 10cqw);
+    overflow: hidden;
+    max-width: 40px;
+    text-overflow: ellipsis;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="avator">
+      <div class="avator-inner" alt="苏苏">
+        <div class="avator-container">
+          <span>苏苏</span>
+        </div>
+      </div>
+    </div>
+    <div class="avator">
+      <div class="avator-inner" alt="苏苏小苏苏">
+        <div class="avator-container">
+          <span>苏苏小苏苏</span>
+        </div>
+      </div>
+    </div>
+    <div class="avator">
+      <div class="avator-inner" alt="苏">
+        <div class="avator-container">
+          <span>苏</span>
+        </div>
+      </div>
+    </div>
+    <div class="avator">
+      <div class="avator-inner" alt="susu">
+        <div class="avator-container">
+          <span>susu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
+<!-- 方法1：JS根据字符数量自动缩放文本实现的
+方法二：css -->
+<!-- 
+cqw  容器查询宽度（Container Query Width）占比。1cqw等于容器宽度的1%。假设容器宽度是1000px，则此时1cqw对应的计算值就是10px。
+cqh  容器查询高度（Container Query Height）占比。1cqh等于容器高度的1%。
+cqi  表示容器查询内联方向尺寸（Container Query Inline-Size）占比。这个是逻辑属性单位，默认情况下等同于cqw
+cqb  容器查询块级方向尺寸（Container Query Block-Size）占比。同上，默认情况下等同于cqh
+cqmin  容器查询较小尺寸的（Container Query Min）占比。取 cqw和cqh中较小的一个
+cqmax  表示容器查询较大尺寸的（Container Query Min）占比。取 cqw和cqh中较大的一个
+-->
