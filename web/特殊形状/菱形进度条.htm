@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    :root {
+        --bg: #222;
+    }
+
+    .progress {
+        width: 350px;
+        height: 30px;
+        /* 方法一： */
+        /* background: repeating-linear-gradient(to right, orange 0 10px, var(--bg) 10px 15px) 0 0/var(--per) no-repeat, repeating-linear-gradient(to right, rgb(85, 85, 85) 0 10px, var(--bg) 10px 15px); */
+        /* 方法二： */
+        background: linear-gradient(to right, transparent 10px, var(--bg) 0) 0 0/20px, linear-gradient(to right, orange, orange) 0 0/var(--per) no-repeat #eee;
+        transform: skewX(-30deg)
+    }
+</style>
+
+<body>
+    <div class="progress" style="--per:50%"></div>
+</body>
+
+</html>
