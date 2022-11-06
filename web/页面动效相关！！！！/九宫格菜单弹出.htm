@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="./font.css">
+<style>
+    .icon {
+        font-size: 28px;
+    }
+
+    .tabbar-box {
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background: orange;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s;
+        transition-delay: .8s;
+    }
+
+    .tabbar-box.active {
+        width: 200px;
+        height: 200px;
+        transition-delay: 0;
+    }
+
+    .tabbar-box span {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(calc(12px * var(--x)), calc(12px * var(--y)));
+        transition: transform 0.5s, width 0.5s, height 0.5s, background 0.5s;
+        transition-delay: calc(0.1s * var(--i));
+    }
+
+    .tabbar-box.active span {
+        width: 45px;
+        height: 45px;
+        background: #fff;
+        transform: translate(calc(60px * var(--x)), calc(60px * var(--y)));
+    }
+
+    .tabbar-box span i {
+        transition: 0.5s;
+        font-size: 0em;
+    }
+
+    .tabbar-box.active span i {
+        font-size: 1.35em;
+        color: #fff;
+    }
+
+    .tabbar-box.active span:hover i {
+        color: #222;
+        filter: drop-shadow(0 0 2px orange) drop-shadow(0 0 5px orange) drop-shadow(0 0 15px orange);
+    }
+</style>
+
+<body>
+    <div class="tabbar-box">
+        <span style="--i:0;--x:-1;--y:0;">
+            <i class="iconfont icon">&#xe658;</i>
+        </span>
+        <span style="--i:1;--x:1;--y:0;">
+            <i class="iconfont icon">&#xe611;</i>
+        </span>
+        <span style="--i:2;--x:0;--y:-1;">
+            <i class="iconfont icon">&#xe617;</i>
+        </span>
+        <span style="--i:3;--x:0;--y:1;">
+            <i class="iconfont icon">&#xe69d;</i>
+        </span>
+        <span style="--i:4;--x:1;--y:1;">
+            <i class="iconfont icon">&#xe65d;</i>
+        </span>
+        <span style="--i:5;--x:-1;--y:-1;">
+            <i class="iconfont icon">&#xe65e;</i>
+        </span>
+        <span style="--i:6;--x:0;--y:0;">
+            <i class="iconfont icon">&#xe698;</i>
+        </span>
+        <span style="--i:7;--x:-1;--y:1;">
+            <i class="iconfont icon">&#xe65c;</i>
+        </span>
+        <span style="--i:8;--x:1;--y:-1;">
+            <i class="iconfont icon">&#xe662;</i>
+        </span>
+    </div>
+</body>
+<script>
+    const tabbarBox = document.querySelector('.tabbar-box');
+    tabbarBox.addEventListener('click', () => {
+        tabbarBox.classList.toggle('active');
+    });
+</script>
+
+</html>
