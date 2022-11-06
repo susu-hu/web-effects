@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="/common.css">
+<style>
+    .box {
+        width: 300px;
+        height: 200px;
+        border-radius: 20px;
+        background: linear-gradient(45deg, rgba(0, 0, 0, .4) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .4) 25%, rgba(0, 0, 0, .4)),
+            linear-gradient(45deg, rgba(0, 0, 0, .4) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, .4) 25%, rgba(0, 0, 0, .4));
+        background-size: 10px 10px;
+        background-position: 0 0, 5px 5px;
+    }
+
+    .rect {
+        width: 180px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, red, orange);
+        transform: skew(-30deg);
+        text-align: center;
+        line-height: 60px;
+    }
+
+    .rect span {
+        transform: skew(30deg);
+        /* 需要添加block属性才能生效 */
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="box flex-row j_c">
+        <div class="rect">
+            <span>苏苏就是小苏苏</span>
+        </div>
+    </div>
+</body>
+
+</html>
