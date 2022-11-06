@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        width: 150px;
+        height: 150px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .box .wave {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #222;
+        border-radius: 50%;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .box .wave::after,
+    .box .wave::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -55%) rotate(0);
+        background-color: #000;
+    }
+
+    .box .wave::before {
+        border-radius: 45%;
+        background-color: #ffffff;
+        animation: wave 5s linear infinite;
+    }
+
+    .box .wave::after {
+        border-radius: 40%;
+        background-color: rgba(255, 255, 255, 0.5);
+        animation: wave 5s linear infinite;
+    }
+
+    @keyframes wave {
+        0% {
+            transform: translate(-50%, -55%) rotate(0);
+        }
+
+        100% {
+            transform: translate(-50%, -55%) rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="box">
+        <span class="wave"></span>
+    </div>
+</body>
+
+</html>
