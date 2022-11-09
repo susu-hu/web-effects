@@ -21,20 +21,13 @@
 
   :root {
     --bg: #222;
+    --wave1: #a0edff;
+    --wave2: rgba(40, 187, 255, 0.5);
+    --wave3: #2084cc;
   }
 
   body {
     background: var(--bg);
-    min-height: 100vh;
-    overflow-y: auto;
-    display: block;
-  }
-
-  section {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   .box {
@@ -51,6 +44,7 @@
         rgba(81, 201, 232, 0),
         rgba(56, 187, 222, 1),
         rgba(30, 172, 212, 0)) 1 1;
+    margin-bottom: 120px;
   }
 
   .box-inner {
@@ -65,53 +59,60 @@
     background-origin: border-box;
     background-clip: content-box, border-box;
     overflow: hidden;
+    /* 溢出隐藏 */
   }
 
   .inner {
-    position: relative;
     width: 100%;
     height: 100%;
     position: absolute;
     left: 0;
-    bottom: -130%;
-    transform: translateY(calc(0% - var(--per)));
-    background-color: #a0edff;
+    background: #a0edff;
+    /* 底部100% +波浪的实际高度，bottom: calc(-100% - 60px); */
+    /* bottom: -128%; */
+    /* 直接对bottom操作 */
+    bottom: calc(-128% + var(--per));
+    /* 或者y方向偏移*/
+    /* transform: translateY(calc(0% - var(--per))); */
     /* transition: all 2s; */
-    /* 过渡效果 */
   }
+
 
   .box-waves {
     position: absolute;
     left: 0;
     bottom: 100%;
     width: 200%;
+    /* 宽度去掉border的 2px 196* 2 =width: 392px;* /
+    /* (140 * 392) / 600px=height: 92px; */
     stroke: none;
     /* svg重合有一条线 方法一： 设置阴影缓和*/
-    /* box-shadow: 0 10px 4px 4px #a0edff; */
+    /* box-shadow: 0 10px 4px 4px var(--wave1); */
   }
 
   .box-waves:nth-child(1) {
-    fill: #a0edff;
+    fill: var(--wave1);
     transform: translate(-50%, 0);
     z-index: 3;
     animation: wave-move1 1.5s linear infinite;
-    /* svg重合有一条线 方法2：主颜色底边距-1px*/
+    /* svg重合有一条线 方法2：主颜色底边距-2px*/
     margin-bottom: -2px;
   }
 
   .box-waves:nth-child(2) {
-    fill: rgba(40, 187, 255, 0.5);
+    fill: var(--wave2);
     transform: translate(0, 0);
     z-index: 2;
     animation: wave-move2 3s linear infinite;
   }
 
   .box-waves:nth-child(3) {
-    fill: #2084cc;
+    fill: var(--wave3);
     transform: translate(-50%, 0);
     z-index: 1;
     animation: wave-move1 3s linear infinite;
   }
+
 
   @keyframes wave-move1 {
     100% {
@@ -133,132 +134,33 @@
     text-align: center;
     color: #7EEDFF;
   }
-
-  .rect {
-    margin-top: 30px;
-    width: 200px;
-    height: 80px;
-    border: 2px solid;
-    border-image: linear-gradient(180deg, red, orange) 1;
-  }
-
-  .rect-circle {
-    margin-top: 30px;
-    margin-left: 30px;
-    width: 100px;
-    height: 50px;
-    border: 2px solid transparent;
-    background-image: linear-gradient(var(--bg), var(--bg)),
-      linear-gradient(180deg, red, orange);
-    /* 前一个为内容背景色,后面为边框渐变色 */
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    border-radius: 0px;
-    animation: 2s toBorder linear infinite alternate;
-  }
-
-  @keyframes toBorder {
-    100% {
-      border-radius: 50%;
-    }
-  }
-
-  .svg-section svg {
-    width: 200px;
-    height: 90px;
-    display: block;
-  }
 </style>
 
 <body>
-  <section>
-    <div class="box flex-row j_c">
-      <div class="box-inner">
-        <div class="inner" style="--per:60%" id="box">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
-            <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
-            </path>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
-            <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
-            </path>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
-            <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
-            </path>
-          </svg>
-        </div>
+  <div class="box flex-row j_c">
+    <div class="box-inner">
+      <div class="inner" style="--per:0%" id="box">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
+          <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
+          </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
+          <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
+          </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140" class="box-waves">
+          <path d="M 0 70 Q 75 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
+          </path>
+        </svg>
       </div>
-      <div id="percentText" class="box-text"></div>
     </div>
-    <!-- 边框圆角渐变色 -->
-    <div class="flex-row">
-      <div class="rect"></div>
-      <div class="rect-circle"></div>
-    </div>
-    <!-- SVG波浪 -->
-    <section class="svg-section">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="rgba(56, 187, 222,.5)" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,213.3C384,235,480,245,576,208C672,171,768,85,864,85.3C960,85,1056,171,1152,213.3C1248,256,1344,256,1392,256L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-        </path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140">
-        <path d="M 0 70 Q 85 20,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z" fill="orange">
-        </path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 600 140">
-        <path d="M 0 70 Q 75 100,150 70 T 300 70 T 450 70 T 600 70 L 600 140 L 0 140 L 0 70Z">
-        </path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#0099ff" fill-opacity="1" d="M0,64L30,85.3C60,107,120,149,180,176C240,203,300,213,360,197.3C420,181,480,139,540,149.3C600,160,660,224,720,218.7C780,213,840,139,900,133.3C960,128,1020,192,1080,213.3C1140,235,1200,213,1260,197.3C1320,181,1380,171,1410,165.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-        </path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#0099ff" fill-opacity="1" d="M0,64L34.3,85.3C68.6,107,137,149,206,176C274.3,203,343,213,411,192C480,171,549,117,617,90.7C685.7,64,754,64,823,96C891.4,128,960,192,1029,186.7C1097.1,181,1166,107,1234,96C1302.9,85,1371,139,1406,165.3L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
-        </path>
-      </svg>
-
-      <svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 10 C 20 20, 40 20, 50 10" stroke="black" fill="transparent" />
-        <path d="M70 10 C 70 20, 120 20, 120 10" stroke="black" fill="transparent" />
-        <path d="M130 10 C 120 20, 180 20, 170 10" stroke="black" fill="transparent" />
-        <path d="M10 60 C 20 80, 40 80, 50 60" stroke="black" fill="transparent" />
-        <path d="M70 60 C 70 80, 110 80, 110 60" stroke="black" fill="transparent" />
-        <path d="M130 60 C 120 80, 180 80, 170 60" stroke="black" fill="transparent" />
-        <path d="M10 110 C 20 140, 40 140, 50 110" stroke="black" fill="transparent" />
-        <path d="M70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent" />
-        <path d="M130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent" />
-      </svg>
-      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 0,600 C 0,600 0,300 0,300 C 87.55023923444975,253.44497607655504 175.1004784688995,206.88995215311007 258,232 C 340.8995215311005,257.1100478468899 419.1483253588517,353.88516746411483 522,354 C 624.8516746411483,354.11483253588517 752.3062200956938,257.56937799043067 865,265 C 977.6937799043062,272.43062200956933 1075.6267942583731,383.8373205741627 1169,407 C 1262.3732057416269,430.1626794258373 1351.1866028708134,365.08133971291863 1440,300 C 1440,300 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="#fcb900" fill-opacity="1"></path>
-      </svg>
-      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="45%" x2="100%" y2="55%">
-            <stop offset="5%" stop-color="#00d084"></stop>
-            <stop offset="95%" stop-color="#8ed1fc"></stop>
-          </linearGradient>
-        </defs>
-        <path d="M 0,500 C 0,500 0,250 0,250 C 81,280 163,310 229,281 C 294,251 342,162 412,180 C 481,197 571,322 645,339 C 718,355 773,265 837,235 C 900,204 971,233 1036,258 C 1100.8505668155274,282.18412916523533 1159.6715905187223,301.19546547578153 1226,299 C 1292,296 1366,273 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"></path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 800">
-        <g fill="hsla(105, 30%, 84%, 1)">
-          <path d="M-10,10C75.41666666666666,24.166666666666668,231.25,94.66666666666667,400,78C568.75,61.33333333333333,633.3333333333333,-76.04166666666667,800,-70C966.6666666666667,-63.958333333333336,1033.3333333333333,98.45833333333333,1200,107C1366.6666666666667,115.54166666666667,1433.3333333333333,-15.25,1600,-29C1766.6666666666667,-42.75,1833.3333333333333,35.583333333333336,2000,41C2166.6666666666665,46.416666666666664,2264.5833333333335,-77.79166666666667,2400,-3C2535.4166666666665,71.79166666666667,3254.1666666666665,211.875,2650,400C2045.8333333333335,588.125,156.25,795.8333333333334,-500,900" opacity="1"></path>
-        </g>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill-opacity="1" d="M0,224L34.3,197.3C68.6,171,137,117,206,85.3C274.3,53,343,43,411,69.3C480,96,549,160,617,181.3C685.7,203,754,181,823,154.7C891.4,128,960,96,1029,101.3C1097.1,107,1166,149,1234,170.7C1302.9,192,1371,192,1406,192L1440,192L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-      </svg>
-    </section>
-
-  </section>
-
+    <div id="percentText" class="box-text">--%</div>
+  </div>
 </body>
 <script>
+  // getComputedStyle(box).getPropertyValue('--per'); // 获取当前CSS变量
   const getData = () => {
     const box = document.getElementById('box');
-    // getComputedStyle(box).getPropertyValue('--per'); // 获取当前CSS变量
     const text = document.getElementById('percentText');
     let i = 0;
     let timer = null;
@@ -280,7 +182,7 @@
     loading();
     timer = setInterval(loading, 1000);
   }
-  // getData();
+  getData();
 </script>
 
 </html>
