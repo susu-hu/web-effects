@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>系统的主题色设置为亮色或者暗色</title>
+  <style lang="css">
+    /* 整个页面配置为使用用户的配色方案首选项 */
+    /* 根元素，优先级最高，与html选择器相同 */
+    :root {
+      --color-background: #1b1b1b;
+      --color-border: #cacfd5;
+      --color-text-default: #0b1016;
+      --color-base: #f4f5f6;
+      --color-accent: #ba0d37;
+      --white-color-background: #fff;
+      color-scheme: light dark;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      text-align: center;
+      height: 100vh;
+    }
+
+    .light-scheme {
+      background: var(--white-color-background);
+      color: var(--color-text-default);
+    }
+
+    .dark-scheme {
+      background: var(--color-background);
+      color: white;
+    }
+
+    h2 {
+      margin: 50px auto;
+      color: var(--color-accent)
+    }
+
+    /* 监听操作系统主题模式 */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--color-background);
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: var(--white-color-background);
+      }
+    }
+
+    .tab-type {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+    }
+
+    .tab-type>li {
+      cursor: pointer;
+      color: #fff;
+      background-color: darkred;
+      border-radius: 12px;
+      padding: 5px;
+      margin: 0px 20px;
+      max-width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content" id="content">
+    <ul class="tab-type">
+      <li id="light">浅色主题</li>
+      <li id="dark">暗色主题</li>
+    </ul>
+    <div class="scheme-tip"></div>
+  </div>
+  <script>
+    // 手动修改主题颜色
+    const light = document.getElementById('light')
+    const dark = document.getElementById('dark')
+    const content = document.getElementsByTagName('body')[0]
+    const tipText = document.getElementsByClassName('scheme-tip')[0]
+    let lightTip = '当前自定义主题：light亮色',
+      darkTip = '当前自定义主题：dark暗色'
+
+    light.onclick = function(params) {
+      content.setAttribute('class', 'light-scheme')
+      tipText.innerHTML = lightTip
+    }
+    dark.onclick = function(params) {
+      content.setAttribute('class', 'dark-scheme')
+      tipText.innerHTML = darkTip
+    }
+
+    // js 监听系统主题模式
+    const scheme = window.matchMedia('(prefers-color-scheme: dark)')
+    if (scheme.matches) {
+      // 深色模式业务处理代码
+      console.log('深色模式');
+      tipText.innerHTML = darkTip
+    } else {
+      // 浅色模式业务处理代码
+      console.log('浅色模式');
+      tipText.innerHTML = lightTip
+    }
+  </script>
+</body>
+
+</html>
+<!-- 
+总结prefers-color-scheme监听方式：
+
+1.css里通过@media监听
+
+2.js里面通过matchMedia监听
+
+-->
