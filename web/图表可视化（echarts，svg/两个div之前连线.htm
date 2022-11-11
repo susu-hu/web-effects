@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考：https://blog.csdn.net/u598975767/article/details/113881742</title>
+</head>
+<style>
+  .item {
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  #one {
+    background: red;
+    top: 200px;
+    left: 400px;
+  }
+
+  #two {
+    background: blue;
+    top: 100px;
+    left: 40px;
+  }
+
+  #three {
+    background: yellow;
+    top: 400px;
+    left: 10px;
+  }
+
+  .line {
+    position: absolute;
+    background: green;
+    height: 1px;
+    z-index: 1;
+    /*这里设置大于2，即可看到真正连线的其实是两个元素的中心坐标*/
+  }
+</style>
+
+<body>
+  <div id="one" class="item"></div>
+  <div id="two" class="item"></div>
+  <div id="three" class="item"></div>
+</body>
+<script src="https://wow.techbrood.com/libs/jquery/jquery-1.11.1.min.js"> </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("body").append(drawLine($("#one"), $("#two")))
+    $("body").append(drawLine($("#three"), $("#two")))
+    $("body").append(drawLine($("#one"), $("#three")))
+  })
+
+  /**
+   * 实现两个元素中心点的连线
+   * @author 渀波儿灞 2021-02-20
+   * @param  {Object} startObj  jquery对象，起点元素
+   * @param  {Object} endObj    jquery对象，终点元素
+   * @return {String}           返回连线的dom
+   */
+  function drawLine(startObj, endObj) {
+    //起点元素中心坐标
+    var y_start = Number(startObj.css("top").replace("px", "")) + startObj.height() / 2;
+    var x_start = Number(startObj.css("left").replace("px", "")) + startObj.width() / 2;
+
+    //终点元素中心坐标
+    var y_end = Number(endObj.css("top").replace("px", "")) + endObj.height() / 2;
+    var x_end = Number(endObj.css("left").replace("px", "")) + endObj.width() / 2;;
+
+    //用勾股定律计算出斜边长度及其夹角（即连线的旋转角度）
+    var lx = x_end - x_start;
+    var ly = y_end - y_start;
+    //计算连线长度
+    var length = Math.sqrt(lx * lx + ly * ly);
+    //弧度值转换为角度值
+    var c = 360 * Math.atan2(ly, lx) / (2 * Math.PI);
+
+    //连线中心坐标
+    var midX = (x_end + x_start) / 2;
+    var midY = (y_end + y_start) / 2
+    var deg = c <= -90 ? (360 + c) : c; //负角转换为正角
+
+    return `<div class='line' 
+                    style='top:${midY}px;left:${midX-length/2}px;width:${length}px;transform:rotate(${deg}deg);'>
+                </div>`
+  }
+</script>
+
+</html>
