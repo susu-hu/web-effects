@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://github.com/chokcoco/iCSS/issues/180</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  .box {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(#fff 0, #fff .8deg, transparent 1deg, transparent calc((360 / 60) * 1deg));
+    -webkit-mask: radial-gradient(transparent 0, transparent 140px, #000 140px)
+  }
+</style>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>

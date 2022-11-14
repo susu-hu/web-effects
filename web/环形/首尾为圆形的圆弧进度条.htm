@@ -2,72 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>参考：https://codepen.io/Chokcoco/pen/VwzzVEV 参考文章:https://mp.weixin.qq.com/s/jkGbnaWJd8iJVCouUNbG9Q</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考：https://codepen.io/Chokcoco/pen/VwzzVEV
+    参考文章:https://mp.weixin.qq.com/s/jkGbnaWJd8iJVCouUNbG9Q,
+    https://www.cnblogs.com/coco1s/p/15821173.html</title>
 </head>
 <style>
-    body,
-    html {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        background: #222;
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #222;
+  }
+
+  .g-container {
+    position: relative;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+  }
+
+  .g-progress {
+    position: relative;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(#FFCDB2 0, #FFCDB2 var(--per), #B5838D var(--per), #B5838D);
+    -webkit-mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+    mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+    animation: loading1 6s forwards infinite;
+  }
+
+  .g-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .g-circle::before,
+  .g-circle::after {
+    content: "";
+    position: absolute;
+    top: 90px;
+    left: 90px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFCDB2;
+    z-index: 1;
+  }
+
+  .g-circle::before {
+    transform: translate(0, -90px);
+  }
+
+  .g-circle::after {
+    transform: rotate(0deg) translate(0, -90px);
+    animation: loading2 6s forwards infinite;
+  }
+
+  /* 渐变是无法进行动画效果的 ,得到的是一帧向另外一帧的直接变化,放弃该方案*/
+  @keyframes loading {
+    0% {
+      background: conic-gradient(#FFCDB2 0, #FFCDB2 0%, #B5838D 0%, #B5838D);
     }
 
-    .g-container {
-        position: relative;
-        margin: auto;
-        width: 200px;
-        height: 200px;
+    100% {
+      background: conic-gradient(#FFCDB2 0, #FFCDB2 100%, #B5838D 100%, #B5838D);
+    }
+  }
+
+  /* property :https://github.com/chokcoco/iCSS/issues/109 */
+  @property --per {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  @keyframes loading1 {
+    0% {
+      --per: 0%;
     }
 
-    .g-progress {
-        position: relative;
-        margin: auto;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: conic-gradient(#FFCDB2 0, #FFCDB2 25%, #B5838D 25%, #B5838D);
-        -webkit-mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
-        mask: radial-gradient(transparent, transparent 80px, #000 80.5px, #000 0);
+    100% {
+      --per: 100%;
+    }
+  }
+
+  @keyframes loading2 {
+    0% {
+      transform: rotate(0deg) translate(0, -90px);
     }
 
-    .g-circle {
-        position: absolute;
-        top: 0;
-        left: 0;
+    100% {
+      transform: rotate(360deg) translate(0, -90px);
     }
-
-    .g-circle::before,
-    .g-circle::after {
-        content: "";
-        position: absolute;
-        top: 90px;
-        left: 90px;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #FFCDB2;
-        z-index: 1;
-    }
-
-    .g-circle::before {
-        transform: translate(0, -90px);
-    }
-
-    .g-circle::after {
-        transform: rotate(90deg) translate(0, -90px);
-    }
+  }
 </style>
 
 <body>
+  <div class="g-progress"></div>
+  <div class="g-container">
     <div class="g-progress"></div>
-    <div class="g-container">
-        <div class="g-progress"></div>
-        <div class="g-circle"></div>
-    </div>
+    <div class="g-circle"></div>
+  </div>
 
 </body>
 

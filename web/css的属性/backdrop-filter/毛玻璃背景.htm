@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://www.cnblogs.com/coco1s/p/15845585.html</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  body {
+    background: transparent;
+  }
+
+  .g-bg {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .g-bg>div {
+    position: absolute;
+    opacity: 0.5;
+  }
+
+  .g-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    -webkit-backdrop-filter: blur(150px);
+    backdrop-filter: blur(150px);
+    z-index: 1;
+  }
+
+  .g-polygon-1 {
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 714px;
+    height: 390px;
+    background: linear-gradient(#ffee55, #fdee99);
+    -webkit-clip-path: polygon(0 10%, 30% 0, 100% 40%, 70% 100%, 20% 90%);
+    clip-path: polygon(0 10%, 30% 0, 100% 40%, 70% 100%, 20% 90%);
+  }
+
+  .g-polygon-2 {
+    bottom: 0px;
+    left: 30%;
+    transform: translate(-50%, 0);
+    width: 1000px;
+    height: 450px;
+    background: linear-gradient(-36deg, #E950D1, #f980D9);
+    -webkit-clip-path: polygon(10% 0, 100% 70%, 100% 100%, 20% 90%);
+    clip-path: polygon(10% 0, 100% 70%, 100% 100%, 20% 90%);
+  }
+
+  .g-polygon-3 {
+    bottom: 0px;
+    left: 70%;
+    transform: translate(-50%, 0);
+    width: 1000px;
+    height: 450px;
+    background: skyblue;
+    -webkit-clip-path: polygon(80% 0, 100% 70%, 100% 100%, 20% 90%);
+    clip-path: polygon(80% 0, 100% 70%, 100% 100%, 20% 90%);
+  }
+</style>
+
+<body>
+  <div class="g-bg">
+    <div class="g-polygon-1"></div>
+    <div class="g-polygon-2"></div>
+    <div class="g-polygon-3"></div>
+  </div>
+</body>
+
+</html>

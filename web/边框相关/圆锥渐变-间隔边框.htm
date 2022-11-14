@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+
+  .box::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    background: conic-gradient(#fff 0, #fff 16.6%, transparent 16.6%, transparent 33.2%, #fff 33.2%, #fff 49.8%, transparent 49.8%, transparent 66.4%, #fff 66.4%, #fff 83%,
+        transparent 83%, transparent);
+    -webkit-mask: radial-gradient(transparent, transparent 69%, #000 70%, #000 0);
+    animation: rotate 10s infinite linear;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  .dot {
+    width: 11px;
+    height: 11px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: 50%;
+    filter: blur(1.52px);
+  }
+
+  .dot::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 33px;
+    height: 33px;
+    filter: blur(17.64px);
+    background: rgba(33, 201, 255, .9);
+    z-index: -1;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="box flex-row j_c">
+      <div class="dot"></div>
+    </div>
+  </section>
+
+</body>
+
+</html>

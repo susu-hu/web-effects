@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 手机号
+  const mobileEx = (e) => e.replace(/^(.{3})(?:\d+)(.{4})$/, "$1****$2");
+  console.log(mobileEx('15435645562'))
+  // 身份证
+  const IdEx = (e) => e.replace(/^(.{6})(?:\d+)(.{2})$/, "$1**********$2");
+  console.log(IdEx('431678188640448566'))
+  // 用户名
+  const userNameEx = (e) => {
+    if (e == null || e == undefined || e == '') return;
+    switch (e.length) {
+      case 1:
+        return e
+        break;
+      case 2:
+        return e.substring(0, 1) + '*' //截取name 字符串截取第一个字符
+        break;
+      case 3:
+        return e.substring(0, 1) + "*" + e.substring(2, 3) //截取第一个和第三个字符
+        break;
+      default:
+        return e.substring(0, 1) + "*" + '*' + e.substring(3, e.length) //截取第一个和大于第4个字符
+        break;
+    }
+  }
+  console.log(userNameEx('苏'))
+  console.log(userNameEx('苏苏'))
+  console.log(userNameEx('苏苏哇'))
+  console.log(userNameEx('苏苏呀哇'))
+  console.log(userNameEx('苏苏小苏苏哇'))
+  console.log('苏苏哇哈哈哈'.replace(/.*(?=[\u4e00-\u9fa5])/, "***"))
+</script>
+
+</html>
