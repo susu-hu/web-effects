@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .box {
+        width: 400px;
+    }
+
+    .box-item {
+        background-color: pink;
+        border-radius: 10px;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        color: #222;
+    }
+
+    .box-item.active {
+        background: transparent;
+        border: 1px solid orange;
+        color: aliceblue;
+    }
+</style>
+
+<body>
+    <div class="box" id="box">
+        <div draggable="true" class="box-item">1</div>
+        <div draggable="true" class="box-item">2</div>
+        <div draggable="true" class="box-item">3</div>
+        <div draggable="true" class="box-item">4</div>
+        <div draggable="true" class="box-item">5</div>
+        <div draggable="true" class="box-item">6</div>
+    </div>
+</body>
+<script>
+    const box = document.getElementById('box');
+    let currNode;//当前拖动的元素
+    box.ondragstart = e => {
+        // 应该在dragstart事件中设置此属性，以便为拖动源设置所需的拖动效果
+        // https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer/effectAllowed
+        e.dataTransfer.effectAllowed = 'move';
+        setTimeout(() => {
+            e.target.classList.add('active')
+        }, 0);
+        currNode = e.target;
+
+    }
+    box.ondragenter = e => {
+        e.preventDefault();
+        if (e.target === box || e.target === currNode) {
+            return;
+        }
+        console.log(e.target)
+        const ch = Array.from(box.children);
+        const currIndex = ch.indexOf(currNode);
+        const targetIndex = ch.indexOf(e.target);
+        if (currIndex < targetIndex) {
+            console.log('向下拖');
+            box.insertBefore(currNode, e.target.nextElementSibling)
+        } else {
+            console.log('向上拖');
+            box.insertBefore(currNode, e.target)
+        }
+    }
+    box.ondragend = e => {
+        e.target.classList.remove('active');
+    }
+    box.ondragover = e => {
+        e.preventDefault();
+    }
+</script>
+
+</html>
