@@ -179,7 +179,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
-##### css动画+translate实现流星划过
+##### 146.css动画+translate实现流星划过
 ![输入图片说明](web-pictures/demo146.gif)
 ##### 145. css3动画+svg波浪实现水球进度条
 ![输入图片说明](web-pictures/demo145.gif)
