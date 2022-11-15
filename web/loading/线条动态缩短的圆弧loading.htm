@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://www.cnblogs.com/coco1s/p/15821173.html</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root {
+    --color: orange;
+    --bg: #222;
+  }
+
+  .box1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--color1, red);
+    border-left: 2px solid var(--color);
+    animation: rotate 3s infinite linear;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .box2 {
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+
+  .box2::before {
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top: 3px solid #000;
+    border-left: 3px solid #000;
+    transform: rotate(720deg);
+    animation: rotate1 3s infinite ease-out;
+  }
+
+  .box2::after {
+    position: absolute;
+    content: "";
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 7px solid transparent;
+    border-bottom: 7px solid var(--bg);
+    border-right: 7px solid var(--bg);
+    transform: rotate(720deg);
+    animation: rotate1 4s infinite ease-in-out;
+  }
+
+  @keyframes rotate1 {
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  /* svg */
+  .circular {
+    width: 100px;
+    height: 100px;
+    animation: rotate 2s linear infinite;
+  }
+
+  .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke: #000;
+    animation: dash 1.5s ease-in-out infinite
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+
+    100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+    }
+  }
+
+  /* @property + conic-gradient*/
+
+  @property --per {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 10%;
+  }
+
+  .box3 {
+    position: relative;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: rotate2 11s infinite ease-in-out;
+  }
+
+  .box3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: conic-gradient(transparent, transparent var(--per), var(--color) var(--per), var(--color));
+    -webkit-mask: radial-gradient(transparent, transparent 47.5px, #000 48px, #000);
+    mask: radial-gradient(transparent, transparent 47.5px, #000 48px, #000);
+    animation: change 3s infinite cubic-bezier(0.57, 0.29, 0.49, 0.76);
+  }
+
+
+  @keyframes change {
+    50% {
+      transform: rotate(270deg);
+      --per: 98%;
+    }
+
+    100% {
+      transform: rotate(720deg);
+    }
+  }
+
+  @keyframes rotate2 {
+    100% {
+      transform: rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+</style>
+
+<body>
+  <section>
+    <!-- 线条在旋转运动的过程中，长短不会变化 -->
+    <div class="box1"></div>
+    <!-- 如何解决 -->
+    <!--1.使用遮罩实现,如果背景色不是纯色，会露馅;如果要求能展现的线段长度大于半个圆，无法完成 -->
+    <div class="box2"></div>
+    <!-- 2.SVG 的 stroke-* 能力 -->
+    <svg class="circular" viewbox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" />
+    </svg>
+    <!-- 3.@property + conic-gradient -->
+    <div class="box3"></div>
+  </section>
+</body>
+
+</html>
