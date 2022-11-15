@@ -169,6 +169,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 143. gsap数字滚动
 - [x] 144. 菱形进度条
 - [x] 145. css3动画+svg波浪实现水球进度条
+- [x] 146. css动画+translate实现流星划过
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -178,6 +179,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 146.css动画+translate实现流星划过
+![输入图片说明](web-pictures/demo146.gif)
 ##### 145. css3动画+svg波浪实现水球进度条
 ![输入图片说明](web-pictures/demo145.gif)
 ##### 144. 菱形进度条
