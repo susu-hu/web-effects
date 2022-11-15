@@ -45,13 +45,12 @@
       background: linear-gradient(0deg, var(--c1) 0%, var(--c2) 100%);
       position: absolute;
       top: 0;
-      opacity: 0;
+      transform: rotate(45deg);
       left: calc(var(--l) + 70px);
       right: calc(var(--r) - 70px);
-      transform: rotate(45deg);
+      opacity: 0;
       animation: shank 2s linear infinite;
       animation-delay: calc(var(--d) * 0.2s);
-      z-index: 1;
     }
 
     .line-item::after {
@@ -84,6 +83,27 @@
         opacity: 0;
       }
     }
+
+    .shooting {
+      width: 5px;
+      height: 85px;
+      background: linear-gradient(0deg, orange 0, transparent 100%);
+      position: relative;
+      margin-left: 50px;
+      transform: rotate(45deg);
+    }
+    .shooting::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: orange;
+      filter: blur(1.8px);
+      bottom: -6px;
+      left: 50%;
+      transform: translate(-50%);
+    }
   </style>
 
   <body>
@@ -105,6 +125,7 @@
         ></span>
       </div>
     </div>
+    <div class="shooting"></div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <script>
