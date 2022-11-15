@@ -9,17 +9,478 @@
 </head>
 <link rel="stylesheet" href="../../common.css">
 <style>
+  :root {
+    --color: orange;
+  }
+
+  /* 方法一： */
   .box {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(var(--color) 0, var(--color) .8deg, transparent 1deg, transparent calc((360 / 60) * 1deg));
+    -webkit-mask: radial-gradient(transparent 0, transparent 65%, #000 66%);
+    mask: radial-gradient(transparent 0, transparent 65%, #000 66%)
+  }
+
+  /* 方法2： */
+  .container {
+    position: relative;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    background: repeating-conic-gradient(#fff 0, #fff .8deg, transparent 1deg, transparent calc((360 / 60) * 1deg));
-    -webkit-mask: radial-gradient(transparent 0, transparent 140px, #000 140px)
+  }
+
+  .box-item {
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    background: #000;
+    left: 0;
+    top: 0;
+    transform-origin: 0 150px;
+  }
+
+  .box-item:nth-child(1) {
+    transform: rotate(0deg);
+  }
+
+  .box-item:nth-child(2) {
+    transform: rotate(6deg);
+  }
+
+  .box-item:nth-child(3) {
+    transform: rotate(12deg);
+  }
+
+  .box-item:nth-child(4) {
+    transform: rotate(18deg);
+  }
+
+  .box-item:nth-child(5) {
+    transform: rotate(24deg);
+  }
+
+  .box-item:nth-child(6) {
+    transform: rotate(30deg);
+  }
+
+  .box-item:nth-child(7) {
+    transform: rotate(36deg);
+  }
+
+  .box-item:nth-child(8) {
+    transform: rotate(42deg);
+  }
+
+  .box-item:nth-child(9) {
+    transform: rotate(48deg);
+  }
+
+  .box-item:nth-child(10) {
+    transform: rotate(54deg);
+  }
+
+  .box-item:nth-child(11) {
+    transform: rotate(60deg);
+  }
+
+  .box-item:nth-child(12) {
+    transform: rotate(66deg);
+  }
+
+  .box-item:nth-child(13) {
+    transform: rotate(72deg);
+  }
+
+  .box-item:nth-child(14) {
+    transform: rotate(78deg);
+  }
+
+  .box-item:nth-child(15) {
+    transform: rotate(84deg);
+  }
+
+  .box-item:nth-child(16) {
+    transform: rotate(90deg);
+  }
+
+  .box-item:nth-child(17) {
+    transform: rotate(96deg);
+  }
+
+  .box-item:nth-child(18) {
+    transform: rotate(102deg);
+  }
+
+  .box-item:nth-child(19) {
+    transform: rotate(108deg);
+  }
+
+  .box-item:nth-child(20) {
+    transform: rotate(114deg);
+  }
+
+  .box-item:nth-child(21) {
+    transform: rotate(120deg);
+  }
+
+  .box-item:nth-child(22) {
+    transform: rotate(126deg);
+  }
+
+  .box-item:nth-child(23) {
+    transform: rotate(132deg);
+  }
+
+  .box-item:nth-child(24) {
+    transform: rotate(138deg);
+  }
+
+  .box-item:nth-child(25) {
+    transform: rotate(144deg);
+  }
+
+  .box-item:nth-child(26) {
+    transform: rotate(150deg);
+  }
+
+  .box-item:nth-child(27) {
+    transform: rotate(156deg);
+  }
+
+  .box-item:nth-child(28) {
+    transform: rotate(162deg);
+  }
+
+  .box-item:nth-child(29) {
+    transform: rotate(168deg);
+  }
+
+  .box-item:nth-child(30) {
+    transform: rotate(174deg);
+  }
+
+  .box-item:nth-child(31) {
+    transform: rotate(180deg);
+  }
+
+  .box-item:nth-child(32) {
+    transform: rotate(186deg);
+  }
+
+  .box-item:nth-child(33) {
+    transform: rotate(192deg);
+  }
+
+  .box-item:nth-child(34) {
+    transform: rotate(198deg);
+  }
+
+  .box-item:nth-child(35) {
+    transform: rotate(204deg);
+  }
+
+  .box-item:nth-child(36) {
+    transform: rotate(210deg);
+  }
+
+  .box-item:nth-child(37) {
+    transform: rotate(216deg);
+  }
+
+  .box-item:nth-child(38) {
+    transform: rotate(222deg);
+  }
+
+  .box-item:nth-child(39) {
+    transform: rotate(228deg);
+  }
+
+  .box-item:nth-child(40) {
+    transform: rotate(234deg);
+  }
+
+  .box-item:nth-child(41) {
+    transform: rotate(240deg);
+  }
+
+  .box-item:nth-child(42) {
+    transform: rotate(246deg);
+  }
+
+  .box-item:nth-child(43) {
+    transform: rotate(252deg);
+  }
+
+  .box-item:nth-child(44) {
+    transform: rotate(258deg);
+  }
+
+  .box-item:nth-child(45) {
+    transform: rotate(264deg);
+  }
+
+  .box-item:nth-child(46) {
+    transform: rotate(270deg);
+  }
+
+  .box-item:nth-child(47) {
+    transform: rotate(276deg);
+  }
+
+  .box-item:nth-child(48) {
+    transform: rotate(282deg);
+  }
+
+  .box-item:nth-child(49) {
+    transform: rotate(288deg);
+  }
+
+  .box-item:nth-child(50) {
+    transform: rotate(294deg);
+  }
+
+  .box-item:nth-child(51) {
+    transform: rotate(300deg);
+  }
+
+  .box-item:nth-child(52) {
+    transform: rotate(306deg);
+  }
+
+  .box-item:nth-child(53) {
+    transform: rotate(312deg);
+  }
+
+  .box-item:nth-child(54) {
+    transform: rotate(318deg);
+  }
+
+  .box-item:nth-child(55) {
+    transform: rotate(324deg);
+  }
+
+  .box-item:nth-child(56) {
+    transform: rotate(330deg);
+  }
+
+  .box-item:nth-child(57) {
+    transform: rotate(336deg);
+  }
+
+  .box-item:nth-child(58) {
+    transform: rotate(342deg);
+  }
+
+  .box-item:nth-child(59) {
+    transform: rotate(348deg);
+  }
+
+  .box-item:nth-child(60) {
+    transform: rotate(354deg);
+  }
+
+  /* 方法3： */
+  .g-parent {
+    margin: 50px auto;
+  }
+
+  .g-container,
+  .g-parent {
+    position: relative;
+    display: flex;
+    width: 150px;
+    height: 150px;
+  }
+
+  .g-item {
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    background: orange;
+    left: 0;
+    top: 0;
+  }
+
+  .g-item:nth-child(1) {
+    transform-origin: 0 150px;
+    transform: rotate(0deg);
+  }
+
+  .g-item:nth-child(2) {
+    transform-origin: 0 150px;
+    transform: rotate(6deg);
+  }
+
+  .g-item:nth-child(3) {
+    transform-origin: 0 150px;
+    transform: rotate(12deg);
+  }
+
+  .g-item:nth-child(4) {
+    transform-origin: 0 150px;
+    transform: rotate(18deg);
+  }
+
+  .g-item:nth-child(5) {
+    transform-origin: 0 150px;
+    transform: rotate(24deg);
+  }
+
+  .g-item:nth-child(6) {
+    transform-origin: 0 150px;
+    transform: rotate(30deg);
+  }
+
+  .g-item:nth-child(7) {
+    transform-origin: 0 150px;
+    transform: rotate(36deg);
+  }
+
+  .g-item:nth-child(8) {
+    transform-origin: 0 150px;
+    transform: rotate(42deg);
+  }
+
+  .g-item:nth-child(9) {
+    transform-origin: 0 150px;
+    transform: rotate(48deg);
+  }
+
+  .g-item:nth-child(10) {
+    transform-origin: 0 150px;
+    transform: rotate(54deg);
+  }
+
+  .g-item:nth-child(11) {
+    transform-origin: 0 150px;
+    transform: rotate(60deg);
+  }
+
+  .g-item:nth-child(12) {
+    transform-origin: 0 150px;
+    transform: rotate(66deg);
+  }
+
+  .g-item:nth-child(13) {
+    transform-origin: 0 150px;
+    transform: rotate(72deg);
+  }
+
+  .g-item:nth-child(14) {
+    transform-origin: 0 150px;
+    transform: rotate(78deg);
+  }
+
+  .g-item:nth-child(15) {
+    transform-origin: 0 150px;
+    transform: rotate(84deg);
+  }
+
+  .g-item:nth-child(16) {
+    transform-origin: 0 150px;
+    transform: rotate(90deg);
+  }
+
+  .g-container {
+    -webkit-box-reflect: below 4px;
+  }
+
+  .g-parent {
+    -webkit-box-reflect: left -4px;
   }
 </style>
 
 <body>
-  <div class="box"></div>
+  <section>
+    <!-- 方法一：渐变 ，锯齿感严重，渐变的通病，由于是使用的角向渐变，刻度存在头重脚轻的现象，越向内部，宽度越窄（刻度愈大，差异愈加明显）-->
+    <div class="box"></div>
+    <!-- 方法二： 写60个标签 ，每个刻度粗细一致，并且，不会产生锯齿，但是标签太多了-->
+    <div class="container">
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+      <div class="box-item"></div>
+    </div>
+    <!-- 方法三： -webkit-box-reflect 减少标签数-->
+    <div class="g-parent">
+      <div class="g-container">
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+        <div class="g-item"></div>
+      </div>
+    </div>
+  </section>
+
 </body>
 
 </html>
