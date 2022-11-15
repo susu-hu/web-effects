@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  :root {
+    --bg: #222;
+    --color: orange;
+    --c1: #e6c484;
+  }
+
+  .box {
+    position: relative;
+    height: 150px;
+    width: 250px;
+    -webkit-box-reflect: below 3px linear-gradient(transparent, var(--bg));
+  }
+
+  .box>span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color);
+    text-shadow: 0 0 10px var(--color),
+      0 0 30px var(--color),
+      0 0 60px var(--color),
+      0 0 100px var(--color);
+    font-size: 18px;
+    z-index: 1;
+
+  }
+
+  .circle {
+    position: relative;
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+    background: var(--bg);
+    border-radius: 50%;
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+
+      transform: rotate(360deg);
+    }
+  }
+
+  .circle::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: var(--bg);
+    border-radius: 50%;
+  }
+
+  .ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px;
+    height: 150px;
+    background-image: linear-gradient(180deg, var(--color), transparent 80%);
+    border-radius: 75px 0 0 75px;
+
+  }
+
+  .ring::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: -2.5px;
+    width: 15px;
+    height: 15px;
+    background: var(--c1);
+    box-shadow: 0 0 5px var(--color),
+      0 0 10px var(--c1),
+      0 0 20px var(--c1),
+      0 0 30px var(--c1),
+      0 0 40px var(--c1),
+      0 0 50px var(--c1),
+      0 0 60px var(--c1),
+      0 0 60px var(--c1);
+    border-radius: 50%;
+    z-index: 1;
+
+  }
+</style>
+
+<body>
+  <div class="box">
+    <span>Loading...</span>
+    <div class="circle">
+      <div class="ring"></div>
+    </div>
+  </div>
+</body>
+
+</html>
