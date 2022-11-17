@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  #app {
+    width: 140px;
+    height: 230px;
+    position: relative;
+  }
+
+  .box {
+    position: absolute;
+    width: 140px;
+    height: 230px;
+    left: 0;
+    top: 0;
+  }
+
+
+  .box-item {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    color: #D8D8D8;
+    background: currentColor;
+    border-radius: 4px;
+    box-shadow: 2px 0px 6px currentColor;
+    left: 0;
+    top: 0;
+    transform-origin: 0 140px;
+  }
+
+  .box-item-active {
+    color: #00C6F5;
+  }
+
+  /* .box-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #00C6F5;
+    background: currentColor;
+    border-radius: 4px;
+    box-shadow: 2px 0px 6px currentColor;
+    left: 0;
+    top: 0;
+  }
+
+  .box-item:nth-child(n+3)::after {
+    display: none;
+  } */
+
+  .box-item:nth-child(1) {
+    transform: rotate(236deg);
+  }
+
+  .box-item:nth-child(2) {
+    transform: rotate(240deg);
+  }
+
+  .box-item:nth-child(3) {
+    transform: rotate(244deg);
+  }
+
+
+  .box-item:nth-child(4) {
+    transform: rotate(248deg);
+  }
+
+  .box-item:nth-child(5) {
+    transform: rotate(252deg);
+  }
+
+  .box-item:nth-child(6) {
+    transform: rotate(256deg);
+  }
+
+  .box-item:nth-child(7) {
+    transform: rotate(260deg);
+  }
+
+  .box-item:nth-child(8) {
+    transform: rotate(264deg);
+  }
+
+  .box-item:nth-child(9) {
+    transform: rotate(268deg);
+  }
+
+  .box-item:nth-child(10) {
+    transform: rotate(272deg);
+  }
+
+  .box-item:nth-child(11) {
+    transform: rotate(276deg);
+  }
+
+  .box-item:nth-child(12) {
+    transform: rotate(280deg);
+  }
+
+  .box-item:nth-child(13) {
+    transform: rotate(284deg);
+  }
+
+  .box-item:nth-child(14) {
+    transform: rotate(288deg);
+  }
+
+  .box-item:nth-child(15) {
+    transform: rotate(292deg);
+  }
+
+  .box-item:nth-child(16) {
+    transform: rotate(296deg);
+  }
+
+  .box-item:nth-child(17) {
+    transform: rotate(300deg);
+  }
+
+  .box-item:nth-child(18) {
+    transform: rotate(304deg);
+  }
+
+  .box-item:nth-child(19) {
+    transform: rotate(308deg);
+  }
+
+  .box-item:nth-child(20) {
+    transform: rotate(312deg);
+  }
+
+  .box-item:nth-child(21) {
+    transform: rotate(316deg);
+  }
+
+  .box-item:nth-child(22) {
+    transform: rotate(320deg);
+  }
+
+  .box-item:nth-child(23) {
+    transform: rotate(324deg);
+  }
+
+  .box-item:nth-child(24) {
+    transform: rotate(328deg);
+  }
+
+  .box-item:nth-child(25) {
+    transform: rotate(332deg);
+  }
+
+  .box-item:nth-child(26) {
+    transform: rotate(336deg);
+  }
+
+  .box-item:nth-child(27) {
+    transform: rotate(340deg);
+  }
+
+  .box-item:nth-child(28) {
+    transform: rotate(344deg);
+  }
+
+  .box-item:nth-child(29) {
+    transform: rotate(348deg);
+  }
+
+  .box-item:nth-child(30) {
+    transform: rotate(352deg);
+  }
+
+  .box-item:nth-child(31) {
+    transform: rotate(356deg);
+  }
+
+  .box-item:nth-child(32) {
+    transform: rotate(360deg);
+  }
+
+  .box-item:nth-child(33) {
+    transform: rotate(364deg);
+  }
+
+  .box-item:nth-child(34) {
+    transform: rotate(368deg);
+  }
+
+  .box-item:nth-child(35) {
+    transform: rotate(372deg);
+  }
+
+  .box-item:nth-child(36) {
+    transform: rotate(376deg);
+  }
+
+  .box-item:nth-child(37) {
+    transform: rotate(380deg);
+  }
+
+  .box-item:nth-child(38) {
+    transform: rotate(384deg);
+  }
+
+  .box-item:nth-child(39) {
+    transform: rotate(388deg);
+  }
+
+  .box-item:nth-child(40) {
+    transform: rotate(392deg);
+  }
+
+  .box-item:nth-child(41) {
+    transform: rotate(396deg);
+  }
+
+  .box-item:nth-child(42) {
+    transform: rotate(400deg);
+  }
+
+  .box-item:nth-child(43) {
+    transform: rotate(404deg);
+  }
+
+  .box-item:nth-child(44) {
+    transform: rotate(408deg);
+  }
+
+  .box-item:nth-child(45) {
+    transform: rotate(412deg);
+  }
+
+  .box-item:nth-child(46) {
+    transform: rotate(416deg);
+  }
+
+  .box-item:nth-child(47) {
+    transform: rotate(420deg);
+  }
+
+  .box-item:nth-child(48) {
+    transform: rotate(424deg);
+  }
+
+  .box-item:nth-child(49) {
+    transform: rotate(428deg);
+  }
+
+  .box-item:nth-child(50) {
+    transform: rotate(432deg);
+  }
+
+  .box-item:nth-child(51) {
+    transform: rotate(436deg);
+  }
+
+  .box-item:nth-child(52) {
+    transform: rotate(440deg);
+  }
+
+  .box-item:nth-child(53) {
+    transform: rotate(444deg);
+  }
+
+  .box-item:nth-child(54) {
+    transform: rotate(448deg);
+  }
+
+  .box-item:nth-child(55) {
+    transform: rotate(452deg);
+  }
+
+  .box-item:nth-child(56) {
+    transform: rotate(456deg);
+  }
+
+  .box-item:nth-child(57) {
+    transform: rotate(460deg);
+  }
+
+  .box-item:nth-child(58) {
+    transform: rotate(464deg);
+  }
+
+  .box-item:nth-child(59) {
+    transform: rotate(468deg);
+  }
+
+  .box-item:nth-child(60) {
+    transform: rotate(472deg);
+  }
+
+  .box-item:nth-child(61) {
+    transform: rotate(476deg);
+  }
+
+  .box-item:nth-child(62) {
+    transform: rotate(480deg);
+  }
+
+  .box-item:nth-child(63) {
+    transform: rotate(484deg);
+  }
+
+  .box-item:nth-child(64) {
+    transform: rotate(488deg);
+  }
+
+  .box-item:nth-child(65) {
+    transform: rotate(492deg);
+  }
+
+  .box-item:nth-child(66) {
+    transform: rotate(496deg);
+  }
+
+  .box-item:nth-child(67) {
+    transform: rotate(500deg);
+  }
+
+  .box-item:nth-child(68) {
+    transform: rotate(504deg);
+  }
+
+  .box-item:nth-child(69) {
+    transform: rotate(508deg);
+  }
+
+  .box-item:nth-child(70) {
+    transform: rotate(512deg);
+  }
+
+  .box-item:nth-child(71) {
+    transform: rotate(516deg);
+  }
+
+  .box-item:nth-child(72) {
+    transform: rotate(520deg);
+  }
+
+  .box-item:nth-child(73) {
+    transform: rotate(524deg);
+  }
+
+  .box-item:nth-child(74) {
+    transform: rotate(528deg);
+  }
+
+  .box-item:nth-child(75) {
+    transform: rotate(532deg);
+  }
+
+  .box-item:nth-child(76) {
+    transform: rotate(536deg);
+  }
+
+  .box-item:nth-child(77) {
+    transform: rotate(540deg);
+  }
+
+  .box-item:nth-child(78) {
+    transform: rotate(544deg);
+  }
+
+  .box-item:nth-child(79) {
+    transform: rotate(548deg);
+  }
+
+  .box-item:nth-child(80) {
+    transform: rotate(552deg);
+  }
+
+  .box-item:nth-child(81) {
+    transform: rotate(556deg);
+  }
+
+  .box-item:nth-child(82) {
+    transform: rotate(560deg);
+  }
+
+  .box-item:nth-child(83) {
+    transform: rotate(564deg);
+  }
+
+  .box-item:nth-child(84) {
+    transform: rotate(568deg);
+  }
+
+  .box-item:nth-child(85) {
+    transform: rotate(572deg);
+  }
+
+  .box-item:nth-child(86) {
+    transform: rotate(576deg);
+  }
+
+  .box-item:nth-child(87) {
+    transform: rotate(580deg);
+  }
+
+  .box-item:nth-child(88) {
+    transform: rotate(584deg);
+  }
+
+  .box-item:nth-child(89) {
+    transform: rotate(588deg);
+  }
+
+  .box-item:nth-child(90) {
+    transform: rotate(592deg);
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div class="box">
+      <div class="box-item" v-for="(item,index) in 63" :key="index"></div>
+
+    </div>
+    <div class="box">
+      <div class="box-item box-item-active" v-for="(item,index) in currNum" :key="index"></div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        per: 0,
+        currNum: 0,
+      }
+    },
+    mounted() {
+      let timer = null;
+      timer = setInterval(() => {
+        if (this.per >= 100) {
+          clearInterval(timer)
+        }
+        this.per++;
+        this.currNum = Math.floor(63 * this.per / 100);
+        console.log(this.currNum)
+      }, 300)
+
+    },
+  });
+</script>
+
+</html>

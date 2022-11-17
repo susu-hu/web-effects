@@ -1,0 +1,16 @@
+.box-item {
+  position: absolute;
+  width: 4px;
+  height: 14px;
+  background: #00C6F5;
+  border-radius: 4px;
+  left: 0;
+  top: 0;
+  transform-origin: 0 150px;
+}
+
+@for $i from 1 through 32 {
+  .box-item:nth-child(#{$i}) {
+    transform: rotate(#{($i - 1) * 4deg});
+  }
+}

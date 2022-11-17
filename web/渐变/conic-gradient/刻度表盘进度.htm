@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+  body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  #app {
+    width: 140px;
+    height: 230px;
+    position: relative;
+  }
+
+  .box {
+    -webkit-box-reflect: left -4px;
+  }
+
+  .box,
+  .box-active {
+    position: absolute;
+    width: 140px;
+    height: 230px;
+    left: 0;
+    top: 0;
+  }
+
+
+  .box-item,
+  .box-active-item {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    color: #D8D8D8;
+    background: currentColor;
+    border-radius: 4px;
+    box-shadow: 2px 0px 6px currentColor;
+    left: 0;
+    top: 0;
+    transform-origin: 0 140px;
+  }
+
+  .box-active-item {
+    color: #00C6F5;
+  }
+
+  .box-active-item:nth-child(1) {
+    transform: rotate(124deg);
+  }
+
+  .box-item:nth-child(1) {
+    transform: rotate(0deg);
+  }
+
+  .box-item:nth-child(2) {
+    transform: rotate(4deg);
+  }
+
+  .box-item:nth-child(3) {
+    transform: rotate(8deg);
+  }
+
+  .box-item:nth-child(4) {
+    transform: rotate(12deg);
+  }
+
+  .box-item:nth-child(5) {
+    transform: rotate(16deg);
+  }
+
+  .box-item:nth-child(6) {
+    transform: rotate(20deg);
+  }
+
+  .box-item:nth-child(7) {
+    transform: rotate(24deg);
+  }
+
+  .box-item:nth-child(8) {
+    transform: rotate(28deg);
+  }
+
+  .box-item:nth-child(9) {
+    transform: rotate(32deg);
+  }
+
+  .box-item:nth-child(10) {
+    transform: rotate(36deg);
+  }
+
+  .box-item:nth-child(11) {
+    transform: rotate(40deg);
+  }
+
+  .box-item:nth-child(12) {
+    transform: rotate(44deg);
+  }
+
+  .box-item:nth-child(13) {
+    transform: rotate(48deg);
+  }
+
+  .box-item:nth-child(14) {
+    transform: rotate(52deg);
+  }
+
+  .box-item:nth-child(15) {
+    transform: rotate(56deg);
+  }
+
+  .box-item:nth-child(16) {
+    transform: rotate(60deg);
+  }
+
+  .box-item:nth-child(17) {
+    transform: rotate(64deg);
+  }
+
+  .box-item:nth-child(18) {
+    transform: rotate(68deg);
+  }
+
+  .box-item:nth-child(19) {
+    transform: rotate(72deg);
+  }
+
+  .box-item:nth-child(20) {
+    transform: rotate(76deg);
+  }
+
+  .box-item:nth-child(21) {
+    transform: rotate(80deg);
+  }
+
+  .box-item:nth-child(22) {
+    transform: rotate(84deg);
+  }
+
+  .box-item:nth-child(23) {
+    transform: rotate(88deg);
+  }
+
+  .box-item:nth-child(24) {
+    transform: rotate(92deg);
+  }
+
+  .box-item:nth-child(25) {
+    transform: rotate(96deg);
+  }
+
+  .box-item:nth-child(26) {
+    transform: rotate(100deg);
+  }
+
+  .box-item:nth-child(27) {
+    transform: rotate(104deg);
+  }
+
+  .box-item:nth-child(28) {
+    transform: rotate(108deg);
+  }
+
+  .box-item:nth-child(29) {
+    transform: rotate(112deg);
+  }
+
+  .box-item:nth-child(30) {
+    transform: rotate(116deg);
+  }
+
+  .box-item:nth-child(31) {
+    transform: rotate(120deg);
+  }
+
+  .box-item:nth-child(32) {
+    transform: rotate(124deg);
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div class="box">
+      <div class="box-item" v-for="(item,index) in 32" :key="index"></div>
+    </div>
+    <div class="box-active">
+      <div class="box-active-item" v-for="(item,index) in 2" :key="index"></div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+
+    },
+  });
+</script>
+
+</html>
