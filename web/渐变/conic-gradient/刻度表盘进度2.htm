@@ -48,7 +48,8 @@
   }
 
   .box-item-active {
-    color: #00C6F5;
+    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    box-shadow: 2px 0px 6px #fa709a;
   }
 
   /* .box-item::after {
@@ -428,17 +429,44 @@
   .box-item:nth-child(90) {
     transform: rotate(592deg);
   }
+
+  .num-box {
+    position: absolute;
+    width: 280px;
+    height: 230px;
+    top: 0;
+    left: -100%;
+  }
+
+  .num {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+  }
 </style>
 
 <body>
   <div id="app">
     <div class="box">
       <div class="box-item" v-for="(item,index) in 63" :key="index"></div>
-
     </div>
     <div class="box">
       <div class="box-item box-item-active" v-for="(item,index) in currNum" :key="index"></div>
     </div>
+    <!-- 数字 -->
+    <div class="num-box">
+      <div class="num" v-for="(item,index) in numList" :key="index">
+        {{item}}
+      </div>
+    </div>
+
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -449,6 +477,7 @@
       return {
         per: 0,
         currNum: 0,
+        numList: [0, 10, 20, 30, 40, 50, 60]
       }
     },
     mounted() {
@@ -461,7 +490,6 @@
         this.currNum = Math.floor(63 * this.per / 100);
         console.log(this.currNum)
       }, 300)
-
     },
   });
 </script>
