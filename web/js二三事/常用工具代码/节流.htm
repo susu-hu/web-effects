@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    width: 100vh;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' baseProfile='full' width='100%25' height='100%25' viewBox='0 0 1400 800'%3E %3Crect x='1300' y='400' rx='40' ry='40' width='300' height='300' stroke='rgb(129, 201, 149)' fill='rgb(129, 201, 149)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='0 1450 550' to='360 1450 550' repeatCount='indefinite'/%3E %3C/rect%3E %3Cpath d='M 100 350 A 150 150 0 1 1 400 350 Q400 370 380 370 L 250 370 L 120 370 Q100 370 100 350' stroke='rgb(253, 214, 99)' fill='rgb(253, 214, 99)'%3E %3CanimateMotion path='M 800 -200 L 800 -300 L 800 -200' dur='20s' begin='0s' repeatCount='indefinite'/%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='30s' type='rotate' values='0 210 530 ; -30 210 530 ; 0 210 530' keyTimes='0 ; 0.5 ; 1' repeatCount='indefinite'/%3E %3C/path%3E %3Ccircle cx='200' cy='150' r='20' stroke='%231a73e8' fill='%231a73e8'%3E %3CanimateMotion path='M 0 0 L 40 20 Z' dur='5s' repeatCount='indefinite'/%3E %3C/circle%3E %3C!-- 三角形 --%3E %3Cpath d='M 165 580 L 270 580 Q275 578 270 570 L 223 483 Q220 480 217 483 L 165 570 Q160 578 165 580' stroke='rgb(238, 103, 92)' fill='rgb(238, 103, 92)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='0 210 530' to='360 210 530' repeatCount='indefinite'/%3E %3C/path%3E %3Crect x='400' y='600' rx='40' ry='40' width='100' height='100' stroke='rgb(129, 201, 149)' fill='rgb(129, 201, 149)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='-30 550 750' to='330 550 750' repeatCount='indefinite'/%3E %3C/rect%3E %3C/svg%3E");
+  }
+</style>
+
+<body>
+
+</body>
+<script>
+  const throttle = (fn, wait = 5000) => {
+    let previous = 0;
+    let timeout = null;
+    let result;
+    let storedContext;
+    let storedArgs;
+    const later = () => {
+      previous = Date.now();
+      timeout = null;
+      result = fn.apply(storedContext, storedArgs);
+      if (!timeout) {
+        storedContext = null;
+        storedArgs = [];
+      }
+    };
+    return function wrapper(...args) {
+      const now = Date.now();
+      const remaining = wait - (now - previous);
+      storedContext = this;
+      storedArgs = args;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = fn.apply(storedContext, storedArgs);
+        if (!timeout) {
+          storedContext = null;
+          storedArgs = [];
+        }
+      } else if (!timeout) {
+        timeout = window.setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+  console.log(throttle)
+  var fn = throttle(console.log);
+  fn(1);
+  fn(2);
+  fn(3);
+  fn(4);
+  fn(5);
+  fn(6);
+  fn(7);
+  fn(8);
+  fn(9);
+  fn(100);
+
+  /**
+   * 节流函数
+   * @param {function} fn 需要节流的函数
+   * @param {number} delay 延迟时间
+   */
+  const throttle2 = (fn, delay = 5000) => {
+    let canRun = true;
+    return function() {
+      if (!canRun) return;
+      canRun = false;
+      setTimeout(() => {
+        fn.apply(this, arguments);
+        canRun = true;
+      }, delay);
+    };
+  }
+
+  var fn1 = throttle2(console.log);
+  fn1(1);
+  fn1(2);
+  fn1(3);
+  fn1(4);
+  fn1(5);
+  fn1(6);
+  fn1(7);
+  fn1(8);
+  fn1(9);
+  fn1(100);
+
+
+  const encodeSvg = function(str) {
+    return "data:image/svg+xml," + str.replace(/"/g, "'").replace(/%/g, "%25").replace(/#/g, "%23").replace(/{/g, "%7B").replace(/}/g, "%7D").replace(/</g, "%3C").replace(/>/g, "%3E");
+  }
+  console.log(encodeSvg("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' baseProfile='full' width='100%25' height='100%25' viewBox='0 0 1400 800'%3E %3Crect x='1300' y='400' rx='40' ry='40' width='300' height='300' stroke='rgb(129, 201, 149)' fill='rgb(129, 201, 149)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='0 1450 550' to='360 1450 550' repeatCount='indefinite'/%3E %3C/rect%3E %3Cpath d='M 100 350 A 150 150 0 1 1 400 350 Q400 370 380 370 L 250 370 L 120 370 Q100 370 100 350' stroke='rgb(253, 214, 99)' fill='rgb(253, 214, 99)'%3E %3CanimateMotion path='M 800 -200 L 800 -300 L 800 -200' dur='20s' begin='0s' repeatCount='indefinite'/%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='30s' type='rotate' values='0 210 530 ; -30 210 530 ; 0 210 530' keyTimes='0 ; 0.5 ; 1' repeatCount='indefinite'/%3E %3C/path%3E %3Ccircle cx='200' cy='150' r='20' stroke='%231a73e8' fill='%231a73e8'%3E %3CanimateMotion path='M 0 0 L 40 20 Z' dur='5s' repeatCount='indefinite'/%3E %3C/circle%3E %3C!-- 三角形 --%3E %3Cpath d='M 165 580 L 270 580 Q275 578 270 570 L 223 483 Q220 480 217 483 L 165 570 Q160 578 165 580' stroke='rgb(238, 103, 92)' fill='rgb(238, 103, 92)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='0 210 530' to='360 210 530' repeatCount='indefinite'/%3E %3C/path%3E %3Crect x='400' y='600' rx='40' ry='40' width='100' height='100' stroke='rgb(129, 201, 149)' fill='rgb(129, 201, 149)'%3E %3CanimateTransform attributeType='XML' attributeName='transform' begin='0s' dur='35s' type='rotate' from='-30 550 750' to='330 550 750' repeatCount='indefinite'/%3E %3C/rect%3E %3C/svg%3E"))
+</script>
+
+</html>

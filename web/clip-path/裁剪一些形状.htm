@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clip-path CSS 属性使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏
+    https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path
+    在线工具：http://tools.jb51.net/code/css3path
+  </title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .box {
+    width: 80px;
+    height: 80px;
+    background: red;
+    margin-bottom: 5px;
+  }
+
+  .box1 {
+    clip-path: circle(40%);
+  }
+
+  .box2 {
+    clip-path: ellipse(20px 20px at 0% 100%);
+  }
+
+  .box3 {
+    clip-path: ellipse(20px 20px at 100% 0%);
+  }
+
+  .box4 {
+    clip-path: ellipse(20px 20px at 100% 100%);
+  }
+
+  .box5 {
+    clip-path: ellipse(20px 20px at 0% 0%);
+  }
+
+  .box6 {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .box7 {
+    -webkit-clip-path: circle(50% at 100% 50%);
+    clip-path: circle(50% at 100% 50%);
+  }
+</style>
+
+<body>
+  <section>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box5"></div>
+    <div class="box box4"></div>
+    <div class="box box3"></div>
+    <div class="box box6"></div>
+    <div class="box box7"></div>
+  </section>
+
+</body>
+
+</html>
+<!-- 相关内容：
+clip
+已弃用: 不再推荐使用该特性。虽然一些浏览器仍然支持它，但也许已从相关的 web 标准中移除
+，也许正准备移除或出于兼容性而保留。请尽量不要使用该特性，并更新现有的代码 -->

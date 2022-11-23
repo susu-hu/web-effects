@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/jakob-e/pen/doMoML</title>
+</head>
+<style>
+  @charset "UTF-8";
+  @import url('//fonts.googleapis.com/css?family=Playfair+Display&text=“”‘’"%27');
+  @import url("//fonts.googleapis.com/css?family=Lato:300,400,700,300i,400i,700i|Lateef");
+
+  body {
+    background: slategray;
+  }
+
+  html {
+    box-sizing: box-model;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    outline: 0;
+  }
+
+  header,
+  main,
+  nav,
+  article,
+  section,
+  figure,
+  figcaption,
+  code {
+    display: block;
+    position: relative;
+  }
+
+  .cartman {
+    width: 40%;
+    margin: 40px 0;
+    padding: 0;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cpath fill='%23804D35' d='M35 254.6l9.7 28.8 211 1.7 12-34L35 255'/%3E%3Cpath fill='%232F2B33' d='M40 288c1.3 1.2 221 0 221 0s5.3-6.4-50.2-10c-34.4.8-55.7 6-55.7 6s-25-6-47-6c-91 4-69 8.8-68 10z'/%3E%3Cpath fill='%23EE304E' d='M15.2 187.8s20.3-30 36.2-35.4c3.6 1.2 189 1.5 198.3 1.2 26.8 5.8 23.5 24 31.6 26.4 1.8-.3 11 79.6-19.8 77.6-1.3 2.5-50.6 4-55.7 4.5s-21.4 10-43 13c-4.6 1-78.7 0-78.7 0s-34-4-55-26c-1-2 0-9-13-60z'/%3E%3Cellipse cx='151.3' cy='128.9' fill='%23FFEDC3' rx='109.8' ry='76.8'/%3E%3Cpath fill='%2300B8C3' d='M43 114.6c0-49 58-81 107-82 82.7-2 106.5 68.2 105.3 67.6C133.3 44.7 43 114.6 43 114.6z'/%3E%3Cpath fill='%23FCEE21' d='M44.3 117.7c43.7-26 94-35.7 144.5-30.4 16 1.7 32 5 47.6 9.8 4.5 2 9 3 13.4 5l3.5 2c-1 0 .3 0 .6 1 4 2 8-4.2 3-6.2-22-10-46-14.6-69-17-51-6.5-103 4.5-148 31-4 2.3-1 9 4 6.3zm72.4-84.4s9-4.8 10.4-3.8 2-2.3 2-2.3l9-2h11l1-2.3s12-1 13 2c0 4 15.7 4 15 10-2.5 8-12 2-13 4-11.4 6-17 0-17 0l-13 4-1-7s-3 5-8 5.3c-17.3 4-9-8.5-9-8.5zm-100.5 155C6 189.3-7 221 24 227.3c10.4-2.6 40 2 36-13s-33.8-24.2-44-26zm267.4-7s5-1 8 4 4.7 22.2 4 27.6-.6 10-13.8 11-18.8-9-19.8-8-14.2 1-14.2 1-7.4-7 1.3-12c4-3 4-8 4-8s5-12 9-14 22-2 22-2z'/%3E%3Cpath fill='none' stroke='%23000' stroke-miterlimit='10' d='M68 167.3c11 12 91 71 170.3-5.6m-73 45.6c2 36.4-1.3 65.6-1.3 65.6'/%3E%3Cellipse cx='157.1' cy='213.4' rx='1' ry='3'/%3E%3Cellipse cx='159.7' cy='238.7' rx='1.2' ry='3.3'/%3E%3Cellipse cx='157.2' cy='262.7' rx='2' ry='3.4'/%3E%3Cpath fill='none' stroke='%23000' stroke-miterlimit='10' d='M139 188.5c15.7 5.5 38 0 38 0'/%3E%3Cellipse cx='182.5' cy='119.1' fill='%23FFF' transform='matrix(.81 -.587 .587 .81 -35.153 129.678)' rx='26.7' ry='30.5'/%3E%3Cellipse cx='126.5' cy='119.1' fill='%23FFF' transform='matrix(.884 .467 -.467 .884 70.21 -45.287)' rx='26.7' ry='30.5'/%3E%3Ccircle cx='138.6' cy='117.9' r='3.3'/%3E%3Ccircle cx='170.6' cy='117.9' r='3.3'/%3E%3Cpath d='M134.7 172.4c3.4-3.5 7.7-3.2 7.7-3.2s24.2-.2 25.5.3 2 3 2 4.2c-1 1.4-5 10.7-7 13.3-2 1.8-9 0-9 0s-4-1-5-1.8c-.7-.3-3.4 0-4-.2s-11.5-10.6-12-12.3'/%3E%3Cpath fill='%23FFF' d='M149 172.3c-.2-1-1-1.7-1.8-1.5l-3 .5c-.8 0-1.3 1-1.2 2 .2 1 1 1.7 1.8 1.5l3-.5c1 0 1.4-1 1.2-2zm9 1.5c.2-.8-.3-1.6-1-1.8l-4.2-.8c-.7 0-1.5.4-1.6 1.2v.3c-.3.8.2 1.6 1 1.8l4 .8c.8 0 1.6-.4 1.7-1.2zm9-.4c0-1-.8-1.7-1.6-1.6l-5 .4c-.8 0-1.4 1-1.3 1.8 1 1 1 1.7 2 1.6l5-.4c1 0 2-1 2-1.8z'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .cartman:before {
+    content: "";
+    float: left;
+    padding-bottom: 100%;
+  }
+
+  .cartman:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  figcaption {
+    position: absolute;
+    display: block;
+    left: 100%;
+  }
+
+  figcaption:before,
+  figcaption:after {
+    content: "";
+    position: absolute;
+    display: block;
+  }
+
+  figcaption:before {
+    font: 15px "Comic Sans MS";
+    content: "SVG in CSS freaking sucks ...Wait What!";
+    text-transform: uppercase;
+    width: 230px;
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  figcaption:after {
+    top: 75px;
+    left: 10px;
+    transform: rotate(30deg);
+    border-top: 30px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+
+  html {
+    box-sizing: box-model;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  header,
+  main,
+  nav,
+  article,
+  section,
+  figure,
+  figcaption,
+  code {
+    display: block;
+    position: relative;
+  }
+
+  p,
+  label {
+    font: 400 16px/1.3 "Lato", sans-serif;
+    color: #282828;
+  }
+
+  h1 {
+    font: 300 36px/1.3 "Lato", sans-serif;
+    color: #00b8c4;
+  }
+
+  h2 {
+    font: 300 24px/1.3 "Lato", sans-serif;
+    color: #00b8c4;
+  }
+
+  [class*=example] {
+    font: 400 14px/1.3 "Lato", sans-serif;
+    color: white;
+  }
+
+  a {
+    color: #00b8c4;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  strong {
+    font: inherit;
+    font-weight: 700;
+  }
+
+  em {
+    font: inherit;
+    font-style: italic;
+  }
+
+  p {
+    max-width: 700px;
+  }
+
+  blockquote {
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  blockquote:before {
+    content: "“";
+    font-family: "Playfair Display";
+    font-size: 16px;
+  }
+
+  blockquote:after {
+    content: "”";
+    font-family: "Playfair Display";
+    font-size: 16px;
+  }
+
+  [data-related-pens] {
+    background: #00b8c4;
+  }
+
+  body {
+    background: whitesmoke;
+  }
+
+  article {
+    margin: -20px auto 40px;
+    max-width: 900px;
+    border-radius: 7px;
+    padding: 20px 40px 0;
+  }
+
+  section {
+    margin: 40px 0;
+  }
+
+  textarea {
+    outline: 0;
+    margin-top: 8px;
+    width: 100%;
+    height: 200px;
+    background: whitesmoke;
+    border: 1px solid #dddd;
+  }
+
+  input {
+    margin-top: 8px;
+    outline: 0;
+    background: whitesmoke;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #dddd;
+    display: block;
+    width: calc(100% - 20px);
+  }
+
+  [for=pastezone],
+  [for=peninclude] {
+    font-weight: 700;
+  }
+</style>
+
+<body>
+  <article>
+    <header>
+      <h1>Encode SVG SCSS</h1>
+      <section>
+        <figure class="cartman">
+          <!-- Do you see Cartman? -->
+          <figcaption></figcaption>
+        </figure>
+      </section>
+      <p>A small function in response to <a href="https://codepen.io/Tigt/" target="_blank">Taylor Hunt's</a> blog post <a href=" https://codepen.io/Tigt/blog/optimizing-svgs-in-data-uris" target="_blank">"Optimizing svgs in data uris"</a> allowing you to skip base64 encoding and simply paste the SVG markup right in the CSS.</p>
+      <p><em>If you don't see Cartman please let me know what browser and OS you are on (IE8 don't bother ;-)</em></p>
+    </header>
+    <section>
+      <label for="pastezone">Online version if you are in a hurry (just copy paste copy):</label>
+      <textarea id="pastzone" placeholder="Paste SVG Code here! "></textarea>
+    </section>
+
+    <section>
+      <label for="peninclude">Pen include (CSS settings => Add External CSS):</label>
+      <input id="peninclude" value="https://codepen.io/jakob-e/pen/GjgXmK.scss" onfocus="this.setSelectionRange(0, this.value.length)" />
+    </section>
+    <section>
+      <h2>Use examples</h2>
+      <div data-ace-mode="scss">.class {
+        background-image: svg-url('&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;.....&lt;/svg&gt;');
+        }
+
+        or
+
+        .class {
+        @include background-svg('&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;.....&lt;/svg&gt;');
+        }
+      </div>
+    </section>
+    <section>
+      <h2>The Sassy Part</h2>
+      <div data-ace-mode="scss">//
+        // Function to create an optimized svg url
+        // Version: 1.0.6
+        @function svg-url($svg){
+        //
+        // Add missing namespace
+        //
+        @if not str-index($svg,xmlns) {
+        $svg: str-replace($svg, '&ltsvg','&ltsvg xmlns="http://www.w3.org/2000/svg"');
+        }
+        //
+        // Chunk up string in order to avoid
+        // "stack level too deep" error
+        //
+        $encoded:'';
+        $slice: 2000;
+        $index: 0;
+        $loops: ceil(str-length($svg)/$slice);
+        @for $i from 1 through $loops {
+        $chunk: str-slice($svg, $index, $index + $slice - 1);
+        //
+        // Encode
+        //
+        $chunk: str-replace($chunk, '"', '\'');
+        $chunk: str-replace($chunk, '%', '%25');
+        $chunk: str-replace($chunk, '#', '%23');
+        $chunk: str-replace($chunk, '{', '%7B');
+        $chunk: str-replace($chunk, '}', '%7D');
+        $chunk: str-replace($chunk, '&lt;', '%3C');
+        $chunk: str-replace($chunk, '&gt;', '%3E');
+
+        //
+        // The maybe list
+        //
+        // Keep size and compile time down
+        // ... only add on documented fail
+        //
+        // $chunk: str-replace($chunk, '&', '%26');
+        // $chunk: str-replace($chunk, '|', '%7C');
+        // $chunk: str-replace($chunk, '[', '%5B');
+        // $chunk: str-replace($chunk, ']', '%5D');
+        // $chunk: str-replace($chunk, '^', '%5E');
+        // $chunk: str-replace($chunk, '`', '%60');
+        // $chunk: str-replace($chunk, ';', '%3B');
+        // $chunk: str-replace($chunk, '?', '%3F');
+        // $chunk: str-replace($chunk, ':', '%3A');
+        // $chunk: str-replace($chunk, '@', '%40');
+        // $chunk: str-replace($chunk, '=', '%3D');
+
+        $encoded: #{$encoded}#{$chunk};
+        $index: $index + $slice;
+        }
+        @return url("data:image/svg+xml,#{$encoded}");
+        }
+
+        // Background svg mixin
+        @mixin background-svg($svg){
+        background-image: svg-url($svg);
+        }
+
+        // Helper function to replace characters in a string
+        @function str-replace($string, $search, $replace: '') {
+        $index: str-index($string, $search);
+        @return if($index,
+        str-slice($string, 1, $index - 1) + $replace +
+        str-replace(str-slice($string, $index +
+        str-length($search)), $search, $replace),
+        $string);
+        }
+      </div>
+    </section>
+    <footer data-related-pens="doMoML"></footer>
+  </article>
+  <!-- ;charset=utf8 -->
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+<script>
+  //
+  // Editor: //cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js
+  var theme = "ace/theme/tomorrow";
+  var mode = "ace/mode/scss";
+  var editors = document.querySelectorAll("[data-ace-mode]");
+  console.log(editors.length);
+  for (var i = 0, l = editors.length; i <
+    l; ++i) {
+    var editor = ace.edit(editors[i]);
+    if (editors[i].getAttribute("data-ace-theme")) {
+      editor.setTheme("ace/theme/" + editors[i].getAttribute("data-ace-theme"));
+    } else {
+      editor.setTheme(theme);
+    }
+    if (editors[i].getAttribute("data-ace-mode")) {
+      editor.getSession().setMode("ace/mode/" + editors[i].getAttribute("data-ace-mode"));
+    } else {
+      editor.getSession().setMode(mode);
+    }
+    editor.renderer.setShowGutter(false);
+    editor.setShowPrintMargin(false);
+    editor.setShowPrintMargin(false);
+    editor.setDisplayIndentGuides(false);
+    editor.setOptions({
+      maxLines: Infinity,
+      //readOnly: false, 
+      highlightActiveLine: false,
+      highlightGutterLine: false
+    });
+  }
+
+  function getTextAreaSelection(textarea) {
+    var start = textarea.selectionStart,
+      end = textarea.selectionEnd;
+    return {
+      start: start,
+      end: end,
+      length: end - start,
+      text: textarea.value.slice(start, end)
+    };
+  }
+
+  function detectPaste(textarea, callback) {
+    textarea.onpaste = function() {
+      var sel = getTextAreaSelection(textarea);
+      var initialLength = textarea.value.length;
+      window.setTimeout(function() {
+        var val = textarea.value;
+        var pastedTextLength = val.length - (initialLength - sel.length);
+        var end = sel.start + pastedTextLength;
+        callback({
+          start: sel.start,
+          end: end,
+          length: pastedTextLength,
+          text: val.slice(sel.start, end)
+        });
+      }, 1);
+    };
+  }
+  var textarea = document.getElementById("pastzone");
+  detectPaste(textarea, function(svg) {
+    txt = svg.text.replace("<svg", ~svg.text.indexOf("xmlns") ? "<svg" : '<svg xmlns="http://www.w3.org/2000/svg"') // // Encode (may need a few extra replacements) // .replace(/"/g, "'" ) .replace(/%/g, "%25" ) .replace(/#/g, "%23" ) .replace(/{/g, "%7B" ) .replace(/}/g, "%7D" ) .replace(/ </g, "%3C" ) .replace( />/g, "%3E")
+
+      .replace(/\s+/g, " ");
+    //
+    // The maybe list (add on documented fail)
+    //
+    // .replace(/&/g, '%26')
+    // .replace('|', '%7C')
+    // .replace('[', '%5B')
+    // .replace(']', '%5D')
+    // .replace('^', '%5E')
+    // .replace('`', '%60')
+    // .replace(';', '%3B')
+    // .replace('?', '%3F')
+    // .replace(':', '%3A')
+    // .replace('@', '%40')
+    // .replace('=', '%3D')
+
+    textarea.value = 'background-image: url("data:image/svg+xml,' + txt + '");';
+    textarea.select();
+  });
+
+  (function(i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    (i[r] =
+      i[r] ||
+      function() {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+    (i[r].l = 1 * new Date());
+    (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+  ga("create", "UA-68258285-1", "auto");
+  ga("send", "pageview");
+</script>
+
+</html>
