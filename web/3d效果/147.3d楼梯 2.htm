@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://www.youtube.com/watch?v=wNC_J0A45Jw</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      --bg: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+      --c1: #6ec5e7;
+      --c3: #c2e9fb;
+      --c2: skyblue;
+      /* 楼梯高度 */
+      /* --h: 20px; */
+      /* 楼梯宽度 */
+      /* --w: 20px; */
+      /* 楼梯节数 */
+      /* --count: 6; */
+    }
+    body {
+      background: var(--bg);
+    }
+    .container {
+      margin-right: 40px;
+      position: relative;
+      width: calc(var(--count) * var(--w));
+      height: calc(var(--count) * var(--h));
+      /* border: 1px solid red; */
+      transform-style: preserve-3d;
+      /* transform: rotateX(-30deg) rotateY(160deg); */
+      /* transform: rotateX(-30deg) rotateY(-180deg); */
+      transform: rotateX(-30deg) rotateY(60deg);
+      /* animation: animate 5s linear infinite; */
+    }
+    @keyframes animate {
+      0% {
+        transform: rotateX(-30deg) rotateY(0deg);
+      }
+      100% {
+        transform: rotateX(-30deg) rotateY(1turn);
+      }
+    }
+    /*底盘阴影 */
+    .container .chassis-shadow {
+      position: absolute;
+      top: 0;
+      left: 0px;
+      width: calc(var(--count) * var(--w));
+      height: calc(var(--count) * var(--h));
+      /* height: 50%; */
+      background: var(--c1);
+      /* background: red; */
+      --num: calc(var(--count) / 2);
+      --tz: calc(var(--num) * var(--h));
+      transform: rotateX(90deg) translateZ(calc(-1 * var(--tz))) scale(1.25);
+      /* filter: blur(20px);
+      opacity: 0.5; */
+    }
+    .container .step {
+      position: absolute;
+      --i: calc(var(--j) - 1);
+      left: calc(var(--w) * var(--i));
+      bottom: 0;
+      width: var(--w);
+      height: calc(var(--h) * var(--j));
+      /* border: 1px solid yellow; */
+      transform-style: preserve-3d;
+    }
+    .container .step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--w);
+      --num: calc(var(--count) - 1);
+
+      height: calc(var(--num) * var(--w));
+      /* height: 300px; */
+      background: var(--c3);
+      /* background: orange; */
+      /* transform: rotateX(90deg) translateZ(150px); */
+      --l: calc(var(--w) / 2);
+      --tnum: calc(var(--count) / 2);
+      --d: calc(var(--tnum) * var(--w));
+      --tz: calc(var(--d) - var(--l));
+      transform: rotateX(90deg) translateZ(var(--tz));
+    }
+    .container .step:hover::before {
+      cursor: pointer;
+      filter: brightness(1.1);
+    }
+    .container .step::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      --num: calc(var(--count) - 1);
+      width: calc(var(--num) * var(--w));
+      /* width: 300px; */
+      height: var(--h);
+      background: var(--c2);
+      /* background: orangered; */
+      --l: calc(var(--w) / 2);
+      --tnum: calc(var(--count) / 2);
+      --d: calc(var(--tnum) * var(--w));
+      --tz: calc(var(--d) - var(--l));
+      /* transform: rotateY(90deg) translateZ(-150px); */
+      transform: rotateY(90deg) translateZ(calc(-1 * var(--tz)));
+    }
+    .container .step span {
+      position: absolute;
+      display: block;
+      width: var(--w);
+      height: 100%;
+      background: var(--c1);
+      /* background: orchid; */
+      transform-style: preserve-3d;
+    }
+    .container .step span:nth-child(1) {
+      /* transform: translateZ(150px); */
+      --l: calc(var(--w) / 2);
+      --tnum: calc(var(--count) / 2);
+      --d: calc(var(--tnum) * var(--w));
+      --tz: calc(var(--d) - var(--l));
+      transform: translateZ(var(--tz));
+    }
+    .container .step span:nth-child(2) {
+      /* transform: translateZ(-150px); */
+      --l: calc(var(--w) / 2);
+      --tnum: calc(var(--count) / 2);
+      --d: calc(var(--tnum) * var(--w));
+      --tz: calc(var(--d) - var(--l));
+      transform: translateZ(calc(-1 * var(--tz)));
+    }
+
+    .container .step:last-child span:nth-child(2)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      --num: calc(var(--count) - 1);
+      width: calc(var(--num) * var(--w));
+      height: 100%;
+      background: var(--c2);
+      /* background: rebeccapurple; */
+      /* 第一个参数 */
+      --l: calc(var(--w) / 2);
+      --tnum: calc(var(--count) / 2);
+      --d: calc(var(--tnum) * var(--w));
+      --tz: calc(var(--d) - var(--l));
+      /* 第二个参数 */
+      /* --k: calc(var(--tz) - var(--h)); */
+      --k: calc(var(--tz) - var(--w));
+      transform: rotateY(90deg)
+        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k)));
+      /* transform: rotateY(90deg) translate3d(-150px, 0, -90px); */
+    }
+  </style>
+  <body>
+    <div class="container" style="--h: 20px; --w: 10px; --count: 6">
+      <div class="chassis-shadow"></div>
+      <div class="step" style="--j: 1">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 2">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 3">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 4">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 5">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 6">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="container" style="--h: 20px; --w: 20px; --count: 6">
+      <div class="chassis-shadow"></div>
+      <div class="step" style="--j: 1">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 2">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 3">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 4">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 5">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 6">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="container" style="--h: 10px; --w: 30px; --count: 4">
+      <div class="chassis-shadow"></div>
+      <div class="step" style="--j: 1">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 2">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 3">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 4">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="container" style="--h: 20px; --w: 20px; --count: 8">
+      <div class="chassis-shadow"></div>
+      <div class="step" style="--j: 1">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 2">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 3">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 4">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 5">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 6">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 7">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 8">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="container" style="--h: 30px; --w: 10px; --count: 8">
+      <div class="chassis-shadow"></div>
+      <div class="step" style="--j: 1">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 2">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 3">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 4">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 5">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 6">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 7">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 8">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </body>
+</html>
