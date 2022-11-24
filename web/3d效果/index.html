@@ -1,92 +1,117 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle, #e4e7e4, #111111);
+      }
+      .baba {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        transform-style: preserve-3d;
+        animation: zuan 6s linear alternate infinite;
+      }
+      .baba div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+      }
+      .baba img {
+        width: 100%;
+        height: 100%;
+      }
+      .q1 {
+        transform: translateZ(150px);
+      }
+      .h2 {
+        transform: rotateY(180deg) translateZ(150px);
+      }
+      .z3 {
+        transform: rotateY(-90deg) translateZ(150px);
+      }
+      .y4 {
+        transform: rotateY(90deg) translateZ(150px);
+      }
+      .s5 {
+        transform: rotateX(90deg) translateZ(150px);
+      }
+      .x6 {
+        transform: rotateX(-90deg) translateZ(150px);
+      }
+      @keyframes zuan {
+        0%,
+        5% {
+          transform: rotateY(90deg);
         }
-        body{
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, #e4e7e4, #111111);
+        20%,
+        25% {
+          transform: rotateY(180deg);
         }
-        .baba{
-            position: relative;
-            width: 300px;
-            height: 300px;
-            transform-style: preserve-3d;
-            animation: zuan 6s linear alternate infinite;
-            
+        40%,
+        45% {
+          transform: rotateY(270deg);
         }
-        .baba div{
-            position: absolute;
-           width: 100%;
-           height: 100%;
-           opacity: 0.8;
+        60%,
+        65% {
+          transform: rotateX(-90deg);
         }
-        .baba img{
-            width: 100%;
-            height: 100%;
+        80%,
+        85% {
+          transform: rotateX(0deg);
         }
-        .q1{
-            transform: translateZ(150px);
+        95%,
+        100% {
+          transform: rotateX(90deg);
         }
-        .h2{
-            transform: rotateY(180deg) translateZ(150px);
-        }
-        .z3{
-            transform: rotateY(-90deg) translateZ(150px);
-        }
-        .y4{
-            transform: rotateY(90deg) translateZ(150px);
-        }
-        .s5{
-            transform: rotateX(90deg) translateZ(150px);
-        }
-        .x6{
-            transform: rotateX(-90deg) translateZ(150px);
-        }
-        @keyframes zuan{
-           
-            0%,5%{
-                transform: rotateY(90deg);
-            }
-            20%,25%{
-                transform: rotateY(180deg);
-            }
-            40%,45%{
-                transform: rotateY(270deg);
-            }
-            60%,65%{
-                transform:  rotateX(-90deg);
-            }
-            80%,85%{
-                transform: rotateX(0deg);
-            }
-            95%,100%{
-                transform: rotateX(90deg);
-            }
-            
-        }
+      }
     </style>
-</head>
-<body>
-    
+  </head>
+  <body>
     <div class="baba">
-         <div class="q1"> <img src="3d/1q.png"> </div>
-         <div class="h2"> <img src="3d/2h.png"> </div>
-         <div class="z3"> <img src="3d/3z.png"> </div>
-         <div class="y4"> <img src="3d/4y.png"> </div>
-         <div class="s5"> <img src="3d/5s.png"> </div>
-         <div class="x6"> <img src="3d/6x.png"> </div> 
+      <div class="q1">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
+      <div class="h2">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
+      <div class="z3">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
+      <div class="y4">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
+      <div class="s5">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
+      <div class="x6">
+        <img
+          src="https://img2.baidu.com/it/u=2915195420,2871349931&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667"
+        />
+      </div>
     </div>
-
-</body>
+  </body>
 </html>

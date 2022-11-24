@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://www.youtube.com/watch?v=wNC_J0A45Jw</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      --bg: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+      --c1: #6ec5e7;
+      --c3: #c2e9fb;
+      --c2: skyblue;
+    }
+    body {
+      background: var(--bg);
+    }
+    .stairs {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      transform-style: preserve-3d;
+      transform: scale(0.5) rotateX(-30deg) rotateY(160deg);
+      animation: animate 10s linear infinite;
+    }
+    @keyframes animate {
+      0% {
+        transform: scale(0.5) rotateX(-30deg) rotateY(0deg);
+      }
+      100% {
+        transform: scale(0.5) rotateX(-30deg) rotateY(1turn);
+      }
+    }
+    .stairs .base {
+      position: absolute;
+      top: 0;
+      left: 60px;
+      width: 360px;
+      height: 300px;
+      /* background: #a54bcf; */
+      background: var(--c1);
+      transform: rotateX(90deg) translateZ(-150px) scale(1.25);
+      filter: blur(20px);
+      opacity: 0.5;
+    }
+    .stairs .step {
+      position: absolute;
+      left: calc(60px * var(--j));
+      bottom: 0;
+      width: 60px;
+      height: calc(60px * var(--j));
+      /* background: red; */
+      transform-style: preserve-3d;
+    }
+    .stairs .step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 300px;
+      /* background: #cf8df1; */
+      background: var(--c3);
+      transform: rotateX(90deg) translateZ(150px);
+    }
+    .stairs .step:hover::before {
+      cursor: pointer;
+      filter: brightness(1.1);
+    }
+    .stairs .step::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 60px;
+      /* background: #ae52dd; */
+      background: var(--c2);
+      transform: rotateY(90deg) translateZ(-150px);
+    }
+    .stairs .step i {
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 100%;
+      /* background: #a54bcf; */
+      background: var(--c1);
+      transform-style: preserve-3d;
+    }
+    .stairs .step i:nth-child(1) {
+      transform: translateZ(150px);
+    }
+    .stairs .step i:nth-child(2) {
+      transform: translateZ(-150px);
+    }
+
+    .stairs .step:last-child i:nth-child(2)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100%;
+      /* background-color: #ae52dd; */
+      background: var(--c2);
+      transform: rotateY(90deg) translate3d(-150px, 0, -90px);
+    }
+  </style>
+  <body>
+    <div class="stairs">
+      <div class="base"></div>
+      <div class="step" style="--j: 1">
+        <i></i>
+        <i></i>
+      </div>
+      <div class="step" style="--j: 2">
+        <i></i>
+        <i></i>
+      </div>
+      <div class="step" style="--j: 3">
+        <i></i>
+        <i></i>
+      </div>
+      <div class="step" style="--j: 4">
+        <i></i>
+        <i></i>
+      </div>
+      <div class="step" style="--j: 5">
+        <i></i>
+        <i></i>
+      </div>
+      <div class="step" style="--j: 6">
+        <i></i>
+        <i></i>
+      </div>
+    </div>
+  </body>
+</html>
