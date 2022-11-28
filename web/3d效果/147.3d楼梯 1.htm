@@ -16,7 +16,7 @@
       /* 楼梯高度 */
       --h: 60px;
       /* 楼梯宽度 */
-      --w: 60px;
+      --w: 80px;
       /* 楼梯节数 */
       --count: 6;
     }
@@ -29,13 +29,14 @@
       height: calc(var(--count) * var(--h));
       border: 1px solid red;
       transform-style: preserve-3d;
-      transform: rotateX(-30deg) rotateY(160deg);
+      /* transform: rotateX(-30deg) rotateY(-155deg); */
       /* transform: rotateX(-30deg) rotateY(-180deg); */
       /* transform: rotateX(-30deg) rotateY(60deg); */
       /* transform: rotateX(143deg) rotateY(258deg); */
       /* transform: rotateX(153deg) rotateY(370deg) rotateZ(-87deg); */
       /* animation: animate 5s linear infinite; */
       /* transform: rotateX(153deg) rotateY(444deg) rotateZ(-87deg); */
+      transform: rotateX(162deg) rotateY(397deg) rotateZ(-92deg);
     }
     @keyframes animate {
       0% {
@@ -147,6 +148,9 @@
       transform: translateZ(calc(-1 * var(--tz)));
     }
 
+    .container .step:last-child span:nth-child(2) {
+      background: #222;
+    }
     .container .step:last-child span:nth-child(2)::before {
       content: "";
       position: absolute;
@@ -166,22 +170,25 @@
       /* 第二个参数 */
       /* --k: calc(var(--tz) - var(--h)); */
       --k: calc(var(--tz) - var(--w));
-      transform: rotateY(90deg)
-        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k)));
-      /* transform: rotateY(90deg) translate3d(-150px, 0, -90px); */
+      /* transform: rotateY(90deg)
+        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k))); */
     }
 
     .container .step:last-child span:nth-child(2)::after {
-      content: "";
+      /* content: ""; */
       position: absolute;
       top: 0;
       left: 0;
       background: green;
-      width: 600%;
+      width: calc(100% * var(--count));
+      /* width:  600%; */
+
       --num: calc(var(--count) - 1);
       --hh: calc(var(--num) * var(--h));
+
       height: calc(var(--num) * var(--h));
       /* height: 100%; */
+
       /* transform: rotateX(90deg) translate3d(-300px, 120px, -180px); */
       /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px) scale(1.25); */
 
@@ -190,13 +197,46 @@
       --d: calc(var(--tnum) * var(--w));
       --tz: calc(var(--d) + var(--l));
 
-      transform: rotateX(90deg)
+      /* transform: rotateX(90deg)
         translate3d(
           calc(-1 * var(--hh)),
           calc(var(--hh) / 2),
           calc(-1 * var(--tz))
         )
-        scale(1.25);
+        scale(1.25); */
+      /* transform: rotateX(90deg); */
+      transform: rotateX(90deg) translate3d(-300px, 150px, -210px);
+
+      /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px);  60*60 6个梯子 */
+    }
+    .container::after {
+      /* content: ""; */
+      /* width: calc(var(--count) * var(--h));
+      height: calc(var(--count) * var(--w)); */
+      width: 100%;
+      height: 100%;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      right: 0;
+      transform: rotateX(90deg);
+    }
+
+    .container .step:first-child span:nth-child(2) {
+      background: #222;
+    }
+    .container .step:first-child span:nth-child(2)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #222;
+      --num: calc(var(--count) - 1);
+      width: calc(100% * var(--num));
+      /* height: calc(100% * var(--num)); */
+      height: calc(calc(var(--num) * var(--w)));
+      /* transform: rotateX(90deg); */
+      transform: rotateX(90deg) translate3d(0px, 200px, 140px);
     }
   </style>
   <body>
