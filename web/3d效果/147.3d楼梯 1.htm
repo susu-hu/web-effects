@@ -16,9 +16,9 @@
       /* 楼梯高度 */
       --h: 60px;
       /* 楼梯宽度 */
-      --w: 80px;
+      --w: 50px;
       /* 楼梯节数 */
-      --count: 6;
+      --count: 8;
     }
     body {
       background: var(--bg);
@@ -29,14 +29,14 @@
       height: calc(var(--count) * var(--h));
       border: 1px solid red;
       transform-style: preserve-3d;
-      /* transform: rotateX(-30deg) rotateY(-155deg); */
+      transform: rotateX(-30deg) rotateY(-155deg);
       /* transform: rotateX(-30deg) rotateY(-180deg); */
       /* transform: rotateX(-30deg) rotateY(60deg); */
       /* transform: rotateX(143deg) rotateY(258deg); */
       /* transform: rotateX(153deg) rotateY(370deg) rotateZ(-87deg); */
       /* animation: animate 5s linear infinite; */
       /* transform: rotateX(153deg) rotateY(444deg) rotateZ(-87deg); */
-      transform: rotateX(162deg) rotateY(397deg) rotateZ(-92deg);
+      /* transform: rotateX(162deg) rotateY(397deg) rotateZ(-92deg); */
     }
     @keyframes animate {
       0% {
@@ -148,9 +148,8 @@
       transform: translateZ(calc(-1 * var(--tz)));
     }
 
-    .container .step:last-child span:nth-child(2) {
-      background: #222;
-    }
+    /* .container .step:last-child span:nth-child(2) {
+    } */
     .container .step:last-child span:nth-child(2)::before {
       content: "";
       position: absolute;
@@ -170,8 +169,8 @@
       /* 第二个参数 */
       /* --k: calc(var(--tz) - var(--h)); */
       --k: calc(var(--tz) - var(--w));
-      /* transform: rotateY(90deg)
-        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k))); */
+      transform: rotateY(90deg)
+        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k)));
     }
 
     .container .step:last-child span:nth-child(2)::after {
@@ -209,18 +208,6 @@
 
       /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px);  60*60 6个梯子 */
     }
-    .container::after {
-      /* content: ""; */
-      /* width: calc(var(--count) * var(--h));
-      height: calc(var(--count) * var(--w)); */
-      width: 100%;
-      height: 100%;
-      background-color: red;
-      position: absolute;
-      left: 0;
-      right: 0;
-      transform: rotateX(90deg);
-    }
 
     .container .step:first-child span:nth-child(2) {
       background: #222;
@@ -232,11 +219,24 @@
       top: 0;
       background: #222;
       --num: calc(var(--count) - 1);
-      width: calc(100% * var(--num));
+      --num1: calc(var(--count) - 3);
+
+      width: calc(100% * var(--count));
       /* height: calc(100% * var(--num)); */
       height: calc(calc(var(--num) * var(--w)));
-      /* transform: rotateX(90deg); */
-      transform: rotateX(90deg) translate3d(0px, 200px, 140px);
+      --pw: calc(var(--w) / 2);
+      --ph: calc(var(--h) / 2);
+      /* 宽度的2分之一 */
+      transform: rotateX(90deg)
+        translate3d(
+          0,
+          calc(var(--pw) * var(--num)),
+          calc(var(--pw) * var(--num) - var(--h))
+        );
+      /* transform: rotateX(90deg) translate3d(0px, 200px, 140px); 宽80*高60 =》6个 */
+      /* transform: rotateX(90deg) translate3d(0, 150px, 90px); 宽60 * 高60==》6个 */
+      /*     transform: rotateX(90deg) translate3d(0, 125px, 65px);  宽50 * 高60==》6个*/
+      /* rotateX(90deg) translate3d(0, 210px, 150px) 宽60 * 高60==》8个*/
     }
   </style>
   <body>
@@ -263,6 +263,14 @@
         <span></span>
       </div>
       <div class="step" style="--j: 6">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 7">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="step" style="--j: 8">
         <span></span>
         <span></span>
       </div>
