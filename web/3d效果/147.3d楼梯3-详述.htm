@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css" />
+<style>
+  :root {
+    --bg: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+    --c1: #6ec5e7;
+    --c3: #c2e9fb;
+    --c2: skyblue;
+    /* 楼梯高度 */
+    --h: 40px;
+    /* 楼梯宽度 */
+    --w: 50px;
+    /* 楼梯节数 */
+    --count: 5;
+  }
+
+  body {
+    background: var(--bg);
+  }
+
+  .container {
+    position: relative;
+    width: calc(var(--count) * var(--w));
+    height: calc(var(--count) * var(--h));
+    border: 1px solid red;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(30deg);
+
+  }
+
+  .container .step {
+    position: absolute;
+    --i: calc(var(--c) - 1);
+    left: calc(var(--w) * var(--i));
+    bottom: 0;
+    width: var(--w);
+    height: calc(var(--h) * var(--c));
+    border: 1px solid orange;
+    transform-style: preserve-3d;
+  }
+
+  .container .step::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--w);
+    height: calc(var(--count) * var(--h));
+    background: orange;
+    /* z轴偏移为高度的2分之一 */
+    --z: calc(var(--count) * var(--h) / 2);
+    transform: rotateX(90deg) translateZ(var(--z));
+  }
+
+  .container .step::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    --num: calc(var(--count) - 1);
+    width: calc(var(--num) * var(--w));
+    height: var(--h);
+    background: orangered;
+    transform: rotateY(90deg) translateZ(0px);
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="step" style="--c: 1">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 2">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 3">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 4">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 5">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+  </div>
+</body>
+
+</html>

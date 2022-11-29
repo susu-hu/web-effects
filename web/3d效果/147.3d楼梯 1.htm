@@ -1,279 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>参考链接：https://www.youtube.com/watch?v=wNC_J0A45Jw</title>
-  </head>
-  <link rel="stylesheet" href="../common.css" />
-  <style>
-    :root {
-      --bg: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
-      --c1: #6ec5e7;
-      --c3: #c2e9fb;
-      --c2: skyblue;
-      /* 楼梯高度 */
-      --h: 60px;
-      /* 楼梯宽度 */
-      --w: 50px;
-      /* 楼梯节数 */
-      --count: 8;
-    }
-    body {
-      background: var(--bg);
-    }
-    .container {
-      position: relative;
-      width: calc(var(--count) * var(--w));
-      height: calc(var(--count) * var(--h));
-      border: 1px solid red;
-      transform-style: preserve-3d;
-      transform: rotateX(-30deg) rotateY(-155deg);
-      /* transform: rotateX(-30deg) rotateY(-180deg); */
-      /* transform: rotateX(-30deg) rotateY(60deg); */
-      /* transform: rotateX(143deg) rotateY(258deg); */
-      /* transform: rotateX(153deg) rotateY(370deg) rotateZ(-87deg); */
-      /* animation: animate 5s linear infinite; */
-      /* transform: rotateX(153deg) rotateY(444deg) rotateZ(-87deg); */
-      /* transform: rotateX(162deg) rotateY(397deg) rotateZ(-92deg); */
-    }
-    @keyframes animate {
-      0% {
-        transform: rotateX(-30deg) rotateY(0deg);
-      }
-      100% {
-        transform: rotateX(-30deg) rotateY(1turn);
-      }
-    }
-    /*底盘阴影 */
-    .container .chassis-shadow {
-      position: absolute;
-      top: 0;
-      left: 0px;
-      width: calc(var(--count) * var(--w));
-      height: calc(var(--count) * var(--h));
-      /* background: #a54bcf; */
-      /* background: var(--c1); */
-      background: red;
-      --num: calc(var(--count) / 2);
-      --tz: calc(var(--num) * var(--h));
-      transform: rotateX(90deg) translateZ(calc(-1 * var(--tz)));
-      /* scale(1.25) */
-      /* filter: blur(20px);
-      opacity: 0.5; */
-    }
-    .container .step {
-      position: absolute;
-      --i: calc(var(--j) - 1);
-      left: calc(var(--w) * var(--i));
-      bottom: 0;
-      width: var(--w);
-      height: calc(var(--h) * var(--j));
-      /* background: red; */
-      border: 1px solid yellow;
-      transform-style: preserve-3d;
-    }
-    .container .step::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: var(--w);
-      --num: calc(var(--count) - 1);
-      /* 等宽高 */
-      /* height: calc(var(--num) * var(--h)); */
 
-      /* 不等宽高 */
-      height: calc(var(--num) * var(--w));
-      /* height: 300px; */
-      /* background: #cf8df1; */
-      /* background: var(--c3); */
-      background: orange;
-      /* transform: rotateX(90deg) translateZ(150px); */
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) - var(--l));
-      transform: rotateX(90deg) translateZ(var(--tz));
-    }
-    .container .step:hover::before {
-      cursor: pointer;
-      filter: brightness(1.1);
-    }
-    .container .step::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      --num: calc(var(--count) - 1);
-      width: calc(var(--num) * var(--w));
-      /* width: 300px; */
-      height: var(--h);
-      /* background: #ae52dd; */
-      /* background: var(--c2); */
-      background: orangered;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>参考链接：https://www.youtube.com/watch?v=wNC_J0A45Jw</title>
+</head>
+<link rel="stylesheet" href="../common.css" />
+<style>
+  :root {
+    --bg: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+    --c1: #6ec5e7;
+    --c3: #c2e9fb;
+    --c2: skyblue;
+    /* 楼梯高度 */
+    --h: 40px;
+    /* 楼梯宽度 */
+    --w: 40px;
+    /* 楼梯节数 */
+    --count: 6;
+  }
 
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) - var(--l));
-      /* transform: rotateY(90deg) translateZ(-150px); */
-      transform: rotateY(90deg) translateZ(calc(-1 * var(--tz)));
-    }
-    .container .step span {
-      position: absolute;
-      display: block;
-      width: var(--w);
-      height: 100%;
-      /* background: #a54bcf; */
-      /* background: var(--c1); */
-      background: orchid;
-      transform-style: preserve-3d;
-    }
-    .container .step span:nth-child(1) {
-      /* transform: translateZ(150px); */
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) - var(--l));
-      transform: translateZ(var(--tz));
-    }
-    .container .step span:nth-child(2) {
-      /* transform: translateZ(-150px); */
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) - var(--l));
-      transform: translateZ(calc(-1 * var(--tz)));
+  body {
+    background: var(--bg);
+  }
+
+  .container {
+    position: relative;
+    width: calc(var(--count) * var(--w));
+    height: calc(var(--count) * var(--h));
+    border: 1px solid red;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(30deg);
+    /* animation: animate 5s linear infinite; */
+  }
+
+  /* transform: rotateX(162deg) rotateY(397deg) rotateZ(-92deg); */
+  @keyframes animate {
+    0% {
+      transform: rotateX(-30deg) rotateY(0deg);
     }
 
-    /* .container .step:last-child span:nth-child(2) {
+    100% {
+      transform: rotateX(-30deg) rotateY(1turn);
+    }
+  }
+
+  .container .step {
+    position: absolute;
+    --i: calc(var(--c) - 1);
+    left: calc(var(--w) * var(--i));
+    bottom: 0;
+    width: var(--w);
+    height: calc(var(--h) * var(--c));
+    border: 1px solid orange;
+    transform-style: preserve-3d;
+  }
+
+  .container .step::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--w);
+    --num: calc(var(--count) - 1);
+    height: calc(var(--num) * var(--w));
+    background: orange;
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) - var(--l));
+    transform: rotateX(90deg) translateZ(var(--tz));
+  }
+
+  .container .step:hover::before {
+    cursor: pointer;
+    filter: brightness(1.1);
+  }
+
+  .container .step::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    --num: calc(var(--count) - 1);
+    width: calc(var(--num) * var(--w));
+    /* width: 300px; */
+    height: var(--h);
+    /* background: #ae52dd; */
+    /* background: var(--c2); */
+    background: orangered;
+
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) - var(--l));
+    /* transform: rotateY(90deg) translateZ(-150px); */
+    transform: rotateY(90deg) translateZ(calc(-1 * var(--tz)));
+  }
+
+  .container .step span {
+    position: absolute;
+    display: block;
+    width: var(--w);
+    height: 100%;
+    /* background: #a54bcf; */
+    /* background: var(--c1); */
+    background: orchid;
+    transform-style: preserve-3d;
+  }
+
+  .container .step span:nth-child(1) {
+    /* transform: translateZ(150px); */
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) - var(--l));
+    transform: translateZ(var(--tz));
+  }
+
+  .container .step span:nth-child(2) {
+    /* transform: translateZ(-150px); */
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) - var(--l));
+    transform: translateZ(calc(-1 * var(--tz)));
+  }
+
+  /* .container .step:last-child span:nth-child(2) {
     } */
-    .container .step:last-child span:nth-child(2)::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      --num: calc(var(--count) - 1);
-      width: calc(var(--num) * var(--w));
-      height: 100%;
-      /* background-color: #ae52dd; */
-      /* background: var(--c2); */
-      background: rebeccapurple;
-      /* 第一个参数 */
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) - var(--l));
-      /* 第二个参数 */
-      /* --k: calc(var(--tz) - var(--h)); */
-      --k: calc(var(--tz) - var(--w));
-      transform: rotateY(90deg)
-        translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k)));
-    }
+  .container .step:last-child span:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    --num: calc(var(--count) - 1);
+    width: calc(var(--num) * var(--w));
+    height: 100%;
+    /* background-color: #ae52dd; */
+    /* background: var(--c2); */
+    background: rebeccapurple;
+    /* 第一个参数 */
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) - var(--l));
+    /* 第二个参数 */
+    /* --k: calc(var(--tz) - var(--h)); */
+    --k: calc(var(--tz) - var(--w));
+    transform: rotateY(90deg) translate3d(calc(-1 * var(--tz)), 0, calc(-1 * var(--k)));
+  }
 
-    .container .step:last-child span:nth-child(2)::after {
-      /* content: ""; */
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: green;
-      width: calc(100% * var(--count));
-      /* width:  600%; */
+  .container .step:last-child span:nth-child(2)::after {
+    /* content: ""; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: green;
+    width: calc(100% * var(--count));
+    /* width:  600%; */
 
-      --num: calc(var(--count) - 1);
-      --hh: calc(var(--num) * var(--h));
+    --num: calc(var(--count) - 1);
+    --hh: calc(var(--num) * var(--h));
 
-      height: calc(var(--num) * var(--h));
-      /* height: 100%; */
+    height: calc(var(--num) * var(--h));
+    /* height: 100%; */
 
-      /* transform: rotateX(90deg) translate3d(-300px, 120px, -180px); */
-      /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px) scale(1.25); */
+    /* transform: rotateX(90deg) translate3d(-300px, 120px, -180px); */
+    /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px) scale(1.25); */
 
-      --l: calc(var(--w) / 2);
-      --tnum: calc(var(--count) / 2);
-      --d: calc(var(--tnum) * var(--w));
-      --tz: calc(var(--d) + var(--l));
+    --l: calc(var(--w) / 2);
+    --tnum: calc(var(--count) / 2);
+    --d: calc(var(--tnum) * var(--w));
+    --tz: calc(var(--d) + var(--l));
 
-      /* transform: rotateX(90deg)
+    /* transform: rotateX(90deg)
         translate3d(
           calc(-1 * var(--hh)),
           calc(var(--hh) / 2),
           calc(-1 * var(--tz))
         )
         scale(1.25); */
-      /* transform: rotateX(90deg); */
-      transform: rotateX(90deg) translate3d(-300px, 150px, -210px);
+    /* transform: rotateX(90deg); */
+    transform: rotateX(90deg) translate3d(-300px, 150px, -210px);
 
-      /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px);  60*60 6个梯子 */
-    }
+    /* transform: rotateX(90deg) translate3d(-300px, 150px, -210px);  60*60 6个梯子 */
+  }
 
-    .container .step:first-child span:nth-child(2) {
-      background: #222;
-    }
-    .container .step:first-child span:nth-child(2)::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: #222;
-      --num: calc(var(--count) - 1);
-      --num1: calc(var(--count) - 3);
+  .container .step:first-child span:nth-child(2) {
+    background: #222;
+  }
 
-      width: calc(100% * var(--count));
-      /* height: calc(100% * var(--num)); */
-      height: calc(calc(var(--num) * var(--w)));
-      --pw: calc(var(--w) / 2);
-      --ph: calc(var(--h) / 2);
-      /* 宽度的2分之一 */
-      transform: rotateX(90deg)
-        translate3d(
-          0,
-          calc(var(--pw) * var(--num)),
-          calc(var(--pw) * var(--num) - var(--h))
-        );
-      /* transform: rotateX(90deg) translate3d(0px, 200px, 140px); 宽80*高60 =》6个 */
-      /* transform: rotateX(90deg) translate3d(0, 150px, 90px); 宽60 * 高60==》6个 */
-      /*     transform: rotateX(90deg) translate3d(0, 125px, 65px);  宽50 * 高60==》6个*/
-      /* rotateX(90deg) translate3d(0, 210px, 150px) 宽60 * 高60==》8个*/
-    }
-  </style>
-  <body>
-    <div class="container">
-      <!-- <div class="chassis-shadow"></div> -->
-      <div class="step" style="--j: 1">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 2">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 3">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 4">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 5">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 6">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 7">
-        <span></span>
-        <span></span>
-      </div>
-      <div class="step" style="--j: 8">
-        <span></span>
-        <span></span>
-      </div>
+  /*底盘阴影 */
+  .container .step:first-child span:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #222;
+    --num: calc(var(--count) - 1);
+    --num1: calc(var(--count) - 3);
+
+    width: calc(100% * var(--count));
+    /* height: calc(100% * var(--num)); */
+    height: calc(calc(var(--num) * var(--w)));
+    --pw: calc(var(--w) / 2);
+    --ph: calc(var(--h) / 2);
+    /* 宽度的2分之一 */
+    transform: rotateX(90deg) translate3d(0,
+        calc(var(--pw) * var(--num)),
+        calc(var(--pw) * var(--num) - var(--h)));
+    /* transform: rotateX(90deg) translate3d(0px, 200px, 140px); 宽80*高60 =》6个 */
+    /* transform: rotateX(90deg) translate3d(0, 150px, 90px); 宽60 * 高60==》6个 */
+    /*     transform: rotateX(90deg) translate3d(0, 125px, 65px);  宽50 * 高60==》6个*/
+    /* rotateX(90deg) translate3d(0, 210px, 150px) 宽60 * 高60==》8个*/
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="step" style="--c: 1">
+      <!-- <span></span>
+      <span></span> -->
     </div>
-  </body>
+    <div class="step" style="--c: 2">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 3">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 4">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 5">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+    <div class="step" style="--c: 6">
+      <!-- <span></span>
+      <span></span> -->
+    </div>
+  </div>
+</body>
+
 </html>
