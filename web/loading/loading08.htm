@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    .loading {
+      width: 10em;
+      height: 10em;
+      display: grid; /*grid布局*/
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 0.5em; /*grid 每个item之间的间距*/
+      transform: rotate(45deg); /*旋转45°*/
+    }
+    .loading span {
+      background-color: var(--color);
+      animation: blinking 2s var(--delay) ease-in-out infinite;
+      animation-fill-mode: backwards;
+    }
+
+    .loading span:nth-child(2n + 2) {
+      --color: orange;
+    }
+    .loading span:nth-child(4n + 3) {
+      --color: pink;
+    }
+    .loading span:nth-child(4n + 1) {
+      --color: skyblue;
+    }
+
+    .loading span:nth-child(7) {
+      --delay: 0s;
+    }
+    .loading span:nth-child(4n + 4) {
+      --delay: 0.2s;
+    }
+    .loading span:nth-child(4n + 1) {
+      --delay: 0.4s;
+    }
+    .loading span:nth-child(4n + 2) {
+      --delay: 0.6s;
+    }
+    .loading span:nth-child(3) {
+      --delay: 0.8s;
+    }
+
+    @keyframes blinking {
+      0%,
+      20% {
+        transform: rotate(0deg) scale(0);
+      }
+      40%,
+      80% {
+        transform: rotate(1turn) scale(1);
+      }
+      100% {
+        transform: rotate(2turn) scale(0);
+      }
+    }
+  </style>
+  <body>
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </body>
+</html>

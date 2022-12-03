@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid布局：https://jsbin.com/lahohuqali/edit?html,css,output</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      --w: 80px;
+      --gap: 10px;
+    }
+    .container {
+      width: calc(var(--w) * 3 + var(--gap) * 2);
+      height: calc(var(--w) * 3 + var(--gap) * 2);
+      display: grid;
+      grid-template-columns: repeat(3, var(--w));
+      /*  grid-template-rows: repeat(3, 1fr);*/
+      grid-template-rows: repeat(3, var(--w));
+      /* fr==》fraction 的缩写，意为"片段 */
+
+      /* grid-row-gap: 10px;
+      grid-column-gap: 10px; */
+      gap: var(--gap);
+      /* grid-gap省略了第二个值，浏览器认为第二个值等于第一个值 */
+      /* 根据最新标准，上面三个属性名的grid-前缀已经删除，grid-column-gap和grid-row-gap写成column-gap和row-gap，grid-gap写成gap。 */
+
+      /* justify-content: space-between;
+      align-content: space-between; */
+      /* place-content属性是align-content属性和justify-content属性的合并简写形式。 */
+      /* justify-content:设置grid布局容器内容水平位置
+      align-content:设置grid布局容器内容垂直位置
+      place-content:align-content 和 justify-content 两个属性的简写方式，若省略第二个值，则认为第二个值等于第一个值
+      */
+
+      /* 用一下属性实现水平垂直分布，但是实验了一下 变化熟悉 transition是无法生效的 */
+      /* place-content: space-between; */
+
+      /* 所以这里使用gap+ place-content: center; */
+      place-content: center;
+      transition: all 0.5s;
+    }
+    .item {
+      width: var(--w);
+      height: var(--w);
+      border: 1px solid;
+      border-image: linear-gradient(45deg, #293a53, #7cb1c5) 1;
+      background-size: calc(var(--w) * 3) calc(var(--w) * 3);
+      background-image: url("../img/card.jpg");
+      background-position-x: calc(var(--x) * var(--w));
+      background-position-y: calc(var(--y) * var(--w));
+    }
+    .container:hover {
+      filter: drop-shadow(0px 0px 20px #000);
+      gap: 0;
+    }
+    .container:hover .item {
+      border: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="item" style="--x: 0; --y: 0"></div>
+      <div class="item" style="--x: -1; --y: 0"></div>
+      <div class="item" style="--x: -2; --y: 0"></div>
+      <div class="item" style="--x: 0; --y: -1"></div>
+      <div class="item" style="--x: -1; --y: -1"></div>
+      <div class="item" style="--x: -2; --y: -1"></div>
+      <div class="item" style="--x: 0; --y: -2"></div>
+      <div class="item" style="--x: -1; --y: -2"></div>
+      <div class="item" style="--x: -2; --y: -2"></div>
+    </div>
+  </body>
+</html>
