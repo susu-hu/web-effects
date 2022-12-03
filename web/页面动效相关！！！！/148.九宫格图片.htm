@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    .container {
+      width: 300px;
+      height: 300px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .item {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border: 1px solid rgb(204, 189, 189);
+      background-size: 300px 300px;
+      background-image: url("../img/card.jpg");
+      position: relative;
+      transition: all 0.5s;
+    }
+
+    .item:nth-child(3n + 1) {
+      left: -10px;
+      background-position-x: 0;
+    }
+    .item:nth-child(3n + 2) {
+      left: 0;
+      background-position-x: -100px;
+    }
+    .item:nth-child(3n + 3) {
+      left: 10px;
+      background-position-x: -200px;
+    }
+    .item {
+      top: 10px;
+      background-position-y: -200px;
+    }
+    .item:nth-child(-n + 6) {
+      top: 0px;
+      background-position-y: -100px;
+    }
+    .item:nth-child(-n + 3) {
+      top: -10px;
+      background-position-y: 0;
+    }
+    .container:hover .item {
+      left: 0;
+      top: 0;
+      border: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
