@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>grid布局：https://jsbin.com/lahohuqali/edit?html,css,output</title>
+    <title>
+      grid布局：http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
+    </title>
   </head>
   <link rel="stylesheet" href="../common.css" />
   <style>
@@ -17,9 +19,9 @@
       height: calc(var(--w) * 3 + var(--gap) * 2);
       display: grid;
       grid-template-columns: repeat(3, var(--w));
-      /*  grid-template-rows: repeat(3, 1fr);*/
       grid-template-rows: repeat(3, var(--w));
-      /* fr==》fraction 的缩写，意为"片段 */
+      /*  grid-template-rows: repeat(3, 1fr);
+      fr==》fraction 的缩写，意为"片段 */
 
       /* grid-row-gap: 10px;
       grid-column-gap: 10px; */
@@ -31,11 +33,11 @@
       align-content: space-between; */
       /* place-content属性是align-content属性和justify-content属性的合并简写形式。 */
       /* justify-content:设置grid布局容器内容水平位置
-      align-content:设置grid布局容器内容垂直位置
-      place-content:align-content 和 justify-content 两个属性的简写方式，若省略第二个值，则认为第二个值等于第一个值
+        align-content:设置grid布局容器内容垂直位置
+        place-content:align-content 和 justify-content 两个属性的简写方式，若省略第二个值，则认为第二个值等于第一个值
       */
 
-      /* 用一下属性实现水平垂直分布，但是实验了一下 变化熟悉 transition是无法生效的 */
+      /* 用此属性实现水平垂直分布，但是实验了一下 变化熟悉 transition是无法生效的 */
       /* place-content: space-between; */
 
       /* 所以这里使用gap+ place-content: center; */
@@ -48,9 +50,8 @@
       border: 1px solid;
       border-image: linear-gradient(45deg, #293a53, #7cb1c5) 1;
       background-size: calc(var(--w) * 3) calc(var(--w) * 3);
-      background-image: url("../img/card.jpg");
-      background-position-x: calc(var(--x) * var(--w));
-      background-position-y: calc(var(--y) * var(--w));
+      background-image: url(https://i.postimg.cc/GhXrMDN0/card.jpg);
+      background-position: calc(var(--x) * 100%) calc(var(--y) * 100%);
     }
     .container:hover {
       filter: drop-shadow(0px 0px 20px #000);
