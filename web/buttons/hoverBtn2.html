@@ -1,199 +1,215 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<style>
-		.button {
-			padding: 3rem;
-			border-radius: 4rem;
-			background: pink;
-			cursor: pointer;
-			transition: 0.25s;
-			margin: 2rem;
-		}
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <style>
+    .button {
+      padding: 3rem;
+      border-radius: 4rem;
+      background: pink;
+      cursor: pointer;
+      transition: 0.25s;
+      margin: 2rem;
+    }
 
-		.button:active {
-			background: #ff5500;
-			transition: 0;
-		}
+    .button:active {
+      background: #ff5500;
+      transition: 0;
+    }
 
-		.arrow {
-			position: relative;
-			background: whitesmoke;
-			width: 4rem;
-			height: 0.4rem;
-			transition: 0.5s;
-			border-radius: 1rem;
-			transform-origin: right center;
-		}
+    .arrow {
+      position: relative;
+      background: whitesmoke;
+      width: 4rem;
+      height: 0.4rem;
+      transition: 0.5s;
+      border-radius: 1rem;
+      transform-origin: right center;
+    }
 
-		.arrow:before {
-			transform: rotate(-35deg);
-		}
+    .arrow:before {
+      transform: rotate(-35deg);
+    }
 
-		.arrow:after {
-			transform: rotate(35deg);
-		}
+    .arrow:after {
+      transform: rotate(35deg);
+    }
 
-		.arrow:before,
-		.arrow:after {
-			display: block;
-			content: "";
-			position: absolute;
-			left: 0;
-			background: whitesmoke;
-			width: 2rem;
-			height: 0.4rem;
-			transform-origin: 0.2rem center;
-			transition: 0.5s;
-			border-radius: 1rem;
-		}
+    .arrow:before,
+    .arrow:after {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      background: whitesmoke;
+      width: 2rem;
+      height: 0.4rem;
+      transform-origin: 0.2rem center;
+      transition: 0.5s;
+      border-radius: 1rem;
+    }
 
-		.switch.right .arrow:before,
-		.switch.right .arrow:after {
-			left: 3.8rem;
-		}
+    .switch.right .arrow:before,
+    .switch.right .arrow:after {
+      left: 3.8rem;
+    }
 
-		.switch.right .arrow:before {
-			transform: rotate(140deg);
-		}
+    .switch.right .arrow:before {
+      transform: rotate(140deg);
+    }
 
-		.switch.right .arrow:after {
-			transform: rotate(-140deg);
-		}
+    .switch.right .arrow:after {
+      transform: rotate(-140deg);
+    }
 
+    .arrow1 {
+      position: relative;
+      background: whitesmoke;
+      width: 4rem;
+      height: 0.4rem;
+      transition: 0.5s;
+      border-radius: 1rem;
+      transform-origin: right center;
+    }
 
-		.arrow1 {
-			position: relative;
-			background: whitesmoke;
-			width: 4rem;
-			height: 0.4rem;
-			transition: 0.5s;
-			border-radius: 1rem;
-			transform-origin: right center;
-		}
+    .arrow1:before {
+      transform: rotate(-135deg);
+    }
 
-		.arrow1:before {
-			transform: rotate(-135deg);
-		}
+    .arrow1:after {
+      transform: rotate(135deg);
+    }
 
-		.arrow1:after {
-			transform: rotate(135deg);
-		}
+    .arrow1:before,
+    .arrow1:after {
+      display: block;
+      content: "";
+      position: absolute;
+      left: 3.8rem;
+      background: whitesmoke;
+      width: 2rem;
+      height: 0.4rem;
+      transform-origin: 0.2rem center;
+      transition: 0.5s;
+      border-radius: 1rem;
+    }
 
-		.arrow1:before,
-		.arrow1:after {
-			display: block;
-			content: "";
-			position: absolute;
-			left: 3.8rem;
-			background: whitesmoke;
-			width: 2rem;
-			height: 0.4rem;
-			transform-origin: 0.2rem center;
-			transition: 0.5s;
-			border-radius: 1rem;
-		}
-		
-		.flip.right .arrow1:before,
-		.flip.right .arrow1:after {
-			left: 0rem;
-		}
-		
-		.flip.right .arrow1:before {
-			transform: rotate(-35deg);
-		}
-		
-		.flip.right .arrow1:after {
-			transform: rotate(35deg);
-		}
+    .flip.right .arrow1:before,
+    .flip.right .arrow1:after {
+      left: 0rem;
+    }
 
-		body {
-			padding: 0;
-			margin: 0;
-			display: flex;
-			height: 100vh;
-			justify-content: center;
-			align-items: center;
-			background: #000;
-			-webkit-backface-visibility: hidden;
-		}
-	</style>
-	<script>
-		// 1.addClass:为指定的dom元素添加样式
+    .flip.right .arrow1:before {
+      transform: rotate(-35deg);
+    }
 
-		// 2.removeClass:删除指定dom元素的样式
+    .flip.right .arrow1:after {
+      transform: rotate(35deg);
+    }
 
-		// 3.toggleClass:如果存在(不存在)，就删除(添加)一个样式
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      -webkit-backface-visibility: hidden;
+    }
 
-		// 4.hasClass:判断样式是否存在
+    .box {
+      height: 40px;
+      line-height: 40px;
+      padding: 10px;
+      display: inline-block;
+      border: 1px solid #222;
+      border-radius: 50px;
+      color: #ff5500;
+    }
 
-		function hasClass(obj, cls) {
-			return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-		}
+    .box:hover {
+      background-color: #fff;
+      color: #169fe6;
+      color: #fff;
+      text-shadow: 3px 3px 3px #000;
+    }
+  </style>
+  <script>
+    // 1.addClass:为指定的dom元素添加样式
 
-		function addClass(obj, cls) {
-			if (!this.hasClass(obj, cls)) obj.className += " " + cls;
-		}
+    // 2.removeClass:删除指定dom元素的样式
 
-		function removeClass(obj, cls) {
-			if (hasClass(obj, cls)) {
-				var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-				obj.className = obj.className.replace(reg, ' ');
-			}
-		}
+    // 3.toggleClass:如果存在(不存在)，就删除(添加)一个样式
 
-		function toggleClass(obj, cls) {
-			if (hasClass(obj, cls)) {
-				removeClass(obj, cls);
-			} else {
-				addClass(obj, cls);
-			}
-		}
-	</script>
-	<body>
-		<a class="button switch" onclick="toggleClassTest()">
-			<div class="arrow"></div>
-		</a>
+    // 4.hasClass:判断样式是否存在
 
-		<a class="button flip">
-			<div class="arrow1"></div>
-		</a>
-	</body>
-	<script src="../商城相关/js/jq.js"></script>
-	<script>
-		let btn = document.getElementsByClassName("button")[0];
-		// 原生js写法1 ==通过方法响应点击事件
-		// function toggleClassTest() {
-		// 	toggleClass(btn, "right");
-		// }
+    function hasClass(obj, cls) {
+      return obj.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
+    }
 
-		// 2 ====监听点击事件
-		// btn.addEventListener('click',function(){
-		// 	toggleClass(btn, "right");
-		// },false);
+    function addClass(obj, cls) {
+      if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+    }
 
-		// 3===通过点击事件
-		// btn.onclick=function(){
-		// 	toggleClass(btn, "right");
-		// }
+    function removeClass(obj, cls) {
+      if (hasClass(obj, cls)) {
+        var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+        obj.className = obj.className.replace(reg, " ");
+      }
+    }
 
-		// 4=====jq写法
-		// $(".button").click(function(){
-		//     $(this).toggleClass("right");
-		// });
+    function toggleClass(obj, cls) {
+      if (hasClass(obj, cls)) {
+        removeClass(obj, cls);
+      } else {
+        addClass(obj, cls);
+      }
+    }
+  </script>
+  <body>
+    <a class="button switch" onclick="toggleClassTest()">
+      <div class="arrow"></div>
+    </a>
 
-		// 5.按钮循环点击事件
-		let btnAll = document.getElementsByTagName("a");
-		console.log(btnAll)
-		for (let i = 0; i < btnAll.length; i++) {
-			console.log(btnAll[i])
-			btnAll[i].onclick = function() {
-				toggleClass(btnAll[i], "right");
-			}
-		}
-	</script>
+    <a class="button flip">
+      <div class="arrow1"></div>
+    </a>
+    <div class="box">苏苏就是小苏苏</div>
+  </body>
+  <script src="../商城相关/js/jq.js"></script>
+  <script>
+    let btn = document.getElementsByClassName("button")[0];
+    // 原生js写法1 ==通过方法响应点击事件
+    // function toggleClassTest() {
+    // 	toggleClass(btn, "right");
+    // }
 
+    // 2 ====监听点击事件
+    // btn.addEventListener('click',function(){
+    // 	toggleClass(btn, "right");
+    // },false);
+
+    // 3===通过点击事件
+    // btn.onclick=function(){
+    // 	toggleClass(btn, "right");
+    // }
+
+    // 4=====jq写法
+    // $(".button").click(function(){
+    //     $(this).toggleClass("right");
+    // });
+
+    // 5.按钮循环点击事件
+    let btnAll = document.getElementsByTagName("a");
+    console.log(btnAll);
+    for (let i = 0; i <script btnAll.length; i++) {
+      console.log(btnAll[i]);
+      btnAll[i].onclick = function () {
+        toggleClass(btnAll[i], "right");
+      };
+    }
+  </script>
 </html>

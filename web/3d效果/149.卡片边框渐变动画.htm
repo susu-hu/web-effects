@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 实现卡片边框渐变动画</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+
+    @property --rotate {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+    :root {
+      --br: 3px;
+    }
+    body {
+      transform-style: preserve-3d;
+      perspective: 1800px;
+    }
+
+    .card {
+      background: linear-gradient(var(--rotate), #ff1d74, #e3820c 43%, #c28846);
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px 20px rgba(0, 0, 0, 0.17);
+      width: 300px;
+      height: 200px;
+      animation: bg 2.5s linear infinite, rotate 1s infinite alternate-reverse;
+      position: relative;
+      cursor: pointer;
+      transform: rotateX(10deg) rotateY(15deg);
+    }
+
+    .card::after {
+      content: "";
+      background: #222;
+      position: absolute;
+      width: 296px;
+      height: 196px;
+      left: calc(50% - 148px);
+      top: calc(50% - 98px);
+      border-radius: 15px;
+    }
+    .card span {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      left: 0%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 26px;
+      font-weight: bold;
+      font-family: "Amatic SC";
+      color: #fff;
+      letter-spacing: 2px;
+      transition: all 0.5s;
+    }
+    .card:hover span {
+      background: linear-gradient(45deg, #ff1d74, #e3820c 43%, #c28846);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateX(10deg) rotateY(15deg);
+      }
+      100% {
+        transform: rotateX(-10deg) rotateY(-15deg);
+      }
+    }
+    @keyframes bg {
+      0% {
+        --rotate: 0deg;
+      }
+      100% {
+        --rotate: 360deg;
+      }
+    }
+  </style>
+  <body>
+    <div class="card">
+      <span>苏苏就是小苏苏888</span>
+    </div>
+  </body>
+  <script>
+    /* const card = document.querySelector(".card");
+    const range = 40;
+    const calcValue = (a, b) => ((a / b) * range - range / 2).toFixed(1);
+    let timeout;
+    document.addEventListener(
+      "mousemove",
+      ({ x, y }) => {
+        if (timeout) {
+          window.cancelAnimationFrame(timeout);
+        }
+        timeout = window.requestAnimationFrame(() => {
+          const yValue = calcValue(y, 600);
+          const xValue = calcValue(x, 800);
+          card.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
+        });
+      },
+      false
+    ); */
+  </script>
+</html>

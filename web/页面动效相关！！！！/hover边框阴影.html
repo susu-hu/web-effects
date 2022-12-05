@@ -1,113 +1,114 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>参考链接：https://codepen.io/gayane-gasparyan/pen/jOmaBQK</title>
-	</head>
-	<style>
-		@property --rotate {
-			syntax: "<angle>";
-			initial-value: 132deg;
-			inherits: false;
-		}
+  <head>
+    <meta charset="utf-8" />
+    <title>参考链接：https://codepen.io/gayane-gasparyan/pen/jOmaBQK</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    @property --rotate {
+      syntax: "<angle>";
+      initial-value: 132deg;
+      inherits: false;
+    }
 
-		:root {
-			--card-height: 65vh;
-			--card-width: calc(var(--card-height) / 1.5);
-		}
+    :root {
+      --card-height: 35vh;
+      --card-width: calc(var(--card-height) / 1.5);
+    }
 
+    body {
+      background: #212534;
+    }
 
-		body {
-			min-height: 100vh;
-			background: #212534;
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			padding-top: 2rem;
-			padding-bottom: 2rem;
-			box-sizing: border-box;
-		}
+    .card {
+      background: #191c29;
+      width: var(--card-width);
+      height: var(--card-height);
+      padding: 3px;
+      position: relative;
+      border-radius: 6px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      font-size: 1.5em;
+      color: rgb(88 199 250 / 0%);
+      cursor: pointer;
+      font-family: cursive;
+    }
 
+    .card::before {
+      content: "";
+      width: 104%;
+      height: 102%;
+      border-radius: 8px;
+      background-image: linear-gradient(
+        var(--rotate),
+        #ff1d74,
+        #e3820c 43%,
+        #c28846
+      );
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+    }
 
-		.card {
-			background: #191c29;
-			width: var(--card-width);
-			height: var(--card-height);
-			padding: 3px;
-			position: relative;
-			border-radius: 6px;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-			display: flex;
-			font-size: 1.5em;
-			color: rgb(88 199 250 / 0%);
-			cursor: pointer;
-			font-family: cursive;
-		}
+    .card::after {
+      position: absolute;
+      content: "";
+      top: calc(var(--card-height) / 6);
+      left: 0;
+      right: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+      transform: scale(0.8);
+      filter: blur(calc(var(--card-height) / 6));
+      background-image: linear-gradient(
+        var(--rotate),
+        #ff1d74,
+        #e3820c 43%,
+        #c28846
+      );
+      opacity: 1;
+      transition: all 0.5s;
+      animation: spin 2.5s linear infinite;
+    }
 
-		.card:hover {
-			color: rgb(88 199 250 / 100%);
-			transition: color 1s;
-		}
+    @keyframes spin {
+      0% {
+        --rotate: 0deg;
+      }
 
-		.card:hover:before,
-		.card:hover:after {
-			animation: none;
-			opacity: 0;
-		}
+      100% {
+        --rotate: 360deg;
+      }
+    }
 
+    a {
+      color: #212534;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
 
-		.card::before {
-			content: "";
-			width: 104%;
-			height: 102%;
-			border-radius: 8px;
-			background-image: linear-gradient(var(--rotate), #ff1d74, #e3820c 43%, #c28846);
-			position: absolute;
-			z-index: -1;
-			top: -1%;
-			left: -2%;
-			animation: spin 2.5s linear infinite;
-		}
+    .card:hover {
+      color: rgb(88 199 250 / 100%);
+      transition: color 1s;
+    }
 
-		.card::after {
-			position: absolute;
-			content: "";
-			top: calc(var(--card-height) / 6);
-			left: 0;
-			right: 0;
-			z-index: -1;
-			height: 100%;
-			width: 100%;
-			margin: 0 auto;
-			transform: scale(0.8);
-			filter: blur(calc(var(--card-height) / 6));
-			background-image: linear-gradient(var(--rotate), #ff1d74, #e3820c 43%, #c28846);
-			opacity: 1;
-			transition: opacity .5s;
-			animation: spin 2.5s linear infinite;
-		}
-
-		@keyframes spin {
-			0% {
-				--rotate: 0deg;
-			}
-
-			100% {
-				--rotate: 360deg;
-			}
-		}
-
-		a {
-			color: #212534;
-			text-decoration: none;
-			font-family: sans-serif;
-			font-weight: bold;
-			margin-top: 2rem;
-		}
-	</style>
-	<body>
-		<div class="card"></div>
-	</body>
+    .card:hover:before,
+    .card:hover:after {
+      animation: none;
+      opacity: 0;
+    }
+  </style>
+  <body>
+    <div class="card"></div>
+  </body>
 </html>

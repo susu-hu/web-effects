@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    body {
+      transform-style: preserve-3d;
+      perspective: 1800px;
+    }
+    .box {
+      perspective: 1800px;
+      transform-origin: 50% 50%;
+      transform-style: preserve-3d;
+      width: 350px;
+      height: 200px;
+      background-image: url(https://www.transparenttextures.com/patterns/cubes.png),
+        linear-gradient(
+          to right top,
+          #cf4af3,
+          #e73bd7,
+          #f631bc,
+          #fd31a2,
+          #ff3a8b,
+          #ff4b78,
+          #ff5e68,
+          #ff705c,
+          #ff8c51,
+          #ffaa49,
+          #ffc848,
+          #ffe652
+        );
+      border-radius: 14px;
+      animation: rotate 1.5s infinite alternate-reverse;
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotateX(10deg) rotateY(15deg);
+      }
+      100% {
+        transform: rotateX(-10deg) rotateY(-15deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="box flex-row j_c">
+      <div class="card"></div>
+    </div>
+  </body>
+</html>
