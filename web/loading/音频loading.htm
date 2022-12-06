@@ -1,142 +1,70 @@
-<!--
- * @Author: susu 1628469970@qq.com
- * @Date: 2022-10-08 22:22:01
- * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-10-08 22:26:29
- * @FilePath: \css_demos\web\loading\音频loading.htm
- * @Description: 音频loading
--->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<link rel="stylesheet" href="../common.css">
-<style>
-    .audio_loader {
-        position: relative;
-        width: 175px;
-        height: 100px;
-        display: flex;
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      --h: 80px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: var(--h);
+    }
+    .container span {
+      background: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+      width: 4px;
+      height: 20%;
+      border-radius: calc(var(--h) * 0.2 * 0.5);
+      margin-right: 4px;
+      animation: loading 2.5s infinite linear;
+      animation-delay: calc(0.2s * var(--d));
+    }
+    .container span:last-child {
+      margin-right: 0px;
     }
 
-    .audio_loader span {
-        display: block;
-        background: #fcb34f;
-        width: 7px;
-        height: 10%;
-        border-radius: 14px;
-        margin-right: 5px;
-        margin-top: 25%;
+    @keyframes loading {
+      0% {
+        background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+        height: 20%;
+        border-radius: calc(var(--h) * 0.2 * 0.5);
+      }
+      50% {
+        background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+        height: 100%;
+        border-radius: calc(var(--h) * 1 * 0.5);
+      }
+      100% {
+        background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+        height: 20%;
+        border-radius: calc(var(--h) * 0.2 * 0.5);
+      }
     }
-
-    .audio_loader span:last-child {
-        margin-right: 0px;
-    }
-
-    .audio_loader span:nth-child(1) {
-        animation: load 2.5s 1.4s infinite linear;
-    }
-
-    .audio_loader span:nth-child(2) {
-        animation: load 2.5s 1.2s infinite linear;
-    }
-
-    .audio_loader span:nth-child(3) {
-        animation: load 2.5s 1s infinite linear;
-    }
-
-    .audio_loader span:nth-child(4) {
-        animation: load 2.5s 0.8s infinite linear;
-    }
-
-    .audio_loader span:nth-child(5) {
-        animation: load 2.5s 0.6s infinite linear;
-    }
-
-    .audio_loader span:nth-child(6) {
-        animation: load 2.5s 0.4s infinite linear;
-    }
-
-    .audio_loader span:nth-child(7) {
-        animation: load 2.5s 0.2s infinite linear;
-    }
-
-    .audio_loader span:nth-child(8) {
-        animation: load 2.5s 0s infinite linear;
-    }
-
-    .audio_loader span:nth-child(9) {
-        animation: load 2.5s 0.2s infinite linear;
-    }
-
-    .audio_loader span:nth-child(10) {
-        animation: load 2.5s 0.4s infinite linear;
-    }
-
-    .audio_loader span:nth-child(11) {
-        animation: load 2.5s 0.6s infinite linear;
-    }
-
-    .audio_loader span:nth-child(12) {
-        animation: load 2.5s 0.8s infinite linear;
-    }
-
-    .audio_loader span:nth-child(13) {
-        animation: load 2.5s 1s infinite linear;
-    }
-
-    .audio_loader span:nth-child(14) {
-        animation: load 2.5s 1.2s infinite linear;
-    }
-
-    .audio_loader span:nth-child(15) {
-        animation: load 2.5s 1.4s infinite linear;
-    }
-
-    @keyframes load {
-        0% {
-            background: #25a5d8;
-            margin-top: 25%;
-            height: 10%;
-        }
-
-        50% {
-            background: #83c4dd;
-            height: 100%;
-            margin-top: 0%;
-        }
-
-        100% {
-            background: #9d9fac;
-            height: 10%;
-            margin-top: 25%;
-        }
-    }
-</style>
-
-<body>
-    <div class="audio_loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+  </style>
+  <body>
+    <div class="container">
+      <span style="--d: 7"></span>
+      <span style="--d: 6"></span>
+      <span style="--d: 5"></span>
+      <span style="--d: 4"></span>
+      <span style="--d: 3"></span>
+      <span style="--d: 2"></span>
+      <span style="--d: 1"></span>
+      <span style="--d: 0"></span>
+      <span style="--d: 1"></span>
+      <span style="--d: 2"></span>
+      <span style="--d: 3"></span>
+      <span style="--d: 4"></span>
+      <span style="--d: 5"></span>
+      <span style="--d: 6"></span>
+      <span style="--d: 7"></span>
     </div>
-</body>
-
+  </body>
 </html>
