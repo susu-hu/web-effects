@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://codepen.io/susu-hu/pen/OJEBbNJ</title>
+  </head>
+  <style>
+    :root {
+      --primary-light: #39ddfa;
+      --primary: #00abdf;
+      --primary-dark: #008ada;
+      --white: #ffffff;
+      --greyLight-1: #ebf5fc;
+      --greyLight-2: #d5e0f3;
+      --greyLight-3: #c1d9f0;
+      --greyDark: #646b8c;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: inherit;
+    }
+
+    html {
+      box-sizing: border-box;
+      font-size: 62.5%;
+      overflow-y: scroll;
+      font-family: "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--greyLight-2);
+      padding: 2rem;
+    }
+
+    .card {
+      width: 34rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 2rem;
+      background: var(--greyLight-1);
+      box-shadow: 0px 20px 30px rgba(100, 131, 177, 0.2);
+      padding: 5rem;
+      border: 1px solid white;
+    }
+    .card__percent {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 6rem;
+    }
+    .card__number {
+      position: absolute;
+      color: var(--greyDark);
+      font-size: 3.6rem;
+      font-family: "DM Sans", sans-serif;
+    }
+    .card__description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .card__description h2 {
+      font-size: 1.8rem;
+      font-family: "DM Sans", sans-serif;
+      letter-spacing: 1.2px;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .card__description p {
+      font-size: 1.4rem;
+      color: var(--greyDark);
+    }
+
+    svg {
+      position: relative;
+      width: 24rem;
+      height: 24rem;
+      z-index: 1000;
+      transform: rotate(-90deg);
+    }
+
+    svg circle {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke-linecap: round;
+      transform: translate(3rem, 3rem);
+      stroke-dasharray: 565.49;
+      stroke-dashoffset: 282.75;
+      transition: all 1s ease;
+      stroke-width: 24;
+    }
+
+    .circle {
+      position: absolute;
+      width: 23rem;
+      height: 23rem;
+      border-radius: 50%;
+      box-shadow: 6px 6px 8px var(--greyLight-2), -6px -6px 8px var(--white);
+      background: var(--greyLight-1);
+    }
+    .circle__medium {
+      width: 20.5rem;
+      height: 20.5rem;
+      box-shadow: inset 8px 8px 10px var(--greyLight-2),
+        inset -4px -4px 8px var(--white);
+    }
+    .circle__small {
+      width: 15.5rem;
+      height: 15.5rem;
+      box-shadow: 6px 6px 8px var(--greyLight-2), -2px -2px 8px var(--white);
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      justify-items: center;
+      padding: 4rem;
+      margin-left: 4rem;
+      border-radius: 2rem;
+      background: var(--greyLight-1);
+      text-align: center;
+      box-shadow: 0px 20px 30px rgba(100, 131, 177, 0.2);
+      border: 1px solid var(--white);
+      position: relative;
+    }
+    .form__text {
+      grid-column: 1/3;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--greyDark);
+    }
+    .form input {
+      border: none;
+      outline: none;
+      background: none;
+      font-family: inherit;
+      width: 5rem;
+      font-size: 1.6rem;
+      text-align: center;
+      padding: 0.8rem;
+      border-radius: 1rem;
+      margin-right: 1rem;
+      color: var(--primary);
+      box-shadow: inset 0.2rem 0.2rem 0.4rem var(--greyLight-2),
+        inset -0.3rem -0.3rem 0.4rem var(--white);
+    }
+    .form input::placeholder {
+      color: var(--greyLight-3);
+    }
+    .form input:focus {
+      color: var(--primary);
+      box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-3),
+        -0.2rem -0.2rem 0.5rem var(--white);
+    }
+    .form__btn {
+      border: none;
+      outline: none;
+      font-family: "DM Sans", sans-serif;
+      letter-spacing: 0.8px;
+      background: var(--greyLight-1);
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      color: var(--white);
+      cursor: pointer;
+      background: linear-gradient(
+        -25deg,
+        var(--primary) 0%,
+        var(--primary-light) 100%
+      );
+    }
+    .form__btn:hover {
+      background: linear-gradient(
+        -25deg,
+        var(--primary-dark) 0%,
+        var(--primary) 100%
+      );
+    }
+
+    .tooltip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      bottom: -6rem;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      background: var(--greyLight-1);
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .tooltip__text {
+      margin-left: 0.6rem;
+    }
+    .tooltip.fade-in {
+      animation: fadeIn 0.8s ease;
+    }
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      left: 45%;
+      bottom: 74%;
+      width: 2rem;
+      height: 2rem;
+      background: var(--greyLight-1);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+      transform: rotate(135deg);
+      border-radius: 0 0 0 0.4em;
+    }
+
+    .dribbble {
+      position: fixed;
+      font-size: 3.6rem;
+      right: 2rem;
+      top: 2rem;
+      color: #ea4c89;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        transform: translateY(-40px) scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <body></body>
+  <div class="container">
+    <div class="card">
+      <div class="card__percent">
+        <svg>
+          <defs>
+            <radialGradient
+              id="gradient"
+              cx="50%"
+              cy="50%"
+              r="60%"
+              fx="50%"
+              fy="50%"
+            >
+              <stop offset="30%" stop-color="var(--primary-dark)" />
+              <stop offset="100%" stop-color="var(--primary-light)" />
+            </radialGradient>
+          </defs>
+          <circle
+            cx="90"
+            cy="90"
+            r="90"
+            stroke="url(#gradient)"
+            id="circle"
+          ></circle>
+        </svg>
+        <div class="circle"></div>
+        <div class="circle circle__medium"></div>
+        <div class="circle circle__small"></div>
+        <div class="card__number">50%</div>
+      </div>
+      <div class="card__description">
+        <h2>Card Title</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta cumque
+          vitae iure voluptatem alias sed facilis quidem.
+        </p>
+      </div>
+    </div>
+
+    <div class="form">
+      <h2 class="form__text">Insert a percentage</h2>
+      <input
+        type="text"
+        placeholder="50"
+        id="percent"
+        onkeypress="return isNumeric(event)"
+        maxlength="3"
+      />
+      <button class="form__btn" onclick="changePercent()">Change</button>
+      <div class="tooltip">
+        <span class="material-icons">error</span>
+        <span class="tooltip__text" data-toggle="tooltip"
+          >Insert a valid number</span
+        >
+      </div>
+    </div>
+    <a href="https://dribbble.com/myacode" class="dribbble" target="_blank"
+      ><ion-icon name="logo-dribbble"></ion-icon>
+    </a>
+  </div>
+  <script>
+    const circle = document.getElementById("circle");
+    const input = document.getElementById("percent");
+    const number = document.querySelector(".card__number");
+    const tooltip = document.querySelector(".tooltip");
+
+    function circlePercent() {
+      let change = 565.49 - (565.49 * input.value) / 100;
+      circle.style.strokeDashoffset = change;
+    }
+
+    function isNumeric(event) {
+      if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode > 31) {
+        return false;
+      }
+      if (event.keyCode == 13) {
+        changePercent();
+      }
+    }
+
+    function changePercent() {
+      if (input.value > 100) {
+        tooltip.style.opacity = 1;
+        tooltip.classList.add("fade-in");
+        input.value = "";
+      } else {
+        tooltip.style.opacity = 0;
+        tooltip.classList.remove("fade-in");
+        number.innerHTML = Number(input.value) + "%";
+        circlePercent();
+        input.value = "";
+      }
+    }
+  </script>
+</html>
