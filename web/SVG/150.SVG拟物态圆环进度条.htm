@@ -6,52 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>150.SVG拟物态圆环进度条</title>
   </head>
+  <link rel="stylesheet" href="../common.css" />
   <style>
     :root {
-      --primary-light: #c1dfc4;
-      --primary-dark: #3cba92;
+      --ring-color1: #c1dfc4;
+      --ring-color2: #3cba92;
       --white: #ffffff;
       --greyLight-1: #ebf5fc;
       --greyLight-2: #d5e0f3;
       --greyDark: #646b8c;
     }
 
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     html {
-      box-sizing: border-box;
       font-size: 62.5%;
-      overflow-y: scroll;
       -webkit-font-smoothing: antialiased;
-      letter-spacing: 0.5px;
-      line-height: 1.4;
     }
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    body {
       background: var(--greyLight-2);
-      padding: 2rem;
     }
 
     .card {
-      width: 34rem;
+      width: 300px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border-radius: 2rem;
+      border-radius: 20px;
       background: var(--greyLight-1);
       box-shadow: 0px 20px 30px rgba(100, 131, 177, 0.2);
-      padding: 5rem;
       border: 1px solid white;
     }
     .card__percent {
@@ -69,10 +53,11 @@
 
     svg {
       position: relative;
-      width: 24rem;
-      height: 24rem;
-      z-index: 1000;
+      width: 150px;
+      height: 150px;
+      z-index: 1;
       transform: rotate(-90deg);
+      border: 1px solid red;
     }
 
     svg circle {
@@ -80,31 +65,31 @@
       height: 100%;
       fill: none;
       stroke-linecap: round;
-      transform: translate(3rem, 3rem);
+      transform: translate(15px, 15px);
       stroke-dasharray: 565.49;
       stroke-dashoffset: 565.49;
       /* 282.75对应50% */
-      /* transition: all 1s ease; */
-      stroke-width: 24;
+      transition: all 1s ease;
+      stroke-width: 10;
     }
 
     .circle {
       position: absolute;
-      width: 23rem;
-      height: 23rem;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       box-shadow: 6px 6px 8px var(--greyLight-2), -6px -6px 8px var(--white);
       background: var(--greyLight-1);
     }
     .circle__medium {
-      width: 20.5rem;
-      height: 20.5rem;
+      width: 130px;
+      height: 130px;
       box-shadow: inset 8px 8px 10px var(--greyLight-2),
         inset -4px -4px 8px var(--white);
     }
     .circle__small {
-      width: 15.5rem;
-      height: 15.5rem;
+      width: 110px;
+      height: 110px;
       box-shadow: 6px 6px 8px var(--greyLight-2), -2px -2px 8px var(--white);
     }
   </style>
@@ -122,14 +107,14 @@
                 fx="50%"
                 fy="50%"
               >
-                <stop offset="30%" stop-color="var(--primary-dark)" />
-                <stop offset="100%" stop-color="var(--primary-light)" />
+                <stop offset="30%" stop-color="var(--ring-color2)" />
+                <stop offset="100%" stop-color="var(--ring-color1)" />
               </radialGradient>
             </defs>
             <circle
-              cx="90"
-              cy="90"
-              r="90"
+              cx="60"
+              cy="60"
+              r="60"
               stroke="url(#gradient)"
               id="circle"
             ></circle>
@@ -159,13 +144,7 @@
           number.innerHTML = i + "%";
           circlePercent(i);
         } else {
-          i = 0;
           clearInterval(timer);
-          setTimeout(() => {
-            circlePercent(565.49);
-            number.innerHTML = "0%";
-            timer = setInterval(loading, 100);
-          }, 2000);
         }
       };
       loading();
