@@ -1,0 +1,595 @@
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>参考：http://www.bootstrapmb.com/item/12023/preview</title>
+    <link
+      rel="stylesheet"
+      href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/element-ui/2.2.0/theme-chalk/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://at.alicdn.com/t/font_3045003_lkxtjaj4m6.css"
+    />
+    <style>
+      .rotation3D {
+        position: relative;
+        width: 800px;
+        height: 800px;
+        cursor: move;
+        user-select: none;
+        margin: 0 auto;
+        margin-top: -100px;
+        /*border: 1px solid white; border-radius: 100%;*/
+      }
+      .rotation3D .center {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .rotation3D .itemList {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+      }
+      .rotation3D .lineList {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        transform-style: preserve-3d;
+      }
+
+      /*---------------------------ç‚¹æ ·å¼---------------------------*/
+      .rotation3D__item {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        width: 161px;
+        height: 188px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 16px;
+        color: white;
+        /*background: #2292ef; border-radius: 4px;*/
+      }
+      .rotation3D__item .scale {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .rotation3D__item .cont {
+        position: relative;
+        z-index: 2;
+      }
+      .rotation3D__item .cont .iconfont {
+        font-size: 28px;
+        margin-top: 30px;
+        margin-bottom: 60px;
+        display: block;
+      }
+      .rotation3D__item .cont p {
+        color: #fff;
+      }
+
+      .rotation3D__item.blue {
+        color: #01e9fc;
+      }
+      .rotation3D__item.green {
+        color: #02e943;
+      }
+      .rotation3D__item.yellow {
+        color: #ffd200;
+      }
+
+      /*åº•åº§*/
+      .rotation3D__item .baseImg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .rotation3D__item.blue .baseImg {
+        background: url("img/è“åº•.png");
+      }
+      .rotation3D__item.green .baseImg {
+        background: url("img/ç»¿åº•.png");
+      }
+      .rotation3D__item.yellow .baseImg {
+        background: url("img/é»„åº•.png");
+      }
+
+      .rotation3D__line {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: block;
+        width: 2px;
+        height: 50%;
+        padding-top: 60px;
+        color: #fff;
+        font-size: 50px;
+        transform-origin: 50% 0;
+        transform-style: preserve-3d;
+      }
+      .rotation3D__line .pos {
+        position: absolute;
+        top: 0;
+      }
+      .rotation3D__line svg {
+        position: absolute;
+        top: 0;
+      }
+      .rotation3D__line svg path {
+        stroke: #fff;
+        fill: none;
+        stroke-width: 3;
+        animation: path-animation 100s linear 0s infinite normal;
+      }
+      @keyframes path-animation {
+        0% {
+          stroke-dashoffset: 500;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      .rotation3D__line .dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        /*width: 35px; height: 35px; font-size: 35px; */
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+      }
+      .rotation3D__line .dot1,
+      .rotation3D__line .dot3,
+      .rotation3D__line .dot4 {
+        animation: svg-path-animation 6s ease-in-out 0s infinite normal;
+      }
+      .rotation3D__line .dot1 {
+        offset-path: path("M0 400, 0 0");
+        offset-distance: 0%;
+      }
+      .rotation3D__line .dot2 {
+        offset-path: path("M0 200, 0 0");
+        offset-distance: 0%;
+        background: #ffd200;
+        border-radius: 100%;
+        font-size: 22px;
+        color: #000;
+      }
+      .rotation3D__line .dot3 {
+        offset-path: path("M20 400 S 0 200, 20 0");
+        offset-distance: 0%;
+      }
+      .rotation3D__line .dot4 {
+        offset-path: path("M20 0 S 40 200, 20 400");
+        offset-distance: 0%;
+      }
+      @keyframes svg-path-animation {
+        from {
+          offset-distance: 0%;
+        }
+        to {
+          offset-distance: 100%;
+        }
+      }
+
+      /*é¢œè‰²*/
+      .rotation3D__line.blue {
+        color: #07b2f9;
+      }
+      .rotation3D__line.green {
+        color: #00ff5b;
+      }
+      .rotation3D__line.yellow {
+        color: #ffd500;
+      }
+
+      .rotation3D__line.blue svg path {
+        stroke: #07b2f9;
+      }
+      .rotation3D__line.green svg path {
+        stroke: #00ff5b;
+      }
+      .rotation3D__line.yellow svg path {
+        stroke: #ffd500;
+      }
+      body {
+        background-color: #292a38;
+      }
+      .rotation3D-baseMap {
+        position: absolute;
+        left: 10px;
+        right: 0;
+        top: 160px;
+        margin: auto;
+        width: 1312px;
+        height: 516px;
+        background: url("js/rotation3D/img/baseMap.png");
+      }
+      .rotation3D-baseMap::before {
+        position: absolute;
+        left: -12px;
+        right: 0;
+        top: 0;
+        margin: auto;
+        z-index: 99;
+        width: 342px;
+        height: 318px;
+        display: block;
+        content: "";
+        background: url("js/rotation3D/img/baseLogo.png");
+        animation: 10s bounceUpDown infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" style="padding: 50px">
+      <div class="rotation3D-baseMap"></div>
+      <div id="rotation3D" class="rotation3D">
+        <button class="center">中心</button>
+        <div class="itemList">
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 100;
+              transform-origin: 0px 0px;
+              transform: translate(319.5px, 499.5px);
+            "
+          >
+            <div class="scale" style="transform: scale(1)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-renyuanguanli"></i>
+                <p>人员管理</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item green"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 94;
+              transform-origin: 0px 0px;
+              transform: translate(36.6573px, 446.779px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.941421)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-GPS"></i>
+                <p>GPS服务</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item yellow"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 80;
+              transform-origin: 0px 0px;
+              transform: translate(-80.5px, 319.5px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.8)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-a-lujishigong2x"></i>
+                <p>路基施工</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 65;
+              transform-origin: 0px 0px;
+              transform: translate(36.6573px, 192.221px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.658579)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-shujufuwuzhongxin"></i>
+                <p>数据服务中心</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 60;
+              transform-origin: 0px 0px;
+              transform: translate(319.5px, 139.5px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.6)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-liangchang"></i>
+                <p>智慧梁场</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 65;
+              transform-origin: 0px 0px;
+              transform: translate(602.343px, 192.221px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.658579)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-tanpuyashifuwu"></i>
+                <p>摊铺压实服务</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 80;
+              transform-origin: 0px 0px;
+              transform: translate(719.5px, 319.5px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.8)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-lumianshigong"></i>
+                <p>路面施工</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__item blue"
+            style="
+              position: absolute;
+              display: inline-block;
+              z-index: 94;
+              transform-origin: 0px 0px;
+              transform: translate(602.343px, 446.779px);
+            "
+          >
+            <div class="scale" style="transform: scale(0.941421)">
+              <div class="baseImg"></div>
+              <div class="cont">
+                <i class="iconfont icon-shiyanjiance"></i>
+                <p>试验检测</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lineList">
+          <div
+            class="rotation3D__line blue"
+            style="height: 193.5px; transform: rotate(-5.3225e-15deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 193.5px">
+                <path
+                  id="path1"
+                  d="M0 193.5, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 193.5 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line green"
+            style="height: 315.941px; transform: rotate(66.7308deg)"
+          >
+            <!---->
+            <!---->
+            <div class="pos" style="left: -16px">
+              <svg width="50" height="400" style="height: 315.941px">
+                <path
+                  id="path3"
+                  d="M20 315.9411162804971 S 0 157.97055814024856, 20 0"
+                  stroke-dasharray="5,10"
+                ></path>
+                <path
+                  id="path4"
+                  d="M20 0 S 40 157.97055814024856, 20 315.9411162804971"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot3 el-icon-caret-right"
+                style="offset-path: path('M 20 315.941 S 0 157.971 20 0')"
+              ></div>
+              <div
+                class="dot dot4 el-icon-caret-right"
+                style="offset-path: path('M 20 0 S 40 157.971 20 315.941')"
+              ></div>
+            </div>
+          </div>
+          <div
+            class="rotation3D__line yellow"
+            style="height: 400.228px; transform: rotate(90deg)"
+          >
+            <!---->
+            <div class="pos">
+              <svg width="10" height="400" style="height: 400.228px">
+                <path
+                  id="path2"
+                  d="M0 400.2277476637521, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot2"
+                style="offset-path: path('M 0 200.114 L 0 0')"
+              >
+                <i class="el-icon-close"></i>
+              </div>
+            </div>
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line blue"
+            style="height: 304.87px; transform: rotate(113.269deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 304.87px">
+                <path
+                  id="path1"
+                  d="M0 304.8699903949771, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 304.87 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line blue"
+            style="height: 166.5px; transform: rotate(180deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 166.5px">
+                <path
+                  id="path1"
+                  d="M0 166.5, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 166.5 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line blue"
+            style="height: 304.87px; transform: rotate(246.731deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 304.87px">
+                <path
+                  id="path1"
+                  d="M0 304.869990394977, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 304.87 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line blue"
+            style="height: 400.228px; transform: rotate(270deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 400.228px">
+                <path
+                  id="path1"
+                  d="M0 400.2277476637521, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 400.228 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+          <div
+            class="rotation3D__line blue"
+            style="height: 315.941px; transform: rotate(293.269deg)"
+          >
+            <div class="pos">
+              <svg width="10" height="400" style="height: 315.941px">
+                <path
+                  id="path1"
+                  d="M0 315.94111628049717, 0 0"
+                  stroke-dasharray="5,10"
+                ></path>
+              </svg>
+              <div
+                class="dot dot1 el-icon-caret-right"
+                style="offset-path: path('M 0 315.941 L 0 0')"
+              ></div>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://s1.pstatp.com/cdn/expire-1-M/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://s3.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js"></script>
+    <script src="js/rotation3D/rotation3D.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          itemList: [
+            { name: "人员管理", type: "blue", icon: "icon-renyuanguanli" },
+            { name: "GPS服务", type: "green", icon: "icon-GPS" },
+            { name: "路基施工", type: "yellow", icon: "icon-a-lujishigong2x" },
+            {
+              name: "数据服务中心",
+              type: "blue",
+              icon: "icon-shujufuwuzhongxin",
+            },
+            { name: "智慧梁场", type: "blue", icon: "icon-liangchang" },
+            { name: "摊铺压实服务", type: "blue", icon: "icon-tanpuyashifuwu" },
+            { name: "路面施工", type: "blue", icon: "icon-lumianshigong" },
+            { name: "试验检测", type: "blue", icon: "icon-shiyanjiance" },
+          ],
+        },
+        mounted: function () {
+          new Rotation3D({
+            id: "#rotation3D",
+            farScale: 0.6,
+            xRadius: 0,
+            yRadius: 220,
+          });
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>

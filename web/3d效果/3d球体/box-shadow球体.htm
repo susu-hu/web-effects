@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="../../common.css" />
+  <style>
+    :root {
+      --base-color: rgba(168, 201, 212, 0.5);
+      --base-shadow: #a1c5d3;
+      --darker-shadow: #87ceeb;
+      --darkest-shadow: #6aaec9;
+      --base-highlight: #aae1f7;
+      --lighter-highlight: #a8c3ce;
+      --lightest: #fff;
+    }
+    body {
+      background: var(--lightest);
+    }
+
+    main {
+      width: 450px;
+      height: 450px;
+      position: relative;
+      transform: scale(0.5);
+    }
+
+    div.crop {
+      position: absolute;
+      z-index: 4;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      box-shadow: -200px -200px 20px 0 var(--lightest);
+    }
+
+    .inner.shadow {
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      z-index: 3;
+      width: 360px;
+      height: 360px;
+      background: var(--base-shadow);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .inner.shadow.two {
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      z-index: 3;
+      width: 150px;
+      height: 150px;
+      background: var(--darkest-shadow);
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    .inner.highlight.one {
+      position: absolute;
+      z-index: 4;
+      left: 70px;
+      top: 140px;
+      z-index: 4;
+      width: 25px;
+      height: 30px;
+      background: var(--lightest);
+      border-radius: 50%;
+      transform: rotate(30deg);
+      filter: blur(8px);
+    }
+
+    .inner.highlight.two {
+      position: absolute;
+      z-index: 4;
+      left: 120px;
+      top: 50px;
+      z-index: 4;
+      width: 30px;
+      height: 80px;
+      background: var(--lightest);
+      border-radius: 50%;
+      transform: rotate(50deg);
+      filter: blur(8px);
+    }
+
+    div.glass.bead {
+      position: absolute;
+      z-index: 2;
+      width: 450px;
+      height: 450px;
+      background: var(--base-color);
+      border-radius: 50%;
+    }
+
+    div.rim.shadow {
+      position: absolute;
+      z-index: 3;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      box-shadow: inset -20px -15px 20px rgba(255, 255, 255, 0.308),
+        inset -1px -1px 40px #fff, inset 20px 20px 30px var(--darker-shadow),
+        inset 10px 10px 10px var(--darkest-shadow);
+    }
+
+    div.outer.highlight {
+      position: absolute;
+      top: 400px;
+      left: 160px;
+      z-index: 1;
+      width: 200px;
+      height: 100px;
+      background: var(--lightest);
+      filter: blur(30px);
+      border-radius: 50%;
+      transform: rotateX(50deg);
+    }
+
+    div.outer.shadow {
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      z-index: -1;
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(
+        180deg,
+        var(--darkest-shadow) 20%,
+        var(--darker-shadow),
+        var(--lightest)
+      );
+      filter: blur(60px);
+      border-radius: 50%;
+      transform: rotateX(50deg);
+    }
+  </style>
+
+  <body>
+    <main>
+      <div class="crop"></div>
+      <div class="inner shadow"></div>
+      <div class="inner shadow two"></div>
+      <div class="inner highlight one"></div>
+      <div class="inner highlight two"></div>
+      <div class="rim shadow"></div>
+      <div class="glass bead"></div>
+      <div class="outer highlight"></div>
+      <div class="outer shadow"></div>
+    </main>
+  </body>
+</html>

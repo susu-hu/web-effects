@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>151.3d魔方 参考：http://www.bootstrapmb.com/item/9669</title>
+  </head>
+  <style>
+    html,
+    body {
+      width: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      background: #021c24;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      perspective: 700px;
+      top: calc(50% - 100px);
+      left: calc(50% - 100px);
+    }
+
+    .rubiks-cube {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform-style: preserve-3d;
+      transition: -webkit-transform 1s ease;
+      transition: transform 1s ease;
+      transition: transform 1s ease, -webkit-transform 1s ease;
+      background: black;
+    }
+
+    .cube-side {
+      width: 100%;
+      height: 100%;
+      font-size: 0;
+      position: absolute;
+      backface-visibility: hidden;
+      background: black;
+      border-radius: 7px;
+    }
+
+    .cube-side:nth-of-type(1) .cube-side-square {
+      background: #b71234;
+    }
+
+    .cube-side:nth-of-type(2) .cube-side-square {
+      background: #cecece;
+    }
+
+    .cube-side:nth-of-type(3) .cube-side-square {
+      background: #0046ad;
+    }
+
+    .cube-side:nth-of-type(4) .cube-side-square {
+      background: #ffd500;
+    }
+
+    .cube-side:nth-of-type(5) .cube-side-square {
+      background: #ff5800;
+    }
+
+    .cube-side:nth-of-type(6) .cube-side-square {
+      background: #009b48;
+    }
+
+    .cube-side .cube-side-square {
+      display: inline-block;
+      border: 6px solid;
+      width: 33%;
+      height: 33%;
+      border-radius: 12px;
+    }
+
+    .cube-side.side-front {
+      transform: translateZ(100px);
+    }
+
+    .cube-side.side-back {
+      transform: rotateX(-180deg) translateZ(100px);
+    }
+
+    .cube-side.side-right {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+
+    .cube-side.side-left {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    .cube-side.side-top {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+
+    .cube-side.side-bottom {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    .rubiks-cube {
+      animation: rubiksCubeRotate 20s linear infinite both alternate;
+    }
+
+    @keyframes rubiksCubeRotate {
+      0% {
+        transform: rotateZ(0deg) rotateX(0deg) rotateY(0deg);
+      }
+
+      15% {
+        transform: rotateZ(45deg) rotateX(45deg) rotateY(45deg);
+      }
+
+      30% {
+        transform: rotateZ(45deg) rotateX(90deg) rotateY(90deg);
+      }
+
+      45% {
+        transform: rotateZ(45deg) rotateX(135deg) rotateY(135deg);
+      }
+
+      60% {
+        transform: rotateZ(45deg) rotateX(90deg) rotateY(180deg);
+      }
+
+      75% {
+        transform: rotateZ(45deg) rotateX(45deg) rotateY(225deg);
+      }
+
+      100% {
+        transform: rotateZ(45deg) rotateX(0deg) rotateY(270deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="rubiks-cube">
+        <div class="cube-side side-front">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+        <div class="cube-side side-back">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+        <div class="cube-side side-right">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+        <div class="cube-side side-left">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+        <div class="cube-side side-top">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+        <div class="cube-side side-bottom">
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+          <div class="cube-side-square"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
