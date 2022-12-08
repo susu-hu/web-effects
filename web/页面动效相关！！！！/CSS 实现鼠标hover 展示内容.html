@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./font.css" />
+    <link rel="stylesheet" href="../common.css" />
+    <style>
+      .box {
+        overflow: hidden;
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+      .box img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.4s;
+      }
+      .box:before {
+        content: "";
+        background: rgba(255, 255, 255, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .box:hover:before {
+        height: 70%;
+        border-radius: 0 0 150px 150px;
+        box-shadow: 0 0 20px #000;
+        opacity: 1;
+      }
+
+      .box:hover img {
+        opacity: 0.8;
+        filter: brightness(1.5);
+      }
+
+      .box .box-content {
+        color: #333;
+        text-align: center;
+        width: 100%;
+        padding: 0 30px;
+        transform: translateX(-50%);
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .box-content p:nth-child(1) {
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        /* 定义无小写字母，仅有大写字母 */
+        margin: 0 0 2px;
+      }
+
+      .box-content p:nth-child(2) {
+        font-size: 16px;
+        text-transform: capitalize;
+        /* 文本中的每个单词以大写字母开头 */
+      }
+
+      .box:hover .box-content {
+        opacity: 1;
+      }
+
+      .box .box-icon {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .box .icon-item {
+        margin: 0 2px;
+        background: rgba(255, 255, 255, 0.5);
+        height: 35px;
+        width: 35px;
+        text-align: center;
+        line-height: 31px;
+        border: 2px solid #fff;
+        cursor: pointer;
+        transition: all 0.4s;
+      }
+      .box .icon-item:nth-child(1) {
+        transform: translateX(-200px);
+      }
+      .box .icon-item:nth-child(2) {
+        transform: translateX(200px);
+      }
+      .box:hover .icon-item {
+        transform: translateX(0);
+      }
+      .box .icon-item:hover {
+        background-color: #fff;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="https://i.postimg.cc/GhXrMDN0/card.jpg" alt="图片" />
+      <div class="box-content">
+        <p>苏苏小苏苏</p>
+        <p>web 前端</p>
+      </div>
+      <div class="box-icon">
+        <div class="icon-item"><span class="iconfont">&#xe698;</span></div>
+        <div class="icon-item"><span class="iconfont">&#xe65c;</span></div>
+      </div>
+    </div>
+  </body>
+</html>
