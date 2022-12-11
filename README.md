@@ -174,6 +174,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 148. Grid 布局实现九宫格图片动画
 - [x] 149. CSS 实现卡片边框渐变动画
 - [x] 150. CSS 实现3d魔方
+- [x] 151.SVG 实现拟物态圆环进度条
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -183,6 +184,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 151.SVG 实现拟物态圆环进度条
+![输入图片说明](web-pictures/151.svg%E6%8B%9F%E7%89%A9%E6%80%81%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1.gif)
 ##### 150. CSS 实现3d魔方
 ![输入图片说明](web-pictures/150.3d%E9%AD%94%E6%96%B9.gif)
 ##### 149. CSS 实现卡片边框渐变动画
