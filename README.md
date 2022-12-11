@@ -173,6 +173,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 147. css实现3d楼梯旋转动画
 - [x] 148. Grid 布局实现九宫格图片动画
 - [x] 149. CSS 实现卡片边框渐变动画
+- [x] 150. CSS 实现3d魔方
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -182,6 +183,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 150. CSS 实现3d魔方
+![输入图片说明](web-pictures/150.3d%E9%AD%94%E6%96%B9.gif)
 ##### 149. CSS 实现卡片边框渐变动画
 ![输入图片说明](web-pictures/149.gif)
 ##### 148. Grid 布局实现九宫格图片动画
