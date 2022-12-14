@@ -12,13 +12,23 @@
     .container {
       width: 200px;
       height: 200px;
-      /* transform: rotateX(53deg); */
+      /* transform: rotateX(55deg); */
     }
 
     .container circle {
       transform-origin: center;
-      transform: rotate(-90deg);
       fill: none;
+    }
+    .outer-circle {
+      animation: rotate 5s infinite linear;
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1turn);
+      }
     }
 
     .container span {
@@ -66,6 +76,7 @@
             stroke-width="5"
             stroke="#3EC8FE"
             mask="url(#dailyMask)"
+            class="outer-circle"
           ></circle>
         </svg>
         <span> {{getPercent(curr, total)}}%</span>
