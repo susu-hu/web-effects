@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* 看来svg的width、height属性是用来控制svg作为 html 元素的宽高的，不会影响svg里面的形状等元素的 */
+    svg {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+  </style>
+  <body>
+    <svg viewBox="0 0 100 100">
+      <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
+    </svg>
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
+    </svg>
+    <svg viewBox="0 0 300 300">
+      <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
+    </svg>
+    <svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="100" fill="darkorange"></circle>
+    </svg>
+    <svg viewBox="0 0 400 400">
+      <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
+    </svg>
+  </body>
+</html>
+<!-- 
+
+   可以将viewBox看作是svg画布大小。
+   画布变大了，里面的形状当然就显得小了；
+   如果画布变小了，就有可能将里面的形状裁切。
+
+    svg 的width、height属性设置的是svg这个 html元素 的大小。
+    因为 svg 是矢量图形，所以 svg 的viewBox，包括viewBox中的内容会等比缩放，但并不会变形。
+    当然，width、height要和viewBox等比例，否则会出现裁切。
+    css 中的width、height会覆盖 svg 标签本身的width、height属性，也就是 css 的宽高具有更高的优先级。
+    在制作svg图形时，可以任意定义viewBox大小，并在其中放置各种形状，这些形状(包括文字等)的定位都相对viewBox。
+    而svg实际应用后的大小，取决于width、height属性，或者css样式。
+ -->
