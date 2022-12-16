@@ -30,6 +30,12 @@
     <svg viewBox="0 0 400 400">
       <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
     </svg>
+    <svg viewBox="0 0 500 500">
+      <circle cx="100" cy="100" r="100" fill="darkorange"></circle>
+    </svg>
+    <svg viewBox="0 0 500 500">
+      <circle cx="500" cy="500" r="500" fill="darkorange"></circle>
+    </svg>
   </body>
 </html>
 <!-- 
@@ -44,4 +50,7 @@
     css 中的width、height会覆盖 svg 标签本身的width、height属性，也就是 css 的宽高具有更高的优先级。
     在制作svg图形时，可以任意定义viewBox大小，并在其中放置各种形状，这些形状(包括文字等)的定位都相对viewBox。
     而svg实际应用后的大小，取决于width、height属性，或者css样式。
+    计算公式：
+    已知svg宽高为200px * 200px
+    圆的半径为 200 * （r/viewBox)
  -->
