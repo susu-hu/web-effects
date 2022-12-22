@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .cartoon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vmin;
+      height: 80vmin;
+    }
+    .cartoon div {
+      position: absolute;
+      box-sizing: border-box;
+    }
+    .b {
+      border: 0.5vmin solid;
+    }
+    .r {
+      border-radius: 100%;
+    }
+    .hb::before,
+    .ha::after {
+      content: "";
+      display: block;
+      position: absolute;
+      box-sizing: border-box;
+    }
+    @keyframes snow {
+      0% {
+        background-position: 0 0, 0 0, 0 0, 0 0;
+      }
+      40% {
+        background-position: 10px 14vmin, -20px 28vmin, 20px 20vmin, 75px 20vmin;
+      }
+      60% {
+        background-position: -10px 21vmin, -30px 42vmin, 30px 30vmin,
+          50px 30vmin;
+      }
+      100% {
+        background-position: 0 35vmin, 0 70vmin, 0 50vmin, 0 50vmin;
+      }
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #1585;
+      background-image: radial-gradient(
+          circle at 50% 50%,
+          white 2.5%,
+          transparent 0
+        ),
+        radial-gradient(circle at 30% 90%, white 1.5%, transparent 0),
+        radial-gradient(circle at 70% 10%, white 1%, transparent 0),
+        radial-gradient(circle at 10% 40%, white 1%, transparent 0);
+      background-size: 45vmin 35vmin, 50vmin 70vmin, 60vmin 50vmin,
+        65vmin 50vmin;
+      background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    .cartoon {
+      --skin: #fca;
+      --beard: #eee;
+      --eyes: #630a;
+      --cheeks: #f001;
+      --belt: #111;
+      --belt-buckle: gold;
+      --suit: #a00;
+    }
+    .cartoon::before {
+      top: 90%;
+      left: 50%;
+      width: 200vmax;
+      height: 200vmax;
+      background: white;
+      transform: translate(-50%, 0) rotate(1deg);
+    }
+    .head {
+      width: 25%;
+      height: 25%;
+      background: var(--skin);
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .beard {
+      width: 30%;
+      height: 40%;
+      background: var(--beard);
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      border-radius: 100% / 120% 120% 80% 80%;
+    }
+    .mustache {
+      width: 10%;
+      height: 10%;
+      background: #fff;
+      border-radius: 100% 20% 100% 0;
+      top: 31%;
+      left: 51%;
+      transform-origin: top right;
+      transform: translate(-100%, 0) rotate(25deg);
+    }
+    .mustache + .mustache {
+      left: 49%;
+      border-radius: 20% 100% 0 100%;
+      transform-origin: top left;
+      transform: rotate(-25deg);
+    }
+    .eyes {
+      width: 2%;
+      height: 2%;
+      background: var(--eyes);
+      top: 23%;
+      left: 45%;
+      box-shadow: 6.66vmin 0 var(--eyes);
+    }
+    .cheeks {
+      width: 5%;
+      height: 3%;
+      background: var(--cheeks);
+      top: 25.5%;
+      left: 43%;
+      box-shadow: 7.25vmin 0 var(--cheeks);
+    }
+    .body {
+      width: 50%;
+      height: 50%;
+      background: var(--suit);
+      border-radius: 100% / 150% 150% 25% 25%;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      background-image: radial-gradient(
+          circle at 50% -50%,
+          transparent 75%,
+          var(--belt) 0 83%,
+          transparent 0
+        ),
+        linear-gradient(
+          to right,
+          transparent 42%,
+          white 43% 57%,
+          transparent 58%
+        );
+    }
+    .arm {
+      width: 65%;
+      height: 40%;
+      background: #a00;
+      border-radius: 100% / 170% 170% 25% 25%;
+      top: 37%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      abox-shadow: inset 0 0 0 10vmin #0002;
+      background-image: linear-gradient(transparent 20%, #0003);
+    }
+    .belt {
+      width: 20%;
+      height: 15%;
+      border: 1vmin solid var(--belt-buckle);
+      border-radius: 1vmin;
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--belt-buckle);
+      box-shadow: inset 1vmin 0 0 1.75vmin var(--belt);
+    }
+    .buttons {
+      width: 5%;
+      height: 5%;
+      background: var(--belt);
+      color: var(--belt);
+      top: 33%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      box-shadow: 0 5vmin, 0 10vmin 0 0.1vmin, 0 22vmin;
+      opacity: 0.75;
+    }
+    .hat {
+      width: 23%;
+      height: 20%;
+      background: var(--suit);
+      border-radius: 100% 20% 0 0;
+      top: -2%;
+      left: 50%;
+      transform: translate(-50%, 0) rotate(1deg);
+    }
+    .hat::before {
+      width: 110%;
+      height: 40%;
+      border-radius: 100% / 50%;
+      bottom: -17%;
+      left: -5%;
+      box-shadow: inset 0 4vmin white;
+      transform: rotate(-2deg);
+    }
+    .hat::after {
+      width: 8vmin;
+      height: 8vmin;
+      border-radius: 50%;
+      background: var(--beard);
+      right: -5vmin;
+      top: -15%;
+    }
+    .hands {
+      width: 13%;
+      height: 13%;
+      background: var(--belt);
+      top: 70%;
+      left: 18%;
+      box-shadow: 41vmin 0 var(--belt);
+    }
+    .leg {
+      width: 19%;
+      height: 25%;
+      background: var(--suit);
+      transform: skew(2deg);
+      top: 75%;
+      left: 29%;
+      background-image: linear-gradient(#0002, transparent 70%, var(--belt) 0);
+    }
+    .leg + .leg {
+      left: 52%;
+    }
+    .leg::after {
+      width: 110%;
+      height: 20%;
+      background: black;
+      bottom: 0;
+      left: -6%;
+      border-radius: 10vmin 10vmin 0 0;
+    }
+    .leg + .leg::after {
+      left: -4%;
+    }
+    #youtube {
+      z-index: 2;
+      display: block;
+      width: 100px;
+      height: 70px;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: red;
+      border-radius: 50% / 11%;
+      transition: transform 0.5s;
+    }
+    #youtube:hover,
+    #youtube:focus {
+      transform: scale(1.1);
+    }
+    #youtube::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 7.5%;
+      left: -6%;
+      width: 112%;
+      height: 85%;
+      background: red;
+      border-radius: 9% / 50%;
+    }
+    #youtube::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      width: 45px;
+      height: 30px;
+      border: 15px solid transparent;
+      box-sizing: border-box;
+      border-left: 30px solid white;
+    }
+    #youtube span {
+      font-size: 0;
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+  </style>
+  <body>
+    <div class="cartoon hb">
+      <div class="leg ha"></div>
+      <div class="leg ha"></div>
+      <div class="hands r"></div>
+      <div class="arm"></div>
+      <div class="body">
+        <div class="belt"></div>
+        <div class="buttons r"></div>
+      </div>
+      <div class="beard"></div>
+      <div class="head r"></div>
+      <div class="mustache"></div>
+      <div class="mustache"></div>
+      <div class="cheeks r"></div>
+      <div class="eyes r"></div>
+      <div class="hat ha hb"></div>
+    </div>
+  </body>
+</html>
