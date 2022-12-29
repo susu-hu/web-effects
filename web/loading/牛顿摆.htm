@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      --line: #fff;
+      --color: orange;
+    }
+    .pendulum {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      background: radial-gradient(
+          ellipse at center,
+          var(--color) 69%,
+          rgba(0, 0, 0, 0) 70%
+        ),
+        linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0) 47%,
+          var(--line) 48%,
+          var(--line) 52%,
+          rgba(0, 0, 0, 0) 53%
+        );
+      background-size: 20px 20px, 20px;
+      background-repeat: repeat-x;
+      background-position: center bottom, center -5px;
+    }
+    .pendulum::before,
+    .pendulum::after {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 0;
+      width: 20px;
+      height: 60px;
+      background: radial-gradient(
+          ellipse at center,
+          var(--color) 69%,
+          rgba(0, 0, 0, 0) 70%
+        ),
+        linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0) 47%,
+          var(--line) 48%,
+          var(--line) 52%,
+          rgba(0, 0, 0, 0) 53%
+        );
+      background-size: 20px 20px, 20px auto;
+      background-repeat: no-repeat;
+      background-position: center bottom, center -5px;
+      transform: rotate(0deg);
+      transform-origin: 50% 0%;
+      animation: animPend 1s linear infinite alternate;
+    }
+    .pendulum::after {
+      animation: animPend2 1s linear infinite alternate;
+      left: 100%;
+    }
+    @keyframes animPend {
+      0% {
+        transform: rotate(22deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+    }
+    @keyframes animPend2 {
+      0%,
+      55% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-22deg);
+      }
+    }
+  </style>
+  <body>
+    <div class="pendulum"></div>
+  </body>
+</html>
