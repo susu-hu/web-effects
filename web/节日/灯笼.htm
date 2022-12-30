@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  .lantern-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: swing 3s infinite ease-in-out
+  }
+
+  .lantern-line {
+    width: 5px;
+    height: 80px;
+    background-color: #dc8f03
+  }
+
+  .lantern-body {
+    position: relative;
+    width: 300px;
+    height: 220px;
+    background-color: #f00;
+    border-radius: 120px;
+    box-shadow: 0 30px 115px -10px #f00;
+    transform-origin: top center;
+    animation: swing 3s infinite ease-in-out
+  }
+
+  .lantern-body::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100px;
+    height: 20px;
+    background-color: #dc8f03;
+    border-radius: 5px 5px 0 0
+  }
+
+  .lantern-body::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100px;
+    height: 20px;
+    background-color: #dc8f03;
+    border-radius: 0 0 5px 5px
+  }
+
+  @keyframes swing {
+
+    0%,
+    100% {
+      transform: rotate(-10deg)
+    }
+
+    50% {
+      transform: rotate(10deg)
+    }
+
+
+  }
+
+  .lantern-circle {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 240px;
+    height: 230px;
+    border: 2px solid #dc8f03;
+    border-radius: 50%
+  }
+
+  .lantern-rect {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90px;
+    height: 240px;
+    border: 2px solid #dc8f03;
+    border-radius: 50%
+  }
+
+  .lantern-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    font-size: 24px;
+    color: #dc8f03;
+    font-weight: 700
+  }
+
+  .lantern-tassel {
+    position: absolute;
+    bottom: -40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 5px;
+    height: 75px;
+    background-color: #dc8f03;
+    animation: swing 3s infinite ease-in-out
+  }
+
+  .lantern-tassel::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 30px;
+    height: 30px;
+    background-color: #dc8f03;
+    border-radius: 50%
+  }
+
+  .lantern-tassel::after {
+    content: '';
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    width: 20px;
+    height: 100px;
+    background-color: #ffa500;
+    border-radius: 0 0 5px 10px
+  }
+
+  .switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    border-radius: 50px
+  }
+
+  .switch_item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    color: #f00;
+    cursor: pointer
+  }
+
+  .move_block {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 33.3%;
+    height: 44px;
+    background-color: #000;
+    border-radius: 50px;
+    z-index: -1
+  }
+</style>
+
+<body>
+  <div class="lantern-box">
+    <div class="lantern-line"></div>
+    <div class="lantern-body">
+      <div class="lantern-circle">
+        <div class="lantern-rect">
+          <div class="lantern-text">元旦快乐</div>
+        </div>
+      </div>
+      <div class="lantern-tassel"></div>
+    </div>
+  </div>
+</body>
+
+</html>
