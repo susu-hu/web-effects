@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://juejin.cn/post/7181328175774269500</title>
+  </head>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      display: grid;
+      place-content: center;
+      gap: 10px;
+      background: aliceblue;
+    }
+    .wrap {
+      text-align: right;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    .box {
+      display: grid;
+      place-content: center;
+      width: 300px;
+      height: 150px;
+      font-size: 32px;
+      color: #ffeb3b;
+      background-color: currentColor;
+    }
+    .txt {
+      filter: grayscale(1) contrast(9999) invert(1);
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <input
+        type="color"
+        onchange="this.nextElementSibling.style.color = this.value"
+      />
+      <div class="box">
+        <span class="txt">苏苏就是小苏苏</span>
+      </div>
+    </div>
+  </body>
+</html>
