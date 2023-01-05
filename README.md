@@ -177,6 +177,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 - [x] 151.SVG 实现拟物态圆环进度条
 - [x] 152.SVG-stroke-dasharray分割
 - [x] 153.七彩圆环loading
+- [x] 154.CSS 实现灯笼动画
 
 #### 数据可视化之echarts部分截图~
 ##### 动态关系图-缩放-拖拽
@@ -186,6 +187,8 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 
 #### 神奇的CSS页面部分截图
+##### 154.CSS 实现灯笼动画
+![输入图片说明](web-pictures/154.%E7%81%AF%E7%AC%BC.png)
 ##### 153.七彩圆环loading
 ![输入图片说明](web-pictures/153.%E4%B8%83%E5%BD%A9%E5%9C%86%E7%8E%AFloading.gif)
 ##### 152.SVG-stroke-dasharray分割
