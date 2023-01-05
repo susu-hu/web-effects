@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+
+<body>
+  <canvas id="canvas"></canvas>
+</body>
+<script src="../商城相关/js/jq.js"></script>
+<script>
+  $(function() {
+    var canvas = $('#canvas')[0];
+    canvas.width = $(window).width();
+    canvas.height = $(window).height();
+    var ctx = canvas.getContext('2d');
+
+    // resize
+    $(window).on('resize', function() {
+      canvas.width = $(window).width();
+      canvas.height = $(window).height();
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // init
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // objects
+    var listFire = [];
+    var listFirework = [];
+    var fireNumber = 10;
+    var center = {
+      x: canvas.width / 2,
+      y: canvas.height / 2
+    };
+    var range = 100;
+    for (var i = 0; i < fireNumber; i++) {
+      var fire = {
+        x: Math.random() * range / 2 - range / 4 + center.x,
+        y: Math.random() * range * 2 + canvas.height,
+        size: Math.random() + 0.5,
+        fill: '#fd1',
+        vx: Math.random() - 0.5,
+        vy: -(Math.random() + 4),
+        ax: Math.random() * 0.02 - 0.01,
+        far: Math.random() * range + (center.y - range)
+      };
+      fire.base = {
+        x: fire.x,
+        y: fire.y,
+        vx: fire.vx
+      };
+      listFire.push(fire);
+    }
+
+    function randColor() {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      var color = 'rgb($r, $g, $b)';
+      color = color.replace('$r', r);
+      color = color.replace('$g', g);
+      color = color.replace('$b', b);
+      return color;
+    }
+    setTimeout(() => {
+      (function loop() {
+        requestAnimationFrame(loop);
+        update();
+        draw();
+      })();
+    }, 6000)
+
+    function update() {
+      for (var i = 0; i < listFire.length; i++) {
+        var fire = listFire[i];
+        if (fire.y <= fire.far) {
+          var color = randColor();
+          for (var i = 0; i < fireNumber * 5; i++) {
+            var firework = {
+              x: fire.x,
+              y: fire.y,
+              size: Math.random() + 1.5,
+              fill: color,
+              vx: Math.random() * 5 - 2.5,
+              vy: Math.random() * -5 + 1.5,
+              ay: 0.05,
+              alpha: 1,
+              life: Math.round(Math.random() * range / 2) + range / 2
+            };
+            firework.base = {
+              life: firework.life,
+              size: firework.size
+            };
+            listFirework.push(firework);
+          }
+          fire.y = fire.base.y;
+          fire.x = fire.base.x;
+          fire.vx = fire.base.vx;
+          fire.ax = Math.random() * 0.02 - 0.01;
+        }
+        fire.x += fire.vx;
+        fire.y += fire.vy;
+        fire.vx += fire.ax;
+      }
+      for (var i = listFirework.length - 1; i >= 0; i--) {
+        var firework = listFirework[i];
+        if (firework) {
+          firework.x += firework.vx;
+          firework.y += firework.vy;
+          firework.vy += firework.ay;
+          firework.alpha = firework.life / firework.base.life;
+          firework.size = firework.alpha * firework.base.size;
+          firework.alpha = firework.alpha > 0.6 ? 1 : firework.alpha;
+          //
+          firework.life--;
+          if (firework.life <= 0) {
+            listFirework.splice(i, 1);
+          }
+        }
+      }
+    }
+
+    function draw() {
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalAlpha = 0.18;
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = 'screen';
+      ctx.globalAlpha = 1;
+      for (var i = 0; i < listFire.length; i++) {
+        var fire = listFire[i];
+        ctx.beginPath();
+        ctx.arc(fire.x, fire.y, fire.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = fire.fill;
+        ctx.fill();
+      }
+      for (var i = 0; i < listFirework.length; i++) {
+        var firework = listFirework[i];
+        ctx.globalAlpha = firework.alpha;
+        ctx.beginPath();
+        ctx.arc(firework.x, firework.y, firework.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = firework.fill;
+        ctx.fill();
+      }
+    }
+  });
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  let canvasWidth = window.innerWidth;
+  let canvasHeight = window.innerHeight;
+  const fireworks = [];
+  const particles = [];
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
+  // 获取范围内的随机数
+  function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  // 获取hue
+  function getHue() {
+    let hue = Math.random() * 360;
+    let hueVariance = 200;
+    return Math.floor(Math.random() * (hue + hueVariance - (hue - hueVariance))) + (hue - hueVariance);
+  }
+  class Particle {
+    // 初始化时的x,y坐标
+    constructor(x, y, hue) {
+      this.x = x;
+      this.y = y;
+      // 粒子坐标集合
+      this.coords = [
+        [x, y],
+        [x, y],
+        [x, y]
+      ];
+      // 随机弧度
+      this.angle = randomRange(0, Math.PI * 2);
+      // 随机基本速度
+      this.speed = randomRange(1, 10);
+      // 摩擦系数、重力（减缓粒子速度、模拟抛物线下坠）
+      this.friction = 0.95;
+      // 百分比 不同材质的物体摩擦系数不同（有现成值）
+      this.gravity = 1; // 作用于y轴加速度 模拟往下坠 
+      // 随机色调（基础色调-20和+20之间） 
+      this.hue = randomRange(hue - 20, hue + 20);
+      // 随机亮度
+      this.brightness = Math.floor(Math.random() * 21) + 50;
+      // 初始透明度 
+      this.alpha = 1;
+      // 随机的透明度衰变系数（透明度减淡）
+      this.alphaDecay = randomRange(0.015, 0.03);
+    }
+    // 更新某个（索引）粒子属性 
+    update(index) {
+      this.coords.pop();
+      this.coords.unshift([this.x, this.y]);
+      this.speed *= this.friction;
+      this.x += Math.cos(this.angle) * this.speed;
+      this.y += Math.sin(this.angle) * this.speed + this.gravity;
+      // 透明度衰减
+      this.alpha -= this.alphaDecay;
+      // 当透明度小于最小衰减值 就把这个例子对象删除 
+      if (this.alpha < this.alphaDecay) {
+        particles.splice(index, 1);
+      }
+    }
+    // 绘制粒子（例子以line的方式）
+    draw() {
+      ctx.beginPath();
+      // 从集合中最后一个项开始
+      const [startX, startY] = this.coords[this.coords.length - 1];
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(this.x, this.y);
+      // hsla的颜色模式
+      ctx.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.alpha}`;
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    }
+  }
+  class Firework {
+    constructor(sx, sy, tx, ty) {
+      // 当前坐标 
+      this.x = sx;
+      this.y = sy;
+      // 起始点坐标 
+      this.sx = sx;
+      this.sy = sy;
+      // 目标点坐标 
+      this.tx = tx;
+      this.ty = ty;
+      // 起始点到目标点的距离 
+      this.totalDistance = this.calcPointsDistance(sx, sy, tx, ty);
+      // 用于判断是否走完路程 
+      this.distanceTraveled = 0;
+      // 随机弧度 
+      this.angle = Math.atan2(ty - sy, tx - sx);
+      // 向上空气的阻力，其实也是模拟重力
+      this.friction = 0.98;
+      // 随机速度 
+      this.speed = this.mockOriginalSpeed(sy - ty);
+      // 透明度 
+      this.alpha = 1;
+      // 透明度衰减度 
+      this.alphaDecay = randomRange(0.015, 0.03);
+      // 随机hue 
+      this.hue = getHue();
+      // 随机亮度 
+      this.brightness = randomRange(60, 70);
+      // 烟花的轨迹坐标
+      this.coords = [
+        [this.x, this.y]
+      ];
+    }
+    calcPointsDistance(sx, sy, tx, ty) {
+      return Math.sqrt(Math.pow(tx - sx, 2) + Math.pow(ty - sy, 2));
+    }
+    // 模拟初始速度
+    mockOriginalSpeed(h) {
+      return Math.floor(Math.sqrt(2 * this.friction * h));
+    }
+    update(index) {
+      this.coords.pop();
+      this.coords.unshift([this.x, this.y]);
+      this.alpha -= this.alphaDecay;
+      this.speed *= this.friction;
+      const vx = Math.cos(this.angle) * this.speed;
+      const vy = Math.sin(this.angle) * this.speed;
+      // 计算出移动后的距离 
+      this.distanceTraveled = this.calcPointsDistance(this.sx, this.sy, this.x + vx, this.y + vy);
+      if (this.distanceTraveled >= this.totalDistance) {
+        for (let i = 0; i < 100; i++) {
+          particles.push(new Particle(this.tx, this.ty, this.hue));
+        }
+        fireworks.splice(index, 1);
+      } else {
+        this.x += vx;
+        this.y += vy;
+      }
+    }
+    draw() {
+      if (this.speed < 0) {
+        return;
+      }
+      ctx.beginPath();
+      const [startX, startY] = this.coords[this.coords.length - 1];
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(this.x, this.y);
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%,${this.alpha})`;
+      // 仅亮度会变化
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  function renderCanvas() {
+    ctx.globalCompositeOperation = 'destination-out';
+    // 现有内容保持在新图形不重叠的地方 
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+    ctx.globalCompositeOperation = 'lighter';
+    // 循环绘制烟花
+    for (let i = 0; i < fireworks.length; i++) {
+      fireworks[i].draw();
+      fireworks[i].update(i);
+    }
+    // 循环绘制粒子 
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].draw();
+      particles[i].update(i);
+    }
+    requestAnimationFrame(renderCanvas);
+  }
+
+  function mockFirework() {
+    for (let i = 0; i < 8; i++) {
+      fireworks.push(new Firework(canvasWidth / 2, canvasHeight, randomRange(0, canvasWidth), randomRange(0, canvasHeight * 0.7)));
+    }
+  }
+  let fireworkTimer = setInterval(() => {
+    mockFirework();
+  }, 2000);
+
+  mockFirework();
+  setTimeout(() => {
+    renderCanvas();
+  }, 6000)
+
+  // 处理定时器的问题
+  function handleVisibilityChange() {
+    // tab 隐藏
+    if (document.hidden) {
+      clearInterval(fireworkTimer);
+      fireworkTimer = 0;
+      fireworks.length = 0;
+    } else {
+      fireworkTimer = setInterval(() => {
+        mockFirework();
+      }, 2000);
+      mockFirework();
+    }
+  }
+
+  function resizeCanvas() {
+    canvasWidth = window.innerWidth;
+    canvasHeight = window.innerHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+  }
+
+  window.addEventListener('visibilitychange', handleVisibilityChange);
+  window.addEventListener('resize', resizeCanvas);
+</script>
+
+</html>
