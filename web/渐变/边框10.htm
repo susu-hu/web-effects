@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>渐变边框</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #111;
+      }
+
+      .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .container .box {
+        position: relative;
+        width: 320px;
+        height: 400px;
+        color: #fff;
+        background-color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 30px;
+        transition: 0.5s;
+      }
+
+      .container .box:hover {
+        transform: translateY(-20px);
+      }
+
+      .container .box::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #ffbc00, #ff0058);
+      }
+
+      .container .box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #ffbc00, #ff0058);
+        filter: blur(30px);
+      }
+
+      .container .box span {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+      }
+
+      .container .box span::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .container .box .content {
+        position: relative;
+        z-index: 10;
+        padding: 20px 40px;
+      }
+
+      .container .box .content h2,
+      .container .box .content p {
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .container .box .content p {
+        line-height: 25px;
+      }
+
+      .container .box .content a {
+        display: inline-block;
+        color: #111;
+        background-color: #fff;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <h2>苏苏就是小苏苏</h2>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

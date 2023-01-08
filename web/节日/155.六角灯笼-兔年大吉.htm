@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>六角灯笼</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+
+  <style>
+    body {
+      transform-style: preserve-3d;
+      perspective: 600px;
+      perspective-origin: center center;
+    }
+    .t-3d {
+      transform-style: preserve-3d;
+    }
+
+    .container {
+      animation: rotate 9s linear infinite;
+      transform-style: preserve-3d;
+    }
+    .box-top {
+      position: relative;
+      height: 40px;
+      width: 100px;
+      transform-style: preserve-3d;
+    }
+    .box-top-item {
+      position: absolute;
+      height: 40px;
+      width: 100px;
+      left: 0;
+      top: 0;
+      border: #e36d00 solid 4px;
+      border-right-width: 2px;
+      border-left-width: 2px;
+      background: radial-gradient(#fffea1, #fffea1, #fbd342);
+      transform-origin: center;
+      overflow: hidden;
+      transform: rotateY(var(--y)) translateZ(var(--z));
+    }
+    .box-top-item::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: -24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: solid 3px #e36d00;
+      border-radius: 100%;
+      -webkit-box-reflect: below 0;
+    }
+    .box-top-item::after {
+      content: "";
+      position: absolute;
+      top: -24px;
+      right: -24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: solid 3px #e36d00;
+      border-radius: 100%;
+      -webkit-box-reflect: below -3px;
+    }
+    .box-top-item-line {
+      position: absolute;
+      left: calc(50% - 40px);
+      top: calc(50% - 10px);
+      width: 80px;
+      height: 20px;
+      border: solid 3px #e36d00;
+    }
+    .box-center {
+      position: relative;
+      width: 80px;
+      height: 150px;
+      transform-style: preserve-3d;
+    }
+    .box-center-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 150px;
+      border: #e36d00 solid 4px;
+      border-right-width: 2px;
+      border-left-width: 2px;
+      background: radial-gradient(#fffea1, #fffea1, #fbd342);
+      transform-origin: center;
+      overflow: hidden;
+      transform: rotateY(var(--y)) translateZ(var(--z));
+    }
+    .box-center-item::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: -24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: solid 3px #e36d00;
+      -webkit-box-reflect: below 106px;
+    }
+    .box-center-item::after {
+      content: "";
+      position: absolute;
+      top: -24px;
+      right: -24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: solid 3px #e36d00;
+      -webkit-box-reflect: below 106px;
+    }
+    .box-center-item-line {
+      position: absolute;
+      width: 60px;
+      height: 130px;
+      left: calc(50% - 30px);
+      top: calc(50% - 65px);
+      border: solid 3px #e36d00;
+    }
+    .box-center-item span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      font-weight: bold;
+      color: #f00;
+    }
+    .box-bottom {
+      position: relative;
+      height: 20px;
+      width: 80px;
+      transform-style: preserve-3d;
+    }
+    .box-bottom-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 20px;
+      width: 80px;
+      background: radial-gradient(#fffea1, #fffea1, #fbd342);
+      transform-origin: center;
+      border: #e36d00 solid 4px;
+      border-right-width: 2px;
+      border-left-width: 2px;
+      overflow: hidden;
+      transform: rotateY(var(--y)) translateZ(var(--z));
+    }
+    .box-bottom-item::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      width: 60px;
+      height: 130px;
+      border: solid 3px #e36d00;
+    }
+    .box-bottom::before,
+    .box-bottom::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 90px;
+      background: #f00;
+      left: calc(50% - 1px);
+      top: 18px;
+    }
+    .box-bottom::after {
+      transform: rotateY(90deg);
+    }
+    .box-bottom .line-item {
+      position: absolute;
+      border-radius: 5px 5px 0 0;
+      width: 10px;
+      height: 60px;
+      background: linear-gradient(
+        #f00,
+        #e36d00 3px,
+        #fbd342 5px,
+        #e36d00 8px,
+        #e36d00 12px,
+        #f00 16px,
+        rgba(255, 0, 0, 0.8) 26px,
+        rgba(255, 0, 0, 0.6)
+      );
+      left: calc(50% - 5px);
+      top: 105px;
+      transform: rotateY(var(--y));
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateY(0);
+      }
+
+      100% {
+        transform: rotateY(-360deg);
+      }
+    }
+  </style>
+
+  <body>
+    <div class="container flex-column">
+      <div class="box-top">
+        <div class="box-top-item" style="--y: 0deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-item" style="--y: 60deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-item" style="--y: 120deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-item" style="--y: 180deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-item" style="--y: -120deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-item" style="--y: -60deg; --z: 86px">
+          <div class="box-top-item-line"></div>
+        </div>
+      </div>
+      <div class="box-center">
+        <div class="box-center-item" style="--y: 0deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>兔</span>
+        </div>
+        <div class="box-center-item" style="--y: 60deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>年</span>
+        </div>
+        <div class="box-center-item" style="--y: 120deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>大</span>
+        </div>
+        <div class="box-center-item" style="--y: 180deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>吉</span>
+        </div>
+        <div class="box-center-item" style="--y: -120deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>20</span>
+        </div>
+        <div class="box-center-item" style="--y: -60deg; --z: 69px">
+          <div class="box-center-item-line"></div>
+          <span>23</span>
+        </div>
+      </div>
+      <div class="box-bottom">
+        <div class="box-bottom-item" style="--y: 0deg; --z: 69px"></div>
+        <div class="box-bottom-item" style="--y: 60deg; --z: 69px"></div>
+        <div class="box-bottom-item" style="--y: 120deg; --z: 69px"></div>
+        <div class="box-bottom-item" style="--y: 180deg; --z: 69px"></div>
+        <div class="box-bottom-item" style="--y: -120deg; --z: 69px"></div>
+        <div class="box-bottom-item" style="--y: -60deg; --z: 69px"></div>
+        <div class="line-box t-3d">
+          <div class="line-item" style="--y: 0deg"></div>
+          <div class="line-item" style="--y: 60deg"></div>
+          <div class="line-item" style="--y: 120deg"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
