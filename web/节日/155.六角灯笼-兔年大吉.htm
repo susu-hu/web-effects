@@ -194,6 +194,59 @@
       top: 105px;
       transform: rotateY(var(--y));
     }
+    .box-bottom .dot-box {
+      position: absolute;
+      left: 32px;
+      width: 32px;
+      top: 62px;
+      height: 30px;
+    }
+    .box-bottom .dot-box-item {
+      position: relative;
+      width: 32px;
+      height: 3px;
+      background: #f00;
+      box-shadow: 0px 5px #f00, 0px 10px #f00, 0px 15px #f00;
+      border-radius: 2px;
+      transform: rotateZ(var(--z));
+    }
+    .box-bottom .dot-box-item::before {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      width: 10px;
+      height: 10px;
+      border: solid 2px #f00;
+      border-radius: 50%;
+      border-left-color: transparent;
+      transform: rotate(calc(var(--z) * -1));
+    }
+    .box-bottom .dot-box-item::after {
+      content: "";
+      position: absolute;
+      right: -15px;
+      top: -15px;
+      width: 24px;
+      height: 24px;
+      border: solid 2px #f00;
+      border-left-color: transparent;
+      border-radius: 50%;
+      transform: rotate(calc(var(--z) * -1));
+    }
+    .box-bottom .dot-box-item.right::before {
+      left: -8px;
+      top: -8px;
+    }
+    .box-bottom .dot-box-item.right::after {
+      left: -15px;
+      top: -15px;
+      border-right-color: transparent;
+      border-left-color: #f00;
+    }
+    .box-bottom .dot-box-item.right {
+      margin-left: -18px;
+    }
 
     @keyframes rotate {
       0% {
@@ -265,6 +318,10 @@
           <div class="line-item" style="--y: 0deg"></div>
           <div class="line-item" style="--y: 60deg"></div>
           <div class="line-item" style="--y: 120deg"></div>
+        </div>
+        <div class="dot-box t-3d">
+          <div class="dot-box-item" style="--z: 45deg"></div>
+          <div class="dot-box-item right" style="--z: -45deg"></div>
         </div>
       </div>
     </div>
