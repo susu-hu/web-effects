@@ -21,6 +21,7 @@
     .container {
       animation: rotate 9s linear infinite;
       transform-style: preserve-3d;
+      height: 460px;
     }
     .box-top {
       position: relative;
@@ -248,6 +249,101 @@
       margin-left: -18px;
     }
 
+    .box-bottom-corn {
+      position: absolute;
+      top: 0px;
+      left: 40px;
+      width: 100px;
+      height: 150px;
+      transform-origin: left center;
+      transform: rotateY(var(--y));
+    }
+    .box-bottom-corn::before {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 20px;
+      height: 15px;
+      content: "";
+      border: solid 3px #e36d00;
+    }
+    .box-bottom-corn::after {
+      position: absolute;
+      right: 8px;
+      top: 10px;
+      width: 10px;
+      height: 15px;
+      content: "";
+      border: solid 3px #e36d00;
+    }
+
+    .box-top-corn {
+      position: absolute;
+      top: 0px;
+      left: 48px;
+      width: 120px;
+      height: 150px;
+      transform-origin: left center;
+      transform: rotateY(var(--y));
+    }
+    .box-top-corn::before {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      width: 20px;
+      height: 15px;
+      content: "";
+      border: solid 3px #e36d00;
+    }
+    .box-top-corn::after {
+      position: absolute;
+      right: 8px;
+      top: 10px;
+      width: 10px;
+      height: 15px;
+      content: "";
+      border: solid 3px #e36d00;
+    }
+    .box-top-corn .line-dot {
+      position: absolute;
+      right: -6px;
+      transform-style: preserve-3d;
+    }
+    .box-top-corn .line-dot::before {
+      position: absolute;
+      width: 6px;
+      height: 3px;
+      background: #e36d00;
+      left: -6px;
+      content: "";
+    }
+    .box-top-corn .line-dot::after {
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      left: -1px;
+      background: #f00;
+      content: "";
+    }
+    .box-top-corn .line-dot .line-item {
+      position: absolute;
+      border-radius: 5px 5px 0 0;
+      width: 10px;
+      height: 60px;
+      background: linear-gradient(
+        #f00,
+        #e36d00 3px,
+        #fbd342 5px,
+        #e36d00 8px,
+        #e36d00 12px,
+        #f00 16px,
+        rgba(255, 0, 0, 0.8) 26px,
+        rgba(255, 0, 0, 0.6)
+      );
+      left: calc(50% - 5px);
+      top: 40px;
+      transform: rotateY(var(--y));
+    }
     @keyframes rotate {
       0% {
         transform: rotateY(0);
@@ -257,10 +353,64 @@
         transform: rotateY(-360deg);
       }
     }
+    .box-top-item,
+    .box-center-item,
+    .box-bottom-item {
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0% {
+        box-shadow: rgba(0, 0, 0, 0.1) 0 0 1px;
+      }
+
+      50% {
+        box-shadow: #fffea1 0 0 20px;
+      }
+
+      100% {
+        box-shadow: rgba(0, 0, 0, 0.1) 0 0 1px;
+      }
+    }
+    .box-head {
+      width: 2px;
+      background: #f00;
+      height: 100px;
+      transform: rotateY(var(--y));
+      position: relative;
+    }
+    .box-head::before {
+      position: absolute;
+      content: "";
+      width: 16px;
+      height: 14px;
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 8px);
+      background: linear-gradient(
+        #f00,
+        #e36d00 3px,
+        #fbd342 5px,
+        #e36d00 8px,
+        #e36d00 12px,
+        #f00 16px,
+        rgba(255, 0, 0, 0.8) 26px,
+        rgba(255, 0, 0, 0.6)
+      );
+    }
+    .box-head.bt {
+      position: absolute;
+    }
+    .box-head.bt::before {
+      display: none;
+    }
   </style>
 
   <body>
     <div class="container flex-column">
+      <div class="box-head" style="--y: 0deg"></div>
+      <div class="box-head bt" style="--y: 60deg"></div>
       <div class="box-top">
         <div class="box-top-item" style="--y: 0deg; --z: 86px">
           <div class="box-top-item-line"></div>
@@ -279,6 +429,54 @@
         </div>
         <div class="box-top-item" style="--y: -60deg; --z: 86px">
           <div class="box-top-item-line"></div>
+        </div>
+        <div class="box-top-corn" style="--y: 0deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-top-corn" style="--y: 60deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-top-corn" style="--y: 120deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-top-corn" style="--y: 180deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-top-corn" style="--y: 240deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-top-corn" style="--y: 300deg">
+          <div class="line-dot">
+            <div class="line-box t-3d">
+              <div class="line-item" style="--y: 0deg"></div>
+              <div class="line-item" style="--y: 60deg"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="box-center">
@@ -317,12 +515,17 @@
         <div class="line-box t-3d">
           <div class="line-item" style="--y: 0deg"></div>
           <div class="line-item" style="--y: 60deg"></div>
-          <div class="line-item" style="--y: 120deg"></div>
         </div>
         <div class="dot-box t-3d">
           <div class="dot-box-item" style="--z: 45deg"></div>
           <div class="dot-box-item right" style="--z: -45deg"></div>
         </div>
+        <div class="box-bottom-corn" style="--y: 0deg"></div>
+        <div class="box-bottom-corn" style="--y: 60deg"></div>
+        <div class="box-bottom-corn" style="--y: 120deg"></div>
+        <div class="box-bottom-corn" style="--y: 180deg"></div>
+        <div class="box-bottom-corn" style="--y: 240deg"></div>
+        <div class="box-bottom-corn" style="--y: 300deg"></div>
       </div>
     </div>
   </body>
