@@ -20,14 +20,12 @@
 
     .container {
       animation: rotate 9s linear infinite;
-      transform-style: preserve-3d;
       height: 460px;
     }
     .box-top {
       position: relative;
       height: 40px;
       width: 100px;
-      transform-style: preserve-3d;
     }
     .box-top-item {
       position: absolute;
@@ -79,7 +77,6 @@
       position: relative;
       width: 80px;
       height: 150px;
-      transform-style: preserve-3d;
     }
     .box-center-item {
       position: absolute;
@@ -138,7 +135,6 @@
       position: relative;
       height: 20px;
       width: 80px;
-      transform-style: preserve-3d;
     }
     .box-bottom-item {
       position: absolute;
@@ -197,7 +193,7 @@
     }
     .box-bottom .dot-box {
       position: absolute;
-      left: 32px;
+      left: 34px;
       width: 32px;
       top: 62px;
       height: 30px;
@@ -207,15 +203,18 @@
       width: 32px;
       height: 3px;
       background: #f00;
-      box-shadow: 0px 5px #f00, 0px 10px #f00, 0px 15px #f00;
+      box-shadow: 0px 5px #f00, 0px 10px #f00, 0px 15px #f00, 0px 20px #f00,
+        0px 25px #f00;
       border-radius: 2px;
-      transform: rotateZ(var(--z));
+      transform: rotateZ(var(--z)) translateY(var(--y));
     }
     .box-bottom .dot-box-item::before {
       content: "";
       position: absolute;
-      right: -8px;
-      top: -8px;
+      /* right: -8px;
+      top: -8px; */
+      right: -5px;
+      top: -7px;
       width: 10px;
       height: 10px;
       border: solid 2px #f00;
@@ -226,7 +225,9 @@
     .box-bottom .dot-box-item::after {
       content: "";
       position: absolute;
-      right: -15px;
+      /* right: -15px;
+      top: -15px; */
+      right: -13px;
       top: -15px;
       width: 24px;
       height: 24px;
@@ -307,7 +308,6 @@
     .box-top-corn .line-dot {
       position: absolute;
       right: -6px;
-      transform-style: preserve-3d;
     }
     .box-top-corn .line-dot::before {
       position: absolute;
@@ -408,10 +408,10 @@
   </style>
 
   <body>
-    <div class="container flex-column">
+    <div class="container flex-column t-3d">
       <div class="box-head" style="--y: 0deg"></div>
       <div class="box-head bt" style="--y: 60deg"></div>
-      <div class="box-top">
+      <div class="box-top t-3d">
         <div class="box-top-item" style="--y: 0deg; --z: 86px">
           <div class="box-top-item-line"></div>
         </div>
@@ -479,7 +479,7 @@
           </div>
         </div>
       </div>
-      <div class="box-center">
+      <div class="box-center t-3d">
         <div class="box-center-item" style="--y: 0deg; --z: 69px">
           <div class="box-center-item-line"></div>
           <span>兔</span>
@@ -505,7 +505,7 @@
           <span>23</span>
         </div>
       </div>
-      <div class="box-bottom">
+      <div class="box-bottom t-3d">
         <div class="box-bottom-item" style="--y: 0deg; --z: 69px"></div>
         <div class="box-bottom-item" style="--y: 60deg; --z: 69px"></div>
         <div class="box-bottom-item" style="--y: 120deg; --z: 69px"></div>
@@ -517,8 +517,8 @@
           <div class="line-item" style="--y: 60deg"></div>
         </div>
         <div class="dot-box t-3d">
-          <div class="dot-box-item" style="--z: 45deg"></div>
-          <div class="dot-box-item right" style="--z: -45deg"></div>
+          <div class="dot-box-item" style="--z: 45deg; --y: 2px"></div>
+          <div class="dot-box-item right" style="--z: -45deg; --y: -2px"></div>
         </div>
         <div class="box-bottom-corn" style="--y: 0deg"></div>
         <div class="box-bottom-corn" style="--y: 60deg"></div>
