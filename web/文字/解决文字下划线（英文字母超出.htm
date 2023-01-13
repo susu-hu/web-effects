@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解决文字下划线（英文字母超出,参考链接：https://www.zhangxinxu.com/wordpress/2021/02/css-text-underline-offset/
+    https://www.zhangxinxu.com/wordpress/2015/06/know-css-text-decoration-style-color-ship/
+  </title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  input {
+    width: 280px;
+  }
+
+  span {
+    text-decoration: underline;
+    font-size: 200%;
+  }
+
+  p {
+    text-decoration: underline;
+    margin: 20px;
+    cursor: pointer;
+  }
+
+  p:nth-child(1) {
+    text-underline-offset: 10px
+  }
+
+  p:nth-child(2) {
+    text-underline-offset: 15px
+  }
+
+  p:nth-child(3) {
+    text-decoration: line-through;
+    color: red;
+  }
+
+  p:nth-child(4) {
+    text-decoration: underline overline;
+    color: pink;
+  }
+
+  p:nth-child(5) {
+    text-decoration-style: wavy;
+    color: skyblue;
+  }
+
+  p:hover {
+    color: #f30;
+    text-decoration: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+    background-size: 20px auto;
+    animation: waveMove 1s infinite linear;
+  }
+
+  @keyframes waveMove {
+    from {
+      background-position: 0 100%;
+    }
+
+    to {
+      background-position: -20px 100%;
+    }
+  }
+</style>
+
+<body>
+  <section>
+    <p>Hellow World</p>
+    <p>哈喽,你好</p>
+    <p>删除线条</p>
+    <p>underline overline</p>
+    <p>波浪线</p>
+    <input id="range" type="range" min="-2" max="2" step="0.1" value="0">
+    <output>0em</output>
+    <div><span id="target">下划线位置</span></d>
+  </section>
+</body>
+<script>
+  range.addEventListener('input', function() {
+    this.nextElementSibling.textContent = this.value + 'em';
+    target.style.textUnderlineOffset = this.value + 'em';
+  });
+</script>
+
+</html>
