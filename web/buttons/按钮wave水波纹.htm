@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  button {
+    background: none;
+    outline: 0;
+    width: 100px;
+    height: 50px;
+    border: 1px dashed darkorchid;
+    user-select: none;
+    cursor: unset;
+    color: #fff;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+
+  button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #42b983 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+    transition: transform .3s, opacity .8s;
+  }
+
+  button:not([disabled]):active::after {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: .3;
+    transition: 0s
+  }
+</style>
+
+<body>
+  <button class="btn">苏苏哇哈哈</button>
+</body>
+
+</html>

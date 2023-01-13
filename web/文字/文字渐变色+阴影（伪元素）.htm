@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+  div {
+    font-size: 50px;
+    background: linear-gradient(180deg, #ffffff 0%, #f2af33 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+
+  div::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: attr(data-title);
+    position: absolute;
+    text-shadow: 4px 2px 3px rgba(255, 255, 255, 0.8);
+    z-index: -1;
+
+  }
+</style>
+
+<body>
+  <div data-title="苏苏就是小苏苏哇">苏苏就是小苏苏哇</div>
+</body>
+
+</html>
