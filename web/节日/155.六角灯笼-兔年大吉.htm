@@ -19,7 +19,7 @@
     }
 
     .container {
-      animation: rotate 9s linear infinite;
+      animation: rotate 10s linear infinite;
       height: 460px;
     }
     .box-top {
@@ -211,8 +211,6 @@
     .box-bottom .dot-box-item::before {
       content: "";
       position: absolute;
-      /* right: -8px;
-      top: -8px; */
       right: -5px;
       top: -7px;
       width: 10px;
@@ -225,8 +223,6 @@
     .box-bottom .dot-box-item::after {
       content: "";
       position: absolute;
-      /* right: -15px;
-      top: -15px; */
       right: -13px;
       top: -15px;
       width: 24px;
@@ -237,11 +233,12 @@
       transform: rotate(calc(var(--z) * -1));
     }
     .box-bottom .dot-box-item.right::before {
-      left: -8px;
-      top: -8px;
+      left: -5px;
+      top: -7px;
+      transform: rotate(calc(var(--z) * -1 + 180deg));
     }
     .box-bottom .dot-box-item.right::after {
-      left: -15px;
+      left: -13px;
       top: -15px;
       border-right-color: transparent;
       border-left-color: #f00;
