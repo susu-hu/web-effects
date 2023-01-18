@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参考链接：https://codepen.io/xboxyan/pen/JjMWQBP</title>
+</head>
+<style>
+  body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  clock {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 380px;
+    height: 380px;
+    font-size: 24px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, .1);
+    --step: 60s;
+  }
+
+  clock::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from -.5deg, #333 0 1deg, transparent 0deg 30deg), repeating-conic-gradient(from -.5deg, #ccc 0 1deg, transparent 0deg 6deg);
+    -webkit-mask: radial-gradient(transparent 145px, red 0);
+  }
+
+  clock-pane {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+  }
+
+  num {
+    position: absolute;
+    offset-path: path('M250 125c0 69.036-55.964 125-125 125S0 194.036 0 125 55.964 0 125 0s125 55.964 125 125z');
+    offset-distance: calc(var(--i) * 10% / 1.2 - 25%);
+    offset-rotate: 0deg;
+  }
+
+  hour {
+    position: absolute;
+    width: 4px;
+    height: 60px;
+    background: #333;
+    transform-origin: center bottom;
+    transform: translateY(-50%) rotate(0);
+    animation: clock calc(var(--step) * 60 * 12) infinite linear;
+    animation-delay: calc(-1 * var(--step) * var(--dh) * 60);
+  }
+
+  min {
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background: #333;
+    transform-origin: center bottom;
+    transform: translateY(-50%) rotate(0);
+    animation: clock calc(var(--step) * 60) infinite linear;
+    animation-delay: calc(-1 * var(--step) * var(--dm));
+  }
+
+  sec {
+    position: absolute;
+    width: 2px;
+    height: 120px;
+    background: red;
+    transform-origin: center bottom;
+    transform: translateY(-50%) rotate(0);
+    animation: clock var(--step) infinite steps(60);
+    animation-delay: calc(-1 * var(--step) * var(--ds) / 60);
+  }
+
+  sec::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 0;
+    background: #fff;
+    border: 4px solid #333;
+    transform: translate(-50%, 50%);
+  }
+
+  @keyframes clock {
+    to {
+      transform: translateY(-50%) rotate(360deg);
+    }
+  }
+</style>
+
+<body>
+  <clock id="clock">
+    <clock-pane>
+      <num style="--i:1">1</num>
+      <num style="--i:2">2</num>
+      <num style="--i:3">3</num>
+      <num style="--i:4">4</num>
+      <num style="--i:5">5</num>
+      <num style="--i:6">6</num>
+      <num style="--i:7">7</num>
+      <num style="--i:8">8</num>
+      <num style="--i:9">9</num>
+      <num style="--i:10">10</num>
+      <num style="--i:11">11</num>
+      <num style="--i:12">12</num>
+    </clock-pane>
+    <hour></hour>
+    <min></min>
+    <sec></sec>
+  </clock>
+</body>
+<script>
+  const d = new Date()
+  const h = d.getHours();
+  const m = d.getMinutes();
+  const s = d.getSeconds();
+  clock.style.setProperty('--ds', s)
+  clock.style.setProperty('--dm', m + s / 60)
+  clock.style.setProperty('--dh', h + m / 60 + s / 3600)
+</script>
+
+</html>
