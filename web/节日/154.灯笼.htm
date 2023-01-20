@@ -71,26 +71,23 @@
       font-weight: bold;
     }
 
-    .center-line::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: calc(50% - 75px);
-      width: 150px;
-      height: 150px;
-      border: 2px solid var(--lineColor);
-      border-radius: 50%;
-    }
-
+    .center-line::before,
     .center-line::after {
       content: "";
       position: absolute;
       top: 0;
-      left: calc(50% - 35px);
-      width: 70px;
-      height: 150px;
+      height: 100%;
       border: 2px solid var(--lineColor);
       border-radius: 50%;
+    }
+    .center-line::before {
+      left: calc(50% - 75px);
+      width: 150px;
+    }
+
+    .center-line::after {
+      left: calc(50% - 35px);
+      width: 70px;
     }
 
     .head-line {
