@@ -31,6 +31,7 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 
 - [x] 1、柱状图多数据-dataZoom 滑动缩放
 - [x] 2、动态关系图-缩放-拖拽
+- [x] 3、echarts流动光线
 
 #### 神奇的 CSS~
 
@@ -200,6 +201,10 @@ git clone https://gitee.com/susuhhhhhh/css_demos.git
 ##### 柱状图多数据-dataZoom 滑动缩放
 
 ![输入图片说明](web-pictures/echarts1.gif)
+
+##### echarts流动光线
+
+![输入图片说明](web-pictures/echarts%E6%B5%81%E5%8A%A8%E5%85%89%E7%BA%BF.png)
 
 #### 神奇的 CSS 页面部分截图
 
