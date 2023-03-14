@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  section {
+    overflow: hidden;
+    width: 400px;
+    height: 500px;
+    border: 1px solid pink;
+    position: relative;
+  }
+
+  /* 1.渐变 */
+  div {
+    margin: 0 auto;
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    left: calc(50% - 400px);
+    top: 0;
+    background: radial-gradient(circle at 50% -210px, #000, #000 400px, transparent 401px, transparent);
+  }
+
+  /*2. clip-path */
+
+  /*3.伪元素 */
+</style>
+
+<body>
+  <section>
+    <div></div>
+  </section>
+
+</body>
+
+</html>
