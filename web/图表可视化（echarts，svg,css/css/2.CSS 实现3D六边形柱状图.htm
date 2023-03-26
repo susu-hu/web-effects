@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.CSS 实现3D六边形柱状图</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    :root {
+      /* 柱形上部分颜色 */
+      --bar-shape: rgba(186, 210, 226, 0.9);
+      /* 柱形顶部六边形颜色 */
+      --bar-top: rgb(186, 210, 226);
+      /* 柱形下部分颜色+柱形底部六边形 */
+      --bar-bg: #f083b6;
+      /* 柱形线条颜色 */
+      --bar-line: rgba(0, 0, 0, 0.2);
+      /* clip-path裁剪六边形 */
+      --path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+      /* 柱形宽度-全局 */
+      --w: 45px;
+      /* 柱形高度最大值 */
+      --h: 300px;
+    }
+
+    section {
+      /* flex布局 */
+      display: flex;
+      align-items: flex-end;
+      height: var(--h);
+    }
+
+    .bar {
+      position: relative;
+      width: var(--w);
+      height: var(--height);
+      margin-right: 20px;
+      background: linear-gradient(to top, var(--bar-bg), var(--bar-shape));
+      transition: all 1s;
+    }
+
+    .bar:hover {
+      height: 100%;
+    }
+
+    .bar:last-child {
+      margin-right: 0;
+    }
+
+    /* bar添加前后伪元素，设置为clip-path裁剪后的六边形 */
+    .bar::before,
+    .bar::after {
+      content: "";
+      position: absolute;
+      width: var(--w);
+      height: calc(var(--w) / 2.5);
+      clip-path: var(--path);
+      left: 0;
+    }
+
+    .bar::before {
+      background: var(--bar-top);
+      top: 0;
+      /* 层级置于最上层 */
+      z-index: 2;
+      transform: translateY(-50%);
+    }
+
+    .bar::after {
+      background: var(--bar-bg);
+      bottom: 0;
+      /* 层级置于最下层 */
+      z-index: -1;
+      transform: translateY(50%);
+    }
+
+    .bar span {
+      position: absolute;
+      --d: calc(var(--w) / 2);
+      --b: calc(var(--w) / -2.5 / 2);
+      width: var(--d);
+      height: 101%;
+      left: calc(50% - var(--d) / 2);
+      bottom: var(--b);
+      box-shadow: 0px -5px 5px var(--bar-line);
+    }
+  </style>
+
+  <body>
+    <section>
+      <div class="bar" style="--height: 5%; --w: 25px">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 60%">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 30%; --w: 50px">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 60%; --w: 60px">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 30%; --w: 30px">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 80%; --w: 35px">
+        <span></span>
+      </div>
+      <div class="bar" style="--height: 10%; --w: 45px">
+        <span></span>
+      </div>
+    </section>
+  </body>
+</html>
