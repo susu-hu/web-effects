@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://codepen.io/amit_sheen/pen/JjBLaGG</title>
+  </head>
+  <link rel="stylesheet" href="../common.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .loader {
+      position: relative;
+      width: 21em;
+      height: 21em;
+      background-color: #000;
+      filter: blur(0.2em) contrast(2);
+      -webkit-animation: loaderSpin 16s infinite linear;
+      animation: loaderSpin 16s infinite linear;
+    }
+    @-webkit-keyframes loaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes loaderSpin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .loader > i {
+      position: absolute;
+      left: 10em;
+      top: 10em;
+      width: 1em;
+      height: 1em;
+      background-color: hsl(var(--hue, 0), 75%, 75%);
+      border-radius: 50%;
+      transform: rotateZ(var(--rz, 0)) translateY(5em);
+      -webkit-animation: iMove 4s var(--delay, 0s) infinite ease-in-out;
+      animation: iMove 4s var(--delay, 0s) infinite ease-in-out;
+    }
+    @-webkit-keyframes iMove {
+      0% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(0);
+      }
+      2% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(1.25);
+      }
+      20% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(1.25);
+      }
+      90%,
+      100% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em)
+          translate(var(--tx, 0), var(--ty, 0)) scale(0);
+      }
+    }
+    @keyframes iMove {
+      0% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(0);
+      }
+      2% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(1.25);
+      }
+      20% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em) translate(0, 0)
+          scale(1.25);
+      }
+      90%,
+      100% {
+        transform: rotateZ(var(--rz, 0)) translateY(4em)
+          translate(var(--tx, 0), var(--ty, 0)) scale(0);
+      }
+    }
+    .loader > i:nth-child(1) {
+      --rz: 0deg;
+      --delay: -4s;
+      --tx: 0.148em;
+      --ty: -2.268em;
+      --hue: 0;
+    }
+    .loader > i:nth-child(2) {
+      --rz: 5deg;
+      --delay: -3.9444444444s;
+      --tx: 1.492em;
+      --ty: 1.516em;
+      --hue: 5;
+    }
+    .loader > i:nth-child(3) {
+      --rz: 10deg;
+      --delay: -3.8888888889s;
+      --tx: 3.6em;
+      --ty: 4.748em;
+      --hue: 10;
+    }
+    .loader > i:nth-child(4) {
+      --rz: 15deg;
+      --delay: -3.8333333333s;
+      --tx: 1.144em;
+      --ty: 5.492em;
+      --hue: 15;
+    }
+    .loader > i:nth-child(5) {
+      --rz: 20deg;
+      --delay: -3.7777777778s;
+      --tx: 1.7em;
+      --ty: -0.572em;
+      --hue: 20;
+    }
+    .loader > i:nth-child(6) {
+      --rz: 25deg;
+      --delay: -3.7222222222s;
+      --tx: 2.204em;
+      --ty: 2.068em;
+      --hue: 25;
+    }
+    .loader > i:nth-child(7) {
+      --rz: 30deg;
+      --delay: -3.6666666667s;
+      --tx: 2.416em;
+      --ty: 3.252em;
+      --hue: 30;
+    }
+    .loader > i:nth-child(8) {
+      --rz: 35deg;
+      --delay: -3.6111111111s;
+      --tx: 2.856em;
+      --ty: 1.564em;
+      --hue: 35;
+    }
+    .loader > i:nth-child(9) {
+      --rz: 40deg;
+      --delay: -3.5555555556s;
+      --tx: 2.896em;
+      --ty: 4.412em;
+      --hue: 40;
+    }
+    .loader > i:nth-child(10) {
+      --rz: 45deg;
+      --delay: -3.5s;
+      --tx: 2.468em;
+      --ty: -0.572em;
+      --hue: 45;
+    }
+    .loader > i:nth-child(11) {
+      --rz: 50deg;
+      --delay: -3.4444444444s;
+      --tx: 2.204em;
+      --ty: 4.804em;
+      --hue: 50;
+    }
+    .loader > i:nth-child(12) {
+      --rz: 55deg;
+      --delay: -3.3888888889s;
+      --tx: 2.292em;
+      --ty: -2.236em;
+      --hue: 55;
+    }
+    .loader > i:nth-child(13) {
+      --rz: 60deg;
+      --delay: -3.3333333333s;
+      --tx: 0.932em;
+      --ty: 0.876em;
+      --hue: 60;
+    }
+    .loader > i:nth-child(14) {
+      --rz: 65deg;
+      --delay: -3.2777777778s;
+      --tx: 0.168em;
+      --ty: 3.156em;
+      --hue: 65;
+    }
+    .loader > i:nth-child(15) {
+      --rz: 70deg;
+      --delay: -3.2222222222s;
+      --tx: 3.976em;
+      --ty: -2.212em;
+      --hue: 70;
+    }
+    .loader > i:nth-child(16) {
+      --rz: 75deg;
+      --delay: -3.1666666667s;
+      --tx: 1.144em;
+      --ty: -1.604em;
+      --hue: 75;
+    }
+    .loader > i:nth-child(17) {
+      --rz: 80deg;
+      --delay: -3.1111111111s;
+      --tx: 1.088em;
+      --ty: -0.98em;
+      --hue: 80;
+    }
+    .loader > i:nth-child(18) {
+      --rz: 85deg;
+      --delay: -3.0555555556s;
+      --tx: 3.944em;
+      --ty: 3.788em;
+      --hue: 85;
+    }
+    .loader > i:nth-child(19) {
+      --rz: 90deg;
+      --delay: -3s;
+      --tx: 2.436em;
+      --ty: -0.644em;
+      --hue: 90;
+    }
+    .loader > i:nth-child(20) {
+      --rz: 95deg;
+      --delay: -2.9444444444s;
+      --tx: 0.252em;
+      --ty: 2.1em;
+      --hue: 95;
+    }
+    .loader > i:nth-child(21) {
+      --rz: 100deg;
+      --delay: -2.8888888889s;
+      --tx: 1.896em;
+      --ty: -1.684em;
+      --hue: 100;
+    }
+    .loader > i:nth-child(22) {
+      --rz: 105deg;
+      --delay: -2.8333333333s;
+      --tx: 0.24em;
+      --ty: 0.692em;
+      --hue: 105;
+    }
+    .loader > i:nth-child(23) {
+      --rz: 110deg;
+      --delay: -2.7777777778s;
+      --tx: 1.904em;
+      --ty: 1.308em;
+      --hue: 110;
+    }
+    .loader > i:nth-child(24) {
+      --rz: 115deg;
+      --delay: -2.7222222222s;
+      --tx: 2.804em;
+      --ty: 3.34em;
+      --hue: 115;
+    }
+    .loader > i:nth-child(25) {
+      --rz: 120deg;
+      --delay: -2.6666666667s;
+      --tx: 0.248em;
+      --ty: 3.716em;
+      --hue: 120;
+    }
+    .loader > i:nth-child(26) {
+      --rz: 125deg;
+      --delay: -2.6111111111s;
+      --tx: 1.224em;
+      --ty: 1.164em;
+      --hue: 125;
+    }
+    .loader > i:nth-child(27) {
+      --rz: 130deg;
+      --delay: -2.5555555556s;
+      --tx: 3.996em;
+      --ty: 4.972em;
+      --hue: 130;
+    }
+    .loader > i:nth-child(28) {
+      --rz: 135deg;
+      --delay: -2.5s;
+      --tx: 1.748em;
+      --ty: -2.14em;
+      --hue: 135;
+    }
+    .loader > i:nth-child(29) {
+      --rz: 140deg;
+      --delay: -2.4444444444s;
+      --tx: 0.92em;
+      --ty: 0.34em;
+      --hue: 140;
+    }
+    .loader > i:nth-child(30) {
+      --rz: 145deg;
+      --delay: -2.3888888889s;
+      --tx: 2.26em;
+      --ty: 4.028em;
+      --hue: 145;
+    }
+    .loader > i:nth-child(31) {
+      --rz: 150deg;
+      --delay: -2.3333333333s;
+      --tx: 3.396em;
+      --ty: -0.956em;
+      --hue: 150;
+    }
+    .loader > i:nth-child(32) {
+      --rz: 155deg;
+      --delay: -2.2777777778s;
+      --tx: 0.456em;
+      --ty: -1.396em;
+      --hue: 155;
+    }
+    .loader > i:nth-child(33) {
+      --rz: 160deg;
+      --delay: -2.2222222222s;
+      --tx: 2.124em;
+      --ty: -0.78em;
+      --hue: 160;
+    }
+    .loader > i:nth-child(34) {
+      --rz: 165deg;
+      --delay: -2.1666666667s;
+      --tx: 0.224em;
+      --ty: 5.124em;
+      --hue: 165;
+    }
+    .loader > i:nth-child(35) {
+      --rz: 170deg;
+      --delay: -2.1111111111s;
+      --tx: 0.984em;
+      --ty: 3.532em;
+      --hue: 170;
+    }
+    .loader > i:nth-child(36) {
+      --rz: 175deg;
+      --delay: -2.0555555556s;
+      --tx: 2.212em;
+      --ty: -1.748em;
+      --hue: 175;
+    }
+    .loader > i:nth-child(37) {
+      --rz: 180deg;
+      --delay: -2s;
+      --tx: 2.964em;
+      --ty: -0.78em;
+      --hue: 180;
+    }
+    .loader > i:nth-child(38) {
+      --rz: 185deg;
+      --delay: -1.9444444444s;
+      --tx: 0.708em;
+      --ty: 3.724em;
+      --hue: 185;
+    }
+    .loader > i:nth-child(39) {
+      --rz: 190deg;
+      --delay: -1.8888888889s;
+      --tx: 1.272em;
+      --ty: 2.788em;
+      --hue: 190;
+    }
+    .loader > i:nth-child(40) {
+      --rz: 195deg;
+      --delay: -1.8333333333s;
+      --tx: 1.688em;
+      --ty: 5.404em;
+      --hue: 195;
+    }
+    .loader > i:nth-child(41) {
+      --rz: 200deg;
+      --delay: -1.7777777778s;
+      --tx: 1.356em;
+      --ty: -2.316em;
+      --hue: 200;
+    }
+    .loader > i:nth-child(42) {
+      --rz: 205deg;
+      --delay: -1.7222222222s;
+      --tx: 0.6em;
+      --ty: 0.38em;
+      --hue: 205;
+    }
+    .loader > i:nth-child(43) {
+      --rz: 210deg;
+      --delay: -1.6666666667s;
+      --tx: 1.156em;
+      --ty: 4.196em;
+      --hue: 210;
+    }
+    .loader > i:nth-child(44) {
+      --rz: 215deg;
+      --delay: -1.6111111111s;
+      --tx: 1.108em;
+      --ty: 2.532em;
+      --hue: 215;
+    }
+    .loader > i:nth-child(45) {
+      --rz: 220deg;
+      --delay: -1.5555555556s;
+      --tx: 1.668em;
+      --ty: 2.388em;
+      --hue: 220;
+    }
+    .loader > i:nth-child(46) {
+      --rz: 225deg;
+      --delay: -1.5s;
+      --tx: 1.52em;
+      --ty: 0.7em;
+      --hue: 225;
+    }
+    .loader > i:nth-child(47) {
+      --rz: 230deg;
+      --delay: -1.4444444444s;
+      --tx: 0.184em;
+      --ty: 0.204em;
+      --hue: 230;
+    }
+    .loader > i:nth-child(48) {
+      --rz: 235deg;
+      --delay: -1.3888888889s;
+      --tx: 0.388em;
+      --ty: 4.212em;
+      --hue: 235;
+    }
+    .loader > i:nth-child(49) {
+      --rz: 240deg;
+      --delay: -1.3333333333s;
+      --tx: 0.74em;
+      --ty: -0.476em;
+      --hue: 240;
+    }
+    .loader > i:nth-child(50) {
+      --rz: 245deg;
+      --delay: -1.2777777778s;
+      --tx: 0.12em;
+      --ty: -1.508em;
+      --hue: 245;
+    }
+    .loader > i:nth-child(51) {
+      --rz: 250deg;
+      --delay: -1.2222222222s;
+      --tx: 3.264em;
+      --ty: 5.396em;
+      --hue: 250;
+    }
+    .loader > i:nth-child(52) {
+      --rz: 255deg;
+      --delay: -1.1666666667s;
+      --tx: 3.704em;
+      --ty: 1.916em;
+      --hue: 255;
+    }
+    .loader > i:nth-child(53) {
+      --rz: 260deg;
+      --delay: -1.1111111111s;
+      --tx: 0.808em;
+      --ty: 1.596em;
+      --hue: 260;
+    }
+    .loader > i:nth-child(54) {
+      --rz: 265deg;
+      --delay: -1.0555555556s;
+      --tx: 1.636em;
+      --ty: 0.54em;
+      --hue: 265;
+    }
+    .loader > i:nth-child(55) {
+      --rz: 270deg;
+      --delay: -1s;
+      --tx: 0.148em;
+      --ty: -2.14em;
+      --hue: 270;
+    }
+    .loader > i:nth-child(56) {
+      --rz: 275deg;
+      --delay: -0.9444444444s;
+      --tx: 1.988em;
+      --ty: 1.948em;
+      --hue: 275;
+    }
+    .loader > i:nth-child(57) {
+      --rz: 280deg;
+      --delay: -0.8888888889s;
+      --tx: 0.868em;
+      --ty: -1.652em;
+      --hue: 280;
+    }
+    .loader > i:nth-child(58) {
+      --rz: 285deg;
+      --delay: -0.8333333333s;
+      --tx: 1.908em;
+      --ty: 1.876em;
+      --hue: 285;
+    }
+    .loader > i:nth-child(59) {
+      --rz: 290deg;
+      --delay: -0.7777777778s;
+      --tx: 3.02em;
+      --ty: 1.924em;
+      --hue: 290;
+    }
+    .loader > i:nth-child(60) {
+      --rz: 295deg;
+      --delay: -0.7222222222s;
+      --tx: 1.428em;
+      --ty: -0.428em;
+      --hue: 295;
+    }
+    .loader > i:nth-child(61) {
+      --rz: 300deg;
+      --delay: -0.6666666667s;
+      --tx: 2.168em;
+      --ty: 3.188em;
+      --hue: 300;
+    }
+    .loader > i:nth-child(62) {
+      --rz: 305deg;
+      --delay: -0.6111111111s;
+      --tx: 0.66em;
+      --ty: 2.612em;
+      --hue: 305;
+    }
+    .loader > i:nth-child(63) {
+      --rz: 310deg;
+      --delay: -0.5555555556s;
+      --tx: 0.604em;
+      --ty: 2.7em;
+      --hue: 310;
+    }
+    .loader > i:nth-child(64) {
+      --rz: 315deg;
+      --delay: -0.5s;
+      --tx: 0.652em;
+      --ty: 3.052em;
+      --hue: 315;
+    }
+    .loader > i:nth-child(65) {
+      --rz: 320deg;
+      --delay: -0.4444444444s;
+      --tx: 3.96em;
+      --ty: 1.716em;
+      --hue: 320;
+    }
+    .loader > i:nth-child(66) {
+      --rz: 325deg;
+      --delay: -0.3888888889s;
+      --tx: 3.96em;
+      --ty: 0.356em;
+      --hue: 325;
+    }
+    .loader > i:nth-child(67) {
+      --rz: 330deg;
+      --delay: -0.3333333333s;
+      --tx: 3.528em;
+      --ty: -0.788em;
+      --hue: 330;
+    }
+    .loader > i:nth-child(68) {
+      --rz: 335deg;
+      --delay: -0.2777777778s;
+      --tx: 1.192em;
+      --ty: 5.364em;
+      --hue: 335;
+    }
+    .loader > i:nth-child(69) {
+      --rz: 340deg;
+      --delay: -0.2222222222s;
+      --tx: 3.976em;
+      --ty: -1.692em;
+      --hue: 340;
+    }
+    .loader > i:nth-child(70) {
+      --rz: 345deg;
+      --delay: -0.1666666667s;
+      --tx: 3.372em;
+      --ty: 4.956em;
+      --hue: 345;
+    }
+    .loader > i:nth-child(71) {
+      --rz: 350deg;
+      --delay: -0.1111111111s;
+      --tx: 3.428em;
+      --ty: 1.26em;
+      --hue: 350;
+    }
+    .loader > i:nth-child(72) {
+      --rz: 355deg;
+      --delay: -0.0555555556s;
+      --tx: 1.036em;
+      --ty: 1.812em;
+      --hue: 355;
+    }
+  </style>
+  <body>
+    <div class="loader">
+      <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i
+      ><i></i><i></i> <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i
+      ><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i
+      ><i></i><i></i> <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i
+      ><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i
+      ><i></i><i></i>
+    </div>
+  </body>
+</html>
