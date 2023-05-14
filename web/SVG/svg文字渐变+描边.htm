@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .svgPra {
+      width: 600px;
+      height: 110px;
+      margin: 30px;
+      border-radius: 15px;
+      box-shadow: -5px -5px 10px rgb(255, 255, 255);
+    }
+    .svgStyle {
+      width: 600px;
+      height: 110px;
+      background: white;
+      box-shadow: 5px 5px 10px #aaa;
+      border-radius: 15px;
+    }
+    .text {
+      fill: url(#gradient);
+
+      text-anchor: middle;
+      dominant-baseline: middle;
+
+      font-size: 60px;
+      font-weight: 900;
+
+      stroke-width: 4px;
+      stroke: url(#gradientStroke);
+      paint-order: stroke;
+
+      /* 建议用这个，代码简单整洁；渐变方法：text-shadow: 5px 5px 6px #b9c4c4,5px 5px 6px red; */
+      /* svg方法实现投影；渐变方法：filter: url(#shadow1)  url(#shadow2); */
+      filter: url(#shadow);
+    }
+  </style>
+  <body>
+    <div class="svgPra">
+      <svg class="svgStyle">
+        <defs>
+          <!-- 文字颜色渐变 -->
+          <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#b5ffff" />
+            <stop offset="100%" stop-color="#fca5f1" />
+          </linearGradient>
+          <!-- 描边颜色渐变 -->
+          <!-- 渐变方向（x1,y1）->（x2,y2） -->
+          <linearGradient id="gradientStroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00ffee" />
+            <stop offset="100%" stop-color="#d585ff" />
+          </linearGradient>
+          <!-- 阴影，想要投影渐变，可以写多个，起不同的名字，在css中应用 -->
+          <filter id="shadow">
+            <feDropShadow
+              dx="5"
+              dy="5"
+              stdDeviation="3"
+              flood-color="#b9c4c4"
+            />
+          </filter>
+        </defs>
+        <text class="text" x="50%" y="50%">苏苏</text>
+      </svg>
+    </div>
+  </body>
+</html>

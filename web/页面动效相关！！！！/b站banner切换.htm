@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>参考链接：https://ainyi.com/101</title>
+  </head>
+  <style>
+    .banner {
+      min-height: 155px;
+      height: 9.375vw;
+      position: relative;
+      overflow: hidden;
+      --percentage: 0.5;
+    }
+    .banner .view,
+    .banner .tree {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s all ease-in;
+    }
+    .banner .view {
+      transform: translatex(calc(var(--percentage) * 100px));
+    }
+    .banner .tree {
+      transform: translatex(calc(var(--percentage) * 150px - 25px));
+      filter: blur(3px);
+    }
+    .banner img,
+    .banner video {
+      position: absolute;
+      height: 100%;
+    }
+    .banner .evening {
+      transition: 0.2s all ease-in;
+      z-index: 20;
+      opacity: calc((0.5 - var(--percentage)) / 0.5);
+    }
+    .banner .afternoon {
+      transition: 0.2s all ease-in;
+      z-index: 10;
+      opacity: calc(1 - (var(--percentage) - 0.5) / 0.5);
+    }
+    .banner.moving .afternoon,
+    .banner.moving .evening,
+    .banner.moving .ball,
+    .banner.moving .view,
+    .banner.moving .tree {
+      transition: none;
+    }
+    .banner .ball {
+      transition: 0.2s all ease-in;
+      z-index: 10;
+      opacity: calc(1.5 - (var(--percentage) - 0.5) / 0.5);
+      transform: translate(calc(100px * var(--percentage)), 22px)
+        rotate(calc(10deg * var(--percentage) + 5deg));
+    }
+    .banner .window-cover {
+      z-index: 20;
+      opacity: calc(var(--percentage) * (-2));
+    }
+  </style>
+  <body>
+    <div class="banner">
+      <div class="view">
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-view-1.43e982a.jpg"
+          class="morning"
+        />
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-view-2.6a60e5a.jpg"
+          class="afternoon"
+        />
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-tree-3.27ed304.png"
+          class="ball"
+        />
+        <video autoplay loop muted class="evening">
+          <source
+            src="../../assets/bilibili/bilibili-winter-view-3.webm"
+            type="video/webm"
+          />
+        </video>
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-tree-3.27ed304.png"
+          class="window-cover"
+        />
+      </div>
+      <div class="tree">
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-tree-1.27fde75.png"
+          class="morning"
+        />
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-tree-3.27ed304.png"
+          class="afternoon"
+        />
+        <img
+          src="http://ainyi.com:7654/my-transfer/static/img/bilibili-winter-tree-3.27ed304.png"
+          class="evening"
+        />
+      </div>
+    </div>
+  </body>
+  <script>
+    let startingPoint = 0;
+    const header = document.querySelector(".banner");
+
+    header.addEventListener("mouseenter", (e) => {
+      startingPoint = e.clientX;
+      header.classList.add("moving");
+    });
+
+    header.addEventListener("mouseout", (e) => {
+      header.classList.remove("moving");
+      header.style.setProperty("--percentage", 0.5);
+    });
+
+    header.addEventListener("mousemove", (e) => {
+      let percentage =
+        ((startingPoint - e.clientX) / window.outerWidth) * 2 + 0.5;
+
+      header.style.setProperty("--percentage", percentage);
+    });
+  </script>
+</html>
