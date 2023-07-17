@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 参考链接：https://github.com/baobaomi900901/AnimeDemo/blob/main/src/3D%E6%96%87%E5%AD%97/index.html -->
+<link rel="stylesheet" href="../../common.css">
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+    *,
+    body {
+        font-family: "Poppins", sans-serif;
+        text-transform: capitalize;
+        background: #f1f1f1;
+    }
+
+    .text {
+        position: relative;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12em;
+        line-height: 0.9em;
+        text-align: center;
+        transform: rotate(-25deg) skew(25deg);
+    }
+
+    .text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 35px;
+        left: -50px;
+        color: rgba(0, 0, 0, 0.3);
+        text-shadow: none;
+        filter: blur(10px);
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <div class="text break-normal" data-text="CSS 3D Isometric Text">
+        CSS 3D
+        <br />
+        Isometric
+        <br />
+        Text
+    </div>
+</body>
+<script>
+    let text = document.querySelector( ".text" );
+    let shadow = "";
+    let horizontal = -1; // 水平 1 or -1
+    let vertical = 1; // 垂直 1 or -1
+
+    // 创建阴影
+    for ( let i = 0; i < 30; i++ ) {
+        shadow +=
+            ( shadow ? "," : "" ) +
+            i * horizontal +
+            "px " +
+            i * vertical +
+            "px 0 #e1e1e1";
+    }
+
+    // 阴影赋值
+    text.style.textShadow = shadow;
+</script>
+
+</html>
