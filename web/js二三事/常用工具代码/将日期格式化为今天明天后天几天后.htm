@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    function formatDate ( date ) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString( 'zh-CN', options );
+    }
+
+    function formatRelativeDate ( relativeDate ) {
+        const today = new Date();
+
+        if ( relativeDate.toDateString() === today.toDateString() ) {
+            return '今天';
+        } else if ( relativeDate.toDateString() === new Date( today.getTime() + 24 * 60 * 60 * 1000 ).toDateString() ) {
+            return '明天';
+        } else if ( relativeDate.toDateString() === new Date( today.getTime() + 2 * 24 * 60 * 60 * 1000 ).toDateString() ) {
+            return '后天';
+        } else {
+            const daysDiff = Math.ceil( ( relativeDate - today ) / ( 24 * 60 * 60 * 1000 ) );
+            return `${daysDiff}天后`;
+        }
+    }
+
+    const today = new Date();
+    console.log( formatRelativeDate( today ) );
+
+    const tomorrow = new Date( today.getTime() + 24 * 60 * 60 * 1000 );
+    console.log( formatRelativeDate( tomorrow ) );
+
+    const dayAfterTomorrow = new Date( today.getTime() + 2 * 24 * 60 * 60 * 1000 );
+    console.log( formatRelativeDate( dayAfterTomorrow ) );
+
+    const futureDate = new Date( today.getTime() + 5 * 24 * 60 * 60 * 1000 );
+    console.log( formatRelativeDate( futureDate ) );
+</script>
+
+</html>
