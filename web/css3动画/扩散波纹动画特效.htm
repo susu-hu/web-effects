@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>http://www.bootstrapmb.com/item/8098/preview</title>
+    <style>
+        :root {
+            --r: 17;
+            --g: 206;
+            --b: 142;
+            --bg: #121212;
+        }
+
+        html {
+            background: var(--bg);
+            -webkit-transition: background 2s ease-in-out;
+            transition: background 2s ease-in-out;
+        }
+
+        .circle {
+            --scale: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            width: var(--size);
+            height: var(--size);
+            -webkit-animation: pulse 3s infinite ease-in-out;
+            animation: pulse 3s infinite ease-in-out;
+            -webkit-transition: background 2s ease-in-out;
+            transition: background 2s ease-in-out;
+            background: rgb(var(--r), var(--g), var(--b));
+            mix-blend-mode: luminosity;
+        }
+
+        .circle--1 {
+            opacity: 1;
+            -webkit-animation-delay: 0.12s;
+            animation-delay: 0.12s;
+        }
+
+        .circle--2 {
+            opacity: 0.5;
+            -webkit-animation-delay: 0.24s;
+            animation-delay: 0.24s;
+        }
+
+        .circle--3 {
+            opacity: 0.3333;
+            -webkit-animation-delay: 0.36s;
+            animation-delay: 0.36s;
+        }
+
+        .circle--4 {
+            opacity: 0.25;
+            -webkit-animation-delay: 0.48s;
+            animation-delay: 0.48s;
+        }
+
+        .circle--5 {
+            opacity: 0.2;
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        .circle--6 {
+            opacity: 0.1666;
+            -webkit-animation-delay: 0.72s;
+            animation-delay: 0.72s;
+        }
+
+        .circle--1 {
+            --size: calc(50px * 1);
+        }
+
+        @media (min-width: 700px) {
+            .circle--1 {
+                --size: calc(7vw * 1);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--1 {
+                --size: calc(70px * 1);
+            }
+        }
+
+        .circle--2 {
+            --size: calc(50px * 2);
+        }
+
+        @media (min-width: 700px) {
+            .circle--2 {
+                --size: calc(7vw * 2);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--2 {
+                --size: calc(70px * 2);
+            }
+        }
+
+        .circle--3 {
+            --size: calc(50px * 3);
+        }
+
+        @media (min-width: 700px) {
+            .circle--3 {
+                --size: calc(7vw * 3);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--3 {
+                --size: calc(70px * 3);
+            }
+        }
+
+        .circle--4 {
+            --size: calc(50px * 4);
+        }
+
+        @media (min-width: 700px) {
+            .circle--4 {
+                --size: calc(7vw * 4);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--4 {
+                --size: calc(70px * 4);
+            }
+        }
+
+        .circle--5 {
+            --size: calc(50px * 5);
+        }
+
+        @media (min-width: 700px) {
+            .circle--5 {
+                --size: calc(7vw * 5);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--5 {
+                --size: calc(70px * 5);
+            }
+        }
+
+        .circle--6 {
+            --size: calc(50px * 6);
+        }
+
+        @media (min-width: 700px) {
+            .circle--6 {
+                --size: calc(7vw * 6);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .circle--6 {
+                --size: calc(70px * 6);
+            }
+        }
+
+
+        @keyframes pulse {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            25% {
+                -webkit-transform: translate(-50%, -50%) scale(1.3);
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+
+            50% {
+                -webkit-transform: translate(-50%, -50%) scale(0.70);
+                transform: translate(-50%, -50%) scale(0.70);
+            }
+
+            75% {
+                -webkit-transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='circle circle--1'></div>
+    <div class='circle circle--2'></div>
+    <div class='circle circle--3'></div>
+    <div class='circle circle--4'></div>
+    <div class='circle circle--5'></div>
+    <div class='circle circle--6'></div>
+    <script type="text/javascript">
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 255);
+        }
+        function getBrightness(r, b, g) {
+            return Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b));
+        }
+        setInterval(() => {
+            const r = getRandomNumber()
+                , g = getRandomNumber()
+                , b = getRandomNumber()
+                , brightness = getBrightness(r, g, b);
+            document.documentElement.style.setProperty(`--r`, r);
+            document.documentElement.style.setProperty(`--g`, g);
+            document.documentElement.style.setProperty(`--b`, b);
+            let bgColor;
+            if (brightness > 40) {
+                bgColor = '#121212';
+            } else {
+                bgColor = '#BDBCBF';
+            }
+            document.documentElement.style.setProperty(`--bg`, bgColor);
+        }
+            , 2000);
+    </script>
+</body>
+
+</html>
