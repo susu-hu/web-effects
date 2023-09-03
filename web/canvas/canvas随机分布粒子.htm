@@ -1,0 +1,102 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2023-09-07 00:46:54
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2023-09-03 23:18:22
+ * @FilePath: \css_demos\web\canvas\canvas随机分布粒子.htm
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    button {
+        position: absolute;
+        width: 130px;
+        height: 50px;
+        left: 0;
+        top: 0;
+        border: 1px solid red;
+        color: rgba(166, 255, 240);
+    }
+</style>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const numParticles = 100;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const minDistance = 10;
+    const maxDistance = 200;
+    const maxSpeed = 2;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 5 + 2;
+            this.color = 'blue';
+            this.speed = Math.random() * maxSpeed + 1;
+            this.angle = Math.random() * Math.PI * 2;
+            this.distance = Math.random() * (maxDistance - minDistance) + minDistance;
+        }
+
+        update() {
+            this.x += Math.cos(this.angle) * this.speed;
+            this.y += Math.sin(this.angle) * this.speed;
+
+            const distanceToCenter = Math.sqrt((centerX - this.x) ** 2 + (centerY - this.y) ** 2);
+
+            if (distanceToCenter < this.radius) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        for (let i = 0; i < numParticles; i++) {
+            const particle = new Particle();
+            particles.push(particle);
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const particle of particles) {
+            particle.update();
+            particle.draw();
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+</script>
+
+</html>
