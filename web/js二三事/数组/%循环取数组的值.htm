@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    function forArray ( array, sort ) {
+
+        return array[sort % array.length]
+    }
+    const arr = [
+        "#19E7FF",
+        "#fee186",
+        "#FFAA3A",
+        "#EF7C41",
+        "#ef4163",
+        "#7a41ef",
+    ]
+    console.log( forArray( arr, 0 ) )
+    console.log( forArray( arr, 1 ) )
+    console.log( forArray( arr, 2 ) )
+    console.log( forArray( arr, 3 ) )
+    console.log( forArray( arr, 4 ) )
+    console.log( forArray( arr, 5 ) )
+    console.log( forArray( arr, 6 ) )
+    console.log( forArray( arr, 7 ) )
+
+</script>
+
+</html>
