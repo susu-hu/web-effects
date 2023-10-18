@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按照num将数组拆分成小数组</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function splitArrayByLength ( arr, len ) {
+        return arr.reduce( ( acc, cur ) => {
+            const last = acc[acc.length - 1]; if ( !last || last.length === len ) {
+                acc.push( [cur] );
+            } else {
+                last.push( cur );
+            }
+            return acc;
+        }, [] );
+    }
+    // const arr = [{ name: 1 }, { name: 3 }, { name: 331 }, { name: 33333 }, { name: 4564 }, { name: 545 }, { name: 43331 },];
+    const arr = [{ name: 1 }, { name: 3 },];
+    const result = splitArrayByLength( arr, 3 );
+    console.log( result ); 
+</script>
+
+</html>
