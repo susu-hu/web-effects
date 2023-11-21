@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考：https://juejin.cn/post/7303138588858581026</title>
+</head>
+<style>
+    header {
+        width: 1000px;
+        height: 200px;
+        background-color: #0d112d;
+        position: relative;
+    }
+
+    header::before {
+        content: '';
+        display: block;
+        width: 90%;
+        height: 75px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(45deg, transparent 0, transparent 30%, #122241 30%, #122241 calc(30% + 5px), transparent calc(30% + 5px), transparent 50%, #282c3e 50%, #282c3e calc(50% + 5px), transparent calc(50% + 5px), transparent calc(50% + 5px), transparent 70%, #193653 70%, #193653 calc(70% + 5px), transparent calc(70% + 5px), transparent) no-repeat,
+            linear-gradient(-45deg, transparent 0, transparent 30%, #122241 30%, #122241 calc(30% + 5px), transparent calc(30% + 5px), transparent 50%, #282c3e 50%, #282c3e calc(50% + 5px), transparent calc(50% + 5px), transparent calc(50% + 5px), transparent 70%, #193653 70%, #193653 calc(70% + 5px), transparent calc(70% + 5px), transparent) no-repeat,
+            linear-gradient(0, #1d4b81, transparent 85%);
+        background-size: 50px 10px, 50px 10px, 100% 100%;
+        background-position: 23% 10%, 77% 10%, 0 0;
+        clip-path: polygon(0 0, 0 30%, 21% 30%, 25% 98%, 45% 98%, 47% 90%, 53% 90%, 55% 98%, 75% 98%, 79% 30%, 100% 30%, 100% 0%);
+    }
+
+    header::after {
+        content: '';
+        display: block;
+        width: 90%;
+        height: 75px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(90deg, transparent 0, #42a7f5 45%, #42a7f5 55%, transparent 100%);
+        clip-path: polygon(0 30%, 21% 30%, 25% 98%, 45% 98%, 47% 90%, 53% 90%, 55% 98%, 75% 98%, 79% 30%, 100% 30%,
+                100% 27%, 79% 27%, 75% 95%, 55% 95%, 53% 87%, 47% 87%, 45% 95%, 25% 95%, 21% 27%, 0 27%);
+    }
+
+    header span {
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        font-style: italic;
+        color: transparent;
+        background: linear-gradient(0, #0b8be5, #0b8be5 36%, #a7d7ff 50%, #FFF);
+        background-clip: text;
+        -webkit-background-clip: text;
+        filter: drop-shadow(0 2px 3px #000) drop-shadow(0 2px 3px #000);
+        position: absolute;
+        top: calc(50% - 15px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0px 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <span>标题在此</span>
+    </header>
+</body>
+
+</html>
