@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .queue {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 24%;
+  }
+
+  .item {
+    position: relative;
+    width: 100%;
+    margin: 2.5% 0;
+  }
+
+  .queue:nth-child(1) .item:nth-child(1) {
+    height: 245px;
+    background-color: #638062;
+  }
+
+  .queue:nth-child(1) .item:nth-child(1)::after {
+    content: "1";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(1) .item:nth-child(2) {
+    height: 211px;
+    background-color: #318ebb;
+  }
+
+  .queue:nth-child(1) .item:nth-child(2)::after {
+    content: "2";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(1) .item:nth-child(3) {
+    height: 291px;
+    background-color: #c4b7cd;
+  }
+
+  .queue:nth-child(1) .item:nth-child(3)::after {
+    content: "3";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(2) .item:nth-child(1) {
+    height: 77px;
+    background-color: #671ccd;
+  }
+
+  .queue:nth-child(2) .item:nth-child(1)::after {
+    content: "1";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(2) .item:nth-child(2) {
+    height: 334px;
+    background-color: #30cc9c;
+  }
+
+  .queue:nth-child(2) .item:nth-child(2)::after {
+    content: "2";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(2) .item:nth-child(3) {
+    height: 76px;
+    background-color: #cb1192;
+  }
+
+  .queue:nth-child(2) .item:nth-child(3)::after {
+    content: "3";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(3) .item:nth-child(1) {
+    height: 192px;
+    background-color: #c8dcd9;
+  }
+
+  .queue:nth-child(3) .item:nth-child(1)::after {
+    content: "1";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(3) .item:nth-child(2) {
+    height: 185px;
+    background-color: #8ed055;
+  }
+
+  .queue:nth-child(3) .item:nth-child(2)::after {
+    content: "2";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(3) .item:nth-child(3) {
+    height: 347px;
+    background-color: #9df932;
+  }
+
+  .queue:nth-child(3) .item:nth-child(3)::after {
+    content: "3";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(4) .item:nth-child(1) {
+    height: 83px;
+    background-color: #f48369;
+  }
+
+  .queue:nth-child(4) .item:nth-child(1)::after {
+    content: "1";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(4) .item:nth-child(2) {
+    height: 281px;
+    background-color: #08580c;
+  }
+
+  .queue:nth-child(4) .item:nth-child(2)::after {
+    content: "2";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .queue:nth-child(4) .item:nth-child(3) {
+    height: 345px;
+    background-color: #a45e49;
+  }
+
+  .queue:nth-child(4) .item:nth-child(3)::after {
+    content: "3";
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* 
+  
+
+  
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.queue {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 24%;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  margin: 2.5% 0;
+}
+
+// 随机生成内容
+$lineCount: 4;
+$count: 3;
+@function randomNum($max, $min: 0, $u: 1) {
+  @return ($min + random($max)) * $u;
+}
+
+@function randomColor() {
+  @return rgb(randomNum(255), randomNum(255), randomNum(255));
+}
+
+@for $i from 1 to $lineCount + 1 {
+  .queue:nth-child(#{$i}) {
+    @for $j from 1 to $count + 1 {
+      .item:nth-child(#{$j}) {
+        height: #{randomNum(300, 50)}px;
+        background-color: randomColor();
+
+        &::after {
+          content: "#{$j}";
+          position: absolute;
+          color: #fff;
+          font-size: 24px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+
+  */
+</style>
+
+<body>
+  <div class="container">
+    <div class="queue">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="queue">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="queue">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <div class="queue">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </div>
+
+</body>
+<script>
+  const a = [1, 2, 3]
+
+  console.log('dddddddddd', a.filter(i => i == 666).join(','))
+</script>
+
+</html>

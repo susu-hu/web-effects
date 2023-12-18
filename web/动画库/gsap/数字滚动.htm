@@ -31,35 +31,40 @@
     color: #ffff;
     font-size: 30px;
   }
+
+  #numbers {
+    background: url('./img/bar.png');
+  }
 </style>
 
 <body>
   <section>
-    <div id="numbers">0</div>
+    <div id="numbers"></div>
     <input type="text" id="input" onkeyup="inputonblur(this)" />
   </section>
 </body>
 <script>
   let numData = {
-      value: 0
-    },
+    value: 0
+  },
     endScore = 0,
-    inputBox = document.getElementById('input'),
-    numBox = document.getElementById("numbers");
+    inputBox = document.getElementById( 'input' ),
+    numBox = document.getElementById( "numbers" );
 
-  const countNumber = (e) => {
-    gsap.to(numData, {
+  const countNumber = ( e ) => {
+    gsap.to( numData, {
       value: e,
       roundProps: "value",
       onUpdate: () => {
         numBox.innerHTML = numData.value;
       },
       duration: 1
-    });
+    } );
   };
-  const inputonblur = (e) => {
-    countNumber(e.value)
+  const inputonblur = ( e ) => {
+    countNumber( e.value )
   }
+
 </script>
 
 </html>

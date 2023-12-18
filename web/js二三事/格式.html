@@ -1,0 +1,145 @@
+<!--
+ * @Author: 胡苏珍 1628469970@qq.com
+ * @Date: 2023-08-25 11:30:08
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2023-08-25 12:47:30
+ * @FilePath: \css_demos\web\js二三事\格式.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const arr = [
+        {
+            "column1": "2023-08-20",
+            "column2": "C2H2",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "C2H4",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "C2H6",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "CH4",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "CO",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "N2",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-20",
+            "column2": "O2",
+            "column3": 2
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "C2H2",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "C2H4",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "C2H6",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "CH4",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "CO",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "CO2",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-25",
+            "column2": "N2",
+            "column3": 1
+        },
+        {
+            "column1": "2023-08-26",
+            "column2": "N2",
+            "column3": 1
+        }
+    ]
+    const handleList = ( arr ) => {
+        const typeList = [...new Set( arr.map( i => i.column2 ) )];
+        const groups = arr.reduce( ( groups, item ) => {
+            const key = item.column1;
+            if ( !groups[key] ) {
+                groups[key] = [];
+            }
+            groups[key].push( item );
+            return groups;
+        }, {} );
+
+        for ( let i in groups ) {
+            let types = groups[i].map( i => i.column2 );
+            let diffList = findArrayDifference( typeList, types )
+            if ( diffList.length ) {
+                diffList.forEach( k => {
+                    groups[i].push( {
+                        "column1": i,
+                        "column2": k,
+                        "column3": 0
+                    } )
+                } )
+            }
+        }
+        return groups;
+        function findArrayDifference ( arr1, arr2 ) {
+            let diff = [];
+            // 检查第一个数组中的元素是否在第二个数组中
+            for ( let i = 0; i < arr1.length; i++ ) {
+                if ( arr2.indexOf( arr1[i] ) === -1 ) {
+                    diff.push( arr1[i] );
+                }
+            }
+
+            // 检查第二个数组中的元素是否在第一个数组中
+            for ( let j = 0; j < arr2.length; j++ ) {
+                if ( arr1.indexOf( arr2[j] ) === -1 ) {
+                    diff.push( arr2[j] );
+                }
+            }
+            return diff;
+        }
+    }
+    console.log(handleList(arr))
+</script>
+
+</html>

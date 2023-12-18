@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const arr = [{ "menuId": 3, "menuName": "首页", "menuKey": null, "parentId": 2, "menuIcon": "iconwandao", "menuUrl": "home", "menuOrder": null, "isMenu": 1, "sysId": 8, "menuDesc": "", "hasRole": 0, "rowId": null, "colId": null, "staticData": null, "listMethod": [{ "menuId": 47, "menuName": "查看", "menuKey": null, "parentId": 3, "menuIcon": "", "menuUrl": "search", "menuOrder": null, "isMenu": 0, "sysId": 8, "menuDesc": "", "hasRole": 1, "rowId": null, "colId": null, "staticData": null, "listMethod": null, "children": null, "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null }], "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null, "menuIndex": 1 },
+    { "menuId": 44, "menuName": "销售中心", "menuKey": null, "parentId": 2, "menuIcon": "iconjiangchenjiancecedianguanli", "menuUrl": "xszx", "menuOrder": null, "isMenu": 1, "sysId": 8, "menuDesc": "", "hasRole": 0, "rowId": null, "colId": null, "staticData": null, "listMethod": [], "children": [{ "menuId": 45, "menuName": "商机管理", "menuKey": null, "parentId": 44, "menuIcon": "iconshishigaojing", "menuUrl": "opportunityManage", "menuOrder": null, "isMenu": 1, "sysId": 8, "menuDesc": "", "hasRole": 0, "rowId": null, "colId": null, "staticData": null, "listMethod": [{ "menuId": 48, "menuName": "查询", "menuKey": null, "parentId": 45, "menuIcon": "", "menuUrl": "search", "menuOrder": null, "isMenu": 0, "sysId": 8, "menuDesc": "", "hasRole": 1, "rowId": null, "colId": null, "staticData": null, "listMethod": null, "children": null, "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null }], "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null, "menuIndex": 2 }, { "menuId": 46, "menuName": "销售额管理", "menuKey": null, "parentId": 44, "menuIcon": "iconPressureFan", "menuUrl": "salesManage", "menuOrder": null, "isMenu": 1, "sysId": 8, "menuDesc": "", "hasRole": 0, "rowId": null, "colId": null, "staticData": null, "listMethod": [{ "menuId": 49, "menuName": "查看", "menuKey": null, "parentId": 46, "menuIcon": "", "menuUrl": "search", "menuOrder": null, "isMenu": 0, "sysId": 8, "menuDesc": "", "hasRole": 1, "rowId": null, "colId": null, "staticData": null, "listMethod": null, "children": null, "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null }], "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null, "menuIndex": 2 }], "isSet": null, "tempRowId": null, "isAuth": null, "tempColId": null, "tempStaticData": null, "menuIndex": 1 }]
+
+    function findFirstEmptyChildren ( menu ) {
+        if ( !menu.children || menu.children.length === 0 ) {
+            return menu;
+        }
+        for ( let i = 0; i < menu.children.length; i++ ) {
+            let result = findFirstEmptyChildren( menu.children[i] );
+            if ( result ) {
+                return result;
+            }
+        }
+        return null;
+    }
+    const result = findFirstEmptyChildren( arr[1] );
+    console.log( result );
+</script>
+
+</html>

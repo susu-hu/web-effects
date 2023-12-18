@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<style>
+  body {
+    background: #222;
+  }
+
+  .container {
+    display: inline-block;
+    width: 200px;
+    height: 200vh;
+    border: 1px solid;
+    background: rgba(255, 192, 203, .3);
+  }
+
+  .container .a {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background: red;
+    color: #fff;
+    filter: grayscale(1);
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="a">I am fixed on scroll</div>
+  </div>
+
+  <div class="container" style="backdrop-filter: blur(10px);">
+    <div>
+      <div class="a">I move with the scroll</div>
+    </div>
+
+  </div>
+</body>
+<script>
+
+  const data = { "person": [{ "diagnosticTypeCode": "person", "riskResult": -2, "l": 66, "innerL": 456, "innerB": -175, "lineL": 148, "isLeft": true }, { "diagnosticTypeCode": "person", "id": 49, "recordCode": "assessment-16935574383906", "riskResult": 0.12 }], "vibe": [{ "diagnosticTypeCode": "vibe", "riskResult": -2, "l": 395, "innerL": 345, "innerB": -118, "lineL": 147, "isLeft": true }, { "diagnosticTypeCode": "vibe", "id": 51, "recordCode": "assessment-16935574383906", "riskResult": 0.1 }], "elec": [{ "diagnosticTypeCode": "elec", "riskResult": -2, "l": 1172, "innerL": 345, "innerB": -118, "lineL": 144, "isLeft": false }, { "diagnosticTypeCode": "elec", "id": 50, "recordCode": "assessment-16935574383906", "riskResult": 0.09 }], "manage": [{ "diagnosticTypeCode": "manage", "riskResult": -2, "l": 1501, "innerL": 447, "innerB": -175, "lineL": 149, "isLeft": false }, { "diagnosticTypeCode": "manage", "id": 52, "recordCode": "assessment-16935574383906", "riskResult": 0.01 }] }
+
+  const mergedData = Object.values( data ).reduce( ( merged, arr ) => {
+    arr.forEach( obj => {
+      const { diagnosticTypeCode, ...rest } = obj;
+      const existingObj = merged.find( item => item.diagnosticTypeCode === diagnosticTypeCode );
+      if ( existingObj ) {
+        Object.assign( existingObj, rest );
+      } else {
+        merged.push( obj );
+      }
+    } );
+    return merged;
+  }, [] );
+
+  console.log( mergedData );
+
+  function createOnceFunction ( func ) {
+    let executed = false;
+
+    return function () {
+      if ( !executed ) {
+        executed = true;
+        return func.apply( this, arguments );
+      }
+    }
+  }
+  const myFunc = createOnceFunction( function () {
+    console.log( "这个函数只会执行一次" );
+  } );
+
+  myFunc(); // 输出："这个函数只会执行一次"
+  myFunc(); // 不会再次执行
+
+
+
+  const array1 = [
+    {
+      diagnosticTypeCode: "person",
+      riskResult: -2,
+    },
+    {
+      diagnosticTypeCode: "vibe",
+      riskResult: -2,
+    },
+    {
+      diagnosticTypeCode: "elec",
+      riskResult: -2,
+    },
+    {
+      diagnosticTypeCode: "manage",
+      riskResult: -2,
+    },
+  ];
+
+  const array2 = [
+    {
+      "diagnosticTypeCode": "person",
+      "recordCode": "assessment-16935716942781",
+      "riskResult": 3
+    },
+    {
+      "diagnosticTypeCode": "elec",
+      "recordCode": "assessment-16935716942781",
+      "riskResult": 4
+    },
+    {
+      "diagnosticTypeCode": "vibe",
+      "recordCode": "assessment-16935716942781",
+      "riskResult": -2
+    },
+    {
+      "diagnosticTypeCode": "manage",
+      "recordCode": "assessment-16935716942781",
+      "riskResult": -2
+    }
+  ];
+
+  // const mergedArray = _.unionBy( array1, array2, 'diagnosticTypeCode' );
+
+  // console.log( mergedArray );
+  const mergedArray = _.mergeWith( array1, array2, ( objValue, srcValue ) => {
+    if ( _.isArray( objValue ) ) {
+      return objValue.concat( srcValue );
+    }
+  } );
+  console.log( mergedArray );
+</script>
+
+</html>

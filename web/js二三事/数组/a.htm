@@ -1,0 +1,135 @@
+<!--
+ * @Author: 胡苏珍 1628469970@qq.com
+ * @Date: 2023-11-01 18:32:30
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2023-11-01 18:42:36
+ * @FilePath: \css_demos\web\js二三事\数组\a.htm
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    function removeDisabledObjects ( data ) {
+        if ( !data || typeof data !== 'object' ) {
+            return data;
+        }
+
+        if ( Array.isArray( data ) ) {
+            return data.map( item => removeDisabledObjects( item ) ).filter( Boolean );
+        }
+
+        const { disabled, children, ...rest } = data;
+
+        if ( !disabled ) {
+            return {
+                ...rest,
+                ...( children && children.length > 0 && { children: removeDisabledObjects( children ) } )
+            };
+        }
+
+        return null;
+    }
+
+    // 使用示例
+    // const data = {
+    //     id: 1,
+    //     disabled: false,
+    //     children: [
+    //         {
+    //             id: 2,
+    //             disabled: true,
+    //             children: [
+    //                 {
+    //                     id: 3,
+    //                     disabled: false,
+    //                     children: []
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             id: 4,
+    //             disabled: false,
+    //             children: []
+    //         },
+    //         {
+    //             id: 5,
+    //             disabled: true,
+    //             children: [
+    //                 {
+    //                     id: 6,
+    //                     disabled: false,
+    //                     children: []
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // };
+    const data = [
+        {
+            id: 2,
+            disabled: false,
+            children: [
+                {
+                    id: 3,
+                    disabled: false,
+                    children: [
+                        {
+                            id: 788,
+                            disabled: true,
+                            children: []
+                        },
+                        {
+
+                            id: 666,
+                            disabled: false,
+                            children: []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 4,
+            disabled: false,
+            children: []
+        },
+        {
+            id: 5,
+            disabled: true,
+            children: [
+                {
+                    id: 6,
+                    disabled: false,
+                    children: []
+                }
+            ]
+        }
+    ]
+
+    function removeDisabled ( arr ) {
+        return arr.map( item => {
+            if ( item.disabled ) {
+                return null;
+            } else {
+                item.children = removeDisabled( item.children );
+                return item;
+            }
+        } ).filter( item => item !== null );
+    }
+    const filteredData = removeDisabled( data );
+    console.log( filteredData );
+
+</script>
+
+</html>

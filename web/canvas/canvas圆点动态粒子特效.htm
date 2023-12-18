@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>http://www.bootstrapmb.com/item/6814</title>
 </head>
+<link rel="stylesheet" href="../common.css">
 <style>
     canvas {
         display: block;
@@ -42,7 +43,7 @@
             }
 
             var Ball = function () {
-                this.r = rand(5, 10);
+                this.r = rand(3, 6);
                 this.x = rand(0 + this.r, canvas.width - this.r);
                 this.y = rand(0 + this.r, canvas.height - this.r);
                 this.vx = rand(-3, 3);
@@ -88,9 +89,9 @@
                     balls[i].draw();
                     balls[i].move();
                 }
-                setTimeout(function () {
-                    update();
-                }, 30)
+                // setTimeout(function () {
+                //     update();
+                // }, 30)
             };
             update();
         }

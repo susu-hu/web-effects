@@ -1,63 +1,107 @@
+<!--
+ * @Author: 胡苏珍 1628469970@qq.com
+ * @Date: 2022-10-27 09:03:58
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2023-05-05 18:11:58
+ * @FilePath: \css_demos\web\js二三事\优化\if分支优化.htm
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
 
 </body>
 <script>
-    const action = (e) => {
-        const map = {
-            苏苏: '喜欢追所有的剧',
-            娟娟: '喜欢追美剧',
-            小黄: "喜欢打游戏"
-        }
-        if (map[e]) {
-            console.log(map[e])
-        } else {
-            console.log('wu')
-        }
+  const action = (e) => {
+    const map = {
+      苏苏: '喜欢追所有的剧',
+      娟娟: '喜欢追美剧',
+      小黄: "喜欢打游戏"
     }
-    action('苏苏')
-    action('娟娟')
-    action('小黄')
-    action('susu')
-
-
-    const action1 = (e) => {
-        const map = [
-            [
-                () => e.includes('苏苏'),
-                () => console.log(e + '喜欢追所有的剧')
-            ],
-            [
-                () => e.endsWith('娟'),
-                () => console.log(e + '喜欢追美剧')
-            ],
-            [
-                () => e.startsWith('小'),
-                () => console.log(e + '喜欢打游戏')
-            ],
-
-        ]
-        const t = map.find(m => m[0]());
-        console.log(t)
-        if (t) {
-            t[1]()
-        } else {
-            console.log('不作为')
-        }
+    if (map[e]) {
+      console.log(map[e])
+    } else {
+      console.log('wu')
     }
-    action1('苏苏')
-    action1('娟娟')
-    action1('小黄')
-    action1('susu')
+  }
+  action('苏苏')
+  action('娟娟')
+  action('小黄')
+  action('susu')
+
+
+  const action1 = (e) => {
+    const map = [
+      [
+        () => e.includes('苏苏'),
+        () => console.log(e + '喜欢追所有的剧')
+      ],
+      [
+        () => e.endsWith('娟'),
+        () => console.log(e + '喜欢追美剧')
+      ],
+      [
+        () => e.startsWith('小'),
+        () => console.log(e + '喜欢打游戏')
+      ],
+
+    ]
+    const t = map.find(m => m[0]());
+    if (t) {
+      t[1]()
+    } else {
+      console.log('不作为')
+    }
+  }
+  action1('苏苏')
+  action1('娟娟')
+  action1('小黄')
+  action1('susu')
+
+  const a = [{
+      "id": "s143",
+      "name": "基站143",
+      "type": "StationVe",
+      "state": 0
+    },
+    {
+      "id": "s187",
+      "name": "基站187",
+      "type": "StationVe",
+      "state": 0
+    },
+    {
+      "id": "s131",
+      "name": "基站131",
+      "type": "StationVe",
+      "state": 0
+    },
+    {
+      "id": "s175",
+      "name": "基站175",
+      "type": "StationVe",
+      "state": 0
+    }
+  ];
+  let b = '';
+  a.map((item) => {
+    b = b + item.id + ",";
+  });
+  console.log(b)
+  if (b.length > 0) {
+    b = b.substr(0, b.length - 1);
+    console.log(b)
+  }
+
+  console.log(a.map(i => i.id).join(','))
 </script>
 
 </html>

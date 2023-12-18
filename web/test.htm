@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 生产环境版本，优化了尺寸和速度 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+<style>
+  .container {
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: flex-start; */
+    align-content: flex-start;
+    /* flex-wrap: wrap; */
+    width: 540px;
+    border: 1px solid red;
+    height: 340px;
+    overflow-y: auto;
+    /* flex-flow: column wrap; */
+    flex-flow: row wrap;
+  }
+
+  .container-item {
+    /* border: 1px solid orange; */
+    width: 20%;
+    /* flex-basis: 20%; */
+    /* padding: 20px;
+    box-sizing: border-box; */
+    /* float: left; */
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+  }
+
+  .column-count {
+    column-count: 5;
+    column-gap: 10px;
+    width: 540px;
+    border: 1px solid red;
+    height: 340px;
+    overflow-y: auto;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div class=" container">
+      <div v-for="(item,index) in list" :key="index" class="container-item">
+        <div>{{item.name}}</div>
+        <div v-for="(item0,index0) in item.list" :key="index0">
+          {{item0.name}}
+        </div>
+      </div>
+    </div>
+
+</body>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        list: [{
+            name: '一级ss1',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+            ]
+          },
+          {
+            name: '一级ss2',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          },
+          {
+            name: '一级ss3',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          }, {
+            name: '一级ss4',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          }, {
+            name: '一级ss5',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          }, {
+            name: '一级ss6',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          },
+          {
+            name: '一级ss7',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          },
+          {
+            name: '一级ss8',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+            ]
+          }, {
+            name: '一级ss9',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+            ]
+          }, {
+            name: '一级ss10',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              },
+            ]
+          }, {
+            name: '一级ss11',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+
+            ]
+          }, {
+            name: '一级ss12',
+            list: [{
+                name: '1-1'
+              },
+              {
+                name: '1-2'
+              },
+              {
+                name: '1-2'
+              }, {
+                name: '1-2'
+              }, {
+                name: '1-2'
+              }, {
+                name: '1-2'
+              }, {
+                name: '1-2'
+              },
+            ]
+          },
+        ]
+      }
+    },
+    created() {
+
+    },
+    methods: {}
+  })
+</script>
+
+</html>
