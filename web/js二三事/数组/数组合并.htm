@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const arrayA = [{ id: 1, unit: 'b' }, { id: 1, unit: 'c' }];
+    const arrayB = [{ id: 1, num: 1, data: 'BBBB' },];
+    const mergeArrays = (arrA, arrB) => {
+        const objectB = arrB.reduce((acc, item) => {
+            acc[item.id] = item;
+            return acc;
+        }, {});
+        const mergeArr = arrA.map(i => {
+            return {
+                ...objectB[i.id],
+                ...i,
+                cart_id: i.id + (i.unit ? `-${i.unit}` : "")
+            }
+        })
+        return mergeArr;
+    }
+    console.log(mergeArrays(arrayA, arrayB))
+
+</script>
+
+</html>
