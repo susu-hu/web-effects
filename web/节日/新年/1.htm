@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>参考链接：山羊の前端小窝</title>
+    <style>
+        body {
+            background-color: #c6070c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            color: #ffe392;
+            flex-direction: column;
+        }
+
+        #phrase {
+            margin-bottom: 20px;
+        }
+
+        #line1 {
+            height: 20px;
+            font-size: 1.1em;
+            letter-spacing: 30px;
+        }
+
+        #line2 {
+            font: 700 8em '';
+            text-align: center;
+            padding: 0px;
+        }
+
+        #line3 {
+            font-size: 3em;
+        }
+
+        #btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 100px;
+            background-color: #ffe392;
+            font-size: 30px;
+            color: #c6070c;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="phrase">
+        <span id="line1">wàn shì rú yì</span><br>
+        <span id="line2">萬 事 如 意</span><br>
+        <span id="line3">(MAY 10,000 THINGS GO ACCORDING TO YOUR WISHES)</span>
+    </div>
+    <button id="btn">祝福++</button>
+
+    <script>
+        // 定义一个包含短语的数组
+        var phrases = [
+            ['wǒ xǐ huān nǐ', '我 喜 欢 你', '(I LIKE YOU)'],
+            ['xīn xī ruì rù', '新 喜 瑞 如', '(MAY YOU BE AS HAPPY AS THE NEW YEAR)'],
+            ['shēn tǐ jiàn kāng', '身 體 健 康', '(GOOD HEALTH)'],
+            ['cái yuán guǎng jìn', '财 源 广 进', '(MAY WEALTH COME POURING IN)'],
+            ['wàn shì rú yì', '万 事 如 意', '(MAY EVERYTHING GO WELL)'],
+            ['dà jí dà lì', '大 吉 大 利', '(GREAT LUCK AND GREAT PROFIT)'],
+            ['nián nián yǒu yú', '年 年 有 餘', '(SURPLUS YEAR AFTER YEAR)'],
+            ['gōng hè xīn xǐ', '恭 賀 新 禧', '(WISHING YOU A HAPPY NEW YEAR)'],
+            ['xīn nián kuài lè', '新 年 快 樂', '(HAPPY NEW YEAR)']
+        ];
+        // 获取DOM元素
+        var generateBtn = document.getElementById( 'btn' );
+        var line1 = document.getElementById( 'line1' );
+        var line2 = document.getElementById( 'line2' );
+        var line3 = document.getElementById( 'line3' );
+        // 当前短语的索引
+        var currentIndex = 0;
+        // 生成短语的函数
+        function generatePhrase () {
+            // 更新当前短语的索引
+            currentIndex = ( currentIndex + 1 ) % phrases.length;
+            // 在相应的DOM元素中显示短语的内容
+            line1.textContent = phrases[currentIndex][0];
+            line2.textContent = phrases[currentIndex][1];
+            line3.textContent = phrases[currentIndex][2];
+        }
+        // 为按钮添加点击事件监听器，点击按钮时生成新的短语
+        generateBtn.addEventListener( 'click', generatePhrase );
+    </script>
+</body>
+
+</html>
