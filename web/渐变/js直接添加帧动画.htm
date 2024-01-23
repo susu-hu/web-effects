@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #target {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border-top: 3px solid red;
+        border-right: 3px solid transparent;
+    }
+</style>
+
+<body>
+    <div id="target"></div>
+</body>
+<script>
+
+    // CSS动画规则
+    const animation =
+        `@keyframes myAnimation {
+        0% { rotate: 0; }
+        100% { rotate: 360deg; }
+        }`;
+
+    // 在页面中创建<style>标签并设置内容为CSS动画规则
+    const styleTag = document.createElement( 'style' );
+    styleTag.innerHTML = animation;
+    document.head.appendChild( styleTag );
+
+    // 获取目标元素并添加CSS动画
+    const targetElement = document.getElementById( "target" ); // 根据id选择器或类名等获取目标元素
+    targetElement.style.animation = 'myAnimation 1s infinite linear'
+    // targetElement.style.animationName = "myAnimation";
+    // targetElement.style.animationDuration = "4s"; // 动画持续时间
+    // targetElement.style.animationIterationCount = "infinite"; // 无限次重复动画
+    // targetElement.style.animationTimingFunction = "ease-out"; // 动画速度曲线
+</script>
+
+</html>
