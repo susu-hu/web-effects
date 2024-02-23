@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="600"> </canvas>
+</body>
+<script>
+    const canvas = document.getElementById( 'canvas' )
+    const ctx = canvas.getContext( '2d' )
+    ctx.beginPath()
+    ctx.arc( 200, 200, 100, 90 * Math.PI / 180, 200 * Math.PI / 180, true )
+    ctx.lineWidth = 15
+    ctx.strokeStyle = 'red'
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc( 200, 200, 100, 90 * Math.PI / 180, 200 * Math.PI / 180, false )
+    ctx.lineWidth = 15
+    ctx.strokeStyle = 'orange'
+    ctx.stroke()
+</script>
+
+</html>
