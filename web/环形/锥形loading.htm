@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        position: relative;
+        width: 240px;
+        height: 240px;
+        margin: auto;
+        border-radius: 50%;
+        background: repeating-conic-gradient(#a1c2f7 0 1deg, transparent 0 15deg);
+        text-align: center;
+        line-height: 240px;
+        color: #fff;
+    }
+
+    @keyframes rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* 设置第二层圆圈样式，添加动画效果 */
+    .box::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        bottom: 8px;
+        right: 8px;
+        border-radius: 50%;
+        background: #fff conic-gradient(transparent 0%, transparent 40%, #a1c2f7);
+        animation: rotate 3s linear infinite;
+        transform-origin: 50% 50%;
+        border: 12px solid #fff;
+    }
+
+    /* 设置第三层圆圈样式 */
+    .box::after {
+        content: "";
+        position: absolute;
+        top: 36px;
+        left: 36px;
+        bottom: 36px;
+        right: 36px;
+        border-radius: 50%;
+        background: linear-gradient(315deg, #5481eb, #a1c2f7);
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
