@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: #000;
+        mask: radial-gradient(at right top, transparent 99px, red 100px)top left;
+        /* 锯齿渐变差一个像素就好了 */
+        mask-size: 100px 100px;
+        mask-repeat: no-repeat;
+        margin-bottom: 10px;
+    }
+
+    div:nth-child(2) {
+        mask: radial-gradient(at right top, transparent 64px, red 65px)top left;
+    }
+
+    div:nth-child(3) {
+        mask: radial-gradient(at right top, transparent 80px, red 100px)top left;
+    }
+
+    div:nth-child(4) {
+        mask: radial-gradient(at right top, transparent 15px, red 100px)top left;
+    }
+
+</style>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

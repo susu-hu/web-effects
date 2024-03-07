@@ -51,10 +51,32 @@
         border-radius: 50%;
         background: linear-gradient(315deg, #5481eb, #a1c2f7);
     }
+
+    .dot {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        animation: line 1s infinite;
+    }
+
+    @keyframes line {
+
+        0%,
+        100% {
+            border-color: transparent;
+            background: transparent;
+        }
+
+        50% {
+            border-color: red;
+            background: pink;
+        }
+    }
 </style>
 
 <body>
     <div class="box"></div>
+    <div class="dot"></div>
 </body>
 
 </html>
