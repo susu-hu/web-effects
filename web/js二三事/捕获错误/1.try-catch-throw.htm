@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function test () {
+        try {
+            console.log( B )
+        } catch ( err ) {
+            throw err
+        }
+    }
+    test()
+    // throw 是在上述结构中使用的一个函数，接受一个参数作为输出信息，throw 的作用是中断后面所有语句的执行，包括错误源，但是它前面的语句都会正常执行，它可以用于判断错误的具体位置
+    function test1 () {
+        try {
+            console.log( 'This will display.' );
+            throw ( 'My error position.' ); // throw 将会中断语句的执行
+            // 同样故意制造错误
+            console.logg( 'This is an error and will not display.' );
+            // 后面是正常语句
+            console.log( 'This will not display, either.' )
+        } catch ( e ) {
+            console.log( e );
+        }
+        // This will display.
+        // My error position.
+    }
+    // 如果错误发生在 throw 语句之前的话，错误便会被正常抛出，而 throw 传递的信息不会被输出
+    function test2 () {
+        try {
+            console.logg( 'This is an error and wil not display.' );
+            throw ( 'My error position.' );
+            // 后面的执行同样会被中断
+            console.log( 'This will not display, either.' )
+        } catch ( e ) {
+            console.log( e );
+        }
+        // TypeError: console.logg is not a function.
+
+    }
+</script>
