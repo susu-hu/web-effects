@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .item+.item::before {
+        content: '、';
+        color: red;
+    }
+</style>
+
+<body>
+    <span class="item">图图</span>
+    <span class="item">美丽</span>
+    <span class="item">大方</span>
+</body>
+
+</html>
