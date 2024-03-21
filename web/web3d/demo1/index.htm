@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>https://www.nbchart.com/sucai/code.php?code=1</title>
+    <link rel="icon" type="image/png" href="https://www.nbchart.com/images/16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://www.nbchart.com/images/32.png" sizes="32x32">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #171926;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+
+        a.changeView {
+            transform: skewX(16deg);
+            position: absolute;
+            z-index: 2;
+            top: 10px;
+            right: 10px;
+            color: #59ecff;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0px 0px 5px 10px;
+            border-left: 2px solid #59ecff;
+            border-bottom: 2px solid #59ecff;
+        }
+
+        a.changeView:hover {
+            color: #fff;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;" id="changeView" class="changeView">切换视角</a>
+    <div id="WebGL-output"></div>
+    <a href="https://www.pslkzs.com/nav.php" id="link1" target="_blank">
+        <b>1</b>
+    </a>
+    <a href="https://www.pslkzs.com/nbcharts.php" id="link2" target="_blank">
+        <b>2</b>
+    </a>
+    <a href="https://www.nbchart.com/sucai/sucai.php" id="link3" target="_blank">
+        <b>2</b>
+    </a>
+    <a href="https://www.nbcharts.com/map/map.php" id="link4" target="_blank">
+        <b>2</b>
+    </a>
+    <a href="https://www.nbchart.com/lab/lab.php" id="link5" target="_blank">
+        <b>2</b>
+    </a>
+    <a href="https://www.nbchart.com/sucai/course.php" id="link6" target="_blank">
+        <b>2</b>
+    </a>
+    <script src="./js/three.js"></script>
+    <script src="./js/jquery3.3.1.js"></script>
+    <script src="./js/tween.umd.js"></script>
+    <script>
+        var _0x22322d = _0x356f;
+        ( function ( _0x4b42a7, _0x21e485 ) {
+            var _0x32703d = _0x356f
+                , _0x559613 = _0x4b42a7();
+            while ( !![] ) {
+                try {
+                    var _0x3f66a5 = -parseInt( _0x32703d( 0x1f4 ) ) / 0x1 + parseInt( _0x32703d( 0x1d9 ) ) / 0x2 * ( parseInt( _0x32703d( 0x1c3 ) ) / 0x3 ) + -parseInt( _0x32703d( 0x20b ) ) / 0x4 + -parseInt( _0x32703d( 0x1b6 ) ) / 0x5 + -parseInt( _0x32703d( 0x1ae ) ) / 0x6 * ( -parseInt( _0x32703d( 0x227 ) ) / 0x7 ) + parseInt( _0x32703d( 0x1af ) ) / 0x8 * ( -parseInt( _0x32703d( 0x21c ) ) / 0x9 ) + parseInt( _0x32703d( 0x228 ) ) / 0xa;
+                    if ( _0x3f66a5 === _0x21e485 )
+                        break;
+                    else
+                        _0x559613['push']( _0x559613['shift']() );
+                } catch ( _0x1456c6 ) {
+                    _0x559613['push']( _0x559613['shift']() );
+                }
+            }
+        }( _0x4eab, 0x3a021 ) );
+        var menu = [{
+            'src': './images/card1.png',
+            'hoverSrc': _0x22322d( 0x1f7 ),
+            'callback': function () {
+                var _0x3e8ee0 = _0x22322d;
+                $( _0x3e8ee0( 0x1ff ) )[_0x3e8ee0( 0x224 )]( _0x3e8ee0( 0x1b5 ) );
+            }
+        }, {
+            'src': './images/card2.png',
+            'hoverSrc': './images/card2Hover.png',
+            'callback': function () {
+                var _0x1ee1d0 = _0x22322d;
+                $( _0x1ee1d0( 0x1b1 ) )[_0x1ee1d0( 0x224 )]( _0x1ee1d0( 0x1b5 ) );
+            }
+        }, {
+            'src': _0x22322d( 0x1b8 ),
+            'hoverSrc': _0x22322d( 0x1d6 ),
+            'callback': function () {
+                var _0x4f35fc = _0x22322d;
+                $( '#link3\x20b' )['trigger']( _0x4f35fc( 0x1b5 ) );
+            }
+        }, {
+            'src': './images/card4.png',
+            'hoverSrc': _0x22322d( 0x1c9 ),
+            'callback': function () {
+                var _0x14802b = _0x22322d;
+                $( '#link4\x20b' )[_0x14802b( 0x224 )]( _0x14802b( 0x1b5 ) );
+            }
+        }, {
+            'src': _0x22322d( 0x22d ),
+            'hoverSrc': _0x22322d( 0x1df ),
+            'callback': function () {
+                var _0x4a9178 = _0x22322d;
+                $( _0x4a9178( 0x1f5 ) )[_0x4a9178( 0x224 )]( _0x4a9178( 0x1b5 ) );
+            }
+        }, {
+            'src': './images/card6.png',
+            'hoverSrc': _0x22322d( 0x1d1 ),
+            'callback': function () {
+                var _0x40877f = _0x22322d;
+                $( '#link6\x20b' )['trigger']( _0x40877f( 0x1b5 ) );
+            }
+        }], tween, tweenSettings = {
+            'isPlay': ![],
+            'isPos1': !![],
+            'pos1': {
+                'x': 0x5a,
+                'y': 0x1e,
+                'z': 0x50
+            },
+            'pos2': {
+                'x': 0x0,
+                'y': 0x3c,
+                'z': 0x78
+            }
+        };
+        function _0x356f ( _0x280006, _0x4b8699 ) {
+            var _0x4eab1d = _0x4eab();
+            return _0x356f = function ( _0x356f59, _0x206534 ) {
+                _0x356f59 = _0x356f59 - 0x1aa;
+                var _0x41435 = _0x4eab1d[_0x356f59];
+                return _0x41435;
+            }
+                ,
+                _0x356f( _0x280006, _0x4b8699 );
+        }
+        function playMoveCamera () {
+            var _0x4fcfc7 = _0x22322d;
+            tweenSettings[_0x4fcfc7( 0x202 )] = !![];
+            if ( tweenSettings[_0x4fcfc7( 0x1ec )] )
+                var _0x485bab = {
+                    'x': 0x5a,
+                    'y': 0x1e,
+                    'z': 0x50
+                }
+                    , _0xd3cd8b = {
+                        'x': 0x0,
+                        'y': 0x3c,
+                        'z': 0x78
+                    };
+            else
+                var _0x485bab = {
+                    'x': 0x0,
+                    'y': 0x3c,
+                    'z': 0x78
+                }
+                    , _0xd3cd8b = {
+                        'x': 0x5a,
+                        'y': 0x1e,
+                        'z': 0x50
+                    };
+            tween = new TWEEN[( _0x4fcfc7( 0x1e7 ) )]( _0x485bab ),
+                tween['to']( _0xd3cd8b, 0x3e8 ),
+                tween[_0x4fcfc7( 0x1e9 )]( TWEEN['Easing'][_0x4fcfc7( 0x1c2 )][_0x4fcfc7( 0x1ce )] ),
+                tween[_0x4fcfc7( 0x1ef )]( _0x4811da => {
+                    var _0x2b4d2b = _0x4fcfc7;
+                    camera['position'][_0x2b4d2b( 0x1c8 )]( _0x4811da['x'], _0x4811da['y'], _0x4811da['z'] ),
+                        camera[_0x2b4d2b( 0x1cd )]( 0x0, 0x0, 0x0 );
+                }
+                ),
+                tween[_0x4fcfc7( 0x1e0 )]( () => {
+                    var _0x886edf = _0x4fcfc7;
+                    tweenSettings['isPlay'] = ![],
+                        tweenSettings[_0x886edf( 0x1ec )] = !tweenSettings[_0x886edf( 0x1ec )],
+                        console['log']( _0x886edf( 0x1e5 ) );
+                }
+                ),
+                tween[_0x4fcfc7( 0x1ea )]();
+        }
+        var step = 0x0, circleGroud, shader, allBox = [], raycaster, clickRaycaster, pointer = new THREE[( _0x22322d( 0x22f ) )](), clickPointer = new THREE[( _0x22322d( 0x22f ) )](), HUIDA = {
+            'cardIndex': 0x0,
+            'cards': [],
+            'cardsHoverIndex': 0x0,
+            'cardsHover': [],
+            'hoverloaded': ![],
+            'outerGroup': null,
+            'secondGroup': null,
+            'dotsGroup': null,
+            'linesGroup': null
+        };
+        document[_0x22322d( 0x1aa )]( _0x22322d( 0x1e3 ), onPointerMove, ![] );
+        var scene = new THREE[( _0x22322d( 0x22e ) )]();
+        scene['fog'] = new THREE['Fog']( _0x22322d( 0x1b7 ), 0x15e, 0x1f4 );
+        var camera = new THREE[( _0x22322d( 0x1fe ) )]( 0x2d, window[_0x22322d( 0x1de )] / window['innerHeight'], 0.1, 0x3e8 )
+            , renderer = new THREE[( _0x22322d( 0x1fd ) )]( {
+                'antialias': !![],
+                'alpha': !![]
+            } );
+        renderer[_0x22322d( 0x200 )]( window[_0x22322d( 0x1f0 )] ),
+            renderer[_0x22322d( 0x218 )]( window[_0x22322d( 0x1de )], window[_0x22322d( 0x226 )] ),
+            renderer[_0x22322d( 0x222 )] = ![],
+            raycaster = new THREE[( _0x22322d( 0x213 ) )](),
+            clickRaycaster = new THREE[( _0x22322d( 0x213 ) )](),
+            camera['position'][_0x22322d( 0x1c8 )]( 0x5a, 0x1e, 0x50 ),
+            camera[_0x22322d( 0x1cd )]( new THREE[( _0x22322d( 0x1fa ) )]( 0x0, 0x0, 0x0 ) );
+        var dLight = new THREE[( _0x22322d( 0x1e8 ) )]( 0xffffff );
+        dLight[_0x22322d( 0x221 )][_0x22322d( 0x1c8 )]( -0x19, 0x17, 0xf ),
+            scene[_0x22322d( 0x1e1 )]( dLight );
+        var middleGroup = new THREE[( _0x22322d( 0x203 ) )]();
+        middleGroup[_0x22322d( 0x221 )]['y'] = -0xa,
+            scene[_0x22322d( 0x1e1 )]( middleGroup );
+        const geometry = new THREE['CylinderGeometry']( 0x2a, 0x2a, 0x2, 0x80 )
+            , material = new THREE[( _0x22322d( 0x212 ) )]( {
+                'side': THREE[_0x22322d( 0x219 )],
+                'color': _0x22322d( 0x1be )
+            } );
+        let height = 0x2
+            , c = new THREE[( _0x22322d( 0x1f2 ) )]( _0x22322d( 0x1d8 ) );
+        var material2 = new THREE['ShaderMaterial']( {
+            'side': THREE['DoubleSide'],
+            'uniforms': {
+                'upColor': {
+                    'value': new THREE[( _0x22322d( 0x1f2 ) )]( _0x22322d( 0x1f8 ) )
+                },
+                'downColor': {
+                    'value': new THREE[( _0x22322d( 0x1f2 ) )]( _0x22322d( 0x1d3 ) )
+                }
+            },
+            'vertexShader': _0x22322d( 0x1cf ),
+            'fragmentShader': _0x22322d( 0x1bf )
+        } )
+            , groud = new THREE[( _0x22322d( 0x22b ) )]( geometry, [material2, material, material] );
+        groud[_0x22322d( 0x221 )]['y'] = -0x1,
+            middleGroup[_0x22322d( 0x1e1 )]( groud ),
+            HUIDA['outerGroup'] = new THREE[( _0x22322d( 0x203 ) )](),
+            HUIDA[_0x22322d( 0x1c5 )][_0x22322d( 0x221 )]['y'] = -0xc,
+            HUIDA[_0x22322d( 0x1c5 )][_0x22322d( 0x211 )]['x'] = Math['PI'] / 0x2,
+            scene[_0x22322d( 0x1e1 )]( HUIDA[_0x22322d( 0x1c5 )] ),
+            HUIDA[_0x22322d( 0x1b2 )] = new THREE[( _0x22322d( 0x203 ) )](),
+            HUIDA[_0x22322d( 0x1b2 )]['position']['y'] = -0xc,
+            HUIDA['secondGroup'][_0x22322d( 0x211 )]['x'] = Math['PI'] / 0x2,
+            scene[_0x22322d( 0x1e1 )]( HUIDA[_0x22322d( 0x1b2 )] ),
+            HUIDA[_0x22322d( 0x1ba )] = new THREE[( _0x22322d( 0x203 ) )](),
+            HUIDA[_0x22322d( 0x1ba )][_0x22322d( 0x221 )]['y'] = -0xc,
+            HUIDA[_0x22322d( 0x1ba )][_0x22322d( 0x211 )]['x'] = Math['PI'] / 0x2,
+            scene[_0x22322d( 0x1e1 )]( HUIDA['dotsGroup'] ),
+            HUIDA['linesGroup'] = new THREE['Group'](),
+            HUIDA['linesGroup'][_0x22322d( 0x221 )]['y'] = -12.2,
+            HUIDA[_0x22322d( 0x1b0 )]['rotation']['x'] = Math['PI'] / 0x2,
+            scene['add']( HUIDA['linesGroup'] );
+        var cardsGroup = new THREE[( _0x22322d( 0x203 ) )]();
+        cardsGroup[_0x22322d( 0x206 )] = _0x22322d( 0x20a ),
+            scene[_0x22322d( 0x1e1 )]( cardsGroup ),
+            createGroundGrid(),
+            addSomeColumn(),
+            window[_0x22322d( 0x1f1 )] = new THREE[( _0x22322d( 0x1b4 ) )]( {
+                'vertexShader': _0x22322d( 0x1f9 ),
+                'fragmentShader': _0x22322d( 0x207 ),
+                'side': THREE[_0x22322d( 0x219 )],
+                'transparent': !![],
+                'uniforms': {
+                    'scale': {
+                        'value': 0x0
+                    },
+                    'color1': {
+                        'value': new THREE['Color']( _0x22322d( 0x1dd ) )
+                    },
+                    'color2': {
+                        'value': new THREE[( _0x22322d( 0x1f2 ) )]( '#00fff6' )
+                    }
+                }
+            } ),
+            addRunCircle(),
+            addScaleLight(),
+            menu[_0x22322d( 0x210 )]();
+        for ( var m = 0x0; m < menu['length']; m++ ) {
+            ( function ( _0x416c43 ) {
+                var _0x56371d = _0x22322d;
+                new THREE['TextureLoader']()[_0x56371d( 0x1ad )]( menu[_0x416c43][_0x56371d( 0x21d )], function ( _0x27c8de ) {
+                    var _0x217485 = _0x56371d;
+                    HUIDA[_0x217485( 0x20c )]++,
+                        HUIDA['cards'][_0x217485( 0x1cb )]( _0x27c8de );
+                    if ( HUIDA[_0x217485( 0x20c )] == menu[_0x217485( 0x214 )] )
+                        for ( n = 0x0; n < menu[_0x217485( 0x214 )]; n++ ) {
+                            var _0x901c78 = new THREE[( _0x217485( 0x1d4 ) )]( 0x32, 0x32, 0x14, 0x40, 0x1, !![], 0x0, Math['PI'] / 0xa );
+                            _0x901c78[_0x217485( 0x206 )] = '' + n;
+                            var _0x5c42b9 = new THREE[( _0x217485( 0x212 ) )]( {
+                                'map': HUIDA['cards'][n],
+                                'side': THREE['DoubleSide'],
+                                'transparent': !![]
+                            } )
+                                , _0xc7fb49 = new THREE[( _0x217485( 0x22b ) )]( _0x901c78, _0x5c42b9 );
+                            cardsGroup[_0x217485( 0x1e1 )]( _0xc7fb49 ),
+                                _0xc7fb49['rotation']['y'] = Math['PI'] / ( menu[_0x217485( 0x214 )] / 0x2 ) * n,
+                                new THREE[( _0x217485( 0x1b3 ) )]()[_0x217485( 0x1ad )]( menu[n][_0x217485( 0x1c6 )], function ( _0x29a144 ) {
+                                    var _0x4444ee = _0x217485;
+                                    HUIDA[_0x4444ee( 0x1ac )]++,
+                                        HUIDA[_0x4444ee( 0x217 )][_0x4444ee( 0x1cb )]( _0x29a144 ),
+                                        HUIDA['cardsHoverIndex'] == menu[_0x4444ee( 0x214 )] && ( HUIDA[_0x4444ee( 0x1c1 )] = !![] );
+                                }, undefined, function ( _0x21cb36 ) {
+                                    var _0x3831f4 = _0x217485;
+                                    console[_0x3831f4( 0x1d0 )]( _0x21cb36[_0x3831f4( 0x1fc )]() );
+                                } );
+                        }
+                }, undefined, function ( _0x3b444c ) {
+                    var _0x36fd52 = _0x56371d;
+                    console['log']( _0x3b444c[_0x36fd52( 0x1fc )]() );
+                } );
+            }( m ) );
+        }
+        $( _0x22322d( 0x20e ) )[_0x22322d( 0x22a )]( renderer['domElement'] ),
+            $( '#WebGL-output' )['on']( _0x22322d( 0x1b5 ), function () {
+                var _0x45ffe5 = _0x22322d;
+                clickPointer['x'] = event[_0x45ffe5( 0x21e )] / window[_0x45ffe5( 0x1de )] * 0x2 - 0x1,
+                    clickPointer['y'] = -( event['clientY'] / window[_0x45ffe5( 0x226 )] ) * 0x2 + 0x1,
+                    clickRaycaster[_0x45ffe5( 0x220 )]( clickPointer, camera );
+                const _0x42d01e = clickRaycaster[_0x45ffe5( 0x20d )]( scene[_0x45ffe5( 0x1c7 )], !![] );
+                if ( _0x42d01e[_0x45ffe5( 0x214 )] > 0x0 ) {
+                    if ( _0x42d01e[0x0][_0x45ffe5( 0x1d5 )] && _0x42d01e[0x0][_0x45ffe5( 0x1d5 )][_0x45ffe5( 0x1d2 )] ) {
+                        var _0x2819da = _0x42d01e[0x0];
+                        if ( _0x2819da[_0x45ffe5( 0x1d5 )][_0x45ffe5( 0x22c )][_0x45ffe5( 0x20f )] == 'CylinderGeometry' && _0x2819da[_0x45ffe5( 0x1d5 )][_0x45ffe5( 0x1d2 )]['name'] == _0x45ffe5( 0x20a ) ) {
+                            var _0x2a69d1 = parseInt( _0x2819da['object'][_0x45ffe5( 0x22c )][_0x45ffe5( 0x206 )], 0xa );
+                            typeof menu[_0x2a69d1]['callback'] != _0x45ffe5( 0x1f6 ) && menu[_0x2a69d1]['callback']();
+                        }
+                    }
+                }
+            } ),
+            render(),
+            $( _0x22322d( 0x1bd ) )['on']( _0x22322d( 0x1b5 ), function () {
+                var _0x26da91 = _0x22322d;
+                !tweenSettings[_0x26da91( 0x202 )] && playMoveCamera();
+            } );
+        function correctMaterialMap () {
+            var _0x4cbf0c = _0x22322d;
+            if ( cardsGroup[_0x4cbf0c( 0x1c7 )][_0x4cbf0c( 0x214 )] > 0x0 )
+                for ( var _0x2a7a16 = 0x0; _0x2a7a16 < cardsGroup['children']['length']; _0x2a7a16++ ) {
+                    cardsGroup[_0x4cbf0c( 0x1c7 )][_0x2a7a16][_0x4cbf0c( 0x21b )][_0x4cbf0c( 0x1bc )] = HUIDA[_0x4cbf0c( 0x201 )][_0x2a7a16];
+                }
+        }
+        function render () {
+            var _0x482a01 = _0x22322d;
+            tweenSettings[_0x482a01( 0x202 )] && TWEEN['update']();
+            raycaster[_0x482a01( 0x220 )]( pointer, camera );
+            const _0x496e77 = raycaster[_0x482a01( 0x20d )]( scene[_0x482a01( 0x1c7 )], !![] );
+            var _0xed826a = !![];
+            if ( _0x496e77['length'] > 0x0 ) {
+                correctMaterialMap();
+                if ( _0x496e77[0x0][_0x482a01( 0x1d5 )] && _0x496e77[0x0][_0x482a01( 0x1d5 )][_0x482a01( 0x1d2 )] ) {
+                    var _0x545048 = _0x496e77[0x0];
+                    if ( _0x545048[_0x482a01( 0x1d5 )][_0x482a01( 0x22c )][_0x482a01( 0x20f )] == _0x482a01( 0x1d4 ) && _0x545048[_0x482a01( 0x1d5 )]['parent'][_0x482a01( 0x206 )] == _0x482a01( 0x20a ) ) {
+                        _0xed826a = ![];
+                        if ( HUIDA[_0x482a01( 0x1c1 )] ) {
+                            var _0x1a076e = parseInt( _0x496e77[0x0]['object'][_0x482a01( 0x22c )][_0x482a01( 0x206 )], 0xa );
+                            _0x545048[_0x482a01( 0x1d5 )][_0x482a01( 0x21b )][_0x482a01( 0x1bc )] = HUIDA[_0x482a01( 0x217 )][_0x1a076e];
+                        }
+                    } else
+                        correctMaterialMap();
+                }
+            } else
+                correctMaterialMap();
+            var _0x53e2ea = 0.05;
+            middleGroup['rotation']['y'] -= 0.005;
+            _0xed826a && ( cardsGroup[_0x482a01( 0x211 )]['y'] += 0.0009 );
+            HUIDA[_0x482a01( 0x1c5 )]['rotation']['z'] += 0.001,
+                HUIDA[_0x482a01( 0x1b2 )][_0x482a01( 0x211 )]['z'] -= 0.002,
+                HUIDA[_0x482a01( 0x1ba )][_0x482a01( 0x211 )]['z'] += 0.0009,
+                shader[_0x482a01( 0x1dc )][_0x482a01( 0x204 )][_0x482a01( 0x1db )] += 0.008,
+                shader[_0x482a01( 0x1dc )][_0x482a01( 0x204 )][_0x482a01( 0x1db )] %= 0x1;
+            var _0x3f2cbc = shader[_0x482a01( 0x1dc )]['scale'][_0x482a01( 0x1db )]
+                , _0x210568 = _0x3f2cbc * 0x32
+                , _0x2db336 = ( _0x3f2cbc - 0.01 ) * 0x32;
+            for ( var _0x52cb87 = 0x0; _0x52cb87 < allBox[_0x482a01( 0x214 )]; _0x52cb87++ ) {
+                var _0x29aa1d = allBox[_0x52cb87]
+                    , _0x1be4a9 = _0x29aa1d[_0x482a01( 0x21f )];
+                if ( circleGroud ) {
+                    var _0x5c07c4 = _0x29aa1d[_0x482a01( 0x221 )][_0x482a01( 0x1fb )]( circleGroud[_0x482a01( 0x221 )] );
+                    if ( _0x5c07c4 > _0x2db336 && _0x5c07c4 < _0x210568 )
+                        _0x29aa1d[_0x482a01( 0x21f )] ? ( _0x29aa1d[_0x482a01( 0x21b )]['uniforms'][_0x482a01( 0x208 )][_0x482a01( 0x1db )]['r'] += _0x53e2ea,
+                            _0x29aa1d[_0x482a01( 0x21b )][_0x482a01( 0x1dc )][_0x482a01( 0x208 )][_0x482a01( 0x1db )]['g'] += _0x53e2ea,
+                            _0x29aa1d['material']['uniforms']['upColor'][_0x482a01( 0x1db )]['r'] > 0.7 && ( _0x29aa1d[_0x482a01( 0x21f )] = !_0x29aa1d[_0x482a01( 0x21f )] ) ) : ( _0x29aa1d[_0x482a01( 0x21b )]['uniforms'][_0x482a01( 0x208 )]['value']['r'] -= _0x53e2ea,
+                                _0x29aa1d[_0x482a01( 0x21b )][_0x482a01( 0x1dc )][_0x482a01( 0x208 )][_0x482a01( 0x1db )]['g'] -= _0x53e2ea,
+                                _0x29aa1d[_0x482a01( 0x21b )][_0x482a01( 0x1dc )][_0x482a01( 0x208 )][_0x482a01( 0x1db )]['r'] < 0.1 && ( _0x29aa1d[_0x482a01( 0x21f )] = !_0x29aa1d[_0x482a01( 0x21f )] ) );
+                    else { }
+                }
+            }
+            requestAnimationFrame( render ),
+                renderer[_0x482a01( 0x1cc )]( scene, camera );
+        }
+        window[_0x22322d( 0x1aa )]( _0x22322d( 0x1e6 ), onResize, ![] );
+        function onResize () {
+            var _0x560aaa = _0x22322d;
+            camera[_0x560aaa( 0x1d7 )] = window[_0x560aaa( 0x1de )] / window[_0x560aaa( 0x226 )],
+                camera['updateProjectionMatrix'](),
+                renderer['setSize']( window['innerWidth'], window['innerHeight'] );
+        }
+        function addRunCircle () {
+            var _0x197a9a = _0x22322d;
+            const _0x149aff = new THREE['RingGeometry']( 0x30, 48.5, 0x80, 0x1 )
+                , _0x3880f5 = new THREE[( _0x197a9a( 0x212 ) )]( {
+                    'color': _0x197a9a( 0x1ed ),
+                    'side': THREE[_0x197a9a( 0x219 )],
+                    'transparent': !![],
+                    'opacity': 0.4
+                } )
+                , _0x191876 = new THREE[( _0x197a9a( 0x22b ) )]( _0x149aff, _0x3880f5 );
+            _0x191876['rotation']['x'] = Math['PI'] / 0x2,
+                _0x191876['position']['y'] = -0xc,
+                scene[_0x197a9a( 0x1e1 )]( _0x191876 );
+            const _0x561d4d = new THREE[( _0x197a9a( 0x1f3 ) )]( 0x37, 56.5, 0x80, 0x1, 0x0, Math['PI'] / 0x4 )
+                , _0x1524c0 = new THREE[( _0x197a9a( 0x212 ) )]( {
+                    'color': _0x197a9a( 0x1ed ),
+                    'side': THREE[_0x197a9a( 0x219 )],
+                    'transparent': !![],
+                    'opacity': 0.3
+                } )
+                , _0x45c0c8 = new THREE['Mesh']( _0x561d4d, _0x1524c0 );
+            HUIDA[_0x197a9a( 0x1c5 )][_0x197a9a( 0x1e1 )]( _0x45c0c8 );
+            const _0xa6accd = new THREE[( _0x197a9a( 0x22b ) )]( _0x561d4d, _0x1524c0 );
+            _0xa6accd[_0x197a9a( 0x211 )]['z'] = Math['PI'] * 0x2 / 0x3,
+                HUIDA[_0x197a9a( 0x1c5 )][_0x197a9a( 0x1e1 )]( _0xa6accd );
+            const _0x2a5415 = new THREE[( _0x197a9a( 0x22b ) )]( _0x561d4d, _0x1524c0 );
+            _0x2a5415[_0x197a9a( 0x211 )]['z'] = Math['PI'] * 0x2 / 0x3 * 0x2,
+                HUIDA[_0x197a9a( 0x1c5 )][_0x197a9a( 0x1e1 )]( _0x2a5415 );
+            for ( var _0x10c76c = 0x0; _0x10c76c < 0x40; _0x10c76c++ ) {
+                const _0x2dba87 = new THREE[( _0x197a9a( 0x1f3 ) )]( 50.5, 0x34, 0x80, 0x1, 0x0, Math['PI'] / 0x320 )
+                    , _0x1953c0 = new THREE[( _0x197a9a( 0x212 ) )]( {
+                        'color': _0x197a9a( 0x1ed ),
+                        'side': THREE[_0x197a9a( 0x219 )],
+                        'transparent': !![],
+                        'opacity': 0.8
+                    } )
+                    , _0x449357 = new THREE[( _0x197a9a( 0x22b ) )]( _0x2dba87, _0x1953c0 );
+                _0x449357[_0x197a9a( 0x211 )]['z'] = Math['PI'] * 0x2 / 0x40 * _0x10c76c,
+                    HUIDA['secondGroup']['add']( _0x449357 );
+            }
+            for ( var _0x10c76c = 0x0; _0x10c76c < 0x100; _0x10c76c++ ) {
+                const _0x569b52 = new THREE[( _0x197a9a( 0x229 ) )]( 0.12, 0x40 )
+                    , _0x452373 = new THREE['MeshBasicMaterial']( {
+                        'color': _0x197a9a( 0x1e4 ),
+                        'side': THREE[_0x197a9a( 0x219 )],
+                        'transparent': !![],
+                        'opacity': 0.75
+                    } )
+                    , _0x164206 = new THREE[( _0x197a9a( 0x22b ) )]( _0x569b52, _0x452373 );
+                var _0x1de108 = 0x2e;
+                _0x164206[_0x197a9a( 0x221 )]['x'] = _0x1de108 * Math[_0x197a9a( 0x1c0 )]( Math['PI'] * 0x2 / 0x100 * _0x10c76c ),
+                    _0x164206[_0x197a9a( 0x221 )]['y'] = _0x1de108 * Math[_0x197a9a( 0x209 )]( Math['PI'] * 0x2 / 0x100 * _0x10c76c ),
+                    HUIDA[_0x197a9a( 0x1ba )]['add']( _0x164206 );
+            }
+        }
+        function addScaleLight () {
+            var _0x3b0410 = _0x22322d
+                , _0x5e6b25 = new THREE['PlaneGeometry']( 0x64, 0x64 );
+            window['circleGroud'] = new THREE[( _0x3b0410( 0x22b ) )]( _0x5e6b25, shader ),
+                window['circleGroud']['position']['y'] = -9.8,
+                window[_0x3b0410( 0x205 )][_0x3b0410( 0x211 )]['x'] = Math['PI'] / -0x2,
+                scene[_0x3b0410( 0x1e1 )]( window[_0x3b0410( 0x205 )] );
+        }
+        function _0x4eab () {
+            var _0x3eee93 = ['rotation', 'MeshBasicMaterial', 'Raycaster', 'length', 'floor', 'LineSegments', 'cardsHover', 'setSize', 'DoubleSide', 'setFromPoints', 'material', '53154IJhnJB', 'src', 'clientX', 'downColorAdd', 'setFromCamera', 'position', 'sortObjects', 'LineBasicMaterial', 'trigger', 'BufferGeometry', 'innerHeight', '3731YZGuVF', '9704320UqguGG', 'CircleGeometry', 'append', 'Mesh', 'geometry', './images/card5.png', 'Scene', 'Vector2', 'addEventListener', 'random', 'cardsHoverIndex', 'load', '756yHJzOS', '80POuXmN', 'linesGroup', '#link2\x20b', 'secondGroup', 'TextureLoader', 'ShaderMaterial', 'click', '2197425JBGUTE', '#171926', './images/card3.png', 'round', 'dotsGroup', 'Line', 'map', '#changeView', '#208efd', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec3\x20vColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_FragColor\x20=\x20vec4(vColor,\x201.0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'cos', 'hoverloaded', 'Quadratic', '1083lIAfLv', '#0d28f6', 'outerGroup', 'hoverSrc', 'children', 'set', './images/card4Hover.png', 'EdgesGeometry', 'push', 'render', 'lookAt', 'InOut', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec3\x20vColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec3\x20forceColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20upColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20downColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20float\x20progress;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vColor\x20=\x20downColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(position.y\x20>\x200.0){\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vColor\x20=\x20upColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_Position\x20=\x20projectionMatrix\x20*\x20modelViewMatrix\x20*\x20vec4(position,\x201.0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'log', './images/card6Hover.png', 'parent', '#2e77ea', 'CylinderGeometry', 'object', './images/card3Hover.png', 'aspect', '#1357f3', '1286FtzlvA', 'copy', 'value', 'uniforms', '#00c8ff', 'innerWidth', './images/card5Hover.png', 'onComplete', 'add', '#92e7ff', 'mousemove', '#0e2cf6', 'done', 'resize', 'Tween', 'DirectionalLight', 'easing', 'start', '#201f65', 'isPos1', '#2373fa', '#41d8ff', 'onUpdate', 'devicePixelRatio', 'shader', 'Color', 'RingGeometry', '155646EQCUbF', '#link5\x20b', 'undefined', './images/card1Hover.png', '#2652b1', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec2\x20vUv;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vUv\x20=\x20uv;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_Position\x20=\x20projectionMatrix\x20*\x20modelViewMatrix\x20*\x20vec4(position,\x201.0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'Vector3', 'distanceTo', 'toString', 'WebGLRenderer', 'PerspectiveCamera', '#link1\x20b', 'setPixelRatio', 'cards', 'isPlay', 'Group', 'scale', 'circleGroud', 'name', '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec2\x20vUv;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20float\x20scale;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20color1;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20color2;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20float\x20dis\x20=\x20distance(vUv,\x20vec2(0.5,\x200.5));\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20float\x20opacity\x20=\x20smoothstep(0.4\x20*\x20scale,\x200.5\x20*\x20scale,\x20dis);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity\x20*=\x20step(dis,\x200.5*scale);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity\x20-=\x20(scale-0.8)*5.0\x20*\x20step(0.8,\x20scale);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vec3\x20disColor\x20=\x20color1\x20-\x20color2;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vec3\x20color\x20=\x20color2\x20+\x20disColor\x20*\x20scale;\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_FragColor\x20=\x20vec4(color,\x20opacity);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20', 'upColor', 'sin', 'cardsGroup', '1511684QFiZYj', 'cardIndex', 'intersectObjects', '#WebGL-output', 'type', 'reverse'];
+            _0x4eab = function () {
+                return _0x3eee93;
+            }
+                ;
+            return _0x4eab();
+        }
+        function addSomeColumn () {
+            var _0x5c97bb = _0x22322d
+                , _0x2d6315 = 2.5;
+            for ( var _0x412231 = 0x0; _0x412231 < 0xa; _0x412231++ ) {
+                for ( var _0x5a38f2 = 0x0; _0x5a38f2 < 0x14 - _0x412231; _0x5a38f2++ ) {
+                    const _0x3f74c7 = new THREE[( _0x5c97bb( 0x212 ) )]( {
+                        'color': 0xff00
+                    } );
+                    var _0x4a8765 = new THREE[( _0x5c97bb( 0x1b4 ) )]( {
+                        'side': THREE[_0x5c97bb( 0x219 )],
+                        'uniforms': {
+                            'upColor': {
+                                'value': new THREE[( _0x5c97bb( 0x1f2 ) )]( _0x5c97bb( 0x1ee ) )
+                            },
+                            'downColor': {
+                                'value': new THREE[( _0x5c97bb( 0x1f2 ) )]( _0x5c97bb( 0x1c4 ) )
+                            }
+                        },
+                        'vertexShader': '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec3\x20vColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20upColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20uniform\x20vec3\x20downColor;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vColor\x20=\x20downColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if(position.y\x20>\x200.0){\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20vColor\x20=\x20upColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_Position\x20=\x20projectionMatrix\x20*\x20modelViewMatrix\x20*\x20vec4(position,\x201.0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+                        'fragmentShader': '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20varying\x20vec3\x20vColor;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20void\x20main()\x20{\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20gl_FragColor\x20=\x20vec4(vColor,\x201.0);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'
+                    } )
+                        , _0x4a39e6 = _0x412231 * 0x2 + Math[_0x5c97bb( 0x1ab )]() * 0x3
+                        , _0x52cb81 = _0x412231 + 0x3
+                        , _0x43e0b7 = Math[_0x5c97bb( 0x215 )]( Math[_0x5c97bb( 0x1ab )]() * ( _0x4a39e6 - _0x52cb81 + _0x52cb81 ) ) + _0x52cb81
+                        , _0x434984 = new THREE['BoxGeometry']( _0x2d6315, _0x43e0b7, _0x2d6315 );
+                    const _0x44dcac = new THREE[( _0x5c97bb( 0x22b ) )]( _0x434984, _0x4a8765 );
+                    var _0x372d5f = 0x24 - _0x412231 * 3.2;
+                    _0x44dcac[_0x5c97bb( 0x221 )]['x'] = _0x372d5f * Math[_0x5c97bb( 0x1c0 )]( Math['PI'] * 0x2 / ( 0x14 - _0x412231 ) * _0x5a38f2 ),
+                        _0x44dcac[_0x5c97bb( 0x221 )]['z'] = _0x372d5f * Math[_0x5c97bb( 0x209 )]( Math['PI'] * 0x2 / ( 0x14 - _0x412231 ) * _0x5a38f2 ),
+                        _0x44dcac[_0x5c97bb( 0x221 )]['y'] = _0x43e0b7 / 0x2,
+                        _0x44dcac[_0x5c97bb( 0x21f )] = !![],
+                        middleGroup['add']( _0x44dcac );
+                    var _0x44e2c4 = Math[_0x5c97bb( 0x1ab )]();
+                    if ( _0x44e2c4 > 0.6 ) {
+                        const _0x323acd = new THREE[( _0x5c97bb( 0x1ca ) )]( _0x434984 )
+                            , _0x1a5ee7 = new THREE[( _0x5c97bb( 0x223 ) )]( {
+                                'color': _0x5c97bb( 0x1e2 ),
+                                'linewidth': 0x1,
+                                'linecap': _0x5c97bb( 0x1b9 ),
+                                'linejoin': _0x5c97bb( 0x1b9 )
+                            } )
+                            , _0x59bd82 = new THREE[( _0x5c97bb( 0x216 ) )]( _0x323acd, _0x1a5ee7 );
+                        _0x59bd82[_0x5c97bb( 0x204 )][_0x5c97bb( 0x1da )]( _0x44dcac[_0x5c97bb( 0x204 )] ),
+                            _0x59bd82[_0x5c97bb( 0x211 )]['copy']( _0x44dcac[_0x5c97bb( 0x211 )] ),
+                            _0x59bd82['position'][_0x5c97bb( 0x1da )]( _0x44dcac[_0x5c97bb( 0x221 )] ),
+                            middleGroup[_0x5c97bb( 0x1e1 )]( _0x59bd82 );
+                    }
+                    allBox[_0x5c97bb( 0x1cb )]( _0x44dcac );
+                }
+            }
+        }
+        function createGroundGrid () {
+            var _0x670e1 = _0x22322d;
+            const _0xcf0c7b = new THREE[( _0x670e1( 0x223 ) )]( {
+                'color': _0x670e1( 0x1eb ),
+                'transparent': !![],
+                'opacity': 0.5
+            } );
+            for ( var _0x40923a = 0x0; _0x40923a < 0xc8; _0x40923a++ ) {
+                var _0x2b7b07 = 0xa;
+                const _0x163945 = [];
+                _0x163945[_0x670e1( 0x1cb )]( new THREE[( _0x670e1( 0x1fa ) )]( -0x258, _0x2b7b07 * _0x40923a - 0x258, 0x0 ) ),
+                    _0x163945['push']( new THREE[( _0x670e1( 0x1fa ) )]( 0x258, _0x2b7b07 * _0x40923a - 0x258, 0x0 ) );
+                const _0xee2c1d = new THREE[( _0x670e1( 0x225 ) )]()[_0x670e1( 0x21a )]( _0x163945 )
+                    , _0x342f27 = new THREE[( _0x670e1( 0x1bb ) )]( _0xee2c1d, _0xcf0c7b );
+                HUIDA[_0x670e1( 0x1b0 )][_0x670e1( 0x1e1 )]( _0x342f27 );
+            }
+            for ( var _0x40923a = 0x0; _0x40923a < 0xfa; _0x40923a++ ) {
+                var _0x2b7b07 = 0xa;
+                const _0x4735ea = [];
+                _0x4735ea[_0x670e1( 0x1cb )]( new THREE[( _0x670e1( 0x1fa ) )]( _0x2b7b07 * _0x40923a - 0x258, -0x258, 0x0 ) ),
+                    _0x4735ea[_0x670e1( 0x1cb )]( new THREE['Vector3']( _0x2b7b07 * _0x40923a - 0x258, 0x258, 0x0 ) );
+                const _0x39ace4 = new THREE[( _0x670e1( 0x225 ) )]()[_0x670e1( 0x21a )]( _0x4735ea )
+                    , _0x5ad3bc = new THREE[( _0x670e1( 0x1bb ) )]( _0x39ace4, _0xcf0c7b );
+                HUIDA[_0x670e1( 0x1b0 )][_0x670e1( 0x1e1 )]( _0x5ad3bc );
+            }
+        }
+        function onPointerMove ( _0x34e36c ) {
+            var _0x1bf3fc = _0x22322d;
+            pointer['x'] = _0x34e36c['clientX'] / window[_0x1bf3fc( 0x1de )] * 0x2 - 0x1,
+                pointer['y'] = -( _0x34e36c['clientY'] / window['innerHeight'] ) * 0x2 + 0x1;
+        }
+    </script>
+</body>
+
+</html>

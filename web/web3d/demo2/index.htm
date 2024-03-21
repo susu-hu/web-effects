@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>https://www.nbchart.com/sucai/code.php?code=1</title>
+    <link rel="icon" type="image/png" href="https://www.nbchart.com/images/16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://www.nbchart.com/images/32.png" sizes="32x32">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #131b28 url(./images/robotBg.png) top center no-repeat;
+            background-size: contain;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+
+        .bottom {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            width: 100%;
+            height: 111px;
+            background: url(./images/robotBottom.png) no-repeat bottom center;
+            background-size: contain;
+        }
+
+        .header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            width: 100%;
+            height: 290px;
+            background: url(./images/robotHeader.png) no-repeat top center;
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        .bottomLink {
+            padding: 5px 10px;
+            font-size: 16px;
+            letter-spacing: 4px;
+            position: absolute;
+            z-index: 3;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #24fee7;
+            text-decoration: none;
+        }
+
+        .bottomLink:hover {
+            color: #098feb;
+        }
+
+        .notice,
+        .putDate {
+            pointer-events: none;
+            position: absolute;
+            z-index: 2;
+            top: 40px;
+            left: 20px;
+            letter-spacing: 4px;
+            color: #c5d6ea;
+            display: flex;
+            align-items: center;
+            font-style: italic;
+        }
+
+        .notice svg {
+            margin-right: 10px;
+        }
+
+        .putDate {
+            left: auto;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="WebGL-output"></div>
+    <div class="header"></div>
+    <div class="bottom"></div>
+    <div class="notice">
+        <svg width="24" id="图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.09 197.83">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: #c5d6ea;
+                    }
+                </style>
+            </defs>
+            <path class="cls-1"
+                d="M58.26,336.66h44.3a15,15,0,0,1,9.7,3.65l40,34.7a15,15,0,0,0,24.5-11.2V195.46a15,15,0,0,0-25.5-10.6l-39,39.4a15,15,0,0,1-10.5,4.4H58.26a15,15,0,0,0-15,15v78.2a15,15,0,0,0,15,15Zm174.25-124.8a7.5,7.5,0,0,1,9.65,2.75,7.39,7.39,0,0,1-1.9,10l-1.1.7-29.65,15a7.52,7.52,0,0,1-7.75-12.9l1.15-.7Zm-32.9,121.85a7.35,7.35,0,0,1,8.65-3.8l1.25.5,29.65,15a7.4,7.4,0,0,1-5.4,13.7l-1.25-.45-29.6-15a7.36,7.36,0,0,1-3.39-9.83l.09-.17Zm36.25-55.95a7.4,7.4,0,0,1,1.3,14.7H206.21a7.4,7.4,0,0,1-1.35-14.7h31Z"
+                transform="translate(-43.26 -180.57)" />
+        </svg>
+        灰大源码中心即将上线...
+    </div>
+    <div class="putDate" id="putDate"></div>
+    <a href="https://www.pslkzs.com/nav.php" id="link1" target="_blank">
+        <b>1</b>
+    </a>
+    <a href="https://www.pslkzs.com/nbcharts.php" id="link2" target="_blank">
+        <b>2</b>
+    </a>
+    <a href="https://www.nbchart.com/sucai/sucai.php" id="link3" target="_blank">
+        <b>3</b>
+    </a>
+    <a href="https://www.nbcharts.com/map/map.php" id="link4" target="_blank">
+        <b>4</b>
+    </a>
+    <a href="https://www.nbchart.com/lab/lab.php" id="link5" target="_blank">
+        <b>5</b>
+    </a>
+    <a href="https://www.nbchart.com/sucai/course.php" id="link6" target="_blank">
+        <b>6</b>
+    </a>
+    <script src="./js/three.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/FBXLoader.js"></script>
+    <script src="./js/fflate.min.js"></script>
+    <script src="./js/jquery3.3.1.js"></script>
+    <script>
+        var _0x363f4b = _0x4425;
+        ( function ( _0x13712d, _0x1229a2 ) {
+            var _0x19f5f4 = _0x4425
+                , _0x41621a = _0x13712d();
+            while ( !![] ) {
+                try {
+                    var _0xc28d91 = parseInt( _0x19f5f4( 0xb6 ) ) / 0x1 + -parseInt( _0x19f5f4( 0x10d ) ) / 0x2 + -parseInt( _0x19f5f4( 0xd0 ) ) / 0x3 * ( parseInt( _0x19f5f4( 0x112 ) ) / 0x4 ) + parseInt( _0x19f5f4( 0xb8 ) ) / 0x5 * ( parseInt( _0x19f5f4( 0xea ) ) / 0x6 ) + -parseInt( _0x19f5f4( 0x109 ) ) / 0x7 + parseInt( _0x19f5f4( 0x119 ) ) / 0x8 * ( -parseInt( _0x19f5f4( 0xf2 ) ) / 0x9 ) + parseInt( _0x19f5f4( 0x103 ) ) / 0xa;
+                    if ( _0xc28d91 === _0x1229a2 )
+                        break;
+                    else
+                        _0x41621a['push']( _0x41621a['shift']() );
+                } catch ( _0x42b5a3 ) {
+                    _0x41621a['push']( _0x41621a['shift']() );
+                }
+            }
+        }( _0x3ab2, 0xada6d ),
+            initDate() );
+        function initDate () {
+            var _0x41ffec = _0x4425
+                , _0x47ad40 = new Date()
+                , _0x37b5df = _0x47ad40['getDate']();
+            _0x37b5df[_0x41ffec( 0x101 )]()[_0x41ffec( 0xcd )] == 0x1 && ( _0x37b5df = '0' + _0x37b5df );
+            var _0x27cb9d = _0x47ad40[_0x41ffec( 0x11e )]() + 0x1;
+            _0x27cb9d[_0x41ffec( 0x101 )]()[_0x41ffec( 0xcd )] == 0x1 && ( _0x27cb9d = '0' + _0x27cb9d );
+            var _0x397ac9 = _0x47ad40['getFullYear']()
+                , _0x1faab0 = new Array( _0x41ffec( 0xc2 ), _0x41ffec( 0x105 ), _0x41ffec( 0xd2 ), _0x41ffec( 0x10f ), _0x41ffec( 0xa9 ), _0x41ffec( 0xfa ), _0x41ffec( 0xf5 ) )[_0x47ad40[_0x41ffec( 0xee )]()];
+            $( _0x41ffec( 0xec ) )[_0x41ffec( 0xae )]( _0x397ac9 + '年' + _0x27cb9d + '月' + _0x37b5df + '日\x20' + _0x1faab0 );
+        }
+        var menu = [{
+            'src': _0x363f4b( 0xc8 ),
+            'callback': function () {
+                var _0x8faaaa = _0x363f4b;
+                $( _0x8faaaa( 0xc5 ) )[_0x8faaaa( 0xda )]( 'click' );
+            }
+        }, {
+            'src': './images/menu2.png',
+            'callback': function () {
+                var _0x26cd68 = _0x363f4b;
+                $( _0x26cd68( 0xb2 ) )[_0x26cd68( 0xda )]( _0x26cd68( 0x11a ) );
+            }
+        }, {
+            'src': _0x363f4b( 0xbd ),
+            'callback': function () {
+                var _0x3e6bba = _0x363f4b;
+                $( _0x3e6bba( 0xaf ) )['trigger']( _0x3e6bba( 0x11a ) );
+            }
+        }, {
+            'src': './images/menu4.png',
+            'callback': function () {
+                var _0x432b10 = _0x363f4b;
+                $( _0x432b10( 0xdf ) )[_0x432b10( 0xda )]( _0x432b10( 0x11a ) );
+            }
+        }, {
+            'src': _0x363f4b( 0xd3 ),
+            'callback': function () {
+                var _0x554574 = _0x363f4b;
+                $( '#link5\x20b' )[_0x554574( 0xda )]( 'click' );
+            }
+        }, {
+            'src': './images/menu6.png',
+            'callback': function () {
+                var _0x2757ea = _0x363f4b;
+                $( _0x2757ea( 0x125 ) )[_0x2757ea( 0xda )]( _0x2757ea( 0x11a ) );
+            }
+        }], HUIDA = {
+            'outerGroup': null,
+            'secondGroup': null,
+            'dotsGroup': null,
+            'linesGroup': null,
+            'gridHelper': null,
+            'gridHelper2': null,
+            'gridHelperSize': 0xfa0,
+            'cardsIndex': 0x0,
+            'cards': [],
+            'robot': null,
+            'robotRunning': null,
+            'status': 'walk'
+        }, mixer, clipAction, animationClip, actions = [], orbitControls, downPos = -0xa, boxGroup = null, boxGroup2 = null, shadowCir, shadowCirAdd = !![], raycaster, clickRaycaster, pointer = new THREE[( _0x363f4b( 0xa5 ) )](), clickPointer = new THREE[( _0x363f4b( 0xa5 ) )](), clock = new THREE[( _0x363f4b( 0xf6 ) )](), scene = new THREE[( _0x363f4b( 0xc0 ) )]();
+        scene[_0x363f4b( 0x116 )] = new THREE[( _0x363f4b( 0xe7 ) )]( '#131b28', 0x15e, 0x3e8 );
+        var camera = new THREE['PerspectiveCamera']( 0x2d, window[_0x363f4b( 0xb7 )] / window['innerHeight'], 0.1, 0x3e8 );
+        document[_0x363f4b( 0xc3 )]( _0x363f4b( 0xa6 ), onPointerMove, ![] );
+        var renderer = new THREE[( _0x363f4b( 0xfe ) )]( {
+            'antialias': !![],
+            'alpha': !![]
+        } );
+        function _0x3ab2 () {
+            var _0x4a0256 = ['getDay', 'text', 'stopAllAction', '#WebGL-output', '831123ndqfVp', 'wrapT', 'scale', '星期六', 'Clock', 'walk', 'height', 'outerGroup', '星期五', 'NormalBlending', '<a\x20href=\x22javascript:;\x22\x20id=\x22bottomLink\x22\x20class=\x22bottomLink\x22>奔跑</a>', 'clone', 'WebGLRenderer', 'domElement', 'camera', 'toString', 'decay', '9617620uYuCdu', '#0e2cf6', '星期一', 'gridHelper', 'penumbra', 'TextureLoader', '6234865ZzqnrN', 'material', 'aspect', 'add', '280018amZVhE', 'undefined', '星期三', './models/walking.fbx', 'name', '16zfmlpa', 'castShadow', './models/running.fbx', 'AmbientLight', 'fog', '#1f2447', 'object', '40RBPYSC', 'click', 'getDelta', 'Raycaster', 'linesGroup', 'getMonth', 'updateProjectionMatrix', 'shadow', 'CircleGeometry', 'type', 'repeat', 'setFromCamera', '#link6\x20b', 'wrapS', 'blending', 'Vector3', 'MeshBasicMaterial', 'dotsGroup', 'secondGroup', 'animations', 'status', 'Vector2', 'mousemove', 'update', 'spotLight', '星期四', 'RepeatWrapping', 'callback', 'AnimationMixer', 'fov', 'html', '#link3\x20b', 'AdditiveBlending', 'cardsIndex', '#link2\x20b', 'clientY', 'run', 'RingGeometry', '266471wpZuCg', 'innerWidth', '5lhrFeA', 'children', 'set', 'width', 'render', './images/menu3.png', 'cos', 'body', 'Scene', 'GridHelper', '星期日', 'addEventListener', 'DoubleSide', '#link1\x20b', '#bottomLink', 'innerHeight', './images/menu1.png', 'setSize', 'resize', 'position', 'SpriteMaterial', 'length', '#2373fa', 'play', '201060HDhXDN', 'FBXLoader', '星期二', './images/menu5.png', 'Sprite', 'cards', 'src', 'remove', 'robotRunning', 'intersectObjects', 'trigger', 'mapSize', 'gridHelper2', 'parent', 'clipAction', '#link4\x20b', 'SpotLight', 'robot', 'Group', 'getClip', 'clientX', 'rotation', 'append', 'Fog', 'Mesh', 'load', '7461378iJpoxn', 'log', '#putDate', 'gridHelperSize'];
+            _0x3ab2 = function () {
+                return _0x4a0256;
+            }
+                ;
+            return _0x3ab2();
+        }
+        renderer['setPixelRatio']( window['devicePixelRatio'] ),
+            renderer[_0x363f4b( 0xc9 )]( window[_0x363f4b( 0xb7 )], window[_0x363f4b( 0xc7 )] ),
+            renderer['sortObjects'] = ![],
+            raycaster = new THREE[( _0x363f4b( 0x11c ) )](),
+            clickRaycaster = new THREE[( _0x363f4b( 0x11c ) )](),
+            camera[_0x363f4b( 0xcb )]['set']( 0x0, 0xa, 0x64 ),
+            camera[_0x363f4b( 0x11f )](),
+            ambientLight = new THREE[( _0x363f4b( 0x115 ) )]( 0xffffff ),
+            scene[_0x363f4b( 0x10c )]( ambientLight ),
+            initDefaultLighting( scene );
+        const geometry = new THREE['PlaneGeometry']( 0x4b0, 0x4b0 );
+        var repeatLine = new THREE[( _0x363f4b( 0x108 ) )]()[_0x363f4b( 0xe9 )]( './images/repeatBox.png' );
+        repeatLine[_0x363f4b( 0x126 )] = THREE[_0x363f4b( 0xaa )],
+            repeatLine[_0x363f4b( 0xf3 )] = THREE[_0x363f4b( 0xaa )],
+            repeatLine[_0x363f4b( 0x123 )]['x'] = 0x96,
+            repeatLine[_0x363f4b( 0x123 )]['y'] = 0x96;
+        const material = new THREE['MeshBasicMaterial']( {
+            'transparent': !![],
+            'side': THREE[_0x363f4b( 0xc4 )],
+            'map': repeatLine
+        } );
+        boxGroup = new THREE['Group'](),
+            scene['add']( boxGroup ),
+            HUIDA[_0x363f4b( 0x106 )] = new THREE[( _0x363f4b( 0xc1 ) )]( HUIDA[_0x363f4b( 0xed )], 0x12c, _0x363f4b( 0x117 ), _0x363f4b( 0x117 ) ),
+            HUIDA[_0x363f4b( 0x106 )][_0x363f4b( 0xcb )]['y'] = downPos - 0.1,
+            boxGroup['add']( HUIDA['gridHelper'] ),
+            boxGroup2 = new THREE[( _0x363f4b( 0xe2 ) )](),
+            boxGroup2[_0x363f4b( 0xcb )]['z'] = HUIDA[_0x363f4b( 0xed )],
+            scene['add']( boxGroup2 ),
+            HUIDA['gridHelper2'] = new THREE['GridHelper']( HUIDA[_0x363f4b( 0xed )], 0x12c, _0x363f4b( 0x117 ), _0x363f4b( 0x117 ) ),
+            HUIDA[_0x363f4b( 0xdc )][_0x363f4b( 0xcb )]['y'] = downPos - 0.1,
+            boxGroup2[_0x363f4b( 0x10c )]( HUIDA[_0x363f4b( 0xdc )] ),
+            HUIDA[_0x363f4b( 0xf9 )] = new THREE[( _0x363f4b( 0xe2 ) )](),
+            HUIDA[_0x363f4b( 0xf9 )][_0x363f4b( 0xcb )]['y'] = downPos,
+            HUIDA['outerGroup'][_0x363f4b( 0xe5 )]['x'] = Math['PI'] / 0x2,
+            scene[_0x363f4b( 0x10c )]( HUIDA[_0x363f4b( 0xf9 )] ),
+            HUIDA['secondGroup'] = new THREE[( _0x363f4b( 0xe2 ) )](),
+            HUIDA['secondGroup'][_0x363f4b( 0xcb )]['y'] = downPos,
+            HUIDA[_0x363f4b( 0x12b )][_0x363f4b( 0xe5 )]['x'] = Math['PI'] / 0x2,
+            scene[_0x363f4b( 0x10c )]( HUIDA[_0x363f4b( 0x12b )] ),
+            HUIDA['dotsGroup'] = new THREE[( _0x363f4b( 0xe2 ) )](),
+            HUIDA[_0x363f4b( 0x12a )]['position']['y'] = downPos,
+            HUIDA['dotsGroup']['rotation']['x'] = Math['PI'] / 0x2,
+            scene[_0x363f4b( 0x10c )]( HUIDA[_0x363f4b( 0x12a )] ),
+            HUIDA[_0x363f4b( 0x11d )] = new THREE[( _0x363f4b( 0xe2 ) )](),
+            HUIDA['linesGroup']['position']['y'] = downPos,
+            HUIDA['linesGroup']['rotation']['x'] = Math['PI'] / 0x2,
+            scene[_0x363f4b( 0x10c )]( HUIDA[_0x363f4b( 0x11d )] );
+        for ( var m = 0x0; m < menu['length']; m++ ) {
+            ( function ( _0x2ba4af ) {
+                var _0x5dc584 = _0x363f4b;
+                new THREE['TextureLoader']()[_0x5dc584( 0xe9 )]( menu[_0x2ba4af][_0x5dc584( 0xd6 )], function ( _0x4f65a2 ) {
+                    var _0x575786 = _0x5dc584;
+                    HUIDA['cardsIndex']++,
+                        HUIDA['cards'][_0x2ba4af] = _0x4f65a2,
+                        HUIDA[_0x575786( 0xb1 )] == menu[_0x575786( 0xcd )] && addBox();
+                }, undefined, function ( _0x53f9b3 ) {
+                    var _0x272993 = _0x5dc584;
+                    console[_0x272993( 0xeb )]( _0x53f9b3['toString']() );
+                } );
+            }( m ) );
+        }
+        addRunCircle();
+        var loader = new THREE[( _0x363f4b( 0xd1 ) )]();
+        loader[_0x363f4b( 0xe9 )]( _0x363f4b( 0x110 ), function ( _0x12c508 ) {
+            var _0xa36abf = _0x363f4b;
+            console[_0xa36abf( 0xeb )]( _0x12c508 ),
+                HUIDA[_0xa36abf( 0xe1 )] = _0x12c508,
+                HUIDA[_0xa36abf( 0xe1 )]['scale']['set']( 0.2, 0.2, 0.2 ),
+                HUIDA['robot'][_0xa36abf( 0xcb )]['y'] = downPos,
+                scene[_0xa36abf( 0x10c )]( HUIDA['robot'] ),
+                mixer = new THREE['AnimationMixer']( HUIDA[_0xa36abf( 0xe1 )] ),
+                animationClip = HUIDA[_0xa36abf( 0xe1 )][_0xa36abf( 0x12c )][0x0],
+                clipAction = mixer['clipAction']( animationClip )[_0xa36abf( 0xcf )](),
+                animationClip = clipAction[_0xa36abf( 0xe3 )](),
+                mixer[_0xa36abf( 0xa7 )]( 0x0 ),
+                loader[_0xa36abf( 0xe9 )]( _0xa36abf( 0x114 ), function ( _0x4a8e45 ) {
+                    var _0x632df9 = _0xa36abf;
+                    HUIDA['robotRunning'] = _0x4a8e45,
+                        $( _0x632df9( 0xbf ) )[_0x632df9( 0xe6 )]( _0x632df9( 0xfc ) ),
+                        $( '#bottomLink' )['on']( _0x632df9( 0x11a ), function () {
+                            var _0x2d72db = _0x632df9;
+                            HUIDA['status'] == _0x2d72db( 0xf7 ) ? ( mixer[_0x2d72db( 0xf0 )](),
+                                scene[_0x2d72db( 0xd7 )]( HUIDA[_0x2d72db( 0xe1 )] ),
+                                scene[_0x2d72db( 0x10c )]( HUIDA[_0x2d72db( 0xd8 )] ),
+                                HUIDA[_0x2d72db( 0xd8 )][_0x2d72db( 0xf4 )][_0x2d72db( 0xba )]( 0.2, 0.2, 0.2 ),
+                                HUIDA['robotRunning'][_0x2d72db( 0xcb )]['y'] = downPos,
+                                mixer = new THREE[( _0x2d72db( 0xac ) )]( HUIDA[_0x2d72db( 0xd8 )] ),
+                                animationClip = HUIDA[_0x2d72db( 0xd8 )][_0x2d72db( 0x12c )][0x0],
+                                clipAction = mixer['clipAction']( animationClip )[_0x2d72db( 0xcf )](),
+                                mixer[_0x2d72db( 0xa7 )]( 0x0 ),
+                                animationClip = clipAction[_0x2d72db( 0xe3 )](),
+                                $( '#bottomLink' )[_0x2d72db( 0xef )]( '行走' ),
+                                HUIDA[_0x2d72db( 0x12d )] = 'run' ) : ( mixer[_0x2d72db( 0xf0 )](),
+                                    scene[_0x2d72db( 0xd7 )]( HUIDA[_0x2d72db( 0xd8 )] ),
+                                    scene[_0x2d72db( 0x10c )]( HUIDA['robot'] ),
+                                    mixer = new THREE[( _0x2d72db( 0xac ) )]( HUIDA[_0x2d72db( 0xe1 )] ),
+                                    animationClip = HUIDA[_0x2d72db( 0xe1 )][_0x2d72db( 0x12c )][0x0],
+                                    clipAction = mixer[_0x2d72db( 0xde )]( animationClip )[_0x2d72db( 0xcf )](),
+                                    mixer['update']( 0x0 ),
+                                    animationClip = clipAction[_0x2d72db( 0xe3 )](),
+                                    $( _0x2d72db( 0xc6 ) )[_0x2d72db( 0xef )]( '奔跑' ),
+                                    HUIDA['status'] = 'walk' );
+                        } );
+                } );
+        } ),
+            $( '#WebGL-output' )[_0x363f4b( 0xe6 )]( renderer[_0x363f4b( 0xff )] ),
+            $( _0x363f4b( 0xf1 ) )['on']( 'click', function () {
+                var _0x5093ad = _0x363f4b;
+                clickPointer['x'] = event['clientX'] / window[_0x5093ad( 0xb7 )] * 0x2 - 0x1,
+                    clickPointer['y'] = -( event['clientY'] / window[_0x5093ad( 0xc7 )] ) * 0x2 + 0x1,
+                    clickRaycaster[_0x5093ad( 0x124 )]( clickPointer, camera );
+                const _0x1111c9 = clickRaycaster[_0x5093ad( 0xd9 )]( scene[_0x5093ad( 0xb9 )], !![] );
+                if ( _0x1111c9[_0x5093ad( 0xcd )] > 0x0 ) {
+                    if ( _0x1111c9[0x0][_0x5093ad( 0x118 )] && _0x1111c9[0x0][_0x5093ad( 0x118 )][_0x5093ad( 0xdd )] ) {
+                        var _0x213328 = _0x1111c9[0x0];
+                        if ( _0x213328[_0x5093ad( 0x118 )]['type'] == 'Sprite' && ( _0x213328[_0x5093ad( 0x118 )]['parent'] == boxGroup || _0x213328[_0x5093ad( 0x118 )][_0x5093ad( 0xdd )] == boxGroup2 ) ) {
+                            var _0x43e06f = parseInt( _0x213328['object'][_0x5093ad( 0x111 )], 0xa );
+                            typeof menu[_0x43e06f][_0x5093ad( 0xab )] != _0x5093ad( 0x10e ) && menu[_0x43e06f][_0x5093ad( 0xab )]();
+                        }
+                    }
+                }
+            } ),
+            render();
+        function render () {
+            var _0x4b07fa = _0x363f4b
+                , _0x371213 = 0.2
+                , _0x2ed9ee = 0.01
+                , _0x30422c = 0.006
+                , _0x16e6c3 = 0.009;
+            if ( HUIDA['status'] == _0x4b07fa( 0xb4 ) ) {
+                _0x371213 = 1.5;
+                var _0x2ed9ee = 0.1
+                    , _0x30422c = 0.06
+                    , _0x16e6c3 = 0.09;
+            }
+            HUIDA[_0x4b07fa( 0xf9 )]['rotation']['z'] += _0x2ed9ee,
+                HUIDA[_0x4b07fa( 0x12b )][_0x4b07fa( 0xe5 )]['z'] -= _0x30422c,
+                HUIDA[_0x4b07fa( 0x12a )]['rotation']['z'] += _0x16e6c3,
+                raycaster[_0x4b07fa( 0x124 )]( pointer, camera );
+            const _0x15829e = raycaster[_0x4b07fa( 0xd9 )]( scene['children'], !![] );
+            var _0x2914a7 = !![];
+            if ( _0x15829e[_0x4b07fa( 0xcd )] > 0x0 ) {
+                correctMaterialMap();
+                if ( _0x15829e[0x0][_0x4b07fa( 0x118 )] && _0x15829e[0x0][_0x4b07fa( 0x118 )][_0x4b07fa( 0xdd )] ) {
+                    var _0x175fc3 = _0x15829e[0x0];
+                    _0x175fc3[_0x4b07fa( 0x118 )][_0x4b07fa( 0x122 )] == _0x4b07fa( 0xd4 ) && ( _0x2914a7 = ![],
+                        _0x175fc3[_0x4b07fa( 0x118 )][_0x4b07fa( 0x10a )]['blending'] = THREE[_0x4b07fa( 0xb0 )] );
+                } else
+                    correctMaterialMap();
+            } else
+                correctMaterialMap();
+            boxGroup != null && _0x2914a7 && ( boxGroup[_0x4b07fa( 0xcb )]['z'] -= _0x371213,
+                boxGroup2['position']['z'] -= _0x371213,
+                boxGroup[_0x4b07fa( 0xcb )]['z'] <= -HUIDA[_0x4b07fa( 0xed )] && ( boxGroup[_0x4b07fa( 0xcb )]['z'] = boxGroup2[_0x4b07fa( 0xcb )]['z'] + HUIDA['gridHelperSize'] ),
+                boxGroup2[_0x4b07fa( 0xcb )]['z'] <= -HUIDA[_0x4b07fa( 0xed )] && ( boxGroup2[_0x4b07fa( 0xcb )]['z'] = boxGroup['position']['z'] + HUIDA[_0x4b07fa( 0xed )] ) );
+            if ( typeof shadowCir != 'undefined' && _0x2914a7 ) {
+                var _0x299ce6 = 0.009;
+                shadowCirAdd ? ( shadowCir['scale']['x'] += _0x299ce6,
+                    shadowCir[_0x4b07fa( 0xf4 )]['y'] += _0x299ce6,
+                    shadowCir[_0x4b07fa( 0xf4 )]['z'] += _0x299ce6,
+                    shadowCir[_0x4b07fa( 0xf4 )]['y'] >= 1.2 && ( shadowCirAdd = ![] ) ) : ( shadowCir['scale']['x'] -= _0x299ce6,
+                        shadowCir['scale']['y'] -= _0x299ce6,
+                        shadowCir[_0x4b07fa( 0xf4 )]['z'] -= _0x299ce6,
+                        shadowCir[_0x4b07fa( 0xf4 )]['y'] <= 0.8 && ( shadowCirAdd = !![] ) );
+            }
+            requestAnimationFrame( render ),
+                renderer[_0x4b07fa( 0xbc )]( scene, camera );
+            var _0x47c1e6 = clock[_0x4b07fa( 0x11b )]();
+            mixer && _0x2914a7 && mixer[_0x4b07fa( 0xa7 )]( _0x47c1e6 );
+        }
+        window[_0x363f4b( 0xc3 )]( _0x363f4b( 0xca ), onResize, ![] );
+        function onResize () {
+            var _0x313395 = _0x363f4b;
+            camera[_0x313395( 0x10b )] = window[_0x313395( 0xb7 )] / window[_0x313395( 0xc7 )],
+                camera[_0x313395( 0x11f )](),
+                renderer['setSize']( window[_0x313395( 0xb7 )], window['innerHeight'] );
+        }
+        function initDefaultLighting ( _0x442ce6, _0x3ae687 ) {
+            var _0x54f21d = _0x363f4b
+                , _0x19216f = _0x3ae687 !== undefined ? _0x3ae687 : new THREE[( _0x54f21d( 0x128 ) )]( -0xa, 0x1e, 0x28 )
+                , _0x19e80f = new THREE[( _0x54f21d( 0xe0 ) )]( 0xeeeeee );
+            _0x19e80f[_0x54f21d( 0xcb )]['copy']( _0x19216f ),
+                _0x19e80f[_0x54f21d( 0x120 )][_0x54f21d( 0xdb )][_0x54f21d( 0xbb )] = 0x800,
+                _0x19e80f['shadow'][_0x54f21d( 0xdb )][_0x54f21d( 0xf8 )] = 0x800,
+                _0x19e80f['shadow'][_0x54f21d( 0x100 )][_0x54f21d( 0xad )] = 0xf,
+                _0x19e80f[_0x54f21d( 0x113 )] = !![],
+                _0x19e80f[_0x54f21d( 0x102 )] = 0x2,
+                _0x19e80f[_0x54f21d( 0x107 )] = 0.05,
+                _0x19e80f['name'] = _0x54f21d( 0xa8 ),
+                _0x442ce6['add']( _0x19e80f );
+            var _0x26909c = new THREE[( _0x54f21d( 0x115 ) )]( 0x343434 );
+            _0x26909c['name'] = 'ambientLight',
+                _0x442ce6['add']( _0x26909c );
+        }
+        function addBox () {
+            var _0x321374 = _0x363f4b
+                , _0x1a3b03 = 0x64
+                , _0x5a8ab6 = 0xc8;
+            for ( var _0x7e53a1 = 0x0; _0x7e53a1 < 0x14; _0x7e53a1++ ) {
+                var _0x4f3226 = 0x2
+                    , _0x1d804e = _0x7e53a1 % HUIDA[_0x321374( 0xd5 )][_0x321374( 0xcd )]
+                    , _0x5d5b83 = new THREE[( _0x321374( 0xcc ) )]( {
+                        'map': HUIDA[_0x321374( 0xd5 )][_0x1d804e],
+                        'side': THREE[_0x321374( 0xc4 )],
+                        'transparent': !![],
+                        'depthWrite': !![],
+                        'depthTest': !![],
+                        'alphaTest': 0.1
+                    } )
+                    , _0x391c19 = new THREE[( _0x321374( 0xd4 ) )]( _0x5d5b83 );
+                _0x391c19[_0x321374( 0x111 )] = _0x7e53a1 % menu[_0x321374( 0xcd )],
+                    _0x391c19[_0x321374( 0xf4 )][_0x321374( 0xba )]( 0x1e, 0x1e, 0x1 ),
+                    _0x391c19['position']['set']( _0x1a3b03, _0x4f3226 / 0x2 + downPos + 0xe, -_0x7e53a1 * _0x5a8ab6 + HUIDA[_0x321374( 0xed )] / 0x2 - 0x7 ),
+                    _0x391c19[_0x321374( 0xe5 )]['z'] = Math['PI'] / 0x2,
+                    boxGroup[_0x321374( 0x10c )]( _0x391c19 );
+                var _0x2d0bf8 = _0x391c19[_0x321374( 0xfd )]();
+                boxGroup2[_0x321374( 0x10c )]( _0x2d0bf8 );
+                var _0x1908b6 = _0x391c19[_0x321374( 0xfd )]()
+                    , _0xa393ce = _0x5d5b83['clone']();
+                _0x1908b6[_0x321374( 0x10a )] = _0xa393ce,
+                    _0x1908b6[_0x321374( 0xcb )]['x'] = -_0x1a3b03,
+                    boxGroup['add']( _0x1908b6 );
+                var _0x5e2af9 = _0x1908b6[_0x321374( 0xfd )]();
+                boxGroup2[_0x321374( 0x10c )]( _0x5e2af9 );
+            }
+        }
+        function _0x4425 ( _0x5a5022, _0x21465a ) {
+            var _0x3ab267 = _0x3ab2();
+            return _0x4425 = function ( _0x4425cb, _0x54e8aa ) {
+                _0x4425cb = _0x4425cb - 0xa5;
+                var _0x2834e2 = _0x3ab267[_0x4425cb];
+                return _0x2834e2;
+            }
+                ,
+                _0x4425( _0x5a5022, _0x21465a );
+        }
+        function addRunCircle () {
+            var _0x2fa4ab = _0x363f4b;
+            const _0x53cab1 = new THREE[( _0x2fa4ab( 0x121 ) )]( 0x6, 0x40 )
+                , _0x301062 = new THREE[( _0x2fa4ab( 0x129 ) )]( {
+                    'color': '#000000',
+                    'side': THREE[_0x2fa4ab( 0xc4 )],
+                    'transparent': !![],
+                    'opacity': 0.2
+                } );
+            shadowCir = new THREE[( _0x2fa4ab( 0xe8 ) )]( _0x53cab1, _0x301062 ),
+                shadowCir[_0x2fa4ab( 0xe5 )]['x'] = Math['PI'] / 0x2,
+                shadowCir['position']['y'] = downPos,
+                scene[_0x2fa4ab( 0x10c )]( shadowCir );
+            const _0x3e3bc4 = new THREE[( _0x2fa4ab( 0xb5 ) )]( 0xc, 12.5, 0x80, 0x1 )
+                , _0x43c527 = new THREE[( _0x2fa4ab( 0x129 ) )]( {
+                    'color': _0x2fa4ab( 0xce ),
+                    'side': THREE[_0x2fa4ab( 0xc4 )],
+                    'transparent': !![],
+                    'opacity': 0.4,
+                    'blending': THREE['AdditiveBlending']
+                } )
+                , _0x5884f7 = new THREE['Mesh']( _0x3e3bc4, _0x43c527 );
+            _0x5884f7[_0x2fa4ab( 0xe5 )]['x'] = Math['PI'] / 0x2,
+                _0x5884f7['position']['y'] = downPos,
+                scene['add']( _0x5884f7 );
+            const _0x4050d1 = new THREE[( _0x2fa4ab( 0xb5 ) )]( 0x12, 19.5, 0x80, 0x1, 0x0, Math['PI'] / 0x4 )
+                , _0xd9aa72 = new THREE[( _0x2fa4ab( 0x129 ) )]( {
+                    'color': _0x2fa4ab( 0xce ),
+                    'side': THREE[_0x2fa4ab( 0xc4 )],
+                    'transparent': !![],
+                    'opacity': 0.3,
+                    'blending': THREE[_0x2fa4ab( 0xb0 )]
+                } )
+                , _0x30d3cf = new THREE[( _0x2fa4ab( 0xe8 ) )]( _0x4050d1, _0xd9aa72 );
+            HUIDA[_0x2fa4ab( 0xf9 )][_0x2fa4ab( 0x10c )]( _0x30d3cf );
+            const _0x460516 = new THREE[( _0x2fa4ab( 0xe8 ) )]( _0x4050d1, _0xd9aa72 );
+            _0x460516[_0x2fa4ab( 0xe5 )]['z'] = Math['PI'] * 0x2 / 0x3,
+                HUIDA[_0x2fa4ab( 0xf9 )][_0x2fa4ab( 0x10c )]( _0x460516 );
+            const _0x5d8412 = new THREE[( _0x2fa4ab( 0xe8 ) )]( _0x4050d1, _0xd9aa72 );
+            _0x5d8412[_0x2fa4ab( 0xe5 )]['z'] = Math['PI'] * 0x2 / 0x3 * 0x2,
+                HUIDA['outerGroup']['add']( _0x5d8412 );
+            for ( var _0x10786e = 0x0; _0x10786e < 0x40; _0x10786e++ ) {
+                const _0x471c6f = new THREE[( _0x2fa4ab( 0xb5 ) )]( 0xe, 15.5, 0x80, 0x1, 0x0, Math['PI'] / 0x320 )
+                    , _0x4f4334 = new THREE['MeshBasicMaterial']( {
+                        'color': _0x2fa4ab( 0xce ),
+                        'side': THREE[_0x2fa4ab( 0xc4 )],
+                        'transparent': !![],
+                        'opacity': 0.8,
+                        'blending': THREE[_0x2fa4ab( 0xb0 )]
+                    } )
+                    , _0x41e592 = new THREE['Mesh']( _0x471c6f, _0x4f4334 );
+                _0x41e592[_0x2fa4ab( 0xe5 )]['z'] = Math['PI'] * 0x2 / 0x40 * _0x10786e,
+                    HUIDA[_0x2fa4ab( 0x12b )][_0x2fa4ab( 0x10c )]( _0x41e592 );
+            }
+            for ( var _0x10786e = 0x0; _0x10786e < 0x40; _0x10786e++ ) {
+                const _0x1d8bff = new THREE[( _0x2fa4ab( 0x121 ) )]( 0.12, 0x40 )
+                    , _0x532877 = new THREE[( _0x2fa4ab( 0x129 ) )]( {
+                        'color': _0x2fa4ab( 0x104 ),
+                        'side': THREE[_0x2fa4ab( 0xc4 )],
+                        'transparent': !![],
+                        'opacity': 0.75,
+                        'blending': THREE[_0x2fa4ab( 0xb0 )]
+                    } )
+                    , _0x439d5d = new THREE[( _0x2fa4ab( 0xe8 ) )]( _0x1d8bff, _0x532877 );
+                var _0x3fb093 = 0xb;
+                _0x439d5d[_0x2fa4ab( 0xcb )]['x'] = _0x3fb093 * Math[_0x2fa4ab( 0xbe )]( Math['PI'] * 0x2 / 0x40 * _0x10786e ),
+                    _0x439d5d[_0x2fa4ab( 0xcb )]['y'] = _0x3fb093 * Math['sin']( Math['PI'] * 0x2 / 0x40 * _0x10786e ),
+                    HUIDA[_0x2fa4ab( 0x12a )][_0x2fa4ab( 0x10c )]( _0x439d5d );
+            }
+        }
+        function onPointerMove ( _0x1651af ) {
+            var _0xff07c3 = _0x363f4b;
+            pointer['x'] = _0x1651af[_0xff07c3( 0xe4 )] / window[_0xff07c3( 0xb7 )] * 0x2 - 0x1,
+                pointer['y'] = -( _0x1651af[_0xff07c3( 0xb3 )] / window[_0xff07c3( 0xc7 )] ) * 0x2 + 0x1,
+                HUIDA[_0xff07c3( 0xe1 )] != null && HUIDA[_0xff07c3( 0x12d )] == _0xff07c3( 0xf7 ) && ( HUIDA['robot'][_0xff07c3( 0xe5 )]['y'] = Math['PI'] / 0x2 / 0x4 * pointer['x'] ),
+                HUIDA[_0xff07c3( 0xd8 )] != null && HUIDA[_0xff07c3( 0x12d )] == _0xff07c3( 0xb4 ) && ( HUIDA[_0xff07c3( 0xd8 )]['rotation']['y'] = Math['PI'] / 0x2 / 0x4 * pointer['x'] );
+        }
+        function correctMaterialMap () {
+            var _0x3ebd0f = _0x363f4b;
+            if ( boxGroup['children'][_0x3ebd0f( 0xcd )] > 0x0 )
+                for ( var _0x2421f0 = 0x0; _0x2421f0 < boxGroup['children']['length']; _0x2421f0++ ) {
+                    var _0x548563 = boxGroup[_0x3ebd0f( 0xb9 )][_0x2421f0];
+                    _0x548563['type'] == 'Sprite' && ( _0x548563[_0x3ebd0f( 0x10a )][_0x3ebd0f( 0x127 )] = THREE[_0x3ebd0f( 0xfb )] );
+                }
+        }
+    </script>
+</body>
+
+</html>
