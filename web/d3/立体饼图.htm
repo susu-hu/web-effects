@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<head>
+    <title>参考：https://mp.weixin.qq.com/s/VucdJizUsgFK7AihogLseQ</title>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function () {
+            setTimeout(function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?5d6d6a4b2a97285f4fa49f1f631f8d21";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            }, 1000);
+        })();
+    </script>
+    <style type="text/css">
+        .rowFlex {
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center
+        }
+
+        body,
+        html {
+            background: #000f14;
+
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .putPie {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            z-index: 3;
+        }
+
+        .huiSeZhiZhao20210901124307 {
+            position: absolute;
+            top: 158px;
+            left: 60px;
+            z-index: 2;
+            width: 280px;
+            height: 132px;
+            background: url(./images/w280h4620steps35.png) no-repeat 0px 0px;
+            -webkit-animation: huida20210901124307 1s infinite steps(35, end);
+            -moz-animation: huida20210901124307 1s infinite steps(35, end);
+            -ms-animation: huida20210901124307 1s infinite steps(35, end);
+            animation: huida20210901124307 1s infinite steps(35, end);
+        }
+
+        @-webkit-keyframes huida20210901124307 {
+            0% {
+                background-position-y: 0px;
+            }
+
+            100% {
+                background-position-y: -4620px;
+            }
+        }
+
+        @-moz-keyframes huida20210901124307 {
+            0% {
+                background-position-y: 0px;
+            }
+
+            100% {
+                background-position-y: -4620px;
+            }
+        }
+
+        @-ms-keyframes huida20210901124307 {
+            0% {
+                background-position-y: 0px;
+            }
+
+            100% {
+                background-position-y: -4620px;
+            }
+        }
+
+        @keyframes huida20210901124307 {
+            0% {
+                background-position-y: 0px;
+            }
+
+            100% {
+                background-position-y: -4620px;
+            }
+        }
+
+        svg text.percent {
+            fill: #fff;
+            text-anchor: middle;
+            font-size: 14px;
+        }
+
+        .light {
+            width: 400px;
+            height: 400px;
+            background: url(./images/light.png) no-repeat center 135px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        button {
+            background: #008ee0;
+            border: none;
+            color: #fff;
+            padding: 12px 18px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f60;
+            ;
+        }
+
+        h5 {
+            font-size: 30px;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        #data1 {
+            color: #03dea3;
+        }
+
+        #data2 {
+            color: #d7de4d;
+        }
+
+        #data3 {
+            color: #008ee0;
+        }
+
+        #data4 {
+            color: #24d0ff;
+        }
+
+        .txt {
+            width: 110px;
+            position: relative;
+            top: 20px;
+        }
+
+        .txt p {
+            padding-bottom: 4px;
+            color: #fff;
+        }
+
+        h5 {
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rowFlex">
+        <div class="container">
+            <div id="putPie" class="putPie"></div>
+            <div class="huiSeZhiZhao20210901124307"></div>
+            <div class="light"></div>
+        </div>
+        <div class="txt">
+            <p>独居老人</p>
+            <h5 id="data1">122</h5>
+            <p>子女同住</p>
+            <h5 id="data2">244</h5>
+        </div>
+        <div class="txt">
+            <p>亲友同住</p>
+            <h5 id="data3">300</h5>
+            <p>其它</p>
+            <h5 id="data4">96</h5>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="./js/d3.v3.min.js"></script>
+    <script type="text/javascript" src="./js/Donut3D.js"></script>
+    <script type="text/javascript">
+        var data = [
+            { label: "a1", color: "#d7de4d", value: 122 },
+            { label: "a2", color: "#008ee0", value: 244 },
+            { label: "a3", color: "#24d0ff", value: 300 },
+            { label: "a4", color: "#03dea3", value: 96 }
+        ];
+
+        var svg = d3.select("#putPie").append("svg").attr("width", 400).attr("height", 400);
+        svg.append("g").attr("id", "demoPie");
+        Donut3D.draw("demoPie", data, 200, 200, 112, 50, 20, 0.8);
+
+
+        function changeData() {
+            let newData = randomData();
+            Donut3D.transition("demoPie", newData, 112, 50, 20, 0.8);
+            newData.map(function (d, i) {
+                document.getElementById(`data${i + 1}`).innerText = d.value;
+            })
+        }
+
+        function randomData() {
+            return data.map(function (d) {
+                return { label: d.label, value: Math.ceil(1000 * Math.random()), color: d.color };
+            });
+        }
+
+        setInterval(() => {
+            changeData();
+        }, 4000);
+
+    </script>
+</body>
+
+</html>
