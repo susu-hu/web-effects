@@ -1,0 +1,71 @@
+<!--
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2024-03-28 00:19:24
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2024-03-28 00:25:44
+ * @FilePath: \css_demos\web\js二三事\树\311.htm
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function setExpandById(treeData, id) {
+        // 定义递归函数，根据ID设置节点的expand属性
+        function setExpand(node) {
+            if (node.id === id || node.children.some(child => setExpand(child))) {
+                node.expand = true; // 当前节点或其子孙节点包含目标ID，将expand属性设为true
+                return true;
+            } else {
+                node.expand = false; // 当前节点及其子孙节点都不包含目标ID，将expand属性设为false
+                return false;
+            }
+        }
+
+        // 遍历树数组，调用递归函数设置expand属性
+        for (let node of treeData) {
+            setExpand(node);
+        }
+    }
+
+    // 使用示例
+    const treeData = [
+        {
+            id: 1,
+            expand: false,
+            children: [
+                {
+                    id: 2,
+                    expand: false,
+                    children: [
+                        { id: 4, expand: false, children: [] },
+                        { id: 5, expand: false, children: [] }
+                    ]
+                },
+                {
+                    id: 3,
+                    expand: false,
+                    children: []
+                }
+            ]
+        }
+    ];
+
+    // 设置 id 为 4 的节点及其所有父元素节点的 expand 为 true
+    setExpandById(treeData, 5);
+
+    // 输出设置后的树结构
+    console.log(JSON.stringify(treeData, null, 2));
+
+</script>
+
+</html>

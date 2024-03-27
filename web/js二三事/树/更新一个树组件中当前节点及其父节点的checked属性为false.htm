@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function uncheckNodeAndParents(treeData, id) {
+        function traverse(node) {
+            if (node.id === id) {
+                node.checked = false;
+                return true;
+            }
+            if (node.children) {
+                for (let child of node.children) {
+                    if (traverse(child)) {
+                        node.checked = false;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        for (let node of treeData) {
+            if (traverse(node)) {
+                break;
+            }
+        }
+    }
+
+
+    // function updateCheckedState(treeData, currentNodeId, checkedState) {
+    //     function updateNode(node) {
+    //         if (node.id === currentNodeId || node?.children?.some(child => child.id === currentNodeId)) {
+    //             console.log(node)
+    //             node.checked = checkedState;
+    //         }
+    //         if (node.children && node.children.length > 0) {
+    //             node.children.forEach(updateNode);
+    //         }
+    //     }
+
+    //     treeData.forEach(updateNode);
+    //     return treeData
+    // }
+
+    // 示例树结构
+    const treeData = [
+        {
+            id: 1,
+            checked: true,
+            children: [
+                {
+                    id: 2,
+                    checked: true,
+                    children: [
+                        { id: 4, checked: true, children: [] },
+                        { id: 5, checked: true, children: [] }
+                    ]
+                },
+                {
+                    id: 3,
+                    checked: true,
+                    children: []
+                }
+            ]
+        }
+    ];
+
+    // // 使用示例
+    // var currentNodeId = 4; // 假设你想要更新id为4的节点
+    // updateCheckedState(treeData, currentNodeId, false);
+    // console.log(updateCheckedState(treeData, currentNodeId, false))
+
+    // 使用示例
+    uncheckNodeAndParents(treeData, 5);
+    console.log(treeData);
+</script>
+
+</html>

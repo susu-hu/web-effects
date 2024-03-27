@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    function uncheckNodeAndParents(treeData, id) {
+        const stack = [];
+        let found = false;
+
+        // 将根节点入栈
+        stack.push({ node: treeData, parentChecked: true });
+
+        while (stack.length > 0) {
+            const { node, parentChecked } = stack.pop();
+
+            // 检查当前节点是否是目标节点
+            if (node.id === id) {
+                node.checked = false;
+                found = true;
+            }
+
+            // 更新当前节点的 checked 属性
+            node.checked = parentChecked && node.checked;
+
+            // 将子节点入栈
+            if (node.children) {
+                for (let child of node.children) {
+                    stack.push({ node: child, parentChecked: node.checked });
+                }
+            }
+
+            // 如果找到目标节点，退出循环
+            if (found) {
+                break;
+            }
+        }
+    }
+    // 示例树结构
+    const treeData = [
+        {
+            id: 1,
+            checked: true,
+            children: [
+                {
+                    id: 2,
+                    checked: true,
+                    children: [
+                        { id: 4, checked: true, children: [] },
+                        { id: 5, checked: true, children: [] }
+                    ]
+                },
+                {
+                    id: 3,
+                    checked: true,
+                    children: []
+                }
+            ]
+        }
+    ];
+
+    // 使用示例
+    uncheckNodeAndParents(treeData, 3);
+    console.log(treeData);
+
+
+</script>
+
+</html>
