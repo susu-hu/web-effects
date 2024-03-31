@@ -10,10 +10,10 @@
 <body>
     <script>
         // 并发请求函数
-        const concurrencyRequest = ( urls, maxNum ) => {
-            return new Promise( ( resolve ) => {
-                if ( urls.length === 0 ) {
-                    resolve( [] );
+        const concurrencyRequest = (urls, maxNum) => {
+            return new Promise((resolve) => {
+                if (urls.length === 0) {
+                    resolve([]);
                     return;
                 }
                 const results = [];
@@ -21,45 +21,48 @@
                 let count = 0; // 当前请求完成的数量
 
                 // 发送请求
-                async function request () {
-                    if ( index === urls.length ) return;
+                async function request() {
+                    if (index === urls.length) return;
                     const i = index; // 保存序号，使result和urls相对应
                     const url = urls[index];
                     index++;
-                    console.log( url );
+                    console.log(url);
                     try {
-                        const resp = await fetch( url );
+                        const resp = await fetch(url);
                         // resp 加入到results
                         results[i] = resp;
-                    } catch ( err ) {
+                    } catch (err) {
                         // err 加入到results
                         results[i] = err;
                     } finally {
                         count++;
                         // 判断是否所有的请求都已完成
-                        if ( count === urls.length ) {
-                            console.log( '完成了' );
-                            resolve( results );
+                        if (count === urls.length) {
+                            console.log('完成了');
+                            resolve(results);
                         }
-                        request();
+                        if (index < urls.length) {
+                            request();
+                        }
+
                     }
                 }
 
                 // maxNum和urls.length取最小进行调用
-                const times = Math.min( maxNum, urls.length );
-                for ( let i = 0; i < times; i++ ) {
+                const times = Math.min(maxNum, urls.length);
+                for (let i = 0; i < times; i++) {
                     request();
                 }
-            } )
+            })
         }
 
         const urls = [];
-        for ( let i = 1; i <= 30; i++ ) {
-            urls.push( `https://jsonplaceholder.typicode.com/todos/${i}` );
+        for (let i = 1; i <= 30; i++) {
+            urls.push(`https://jsonplaceholder.typicode.com/todos/${i}`);
         }
-        concurrencyRequest( urls, 30).then( res => {
-            console.log( res );
-        } )
+        concurrencyRequest(urls, 2).then(res => {
+            console.log(res);
+        })
 
     </script>
 </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function concurRequest(urls, maxNum) {
+        if (urls.length === 0) return Promise.resolve([]);
+        return new Promise((resolve) => {
+            let index = 0;//指向下一次请求的url对应的下标
+            const result = [];//存储所有请求的结果
+            let count = 0;//当前完成的请求数量
+            async function _request() {
+                const i = index;
+                const url = urls[index];
+                index++;
+                try {
+                    const resp = await fetch(url);
+                    result[i] = resp;
+                } catch (err) {
+                    result[i] = err;
+                } finally {
+                    count++;
+                    if (count === urls.length) {
+                        resolve(result);
+                    }
+                    if (index < urls.length) {
+                        _request();
+                    }
+                }
+            }
+            for (let i = 0; i < Math.min(urls.length, maxNum); i++) {
+                _request();
+            }
+        })
+    }
+
+    const urls = [];
+    for (let i = 1; i <= 30; i++) {
+        urls.push(`https://jsonplaceholder.typicode.com/todos/${i}`);
+    }
+    concurRequest(urls, 5).then(res => {
+        console.log(res);
+    })
+</script>
+
+</html>-
