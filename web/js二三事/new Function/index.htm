@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1个参数
+    const externalConstant = 42;
+    const str = `return externalConstant * 2;`;
+    const func = new Function('externalConstant', str);
+    const result = func(externalConstant);
+    console.log(result); // 输出 84
+
+    // 2个参数
+    // const externalConstant1 = 5;
+    // const externalConstant2 = 7;
+    // const str = `return externalConstant1 * externalConstant2;`;
+    // const func = new Function('externalConstant1', 'externalConstant2', str);
+    // const result = func(externalConstant1, externalConstant2);
+    // console.log(result); // 输出 35
+    //bind
+    // const externalConstant1 = 15;
+    // const externalConstant2 = 7;
+    // const str = `return externalConstant1 * externalConstant2;`;
+    // const func = new Function(str);
+    // const result = func.bind(null, externalConstant1, externalConstant2)();
+    // console.log(result); // 输出 35
+    // call
+    // const externalConstant1 = 5;
+    // const externalConstant2 = 17;
+    // const str = `return externalConstant1 * externalConstant2;`;
+    // const func = new Function(str);
+    // const result = func.bind(null, externalConstant1, externalConstant2)();
+    // console.log(result); // 输出 35
+</script>
+
+</html>
