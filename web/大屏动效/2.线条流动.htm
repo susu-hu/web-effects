@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    .wrapper {
+        width: 700px
+    }
+
+    .line-before {
+        width: 70%;
+        height: 50px;
+        /* background: red; */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .line-before::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        top: calc(50% - 1px);
+        background: linear-gradient(to right, transparent 0%, #c4eded 60%);
+    }
+
+    /* .line::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        left: 0;
+        top: calc(50% - 2px);
+        background: linear-gradient(to right, transparent 0%, #c4eded 60%);
+        box-shadow: 0 0 4px #c4eded;
+        animation: move 7s linear infinite;
+    }
+
+    @keyframes move {
+        0% {
+            transform: translate(-100%);
+        }
+
+        100% {
+            transform: translate(100%);
+        }
+    } */
+
+    .line-after {
+        width: 30%;
+        height: 50px;
+        /* background: red; */
+        position: relative;
+        overflow: hidden;
+        top: 0;
+    }
+
+    .line-after::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        top: calc(50% - 1px);
+        background: linear-gradient(to left, transparent 0%, #c4eded 60%);
+    }
+
+    .line-center {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background: #c4eded;
+        bottom: 25px;
+        border-radius: 20px 0;
+        transform: perspective(40px) scaleX(1.4) scaleY(1.5) rotateX(20deg) translate(-10px, 0);
+        transform-origin: 50% 100%;
+    }
+
+    .line-center::before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        bottom: 0px;
+        width: 10px;
+        height: 10px;
+        background: inherit;
+        -webkit-mask: radial-gradient(circle at 0 0, transparent, transparent 9.5px, #000 10px, #000);
+        mask: radial-gradient(circle at 0 0, transparent, transparent 9.5px, #000 10px, #000);
+    }
+</style>
+
+<body>
+    <div class="wrapper flex-row">
+        <div class="line-before"></div>
+        <div class="line-center"></div>
+        <div class="line-after"></div>
+    </div>
+</body>
+
+</html>
