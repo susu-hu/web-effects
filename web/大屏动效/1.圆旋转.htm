@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    body {
+        background: #010A17;
+    }
+
+    :root {
+        --r: rotateX(67deg) translateY(210px);
+    }
+
+    .wrapper {
+        width: 1270px;
+        height: 1010px;
+        flex-shrink: 0;
+    }
+
+    .wrapper::after {
+        background-image: url('../img/circle-bg.png');
+        background-size: 100% 100%;
+    }
+
+    .wrapper::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 345px);
+        top: calc(50% - 345px);
+        width: 690px;
+        height: 690px;
+        background-image: url('../img/circle-inner.png');
+        background-size: 100% 100%;
+        transform: var(--r);
+        animation: rotate 15s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotateX(67deg) translateY(210px) rotate(0deg);
+        }
+
+        100% {
+            transform: rotateX(67deg) translateY(210px) rotate(1turn);
+        }
+    }
+
+    .wrapper .float-rect {
+        position: absolute;
+        top: 282px;
+        left: 413px;
+        width: 451px;
+        height: 376px;
+        background-image: url('../img/float-rect.png');
+        background-size: 100% 100%;
+        animation: downUp 2s infinite ease-in-out alternate;
+    }
+
+
+    @keyframes downUp {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(10px);
+        }
+    }
+
+    .bg-after {
+        position: relative;
+        z-index: 1;
+    }
+
+    .bg-after::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <div class="wrapper bg-after">
+        <span class="float-rect"></span>
+    </div>
+</body>
+
+</html>
