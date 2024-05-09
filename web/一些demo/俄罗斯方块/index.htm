@@ -1,0 +1,442 @@
+<!--
+ * @FilePath: \css_demos\web\一些demo\俄罗斯方块\index.htm
+ * @Description: 
+    简单说明一下
+    1.专为手机端添加了滑动操作，左滑=左移，右滑=右移，上滑=旋转，下滑=下落
+    2.除了 Vue 没有用其它的任何框架。当时用的还是 2.0，现在改为 3.0
+    3.没有用打包构建器，页面源代码就是原始的代码，需要的请及时另存
+    4.没有使用 requestAnimationFrame，就是简单的计时器
+    5.代码没有进行优化，基本上就是当时想着写着，命名等有些乱，以后再改吧
+-->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="developer" content="ZhangKai.net">
+    <title>俄罗斯方块</title>
+    <script src="./main.js" type="module"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+        }
+
+        body>header {
+            font-size: 20px;
+            color: #fff;
+            padding: 5px;
+        }
+
+        body>footer {
+            text-align: center;
+            color: #666;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 30px;
+        }
+
+        #app {
+            flex: 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #app>div:first-child {
+            border: 1px solid #999;
+            flex: 0;
+        }
+
+        .blocks {
+            background-color: #000;
+        }
+
+        div.flash {
+            animation: flash 0.1s 2;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: #000;
+            }
+
+            100% {
+                background-color: #666;
+            }
+        }
+
+        div.down {
+            animation: down 0.1s 2;
+        }
+
+        @keyframes down {
+            0% {
+                transform: translate(0px, 0px);
+            }
+
+            50% {
+                transform: translate(0px, 5px);
+            }
+
+            80% {
+                transform: translate(0px, 0px);
+            }
+
+            100% {
+                transform: translate(0px, 2px);
+            }
+        }
+
+        div.nextlevel {
+            animation: level 0.1s 2;
+        }
+
+        @keyframes level {
+            0% {
+                background-color: #000;
+            }
+
+            100% {
+                background-color: #f66;
+            }
+        }
+
+        .blocks>div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .blocks>div>div {
+            width: 30px;
+            height: 30px;
+            border: 2px solid transparent;
+            border-right-color: #111;
+        }
+
+        .blocks>div>div.color-1 {
+            background-color: #678;
+            background-image: linear-gradient(0deg, #678 60%, #89a 65%, #678);
+            border-color: #cde #234 #234 #cde;
+        }
+
+        .blocks>div>div.color1 {
+            background-color: #ff3;
+            background-image: linear-gradient(0deg, #fc3 60%, #fd4 65%, #fc3);
+            border-color: #ff9 #990 #990 #ff9;
+        }
+
+        .blocks>div>div.color2 {
+            background-color: #f33;
+            background-image: linear-gradient(0deg, #f33 60%, #f99 65%, #f66);
+            border-color: #f99 #900 #900 #f99;
+        }
+
+        .blocks>div>div.color3 {
+            background-color: #090;
+            background-image: linear-gradient(0deg, #090 60%, #2b2 65%, #090);
+            border-color: #ada #030 #030 #ada;
+        }
+
+        .blocks>div>div.color4 {
+            background-color: #09f;
+            background-image: linear-gradient(0deg, #09f 60%, #2bf 65%, #09f);
+            border-color: #9cf #039 #039 #9cf;
+        }
+
+        .blocks>div>div.color5 {
+            background-color: #f60;
+            background-image: linear-gradient(0deg, #f60 60%, #f93 65%, #f60);
+            border-color: #f96 #930 #930 #f96;
+        }
+
+        .blocks>div>div.color6 {
+            background-color: #f3f;
+            background-image: linear-gradient(0deg, #f3f 60%, #f9f 65%, #f3f);
+            border-color: #fcf #909 #909 #fcf;
+        }
+
+        .blocks>div>div.color7 {
+            background-color: #6cf;
+            background-image: linear-gradient(0deg, #6cf 60%, #7df 65%, #6cf);
+            border-color: #9ef #069 #069 #9ef;
+        }
+
+        .info {
+            width: 200px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ccc;
+            justify-items: center;
+        }
+
+        .info>.blocks {
+            background-color: transparent;
+        }
+
+        .info>.blocks>div>div:not([class^=color]) {
+            background-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .playtime,
+        .score,
+        .level,
+        .clearline,
+        .topten {
+            white-space: nowrap;
+            font-size: 30px;
+            font-family: fantasy;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .topten {
+            font-size: 12px;
+        }
+
+        .topten table {
+            border-collapse: collapse;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+
+        .topten td,
+        .topten th {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .topten th {
+            font-weight: bold;
+        }
+
+        .topten td {
+            border: 1px solid #999;
+            border-width: 1px 0 0 0;
+        }
+
+        .playtime::before,
+        .score::before,
+        .level::before,
+        .clearline::before,
+        .topten::before {
+            content: "";
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #ccc;
+            background-color: #666;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .playtime::before {
+            content: "计时";
+        }
+
+        .score::before {
+            content: "得分";
+        }
+
+        .level::before {
+            content: "关卡";
+        }
+
+        .clearline::before {
+            content: "消行";
+        }
+
+        .topten::before {
+            content: "排行榜";
+        }
+
+        .msg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0005;
+        }
+
+        .msg>div {
+            animation: show 6s 1 forwards;
+            font-size: 100px;
+            padding: 20px 100px 20px 50px;
+            background-color: #039;
+            color: #fff;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        @keyframes show {
+            0% {
+                transform: scale(0, 0) rotate(-360deg);
+            }
+
+            10% {
+                transform: scale(1.2, 1.2) rotate(0deg);
+            }
+
+            20% {
+                transform: scale(1, 1);
+            }
+
+            90% {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0, 0);
+                opacity: 0;
+            }
+        }
+
+        .countdown {
+            animation: countdown .9s 1 cubic-bezier(0, 1, 0, 1) forwards;
+            font-size: 200px;
+            color: #fff;
+            width: 330px;
+            line-height: 500px;
+            position: absolute;
+            text-align: center;
+        }
+
+        @keyframes countdown {
+            0% {
+                transform: scale(5, 5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1, 1);
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            .topten {
+                display: none;
+            }
+
+            .info {
+                width: 116px;
+                padding: 5px;
+            }
+
+            .blocks>div>div {
+                width: 22px;
+                height: 22px;
+            }
+
+            button {
+                padding: 5px 10px;
+            }
+
+            .countdown {
+                width: 242px;
+                line-height: 480px;
+            }
+
+            .msg>div {
+                font-size: 30px;
+                padding: 10px 30px 10px 20px;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            .info {
+                width: auto;
+            }
+
+            .blocks>div>div {
+                width: 18px;
+                height: 18px;
+            }
+
+            button {
+                padding: 5px;
+            }
+
+            .countdown {
+                width: 200px;
+                line-height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="blocks" :class="{flash:flashEffect,down:downEffect,nextlevel:levelEffect}">
+            <div v-for="n of bgMap">
+                <div v-for="m of n" :class="m?'color'+m:''"></div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="blocks">
+                <div v-for="n of (game.nextBlock&&game.nextBlock.matrix)||[[1,2,3,4],[5,6,7,-1]]">
+                    <div v-for="m of n" :class="m?'color'+((game.nextBlock&&game.nextBlock.id)||m):''"></div>
+                </div>
+            </div>
+            <div class="playtime">
+                {{Math.floor(playTime/60).toString().padStart(2,"0")}}:{{(playTime%60).toString().padStart(2,"0")}}
+            </div>
+            <div class="score">{{score}}</div>
+            <div class="level">{{level}}</div>
+            <div class="clearline">{{clearLineCount}}</div>
+            <div class="topten">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>关卡</th>
+                            <th>消行</th>
+                            <th>得分</th>
+                            <th>用时</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="n of topTen">
+                            <td>{{n.date.toLocaleDateString()}}</td>
+                            <td>{{n.level}}</td>
+                            <td>{{n.clearLineCount}}</td>
+                            <td>{{n.score}}</td>
+                            <td>{{Math.floor(n.playTime/60).toString().padStart(2,"0")}}:{{(n.playTime%60).toString().padStart(2,"0")}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button @click="play()" :disabled="!isOver">开始</button>
+                <button @click="pause()" :disabled="isOver">{{isPause?'继续':'暂停'}}</button>
+            </div>
+        </div>
+        <div class="msg" v-if="msg">
+            <div>{{msg}}</div>
+        </div>
+        <div class="countdown" v-if="countdown">{{countdown}}</div>
+    </div>
+    <footer>@author zhangkai.net</footer>
+</body>
+
+</html>

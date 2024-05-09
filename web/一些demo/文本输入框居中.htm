@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper {
+        border: solid 1px #333;
+        display: flex;
+        align-items: center;
+        position: relative;
+        min-height: 10rem;
+        width: 30rem;
+        cursor: text;
+    }
+
+    .wrapper textarea {
+        border: none;
+        resize: none;
+        outline: none;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div onclick="this.querySelector('textarea').focus()" class="wrapper">
+        <textarea oninput="this.removeAttribute('style') || (this.style.height = this.scrollHeight + 'px')"
+            rows="1"></textarea>
+    </div>
+</body>
+
+</html>
