@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    body {
+        /* 滚动时长 */
+        --duration: 2s;
+        /* 滚动方向 top | bottom*/
+        --direction: top;
+    }
+
+    .wrapper {
+        font-size: 4rem;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(to right, orange, red);
+        line-height: 100px;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        color: #333;
+    }
+
+    .wrapper-inner {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(0%);
+        animation: rotate var(--duration) ease-in-out forwards;
+    }
+
+    @keyframes rotate {
+        0% {
+            /* transform: translateY(0%); */
+            transform: translateY(calc(-10% * var(--start, 0)));
+        }
+
+        100% {
+            transform: translateY(calc(-10% * var(--end, 0)));
+        }
+
+    }
+</style>
+
+<body style="gap: 20px;">
+    <div class="wrapper">
+        <div class="wrapper-inner flex-column" style="--end:0" id="target">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="wrapper-inner flex-column" style="--end:0" id="target1">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>
+
+    </div>
+</body>
+<script>
+    const taregtNum = 0, taregtNum1 = 9;
+    const dom = document.getElementById("target");
+    dom.style.setProperty('--start', 9 - taregtNum);
+    dom.style.setProperty('--end', taregtNum);
+    const dom1 = document.getElementById("target1");
+    dom1.style.setProperty('--start', 9 - taregtNum1);
+    dom1.style.setProperty('--end', taregtNum1);
+
+    // function restartAnimation() {
+    //     const element = document.getElementById("target1");
+    //     element.style.WebkitAnimation = 'none'; // 清除旧的动画状态，确保元素回到初始位置
+    //     void element.offsetWidth; // 触发重新渲染，使清除动画生效
+    //     element.style.WebkitAnimation = ''; // 重置动画属性
+    // }
+    // restartAnimation()
+
+
+</script>
+
+</html>
