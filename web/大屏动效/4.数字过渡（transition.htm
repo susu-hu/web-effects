@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../common.css">
+<style>
+    body {
+        /* 滚动时长 */
+        --duration: 2s;
+        /* 滚动方向 top | bottom*/
+        --direction: top;
+        --w: 100px;
+        --size: 5rem;
+    }
+
+    .wrapper {
+        font-size: var(--size);
+        width: var(--w);
+        height: var(--w);
+        background: linear-gradient(to right, orange, red);
+        line-height: var(--w);
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        color: #fff;
+
+    }
+
+    .wrapper-inner {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        animation: rotate var(--duration) ease-in-out none;
+        transform: translateY(calc(-10% * var(--end, 0)));
+        transition: transform var(--duration) ease-in-out;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: translateY(0%);
+
+        }
+
+        100% {
+            transform: translateY(calc(-10% * var(--end, 0)));
+        }
+    }
+
+    button {
+
+        border-radius: 100px;
+        padding: 20px 50px;
+        background: radial-gradient(#111a39, 67.5%, #3476da) padding-box, radial-gradient(#a0c2ed, 35%, #a0c2ed00 70%) 50% 0 / 80% 50% repeat-y;
+        color: #f2fdfe;
+
+    }
+</style>
+
+<body style="gap: 20px;">
+    <div class="wrapper">
+        <div class="wrapper-inner flex-column" style="--end:0" id="target">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="wrapper-inner flex-column" style="--end:0" id="target1">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>
+
+    </div>
+    <button onclick="change()">切换</button>
+</body>
+<script>
+    function setData ( taregtNum = 2, taregtNum1 = 9 ) {
+        console.log( taregtNum, taregtNum1 )
+        const dom = document.getElementById( "target" );
+
+        dom.style.setProperty( '--start', 9 - taregtNum );
+        dom.style.setProperty( '--end', taregtNum );
+
+
+        const dom1 = document.getElementById( "target1" );
+        dom1.style.setProperty( '--start', 9 - taregtNum1 );
+        dom1.style.setProperty( '--end', taregtNum1 );
+    }
+    setData();
+    function change () {
+        setData( Math.floor( Math.random() * 10 ), Math.floor( Math.random() * 10 ) )
+
+    }
+
+
+</script>
+
+</html>
