@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function checkType ( value ) {
+        if ( /^-?\d+(\.\d+)?$/.test( value ) ) {
+            if ( Number( value ) < 0 ) {
+                return Number.isInteger( Number( value ) ) ? "负整数" : "负浮点数";
+            } else {
+                return Number.isInteger( Number( value ) ) ? "非负整数" : "正浮点数";
+            }
+        } else if ( typeof value === 'string' ) {
+            return "文本";
+        } else {
+            return "未知类型";
+        }
+    }
+</script>
+
+</html>

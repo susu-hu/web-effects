@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function convertToCharArray ( number ) {
+        // 将数字转换成字符串
+        const numString = Math.abs( number ).toString();
+
+        // 创建一个空数组来存储结果
+        const result = [];
+
+        // 如果是负数，加入负号作为数组的第一个元素
+        if ( number < 0 ) {
+            result.push( "-" );
+        }
+
+        // 将整数部分作为一个元素加入数组
+        let integerPart = Math.floor( Math.abs( number ) );
+        result.push( integerPart.toString() );
+
+        // 如果有小数部分，加入小数点和小数部分作为数组元素
+        if ( numString.includes( '.' ) ) {
+            result.push( "." );
+            const decimalPart = numString.split( '.' )[1];
+            result.push( decimalPart );
+        }
+
+        return result;
+    }
+</script>
+
+</html>
