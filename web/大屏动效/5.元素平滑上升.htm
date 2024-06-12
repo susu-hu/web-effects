@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     const stack = [...tree];
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         const matchedNode = flatArray.find(item => item.id === node._fc_id);
+    //         if (matchedNode) {
+    //             node.hidden = !matchedNode.isVisible;
+    //         }
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将子节点推入栈中继续处理
+    //             stack.push(...node.children);
+
+    //             // 检查子节点的hidden属性
+    //             const childrenHidden = node.children.every(child => child.hidden === true);
+    //             if (childrenHidden) {
+    //                 // 如果所有子节点的hidden属性都为true，则将父节点的hidden属性设置为true
+    //                 node.hidden = true;
+    //             } else {
+    //                 // 如果有一个子节点的hidden属性为false，则将父节点的hidden属性设置为false
+    //                 node.hidden = false;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     // 构建哈希表以便快速查找 flatArray 中的节点
+    //     const flatMap = {};
+    //     flatArray.forEach(node => {
+    //         flatMap[node.id] = node;
+    //     });
+
+    //     // 用栈进行迭代处理
+    //     const stack = [...tree];
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         // 查找 flatArray 中对应的节点
+    //         const matchedNode = flatMap[node._fc_id];
+    //         if (matchedNode) {
+    //             // 更新节点的隐藏属性
+    //             node.hidden = !matchedNode.isVisible;
+    //         }
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将子节点推入栈中继续处理
+    //             stack.push(...node.children);
+
+    //             // 检查子节点的隐藏属性
+    //             const childrenHidden = node.children.every(child => child.hidden === false);
+    //             node.hidden = childrenHidden;
+    //         }
+    //     }
+    // }
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     // 构建哈希表以便快速查找 flatArray 中的节点
+    //     const flatMap = {};
+    //     flatArray.forEach(node => {
+    //         flatMap[node.id] = node;
+    //     });
+
+    //     // 用栈进行迭代处理
+    //     const stack = [...tree];
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         // 查找 flatArray 中对应的节点
+    //         const matchedNode = flatMap[node._fc_id];
+    //         if (matchedNode) {
+    //             console.log('matchedNode', matchedNode, node)
+    //             // 更新节点的隐藏属性
+    //             node.hidden = !matchedNode.isVisible;
+    //             node.display11 = !matchedNode.isVisible;
+    //         }
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将子节点推入栈中继续处理
+    //             stack.push(...node.children);
+
+    //             // 检查子节点的隐藏属性
+    //             const childrenHidden = node.children.every(child => {
+    //                 console.log(child.display, child.hidden)
+    //                 return child.display11 === true
+    //             });
+    //             console.log(childrenHidden, node.children)
+    //             // 如果所有子节点的hidden属性都为true，则将父节点的hidden属性设置为true，否则为false
+    //             // node.hidden = childrenHidden;
+    //             node.hidden = childrenHidden;
+    //         }
+    //     }
+    // }
+    // // 用法示例
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     // 构建哈希表以便快速查找 flatArray 中的节点
+    //     const flatMap = {};
+    //     flatArray.forEach(node => {
+    //         flatMap[node.id] = node;
+    //     });
+
+    //     // 用栈进行迭代处理
+    //     const stack = [...tree];
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         // 查找 flatArray 中对应的节点
+    //         const matchedNode = flatMap[node._fc_id];
+    //         if (matchedNode) {
+    //             // 更新节点的隐藏属性
+    //             node.hidden = !matchedNode.isVisible;
+    //         }
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将子节点推入栈中继续处理
+    //             stack.push(...node.children);
+
+    //             // 更新子节点的隐藏属性
+    //             node.children.forEach(child => {
+    //                 const flatChild = flatMap[child._fc_id];
+    //                 if (flatChild) {
+    //                     child.hidden = !flatChild.isVisible;
+    //                 }
+    //             });
+
+    //             // 检查子节点的隐藏属性
+    //             const childrenHidden = node.children.every(child => child.hidden === true);
+    //             // 如果所有子节点的 hidden 属性都为 true，则将父节点的 hidden 属性设置为 true，否则为 false
+    //             node.hidden = childrenHidden;
+    //         }
+    //     }
+    // }
+
+
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     const flatMap = {};
+    //     flatArray.forEach(node => {
+    //         flatMap[node._fc_id] = node;
+    //     });
+
+    //     const stack = [...tree];
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+    //         const children = node.children || [];
+    //         let allChildrenHidden = true;
+
+    //         for (let i = 0; i < children.length; i++) {
+    //             const child = children[i];
+    //             stack.push(child);
+    //             if (!child.hidden) {
+    //                 allChildrenHidden = false;
+    //             }
+    //         }
+
+    //         node.hidden = allChildrenHidden;
+
+    //         const matchedNode = flatMap[node._fc_id];
+    //         if (matchedNode) {
+    //             node.hidden = !matchedNode.isVisible;
+    //         }
+    //     }
+    // }
+
+
+    // function updateTreeVisibility(tree, flatArray) {
+    //     const flatMap = {};
+    //     flatArray.forEach(node => {
+    //         flatMap[node._fc_id] = node;
+    //     });
+
+    //     // 用栈进行迭代处理
+    //     const stack = [...tree];
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         const children = node.children || [];
+    //         let allChildrenHidden = true;
+
+    //         for (let i = 0; i < children.length; i++) {
+    //             const child = children[i];
+    //             stack.push(child);
+    //             if (!child.hidden) {
+    //                 allChildrenHidden = false;
+    //             }
+    //         }
+
+    //         // 设置当前节点的 hidden 属性
+    //         const matchedNode = flatMap[node._fc_id];
+    //         if (matchedNode) {
+    //             node.hidden = !matchedNode.isVisible;
+    //         }
+
+    //         // 如果所有子节点的 hidden 属性都为 true，则将当前节点的父节点也设置为 hidden: true
+    //         if (allChildrenHidden) {
+    //             let parent = getParent(node, tree);
+    //             while (parent) {
+    //                 parent.hidden = true;
+    //                 parent = getParent(parent, tree);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // // 辅助函数：获取节点的父节点
+    // function getParent(node, tree) {
+    //     for (let i = 0; i < tree.length; i++) {
+    //         const parent = findParent(tree[i], node);
+    //         if (parent) return parent;
+    //     }
+    //     return null;
+    // }
+
+    // // 辅助函数：递归查找节点的父节点
+    // function findParent(parent, target) {
+    //     if (parent.children && parent.children.includes(target)) {
+    //         return parent;
+    //     } else if (parent.children && parent.children.length > 0) {
+    //         for (let i = 0; i < parent.children.length; i++) {
+    //             const result = findParent(parent.children[i], target);
+    //             if (result) return result;
+    //         }
+    //     }
+    //     return null;
+    // }
+
+
+
+    function updateTreeVisibility(tree, flatArray) {
+        const flatMap = {};
+        flatArray.forEach(node => {
+            flatMap[node._fc_id] = node;
+        });
+
+        // 辅助函数：深度优先搜索（DFS）
+        function dfs(node) {
+            const children = node.children || [];
+            let allChildrenHidden = true;
+
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
+                dfs(child);
+                if (!child.hidden) {
+                    allChildrenHidden = false;
+                }
+            }
+
+            // 设置当前节点的 hidden 属性
+            const matchedNode = flatMap[node._fc_id];
+            if (matchedNode) {
+                node.hidden = !matchedNode.isVisible;
+            }
+
+            // 如果所有子节点的 hidden 属性都为 true，则将当前节点的父节点也设置为 hidden: true
+            if (allChildrenHidden) {
+                let parent = getParent(node, tree);
+                while (parent) {
+                    parent.hidden = true;
+                    parent = getParent(parent, tree);
+                }
+            }
+        }
+
+        // 从根节点开始深度优先搜索
+        tree.forEach(node => {
+            dfs(node);
+        });
+    }
+
+    // 辅助函数：获取节点的父节点
+    function getParent(node, tree) {
+        for (let i = 0; i < tree.length; i++) {
+            const parent = findParent(tree[i], node);
+            if (parent) return parent;
+        }
+        return null;
+    }
+
+    // 辅助函数：递归查找节点的父节点
+    function findParent(parent, target) {
+        if (parent.children && parent.children.includes(target)) {
+            return parent;
+        } else if (parent.children && parent.children.length > 0) {
+            for (let i = 0; i < parent.children.length; i++) {
+                const result = findParent(parent.children[i], target);
+                if (result) return result;
+            }
+        }
+        return null;
+    }
+
+    const tree = [
+        // {
+        //     type: "group",
+        //     field: "F8mplxbqt153ahc",
+        //     title: "子表单",
+        //     info: "",
+        //     $required: false,
+        //     children: [
+        //         {
+        //             type: "input",
+        //             field: "F4jllxbqt2szakc",
+        //             title: "输入框",
+        //             info: "",
+        //             $required: false,
+        //             _fc_id: "id_Fd4elxbqt2szalc",
+        //             name: "ref_F81dlxbqt2szamc",
+        //             display: true,
+        //             hidden: false,
+        //             _fc_drag_tag: "input",
+        //         },
+        //         {
+        //             type: "timePicker",
+        //             field: "Fi1elxbuwllfahc",
+        //             title: "时间",
+        //             info: "",
+        //             $required: false,
+        //             _fc_id: "id_Fqlvlxbuwllfaic",
+        //             name: "ref_F0g7lxbuwllfajc",
+        //             display: true,
+        //             hidden: false,
+        //             _fc_drag_tag: "timePicker",
+        //         },
+        //     ],
+        //     _fc_id: "id_Fmjqlxbqt153aic",
+        //     name: "ref_Ff3llxbqt153ajc",
+        //     display: true,
+        //     hidden: false,
+        //     _fc_drag_tag: "group",
+        // }
+        {
+            "type": "tableForm",
+            "field": "table_test2",
+            "title": "",
+            "info": "",
+            "children": [
+                {
+                    "label": "姓名1",
+                    "style": {
+                        "width": "auto"
+                    },
+                    "children": [
+                        {
+                            "type": "input",
+                            "field": "name",
+                            "title": "输入框",
+                            "info": "",
+                            "$required": true,
+                            "_fc_id": "id_Fr3plx9s3gsiatc",
+                            "name": "ref_Fsk8lx9r70joboc",
+                            "display": true,
+                            "hidden": false,
+                            "_fc_drag_tag": "input",
+                            "validate": [
+                                {
+                                    "type": "string",
+                                    "trigger": "change",
+                                    "validator": "",
+                                    "mode": "min",
+                                    "message": ""
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radio",
+                            "field": "radio",
+                            "title": "单选框",
+                            "info": "",
+                            "effect": {
+                                "fetch": ""
+                            },
+                            "$required": false,
+                            "options": [
+                                {
+                                    "label": "选项00",
+                                    "value": 1
+                                },
+                                {
+                                    "label": "选项01",
+                                    "value": 2
+                                },
+                                {
+                                    "label": "选项02",
+                                    "value": 3
+                                }
+                            ],
+                            "_fc_id": "id_F14dlxbrjfrgaic",
+                            "name": "ref_Fgoclxbrjfrgajc",
+                            "display": true,
+                            "hidden": false,
+                            "_fc_drag_tag": "radio"
+                        }
+                    ]
+                },
+                {
+                    "label": "使用1",
+                    "style": {
+                        "width": "auto"
+                    },
+                    "children": [
+                        {
+                            "type": "radio",
+                            "field": "isUse",
+                            "title": "单选框",
+                            "info": "",
+                            "effect": {
+                                "fetch": ""
+                            },
+                            "$required": true,
+                            "options": [
+                                {
+                                    "label": "是",
+                                    "value": 1
+                                },
+                                {
+                                    "label": "否",
+                                    "value": 2
+                                }
+                            ],
+                            "_fc_id": "id_Fk1jlx9s3gsiauc",
+                            "name": "ref_Fzc3lx9r7uk3btc",
+                            "display": true,
+                            "hidden": false,
+                            "_fc_drag_tag": "radio",
+                            "props": {
+                                "type": "default"
+                            },
+                            "validate": [
+                                {
+                                    "type": "number",
+                                    "trigger": "change",
+                                    "validator": "",
+                                    "mode": "min",
+                                    "message": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "日期1",
+                    "style": {
+                        "width": "auto"
+                    },
+                    "children": [
+                        {
+                            "type": "datePicker",
+                            "field": "date",
+                            "title": "日期",
+                            "info": "",
+                            "_fc_id": "id_Fxl0lx9s3gsiavc",
+                            "name": "ref_Fgk5lx9r8fnhbwc",
+                            "display": true,
+                            "hidden": false,
+                            "_fc_drag_tag": "datePicker",
+                            "validate": [
+                                {
+                                    "type": "validator",
+                                    "trigger": "change",
+                                    "validator": "",
+                                    "mode": "min",
+                                    "message": "请输入正确的日期"
+                                },
+                                {
+                                    "type": "validator",
+                                    "trigger": "submit",
+                                    "validator": "",
+                                    "mode": "min",
+                                    "message": "请输入正确的日期"
+                                },
+                                {
+                                    "type": "validator",
+                                    "trigger": "blur",
+                                    "validator": "",
+                                    "mode": "min",
+                                    "message": "请输入正确的日期"
+                                }
+                            ],
+                            "$required": true
+                        }
+                    ]
+                }
+            ]
+            ,
+            "_fc_id": "id_Felelx9s3gsiawc",
+            "name": "ref_Fuhflx9r6xrwbjc",
+            "display": true,
+            "hidden": false,
+            "_fc_drag_tag": "tableForm",
+            "on": {},
+            "options": [],
+            "value": [
+                {
+                    "name": "22",
+                    "isUse": 2,
+                    "date": "2024-06-04"
+                },
+                {
+                    "name": "333",
+                    "isUse": 1,
+                    "date": "2024-06-06"
+                }
+            ]
+        }
+    ];
+
+    const flatArray = [
+        // {
+        //     title: "子表单.输入框",
+        //     parentId: "id_Fmjqlxbqt153aic",
+        //     name: "输入框",
+        //     type: "input",
+        //     id: "id_Fd4elxbqt2szalc",
+        //     field: "F4jllxbqt2szakc",
+        //     fieldType: "string",
+        //     tableName: "F8mplxbqt153ahc",
+        //     isVisible: true,
+        //     isEdit: false,
+        // },
+        // {
+        //     title: "子表单.时间",
+        //     parentId: "id_Fmjqlxbqt153aic",
+        //     name: "时间",
+        //     type: "timePicker",
+        //     id: "id_Fqlvlxbuwllfaic",
+        //     field: "Fi1elxbuwllfahc",
+        //     fieldType: "string",
+        //     tableName: "F8mplxbqt153ahc",
+        //     isVisible: true,
+        //     isEdit: false,
+        // }
+        {
+            title: "姓名1.单选框",
+            parentId: "id_Foqdlxbrl824abc",
+            name: "单选框",
+            type: "radio",
+            id: "id_F14dlxbrjfrgaic",
+            field: "radio",
+            fieldType: "string",
+            tableName: "table_test2",
+            isVisible: true,
+            isEdit: false,
+        },
+        {
+            title: "姓名1.输入框",
+            parentId: "id_F139lxbhb4umahc",
+            name: "输入框",
+            type: "input",
+            id: "id_Fr3plx9s3gsiatc",
+            field: "name",
+            fieldType: "string",
+            tableName: "table_test2",
+            isVisible: false,
+            isEdit: false,
+        },
+        {
+            title: "使用1.单选框",
+            parentId: "id_Fzcslxbhb4umajc",
+            name: "单选框",
+            type: "radio",
+            id: "id_Fk1jlx9s3gsiauc",
+            field: "isUse",
+            fieldType: "string",
+            tableName: "table_test2",
+            isVisible: false,
+            isEdit: false,
+        },
+        {
+            title: "日期1.日期",
+            parentId: "id_Fj44lxbhb4umalc",
+            name: "日期",
+            type: "datePicker",
+            id: "id_Fxl0lx9s3gsiavc",
+            field: "date",
+            fieldType: "string",
+            tableName: "table_test2",
+            isVisible: false,
+            isEdit: false,
+        },
+    ];
+
+    updateTreeVisibility(tree, flatArray);
+    console.log(tree)
+
+</script>
+
+</html>
