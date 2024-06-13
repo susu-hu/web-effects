@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 输入对象
+    const inputObj = {
+        5: { visible: false },
+        8: { visible: false },
+        6: { visible: false },
+        7: { visible: false },
+        // 1: { visible: false },
+        2: { visible: false },
+    };
+    const tree = {
+        id: 1,
+        hidden: false,
+        children: [
+            {
+                id: 2,
+                hidden: false,
+                children: [
+                    { id: 5, hidden: false },
+                    { id: 6, hidden: false }
+                ]
+            },
+            {
+                id: 3,
+                hidden: false,
+                children: [
+                    { id: 7, hidden: false },
+                    { id: 8, hidden: false }
+                ]
+            },
+            { id: 4, hidden: false }
+        ]
+    };
+    // 递归更新函数-------
+    // function updateHidden(node) {
+    //     if (!node.children || node.children.length === 0) {
+    //         return node.hidden; // 叶子节点返回自身的hidden状态
+    //     }
+
+    //     // 递归更新所有子节点
+    //     const childHiddenStates = node.children.map(child => updateHidden(child));
+
+    //     // 父节点的hidden状态更新为所有子节点hidden状态的逻辑或
+    //     node.hidden = childHiddenStates.every(hidden => hidden);
+
+    //     return node.hidden;
+    // }
+    function updateHidden0(node, extraVisibility) {
+        if (!node.children || node.children.length === 0) {
+            // 如果是叶子节点，并且在额外对象中存在对应的属性，则根据 visible 属性更新 hidden 状态
+            if (extraVisibility && extraVisibility[node.id]) {
+
+                console.log(extraVisibility[node.id], node)
+                node.hidden = !extraVisibility[node.id].visible;
+            }
+            return node.hidden; // 叶子节点返回自身的 hidden 状态
+        }
+
+        // 递归更新所有子节点
+        const childHiddenStates = node.children.map(child => updateHidden0(child, extraVisibility));
+
+        // 父节点的 hidden 状态更新为所有子节点 hidden 状态的逻辑或
+        node.hidden = childHiddenStates.every(hidden => hidden);
+
+        return node.hidden;
+    }
+    // 正确
+    function updateHidden1(node, extraVisibility) {
+        // const node=JSON.parse(JSON.stringify(_node));
+        if (!node.children || node.children.length === 0) {
+            // 如果是叶子节点，并且在额外对象中存在对应的属性，则根据 visible 属性更新 hidden 状态
+            if (extraVisibility && extraVisibility[node.id]) {
+                node.hidden = !extraVisibility[node.id].visible;
+            }
+            return node.hidden; // 叶子节点返回自身的 hidden 状态
+        }
+
+        // 如果额外对象中存在当前节点的父节点，并且父节点的 visible 属性有值，则将父节点的 hidden 属性设置为!visible
+        if (extraVisibility && extraVisibility[node.id] && extraVisibility[node.id].visible !== undefined) {
+            node.hidden = !extraVisibility[node.id].visible;
+            console.log('111')
+            return node.hidden;
+        }
+        console.log('222')
+        // 递归更新所有子节点
+        const childHiddenStates = node.children.map(child => updateHidden1(child, extraVisibility));
+
+        // 父节点的 hidden 状态更新为所有子节点 hidden 状态的逻辑或
+        node.hidden = childHiddenStates.every(hidden => hidden);
+
+        return node.hidden;
+    }
+    function uuu(node, extraVisibility) {
+        updateHidden1(node, extraVisibility);
+        return node;
+    }
+    function updateHidden2(node, extraVisibility) {
+        if (!node.children || node.children.length === 0) {
+            // 如果是叶子节点，并且在额外对象中存在对应的属性，则根据 visible 属性更新 hidden 状态
+            if (extraVisibility && extraVisibility[node.id]) {
+                node.hidden = !extraVisibility[node.id].visible;
+            }
+            return node.hidden; // 叶子节点返回自身的 hidden 状态
+        }
+
+        // 如果额外对象中存在当前节点的父节点，并且父节点的 visible 属性有值，则将父节点的 hidden 属性设置为!visible
+        if (extraVisibility && extraVisibility[node.id] && extraVisibility[node.id].visible !== undefined) {
+            node.hidden = !extraVisibility[node.id].visible;
+        }
+
+        // 递归更新所有子节点
+        const childHiddenStates = node.children.map(child => updateHidden2(child, extraVisibility));
+
+        // 父节点的 hidden 状态更新为所有子节点 hidden 状态的逻辑或
+        node.hidden = childHiddenStates.every(hidden => hidden);
+
+        return node.hidden ? node : { ...node, children: node.children.map(child => updateHidden2(child, extraVisibility)) };
+    }
+
+    function updateHidden(node, extraVisibility) {
+        const stack = []; // 使用栈来模拟递归调用
+        stack.push(node); // 将根节点压入栈中
+
+        while (stack.length > 0) {
+            const currentNode = stack.pop();
+
+            // 如果当前节点是叶子节点，直接跳过
+            if (!currentNode.children || currentNode.children.length === 0) {
+                // 如果当前节点是叶子节点，并且在额外对象中存在对应的属性，则根据 visible 属性更新 hidden 状态
+                if (extraVisibility && extraVisibility[currentNode.id]) {
+                    currentNode.hidden = !extraVisibility[currentNode.id].visible;
+                }
+                continue;
+            }
+
+            // 如果额外对象中存在当前节点的父节点，并且父节点的 visible 属性有值，则将当前节点的 hidden 属性设置为!visible
+            if (extraVisibility && extraVisibility[currentNode.id] && extraVisibility[currentNode.id].visible !== undefined) {
+                currentNode.hidden = !extraVisibility[currentNode.id].visible;
+            }
+
+            // 将所有子节点压入栈中以便后续处理
+            for (let i = currentNode.children.length - 1; i >= 0; i--) {
+                const childNode = currentNode.children[i];
+                stack.push(childNode);
+            }
+        }
+
+        return node.hidden;
+    }
+
+
+    // function updateHidden(node) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(node); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const currentNode = stack.pop();
+
+    //         // 如果当前节点是叶子节点，直接跳过
+    //         if (!currentNode.children || currentNode.children.length === 0) {
+    //             continue;
+    //         }
+
+    //         // 递归更新所有子节点的 hidden 状态，并将子节点压入栈中
+    //         for (let i = currentNode.children.length - 1; i >= 0; i--) {
+    //             const childNode = currentNode.children[i];
+    //             stack.push(childNode);
+    //             childNode.hidden = updateChildHidden(childNode);
+    //         }
+
+    //         // 更新当前节点的 hidden 状态为所有子节点 hidden 状态的逻辑或
+    //         currentNode.hidden = currentNode.children.every(child => child.hidden);
+    //     }
+
+    //     // 返回根节点的 hidden 状态
+    //     return node.hidden;
+    // }
+
+    // function updateChildHidden(node) {
+    //     if (!node.children || node.children.length === 0) {
+    //         return node.hidden;
+    //     }
+
+    //     const childHiddenStates = node.children.map(child => updateChildHidden(child));
+    //     return childHiddenStates.every(hidden => hidden);
+    // }
+
+
+    // function updateHidden(tree) {
+    //     const stack = [tree]; // 使用栈来模拟递归调用，初始放入根节点
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         // 如果当前节点是叶子节点，直接跳过
+    //         if (!node.children || node.children.length === 0) {
+    //             continue;
+    //         }
+
+    //         // 更新当前节点的 hidden 状态
+    //         let anyVisibleChild = false;
+    //         for (let i = 0; i < node.children.length; i++) {
+    //             const child = node.children[i];
+    //             stack.push(child); // 将子节点压入栈中以便后续处理
+    //             if (!child.hidden) {
+    //                 anyVisibleChild = true;
+    //             }
+    //         }
+    //         node.hidden = !anyVisibleChild;
+    //     }
+    // }
+
+    // function updateHidden(tree) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(tree); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         // 如果当前节点是叶子节点，直接跳过
+    //         if (!node.children || node.children.length === 0) {
+    //             continue;
+    //         }
+
+    //         // 更新当前节点的 hidden 状态
+    //         let anyVisibleChild = false;
+    //         for (let i = 0; i < node.children.length; i++) {
+    //             const child = node.children[i];
+    //             stack.push(child); // 将子节点压入栈中以便后续处理
+    //             if (!child.hidden) {
+    //                 anyVisibleChild = true;
+    //             }
+    //         }
+    //         node.hidden = !anyVisibleChild;
+    //     }
+    // }
+
+    // // 迭代更新函数
+    // function updateHidden(tree) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(tree); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const node = stack.shift();
+    //         console.log(node)
+    //         if (node.children && node.children.length > 0) {
+    //             // 计算所有子节点的hidden状态的逻辑或
+    //             const anyChildVisible = node.children.some(child => !child.hidden);
+    //             console.log(anyChildVisible, node.children)
+    //             // 更新父节点的hidden状态
+    //             node.hidden = !anyChildVisible;
+
+    //             // 将所有子节点按逆序压入栈，以便后续处理
+    //             for (let i = node.children.length - 1; i >= 0; i--) {
+    //                 stack.push(node.children[i]);
+    //             }
+    //         }
+    //     }
+    // }
+    // function updateHidden(tree) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(tree); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将所有子节点按逆序压入栈，以便先处理子节点
+    //             for (let i = node.children.length - 1; i >= 0; i--) {
+    //                 stack.push(node.children[i]);
+    //             }
+
+    //             // 计算所有子节点的hidden状态的逻辑或
+    //             const anyChildVisible = node.children.some(child => !child.hidden);
+
+    //             // 更新父节点的hidden状态
+    //             node.hidden = !anyChildVisible;
+    //         }
+    //     }
+    // }
+    // function updateHidden(tree) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(tree); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         if (node.children && node.children.length > 0) {
+    //             // 将所有子节点按逆序压入栈，以便先处理子节点
+    //             for (let i = node.children.length - 1; i >= 0; i--) {
+    //                 stack.push(node.children[i]);
+    //             }
+
+    //             // 更新当前节点的 hidden 状态，根据所有子节点的 hidden 状态
+    //             node.hidden = node.children.every(child => child.hidden);
+    //         }
+    //     }
+    // }
+    // function updateHidden(tree) {
+    //     const stack = []; // 使用栈来模拟递归调用
+    //     stack.push(tree); // 将根节点压入栈中
+
+    //     while (stack.length > 0) {
+    //         const node = stack.pop();
+
+    //         if (node.children && node.children.length > 0) {
+    //             let anyVisibleChild = false;
+
+    //             // 将所有子节点按逆序压入栈，以便先处理子节点
+    //             for (let i = node.children.length - 1; i >= 0; i--) {
+    //                 stack.push(node.children[i]);
+    //                 if (!node.children[i].hidden) {
+    //                     anyVisibleChild = true;
+    //                 }
+    //             }
+
+    //             // 更新当前节点的 hidden 状态，根据子节点的 hidden 状态
+    //             node.hidden = !anyVisibleChild;
+    //         }
+    //     }
+    // }
+
+    // 示例用法
+    updateHidden1(tree, inputObj);
+
+    // 输出更新后的树结构
+    console.log(tree);
+    // console.log(uuu(tree, inputObj))
+</script>
+
+</html>
