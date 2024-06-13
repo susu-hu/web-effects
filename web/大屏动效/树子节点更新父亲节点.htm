@@ -159,6 +159,32 @@
 
         return node.hidden;
     }
+    function updateHidden4(node, extraVisibility) {
+        const queue = [node]; // 使用队列来实现 BFS
+        let index = 0; // 队列的当前索引
+
+        while (index < queue.length) {
+            const currentNode = queue[index++];
+
+            // 如果是叶子节点，并且在额外对象中存在对应的属性，则根据 visible 属性更新 hidden 状态
+            if (!currentNode.children || currentNode.children.length === 0) {
+                if (extraVisibility && extraVisibility[currentNode.id]) {
+                    currentNode.hidden = !extraVisibility[currentNode.id].visible;
+                }
+                continue;
+            }
+
+            // 如果额外对象中存在当前节点的父节点，并且父节点的 visible 属性有值，则将父节点的 hidden 属性设置为!visible
+            if (extraVisibility && extraVisibility[currentNode.id] && extraVisibility[currentNode.id].visible !== undefined) {
+                currentNode.hidden = !extraVisibility[currentNode.id].visible;
+            }
+
+            // 将当前节点的所有子节点加入队列中
+            currentNode.children.forEach(child => queue.push(child));
+        }
+
+        return node;
+    }
 
 
     // function updateHidden(node) {
@@ -333,7 +359,8 @@
     // }
 
     // 示例用法
-    updateHidden1(tree, inputObj);
+    // updateHidden1(tree, inputObj);
+    updateHidden4(tree, inputObj);
 
     // 输出更新后的树结构
     console.log(tree);
