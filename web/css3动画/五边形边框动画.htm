@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://www.bootstrapmb.com/item/13775</title>
+</head>
+<style>
+    .box {
+        width: 300px;
+        aspect-ratio: 1;
+        clip-path: polygon(93.30% 75.00%, 50.00% 100.00%, 6.70% 75.00%, 6.70% 25.00%, 50.00% 0.00%, 93.30% 25.00%, 93.30% 75.00%, 90.70% 26.50%, 50.00% 3.00%, 9.30% 26.50%, 9.30% 73.50%, 50.00% 97.00%, 90.70% 73.50%, 90.70% 26.50%);
+        display: grid;
+    }
+
+    .box:before {
+        content: "";
+        background: conic-gradient(#000 30%, hsl(0 100% 70%) 90%, #000);
+        animation: r 2s ease-in-out infinite;
+    }
+
+    @keyframes r {
+        to {
+            rotate: 1turn;
+            filter: hue-rotate(1turn);
+        }
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        background: repeating-linear-gradient(135deg, hsl(0 0% 8%) 0 20px, hsl(0 0% 10%) 0 40px);
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // function mergeArrays ( origin, curr ) {
+    //     // 使用对象来记录 origin 数组中的数据，以便快速查找和更新
+    //     const originMap = {}, currMap = {};
+    //     origin.forEach( item => {
+    //         originMap[item.id] = item;
+    //         item.isedit = true;
+    //         item.isvisible = true
+    //     } );
+    //     curr.forEach( item => {
+    //         currMap[item.id] = item;
+    //     } );
+
+    //     // 遍历 curr 数组，直接在 origin 数组中更新或替换对应的元素
+    //     curr.forEach( currItem => {
+    //         const originItem = originMap[currItem.id];
+    //         if ( originItem ) {
+    //             // 更新 origin 中已有的数据
+    //             // originItem.name = currItem.name;
+    //             originItem.isvisible = currItem.isvisible;
+    //             originItem.isedit = currItem.isedit;
+    //         }
+    //     } );
+
+    //     // // 使用对象来记录每个 parentid 下的子元素的 isvisible 状态
+    //     const parentVisibilityMap = {};
+    //     origin.forEach( item => {
+    //         if ( item.parentid !== null && item.parentid !== undefined ) {
+    //             if ( !parentVisibilityMap[item.parentid] ) {
+    //                 parentVisibilityMap[item.parentid] = {
+    //                     total: 0,
+    //                     visibleCount: 0
+    //                 };
+    //             }
+    //             parentVisibilityMap[item.parentid].total++;
+    //             if ( item.isvisible ) {
+    //                 parentVisibilityMap[item.parentid].visibleCount++;
+    //             }
+    //         }
+    //     } );
+    //     console.log( parentVisibilityMap )
+    //     // // 更新 parentid 的 isvisible 状态
+    //     origin.forEach( item => {
+    //         const parentVisInfo = parentVisibilityMap[item.id];
+    //         // 如果有子集，并且不在curr中
+    //         if ( parentVisInfo && !currMap[item.id] ) {
+    //             item.isvisible = parentVisInfo.visibleCount !== 0;
+    //         }
+
+    //     } );
+
+    //     // 返回更新后的 origin 数组
+    //     return origin;
+    // }
+    function mergeArrays ( origin, curr ) {
+        // 使用对象来记录 origin 数组中的数据，以便快速查找和更新
+        const originMap = {};
+        origin.forEach( item => {
+            originMap[item.id] = item;
+            // 初始化时将 isvisible 和 isedit 设置为 true
+            item.isvisible = true;
+            item.isedit = true;
+        } );
+
+        // 遍历 curr 数组，更新或替换 origin 数组中对应的元素
+        curr.forEach( currItem => {
+            if ( originMap[currItem.id] ) {
+                // 更新 origin 中已有的数据
+                originMap[currItem.id].name = currItem.name;
+                originMap[currItem.id].isvisible = currItem.isvisible;
+                originMap[currItem.id].isedit = currItem.isedit;
+            }
+        } );
+
+        // 使用对象来记录每个 parentid 下的子元素的 isvisible 状态
+        const parentVisibilityMap = {};
+        origin.forEach( item => {
+            if ( item.parentid !== null && item.parentid !== undefined ) {
+                if ( !parentVisibilityMap[item.parentid] ) {
+                    parentVisibilityMap[item.parentid] = {
+                        total: 0,
+                        visibleCount: 0
+                    };
+                }
+                parentVisibilityMap[item.parentid].total++;
+                if ( originMap[item.id].isvisible ) {
+                    parentVisibilityMap[item.parentid].visibleCount++;
+                }
+            }
+        } );
+
+        // 更新 parentid 的 isvisible 状态
+        origin.forEach( item => {
+            const parentVisInfo = parentVisibilityMap[item.id];
+            if ( parentVisInfo && parentVisInfo.total > 0 ) {
+                // 动态计算当前 parentid 下子元素的 isvisible 状态
+                let currentVisibleCount = 0;
+                origin.forEach( childItem => {
+                    if ( childItem.parentid === item.id && childItem.isvisible ) {
+                        currentVisibleCount++;
+                    }
+                } );
+                item.isvisible = currentVisibleCount > 0;
+            }
+        } );
+
+        // 返回更新后的 origin 数组
+        return origin;
+    }
+
+
+    // origin.forEach( i => {
+    //     i.isedit = true;
+    //     i.isvisible = true
+    // } )
+    // 示例用法
+    let origin = [
+        { id: 1, parentid: null, name: 'Item 1', isvisible: true, isedit: true },
+        { id: 2, parentid: 1, name: 'Item 2', isvisible: true, isedit: true },
+        { id: 3, parentid: 1, name: 'Item 3', isvisible: true, isedit: true },
+        { id: 4, parentid: 2, name: 'Item 4', isvisible: true, isedit: true },
+        { id: 5, parentid: 2, name: 'Item5', isvisible: true, isedit: true },
+
+    ];
+
+    let curr = [
+        // { id: 1, parentid: null, name: 'Item 1 updated', isvisible: true, isedit: true },
+        // { id: 2, parentid: 1, name: 'Item 2 updated', isvisible: false, isedit: false },
+        { id: 3, parentid: 1, name: 'Item 3 updated', isvisible: false, isedit: true },
+        { id: 5, parentid: 2, name: 'Item 5 updated', isvisible: false, isedit: true },
+        { id: 4, parentid: 2, name: 'Item 4 updated', isvisible: false, isedit: true },
+    ];
+    console.log( origin, curr )
+    let mergedArray = mergeArrays( origin, curr );
+    console.log( mergedArray );
+</script>
+
+</html>
