@@ -136,6 +136,20 @@
     // 输出结果，检查每个节点的排序属性
     console.log(treeArray);
 
+    // 示例数据
+    const treeArray1 = [
+        { id: 1, name: 'Node 1', sort: 3 },
+        { id: 2, name: 'Node 2', sort: 1 },
+        { id: 3, name: 'Node 3', sort: 2 },
+        { id: 4, name: 'Node 4', sort: 5 },
+        { id: 5, name: 'Node 5', sort: 4 },
+    ];
+
+    // 使用高阶写法对数组根据 sort 属性进行降序排序
+    treeArray1.sort((a, b) => a.sort - b.sort);
+
+    // 输出排序后的结果
+    console.log(treeArray1);
 
 </script>
 
