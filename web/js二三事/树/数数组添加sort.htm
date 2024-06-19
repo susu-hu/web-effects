@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // const treeArray = [
+    //     {
+    //         id: 1,
+    //         name: 'Node 1',
+    //         children: [
+
+    //             {
+    //                 id: 3, name: 'Node 1.2', children: [
+    //                     { id: 4, name: 'Node 1.2.1', children: [] },
+    //                     { id: 5, name: 'Node 1.2.2', children: [] }
+    //                 ]
+    //             },
+    //             { id: 2, name: 'Node 1.1', children: [] },
+    //         ]
+    //     },
+    //     {
+    //         id: 6,
+    //         name: 'Node 2',
+    //         children: [
+    //             { id: 7, name: 'Node 2.1', children: [] }
+    //         ]
+    //     }
+    // ];
+    // function assignSortProperty(treeArray) {
+    //     let sortIndex = 1; // 初始排序索引从1开始
+
+    //     // 定义递归函数来遍历树
+    //     function traverse(node) {
+    //         node.sort = sortIndex++; // 给当前节点设置排序属性
+
+    //         // 遍历当前节点的子节点
+    //         node.children.forEach(child => {
+    //             traverse(child);
+    //         });
+    //     }
+
+    //     // 遍历树数组中的每个根节点
+    //     treeArray.forEach(root => {
+    //         traverse(root);
+    //     });
+    // }
+
+    // // 调用函数给树数组添加排序属性
+    // assignSortProperty(treeArray);
+
+    // // 输出结果，检查每个节点的排序属性
+    // console.log(treeArray);
+    // function assignSortProperty(treeArray) {
+    //     let sortIndex = 1; // 初始排序索引从1开始
+    //     let stack = []; // 用来存放待处理的节点
+
+    //     // 初始化栈，将根节点们加入栈中
+    //     treeArray.forEach(root => {
+    //         stack.push({ node: root, depth: 1 }); // 使用对象存储节点和深度信息
+    //     });
+
+    //     while (stack.length > 0) {
+    //         let { node, depth } = stack.pop(); // 弹出栈顶节点和深度信息
+    //         node.sort = sortIndex++; // 给节点设置排序属性
+
+    //         // 将当前节点的子节点逆序入栈，保证先处理最左边的子节点
+    //         for (let i = node.children.length - 1; i >= 0; i--) {
+    //             stack.push({ node: node.children[i], depth: depth + 1 });
+    //         }
+    //     }
+    // }
+
+    function assignSortProperty(treeArray) {
+        let sortIndex = 1; // 初始排序索引从1开始
+        let stack = []; // 用来存放待处理的节点
+
+        // 初始化栈，将根节点们按逆序加入栈中，以确保节点1在节点2之前
+        for (let i = treeArray.length - 1; i >= 0; i--) {
+            stack.push({ node: treeArray[i], depth: 1 });
+        }
+
+        while (stack.length > 0) {
+            let { node, depth } = stack.pop(); // 弹出栈顶节点和深度信息
+            node.sort = sortIndex++; // 给节点设置排序属性
+
+            // 将当前节点的子节点按逆序入栈，以确保从左到右处理子节点
+            for (let i = node.children.length - 1; i >= 0; i--) {
+                stack.push({ node: node.children[i], depth: depth + 1 });
+            }
+        }
+    }
+
+    // 测试数据
+    const treeArray = [
+        {
+            id: 1,
+            name: 'Node 1',
+            children: [
+                {
+                    id: 3,
+                    name: 'Node 1.2',
+                    children: [
+                        { id: 4, name: 'Node 1.2.1', children: [] },
+                        { id: 5, name: 'Node 1.2.2', children: [] }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Node 1.1',
+                    children: [
+                        { id: 15, name: 'Node 1.2.2', children: [] },
+                    ]
+                },
+            ]
+        },
+        {
+            id: 6,
+            name: 'Node 2',
+            children: [
+                { id: 7, name: 'Node 2.1', children: [] }
+            ]
+        }
+    ];
+
+    // 调用函数给树数组添加排序属性
+    assignSortProperty(treeArray);
+
+    // 输出结果，检查每个节点的排序属性
+    console.log(treeArray);
+
+
+</script>
+
+</html>
