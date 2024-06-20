@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const tree = [
+
+        {
+            "type": "upload",
+            "field": "Fakylxn71z5qahc",
+            "title": "上传",
+            "info": "",
+            "$required": false,
+            "props": {
+                "action": "http://xxxxx/oss/attach/upload"
+            },
+            "_fc_id": "id_F0mblxn71z5qaic",
+            "name": "ref_Futblxn71z5qajc",
+            "display": true,
+            "hidden": false,
+            "_fc_drag_tag": "upload",
+            "on": {},
+            "options": [],
+            "children": []
+        }
+    ]
+    const handleUploadFile = (e = []) => {
+        let stack = [...e];
+
+        while (stack.length > 0) {
+            let item = stack.pop();
+
+            if (item.type === "upload") {
+                item.props.beforeUpload = (file) => {
+                    const fileSuff = file?.name?.slice(file?.name?.lastIndexOf("."))?.toLowerCase();
+                    if (item?.props?.accept) {
+                        const fileTypeList = item?.props?.accept?.split(",") || [];
+                        const isNotExit =
+                            fileTypeList.indexOf(file.type.toLowerCase()) === -1 &&
+                            fileTypeList.indexOf(fileSuff) === -1;
+                        if (isNotExit) {
+                            ElMessage({
+                                type: "warning",
+                                message: `文件上传错误，支持的类型为${item?.props?.accept}`,
+                            });
+                            return false;
+                        }
+                    }
+                    if (file.size / 1024 / 1024 > 10) {
+                        ElMessage({
+                            message: "文件最大不能超过10MB!",
+                            type: "error",
+                        });
+                        return false;
+                    }
+                };
+
+                item.props.onExceed = (file) => {
+                    ElMessage({
+                        type: "warning",
+                        message: `上传文件数量不能超过:${item?.props?.limit}个!`,
+                    });
+                };
+
+                item.props.onSuccess = (res, file) => {
+                    file.url = uploadUrl + res.data.attachPath;
+                };
+
+                item.props.onPreview = (res11) => {
+                    window.open(res11.url);
+                };
+            }
+
+            if (item.children?.length) {
+                // 正确的迭代方式是使用 stack.push
+                stack.push(...item.children);
+            }
+        }
+
+        return e;
+    };
+    const a = handleUploadFile(tree)
+    console.log(a)
+
+    const handleSpeFormItem = (e = []) => {
+        if (!e?.length) return [];
+
+        let stack = [...e];
+
+        while (stack.length > 0) {
+            let key = stack.pop();
+
+            if (key.type === "fc-editor") {
+                if (!key.props) key.props = {};
+                key.props.disabled = true;
+            }
+
+            if (key.type === "input") {
+                if (key.props?.type === "number") {
+                    key.value = parseFloat(key.value);
+                }
+            }
+
+            if (key.children?.length) {
+                // 将子节点按顺序加入到 stack 中，以便下一轮迭代处理
+                stack.push(...key.children);
+            }
+        }
+
+        return e;
+    };
+
+    const valueAddActivityId = (rule) => {
+        if (!rule?.length) return {};
+
+        const formData = {};
+        let stack = [...rule];
+
+        while (stack.length > 0) {
+            let node = stack.pop();
+
+            const key = `${node.activityId}_${node.field}`;
+            if (node.field) {
+                formData[key] = node.value;
+            }
+
+            if (node.children?.length) {
+                // 将子节点逆序加入 stack，确保按照树的深度优先顺序处理
+                node.children.forEach(child => {
+                    // 将每个子节点的 activityId 设置为当前节点的 activityId
+                    child.activityId = node.activityId;
+                    stack.push(child);
+                });
+            }
+        }
+
+        return formData;
+    };
+
+    console.log(valueAddActivityId([
+        {
+            "activityId": "Activity_1hcqldv",
+            "_fc_drag_tag": "row",
+            "hidden": false,
+            "children": [
+                {
+                    "_fc_drag_tag": "col",
+                    "hidden": false,
+                    "children": [
+                        {
+                            "$required": true,
+                            "_fc_drag_tag": "input",
+                            "field": "reason",
+                            "hidden": false,
+                            "display": true,
+                            "type": "input",
+                            "title": "原因",
+                            "info": "",
+                            "props": {},
+                            "on": {},
+                            "options": [],
+                            "children": [],
+                            "value": "12122"
+                        }
+                    ],
+                    "display": true,
+                    "type": "col",
+                    "props": {
+                        "span": 12
+                    },
+                    "on": {},
+                    "options": []
+                },
+                {
+                    "_fc_drag_tag": "col",
+                    "hidden": false,
+                    "children": [
+                        {
+                            "$required": true,
+                            "_fc_drag_tag": "inputNumber",
+                            "field": "days",
+                            "hidden": false,
+                            "display": true,
+                            "type": "inputNumber",
+                            "title": "计数器",
+                            "info": "",
+                            "props": {},
+                            "on": {},
+                            "options": [],
+                            "children": [],
+                            "value": 4
+                        }
+                    ],
+                    "display": true,
+                    "type": "col",
+                    "props": {
+                        "span": 12
+                    },
+                    "on": {},
+                    "options": []
+                }
+            ],
+            "display": true,
+            "type": "FcRow",
+            "props": {},
+            "on": {},
+            "options": []
+        }, {
+            "activityId": "242334223423",
+            "_fc_drag_tag": "row",
+            "hidden": false,
+            "children": [
+                {
+                    "_fc_drag_tag": "col",
+                    "hidden": false,
+                    "children": [
+                        {
+                            "$required": true,
+                            "_fc_drag_tag": "input",
+                            "field": "reason",
+                            "hidden": false,
+                            "display": true,
+                            "type": "input",
+                            "title": "原因",
+                            "info": "",
+                            "props": {},
+                            "on": {},
+                            "options": [],
+                            "children": [],
+                            "value": "12122"
+                        }
+                    ],
+                    "display": true,
+                    "type": "col",
+                    "props": {
+                        "span": 12
+                    },
+                    "on": {},
+                    "options": []
+                },
+                {
+                    "_fc_drag_tag": "col",
+                    "hidden": false,
+                    "children": [
+                        {
+                            "$required": true,
+                            "_fc_drag_tag": "inputNumber",
+                            "field": "days",
+                            "hidden": false,
+                            "display": true,
+                            "type": "inputNumber",
+                            "title": "计数器",
+                            "info": "",
+                            "props": {},
+                            "on": {},
+                            "options": [],
+                            "children": [],
+                            "value": 4
+                        }
+                    ],
+                    "display": true,
+                    "type": "col",
+                    "props": {
+                        "span": 12
+                    },
+                    "on": {},
+                    "options": []
+                }
+            ],
+            "display": true,
+            "type": "FcRow",
+            "props": {},
+            "on": {},
+            "options": []
+        }
+    ],))
+</script>
+
+</html>
