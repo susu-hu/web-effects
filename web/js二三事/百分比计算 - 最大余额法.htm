@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 具体最大余额法算法可以网上搜索查看
+    function getPercentWithPrecision(valueList, precision) {
+        // 根据保留的小数位做对应的放大
+        const digits = Math.pow(10, precision)
+        const sum = valueList.reduce((total, cur) => total + cur, 0)
+
+        // 计算每项占比，并做放大，保证整数部分就是当前获得的席位，小数部分就是余额
+        const votesPerQuota = valueList.map((val) => {
+            return val / sum * 100 * digits
+        })
+        // 整数部分就是每项首次分配的席位
+        const seats = votesPerQuota.map((val) => {
+            return Math.floor(val);
+        });
+        // 计算各项的余额
+        const remainder = votesPerQuota.map((val) => {
+            return val - Math.floor(val)
+        })
+
+        // 总席位
+        const totalSeats = 100 * digits
+        // 当前已经分配出去的席位总数
+        let currentSeats = votesPerQuota.reduce((total, cur) => total + Math.floor(cur), 0)
+
+        // 按最大余额法分配
+        while (totalSeats - currentSeats > 0) {
+            let maxIdx = -1 // 余数最大的 id
+            let maxValue = Number.NEGATIVE_INFINITY // 最大余额, 初始重置为无穷小
+
+            // 选出这组余额数据中最大值
+            for (var i = 0; i < remainder.length; i++) {
+                if (maxValue < remainder[i]) {
+                    maxValue = remainder[i]
+                    maxIdx = i
+                }
+            }
+
+            // 对应的项席位加 1，余额清零，当前分配席位加 1
+            seats[maxIdx]++
+            remainder[maxIdx] = 0
+            currentSeats++
+        }
+
+        return seats.map((val) => `${val / totalSeats * 100}%`)
+    }
+    // 输出 ['32.56%', '6.97%', '27.91%', '32.56%']
+    const r = getPercentWithPrecision([56, 12, 48, 56], 2);
+    console.log(r);
+    console.log(getPercentWithPrecision([33, 33, 33], 0))
+</script>
+
+</html>

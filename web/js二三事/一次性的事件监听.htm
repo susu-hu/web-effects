@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+</body>
+<script>
+    const ele = document.getElementById("btn");
+    const handler = function (e) {
+        console.log('handler')
+    };
+    ele.addEventListener('click', handler, { once: true });
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //  URL 参数转化为对象
+    const getUrlParams = (query) =>
+        Array.from(new URLSearchParams(query)).reduce(
+            (p, [k, v]) =>
+                Object.assign({}, p, { [k]: p[k] ? (Array.isArray(p[k]) ? p[k] : [p[k]]).concat(v) : v }),
+            {}
+        )
+
+    // 获取 query 参数
+    getUrlParams(location.query)
+    // { a: ['1', '4'], b: '2', c: '3' }
+    getUrlParams('?a=1&b=2&c=3&a=4')
+
+    // 获取 hash 参数
+    getUrlParams(location.hash.split('?')[1])
+
+    // 显示上传的图片
+    function readImage() {
+        const fileReader = new FileReader()
+        const file = document.getElementById('uploaded-file').files[0]
+
+        if (file) {
+            fileReader.readAsDataURL(file)
+        }
+
+        fileReader.addEventListener(
+            'load',
+            () => {
+                const result = fileReader.result
+                const resultContainer = document.getElementById('result')
+                const img = document.createElement('img')
+                img.src = result
+                resultContainer.append(img)
+            },
+            { once: true }
+        )
+    }
+
+    // 缓存结果
+    const memoize = (fn) =>
+        (
+            (cache = Object.create(null)) =>
+                (arg) =>
+                    cache[arg] || (cache[arg] = fn(arg))
+        )();
+    // 生成 uuid 的代码片段
+    const uuid = (a) =>
+        a
+            ? (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
+            : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, uuid)
+
+</script>
+
+</html>

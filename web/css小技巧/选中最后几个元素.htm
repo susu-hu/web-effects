@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* /前三个 */
+    div:nth-child(-n + 3) {
+        text-decoration: underline;
+    }
+
+    /* 选中 2-5 的列表项 */
+    div:nth-child(n + 2):nth-child(-n + 5) {
+        color: #2563eb;
+    }
+
+    /* 倒数两个 */
+    div:nth-last-child(-n + 3) {
+        text-decoration-line: line-through;
+    }
+</style>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+</body>
+
+</html>
