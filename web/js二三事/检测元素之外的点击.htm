@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+</body>
+<script>
+    const ele = document.getElementById("btn")
+    document.addEventListener('click', function (evt) {
+
+        // isClickedOutside 为 true 如果点击的元素在 ele 之外
+        const isClickedOutside = !ele.contains(evt.target);
+        console.log(isClickedOutside)
+    });
+</script>
+
+</html>
