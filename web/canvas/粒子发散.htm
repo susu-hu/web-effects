@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas源源不断弹出粒子效果</title>
+    <link rel="stylesheet" href="../common.css">
     <style>
         body {
             margin: 0;
@@ -13,7 +14,7 @@
 
         canvas {
             display: block;
-            background-color: #000;
+            background: #050E21;
         }
     </style>
 </head>
@@ -21,6 +22,8 @@
 <body>
     <canvas id="myCanvas"></canvas>
     <script>
+        const height = 600;//window.innerHeight;
+        const width = 600;// window.innerWidth;
         class Particle {
             constructor( x, y, radius, color, velocityX, velocityY, accelerationX, accelerationY ) {
                 this.x = x;
@@ -55,8 +58,8 @@
         const canvas = document.getElementById( 'myCanvas' );
         const ctx = canvas.getContext( '2d' );
         const particles = [];
-        const initialParticleCount = 10; // 初始粒子数量
-        const colors = ['#ffffff']; // 粒子颜色
+        const initialParticleCount = 15; // 初始粒子数量
+        const colors = ['#50FFF8']; // 粒子颜色
 
         function createParticles () {
             for ( let i = 0; i < initialParticleCount; i++ ) {
@@ -97,15 +100,15 @@
             } );
         }
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
 
         createParticles();
         animate();
 
         window.addEventListener( 'resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
             particles.length = 0;
             createParticles();
         } );
