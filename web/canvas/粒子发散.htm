@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas源源不断弹出粒子效果</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        class Particle {
+            constructor( x, y, radius, color, velocityX, velocityY, accelerationX, accelerationY ) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.velocityX = velocityX;
+                this.velocityY = velocityY;
+                this.accelerationX = accelerationX;
+                this.accelerationY = accelerationY;
+            }
+
+            update () {
+                this.velocityX += this.accelerationX;
+                this.velocityY += this.accelerationY;
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                this.draw();
+            }
+
+            draw () {
+                ctx.beginPath();
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+                ctx.arc( this.x, this.y, this.radius, 0, Math.PI * 2, false );
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        const canvas = document.getElementById( 'myCanvas' );
+        const ctx = canvas.getContext( '2d' );
+        const particles = [];
+        const initialParticleCount = 10; // 初始粒子数量
+        const colors = ['#ffffff']; // 粒子颜色
+
+        function createParticles () {
+            for ( let i = 0; i < initialParticleCount; i++ ) {
+                const color = colors[Math.floor( Math.random() * colors.length )];
+                const radius = Math.random() * 4 + 1;
+                const velocityX = ( Math.random() - 0.5 ) * 2; // X方向速度
+                const velocityY = ( Math.random() - 0.5 ) * 2; // Y方向速度
+                const accelerationX = ( Math.random() - 0.5 ) * 0.05; // X方向加速度
+                const accelerationY = ( Math.random() - 0.5 ) * 0.05; // Y方向加速度
+                const particle = new Particle( canvas.width / 2, canvas.height / 2, radius, color, velocityX, velocityY, accelerationX, accelerationY );
+                particles.push( particle );
+            }
+        }
+
+        function animate () {
+            requestAnimationFrame( animate );
+            ctx.clearRect( 0, 0, canvas.width, canvas.height );
+
+            // 添加新粒子
+            if ( particles.length < 100 && Math.random() < 0.05 ) {
+                const color = colors[Math.floor( Math.random() * colors.length )];
+                const radius = Math.random() * 4 + 1;
+                const velocityX = ( Math.random() - 0.5 ) * 2;
+                const velocityY = ( Math.random() - 0.5 ) * 2;
+                const accelerationX = ( Math.random() - 0.5 ) * 0.05;
+                const accelerationY = ( Math.random() - 0.5 ) * 0.05;
+                const particle = new Particle( canvas.width / 2, canvas.height / 2, radius, color, velocityX, velocityY, accelerationX, accelerationY );
+                particles.push( particle );
+            }
+
+            particles.forEach( ( particle, index ) => {
+                particle.update();
+
+                // 移除离开画布的粒子
+                if ( particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height ) {
+                    particles.splice( index, 1 );
+                }
+            } );
+        }
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        createParticles();
+        animate();
+
+        window.addEventListener( 'resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles.length = 0;
+            createParticles();
+        } );
+    </script>
+</body>
+
+</html>
