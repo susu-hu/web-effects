@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">上传文件</button>
+</body>
+<script>
+    function uploadFile () {
+        // 获取用户选择的文件
+        const fileInput = document.getElementById( 'fileInput' ); // 假设你的文件输入框的id是'fileInput'
+        const file = fileInput.files[0]; // 获取用户选择的第一个文件
+
+        // 创建一个新的FormData对象
+        const formData = new FormData();
+
+        // 追加文件到formData中
+        formData.append( 'file', file ); // 'file'是服务器端期望的字段名
+
+        // 创建一个新的XMLHttpRequest对象
+        const xhr = new XMLHttpRequest();
+
+        // 设置请求类型、URL 和是否异步
+        const uploadUrl = ""
+        xhr.open( 'POST', uploadUrl, true );
+
+        // 设置请求头信息（通常不需要显式设置Content-Type，因为FormData会自动设置）
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data'); // 注释掉这行，因为FormData会自动处理
+
+        // 发送请求
+        xhr.send( formData );
+
+        // 监听请求完成事件
+        xhr.onload = function () {
+            if ( this.status === 200 ) {
+                // 请求成功
+                console.log( '文件上传成功:', this.responseText );
+            } else {
+                // 请求出错
+                console.error( '文件上传失败:', this.statusText );
+            }
+        };
+
+        // 监听错误事件
+        xhr.onerror = function () {
+            console.error( '文件上传时发生错误' );
+        };
+
+        // 监听上传进度事件（可选）
+        xhr.upload.onprogress = function ( e ) {
+            if ( e.lengthComputable ) {
+                const percentComplete = ( e.loaded / e.total ) * 100;
+                console.log( percentComplete + '% 上传完成' );
+            }
+        };
+    }
+</script>
+
+</html>
