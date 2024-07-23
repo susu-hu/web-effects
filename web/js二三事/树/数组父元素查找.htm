@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const originArr = [{
+        "title": "",
+        "parentId": null,
+        "type": "elCollapse",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": null,
+        "field": null,
+        "hasChild": 1,
+        "sort": 1,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 1,
+        "isWatch": 1,
+        "moduleId": "id_Fd7clyxsc0gzgic",
+        "isExpand": 1
+    },
+    {
+        "title": "上传1",
+        "parentId": null,
+        "type": "upload",
+        "props": "{\"fieldType\":\"array\"}",
+        "tableName": null,
+        "name": "上传1",
+        "field": "upload",
+        "hasChild": 0,
+        "sort": 18,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fil7lyxu6484acc",
+        "isExpand": null
+    },
+    {
+        "title": "上传2",
+        "parentId": null,
+        "type": "upload",
+        "props": "{\"fieldType\":\"array\"}",
+        "tableName": null,
+        "name": "上传2",
+        "field": "Fx8mlyyco8fyanc",
+        "hasChild": 0,
+        "sort": 19,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fls7lyyco8fyaoc",
+        "isExpand": null
+    },
+    {
+        "title": "面板1",
+        "parentId": "id_Fd7clyxsc0gzgic",
+        "type": "elCollapseItem",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "面板1",
+        "field": null,
+        "hasChild": 1,
+        "sort": 2,
+        "collapseName": "jbxx",
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fpk4lyxsc0gzgkc",
+        "isExpand": 0
+    },
+    {
+        "title": "面板2",
+        "parentId": "id_Fd7clyxsc0gzgic",
+        "type": "elCollapseItem",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "面板2",
+        "field": null,
+        "hasChild": 1,
+        "sort": 9,
+        "collapseName": "yy",
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 1,
+        "isWatch": 1,
+        "moduleId": "id_Fn9vlyxscovvgpc",
+        "isExpand": 1
+    },
+    {
+        "title": "面板3",
+        "parentId": "id_Fd7clyxsc0gzgic",
+        "type": "elCollapseItem",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "面板3",
+        "field": null,
+        "hasChild": 1,
+        "sort": 15,
+        "collapseName": "rq",
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 1,
+        "isWatch": 1,
+        "moduleId": "id_Fyqglyxsdew4guc",
+        "isExpand": 1
+    },
+    {
+        "title": "面板1.输入框",
+        "parentId": "id_Fpk4lyxsc0gzgkc",
+        "type": "input",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "输入框",
+        "field": "days",
+        "hasChild": 0,
+        "sort": 3,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fn5jlyy0yi9eb8c",
+        "isExpand": null
+    },
+    {
+        "title": "面板1.输入框2",
+        "parentId": "id_Fpk4lyxsc0gzgkc",
+        "type": "input",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "输入框2",
+        "field": "Fg2alyy7vicrbbc",
+        "hasChild": 0,
+        "sort": 4,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fsw4lyy7vicrbcc",
+        "isExpand": null
+    },
+    {
+        "title": "面板1",
+        "parentId": "id_Fpk4lyxsc0gzgkc",
+        "type": "elCollapse",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": null,
+        "field": null,
+        "hasChild": 1,
+        "sort": 5,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fizwlyy7vgecb7c",
+        "isExpand": null
+    },
+    {
+        "title": "面板2",
+        "parentId": "id_Fn9vlyxscovvgpc",
+        "type": "fcRow",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": null,
+        "field": null,
+        "hasChild": 1,
+        "sort": 10,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fty6lyyawk4habc",
+        "isExpand": null
+    },
+    {
+        "title": "面板3.区间",
+        "parentId": "id_Fyqglyxsdew4guc",
+        "type": "datePicker",
+        "props": "{\"type\":\"datetimerange\",\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "区间",
+        "field": "Ff5hlyxsdv1jgwc",
+        "hasChild": 0,
+        "sort": 16,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fsy7lyxsdv1jgxc",
+        "isExpand": null
+    },
+    {
+        "title": "面板3.选择",
+        "parentId": "id_Fyqglyxsdew4guc",
+        "type": "radio",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "选择",
+        "field": "F5lflyxsep8xgzc",
+        "hasChild": 0,
+        "sort": 17,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fzexlyxsep8xh0c",
+        "isExpand": null
+    },
+    {
+        "title": "面板1.面板1-1",
+        "parentId": "id_Fizwlyy7vgecb7c",
+        "type": "elCollapseItem",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "面板1-1",
+        "field": null,
+        "hasChild": 1,
+        "sort": 6,
+        "collapseName": "mb1-1",
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_F9qclyy7vgecb9c",
+        "isExpand": null
+    },
+    {
+        "title": "面板2",
+        "parentId": "id_Fty6lyyawk4habc",
+        "type": "col",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": null,
+        "field": null,
+        "hasChild": 1,
+        "sort": 11,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fboalyyawk4hadc",
+        "isExpand": null
+    },
+    {
+        "title": "面板2",
+        "parentId": "id_Fty6lyyawk4habc",
+        "type": "col",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": null,
+        "field": null,
+        "hasChild": 1,
+        "sort": 13,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Ftx0lyyawk4hafc",
+        "isExpand": null
+    },
+    {
+        "title": "面板1.面板1-1.嘿嘿1",
+        "parentId": "id_F9qclyy7vgecb9c",
+        "type": "input",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "嘿嘿1",
+        "field": "Ftpmlyy7w0aobdc",
+        "hasChild": 0,
+        "sort": 7,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fieclyy7w0aobec",
+        "isExpand": null
+    },
+    {
+        "title": "面板1.面板1-1.嘿嘿2",
+        "parentId": "id_F9qclyy7vgecb9c",
+        "type": "input",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "嘿嘿2",
+        "field": "F2vylyy7wox7bgc",
+        "hasChild": 0,
+        "sort": 8,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_F8pvlyy7wox7bhc",
+        "isExpand": null
+    },
+    {
+        "title": "面板2.选择器",
+        "parentId": "id_Fboalyyawk4hadc",
+        "type": "select",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "选择器",
+        "field": "F9kdlyyawmo1ahc",
+        "hasChild": 0,
+        "sort": 12,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fxomlyyawmo1aic",
+        "isExpand": null
+    },
+    {
+        "title": "面板2.时间",
+        "parentId": "id_Ftx0lyyawk4hafc",
+        "type": "timePicker",
+        "props": "{\"fieldType\":\"string\"}",
+        "tableName": null,
+        "name": "时间",
+        "field": "Fyorlyyawp69akc",
+        "hasChild": 0,
+        "sort": 14,
+        "collapseName": null,
+        "userGroup": null,
+        "isSplice": 0,
+        "id": null,
+        "isEdit": 0,
+        "isWatch": 0,
+        "moduleId": "id_Fkp8lyyawp69alc",
+        "isExpand": null
+    }
+    ]
+    // const nowArr = originArr.filter(e => e.title && e.field && e.hasChild === 0);
+    console.log(originArr);
+    // 写一个js方法，根据parentId进行分组，生成一个新数组对象，内容为{parentId：parentId，data:分组的数据列表}，其中data是一个数组，是原数组中的数据，分组之后的新对象的type必须是
+
+    // function addAncestorId(data) {
+    //     // 辅助函数，用于查找祖先的parentId
+    //     function findAncestorId(itemId) {
+    //         let item = data.find(item => item.moduleId === itemId);
+    //         if (!item || item.parentId === null) {
+    //             return null;
+    //         } else if (item.parentId !== null) {
+    //             let parentItem = data.find(parent => parent.moduleId === item.parentId);
+    //             if (parentItem && parentItem.parentId === null) {
+    //                 return parentItem.moduleId;
+    //             } else {
+    //                 return findAncestorId(item.parentId);
+    //             }
+    //         }
+    //     }
+
+    //     // 遍历每个元素，添加 ancestorId 字段
+    //     data.forEach(item => {
+    //         let ancestorId = findAncestorId(item.parentId);
+    //         item.ancestorId = ancestorId;
+    //     });
+
+    //     return data;
+    // }
+    function addAncestorId(data) {
+        // 辅助函数，用于查找祖先的moduleId
+        function findAncestorId(itemId) {
+            let item = data.find(item => item.moduleId === itemId);
+            if (!item || item.parentId === null) {
+                return itemId; // 返回当前数据的moduleId作为最外层的祖先moduleId
+            } else {
+                return findAncestorId(item.parentId);
+            }
+        }
+
+        // 遍历每个元素，添加 ancestorId 字段
+        data.forEach(item => {
+            let ancestorId = findAncestorId(item.parentId);
+            item.ancestorId = ancestorId;
+        });
+
+        return data;
+    }
+    // OK的
+    // function addAncestorAndElItemId(data) {
+    //     // 辅助函数，用于查找祖先的moduleId
+    //     function findAncestorId(itemId) {
+    //         let item = data.find(item => item.moduleId === itemId);
+    //         if (!item || item.parentId === null) {
+    //             return itemId; // 返回当前数据的moduleId作为最外层的祖先moduleId
+    //         } else {
+    //             return findAncestorId(item.parentId);
+    //         }
+    //     }
+
+    //     // 辅助函数，用于查找折叠id（elItemId）
+    //     // function findElItemId(itemId) {
+    //     //     let item = data.find(item => item.moduleId === itemId);
+    //     //     if (!item || item.parentId === null) {
+    //     //         return itemId; // 返回当前数据的moduleId作为最外层的moduleId
+    //     //     } else if (item.type === "elCollapseItem") {
+    //     //         return item.moduleId; // 如果当前数据的type为elCollapseItem，返回当前数据的moduleId
+    //     //     } else {
+    //     //         return findElItemId(item.parentId); // 继续递归查找父级的parentId
+    //     //     }
+    //     // }
+    //     // 辅助函数，用于查找折叠id（elItemId）
+    //     function findElItemId(itemId) {
+    //         let item = data.find(item => item.moduleId === itemId);
+    //         if (!item || item.parentId === null) {
+    //             return null; // 如果到达最外层的parentId为null，返回null
+    //         } else if (item.type === "elCollapseItem") {
+    //             return item.moduleId; // 如果当前数据的type为elCollapseItem，返回当前数据的moduleId
+    //         } else {
+    //             return findElItemId(item.parentId); // 继续递归查找父级的parentId
+    //         }
+    //     }
+
+
+    //     // 遍历每个元素，添加 ancestorId 和 elItemId 字段
+    //     data.forEach(item => {
+    //         let ancestorId = findAncestorId(item.parentId);
+    //         let elItemId = findElItemId(item.parentId);
+    //         item.ancestorId = ancestorId;
+    //         item.elItemId = elItemId;
+    //     });
+
+    //     return data;
+    // }
+
+    // no ok
+    // function addAncestorAndElItemId(data) {
+    //     // 构建每个节点的祖先ID、折叠ID和祖先折叠ID
+    //     const idMap = new Map(); // 用于存储每个节点的祖先ID、折叠ID和祖先折叠ID的 Map
+
+    //     // 首先建立每个节点的祖先ID和折叠ID
+    //     data.forEach(item => {
+    //         let currentId = item.moduleId;
+    //         let parentId = item.parentId;
+    //         let ancestorElItemd = null;
+
+    //         // 查找祖先ID（ancestorId）和折叠ID（elItemId）
+    //         while (parentId !== null) {
+    //             let parentItem = data.find(i => i.moduleId === parentId);
+    //             if (!parentItem) break; // 找不到父节点，退出循环
+
+    //             if (parentItem.type === "elCollapseItem") {
+    //                 ancestorElItemd = parentItem.moduleId;
+    //             }
+
+    //             currentId = parentId;
+    //             parentId = parentItem.parentId;
+    //         }
+
+    //         idMap.set(item.moduleId, {
+    //             ancestorId: currentId,
+    //             elItemId: null, // 先默认设置为null
+    //             ancestorElItemd: ancestorElItemd // 设置祖先折叠ID
+    //         });
+    //     });
+
+    //     // 然后填充每个节点的折叠ID（elItemId）
+    //     data.forEach(item => {
+    //         let currentId = item.moduleId;
+    //         let parentId = item.parentId;
+
+    //         // 查找折叠ID（elItemId）
+    //         while (parentId !== null) {
+    //             let parentItem = data.find(i => i.moduleId === parentId);
+    //             if (!parentItem) break; // 找不到父节点，退出循环
+    //             if (parentItem.type === "elCollapseItem") {
+    //                 idMap.get(item.moduleId).elItemId = currentId;
+    //                 break; // 找到折叠ID，退出循环
+    //             }
+    //             currentId = parentId;
+    //             parentId = parentItem.parentId;
+    //         }
+    //     });
+
+    //     // 将结果写回到原始数据中
+    //     data.forEach(item => {
+    //         let ids = idMap.get(item.moduleId);
+    //         item.ancestorId = ids.ancestorId;
+    //         item.elItemId = ids.elItemId;
+    //         item.ancestorElItemd = ids.ancestorElItemd; // 添加祖先折叠ID字段
+    //     });
+
+    //     return data;
+    // }
+    function addAncestorAndElItemId(data) {
+        // 辅助函数，用于查找祖先的moduleId
+        function findAncestorId(itemId) {
+            let item = data.find(item => item.moduleId === itemId);
+            if (!item || item.parentId === null) {
+                return itemId; // 返回当前数据的moduleId作为最外层的祖先moduleId
+            } else {
+                return findAncestorId(item.parentId);
+            }
+        }
+
+        // 辅助函数，用于查找折叠id（elItemId）
+        function findElItemId(itemId) {
+            let item = data.find(item => item.moduleId === itemId);
+            if (!item || item.parentId === null) {
+                return null; // 如果到达最外层的parentId为null，返回null
+            } else if (item.type === "elCollapseItem") {
+                return item.moduleId; // 如果当前数据的type为elCollapseItem，返回当前数据的moduleId
+            } else {
+                return findElItemId(item.parentId); // 继续递归查找父级的parentId
+            }
+        }
+
+        // ok
+        // 辅助函数，用于查找祖先折叠id（ancestorElItemd）
+        // function findAncestorElItemd(itemId) {
+        //     let item = data.find(item => item.moduleId === itemId);
+        //     if (!item || item.parentId === null) {
+        //         return null; // 如果到达最外层的parentId为null，返回null
+        //     } else {
+        //         let parentItem = data.find(i => i.moduleId === item.parentId);
+        //         if (!parentItem) {
+        //             return null; // 找不到父节点，返回null
+        //         } else if (parentItem.type === "elCollapseItem") {
+        //             return parentItem.moduleId; // 如果父节点的type为elCollapseItem，返回父节点的moduleId
+        //         } else {
+        //             let ancestorElItemd = findAncestorElItemd(item.parentId); // 递归查找父级的祖先折叠id
+        //             if (ancestorElItemd && ancestorElItemd !== parentItem.moduleId) {
+        //                 return ancestorElItemd; // 如果找到了祖先折叠id且不是父节点的moduleId，则返回
+        //             } else {
+        //                 return parentItem.moduleId; // 否则返回父节点的moduleId
+        //             }
+        //         }
+        //     }
+        // }
+        // 辅助函数，用于查找当前选项的祖先中最外层且 type 是 elCollapseItem 的 moduleId
+        function findAncestorElItemd(itemId) {
+            let item = data.find(item => item.moduleId === itemId);
+            if (!item) {
+                return null; // 如果找不到当前 itemId 对应的 item，返回 null
+            }
+
+            let currentId = item.moduleId;
+            let parentId = item.parentId;
+            let ancestorId = null;
+
+            // 从当前节点向上查找，直到找到 type 是 elCollapseItem 的节点或者到达最外层
+            while (parentId !== null) {
+                let parentItem = data.find(i => i.moduleId === parentId);
+                if (parentItem && parentItem.type === "elCollapseItem") {
+                    ancestorId = parentItem.moduleId;
+                    break;
+                }
+                currentId = parentId;
+                parentId = parentItem ? parentItem.parentId : null;
+            }
+
+            return ancestorId;
+        }
+
+        function findElItemId1(currentItemId) {
+            const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+            let currentItem = itemMap.get(currentItemId);
+
+            while (currentItem && currentItem.parentId !== null) {
+                if (currentItem.type === "elCollapseItem") {
+                    return currentItem.moduleId;
+                }
+                currentItem = itemMap.get(currentItem.parentId);
+            }
+
+            return null;
+        }
+
+        function findAncestorElItemd1(itemId) {
+            const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+            let currentItem = itemMap.get(itemId);
+            let ancestorElItemId = null;
+
+            while (currentItem && currentItem.parentId !== null) {
+                let parentItem = itemMap.get(currentItem.parentId);
+                if (!parentItem) {
+                    return null; // 找不到父节点，返回null
+                } else if (parentItem.type === "elCollapseItem") {
+                    ancestorElItemId = parentItem.moduleId; // 更新祖先折叠id
+                }
+                currentItem = parentItem;
+            }
+
+            return ancestorElItemId;
+        }
+
+
+        // 遍历每个元素，添加 ancestorId、elItemId 和 ancestorElItemd 字段
+        data.forEach(item => {
+            let ancestorId = findAncestorId(item.parentId);
+            // let elItemId = findElItemId(item.parentId);
+            // let ancestorElItemd = findAncestorElItemd(item.parentId) || elItemId;
+            let elItemId = findElItemId1(item.parentId);
+            let ancestorElItemd = findAncestorElItemd1(item.parentId) || elItemId;
+
+            item.ancestorId = ancestorId;
+            item.elItemId = elItemId;
+            item.ancestorElItemd = ancestorElItemd;
+            item.ancestorElItemdName = ''
+        });
+
+        return data;
+    }
+
+    // 优化
+    // function findElItemId(currentItemId) {
+    //     // 将 data 转换为 Map，便于快速查找
+    //     const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+    //     // 查找当前 itemId 对应的 item
+    //     let currentItem = itemMap.get(currentItemId);
+
+    //     // 如果找不到对应的 item 或者已经到达最外层，则返回 null
+    //     if (!currentItem || currentItem.parentId === null) {
+    //         return null;
+    //     }
+
+    //     // 如果当前 item 的 type 是 elCollapseItem，则返回当前 item 的 moduleId
+    //     if (currentItem.type === "elCollapseItem") {
+    //         return currentItem.moduleId;
+    //     }
+
+    //     // 递归查找父级的 parentId
+    //     return findElItemId(currentItem.parentId);
+    // }
+
+    function findElItemId1(currentItemId) {
+        const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+        let currentItem = itemMap.get(currentItemId);
+
+        while (currentItem && currentItem.parentId !== null) {
+            if (currentItem.type === "elCollapseItem") {
+                return currentItem.moduleId;
+            }
+            currentItem = itemMap.get(currentItem.parentId);
+        }
+
+        return null;
+    }
+
+    function findAncestorElItemd1(itemId) {
+        const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+        let currentItem = itemMap.get(itemId);
+        let ancestorElItemId = null;
+
+        while (currentItem && currentItem.parentId !== null) {
+            let parentItem = itemMap.get(currentItem.parentId);
+            if (!parentItem) {
+                return null; // 找不到父节点，返回null
+            } else if (parentItem.type === "elCollapseItem") {
+                ancestorElItemId = parentItem.moduleId; // 更新祖先折叠id
+            }
+            currentItem = parentItem;
+        }
+
+        return ancestorElItemId;
+    }
+
+    function addAncestorAndElItemId1(data) {
+        function findElItemId1(currentItemId) {
+            const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+            let currentItem = itemMap.get(currentItemId);
+
+            while (currentItem && currentItem.parentId !== null) {
+                if (currentItem.type === "elCollapseItem") {
+                    return currentItem.moduleId;
+                }
+                currentItem = itemMap.get(currentItem.parentId);
+            }
+
+            return null;
+        }
+
+        function findAncestorElItemd1(itemId) {
+            const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+            let currentItem = itemMap.get(itemId);
+            let ancestorElItemId = null;
+
+            while (currentItem && currentItem.parentId !== null) {
+                let parentItem = itemMap.get(currentItem.parentId);
+                if (!parentItem) {
+                    return null; // 找不到父节点，返回null
+                } else if (parentItem.type === "elCollapseItem") {
+                    ancestorElItemId = parentItem.moduleId; // 更新祖先折叠id
+                }
+                currentItem = parentItem;
+            }
+
+            return ancestorElItemId;
+        }
+
+
+        // 遍历每个元素，添加 ancestorId、elItemId 和 ancestorElItemd 字段
+        data.forEach(item => {
+            let ancestorId = findAncestorId(item.parentId);
+            let elItemId = findElItemId1(item.parentId);
+            let ancestorElItemd = findAncestorElItemd1(item.parentId) || elItemId;
+
+            item.ancestorId = ancestorId;
+            item.elItemId = elItemId;
+            item.ancestorElItemd = ancestorElItemd;
+            item.ancestorElItemdName = ''
+        });
+
+        return data;
+    }
+
+    function addAncestorAndElItemId2(data) {
+        const itemMap = new Map(data.map(item => [item.moduleId, item]));
+
+        function findElItemIdAndAncestor(itemId) {
+            let currentItem = itemMap.get(itemId);
+            let ancestorId = null;
+            let elItemId = null;
+            let ancestorElItemd = null;
+            let name = null
+
+            while (currentItem) {
+                if (currentItem.type === "elCollapseItem") {
+                    elItemId = currentItem.moduleId;
+                    if (ancestorId === null) {
+                        ancestorId = elItemId;
+                    }
+                    ancestorElItemd = currentItem.moduleId;
+                    name = currentItem.title;
+                }
+                ancestorId = currentItem.parentId;
+                currentItem = itemMap.get(currentItem.parentId);
+            }
+
+            return {
+                // ancestorId: ancestorId,
+                // elItemId: elItemId,
+                ancestorElItemd: ancestorElItemd,
+                name
+            };
+        }
+
+        // 遍历每个元素，添加 ancestorId、elItemId 和 ancestorElItemd 字段
+        data.forEach(item => {
+            const { ancestorId, elItemId, ancestorElItemd, name } = findElItemIdAndAncestor(item.moduleId);
+
+            item.ancestorId = ancestorId;
+            item.elItemId = elItemId;
+            item.ancestorElItemd = ancestorElItemd;
+            item.ancestorElItemdName = name; // 假设需要添加一个空字段
+        });
+
+        return data;
+    }
+
+    const addArr = addAncestorAndElItemId2(originArr)
+    console.log(addArr)
+    const filterArr = addArr.filter(e => e.title && e.field && e.hasChild === 0);
+    console.log(filterArr);
+
+
+
+
+    function groupByParentId(data) {
+        // 首先根据 parentId 进行分组
+        let grouped = {};
+        data.forEach(item => {
+            const { ancestorElItemd, parentId, ancestorElItemdName } = item;
+            if (!grouped[ancestorElItemd]) {
+                // 初始化分组对象
+                grouped[ancestorElItemd] = {
+                    ancestorElItemd,
+                    ancestorElItemdName,
+                    parentId,
+                    data: []
+                };
+            }
+            // 将数据项添加到对应的分组中
+            grouped[ancestorElItemd].data.push(item);
+        });
+        console.log("grouped", grouped)
+        // 将结果转换为数组形式并返回
+        return Object.values(grouped);
+    }
+    console.log(groupByParentId(filterArr))
+
+</script>
+
+</html>
