@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参考:https://juejin.cn/post/7373226436569890831</title>
+</head>
+<link rel="stylesheet" href="../../common.css">
+<style>
+    body {
+        background: rgb(9, 9, 11);
+    }
+
+    .container {
+        position: relative;
+        width: 400px;
+        height: 200px;
+        margin: 50px;
+        /* 确保有足够空间显示动画 */
+        border-radius: 30px;
+        overflow: hidden;
+        padding: 1px;
+    }
+
+    .element {
+        background: rgba(9, 9, 11, 0.38);
+        border: 1px solid rgb(30, 41, 59);
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: blur(24px);
+        box-sizing: border-box;
+    }
+
+    .moving-element {
+        position: absolute;
+        top: 0;
+        left: 40px;
+        width: 80px;
+        height: 80px;
+        background-image: radial-gradient(#cbacf9 40%, transparent 80%);
+        border-radius: 40px;
+        animation: moveAround 8s linear infinite;
+        transform: translate(-40px, -40px);
+    }
+
+    @keyframes moveAround {
+        0% {
+            left: 40px;
+            top: 0px;
+        }
+
+        28.93% {
+            left: 360px;
+            top: 0px;
+        }
+
+        33.99% {
+            left: 400px;
+            top: 40px;
+        }
+
+        44.82% {
+            left: 400px;
+            top: 160px;
+        }
+
+        49.88% {
+            left: 360px;
+            top: 200px;
+        }
+
+        78.81% {
+            left: 40px;
+            top: 200px;
+        }
+
+        83.87% {
+            left: 0px;
+            top: 160px;
+        }
+
+        94.70% {
+            left: 0px;
+            top: 40px;
+        }
+
+        100% {
+            left: 40px;
+            top: 0px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="moving-element"></div>
+        <div class="element"></div>
+    </div>
+</body>
+
+</html>
