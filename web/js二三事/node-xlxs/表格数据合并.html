@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const mockdata = [
+        {
+            "_id": "8a96990966822cb000013f701590c8d7",
+            "qucanma": "984216",
+            "send_status": 0,
+            "buyType": "外卖",
+            "deliveryDate": "2024/07/01",
+            "name": "李桐",
+            "totalNum": 1,
+            "_createTime": 1719807152268,
+            "order_integral": 1,
+            "phone": "666",
+            "status": 1,
+            "totalPrice": "1.00",
+            "deliveryTime": "11:30-13:30",
+            "address": "江苏省苏州市吴中区香山街道中海·寰湖时代(香山路西150米)",
+            "beizhu": "",
+            "goods": [
+                {
+                    "unit": "",
+                    "good_type": "1",
+                    "goodid": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "name": "小青菜",
+                    "img": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-02-27/87bnseof9uuj2l0krd9w4rcbzc5w5w84_.png",
+                    "price": 1,
+                    "quantity": 1,
+                    "_id": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "cartPrice": 1,
+                    "good_integral": null
+                },
+
+            ],
+            "shopId": "0b153f9a659df158065bf33f0c2c05eb",
+            "useIntegral": 0,
+            "userid": "880c3388667ac718038f4c270368eb51",
+            "_openid": "o4bNb5WkwERLlBw8emxXCcYzpy8M",
+            "isok": "配送完成",
+            "shopInfo": {
+                "_id": "0b153f9a659df158065bf33f0c2c05eb",
+                "address": "香山路",
+                "distance": 10,
+                "lat": "31.22242",
+                "lng": "120.41622",
+                "name": "太湖中心mall",
+                "on_call_status": 1,
+                "phone": 15895648102,
+                "_createTime": 1704849752220,
+                "_updateTime": 1718958623843,
+                "shop_weixin": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-06-18/ep63seoerpejlx82q6050dby0kwr2sql_.jpg",
+                "detail_address": "江苏省苏州市吴中区香山路太湖中心mall"
+            }
+        },
+        {
+            "_id": "wr3523534532822cb000013f701590c8d7",
+            "qucanma": "55555",
+            "send_status": 0,
+            "buyType": "外卖",
+            "deliveryDate": "2024/07/01",
+            "name": "李桐",
+            "totalNum": 1,
+            "_createTime": 1719807152268,
+            "order_integral": 1,
+            "phone": "666",
+            "status": 1,
+            "totalPrice": "1.00",
+            "deliveryTime": "11:30-13:30",
+            "address": "江苏省苏州市吴中区香山街道中海·寰湖时代(香山路西150米)",
+            "beizhu": "",
+            "goods": [
+                {
+                    "unit": "dddd",
+                    "good_type": "1",
+                    "goodid": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "name": "娃娃哈哈",
+                    "img": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-02-27/87bnseof9uuj2l0krd9w4rcbzc5w5w84_.png",
+                    "price": 1,
+                    "quantity": 1,
+                    "_id": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "cartPrice": 1,
+                    "good_integral": null
+                },
+                {
+                    "unit": "",
+                    "good_type": "1",
+                    "goodid": "sdfsf",
+                    "name": "fsdfsdfsd",
+                    "img": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-02-27/87bnseof9uuj2l0krd9w4rcbzc5w5w84_.png",
+                    "price": 1,
+                    "quantity": 2,
+                    "_id": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "cartPrice": 1,
+                    "good_integral": null
+                },
+                {
+                    "unit": "",
+                    "good_type": "1",
+                    "goodid": "sdfsf",
+                    "name": "fsdfsdfsd",
+                    "img": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-02-27/87bnseof9uuj2l0krd9w4rcbzc5w5w84_.png",
+                    "price": 1,
+                    "quantity": 2,
+                    "_id": "7027b65465d6c0dd0a102adb7cbbeb98",
+                    "cartPrice": 1,
+                    "good_integral": null
+                }
+
+            ],
+            "shopId": "0b153f9a659df158065bf33f0c2c05eb",
+            "useIntegral": 0,
+            "userid": "880c3388667ac718038f4c270368eb51",
+            "_openid": "o4bNb5WkwERLlBw8emxXCcYzpy8M",
+            "isok": "配送完成",
+            "shopInfo": {
+                "_id": "0b153f9a659df158065bf33f0c2c05eb",
+                "address": "香山路",
+                "distance": 10,
+                "lat": "31.22242",
+                "lng": "120.41622",
+                "name": "太湖中心mall",
+                "on_call_status": 1,
+                "phone": 15895648102,
+                "_createTime": 1704849752220,
+                "_updateTime": 1718958623843,
+                "shop_weixin": "cloud://yutian-admin-8gkqjn6r18264340.7975-yutian-admin-8gkqjn6r18264340-1318898574/cloudbase-cms/upload/2024-06-18/ep63seoerpejlx82q6050dby0kwr2sql_.jpg",
+                "detail_address": "江苏省苏州市吴中区香山路太湖中心mall"
+            }
+        }
+    ]
+    const handleOrderData = (data) => {
+        let orderArr = [];
+        data.forEach(order => {
+            const { goods = [] } = order;
+            goods.forEach(good => {
+                // orderArr.push(order._id, order.deliveryDate + ' ' + order.deliveryTime)
+            })
+
+        });
+        return orderArr;
+    }
+
+    // const res=[sheetTitles,]
+    // console.log(handleOrderData(mockdata))
+
+    // const allGoods = mockdata.map(item => item.goods);
+    // // 打印结果
+    // console.log(allGoods);
+    // const allGoods = mockdata.map(item => item.goods.map(good => ({
+    //     ...good,
+    //     ...item,
+    //     // qucanma: item.qucanma,
+    //     // send_status: item.send_status
+    // })));
+    // console.log(allGoods);
+    // 提取所有的 goods 字段，并添加订单中的 qucanma 和 send_status 字段
+    const allGoods = mockdata.reduce((acc, item) => {
+        const goodsWithInfo = item.goods.map(good => ({
+            // ...good,
+            goodId: good._id,
+            goodName: good.name,
+            goodUnit: good.unit,
+            goodQuantity: good.quantity,
+            ...item,
+            // orderId:item._id,
+            // deliveryTime:item.deliveryTime,
+            // deliveryDate:item.deliveryDate,
+
+            // qucanma: item.qucanma,
+            // send_status: item.send_status
+        }));
+        return [...acc, ...goodsWithInfo];
+    }, []);
+
+    // 打印结果
+    console.log(allGoods);
+    const map = {
+        "订单Id": "_id",
+        "订单总价": "totalPrice",
+        "用户Id": "userid",
+        "用户名称": "name",
+        "配送日期": "deliveryDate",
+        "配送时段": "deliveryTime",
+        "配送地址": "address",
+        "配送电话": "phone",
+        "商品Id": "goodId",
+        "商品名称": "goodName",
+        "商品数量": "goodQuantity",
+        "商品规格": "goodUnit"
+    }
+    const sheetTitles = ["订单Id", "订单总价", "用户Id", "用户名称", "配送日期", "配送时段", "配送地址", "配送电话", "商品Id", "商品名称", "商品数量", "商品规格"];
+    const orderData = allGoods.map(item => {
+        return sheetTitles.map(k => item[map[k]])
+        // return sheetTitles.map(k => {
+        //     console.log(k, item[map[k]])
+        // })
+    });
+    console.log(orderData);
+    const sheetData = [sheetTitles, ...orderData];
+    console.log(sheetData);
+
+    const getMerges = (s, e) => {
+        return [
+            { s: { r: s, c: 0 }, e: { r: e, c: 0 } }, // 合并第0列的第1行到第2行 
+            { s: { r: s, c: 1 }, e: { r: e, c: 1 } },
+            { s: { r: s, c: 2 }, e: { r: e, c: 2 } },
+            { s: { r: s, c: 3 }, e: { r: e, c: 3 } },
+            { s: { r: s, c: 4 }, e: { r: e, c: 4 } },
+            { s: { r: s, c: 5 }, e: { r: e, c: 5 } },
+            { s: { r: s, c: 6 }, e: { r: e, c: 6 } },
+            { s: { r: s, c: 7 }, e: { r: e, c: 7 } },
+        ]
+    }
+
+    const hanldeMerges = () => {
+        const result = {};
+        let start = 1; // 初始的起始值
+        mockdata.forEach((item, index) => {
+            const goodsLength = item.goods.length;
+            const s = start;
+            const e = s + goodsLength - 1;
+            result[item._id] = { s, e };
+            // 更新下一个起始值
+            start = e + 1;
+        });
+        console.log(result);
+        let arr = []
+        for (const item in result) {
+            arr.push(getMerges(result[item].s, result[item].e))
+            // console.log(item)
+            // const a = s(result[item].s, result[item].e)
+            // console.log('hhhh', a)
+        }
+        console.log(arr);
+
+        const mergeData = arr.reduce((acc, item) => {
+            return [...acc, ...item,];
+        }, []);
+        console.log(mergeData);
+    }
+    hanldeMerges()
+</script>
+
+</html>
