@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="chart-panel" style="height: 600px;width: 100%"></div>
+</body>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script>
+    const dom = document.getElementById( "chart-panel" );
+    const myChart = echarts.init( dom );
+    const option = {
+        color: ["#b814b0"],
+        title: {
+            left: "left",
+            top: 20,
+            text: "",
+            subtext: "",
+            textShow: false,
+            subtextShow: false,
+            textStyle: {
+                fontSize: 18,
+                color: "#333333",
+            },
+            padding: [0, 20],
+            itemGap: 5,
+            subtextStyle: {
+                fontSize: 12,
+                color: "#aaaaaa",
+            },
+        },
+        grid: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+        },
+        tooltip: {},
+        legend: {},
+        series: [
+            {
+                type: "tree",
+                data: [
+                    {
+                        name: "灰大科技",
+                        children: [
+                            {
+                                name: "设计插件",
+                                children: [
+                                    {
+                                        name: "NB Charts",
+                                    },
+                                    {
+                                        name: "内容填充助手",
+                                    },
+                                    {
+                                        name: "图片填充助手",
+                                    },
+                                    {
+                                        name: "表格助手",
+                                    },
+                                ],
+                            },
+                            {
+                                name: "网页工具",
+                                children: [
+                                    {
+                                        name: "NB Map",
+                                    },
+                                    {
+                                        name: "富婆图表",
+                                    },
+                                    {
+                                        name: "灰大热力图",
+                                    },
+                                    {
+                                        name: "灰大导航",
+                                    },
+                                    {
+                                        name: "NB 3d Pie",
+                                    },
+                                    {
+                                        name: "灰大实验室",
+                                    },
+                                ],
+                            },
+                            {
+                                name: "视频教程",
+                            },
+                            {
+                                name: "设计素材",
+                            },
+                            {
+                                name: "PPT模板",
+                            },
+                        ],
+                    },
+                ],
+                label: {
+                    position: "right",
+                    verticalAlign: "middle",
+                    align: "left",
+                    fontSize: 12,
+                    color: "#333333",
+                    textBorderWidth: 2,
+                    textBorderColor: "#fff",
+                },
+                lineStyle: {
+                    width: 2,
+                    color: "#b814b0",
+                    curveness: 0.48,
+                },
+                itemStyle: {
+                    borderWidth: 2,
+                    borderColor: "#b814b0",
+                    color: "#b814b0",
+                },
+                layout: "orthogonal",
+                orient: "LR",
+                symbol: "emptyCircle",
+                symbolSize: 8,
+                edgeShape: "curve",
+                roam: true,
+                initialTreeDepth: 20,
+                animationDuration: 500,
+                animationDelay: 0,
+            },
+        ],
+    };
+
+    if ( option && typeof option === 'object' ) {
+        myChart.setOption( option );
+    }
+</script>
+
+</html>
