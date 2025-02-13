@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>iframe打印示例</title>
+    <style>
+        /* 原页面样式（不会被 iframe 继承） */
+        #printContent {
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+
+        @media print {
+
+            /* 隐藏不需要打印的元素 */
+            .no-print {
+                display: none;
+            }
+
+            /* 分页控制 */
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要打印的内容 -->
+    <div id="printContent">
+        <h1>打印内容标题</h1>
+        <p>这是一段需要打印的示例文本。</p>
+        <table border="1">
+            <tr>
+                <th>项目</th>
+                <th>数量</th>
+            </tr>
+            <tr>
+                <td>苹果</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>香蕉</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 打印按钮 -->
+    <button onclick="printWithIframe()">打印内容</button>
+
+    
+</body>
+<script>
+    function printWithIframe() {
+        console.log(111111)
+        // 1. 创建隐藏的 iframe
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // 2. 获取要打印的内容并克隆（避免影响原页面）
+        const content = document.getElementById('printContent').cloneNode(true);
+
+        // 3. 准备打印文档内容
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+		
+		const printTitle= '&nbsp';//空标题
+
+        // 4. 写入完整的 HTML 结构（包含样式）
+        iframeDoc.open();
+        iframeDoc.write(`
+            <html>
+                <head>
+                    <title>${printTitle}</title>
+                    <style>
+                        /* 打印专用样式 */
+                        @media print {
+                            body { margin: 0; }
+                            table { width: 100%; border-collapse: collapse; }
+                            th { background: #f0f0f0; }
+                            td, th { padding: 8px; }
+                        }
+                        /* 屏幕预览样式 */
+                        @media screen {
+                            body { padding: 20px; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${content.innerHTML}
+                </body>
+            </html>
+        `);
+        iframeDoc.close();
+
+        // 5. 打印后清理 iframe
+        iframe.contentWindow.onload = function () {
+            iframe.contentWindow.focus(); // 兼容某些浏览器
+            iframe.contentWindow.print();
+            document.body.removeChild(iframe);
+        };
+    }
+</script>
+<!-- // 处理相对路径图片
+const baseUrl = window.location.href;
+iframeDoc.write(`<base href="${baseUrl}">`); -->
+
+<!-- // 等待图片加载
+const images = iframeDoc.images;
+let loaded = 0;
+for(let img of images) {
+    img.onload = () => {
+        if(++loaded === images.length) {
+            iframe.contentWindow.print();
+        }
+    };
+} -->
+</html>
+<!-- 实现原理说明：
+创建隐藏 iframe
+
+通过 document.createElement 动态创建 iframe 并隐藏（display: none）
+
+内容克隆
+
+使用 cloneNode(true) 深度克隆要打印的内容，避免影响原页面 DOM
+
+构建打印文档
+
+通过 contentDocument 操作 iframe 内部文档
+
+手动构建完整的 HTML 结构，包含：
+
+<head> 中的打印专用样式（通过 @media print）
+
+屏幕预览样式（通过 @media screen）
+
+要打印的 HTML 内容
+
+样式处理
+
+独立于原页面的样式系统
+
+推荐在 <style> 标签中定义专用打印样式
+
+使用 @media print 确保打印时的特殊格式
+
+触发打印
+
+在 iframe 的 onload 事件中触发打印，确保内容加载完成
+
+打印完成后自动移除 iframe 保持页面整洁
+
+优势特点：
+样式隔离
+
+完全独立的样式环境，不会受原页面样式影响
+
+可自定义打印专用样式
+
+内容保护
+
+通过克隆节点避免原页面内容被修改
+
+兼容性
+
+支持所有现代浏览器（包括移动端） -->
+
+<!-- 打印功能通常是指将某个内容区域或者特定的内容输出到打印机，而使用iframe可能是一种方法，可能是在iframe中加载要打印的内容，然后调用打印命令。
+
+首先，我应该回忆一下如何用JavaScript操作iframe。创建iframe元素，设置其样式为隐藏，然后将需要打印的内容插入到iframe中。接着，当iframe加载完成后，调用其contentWindow.print()方法触发打印对话框。
+
+接下来，我需要考虑用户可能的实际使用场景。比如，用户可能有一个HTML页面中的某部分内容需要打印，比如一个表格或者一段文本。用户希望点击按钮时，将这部分内容打印出来，而不会影响当前页面的布局，或者出现样式冲突的问题。
+
+然后，我需要确定步骤。首先，创建一个iframe元素，并将其添加到文档中。然后，获取需要打印的内容，比如通过ID获取一个div元素。将这部分内容克隆到iframe的body中。此外，还需要处理样式，确保打印的内容在iframe中的样式和原页面一致，或者应用特定的打印样式。可能还需要处理图片和外部样式表的加载问题，但用户要求的是简单实现，可能暂时不需要考虑太复杂的情况。
+
+可能遇到的问题包括：iframe加载异步的问题，即内容可能还没加载完成就调用print方法，导致打印空白。因此，需要在iframe的onload事件中调用打印，以确保内容已经加载完毕。此外，样式的问题，原页面中的样式可能不会自动应用到iframe中，需要手动将样式表链接或者内联样式复制到iframe的head部分。
+
+现在，我需要构建一个示例代码。步骤大概是：
+
+1. 创建一个iframe元素，设置样式为隐藏。
+
+2. 将iframe添加到文档中。
+
+3. 获取要打印的内容元素，克隆它（避免原页面中的元素被移除）。
+
+4. 获取原页面的所有样式表链接，复制到iframe的head中，或者直接复制内联样式。
+
+5. 等待iframe加载完成后，调用其contentWindow的print方法。
+
+6. 打印完成后，移除iframe元素，以保持页面清洁。
+
+不过，用户可能只需要一个简单的实现，可能不需要复制所有样式，或者可能希望内联样式已经足够。这时候，可能需要简化步骤，比如只复制内容，并添加一些基本的打印样式，比如在iframe的style中设置@media print的规则，或者在内容中添加内联样式。
+
+此外，安全策略可能会影响iframe的内容访问，比如同源策略，但这里因为是同一页面内容，应该没问题。
+
+现在，我需要写一个例子，代码结构大致如下：
+
+- 创建一个函数，当按钮点击时调用。
+
+- 创建iframe，设置样式为position: absolute，left: -9999px等隐藏方式。
+
+- 将需要打印的内容克隆到iframe的body中。
+
+- 处理样式，可能将原页面的样式复制过去，或者添加新的样式链接。
+
+- 在iframe的onload事件中调用print，然后移除iframe。
+
+但需要注意，直接复制样式表链接可能不会生效，因为浏览器可能不会重新加载它们。或者，可能需要使用document.write来写入完整的HTML结构，包括head中的样式。
+
+或者，更简单的方式是将内容以及必要的内联样式插入到iframe中，这样即使没有外部样式，也能保证基本的打印格式。
+
+另外，可能需要处理图片的路径问题，确保在iframe中正确加载。
+
+例如，用户可能有一个div，id为“printContent”，里面包含要打印的内容。当点击按钮时，将这个div的内容复制到iframe中，并打印。
+
+示例代码的大致结构：
+
+function printContent() {
+
+const content = document.getElementById('printContent').innerHTML;
+
+const iframe = document.createElement('iframe');
+
+iframe.style.display = 'none';
+
+document.body.appendChild(iframe);
+
+const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+iframeDoc.open();
+
+iframeDoc.write('<html><head><title>Print</title>');
+
+// 添加样式
+
+iframeDoc.write('<style>...</style>');
+
+iframeDoc.write('</head><body>');
+
+iframeDoc.write(content);
+
+iframeDoc.write('</body></html>');
+
+iframeDoc.close();
+
+// 等待iframe加载完成后打印
+
+iframe.contentWindow.onload = function() {
+
+iframe.contentWindow.print();
+
+document.body.removeChild(iframe);
+
+};
+
+}
+
+不过，可能不需要等待onload，因为使用document.write写入内容后，可能已经立即加载完成。或者可能需要在setTimeout中调用print，以确保内容渲染完成。
+
+但是，使用onload事件可能更可靠。或者，在写入内容后，直接调用print。
+
+不过，实际情况中，可能因为异步问题，需要确保内容完全加载到iframe后再触发打印。
+
+另外，移除iframe的时机，可能在打印对话框弹出后立即移除，但用户可能取消打印，所以可能需要延迟移除，或者不立即移除。但为了清理DOM，还是应该在打印后尽快移除。
+
+测试过程中可能会发现，某些浏览器中，iframe的contentWindow.print()必须在用户交互的事件处理函数中调用，比如点击事件，否则会被浏览器拦截。但在这个例子中，打印是由按钮点击触发的，所以应该没问题。
+
+最后，需要提供一个完整的示例代码，包括HTML结构和JavaScript函数，并解释每个步骤的作用。同时提醒用户注意事项，比如样式可能需要调整，或者内容中的图片路径是否正确等。 -->
